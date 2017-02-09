@@ -10,6 +10,8 @@ Es wird ein System beschrieben, das zu eingegebenen Axiomen, Sätzen, und Beweis
 
 Ein System mit ähnlicher Aufgabenstellung findet sich unter http://www.qedeq.org/ und als GitHub-Projekt unter https://github.com/m-31/qedeq. Einige Ideen sind von dort übernommen worden.
 
+Als Lizenzen werden die *GNU Affero General Public License (APGL)* für die Software und die *GNU Free Documentation License (FDL)* für die Dokumente verwendet. Da das System auch über Server verwendet werden kann und soll, reicht die *GNU General Public License (GPL)* nicht aus. Wenn die Datei *LIZENSES* nicht mitgeliefert wurde, findet man die Lizenzen unter http://www.gnu.org/licenses/.
+
 ## Einführung
 
 In der Mathematik gibt es eine unüberschaubare Menge an Axiomen, Sätzen, Beweisen, Fachbegriffen und Fachgebieten. Zu den meisten Fachgebieten gibt es auch noch ungelöste Probleme.
