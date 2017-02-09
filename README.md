@@ -8,6 +8,8 @@ Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Aus
 
 Es wird ein System beschrieben, das zu eingegebenen Axiomen, Sätzen, und Beweisen letztere prüft, Auswertungen generiert und zu gegebenen Ausgabeschemata eine Ausgabe der Elemente in üblicher Formelschreibweise im LaTeX-Format erstellt.
 
+Ein System mit ähnlicher Aufgabenstellung findet sich unter http://www.qedeq.org/ und als GitHub-Projekt unter https://github.com/m-31/qedeq. Einige Ideen sind von dort übernommen worden.
+
 ## Einführung
 
 In der Mathematik gibt es eine unüberschaubare Menge an Axiomen, Sätzen, Beweisen, Fachbegriffen und Fachgebieten. Zu den meisten Fachgebieten gibt es auch noch ungelöste Probleme.
