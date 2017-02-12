@@ -1,0 +1,96 @@
+﻿=======
+Projekt
+=======
+
+    ASBA - Axiome, Sätze, Beweise und Ausgaben
+
+
+============
+Beschreibung
+============
+
+Fortsetzung des Projekts "Hilbert II" aus dem Internet
+
+
+=============
+Verzeichnisse
+=============
+
+- .svn
+    
+- LaTeX
+    Dateien, die bei LaTeX Verwendung finden
+- Links
+    Verknüpfungen im Zusammenhang mit qedeq (Hilbert II) und der
+    Entwicklungsumgebung
+- nppBackup
+    Automatische Sicherungen der mit "notepad++" bearbeiteten Dateien
+    Nicht mehr benötigte Sicherungen können jederzeit gelöscht werden.
+- repo
+    Subversion repository
+- VS
+    Visual Studio Projekt ASBA
+
+
+=======
+Dateien
+=======
+
+- !Lies mich.txt [Unix(LF); UTF-8-BOM]
+    Diese Datei: Beschreibung des Projekts, der zugehörigen Dateien und Ordner
+    und der noch zu erledigenden Aufgaben
+- Projekt qedeq
+    Link zum Nachbarprojekt qedeq (Klone aud dem Internet)
+
+
+====================
+Entwicklungsumgebung
+====================
+
+Eine nähere Beschreibung der hier aufgeführten Werkzeuge findet man in der
+übergeordneten Datei file:///C:/Users/Winfried/Projekte/!Lies%20mich.txt
+
+Konfirurationsmanagement:
+Subversion
+TortoiseSVN
+
+C++:
+? Visual Studio Community 2015 mit Updates
+? VisualSVN
+? RapidXml
+
+Doxygen:
+? Doxygen
+? Ghostscript
+? Graphviz
+
+LaTeX:
+? MiKTeX
+- TeXstudio
+? TortoiseSVN
+
+qedeq:
+? qedeq
+? Apache Ant
+? Checkstyle
+? Clover
+? Eclipse IDE for C/C++ Developers
+? JUnit
+? Xerces2
+
+Textbearbeitung:
+Notepad++
+UEStudio
+WinMerge
+
+Java u.a.:
+? Java Platform
+? Java Development Kit
+? Qt Projekt
+
+
+=============================
+Noch zu erledigenden Aufgaben
+=============================
+
+§§§ alle Dateien und Ordner dieses Verzeichnisses auflisten.
