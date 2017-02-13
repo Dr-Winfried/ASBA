@@ -83,17 +83,16 @@
 	
 	\thispagestyle{scrheadings}
 	
-	
-	%===============================================================================
+	%==================================================
 	
 	\chapter{Analyse}
 	\thispagestyle{scrheadings}
 	
-	In der Mathematik gibt es eine unüberschaubare Menge an Axiomen, Sätzen, Beweisen, Fachbegriffen\footnote{ Fachbegriffe sind Namen für Axiome, Sätze, Beweise und Fachgebiete. Symbole können als spezielle Fachbegriffe aufgefasst werden.} und Fachgebieten. Dabei verstehen wir unter einem \emph{Fachgebiet} einen Teil der Mathematik  mit einer zugehörigen Basis von Axiomen, Sätzen und spezifischen Fachbegriffen, zum Beispiel \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}\footnote{ Ein Fachgebiet kann hier sehr klein sein und im Extremfall einen einzigen Satz enthalten. \emph{Umgebung} wäre in diesem Projekt eine bessere Bezeichnung, könnte aber zu Verwechslungen führen, da dies schon ein verbreiteter Fachbegriff ist.}. Zu den meisten Fachgebieten gibt es auch noch ungelöste Probleme.
+	In der Mathematik gibt es eine unüberschaubare Menge an Axiomen, Sätzen, Beweisen, Fachbegriffen\footnote{ \emph{Fachbegriffe} sind Namen für Axiome, Sätze, Beweise und Fachgebiete. Symbole können als spezielle Fachbegriffe aufgefasst werden.} und Fachgebieten. Dabei verstehen wir unter einem \emph{Fachgebiet} einen Teil der Mathematik  mit einer zugehörigen Basis von Axiomen, Sätzen und spezifischen Fachbegriffen, zum Beispiel \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}\footnote{ Ein Fachgebiet kann hier sehr klein sein und im Extremfall einen einzigen Satz enthalten. \emph{Umgebung} wäre in diesem Projekt eine bessere Bezeichnung, könnte aber zu Verwechslungen führen, da dies schon ein verbreiteter Fachbegriff ist.}. Zu den meisten Fachgebieten gibt es auch noch ungelöste Probleme.
 	
 	Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, Beweise automatisch zu überprüfen. Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
 	
-	Ein System mit ähnlicher Aufgabenstellung findet sich unter \url{http://www.qedeq.org/} und als GitHub-Projekt unter \url{https://github.com/m-31/qedeq}. Einige Ideen sind von dort übernommen worden.
+	Ein System mit ähnlicher Aufgabenstellung findet sich in \cite{Hilbert II} und das zugehörige GitHub Repository in \cite{qedeq}. Einige Ideen sind von dort übernommen worden. Das GitHub Repository dieses Projekts findet sich in \cite{ASBA}.
 	
 	\section{Fragen}
 	\label{sec:Fragen}
@@ -103,7 +102,7 @@
 		
 		\item \label{Frage:Grundlagen} \emph{Grundlagen}: Was sind die Grundlagen? Zum Beispiel welche Logik und Mengenlehre.
 		
-		\item \label{Frage:Basis} \emph{Basis}: Welche wichtigen Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete gibt es?
+		\item \label{Frage:Basis} \emph{Basis}: Welche wichtigen Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete gibt es? Welche davon sind Standard?
 		
 		\item \label{Frage:Axiome} \emph{Axiome}: Welche Axiome werden bei einem Satz oder Beweis vorausgesetzt? Allgemein anerkannte oder auch strittige, wie zum Beispiel den \emph{Satz vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
 		
@@ -117,7 +116,7 @@
 		
 		\item \label{Frage:Abhängigkeiten} \emph{Abhängigkeiten}: Wie heißt ein Fachbegriff oder Fachgebiet in einer anderen Sprache? Ist wirklich dasselbe gemeint? Was ist mit Fachbegriffen in verschiedenen Fachgebieten?
 		
-		\item \label{Frage:Bekanntheit} \emph{Bekanntheit}: Ist ein Axiom, Satz, Beweis, Fachbegriff oder Fachgebiet schon einmal \textendash\ ggf. abweichend \textendash\ definiert, formuliert oder bewiesen worden?
+		\item \label{Frage:Überblick} \emph{Überblick}: Ist ein Axiom, Satz, Beweis, Fachbegriff oder Fachgebiet schon einmal \textendash\ ggf. abweichend \textendash\ definiert, formuliert oder bewiesen worden?
 		
 		\item \label{Frage:Darstellung} \emph{Darstellung}: Wie kann man einen Satz und den zugehörigen Beweis \textendash\ ggf. auch spezifisch für ein Fachgebiet \textendash\ darstellen?
 		
@@ -199,34 +198,35 @@
 	\end{enumerate}
 	
 	\section{Zusammenhänge}
-	\label{sec:Zusammenhänge}
+    \label{sec:Zusammenhänge}
+
 	Ausgehend von einer Liste der Fragen haben wir über die Zwischenstufe Mission Anforderungen an das zu realisierende System gestellt. Mit einem großen X werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nötig sind. Idealerweise soll die Erfüllung der Anforderungen die Fragen beantworten bzw. zur Beantwortung beitragen.\vspace{12pt}
 	
 	\begin{threeparttable}
 		\begin{tabular}{@{}r@{ }l|*{7}{c}|}
 			\multicolumn{2}{l|}{\diagbox{\textbf{Fragen}}{\textbf{Mission}}}
-			& \rotatebox{90}{\mbox{\ref{Mission:Daten}        Daten        }}
-			& \rotatebox{90}{\mbox{\ref{Mission:Definitionen} Definitionen }}
-			& \rotatebox{90}{\mbox{\ref{Mission:Prüfung}      Prüfung      }}
-			& \rotatebox{90}{\mbox{\ref{Mission:Ausgaben}     Ausgaben     }}
-			& \rotatebox{90}{\mbox{\ref{Mission:Auswertungen} Auswertungen }}
-			& \rotatebox{90}{\mbox{\ref{Mission:Lizenz}       Lizenz       }}
-			& \rotatebox{90}{\mbox{\ref{Mission:Akzeptanz}    Akzeptanz    }}
+			&\rotatebox{90}{\mbox{\ref{Mission:Daten} Daten}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Definitionen} Definitionen}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Prüfung} Prüfung}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Ausgaben} Ausgaben}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Auswertungen} Auswertunge }}
+			&\rotatebox{90}{\mbox{\ref{Mission:Lizenz} Lizenz}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Akzeptanz} Akzeptanz}}
 			\\\hline
-			\ref{Frage:Grundlagen}     & Grundlagen     &X&X&-&X&X&-&-\\
-			\ref{Frage:Basis}          & Basis          &X&X&-&X&X&-&-\\
-			\ref{Frage:Axiome}         & Axiome         &X&X&-&X&X&-&-\\
-			\cdashline{1-9}[2pt/2pt]
-			\ref{Frage:Beweis}         & Beweis         &X&-&X&X&-&-&-\\
-			\ref{Frage:Konstruktion}   & Konstruktion   &X&-&-&X&-&-&-\\
-			\ref{Frage:Vergleiche}     & Vergleiche     &X&-&-&-&X&-&-\\
-			\cdashline{1-9}[2pt/2pt]
-			\ref{Frage:Definitionen}   & Definitionen   &X&X&-&X&-&-&-\\
-			\ref{Frage:Abhängigkeiten} & Abhängigkeiten &X&-&-&X&-&-&-\\
-			\ref{Frage:Bekanntheit}    & Bekanntheit    &X&-&-&-&X&-&-\\
-			\cdashline{1-9}[2pt/2pt]
-			\ref{Frage:Darstellung}    & Darstellung    &-&X&-&X&-&-&-\\
-			\ref{Frage:Forschung}      & Forschung      &X&-&-&-&X&-&-\\
+			\ref{Frage:Grundlagen}&Grundlagen&X&X&-&X&X&-&-\\
+			\ref{Frage:Basis}&Basis&X&X&-&X&X&-&-\\
+			\ref{Frage:Axiome}&Axiome&X&X&-&X&X&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Beweis}&Beweis&X&-&X&X&-&-&-\\
+			\ref{Frage:Konstruktion}&Konstruktion&X&-&-&X&-&-&-\\
+			\ref{Frage:Vergleiche}&Vergleiche&X&-&-&-&X&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Definitionen}&Definitionen&X&X&-&X&-&-&-\\
+			\ref{Frage:Abhängigkeiten}&Abhängigkeiten&X&-&-&X&-&-&-\\
+			\ref{Frage:Überblick}&Überblick&X&-&-&-&X&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Darstellung}&Darstellung&-&X&-&X&-&-&-\\
+			\ref{Frage:Forschung}&Forschung&X&-&-&-&X&-&-\\
 			\hline
 		\end{tabular}
 		\caption{Fragen $\to$ Mission}
@@ -236,88 +236,87 @@
 	\begin{threeparttable}
 		\begin{tabular}{@{}r@{ }l|*{15}{c}|}
 			\multicolumn{2}{l|}{\diagbox{\textbf{Mission}}{\textbf{Ziele}}}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Daten}          Daten          }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Form}           Form           }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Eingaben}       Eingaben       }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Prüfung}        Prüfung        }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Ausgaben}       Ausgaben       }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Auswertungen}   Auswertungen   }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Anpassbarkeit}  Anpassbarkeit  }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Individualität} Individualität }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Internet}       Internet       }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Kommunikation}  Kommunikation  }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Zugriff}        Zugriff        }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Unabhängigkeit} Unabhängigkeit }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Rekursion}      Rekursion      }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Bedienbarkeit}  Bedienbarkeit  }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Lizenz}         Lizenz         }}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Daten} Daten}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Form} Form}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Eingaben} Eingaben}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Prüfung} Prüfung}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Ausgaben} Ausgaben}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Auswertungen} Auswertungen}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Anpassbarkeit} Anpassbarkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Individualität} Individualität}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Internet} Internet}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Kommunikation} Kommunikation}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Zugriff} Zugriff}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Unabhängigkeit} Unabhängigkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Rekursion} Rekursion}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Bedienbarkeit} Bedienbarkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Lizenz} Lizenz}}
 			\\\hline
-			\ref{Mission:Daten}        & Daten        &X&X&X&-&-&-&-&-&-&-&-&-&-&-&-\\
-			\ref{Mission:Definitionen} & Definitionen &X&-&X&-&-&-&-&-&-&-&-&-&-&-&-\\
-			\ref{Mission:Prüfung}      & Prüfung      &-&-&-&X&-&-&-&-&-&-&-&-&-&-&-\\
-			\cdashline{1-17}[2pt/2pt]
-			\ref{Mission:Ausgaben}     & Ausgaben     &-&-&-&-&X&-&-&-&-&-&-&-&-&-&-\\
-			\ref{Mission:Auswertungen} & Auswertungen &-&-&-&-&-&X&-&-&-&-&-&-&-&-&-\\
-			\ref{Mission:Lizenz}       & Lizenz       &-&-&-&-&-&-&-&-&-&-&-&-&-&-&X\\
-			\cdashline{1-17}[2pt/2pt]
-			\ref{Mission:Akzeptanz}    & Akzeptanz    &X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
+			\ref{Mission:Daten}&Daten&X&X&X&-&-&-&-&-&-&-&-&-&-&-&-\\
+			\ref{Mission:Definitionen}&Definitionen&X&-&X&-&-&-&-&-&-&-&-&-&-&-&-\\
+			\ref{Mission:Prüfung}&Prüfung&-&-&-&X&-&-&-&-&-&-&-&-&-&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Mission:Ausgaben}&Ausgaben&-&-&-&-&X&-&-&-&-&-&-&-&-&-&-\\
+			\ref{Mission:Auswertungen}&Auswertungen&-&-&-&-&-&X&-&-&-&-&-&-&-&-&-\\
+			\ref{Mission:Lizenz}&Lizenz&-&-&-&-&-&-&-&-&-&-&-&-&-&-&X\\
+			\hdashline[2pt/2pt]
+			\ref{Mission:Akzeptanz}&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
 			\hline
 		\end{tabular}
 		\caption{Mission $\to$ Ziele (Anforderungen)}
 		\label{tab:MissionZiele}
 	\end{threeparttable}\vspace{12pt}
 	
-	Die nächste Tabelle ist eine Kombination aus den Tabellen~\vref{tab:FragenMission} und~\vref{tab:MissionZiele}. Die Fragen \emph{Akzeptanz} und \emph{Lizenz} kommen aus Abschnitt~ref{sec:Mission} \emph{Mission} dazu. Mit einem kleinen x werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nicht nötig, aber von Interesse sind.\vspace{12pt}
+	Die nächste Tabelle ist eine Kombination aus den Tabellen~\vref{tab:FragenMission} und~\vref{tab:MissionZiele}. Die Fragen \emph{Akzeptanz} und \emph{Lizenz} kommen aus Abschnitt~\ref{sec:Mission} \emph{Mission} dazu. Mit einem kleinen x werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nicht nötig, aber von Interesse sind.\vspace{12pt}
 	
 	\begin{threeparttable}
 		\begin{tabular}{@{}r@{ }l|*{15}{c}|}
 			\multicolumn{2}{l|}{\diagbox{\textbf{Fragen}}{\textbf{Ziele}}}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Daten}          Daten          }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Form}           Form           }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Eingaben}       Eingaben       }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Prüfung}        Prüfung        }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Ausgaben}       Ausgaben       }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Auswertungen}   Auswertungen   }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Anpassbarkeit}  Anpassbarkeit  }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Individualität} Individualität }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Internet}       Internet       }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Kommunikation}  Kommunikation  }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Zugriff}        Zugriff        }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Unabhängigkeit} Unabhängigkeit }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Rekursion}      Rekursion      }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Bedienbarkeit}  Bedienbarkeit  }}
-			& \rotatebox{90}{\mbox{\ref{Ziel:Lizenz}         Lizenz         }}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Daten} Daten}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Form} Form}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Eingaben} Eingaben}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Prüfung} Prüfung}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Ausgaben} Ausgaben}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Auswertungen} Auswertungen}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Anpassbarkeit} Anpassbarkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Individualität} Individualität}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Internet} Internet}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Kommunikation} Kommunikation}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Zugriff} Zugriff}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Unabhängigkeit} Unabhängigkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Rekursion} Rekursion}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Bedienbarkeit} Bedienbarkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Lizenz} Lizenz}}
 			\\\hline
-			\ref{Frage:Grundlagen}     & Grundlagen     &X&X&X&-&X&X&x&-&-&-&-&-&-&-&-\\
-			\ref{Frage:Basis}          & Basis          &X&X&X&-&X&X&x&x&-&-&-&-&-&-&-\\
-			\ref{Frage:Axiome}         & Axiome         &X&X&X&-&X&X&x&-&-&-&-&-&-&-&-\\
-			\cdashline{1-17}[2pt/2pt]
-			\ref{Frage:Beweis}         & Beweis         &X&X&X&X&X&-&-&x&-&-&-&-&-&-&-\\
-			\ref{Frage:Konstruktion}   & Konstruktion   &X&X&X&-&X&-&-&x&-&-&-&-&-&-&-\\
-			\ref{Frage:Vergleiche}     & Vergleiche     &X&X&X&-&-&X&-&x&-&-&-&-&-&-&-\\
-			\cdashline{1-17}[2pt/2pt]
-			\ref{Frage:Definitionen}   & Definitionen   &X&X&X&-&X&-&x&-&-&-&-&-&-&-&-\\
-			\ref{Frage:Abhängigkeiten} & Abhängigkeiten &X&X&X&-&X&-&x&-&-&-&-&-&-&-&-\\
-			\ref{Frage:Bekanntheit}    & Bekanntheit    &X&X&X&-&-&X&x&-&-&-&-&-&-&-&-\\
-			\cdashline{1-17}[2pt/2pt]
-			\ref{Frage:Darstellung}    & Darstellung    &X&-&X&-&X&-&x&-&-&-&-&-&-&-&-\\
-			\ref{Frage:Forschung}      & Forschung      &X&X&X&-&-&X&x&-&-&-&-&-&-&-&-\\
-			\cdashline{1-17}[2pt/2pt]
-			~                          & Lizenz         &-&-&-&-&-&-&-&-&-&-&-&-&-&-&X\\
-			~                          & Akzeptanz      &X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
+			\ref{Frage:Grundlagen}&Grundlagen&X&X&X&-&X&X&x&-&-&-&-&-&-&-&-\\
+			\ref{Frage:Basis}&Basis&X&X&X&-&X&X&x&x&-&-&-&-&-&-&-\\
+			\ref{Frage:Axiome}&Axiome&X&X&X&-&X&X&x&-&-&-&-&-&-&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Beweis}&Beweis&X&X&X&X&X&-&-&x&-&-&-&-&-&-&-\\
+			\ref{Frage:Konstruktion}&Konstruktion&X&X&X&-&X&-&-&x&-&-&-&-&-&-&-\\
+			\ref{Frage:Vergleiche}&Vergleiche&X&X&X&-&-&X&-&x&-&-&-&-&-&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Definitionen}&Definitionen&X&X&X&-&X&-&x&-&-&-&-&-&-&-&-\\
+			\ref{Frage:Abhängigkeiten}&Abhängigkeiten&X&X&X&-&X&-&x&-&-&-&-&-&-&-&-\\
+			\ref{Frage:Überblick}&Überblick&X&X&X&-&-&X&x&-&-&-&-&-&-&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Darstellung}&Darstellung&X&-&X&-&X&-&x&-&-&-&-&-&-&-&-\\
+			\ref{Frage:Forschung}&Forschung&X&X&X&-&-&X&x&-&-&-&-&-&-&-&-\\
+			\hdashline[2pt/2pt]
+			&Lizenz&-&-&-&-&-&-&-&-&-&-&-&-&-&-&X\\
+			&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
 			\hline
 		\end{tabular}
 		\caption{Fragen $\to$ Ziele (Anforderungen)}
 		\label{tab:FragenZiele}
 	\end{threeparttable}
 
-
-	%===============================================================================
+	%==================================================
 	
 	\chapter{Design}
 	\thispagestyle{scrheadings}
 	
-	Diese Projekt soll Open Source sein. Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)} und für die Software die \emph{GNU Affero General Public License (APGL)}. Die \emph{GNU General Public License (GPL)} reicht für die Software nicht, da das Programm auch mittels eines Servers betrieben werden kann und soll.
+	Diese Projekt soll Open Source sein. Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)} und für die Software die \emph{GNU Affero General Public License (APGL)}. Die \emph{GNU General Public License (GPL)} reicht für die Software nicht, da das Programm auch mittels eines Servers betrieben werden kann und soll. Damit das Projekt gegebenenfalls durch verschiedene Entwickler gleichzeitig bearbeitet werden kann und wegen des Konfigurationsmanagements wurde es als ein GitHub Projekt erstellt (siehe \cite{ASBA}).
 	
 	Wenn die Lizenzen nicht mitgeliefert wurden, können sie unter \url{http://www.gnu.org/licenses/} gefunden werden.
 	
@@ -337,39 +336,42 @@
 	\end{enumerate}
 	
 	\section{Werkzeuge}
+	\label{sec:Werkzeuge}
 	Da dies ein Open Source Projekt sein soll, müssen alle Werkzeuge, die zum Ablauf der Software erforderlich sind, ebenfalls Open Source sein.
 	
-	Angedachte Werkzeuge:
 	\begin{itemize}
-		\item \label{Werkzeug:VSC} Entwicklungsumgebung: \emph{Visual Studio Community 2015} (\textbf{VS})
-		\item \label{Werkzeug:VSCDB} Datenbank: Integriert in VS
-		\item \label{Werkzeug:RapidXml} Ein- und Ausgabe in XML: \emph{RapidXml}
-		\item \label{Werkzeug:MiKTeX} Lesbare Ausgabe in \LaTeX: \emph{MiK\TeX}
-		\item \label{Werkzeug:TeXstudio} \LaTeX\ Editor: \emph{\TeX studio}
-		\item \label{Werkzeug:Subversion} Versionsverwaltungssystem: \emph{Subversion} (\textbf{SVN})
-		\item \label{Werkzeug:VisualSVN} Integration von SVN in VS: \emph{VisualSVN}
-		\item \label{Werkzeug:TortoiseSVN} Shell-Integration von SVN: \emph{TortoiseSVN}
+		\item \label{Werkzeug:MiKTeX} \emph{MiK\TeX} für Dokumentation und Ausgaben in \LaTeX.
+		\item \label{Werkzeug:TeXstudio} \emph{\TeX studio} als Editor für \LaTeX.
+		
+		\setcounter{Enumi}{\value{enumi}}
+	\end{itemize}
+		
+	Angedachte Werkzeuge:
+		
+	\begin{itemize}
+		\setcounter{enumi}{\value{Enumi}}
+
+		\item \label{Werkzeug:VSC} \emph{Visual Studio Community 2015} (\textbf{VS}) als Entwicklungsumgebung für C++.
+		\item \label{Werkzeug:VSCDB} In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete.
+		\item \label{Werkzeug:RapidXml} \emph{RapidXml} für ein- und Ausgabe in XML.
 	\end{itemize}
 	
 	
-	%===============================================================================
+	%==================================================
+
 	\appendix
-	%===============================================================================
 	
 	\chapter{Anhang}
 	\thispagestyle{scrheadings}
 	
 	\section{Offene Aufgaben}
 	\begin{enumerate}
-		\item Fragen und Ziele auf Homepage auflisten.
-		\item Homepage und Lizenzen herunterladen.
-		\item Verwendung von GitHub begründen.
-		\item Mails vom 12. und 28.12.2016 von Michael verarbeiten
+		\item Werkzeuge aussuchen (siehe \ref{sec:Werkzeuge})
 		\item Formale Syntax definieren
 		\item Datenstruktur definieren
 		\item Formale Prüfung definieren
 		\item Axiome für das System bestimmen
-		\item Visual Studio mit Subversion und GitHub verbinden
+		\item Visual Studio mit GitHub verbinden
 		\item Eingabeprogramm erstellen (liest XML)
 		\item Prüfprogramm erstellen
 		\item Ausgabeprogramm erstellen (schreibt XML)
@@ -382,11 +384,26 @@
 		\item Ausgabeschemata sammeln und eingeben
 	\end{enumerate}
 		
-	%===============================================================================
+	%==================================================
 
-
-	\listoftables \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
-	\listoffigures\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+    \newpage
+    \begin{minipage}{\textwidth}
+    	\listoftables\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+    \end{minipage}
+	\thispagestyle{scrheadings}
+    \begin{minipage}{\textwidth}
+    	\listoffigures\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}       
+    	\addcontentsline{lof}{section}{<Noch keine Abbildungen vorhanden.>}
+    \end{minipage}
+	\thispagestyle{scrheadings}
+    \begin{minipage}{\textwidth}
+    	\addcontentsline{toc}{chapter}{Literaurverzeichnis}
+        \begin{thebibliography}{12}
+            \bibitem{Hilbert II}\emph{Hilbert II - Introduction.} \url{http://www.qedeq.org/}
+            \bibitem{qedeq}\emph{Formal Correct Mathematical Knowledge.} GitHub Repository of Projekt Hilbert II \url{https://github.com/m-31/qedeq/}
+            \bibitem{ASBA}\emph{Axiome, Sätze, Beweise und Ausgaben - Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form} GitHub Repository von Projekt ASBA \url{https://github.com/Dr-Winfried/ASBA}
+        \end{thebibliography}
+    \end{minipage}
 	\thispagestyle{scrheadings}
 	
 \end{document}

@@ -16,17 +16,20 @@ Fortsetzung des Projekts "Hilbert II" aus dem Internet
 Verzeichnisse
 =============
 
-- .git
-    Zu Git gehörende Dateien
+- .svn
+    
 - LaTeX
     Dateien, die bei LaTeX Verwendung finden
+- Links
+    Verknüpfungen im Zusammenhang mit qedeq (Hilbert II) und der
+    Entwicklungsumgebung
 - nppBackup
     Automatische Sicherungen der mit "notepad++" bearbeiteten Dateien
     Nicht mehr benötigte Sicherungen können jederzeit gelöscht werden.
-- Verknüpfungen
-    Verknüpfungen im Zusammenhang mit diesem Projekt
+- repo
+    Subversion repository
 - VS
-    Visual Studio Projekte
+    Visual Studio Projekt ASBA
 
 
 =======
@@ -36,10 +39,9 @@ Dateien
 - !Lies mich.txt [Unix(LF); UTF-8-BOM]
     Diese Datei: Beschreibung des Projekts, der zugehörigen Dateien und Ordner
     und der noch zu erledigenden Aufgaben
-- .gitattributes
-    Einstellungen für Git
-- LICENSES
-    GNU AGPL und GNU FDL
+- Projekt qedeq
+    Link zum Nachbarprojekt qedeq (Klone aud dem Internet)
+
 
 ====================
 Entwicklungsumgebung
