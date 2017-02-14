@@ -22,7 +22,7 @@ Dieses Projekt soll eine Software zur Verfügung stellen, mit der obiges Angelie
 
 Es stellen sich unter anderem die folgenden Fragen:
 - Was sind die Grundlagen? Zum Beispiel welche Logik und Mengenlehre.
-- Welche wichtigen Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete gibt es?
+- Welche wichtigen Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete gibt es? Welche davon sind Standard?
 - Welche Axiome werden bei einem Satz oder Beweis vorausgesetzt? Allgemein anerkannte oder auch strittige, wie zum Beispiel den *Satz vom ausgeschlossenen Dritten* (*tertium non datur*) oder das *Auswahlaxiom*
 - Ist ein Beweis fehlerfrei?
 - Gibt es einen konstruktiven Beweis?
