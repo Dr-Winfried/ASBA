@@ -40,6 +40,8 @@ Dateien
     Einstellungen für Git
 - LICENSES
     GNU AGPL und GNU FDL
+- README.md
+    Projektbeschreibung in markdown Syntax
 
 ====================
 Entwicklungsumgebung
