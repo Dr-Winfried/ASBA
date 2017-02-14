@@ -1,10 +1,10 @@
-# ASBA
+# ASBA ######
 
 **Axiome, Sätze, Beweise und Ausgaben**
 
 Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form
 
-## Überblick
+## Überblick #####
 
 Es wird ein System beschrieben, das zu eingegebenen Axiomen, Sätzen, und Beweisen letztere prüft, Auswertungen generiert und zu gegebenen Ausgabeschemata eine Ausgabe der Elemente in üblicher Formelschreibweise im LaTeX-Format erstellt.
 
@@ -12,7 +12,7 @@ Ein System mit ähnlicher Aufgabenstellung findet sich unter http://www.qedeq.or
 
 Als Lizenzen werden die *GNU Affero General Public License (APGL)* für die Software und die *GNU Free Documentation License (FDL)* für die Dokumente verwendet. Da das System auch über Server verwendet werden kann und soll, reicht die *GNU General Public License (GPL)* nicht aus. Wenn die Datei *LIZENSES* nicht mitgeliefert wurde, findet man die Lizenzen unter http://www.gnu.org/licenses/.
 
-## Einführung
+## Einführung ####
 
 In der Mathematik gibt es eine unüberschaubare Menge an Axiomen, Sätzen, Beweisen, Fachbegriffen und Fachgebieten. Zu den meisten Fachgebieten gibt es auch noch ungelöste Probleme.
 
@@ -29,12 +29,12 @@ Es stellen sich unter anderem die folgenden Fragen:
 - Welcher Beweis ist besser? Nach welchem Kriterium? Zum Beispiel elegant, kurz, einsichtig oder wenige Axiome. Was heißt eigentlich *elegant*?
 - Was ist mit einem Fachbegriff oder einem Fachgebiet jeweils genau gemeint? Zum Beispiel *Stetigkeit*, *Integral* und *Analysis*.
 - Wie heißt ein Fachbegriff oder ein Fachgebiet in einer anderen Sprache? Ist wirklich dasselbe gemeint? Was ist mit Fachbegriffen in verschiedenen Fachgebieten?
-- Ist ein Axiom, Satz, Beweis, Fachbegriff oder eine Fachgebiet schon einmal -- ggf. abweichend -- definiert, formuliert oder bewiesen worden?
-- Wie kann man einen Satz und den zugehörigen Beweis -- ggf. auch spezifisch für ein Fachgebiet -- darstellen?
+- Ist ein Axiom, Satz, Beweis, Fachbegriff oder eine Fachgebiet schon einmal - ggf. abweichend - definiert, formuliert oder bewiesen worden?
+- Wie kann man einen Satz und den zugehörigen Beweis - ggf. auch spezifisch für ein Fachgebiet - darstellen?
 - Welche Probleme gibt es noch zu erforschen.
 
 Das System kann nicht alles beantworten. Als Hilfe zur Beantwortung soll das System jedoch die folgenden Anforderungen erfüllen:
-- Es enthält möglichst viele wichtige Axiome, Sätze, Beweise, Fachbegriffe, Fachgebiete und Ausgabeschemata -- spezifische Angaben, welche die Art der Ausgabe von Daten beschreiben.
+- Es enthält möglichst viele wichtige Axiome, Sätze, Beweise, Fachbegriffe, Fachgebiete und Ausgabeschemata - spezifische Angaben, welche die Art der Ausgabe von Daten beschreiben.
 - Die Daten liegt in formaler, geprüfter Form vor.
 - Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise. Folgende Daten können eingegeben werden:
   - Axiome
@@ -48,13 +48,13 @@ Das System kann nicht alles beantworten. Als Hilfe zur Beantwortung soll das Sys
 - Vorhandene Beweise können automatisch geprüft werden.
 - Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener Ausgabeschemata erfolgen.
 - Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich. Insbesondere kann zu jedem Beweis angegeben werden, wie viele Beweisschritte und welche Axiome und Sätze er benötigt.
-- Fachbegriffe und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten Fachgebieten angepasst werden.
+- Fachbegriffe und die Darstellung bei der Ausgabe können mit Hilfe von - gegebenenfalls unbenannten - untergeordneten Fachgebieten angepasst werden.
 - Axiome und Sätze können für jeden Beweis individuell vorausgesetzt werden. Dabei sind fachgebietsspezifische Fachbegriffe erlaubt.
-- Die Daten können auf mehrere Dateien verteilt sein. Ein Teil davon -- oder sogar alle -- können im Internet liegen.
+- Die Daten können auf mehrere Dateien verteilt sein. Ein Teil davon - oder sogar alle - können im Internet liegen.
 - Die Kommunikation mit dem System kann mit den Fachbegriffen der einzelnen Fachgebiete erfolgen.
 - Der Zugriff auf das System kann lokal und über das Internet erfolgen.
 - Das System kann offline und online arbeiten.
-- Es kann rekursiv über alle verwendeten Dateien -- auch solchen, die im Internet liegen -- ausgewertet werden.
+- Es kann rekursiv über alle verwendeten Dateien - auch solchen, die im Internet liegen - ausgewertet werden.
 - Das System ist einfach zu bedienen.
 - Die Software ist *Open Source*.
 
