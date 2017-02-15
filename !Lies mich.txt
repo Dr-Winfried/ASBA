@@ -50,38 +50,35 @@ Entwicklungsumgebung
 Eine nähere Beschreibung der hier aufgeführten Werkzeuge findet man in der
 übergeordneten Datei file:///C:/Users/Winfried/Projekte/!Lies%20mich.txt
 
-Konfirurationsmanagement:
-Subversion
-TortoiseSVN
+Konfigurationsmanagement:
+- GitHub
+- Git
+
+LaTeX:
+- MiKTeX
+
+qedeq:
+- qedeq
+- Apache Ant
+- Checkstyle
+- Clover
+- Eclipse IDE for C/C++ Developers
+- JUnit
+- Xerces2
 
 C++:
 ? Visual Studio Community 2015 mit Updates
-? VisualSVN
 ? RapidXml
 
-Doxygen:
+C++ Dokumentation:
 ? Doxygen
 ? Ghostscript
 ? Graphviz
 
-LaTeX:
-? MiKTeX
-- TeXstudio
-? TortoiseSVN
-
-qedeq:
-? qedeq
-? Apache Ant
-? Checkstyle
-? Clover
-? Eclipse IDE for C/C++ Developers
-? JUnit
-? Xerces2
-
 Textbearbeitung:
-Notepad++
-UEStudio
-WinMerge
+- Notepad++
+- [UEStudio]
+- WinMerge
 
 Java u.a.:
 ? Java Platform
@@ -92,5 +89,3 @@ Java u.a.:
 =============================
 Noch zu erledigenden Aufgaben
 =============================
-
-§§§ alle Dateien und Ordner dieses Verzeichnisses auflisten.

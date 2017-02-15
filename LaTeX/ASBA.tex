@@ -322,40 +322,68 @@
 	
 	\section{Anforderungen}
 	\begin{enumerate}
-		\item \label{Anforderung:key} \emph{key}: ???
+		\item\label{Anforderung:key}\emph{key}: ???
 	\end{enumerate}
 	
 	\section{Datenstruktur}
 	\begin{enumerate}
-		\item \label{Datenstruktur:key} \emph{key}: ???
+		\item\label{Datenstruktur:key}\emph{key}: ???
 	\end{enumerate}
 	
 	\section{Bausteine}
 	\begin{enumerate}
-		\item \label{Baustein:key} \emph{key}: ???
+		\item\label{Baustein:key}\emph{key}: ???
 	\end{enumerate}
 	
 	\section{Werkzeuge}
 	\label{sec:Werkzeuge}
-	Da dies ein Open Source Projekt sein soll, müssen alle Werkzeuge, die zum Ablauf der Software erforderlich sind, ebenfalls Open Source sein.
+	Da dies ein Open Source Projekt sein soll, müssen alle Werkzeuge, die zum Ablauf der Software erforderlich sind, ebenfalls Open Source sein. Für die reine Entwicklung sollte das auch gelten.
 	
+	Werkzeuge, die zum Ablauf der Software erforderlich sind:
 	\begin{itemize}
-		\item \label{Werkzeug:MiKTeX} \emph{MiK\TeX} für Dokumentation und Ausgaben in \LaTeX.
-		\item \label{Werkzeug:TeXstudio} \emph{\TeX studio} als Editor für \LaTeX.
-		
+		\item\label{Werkzeug:MiKTeX}\emph{MiK\TeX} für Dokumentation und Ausgaben in \LaTeX. $\rightarrow$ \url{https://miktex.org/}
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
-		
-	Angedachte Werkzeuge:
-		
+	
+	Werkzeuge, die für die Entwicklung verwendet werden:
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
-
-		\item \label{Werkzeug:VSC} \emph{Visual Studio Community 2015} (\textbf{VS}) als Entwicklungsumgebung für C++.
-		\item \label{Werkzeug:VSCDB} In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete.
-		\item \label{Werkzeug:RapidXml} \emph{RapidXml} für ein- und Ausgabe in XML.
+		\item\label{Werkzeug:GitHub}\emph{GitHub} als Online Konfigurationsmanagementsystem zur Zusammenarbeit verschiedener Entwickler. $\rightarrow$ \url{https://github.com/}
+		\item\label{Werkzeug:Git}GitHub benötigt \emph{Git} als Konfigurationsmanagementsystem. $\rightarrow$ \url{https://git-scm.com/}
+		\item\label{Werkzeug:Doxygen}\emph{Doxygen} als Dokumentationssystem für C++. $\rightarrow$ \url{http://www.stack.nl/~dimitri/doxygen/}
+		\item\label{Werkzeug:Ghostscript}Doxygen benötigt \emph{Ghostscript} als Interpreter für Postscript und PDF. $\rightarrow$ \url{http://ghostscript.com/}
+		\item\label{Werkzeug:Graphviz}Doxygen benötigt \emph{Graphviz} mit \emph{Dot} zur Erzeugung und Visualisierung von Graphen. $\rightarrow$ \url{http://www.graphviz.org/Home.php}
+		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
 	
+	Werkzeuge für die Entwicklung, die jeder Entwickler individuell durch andere ersetzten kann:
+	\begin{itemize}
+		\setcounter{enumi}{\value{Enumi}}
+		\item\label{Werkzeug:TeXstudio}\emph{\TeX studio} als Editor für \LaTeX. $\rightarrow$ \url{http://www.texstudio.org/}
+		\item\label{Werkzeug:Notepadpp}\emph{Notepad++} als Text-Editor. $\rightarrow$ \url{https://notepad-plus-plus.org/}
+		\item\label{Werkzeug:WinMerge}\emph{WinMerge} zum Vergleich von Dateien und Verzeichnissen. $\rightarrow$ \url{http://winmerge.org/}
+		\setcounter{Enumi}{\value{enumi}}
+	\end{itemize}
+	
+	Angedachte Werkzeuge:
+	\begin{itemize}
+		\setcounter{enumi}{\value{Enumi}}
+		\item\label{Werkzeug:VSC}\emph{Visual Studio Community 2015}\footnote{ Visual Studio Community ist zwar nicht Open Source, darf aber zur Entwicklung von Open Source Software unentgeltlich verwendet werden.} (\emph{VS}) als Entwicklungsumgebung für C++. $\rightarrow$ \url{https://www.visualstudio.com/downloads/}
+		\item\label{Werkzeug:VSCDB}In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete.
+		\item\label{Werkzeug:RapidXml}\emph{RapidXml} für Ein- und Ausgabe in XML. $\rightarrow$ \url{http://rapidxml.sourceforge.net/index.htm}
+	\end{itemize}
+	
+	Im Projekt \emph{qedeq} verwendete Werkzeuge:
+	\begin{itemize}
+		\setcounter{enumi}{\value{Enumi}}
+		\item\label{Werkzeug:ApacheAnt}\emph{Apache Ant} als Java Bibliothek und Kommandozeilen-Werkzeug um Java Programme zu erzeugen. $\rightarrow$ \url{http://ant.apache.org/}
+		\item\label{Werkzeug:Checkstyle}\emph{Checkstyle} zur statischen Code-Analyse für Java. $\rightarrow$ \url{http://checkstyle.sourceforge.net/}
+		\item\label{Werkzeug:Clover}\emph{Clover} als Testwerkzeug zur Analyse der Code-Abdeckung. $\rightarrow$ \url{https://www.atlassian.com/software/clover/}
+		\item\label{Werkzeug:EclipseCpp}\emph{Eclipse IDE for Java Developers} als Entwicklungsumgebung für Java. $\rightarrow$ \url{http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon1a/}
+		\item\label{Werkzeug:JUnit}\emph{JUnit} zur Erzeugung von wiederholbaren Tests. $\rightarrow$ \url{http://junit.org/junit4/}
+		\item\label{Werkzeug:Xerces2}\emph{Xerces2} als XML-Parser in Java. $\rightarrow$ \url{http://xerces.apache.org/xerces2-j/}
+		\setcounter{Enumi}{\value{enumi}}
+	\end{itemize}
 	
 	%==================================================
 
@@ -397,10 +425,25 @@
     \end{minipage}
 	\thispagestyle{scrheadings}
     \begin{minipage}{\textwidth}
-    	\addcontentsline{toc}{chapter}{Literaurverzeichnis}
+    	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
         \begin{thebibliography}{12}
-            \bibitem{Hilbert II}\emph{Hilbert II - Introduction.} \url{http://www.qedeq.org/}
-            \bibitem{qedeq}\emph{Formal Correct Mathematical Knowledge.} GitHub Repository of Projekt Hilbert II \url{https://github.com/m-31/qedeq/}
+			\bibitem{Apacheii}\emph{Apache License}, Version 2.0 $\rightarrow$ \url{http://www.apache.org/licenses/LICENSE-2.0}
+			\bibitem{BSLi}\emph{Boost Software License} 1.0 $\rightarrow$ \url{http://www.boost.org/users/license.html}
+			\bibitem{AGPL}\emph{GNU Affero General Public License} $\rightarrow$ \url{http://www.gnu.org/licenses/agpl}
+			\bibitem{GPLii}\emph{GNU General Public License}, Version 2 $\rightarrow$ \url{http://www.gnu.org/licenses/old-licenses/gpl-2.0}
+			\bibitem{GPL}\emph{GNU General Public License} $\rightarrow$ \url{XXX}
+			\bibitem{LGPLii}\emph{GNU Lesser General Public License}, Version 2.1 $\rightarrow$ \url{ http://www.gnu.org/licenses/old-licenses/lgpl-2.1}
+			\bibitem{EPL}\emph{Eclipse Public License} Version 1.0 $\rightarrow$ \url{http://www.eclipse.org/org/documents/epl-v10.php}
+			\bibitem{Clover}License for \emph{Clover} $\rightarrow$ \url{https://www.atlassian.com/software/clover}
+			\bibitem{EULA}License for \emph{Microsoft Visual Studio Community} $\rightarrow$ \url{https://www.visualstudio.com/de/license-terms/mt171551/}
+			\bibitem{MiKTeX}License for \emph{MikTeX} $\rightarrow$ \url{file:///C:/Program%20Files/MiKTeX%202.9/doc/miktex/license.html}
+			\bibitem{SAX}License for \emph{SAX} $\rightarrow$ \url{http://www.saxproject.org/copying.html}
+			\bibitem{MIT}\emph{MIT License} $\rightarrow$ \url{https://opensource.org/licenses/MIT/}
+			\bibitem{OSI}\emph{OSI Certified Open Source Software} $\rightarrow$ \url{https://opensource.org/pressreleases/certified-open-source.php}
+			\bibitem{WDCDL}\emph{W3C Document License} $\rightarrow$ \url{https://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231}
+			\bibitem{WDCSNL}\emph{W3C Software Notice and License} $\rightarrow$ \url{https://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231}
+            \bibitem{Hilbert II}\emph{Hilbert II - Introspektion} \url{http://www.qedeq.org/}
+            \bibitem{qedeq}\emph{Formal Recto Mathematisch Knollige} GitHub Repository von Projekt Hilbert II \url{https://github.com/m-31/qedeq/}
             \bibitem{ASBA}\emph{Axiome, Sätze, Beweise und Ausgaben - Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form} GitHub Repository von Projekt ASBA \url{https://github.com/Dr-Winfried/ASBA}
         \end{thebibliography}
     \end{minipage}
