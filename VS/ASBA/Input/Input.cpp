@@ -6,6 +6,7 @@
 
 int main()
 {
-    return 0;
+	printf("Program Input (" __TIMESTAMP__ ")");
+	return 0;
 }
 

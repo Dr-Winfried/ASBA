@@ -137,7 +137,27 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
-            default:
+			case IDM_OPEN_INPUT:
+				// TODO: Dateiname für Eingabe einlesen
+				DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+				break;
+			case IDM_OPEN_OUTPUT:
+				// TODO: Dateiname für Ausgabe einlesen
+				DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+				break;
+			case IDM_TOOL_INPUT:
+				// TODO: Programm Eingabe aufrufen
+				DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+				break;
+			case IDM_TOOL_CHECK:
+				// TODO: Programm Check aufrufen
+				DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+				break;
+			case IDM_TOOL_OUTPUT:
+				// TODO: Programm Ausgabe aufrufen
+				DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+				break;
+			default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }

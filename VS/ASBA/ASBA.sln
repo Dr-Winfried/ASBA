@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Interface", "ASBA\ASBA.vcxproj", "{AA6B2729-CBD4-4CC5-8967-6791C6B65BB5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ASBA", "ASBA\ASBA.vcxproj", "{AA6B2729-CBD4-4CC5-8967-6791C6B65BB5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Input", "Input\Input.vcxproj", "{45C2F564-4DD1-42F9-AB2F-A6E49034B31F}"
 EndProject
@@ -21,6 +21,7 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AA6B2729-CBD4-4CC5-8967-6791C6B65BB5}.Debug|x64.ActiveCfg = Debug|x64
 		{AA6B2729-CBD4-4CC5-8967-6791C6B65BB5}.Debug|x64.Build.0 = Debug|x64
+		{AA6B2729-CBD4-4CC5-8967-6791C6B65BB5}.Debug|x64.Deploy.0 = Debug|x64
 		{AA6B2729-CBD4-4CC5-8967-6791C6B65BB5}.Debug|x86.ActiveCfg = Debug|Win32
 		{AA6B2729-CBD4-4CC5-8967-6791C6B65BB5}.Debug|x86.Build.0 = Debug|Win32
 		{AA6B2729-CBD4-4CC5-8967-6791C6B65BB5}.Release|x64.ActiveCfg = Release|x64
