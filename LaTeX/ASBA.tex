@@ -92,7 +92,7 @@
 	
 	Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, Beweise automatisch zu überprüfen. Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
 	
-	Ein System mit ähnlicher Aufgabenstellung findet sich in \cite{HilbertII} und das zugehörige GitHub Repository in \cite{qedeq}. Einige Ideen sind von dort übernommen worden. Das GitHub Repository dieses Projekts findet sich in \cite{ASBA}.
+	Ein System mit ähnlicher Aufgabenstellung findet sich im GitHub Projekt Hilbert~II (siehe \cite{HilbertII,qedeq}). Einige Ideen sind von dort übernommen worden, insbesondere wurden die Dokumente \cite{Logik}, \cite{FLogik} und \cite{Mengenlehre} in das GitHub Projekt ASBA übernommen (siehe \cite{ASBA}).
 	
 	\section{Fragen}
 	\label{sec:Fragen}
@@ -359,6 +359,8 @@
 		
 		\item\label{Werkzeug:Git}GitHub benötigt \emph{Git} als Konfigurationsmanagementsystem. $\rightarrow$ \url{https://git-scm.com/} - Lizenz \cite{GPLii}
 		
+		\item\label{Werkzeug:VSC}\emph{Visual Studio Community 2015}\footnote{ Visual Studio Community ist zwar nicht Open Source, darf aber zur Entwicklung von Open Source Software unentgeltlich verwendet werden.} (\emph{VS}) als Entwicklungsumgebung für C++. $\rightarrow$ \url{https://www.visualstudio.com/downloads/} - Lizenz \cite{EULA}
+		
 		\item\label{Werkzeug:Doxygen}\emph{Doxygen} als Dokumentationssystem für C++. $\rightarrow$ \url{http://www.stack.nl/~dimitri/doxygen/} - Lizenz \cite{GPLii}
 		
 		\item\label{Werkzeug:Ghostscript}Doxygen benötigt \emph{Ghostscript} als Interpreter für Postscript und PDF. $\rightarrow$ \url{http://ghostscript.com/} - Lizenz \cite{AGPL}
@@ -384,8 +386,6 @@
 	Angedachte Werkzeuge:
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
-		
-		\item\label{Werkzeug:VSC}\emph{Visual Studio Community 2015}\footnote{ Visual Studio Community ist zwar nicht Open Source, darf aber zur Entwicklung von Open Source Software unentgeltlich verwendet werden.} (\emph{VS}) als Entwicklungsumgebung für C++. $\rightarrow$ \url{https://www.visualstudio.com/downloads/} - Lizenz \cite{EULA}
 		
 		\item\label{Werkzeug:VSCDB}In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete. - Lizenz \cite{EULA}
 		
@@ -423,12 +423,10 @@
 	
 	\section{Offene Aufgaben}
 	\begin{enumerate}
-		\item Werkzeuge aussuchen (siehe \ref{sec:Werkzeuge})
 		\item Formale Syntax definieren
 		\item Datenstruktur definieren
 		\item Formale Prüfung definieren
 		\item Axiome für das System bestimmen
-		\item Visual Studio mit GitHub verbinden
 		\item Eingabeprogramm erstellen (liest XML)
 		\item Prüfprogramm erstellen
 		\item Ausgabeprogramm erstellen (schreibt XML)
@@ -497,6 +495,12 @@
 			\bibitem{qedeq}\emph{Formal Correct Mathematical Knowledge}: GitHub Repository von Projekt Hilbert II $\rightarrow$ \url{https://github.com/m-31/qedeq/}
 			
 			\bibitem{ASBA}\emph{ASBA - Axiome, Sätze, Beweise und Ausgaben}. Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form: GitHub Repository von Projekt ASBA $\rightarrow$ \url{https://github.com/Dr-Winfried/ASBA}
+			
+			\bibitem{Logik}Meyling, Michael: \emph{Anfangsgründe der mathematischen Logik} - 24. Mai 2013 $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_logic_v1_de.pdf}
+			
+			\bibitem{FLogik}Meyling, Michael: \emph{Formale Prädikatenlogik} - 24. Mai 2013 $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_formal_logic_v1_de.pdf}
+			
+			\bibitem{Mengenlehre}Meyling, Michael: \emph{Axiomatische Mengenlehre} - 24. Mai 2013 $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_set_theory_v1_de.pdf}
 			
 		\end{thebibliography}
 	\end{flushleft}
