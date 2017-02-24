@@ -9,39 +9,41 @@ Projekt
 Beschreibung
 ============
 
-Fortsetzung des Projekts "Hilbert II" aus dem Internet
+Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren
+Ausgabe in lesbarer Form.
 
 
-=============
-Verzeichnisse
-=============
+=========================
+Verzeichnisse und Dateien
+=========================
 
-- .git
-    Zu Git gehörende Dateien
-- LaTeX
-    Dateien, die bei LaTeX Verwendung finden
-- nppBackup
-    Automatische Sicherungen der mit "notepad++" bearbeiteten Dateien
-    Nicht mehr benötigte Sicherungen können jederzeit gelöscht werden.
-- Verknüpfungen
-    Verknüpfungen im Zusammenhang mit diesem Projekt
-- VS
-    Visual Studio Projekte
+- .git\          - Zu Git gehörende Dateien.
+- nppBackup\     - Sicherungen von mit "notepad++" bearbeiteten Dateien.
+- Verknüpfungen\ - Verknüpfungen im Zusammenhang mit diesem Projekt.
 
+Verzeichnisse und Dateien, die mit dem GitHub Projekt ASBA synchronisiert sind.
 
-=======
-Dateien
-=======
+- Externe Dokumente\ - Dokumente, die von außerhalb übernommen wurden.
+  - Hilbert\         - Externe Dokumente von http://qedeq.org/
+    - Anfangsgründe der mathematischen Logik.pdf
+      -> http://qedeq.org/current/doc/math/qedeq_logic_v1_de.pdf
+    - Formale Prädikatenlogik.pdf
+      -> http://qedeq.org/current/doc/math/qedeq_formal_logic_v1_de.pdf
+    - Axiomatische Mengenlehre.pdf
+      -> http://qedeq.org/current/doc/math/qedeq_set_theory_v1_de.pdf
+- LaTeX\             - Erstellte und generierte Dateien für/von LaTeX.
+  - ASBA.tex         - TeX datei zur Erzeugung des Projektdokuments.
+  - ASBA.pdf         - Aus ASBA.tex mit TeXstudio generiertes Projektdokument.
+  - ASBA.*           - Von TeXstudio erzeugte Hilfsdateien.
+- VS\                - Visual Studio Projekte.
+  - ASBA\            - Visual Studio Projektmappe ASBA.
+- !Lies mich.txt     - 8-BOM] Diese Datei.
+- .gitattributes     - Einstellungen für Git.
+- .gitignore         - Von Git zu ignorierende Verzeichnisse und Dateien.
+- LICENSES           - Kopien von Lizenzen: GNU AGPL und GNU FDL
+                       -> http://www.gnu.org/licenses/
+- README.md          - Projektktbeschreibung in markdown Syntax.
 
-- !Lies mich.txt [Unix(LF); UTF-8-BOM]
-    Diese Datei: Beschreibung des Projekts, der zugehörigen Dateien und Ordner
-    und der noch zu erledigenden Aufgaben
-- .gitattributes
-    Einstellungen für Git
-- LICENSES
-    GNU AGPL und GNU FDL
-- README.md
-    Projektbeschreibung in markdown Syntax
 
 ====================
 Entwicklungsumgebung
@@ -67,7 +69,7 @@ qedeq:
 - Xerces2
 
 C++:
-? Visual Studio Community 2015 mit Updates
+- Visual Studio Community 2015 mit Updates
 ? RapidXml
 
 C++ Dokumentation:

@@ -46,13 +46,13 @@
 \usepackage[colorlinks,linktoc=all]{hyperref} % Extensive support for hypertext in LaTeX - muss als letztes Package angegeben werden.
 
 \geometry{textwidth=170mm,textheight=256mm,twoside}
-\ihead{}
+\ihead{{\ifnum\value{chapter}>0\sffamily\textbf{\chaptername\ \thesection}\fi}}
 \chead{}
-\ohead{ASBA}
+\ohead{\sffamily\textbf{ASBA}}
 \ifoot{\today}
 \cfoot{Winfried Teschers}
-\ofoot{\thepage}
-	
+\ofoot{\textbf{\thepage}}
+
 \newcounter{Enumi}
 \captionsetup{labelfont=bf}
 
@@ -66,11 +66,11 @@
 	\maketitle
 	\tableofcontents	
 	\vfill
-	Copyright (C) 2017  Winfried Teschers
+	Copyright \copyright\ 2017 Winfried Teschers
 	
 	\vspace{12pt}
 	\selectlanguage{english}
-	Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You should have received a copy of the GNU Free Documentation License along with this document.  If not, see \url{http://www.gnu.org/licenses/}.
+	Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version~1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You should have received a copy of the GNU Free Documentation License along with this document.  If not, see \url{http://www.gnu.org/licenses/}.
 	\selectlanguage{ngerman}
 	\vspace{12pt}
 	
@@ -79,7 +79,7 @@
 	91083 Baiersdorf\\
 	Germany
 	
-	e-mail: winfried.teschers@t-online.de\par
+	e-mail: winfried.teschers@t-online.de
 	
 	\thispagestyle{scrheadings}
 	
@@ -92,7 +92,7 @@
 	
 	Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, Beweise automatisch zu überprüfen. Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
 	
-	Ein System mit ähnlicher Aufgabenstellung findet sich im GitHub Projekt Hilbert~II (siehe \cite{HilbertII,qedeq}). Einige Ideen sind von dort übernommen worden, insbesondere wurden die Dokumente \cite{Logik}, \cite{FLogik} und \cite{Mengenlehre} in das GitHub Projekt ASBA übernommen (siehe \cite{ASBA}).
+	Ein System mit ähnlicher Aufgabenstellung findet sich im GitHub Projekt Hilbert~II (siehe \cite{bib:HilbertII,bib:qedeq}). Einige Ideen sind von dort übernommen worden.
 	
 	\section{Fragen}
 	\label{sec:Fragen}
@@ -271,7 +271,7 @@
 		\label{tab:MissionZiele}
 	\end{threeparttable}\vspace{12pt}
 	
-	Die nächste Tabelle ist eine Kombination aus den Tabellen~\vref{tab:FragenMission} und~\vref{tab:MissionZiele}. Die Fragen \emph{Akzeptanz} und \emph{Lizenz} kommen aus Abschnitt~\ref{sec:Mission} \emph{Mission} dazu. Mit einem kleinen x werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nicht nötig, aber von Interesse sind.\vspace{12pt}
+	Die nächste Tabelle ist eine Kombination aus den Tabellen~\vref{tab:FragenMission} und~\vref{tab:MissionZiele}. Die Fragen \emph{Akzeptanz} und \emph{Lizenz} kommen aus Abschnitt~\vref{sec:Mission} \emph{Mission} dazu. Mit einem kleinen x werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nicht nötig, aber von Interesse sind.\vspace{12pt}
 	
 	\begin{threeparttable}
 		\begin{tabular}{@{}r@{ }l|*{15}{c}|}
@@ -320,24 +320,59 @@
 	\chapter{Design}
 	\thispagestyle{scrheadings}
 	
-	Diese Projekt soll Open Source sein. Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)} und für die Software die \emph{GNU Affero General Public License (APGL)}. Die \emph{GNU General Public License (GPL)} reicht für die Software nicht, da das Programm auch mittels eines Servers betrieben werden kann und soll. Damit das Projekt gegebenenfalls durch verschiedene Entwickler gleichzeitig bearbeitet werden kann und wegen des Konfigurationsmanagements wurde es als ein GitHub Projekt erstellt (siehe \cite{ASBA}).
+	Diese Projekt soll Open Source sein. Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)} und für die Software die \emph{GNU Affero General Public License (APGL)}. Die \emph{GNU General Public License (GPL)} reicht für die Software nicht, da das Programm auch mittels eines Servers betrieben werden kann und soll. Damit das Projekt gegebenenfalls durch verschiedene Entwickler gleichzeitig bearbeitet werden kann und wegen des Konfigurationsmanagements wurde es als ein GitHub Projekt erstellt (siehe \cite{bib:ASBA}).
 	
 	Wenn die Lizenzen nicht mitgeliefert wurden, können sie unter \url{http://www.gnu.org/licenses/} gefunden werden.
 	
 	\section{Anforderungen}
+
+	Die Anforderungen ergeben sich zunächst aus dem Abschnitt \vref{sec:Ziele}. Die beiden Ziele \ref{Ziel:Daten} \emph{Daten} und \ref{Ziel:Lizenz} \emph{Lizenz} sind für die Entwicklung des Systems von sekundärer Bedeutung und wurden daher nicht in diesen Abschnitt übernommen. Die anderen Ziele werden noch verfeinert.
+	
 	\begin{enumerate}
-		\item\label{Anforderung:key}\emph{key}: ???
+			
+		\item \label{Anforderung:Form} \emph{Form}: Die Daten liegt in formaler, geprüfter Form vor. (siehe Ziel \vref{Ziel:Form})
+		
+		\item \label{Anforderung:Eingaben} \emph{Eingaben}: Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise. Folgende Daten können eingegeben werden:
+		\begin{enumerate}
+			\item Axiome
+			\item Sätze
+			\item Beweise
+			\item Fachbegriffe
+			\item Fachgebiete
+			\item Ausgabeschemata
+		\end{enumerate}
+		Dabei sind alle Begriffe nur innerhalb eines Fachgebietes und seiner untergeordneten Fachgebiete gültig, solange sie nicht umdefiniert werden. Das oberste Fachgebiet ist die ganze Mathematik. (siehe Ziel \vref{Ziel:Eingaben})
+		
+		\item \label{Anforderung:Prüfung} \emph{Prüfung}: Vorhandene Beweise können automatisch geprüft werden. (siehe Ziel \vref{Ziel:Prüfung})
+		
+		\item \label{Anforderung:Ausgaben} \emph{Ausgaben}: Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener Ausgabeschemata erfolgen. (siehe Ziel \vref{Ziel:Ausgaben})
+		
+		\item \label{Anforderung:Auswertungen} \emph{Auswertungen}: Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich. Insbesondere kann zu jedem Beweis angegeben werden, wie viele Beweisschritte und welche Axiome und Sätze\footnote{ Sätze, die quasi als Axiome verwendet werden.} er benötigt. (siehe Ziel \vref{Ziel:Auswertungen})
+		
+		\item \label{Anforderung:Anpassbarkeit} \emph{Anpassbarkeit}: Fachbegriffe und die Darstellung bei der Ausgabe können mit Hilfe von \textendash\ gegebenenfalls unbenannten \textendash\ untergeordneten Fachgebieten angepasst werden. (siehe Ziel \vref{Ziel:Anpassbarkeit})
+		
+		\item \label{Anforderung:Individualität} \emph{Individualität}: Axiome und Sätze können für jeden Beweis individuell vorausgesetzt werden. Dabei sind fachgebietsspezifische Fachbegriffe erlaubt. (siehe Ziel \vref{Ziel:Individualität})
+		
+		\item \label{Anforderung:Internet} \emph{Internet}: Die Daten können auf mehrere Dateien verteilt sein. Ein Teil davon \textendash\ oder sogar alle \textendash\ können im Internet liegen. (siehe Ziel \vref{Ziel:Internet})
+		
+		\item \label{Anforderung:Kommunikation} \emph{Kommunikation}: Die Kommunikation mit dem System kann mit den Fachbegriffen der einzelnen Fachgebiete erfolgen. (siehe Ziel \vref{Ziel:Kommunikation})
+		
+		\item \label{Anforderung:Zugriff} \emph{Zugriff}: Der Zugriff auf das System kann lokal und über das Internet erfolgen. (siehe Ziel \vref{Ziel:Zugriff})
+		
+		\item \label{Anforderung:Unabhängigkeit} \emph{Unabhängigkeit}: Das System kann offline und online arbeiten. (siehe Ziel \vref{Ziel:Unabhängigkeit})
+		
+		\item \label{Anforderung:Rekursion} \emph{Rekursion}: Es kann rekursiv über alle verwendeten Dateien \textendash\ auch solchen, die im Internet liegen \textendash\ ausgewertet werden. (siehe Ziel \vref{Ziel:Rekursion})
+		
+		\item \label{Anforderung:Bedienbarkeit} \emph{Bedienbarkeit}: Das System ist einfach zu bedienen. (siehe Ziel \vref{Ziel:Bedienbarkeit})
+		
 	\end{enumerate}
+	... % ANFORDERUNGEN bearbeiten.
 	
 	\section{Datenstruktur}
-	\begin{enumerate}
-		\item\label{Datenstruktur:key}\emph{key}: ???
-	\end{enumerate}
+	... % DATENSTRUKTUR bearbeiten.
 	
 	\section{Bausteine}
-	\begin{enumerate}
-		\item\label{Baustein:key}\emph{key}: ???
-	\end{enumerate}
+	... % BAUSTEINE bearbeiten.
 	
 	\section{Werkzeuge}
 	\label{sec:Werkzeuge}
@@ -346,7 +381,7 @@
 	Werkzeuge, die zum Ablauf der Software erforderlich sind:
 	\begin{itemize}
 		
-		\item\label{Werkzeug:MiKTeX}\emph{MiK\TeX} für Dokumentation und Ausgaben in \LaTeX. $\rightarrow$ \url{https://miktex.org/} - Lizenz \cite{MiKTeX}
+		\item\label{Werkzeug:MiKTeX}\emph{MiK\TeX} für Dokumentation und Ausgaben in \LaTeX. $\rightarrow$ \url{https://miktex.org/} - Lizenz \cite{bib:MiKTeX}
 		
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
@@ -355,17 +390,17 @@
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 		
-		\item\label{Werkzeug:GitHub}\emph{GitHub} als Online Konfigurationsmanagementsystem zur Zusammenarbeit verschiedener Entwickler. $\rightarrow$ \url{https://github.com/} - Lizenz \cite{GPLii}
+		\item\label{Werkzeug:GitHub}\emph{GitHub} als Online Konfigurationsmanagementsystem zur Zusammenarbeit verschiedener Entwickler. $\rightarrow$ \url{https://github.com/} - Lizenz \cite{bib:GPLii}
 		
-		\item\label{Werkzeug:Git}GitHub benötigt \emph{Git} als Konfigurationsmanagementsystem. $\rightarrow$ \url{https://git-scm.com/} - Lizenz \cite{GPLii}
+		\item\label{Werkzeug:Git}GitHub benötigt \emph{Git} als Konfigurationsmanagementsystem. $\rightarrow$ \url{https://git-scm.com/} - Lizenz \cite{bib:GPLii}
 		
-		\item\label{Werkzeug:VSC}\emph{Visual Studio Community 2015}\footnote{ Visual Studio Community ist zwar nicht Open Source, darf aber zur Entwicklung von Open Source Software unentgeltlich verwendet werden.} (\emph{VS}) als Entwicklungsumgebung für C++. $\rightarrow$ \url{https://www.visualstudio.com/downloads/} - Lizenz \cite{EULA}
+		\item\label{Werkzeug:VSC}\emph{Visual Studio Community 2015}\footnote{ Visual Studio Community ist zwar nicht Open Source, darf aber zur Entwicklung von Open Source Software unentgeltlich verwendet werden.} (\emph{VS}) als Entwicklungsumgebung für C++. $\rightarrow$ \url{https://www.visualstudio.com/downloads/} - Lizenz \cite{bib:EULA}
 		
-		\item\label{Werkzeug:Doxygen}\emph{Doxygen} als Dokumentationssystem für C++. $\rightarrow$ \url{http://www.stack.nl/~dimitri/doxygen/} - Lizenz \cite{GPLii}
+		\item\label{Werkzeug:Doxygen}\emph{Doxygen} als Dokumentationssystem für C++. $\rightarrow$ \url{http://www.stack.nl/~dimitri/doxygen/} - Lizenz \cite{bib:GPLii}
 		
-		\item\label{Werkzeug:Ghostscript}Doxygen benötigt \emph{Ghostscript} als Interpreter für Postscript und PDF. $\rightarrow$ \url{http://ghostscript.com/} - Lizenz \cite{AGPL}
+		\item\label{Werkzeug:Ghostscript}Doxygen benötigt \emph{Ghostscript} als Interpreter für Postscript und PDF. $\rightarrow$ \url{http://ghostscript.com/} - Lizenz \cite{bib:AGPL}
 		
-		\item\label{Werkzeug:Graphviz}Doxygen benötigt \emph{Graphviz} mit \emph{Dot} zur Erzeugung und Visualisierung von Graphen. $\rightarrow$ \url{http://www.graphviz.org/Home.php} - Lizenz \cite{EPL}
+		\item\label{Werkzeug:Graphviz}Doxygen benötigt \emph{Graphviz} mit \emph{Dot} zur Erzeugung und Visualisierung von Graphen. $\rightarrow$ \url{http://www.graphviz.org/Home.php} - Lizenz \cite{bib:EPL}
 		
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
@@ -374,11 +409,11 @@
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 		
-		\item\label{Werkzeug:TeXstudio}\emph{\TeX studio} als Editor für \LaTeX. $\rightarrow$ \url{http://www.texstudio.org/} - Lizenz \cite{GPLii}
+		\item\label{Werkzeug:TeXstudio}\emph{\TeX studio} als Editor für \LaTeX. $\rightarrow$ \url{http://www.texstudio.org/} - Lizenz \cite{bib:GPLii}
 		
-		\item\label{Werkzeug:Notepadpp}\emph{Notepad++} als Text-Editor. $\rightarrow$ \url{https://notepad-plus-plus.org/} - Lizenz \cite{GPLi}
+		\item\label{Werkzeug:Notepadpp}\emph{Notepad++} als Text-Editor. $\rightarrow$ \url{https://notepad-plus-plus.org/} - Lizenz \cite{bib:GPLi}
 		
-		\item\label{Werkzeug:WinMerge}\emph{WinMerge} zum Vergleich von Dateien und Verzeichnissen. $\rightarrow$ \url{http://winmerge.org/} - Lizenz \cite{GPLi}
+		\item\label{Werkzeug:WinMerge}\emph{WinMerge} zum Vergleich von Dateien und Verzeichnissen. $\rightarrow$ \url{http://winmerge.org/} - Lizenz \cite{bib:GPLi}
 		
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
@@ -387,9 +422,9 @@
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 		
-		\item\label{Werkzeug:VSCDB}In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete. - Lizenz \cite{EULA}
+		\item\label{Werkzeug:VSCDB}In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete. - Lizenz \cite{bib:EULA}
 		
-		\item\label{Werkzeug:RapidXml}\emph{RapidXml} für Ein- und Ausgabe in XML. $\rightarrow$ \url{http://rapidxml.sourceforge.net/index.htm} - Lizenz wahlweise \cite{BSLi} oder \cite{MIT}
+		\item\label{Werkzeug:RapidXml}\emph{RapidXml} für Ein- und Ausgabe in XML. $\rightarrow$ \url{http://rapidxml.sourceforge.net/index.htm} - Lizenz wahlweise \cite{bib:BSLi} oder \cite{bib:MIT}
 		
 	\end{itemize}
 	
@@ -397,19 +432,19 @@
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 		
-		\item\label{Werkzeug:Java}\emph{Java} als Programmiersprache - Laufzeitumgebung. $\rightarrow$ \url{https://www.java.com/de/download/win10.jsp} - Lizenz \cite{JavaSE}
+		\item\label{Werkzeug:Java}\emph{Java} als Programmiersprache - Laufzeitumgebung. $\rightarrow$ \url{https://www.java.com/de/download/win10.jsp} - Lizenz \cite{bib:JavaSE}
 		
-		\item\label{Werkzeug:ApacheAnt}\emph{Apache Ant} als Java Bibliothek und Kommandozeilen-Werkzeug um Java Programme zu erzeugen. $\rightarrow$ \url{http://ant.apache.org/} - Lizenz \cite{Apacheii}
+		\item\label{Werkzeug:ApacheAnt}\emph{Apache Ant} als Java Bibliothek und Kommandozeilen-Werkzeug um Java Programme zu erzeugen. $\rightarrow$ \url{http://ant.apache.org/} - Lizenz \cite{bib:Apacheii}
 		
-		\item\label{Werkzeug:Checkstyle}\emph{Checkstyle} zur statischen Code-Analyse für Java. $\rightarrow$ \url{http://checkstyle.sourceforge.net/} - Lizenz \cite{LGPLii}
+		\item\label{Werkzeug:Checkstyle}\emph{Checkstyle} zur statischen Code-Analyse für Java. $\rightarrow$ \url{http://checkstyle.sourceforge.net/} - Lizenz \cite{bib:LGPLii}
 		
-		\item\label{Werkzeug:Clover}\emph{Clover}\footnote{ Clover ist proprietäre Software, aber auf Anfrage frei für 30 Tage; danach ist eine einmalige Lizenzgebühr fällig.} als Testwerkzeug zur Analyse der Code-Abdeckung. $\rightarrow$ \url{https://www.atlassian.com/software/clover/} - Lizenz \cite{Clover}
+		\item\label{Werkzeug:Clover}\emph{Clover}\footnote{ Clover ist proprietäre Software, aber auf Anfrage frei für 30 Tage; danach ist eine einmalige Lizenzgebühr fällig.} als Testwerkzeug zur Analyse der Code-Abdeckung. $\rightarrow$ \url{https://www.atlassian.com/software/clover/} - Lizenz \cite{bib:Clover}
 		
-		\item\label{Werkzeug:EclipseCpp}\emph{Eclipse IDE for Java Developers} als Entwicklungsumgebung für Java. $\rightarrow$ \url{http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon1a/} - Lizenz \cite{OSI}
+		\item\label{Werkzeug:EclipseCpp}\emph{Eclipse IDE for Java Developers} als Entwicklungsumgebung für Java. $\rightarrow$ \url{http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon1a/} - Lizenz \cite{bib:OSI}
 		
-		\item\label{Werkzeug:JUnit}\emph{JUnit} zur Erzeugung von wiederholbaren Tests. $\rightarrow$ \url{http://junit.org/junit4/} - Lizenz \cite{EPL}
+		\item\label{Werkzeug:JUnit}\emph{JUnit} zur Erzeugung von wiederholbaren Tests. $\rightarrow$ \url{http://junit.org/junit4/} - Lizenz \cite{bib:EPL}
 		
-		\item\label{Werkzeug:Xerces2}\emph{Xerces2} als XML-Parser in Java. $\rightarrow$ \url{http://xerces.apache.org/xerces2-j/} - Lizenzen \cite{Apacheii,SAX,WDCDL,WDCSNL}
+		\item\label{Werkzeug:Xerces2}\emph{Xerces2} als XML-Parser in Java. $\rightarrow$ \url{http://xerces.apache.org/xerces2-j/} - Lizenzen \cite{bib:Apacheii,bib:SAX,bib:WDCDL,bib:WDCSNL}
 		
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
@@ -421,11 +456,23 @@
 	\chapter{Anhang}
 	\thispagestyle{scrheadings}
 	
+	\section{Symbole}
+	... % SYMBOLE bearbeiten.
+	
+	\section{Aussagenlogik}
+	... % AUSSAGENLOGIK bearbeiten.
+	
+	\section{Prädikatenlogik}
+	... % PRÄDIKATENLOGIK bearbeiten.
+	
+	\section{Mengenlehre}
+	... % MENGENLEHRE bearbeiten.
+	
 	\section{Offene Aufgaben}
 	\begin{enumerate}
 		\item Formale Syntax definieren
 		\item Datenstruktur definieren
-		\item Formale Prüfung definieren
+		\item Prüfung der Beweise definieren
 		\item Axiome für das System bestimmen
 		\item Eingabeprogramm erstellen (liest XML)
 		\item Prüfprogramm erstellen
@@ -443,11 +490,13 @@
 
     \newpage
     \begin{minipage}{\textwidth}
-    	\listoftables\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+    	\listoftables
+    	\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
     \end{minipage}
 	\thispagestyle{scrheadings}
     \begin{minipage}{\textwidth}
-    	\listoffigures\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}       
+    	\listoffigures
+    	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}       
     	\addcontentsline{lof}{section}{<Noch keine Abbildungen vorhanden.>}
     \end{minipage}
 	\thispagestyle{scrheadings}
@@ -456,52 +505,62 @@
 		\begin{thebibliography}{12}
    			\addcontentsline{toc}{chapter}{Literaturverzeichnis}
         	
-			\bibitem{Apacheii}\emph{Apache License}, Version 2.0 $\rightarrow$ \url{http://www.apache.org/licenses/LICENSE-2.0}
+			\bibitem{bib:Apacheii}\emph{Apache License}, Version 2.0 $\rightarrow$ \url{http://www.apache.org/licenses/LICENSE-2.0}
 			
-			\bibitem{BSLi}\emph{Boost Software License} 1.0 $\rightarrow$ \url{http://www.boost.org/users/license.html}
+			\bibitem{bib:BSLi}\emph{Boost Software License} 1.0 $\rightarrow$ \url{http://www.boost.org/users/license.html}
 			
-			\bibitem{EPL}\emph{Eclipse Public License} Version 1.0 $\rightarrow$ \url{http://www.eclipse.org/org/documents/epl-v10.php}
+			\bibitem{bib:EPL}\emph{Eclipse Public License} Version 1.0 $\rightarrow$ \url{http://www.eclipse.org/org/documents/epl-v10.php}
 			
-			\bibitem{AGPL}\emph{GNU Affero General Public License} $\rightarrow$ \url{http://www.gnu.org/licenses/agpl}
+			\bibitem{bib:AGPL}\emph{GNU Affero General Public License} $\rightarrow$ \url{http://www.gnu.org/licenses/agpl}
 			
-			\bibitem{GPLi}\emph{GNU General Public License} $\rightarrow$ \url{http://www.gnu.org/licenses/old-licenses/gpl-1.0}
+			\bibitem{bib:GPLi}\emph{GNU General Public License} $\rightarrow$ \url{http://www.gnu.org/licenses/old-licenses/gpl-1.0}
 			
-			\bibitem{GPLii}\emph{GNU General Public License}, Version 2 $\rightarrow$ \url{http://www.gnu.org/licenses/old-licenses/gpl-2.0}
+			\bibitem{bib:GPLii}\emph{GNU General Public License}, Version 2 $\rightarrow$ \url{http://www.gnu.org/licenses/old-licenses/gpl-2.0}
 			
-			\bibitem{GPLii}\emph{GNU General Public License}, Version 2 $\rightarrow$ \url{http://www.gnu.org/licenses/old-licenses/gpl-2.0}
+			\bibitem{bib:LGPLii}\emph{GNU Lesser General Public License}, Version 2.1 $\rightarrow$ \url{http://www.gnu.org/licenses/old-licenses/lgpl-2.1}
 			
-			\bibitem{LGPLii}\emph{GNU Lesser General Public License}, Version 2.1 $\rightarrow$ \url{http://www.gnu.org/licenses/old-licenses/lgpl-2.1}
+			\bibitem{bib:Clover}Lizenz für \emph{Clover} $\rightarrow$ \url{https://www.atlassian.com/software/clover}
 			
-			\bibitem{Clover}Lizenz für \emph{Clover} $\rightarrow$ \url{https://www.atlassian.com/software/clover}
+			\bibitem{bib:EULA}Lizenz für \emph{Microsoft Visual Studio Community} (Microsoft Visual Studio Express 2015) $\rightarrow$ \url{https://www.visualstudio.com/de/license-terms/mt171551/}
 			
-			\bibitem{EULA}Lizenz für \emph{Microsoft Visual Studio Community} (Microsoft Visual Studio Express 2015) $\rightarrow$ \url{https://www.visualstudio.com/de/license-terms/mt171551/}
-			
-			\bibitem{MiKTeX}Lizenz für \emph{MikTeX} $\rightarrow$ \url{https://miktex.org/kb/copying}
+			\bibitem{bib:MiKTeX}Lizenz für \emph{MikTeX} $\rightarrow$ \url{https://miktex.org/kb/copying}
 				
-			\bibitem{SAX}Lizenz für \emph{SAX} $\rightarrow$ \url{http://www.saxproject.org/copying.html}
+			\bibitem{bib:SAX}Lizenz für \emph{SAX} $\rightarrow$ \url{http://www.saxproject.org/copying.html}
 			
-			\bibitem{MIT}\emph{MIT License} $\rightarrow$ \url{https://opensource.org/licenses/MIT/}
+			\bibitem{bib:MIT}\emph{MIT License} $\rightarrow$ \url{https://opensource.org/licenses/MIT/}
 			
-			\bibitem{JavaSE}\emph{Oracle Binary Code License Agreement} $\rightarrow$ \url{http://java.com/license}
+			\bibitem{bib:JavaSE}\emph{Oracle Binary Code License Agreement} $\rightarrow$ \url{http://java.com/license}
 		
-			\bibitem{OSI}\emph{OSI Certified Open Source Software} $\rightarrow$ \url{https://opensource.org/pressreleases/certified-open-source.php}
+			\bibitem{bib:OSI}\emph{OSI Certified Open Source Software} $\rightarrow$ \url{https://opensource.org/pressreleases/certified-open-source.php}
 			
-			\bibitem{WDCDL}\emph{W3C Document License} $\rightarrow$ \url{http://www.w3.org/Consortium/Legal/2015/doc-license}
+			\bibitem{bib:WDCDL}\emph{W3C Document License} $\rightarrow$ \url{http://www.w3.org/Consortium/Legal/2015/doc-license}
 			
-			\bibitem{WDCSNL}\emph{W3C Software Notice and License} $\rightarrow$ \url{http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231.html}
+			\bibitem{bib:WDCSNL}\emph{W3C Software Notice and License} $\rightarrow$ \url{http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231.html}
 			
-			\bibitem{HilbertII}\emph{Hilbert II - Introduction} $\rightarrow$ \url{http://www.qedeq.org/}
+			\bibitem{bib:HilbertII}\emph{Hilbert II - Introduction} $\rightarrow$ \url{http://www.qedeq.org/}
 			
-			\bibitem{qedeq}\emph{Formal Correct Mathematical Knowledge}: GitHub Repository von Projekt Hilbert II $\rightarrow$ \url{https://github.com/m-31/qedeq/}
+			\bibitem{bib:qedeq}\emph{Formal Correct Mathematical Knowledge}: GitHub Repository von Projekt Hilbert II $\rightarrow$ \url{https://github.com/m-31/qedeq/}
 			
-			\bibitem{ASBA}\emph{ASBA - Axiome, Sätze, Beweise und Ausgaben}. Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form: GitHub Repository von Projekt ASBA $\rightarrow$ \url{https://github.com/Dr-Winfried/ASBA}
+			\bibitem{bib:ASBA}\emph{ASBA - Axiome, Sätze, Beweise und Ausgaben}. Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form: GitHub Repository von Projekt ASBA $\rightarrow$ \url{https://github.com/Dr-Winfried/ASBA}
 			
-			\bibitem{Logik}Meyling, Michael: \emph{Anfangsgründe der mathematischen Logik} - 24. Mai 2013 $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_logic_v1_de.pdf}
+			\bibitem{bib:LogikDe}Meyling, Michael: \emph{Anfangsgründe der mathematischen Logik} - 24. Mai 2013 (in Bearbeitung) $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_logic_v1_de.pdf}
 			
-			\bibitem{FLogik}Meyling, Michael: \emph{Formale Prädikatenlogik} - 24. Mai 2013 $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_formal_logic_v1_de.pdf}
+			\bibitem{bib:PrädikatenlogikDe}Meyling, Michael: \emph{Formale Prädikatenlogik} - 24. Mai 2013 (in Bearbeitung) $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_formal_logic_v1_de.pdf}
 			
-			\bibitem{Mengenlehre}Meyling, Michael: \emph{Axiomatische Mengenlehre} - 24. Mai 2013 $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_set_theory_v1_de.pdf}
+			\bibitem{bib:MengenlehreDe}Meyling, Michael: \emph{Axiomatische Mengenlehre} - 24. Mai 2013 (in Bearbeitung) $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_set_theory_v1_de.pdf}
 			
+			\bibitem{bib:LogiEn}Meyling, Michael: \emph{Elements of Mathematical Logic} - May 24, 2013 (in Bearbeitung) $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_logic_v1_en.pdf}
+			
+			\bibitem{bib:PrädikatenlogikEn}Meyling, Michael: \emph{Formal Predicate Calculus} - May 24, 2013 (in Bearbeitung) $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_formal_logic_v1_en.pdf}
+			
+			\bibitem{bib:MengenlehreEn}Meyling, Michael: \emph{Axiomatic Set Theory} - May 24, 2013 (in Bearbeitung) $\rightarrow$ \url{http://www.qedeq.org/current/doc/math/qedeq_set_theory_v1_en.pdf}
+			
+			\bibitem{bib:Aussagenlogik}Wikipedia: \emph{Aussagenlogik} Kapitel 4 \emph{Formaler Zugang} - 24.02.2017 $\rightarrow$ \url{https://de.wikipedia.org/wiki/Aussagenlogik#Formaler_Zugang}
+			
+			\bibitem{bib:Prädikatenlogik}Wikipedia: \emph{Prädikatenlogik erster Stufe} - 24.02.2017  $\rightarrow$ \url{https://de.wikipedia.org/wiki/Pr%C3%A4dikatenlogik_erster_Stufe}
+			
+			\bibitem{bib:Mengenlehre}Wikipedia: \emph{Mengenlehre} - 24.02.2017  $\rightarrow$ \url{https://de.wikipedia.org/wiki/Mengenlehre}
+				
 		\end{thebibliography}
 	\end{flushleft}
 	\thispagestyle{scrheadings}

@@ -212,8 +212,11 @@ pip-log.txt
 #Translations
 *.mo
 
-#Mr Developer
+###############
+## Mr Developer
+###############
 .mr.developer.cfg
+Externe Dokumente/
 nppBackup/
 Verknüpfungen/
 LaTeX/ASBA.aux
