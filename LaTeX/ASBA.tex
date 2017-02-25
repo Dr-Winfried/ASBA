@@ -32,6 +32,8 @@
 \usepackage{amsmath} %% ASM mathematical facilities for LaLeX.
 \usepackage{amsfonts} % TeX fonts from the American Mathematical Society.
 \usepackage{amssymb} % Symbols from the American Mathematical Society.
+%% \usepackage{unicode} % Unicode data and loaders for TeX
+\usepackage{cancel} % Place lines through maths formulaa.
 \usepackage{babel} % Multilingual support for plain TeX or LaTeX.
 \usepackage{microtype} % Subliminal refinements towards typographical perfection.
 \usepackage{rotating} % Rotating tools, including rotated full page floats.
@@ -42,16 +44,20 @@
 \usepackage{caption} % Customizing captions in floating environments.
 \usepackage{diagbox} % Table heads with diagonal lines.
 \usepackage{arydshln} % Draw dash-lines in array/tabular.
-%\usepackage{url} % Verbatim with URL-sensitive linebreaks.
+%% \usepackage{url} % Verbatim with URL-sensitive linebreaks.
 \usepackage[colorlinks,linktoc=all]{hyperref} % Extensive support for hypertext in LaTeX - muss als letztes Package angegeben werden.
 
 \geometry{textwidth=170mm,textheight=256mm,twoside}
-\ihead{{\ifnum\value{chapter}>0\sffamily\textbf{\chaptername\ \thesection}\fi}}
+\ihead{}
 \chead{}
-\ohead{\sffamily\textbf{ASBA}}
-\ifoot{\today}
-\cfoot{Winfried Teschers}
-\ofoot{\textbf{\thepage}}
+\ohead{\textsf{\textbf{ASBA}}}
+\ifoot{\textsf{\today}}
+\cfoot{\textsf{Winfried Teschers}}
+\ofoot{\textsf{\textbf{\thepage}}}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+
+\newcommand{\defeq}{:=}
 
 \newcounter{Enumi}
 \captionsetup{labelfont=bf}
@@ -63,8 +69,13 @@
 \publishers{Es wird ein System beschrieben, das zu eingegebenen Axiomen, Sätzen, und Beweisen letztere prüft, Auswertungen generiert und zu gegebenen Ausgabeschemata eine Ausgabe der Elemente in üblicher Formelschreibweise im \LaTeX-Format erstellt.}
 
 \begin{document}
+	
 	\maketitle
-	\tableofcontents	
+	
+	\tableofcontents
+	\ihead{\textsf{\textbf{Inhaltsverzeichnis}}}
+	\thispagestyle{scrheadings}
+	
 	\vfill
 	Copyright \copyright\ 2017 Winfried Teschers
 	
@@ -80,12 +91,11 @@
 	Germany
 	
 	e-mail: winfried.teschers@t-online.de
-	
-	\thispagestyle{scrheadings}
-	
+		
 	%==================================================
 	
 	\chapter{Analyse}
+	\ihead{\textsf{\textbf{\chaptername\ \thesection}}}
 	\thispagestyle{scrheadings}
 	
 	In der Mathematik gibt es eine unüberschaubare Menge an Axiomen, Sätzen, Beweisen, Fachbegriffen\footnote{ \emph{Fachbegriffe} sind Namen für Axiome, Sätze, Beweise und Fachgebiete. Symbole können als spezielle Fachbegriffe aufgefasst werden.} und Fachgebieten. Dabei verstehen wir unter einem \emph{Fachgebiet} einen Teil der Mathematik  mit einer zugehörigen Basis von Axiomen, Sätzen und spezifischen Fachbegriffen, zum Beispiel \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}\footnote{ Ein Fachgebiet kann hier sehr klein sein und im Extremfall einen einzigen Satz enthalten. \emph{Umgebung} wäre in diesem Projekt eine bessere Bezeichnung, könnte aber zu Verwechslungen führen, da dies schon ein verbreiteter Fachbegriff ist.}. Zu den meisten Fachgebieten gibt es auch noch ungelöste Probleme.
@@ -126,6 +136,7 @@
 	
 	\section{Mission}
 	\label{sec:Mission}
+	
 	Um zur Lösung obiger Fragen beizutragen, soll ein System entwickelt werden, das die folgenden Eigenschaften hat:
 	
 	\begin{enumerate}
@@ -156,6 +167,7 @@
 	
 	\section{Ziele}
 	\label{sec:Ziele}
+	
 	Um die Mission zu erfüllen, soll ein System entwickelt werden, das die folgenden Anforderungen erfüllt:
 	
 	\begin{enumerate}
@@ -204,7 +216,7 @@
 	\section{Zusammenhänge}
     \label{sec:Zusammenhänge}
 
-	Ausgehend von einer Liste der Fragen haben wir über die Zwischenstufe Mission Anforderungen an das zu realisierende System gestellt. Mit einem großen X werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nötig sind. Idealerweise soll die Erfüllung der Anforderungen die Fragen beantworten bzw. zur Beantwortung beitragen.\vspace{12pt}
+	Ausgehend von einer Liste der Fragen haben wir über die Zwischenstufe Mission Anforderungen an das zu realisierende System gestellt. Mit einem großen X werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nötig sind. Idealerweise soll die Erfüllung der Anforderungen die Fragen beantworten bzw.\@ zur Beantwortung beitragen.\vspace{12pt}
 	
 	\begin{threeparttable}
 		\begin{tabular}{@{}r@{ }l|*{7}{c}|}
@@ -234,7 +246,7 @@
 			\hline
 		\end{tabular}
 		\caption{Fragen $\to$ Mission}
-		\label{tab:FragenMission}
+		\label{tab:Fragen->Mission}
 	\end{threeparttable}\vspace{12pt}
 	
 	\begin{threeparttable}
@@ -268,10 +280,10 @@
 			\hline
 		\end{tabular}
 		\caption{Mission $\to$ Ziele (Anforderungen)}
-		\label{tab:MissionZiele}
+		\label{tab:Mission->Ziele}
 	\end{threeparttable}\vspace{12pt}
 	
-	Die nächste Tabelle ist eine Kombination aus den Tabellen~\vref{tab:FragenMission} und~\vref{tab:MissionZiele}. Die Fragen \emph{Akzeptanz} und \emph{Lizenz} kommen aus Abschnitt~\vref{sec:Mission} \emph{Mission} dazu. Mit einem kleinen x werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nicht nötig, aber von Interesse sind.\vspace{12pt}
+	Die nächste Tabelle ist eine Kombination aus den Tabellen~\vref{tab:Fragen->Mission} und~\vref{tab:Mission->Ziele}. Die Fragen \emph{Akzeptanz} und \emph{Lizenz} kommen aus Abschnitt~\vref{sec:Mission} \emph{Mission} dazu. Mit einem kleinen x werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nicht nötig, aber von Interesse sind.\vspace{12pt}
 	
 	\begin{threeparttable}
 		\begin{tabular}{@{}r@{ }l|*{15}{c}|}
@@ -312,7 +324,7 @@
 			\hline
 		\end{tabular}
 		\caption{Fragen $\to$ Ziele (Anforderungen)}
-		\label{tab:FragenZiele}
+		\label{tab:Fragen->Ziele}
 	\end{threeparttable}
 
 	%==================================================
@@ -325,6 +337,7 @@
 	Wenn die Lizenzen nicht mitgeliefert wurden, können sie unter \url{http://www.gnu.org/licenses/} gefunden werden.
 	
 	\section{Anforderungen}
+	\label{Anforderungen}
 
 	Die Anforderungen ergeben sich zunächst aus dem Abschnitt \vref{sec:Ziele}. Die beiden Ziele \ref{Ziel:Daten} \emph{Daten} und \ref{Ziel:Lizenz} \emph{Lizenz} sind für die Entwicklung des Systems von sekundärer Bedeutung und wurden daher nicht in diesen Abschnitt übernommen. Die anderen Ziele werden noch verfeinert.
 	
@@ -366,19 +379,32 @@
 		\item \label{Anforderung:Bedienbarkeit} \emph{Bedienbarkeit}: Das System ist einfach zu bedienen. (siehe Ziel \vref{Ziel:Bedienbarkeit})
 		
 	\end{enumerate}
+
 	... % ANFORDERUNGEN bearbeiten.
 	
 	\section{Datenstruktur}
+	\label{Datenstruktur}
+	
 	... % DATENSTRUKTUR bearbeiten.
 	
 	\section{Bausteine}
+	\label{Bausteine}
+	
 	... % BAUSTEINE bearbeiten.
+	
+	%==================================================
+
+	\appendix
+	
+	\chapter{Anhang}
+	\thispagestyle{scrheadings}
 	
 	\section{Werkzeuge}
 	\label{sec:Werkzeuge}
+	
 	Da dies ein Open Source Projekt sein soll, müssen alle Werkzeuge, die zum Ablauf der Software erforderlich sind, ebenfalls Open Source sein. Für die reine Entwicklung sollte das auch gelten.
 	
-	Werkzeuge, die zum Ablauf der Software erforderlich sind:
+	\paragraph{Werkzeuge, die zum Ablauf der Software erforderlich sind}
 	\begin{itemize}
 		
 		\item\label{Werkzeug:MiKTeX}\emph{MiK\TeX} für Dokumentation und Ausgaben in \LaTeX. $\rightarrow$ \url{https://miktex.org/} - Lizenz \cite{bib:MiKTeX}
@@ -386,7 +412,7 @@
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
 	
-	Werkzeuge, die für die Entwicklung verwendet werden:
+	\paragraph{Werkzeuge, die für die Entwicklung verwendet werden}
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 		
@@ -405,7 +431,7 @@
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
 	
-	Werkzeuge für die Entwicklung, die jeder Entwickler individuell durch andere ersetzten kann:
+	\paragraph{Werkzeuge für die Entwicklung, die jeder Entwickler individuell durch andere ersetzten kann}
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 		
@@ -418,29 +444,30 @@
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
 	
-	Angedachte Werkzeuge:
+	\paragraph{Angedachte Werkzeuge}
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 		
-		\item\label{Werkzeug:VSCDB}In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete. - Lizenz \cite{bib:EULA}
+		\item\label{Werkzeug:VSC DB}In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete. - Lizenz \cite{bib:EULA}
 		
 		\item\label{Werkzeug:RapidXml}\emph{RapidXml} für Ein- und Ausgabe in XML. $\rightarrow$ \url{http://rapidxml.sourceforge.net/index.htm} - Lizenz wahlweise \cite{bib:BSLi} oder \cite{bib:MIT}
 		
 	\end{itemize}
 	
-	Im Projekt \emph{qedeq} verwendete Werkzeuge:
+	% QEDEQ Werkzeuge auflisten?
+	\paragraph{Im Projekt \emph{qedeq} verwendete Werkzeuge}
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 		
 		\item\label{Werkzeug:Java}\emph{Java} als Programmiersprache - Laufzeitumgebung. $\rightarrow$ \url{https://www.java.com/de/download/win10.jsp} - Lizenz \cite{bib:JavaSE}
 		
-		\item\label{Werkzeug:ApacheAnt}\emph{Apache Ant} als Java Bibliothek und Kommandozeilen-Werkzeug um Java Programme zu erzeugen. $\rightarrow$ \url{http://ant.apache.org/} - Lizenz \cite{bib:Apacheii}
+		\item\label{Werkzeug:Apache Ant}\emph{Apache Ant} als Java Bibliothek und Kommandozeilen-Werkzeug um Java Programme zu erzeugen. $\rightarrow$ \url{http://ant.apache.org/} - Lizenz \cite{bib:Apacheii}
 		
 		\item\label{Werkzeug:Checkstyle}\emph{Checkstyle} zur statischen Code-Analyse für Java. $\rightarrow$ \url{http://checkstyle.sourceforge.net/} - Lizenz \cite{bib:LGPLii}
 		
 		\item\label{Werkzeug:Clover}\emph{Clover}\footnote{ Clover ist proprietäre Software, aber auf Anfrage frei für 30 Tage; danach ist eine einmalige Lizenzgebühr fällig.} als Testwerkzeug zur Analyse der Code-Abdeckung. $\rightarrow$ \url{https://www.atlassian.com/software/clover/} - Lizenz \cite{bib:Clover}
 		
-		\item\label{Werkzeug:EclipseCpp}\emph{Eclipse IDE for Java Developers} als Entwicklungsumgebung für Java. $\rightarrow$ \url{http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon1a/} - Lizenz \cite{bib:OSI}
+		\item\label{Werkzeug:Eclipse Java}\emph{Eclipse IDE for Java Developers} als Entwicklungsumgebung für Java. $\rightarrow$ \url{http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon1a/} - Lizenz \cite{bib:OSI}
 		
 		\item\label{Werkzeug:JUnit}\emph{JUnit} zur Erzeugung von wiederholbaren Tests. $\rightarrow$ \url{http://junit.org/junit4/} - Lizenz \cite{bib:EPL}
 		
@@ -449,26 +476,72 @@
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
 	
-	%==================================================
-
-	\appendix
-	
-	\chapter{Anhang}
-	\thispagestyle{scrheadings}
-	
-	\section{Symbole}
-	... % SYMBOLE bearbeiten.
-	
 	\section{Aussagenlogik}
-	... % AUSSAGENLOGIK bearbeiten.
+	\label{sec:Aussagenlogik}
+	
+	Die Tabelle \vref{tab:aussagenlogische Symbole} vereinigt die Definition der Symbole von Operatoren mit den Wahrheitswerten ihrer Anwendung. A und B sind beliebige, auch zusammengesetzte, Aussagen und stehen für den linken bzw.\@ rechten Operanden der Operatoren. W steht für wahr und F für falsch. Je nach den Wahrheitswerten von A und B ergeben sich die angegebenen Wahrheitswerte der Operationen. Die Spalten 0, 1 und 2 werden jeweils nur für die 0-, 1- bzw. 2-stelligen Operatoren ausgefüllt.\par
+	
+	\begin{threeparttable}
+		\begin{tabular}{@{}c|c:cc:cccc|l:l|}
+			Symbol&0&\multicolumn{2}{c:}{1}&\multicolumn{4}{c|}{2} &Name&Sprechweise/Bemerkung\\
+			\hline 
+			A                     &-&W&F&W&W&F&F& - & Aussage A\\
+			B                     &-&-&-&W&F&W&F& - & Aussage B\\
+			\hline 
+			$\top$                &W& & & & & & & - & wahr\\
+			$\bot$                &F& & & & & & & - & falsch\\
+			\hdashline[2pt/2pt]
+			                      & &W&W& & & & & - & immer wahr\\
+			$A$                   & &W&F& & & & & - & gleich A\\
+			$\lnot A$             & &F&W& & & & & Negation & nicht A\\
+			                      & &F&F& & & & & - & immer falsch\\
+			\hdashline[2pt/2pt]
+			                      & & & &W&W&W&W& - & wahr\\
+			$A\vee B$             & & & &W&W&W&F& Disjunktion & A oder B\\
+			$A\leftarrow B$       & & & &W&W&F&W& Implikation & A folgt aus B\\
+			                      & & & &W&W&F&F& - & gleich A\\
+			\hdashline[2pt/2pt]
+			$A\rightarrow B$      & & & &W&F&W&W& - & aus A folgt B\\
+		  	                      & & & &W&F&W&F& - & gleich B\\
+			$A\leftrightarrow B$  & & & &W&F&F&W& Äquivalenz & A genau dann wenn B\\
+			$A\wedge B$           & & & &W&F&F&F& Konjunktion & A und B\\
+			\hdashline[2pt/2pt]
+			$A\cancel{\wedge}B$   & & & &F&W&W&W& NAND & nicht (A und B) \\
+			$A\nleftrightarrow B$ & & & &F&W&W&F& exklusives oder & $A\dot{\vee}B$; entweder A oder B\\
+			                      & & & &F&W&F&W& - & ungleich B\\
+			$A\nrightarrow B$     & & & &F&W&F&F& - & -\\
+						\hdashline[2pt/2pt]
+			                      & & & &F&F&W&W& - & ungleich A\\
+			$A\nleftarrow B$      & & & &F&F&W&F& - & -\\
+			$A\cancel{\vee}B$     & & & &F&F&F&W& NOR & nicht (A oder B) \\
+			                      & & & &F&F&F&F& - & falsch\\
+			\hdashline[2pt/2pt]
+			$(A)$                 & &W&F& & & & & Klammerung & A ist geklammert \\
+			$A=B$                 & & & &W&F&F&W& Identität & A ist gleich B \\
+			$A\ne B$              & & & &F&W&W&F& Ungleichheit & A ist ungleich B \\
+			\hline 
+		\end{tabular}
+		\caption{Definition der aussagenlogischen Symbole}
+		\label{tab:aussagenlogische Symbole}
+	\end{threeparttable}\\
+
+	Es gibt nicht für jeden möglichen Operator ein Symbol, einen Namen oder eine Sprechweise. $\leftrightarrow$ und $=$ sowie $\nleftrightarrow$ und $\ne$ liefern zwar das gleiche Ergebnis, sind logisch aber zu unterscheiden. Identität ist ein grundsätzliches Problem, während $\leftrightarrow$ und $\nleftrightarrow$ per Axiom oder Definition eingeführt werden müssen. Ähnliches gilt für $\top$ und W sowie für $\bot$ und F.
+
+	\par ... % AUSSAGENLOGIK bearbeiten.
 	
 	\section{Prädikatenlogik}
+	\label{Prädikatenlogik}
+	
 	... % PRÄDIKATENLOGIK bearbeiten.
 	
 	\section{Mengenlehre}
+	\label{Mengenlehre}
+	
 	... % MENGENLEHRE bearbeiten.
 	
 	\section{Offene Aufgaben}
+	\label{Offene Aufgaben}
+	
 	\begin{enumerate}
 		\item Formale Syntax definieren
 		\item Datenstruktur definieren
@@ -488,12 +561,16 @@
 		
 	%==================================================
 
-    \newpage
-    \begin{minipage}{\textwidth}
+    \clearpage
+    
+	\ihead{\textsf{\textbf{Tabellenverzeichnis}}}
+	\begin{minipage}{\textwidth}
     	\listoftables
     	\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
     \end{minipage}
 	\thispagestyle{scrheadings}
+	
+	\ihead{\textsf{\textbf{Abbildungsverzeichnis}}}
     \begin{minipage}{\textwidth}
     	\listoffigures
     	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}       
@@ -503,6 +580,8 @@
 	
    	\begin{flushleft}
 		\begin{thebibliography}{12}
+			\ihead{\textsf{\textbf{Literaturverzeichnis}}}
+			\thispagestyle{scrheadings}			
    			\addcontentsline{toc}{chapter}{Literaturverzeichnis}
         	
 			\bibitem{bib:Apacheii}\emph{Apache License}, Version 2.0 $\rightarrow$ \url{http://www.apache.org/licenses/LICENSE-2.0}
