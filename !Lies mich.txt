@@ -18,31 +18,39 @@ Verzeichnisse und Dateien
 =========================
 
 - .git\          - Zu Git gehörende Dateien.
+- Externe Dokumente\ - Dokumente, die von außerhalb übernommen wurden.
+  - Hilbert\         - Externe Dokumente von http://qedeq.org/
+      in Deutsch
+        - Anfangsgründe der mathematischen Logik.pdf
+          -> http://qedeq.org/current/doc/math/qedeq_logic_v1_de.pdf
+        - Formale Prädikatenlogik.pdf
+          -> http://qedeq.org/current/doc/math/qedeq_formal_logic_v1_de.pdf
+        - Axiomatische Mengenlehre.pdf
+          -> http://qedeq.org/current/doc/math/qedeq_set_theory_v1_de.pdf
+      in Englisch
+        - Elements of Mathematical Logic.pdf
+          -> http://qedeq.org/current/doc/math/qedeq_logic_v1_en.pdf
+        - Formal Predicate Calculus.pdf
+          -> http://qedeq.org/current/doc/math/qedeq_formal_logic_v1_en.pdf
+        - Axiomatic Set Theory.pdf
+          -> http://qedeq.org/current/doc/math/qedeq_set_theory_v1_en.pdf
 - nppBackup\     - Sicherungen von mit "notepad++" bearbeiteten Dateien.
 - Verknüpfungen\ - Verknüpfungen im Zusammenhang mit diesem Projekt.
 
 Verzeichnisse und Dateien, die mit dem GitHub Projekt ASBA synchronisiert sind.
 
-- Externe Dokumente\ - Dokumente, die von außerhalb übernommen wurden.
-  - Hilbert\         - Externe Dokumente von http://qedeq.org/
-    - Anfangsgründe der mathematischen Logik.pdf
-      -> http://qedeq.org/current/doc/math/qedeq_logic_v1_de.pdf
-    - Formale Prädikatenlogik.pdf
-      -> http://qedeq.org/current/doc/math/qedeq_formal_logic_v1_de.pdf
-    - Axiomatische Mengenlehre.pdf
-      -> http://qedeq.org/current/doc/math/qedeq_set_theory_v1_de.pdf
-- LaTeX\             - Erstellte und generierte Dateien für/von LaTeX.
-  - ASBA.tex         - TeX datei zur Erzeugung des Projektdokuments.
-  - ASBA.pdf         - Aus ASBA.tex mit TeXstudio generiertes Projektdokument.
-  - ASBA.*           - Von TeXstudio erzeugte Hilfsdateien.
-- VS\                - Visual Studio Projekte.
-  - ASBA\            - Visual Studio Projektmappe ASBA.
-- !Lies mich.txt     - 8-BOM] Diese Datei.
-- .gitattributes     - Einstellungen für Git.
-- .gitignore         - Von Git zu ignorierende Verzeichnisse und Dateien.
-- LICENSES           - Kopien von Lizenzen: GNU AGPL und GNU FDL
-                       -> http://www.gnu.org/licenses/
-- README.md          - Projektktbeschreibung in markdown Syntax.
+- LaTeX\         - Erstellte und generierte Dateien für/von LaTeX.
+  - ASBA.tex     - TeX datei zur Erzeugung des Projektdokuments.
+  - ASBA.pdf     - Aus ASBA.tex mit TeXstudio generiertes Projektdokument.
+  - ASBA.*       - Von TeXstudio erzeugte Hilfsdateien.
+- VS\            - Visual Studio Projekte.
+  - ASBA\        - Visual Studio Projektmappe ASBA.
+- !Lies mich.txt - 8-BOM] Diese Datei.
+- .gitattributes - Einstellungen für Git.
+- .gitignore     - Von Git zu ignorierende Verzeichnisse und Dateien.
+- LICENSES       - Kopien von Lizenzen: GNU AGPL und GNU FDL
+                   -> http://www.gnu.org/licenses/
+- README.md      - Projektktbeschreibung in markdown Syntax.
 
 
 ====================

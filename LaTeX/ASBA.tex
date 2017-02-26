@@ -79,11 +79,11 @@
 	\vfill
 	Copyright \copyright\ 2017 Winfried Teschers
 	
-	\vspace{12pt}
+	\bigskip
 	\selectlanguage{english}
 	Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version~1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You should have received a copy of the GNU Free Documentation License along with this document.  If not, see \url{http://www.gnu.org/licenses/}.
 	\selectlanguage{ngerman}
-	\vspace{12pt}
+	\bigskip
 	
 	Dr. Winfried Teschers\\
 	Anton-Günther-Straße 26c\\
@@ -216,10 +216,13 @@
 	\section{Zusammenhänge}
     \label{sec:Zusammenhänge}
 
-	Ausgehend von einer Liste der Fragen haben wir über die Zwischenstufe Mission Anforderungen an das zu realisierende System gestellt. Mit einem großen X werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nötig sind. Idealerweise soll die Erfüllung der Anforderungen die Fragen beantworten bzw.\@ zur Beantwortung beitragen.\vspace{12pt}
+	Ausgehend von einer Liste der Fragen haben wir über die Zwischenstufe Mission Anforderungen an das zu realisierende System gestellt. Mit einem großen X werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nötig sind. Idealerweise soll die Erfüllung der Anforderungen die Fragen beantworten bzw.\@ zur Beantwortung beitragen.
 	
+	\par~\\
 	\begin{threeparttable}
-		\begin{tabular}{@{}r@{ }l|*{7}{c}|}
+		\caption{Fragen $\to$ Mission}
+		\label{tab:Fragen->Mission}
+		\begin{tabular*}{\linewidth-10.95pt}{@{\extracolsep{\fill}}r@{ }l|*{7}{c}|}
 			\multicolumn{2}{l|}{\diagbox{\textbf{Fragen}}{\textbf{Mission}}}
 			&\rotatebox{90}{\mbox{\ref{Mission:Daten} Daten}}
 			&\rotatebox{90}{\mbox{\ref{Mission:Definitionen} Definitionen}}
@@ -244,13 +247,14 @@
 			\ref{Frage:Darstellung}&Darstellung&-&X&-&X&-&-&-\\
 			\ref{Frage:Forschung}&Forschung&X&-&-&-&X&-&-\\
 			\hline
-		\end{tabular}
-		\caption{Fragen $\to$ Mission}
-		\label{tab:Fragen->Mission}
-	\end{threeparttable}\vspace{12pt}
+		\end{tabular*}
+	\end{threeparttable}
+	\par\bigskip
 	
 	\begin{threeparttable}
-		\begin{tabular}{@{}r@{ }l|*{15}{c}|}
+		\caption{Mission $\to$ Ziele (Anforderungen)}
+		\label{tab:Mission->Ziele}
+		\begin{tabular*}{\linewidth-10.95pt}{@{\extracolsep{\fill}}r@{ }l|*{15}{c}|}
 			\multicolumn{2}{l|}{\diagbox{\textbf{Mission}}{\textbf{Ziele}}}
 			&\rotatebox{90}{\mbox{\ref{Ziel:Daten} Daten}}
 			&\rotatebox{90}{\mbox{\ref{Ziel:Form} Form}}
@@ -278,15 +282,17 @@
 			\hdashline[2pt/2pt]
 			\ref{Mission:Akzeptanz}&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
 			\hline
-		\end{tabular}
-		\caption{Mission $\to$ Ziele (Anforderungen)}
-		\label{tab:Mission->Ziele}
-	\end{threeparttable}\vspace{12pt}
+		\end{tabular*}
+	\end{threeparttable}
+	\par\bigskip
 	
-	Die nächste Tabelle ist eine Kombination aus den Tabellen~\vref{tab:Fragen->Mission} und~\vref{tab:Mission->Ziele}. Die Fragen \emph{Akzeptanz} und \emph{Lizenz} kommen aus Abschnitt~\vref{sec:Mission} \emph{Mission} dazu. Mit einem kleinen x werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nicht nötig, aber von Interesse sind.\vspace{12pt}
+	Die Tabelle~\vref{tab:Fragen->Ziele} ist eine Kombination aus den Tabellen~\vref{tab:Fragen->Mission} und~\vref{tab:Mission->Ziele}. Die Fragen \emph{Akzeptanz} und \emph{Lizenz} kommen aus Abschnitt~\vref{sec:Mission} \emph{Mission} dazu. Mit einem kleinen x werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nicht nötig, aber von Interesse sind.
 	
+	\par~\\
 	\begin{threeparttable}
-		\begin{tabular}{@{}r@{ }l|*{15}{c}|}
+		\caption{Fragen $\to$ Ziele (Anforderungen)}
+		\label{tab:Fragen->Ziele}
+		\begin{tabular*}{\linewidth-10.95pt}{@{\extracolsep{\fill}}r@{ }l|*{15}{c}|}
 			\multicolumn{2}{l|}{\diagbox{\textbf{Fragen}}{\textbf{Ziele}}}
 			&\rotatebox{90}{\mbox{\ref{Ziel:Daten} Daten}}
 			&\rotatebox{90}{\mbox{\ref{Ziel:Form} Form}}
@@ -322,10 +328,9 @@
 			&Lizenz&-&-&-&-&-&-&-&-&-&-&-&-&-&-&X\\
 			&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
 			\hline
-		\end{tabular}
-		\caption{Fragen $\to$ Ziele (Anforderungen)}
-		\label{tab:Fragen->Ziele}
+		\end{tabular*}
 	\end{threeparttable}
+	\par\bigskip
 
 	%==================================================
 	
@@ -479,54 +484,83 @@
 	\section{Aussagenlogik}
 	\label{sec:Aussagenlogik}
 	
-	Die Tabelle \vref{tab:aussagenlogische Symbole} vereinigt die Definition der Symbole von Operatoren mit den Wahrheitswerten ihrer Anwendung. A und B sind beliebige, auch zusammengesetzte, Aussagen und stehen für den linken bzw.\@ rechten Operanden der Operatoren. W steht für wahr und F für falsch. Je nach den Wahrheitswerten von A und B ergeben sich die angegebenen Wahrheitswerte der Operationen. Die Spalten 0, 1 und 2 werden jeweils nur für die 0-, 1- bzw. 2-stelligen Operatoren ausgefüllt.\par
+	Die Tabelle \vref{tab:aussagenlogische Symbole} vereinigt die Definition der Symbole von Operatoren mit den Wahrheitswerten ihrer Anwendung. $A$, $B$, $x$, $A(x)$, W und F haben die übliche Bedeutung.
 	
+	\begin{itemize}
+		\item $A$ und $B$ sind beliebige, auch zusammengesetzte, \emph{Aussagen}.
+		\item $x$ ist eine Variable, deren mögliche Werte bekannt sind.
+		\item $A(x)$ ist eine Aussage, die von $x$ abhängig ist. Für verschiedene Werte von $x$ kann $A(x)$ verschiedene Wahrheitswerte annehmen.
+		\item W ist der Wahrheitswert für \emph{wahr}.
+		\item F ist der Wahrheitswert für \emph{falsch}.
+	\end{itemize}
+	
+	Je nach den Wahrheitswerten von A und B ergeben sich die in der Tabelle angegebenen Wahrheitswerte der Operationen. Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren ausgefüllt. '-' bedeutet, dass hierfür kein Wert bekannt ist.
+	
+	\par~\\
 	\begin{threeparttable}
-		\begin{tabular}{@{}c|c:cc:cccc|l:l|}
-			Symbol&0&\multicolumn{2}{c:}{1}&\multicolumn{4}{c|}{2} &Name&Sprechweise/Bemerkung\\
-			\hline 
-			A                     &-&W&F&W&W&F&F& - & Aussage A\\
-			B                     &-&-&-&W&F&W&F& - & Aussage B\\
-			\hline 
-			$\top$                &W& & & & & & & - & wahr\\
-			$\bot$                &F& & & & & & & - & falsch\\
-			\hdashline[2pt/2pt]
-			                      & &W&W& & & & & - & immer wahr\\
-			$A$                   & &W&F& & & & & - & gleich A\\
-			$\lnot A$             & &F&W& & & & & Negation & nicht A\\
-			                      & &F&F& & & & & - & immer falsch\\
-			\hdashline[2pt/2pt]
-			                      & & & &W&W&W&W& - & wahr\\
-			$A\vee B$             & & & &W&W&W&F& Disjunktion & A oder B\\
-			$A\leftarrow B$       & & & &W&W&F&W& Implikation & A folgt aus B\\
-			                      & & & &W&W&F&F& - & gleich A\\
-			\hdashline[2pt/2pt]
-			$A\rightarrow B$      & & & &W&F&W&W& - & aus A folgt B\\
-		  	                      & & & &W&F&W&F& - & gleich B\\
-			$A\leftrightarrow B$  & & & &W&F&F&W& Äquivalenz & A genau dann wenn B\\
-			$A\wedge B$           & & & &W&F&F&F& Konjunktion & A und B\\
-			\hdashline[2pt/2pt]
-			$A\cancel{\wedge}B$   & & & &F&W&W&W& NAND & nicht (A und B) \\
-			$A\nleftrightarrow B$ & & & &F&W&W&F& exklusives oder & $A\dot{\vee}B$; entweder A oder B\\
-			                      & & & &F&W&F&W& - & ungleich B\\
-			$A\nrightarrow B$     & & & &F&W&F&F& - & -\\
-						\hdashline[2pt/2pt]
-			                      & & & &F&F&W&W& - & ungleich A\\
-			$A\nleftarrow B$      & & & &F&F&W&F& - & -\\
-			$A\cancel{\vee}B$     & & & &F&F&F&W& NOR & nicht (A oder B) \\
-			                      & & & &F&F&F&F& - & falsch\\
-			\hdashline[2pt/2pt]
-			$(A)$                 & &W&F& & & & & Klammerung & A ist geklammert \\
-			$A=B$                 & & & &W&F&F&W& Identität & A ist gleich B \\
-			$A\ne B$              & & & &F&W&W&F& Ungleichheit & A ist ungleich B \\
-			\hline 
-		\end{tabular}
-		\caption{Definition der aussagenlogischen Symbole}
+		\caption{Definition von aussagenlogischen Symbolen.}
 		\label{tab:aussagenlogische Symbole}
-	\end{threeparttable}\\
-
-	Es gibt nicht für jeden möglichen Operator ein Symbol, einen Namen oder eine Sprechweise. $\leftrightarrow$ und $=$ sowie $\nleftrightarrow$ und $\ne$ liefern zwar das gleiche Ergebnis, sind logisch aber zu unterscheiden. Identität ist ein grundsätzliches Problem, während $\leftrightarrow$ und $\nleftrightarrow$ per Axiom oder Definition eingeführt werden müssen. Ähnliches gilt für $\top$ und W sowie für $\bot$ und F.
-
+		\begin{tabular*}{\linewidth-10.95pt}{@{\extracolsep{\fill}}c|c:cc:cccc|l:l|c|}
+			\textbf{Operation}&\textbf{0}&\multicolumn{2}{c:}{\textbf{1}}&\multicolumn{4}{c|}{\textbf{2}}& \textbf{Name} & \textbf{Sprechweise}&\textbf{Prio}\\
+			\hline
+			A&-&W&F&W&W&F&F&-&Aussage A&\\
+			B&-&-&-&W&F&W&F&-&Aussage B&\\
+			\hline 
+			$\top$&W&&&&&&&-&wahr&\\
+			$\bot$&F&&&&&&&-&falsch&\\
+			\hdashline[2pt/2pt]
+			~&&W&W&&&&&-&immer wahr&\\
+			$(A)$&&W&F&&&&&Klammerung&A ist geklammert&9\\
+			$\lnot A$&&F&W&&&&&Negation&nicht A&9\\
+			~&&F&F&&&&&-&immer falsch&\\
+			\hdashline[2pt/2pt]
+			~&&&&W&W&W&W&-&wahr&\\
+			$A\vee B$&&&&W&W&W&F&Disjunktion&A oder B&\\
+			$A\leftarrow B$&&&&W&W&F&W&Implikation&A folgt aus B&\\
+			~&&&&W&W&F&F&-&gleich A&\\
+			\hdashline[2pt/2pt]
+			$A\rightarrow B$&&&&W&F&W&W&-&aus A folgt B&\\
+			~&&&&W&F&W&F&-&gleich B&\\
+			$A\leftrightarrow B$ \tnote{4}&&&&W&F&F&W&Äquivalenz&A genau dann, wenn B&1\\
+			$A\wedge B$&&&&W&F&F&F&Konjunktion&A und B&\\
+			\hdashline[2pt/2pt]
+			$A\,\cancel{\wedge}\,B$&&&&F&W&W&W&NAND \tnote{1}&nicht (A und B) \tnote{5}&\\
+			$A\,\dot{\vee}\,B$ \tnote{3,4}&&&&F&W&W&F&exklusives oder&entweder A oder B&\\
+			~&&&&F&W&F&W&-&ungleich B&\\
+			$A\nrightarrow B$ \tnote{2}&&&&F&W&F&F&-&nicht (aus A folgt B) \tnote{5}&\\
+			\hdashline[2pt/2pt]
+			~&&&&F&F&W&W&-&ungleich A&\\
+			$A\nleftarrow B$ \tnote{2}&&&&F&F&W&F&-&nicht (A folgt aus B) \tnote{5}&\\
+			$A\,\cancel{\vee}\,B$&&&&F&F&F&W&NOR \tnote{1}&nicht (A oder B) \tnote{5}&\\
+			~&&&&F&F&F&F&-&falsch&\\
+			\hline
+			$A=B$ \tnote{4}&&&&W&F&F&W&Identität&A gleich B&\\
+			$A\ne B$ \tnote{4}&&&&F&W&W&F&Ungleichheit&A ungleich B&\\
+			\hline 
+		\end{tabular*}
+		\begin{tablenotes}
+			\item[1] Wird in logischen Schaltungen verwendet.
+			\item[2] Symbol so definiert, dass es unmittelbar ersichtlich ist, das es die Negation des Symbols ohne den schrägen Strich ist. - Symbole nicht allgemein üblich.
+			\item[3] Mit Schrägstrich für die Negation ergibt sich $A\nleftrightarrow B$. Die Sprechweise ist dann \emph{nicht (A genau dann, wenn B)}
+			\item[4] $\leftrightarrow$ und $=$ sowie $\nleftrightarrow$ und $\ne$ liefern zwar das gleiche Ergebnis, müssen logisch aber unterschieden werden. Ähnliches gilt für $\top$ und W sowie $\bot$ und F.
+			\item[5] Das \emph{nicht} darf nicht in die Klammer hineingenommen werden, da sich sonst die Bedeutung ändern würde!
+		\end{tablenotes}
+	\end{threeparttable}
+	\par\bigskip
+	
+	Es gibt nicht für jeden möglichen Operator ein Symbol, einen Namen oder eine Sprechweise. Identität und Ungleichheit ist im engeren Sinne kein logischer Operator, während $\leftrightarrow$ und $\nleftrightarrow$ per Axiom oder einen logischen Ausdruck eingeführt werden müssen.
+	
+	Zur Klammerersparnis verwenden wir die üblichen Regeln. Man beachte, dass unäre Operatoren hier stets vor dem Operanden stehen.
+	
+	\begin{itemize}
+		\item Operatoren mit höherer Priorität binden stärker als solche mit niedriger Priorität (\emph{Prio}).
+		\item Bei gleicher Priorität binden \textellipsis
+		\begin{itemize}
+			\item \textellipsis unäre (1-stellige) Operatoren von rechts nach links.
+			\item \textellipsis binäre (2-stellige) Operatoren von links nach rechts.
+		\end{itemize}
+	\end{itemize}
+	
 	\par ... % AUSSAGENLOGIK bearbeiten.
 	
 	\section{Prädikatenlogik}
@@ -564,18 +598,18 @@
     \clearpage
     
 	\ihead{\textsf{\textbf{Tabellenverzeichnis}}}
-	\begin{minipage}{\textwidth}
+	\begin{minipage}{\textwidth-10.95pt}
     	\listoftables
     	\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
-    \end{minipage}
+    \end{minipage}\par
 	\thispagestyle{scrheadings}
 	
 	\ihead{\textsf{\textbf{Abbildungsverzeichnis}}}
-    \begin{minipage}{\textwidth}
+    \begin{minipage}{\textwidth-10.95pt}
     	\listoffigures
     	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}       
     	\addcontentsline{lof}{section}{<Noch keine Abbildungen vorhanden.>}
-    \end{minipage}
+    \end{minipage}\par
 	\thispagestyle{scrheadings}
 	
    	\begin{flushleft}
