@@ -47,7 +47,7 @@
 % Tabellen
 \usepackage{ctable} % Flexible typesetting of table and figure floats using key/value directives
 % % \usepackage{ctable fast die Eigenschaften der Pakete
-% \usepackage{array} % 
+% \usepackage{array} %
 % \usepackage{tabularx} % Erweiterung von tabular*
 % \usepackage{booktabs} % Nicer layout of tables
 % % zusammen und lädt zusätzlich noch die Pakete
@@ -81,7 +81,6 @@
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{3}
 \setlength\extrarowheight{1pt}
-\setlength\tabcolsep{3pt}
 \captionsetup{labelfont=bf}
 
 % Neue Elemente
@@ -90,7 +89,16 @@
 %%%% Definitionen für den Mathematiksatz %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% logische Symbole - Siehe Anhang, Definition von aussagenlogischen Symbolen %%%
+%
+% Wahrheitswerte
+%
+\newcommand{\WWtrue}{W}
+\newcommand{\WWfalse}{F}
+%
+% Innerhalb dieses Kommentars sind die Wahrheitswerte stets W und F
+%
 % Konstante
+%
 \newcommand{\ltrue}{\top}      % W - wahr
 \newcommand{\lnfalse}{\notbot} % " - nicht falsch
 \newcommand{\lfalse}{\bot}     % F - falsch
@@ -139,6 +147,11 @@
 %           \ne
 \newcommand{\defeq}{\coloneqq}
 
+% sonstige nützliche Kommandos
+\newcommand{\textdh}{d.\@ h.\@}
+\newcommand{\textetc}{etc.\@}
+\newcommand{\textusw}{usw.\@}
+
 %% Farben %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \definecolor{cLightGray}{rgb}{.90,.90,.90}
@@ -172,7 +185,7 @@
 	\selectlanguage{ngerman}
 
 	\chapter{Analyse} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
+
 	\ihead{\textnormal{\textsf{\textbf{\chaptername~\thesection}}}}
 	\thispagestyle{scrheadings}
 
@@ -297,15 +310,15 @@
 	Ausgehend von einer Liste der Fragen werden nun über die Zwischenstufe Mission Anforderungen an das zu realisierende System gestellt. Mit einem großen X werden die Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nötig sind. Idealerweise soll die Erfüllung der Anforderungen die Fragen beantworten bzw.\@ zur Beantwortung beitragen.
 
 	\begin{table}
-		\begin{tabular*}{\linewidth-10.95pt}{@{\extracolsep{\fill}}r@{ }l|*{7}{c}|}
+		\begin{tabularx}{\linewidth-10.95pt}{@{\extracolsep{\fill}\hspace{.5cm}}rl|*{7}{c}@{\hspace{1cm}}|}
 			\multicolumn{2}{l|}{\diagbox{\textbf{Fragen}}{\textbf{Mission}}}
-			&\rotatebox{90}{\mbox{\ref{Mission:Daten} Daten}}
-			&\rotatebox{90}{\mbox{\ref{Mission:Definitionen} Definitionen}}
-			&\rotatebox{90}{\mbox{\ref{Mission:Prüfung} Prüfung}}
-			&\rotatebox{90}{\mbox{\ref{Mission:Ausgaben} Ausgaben}}
-			&\rotatebox{90}{\mbox{\ref{Mission:Auswertungen} Auswertungen }}
-			&\rotatebox{90}{\mbox{\ref{Mission:Lizenz} Lizenz}}
-			&\rotatebox{90}{\mbox{\ref{Mission:Akzeptanz} Akzeptanz}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Daten} \; Daten}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Definitionen} \; Definitionen}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Prüfung} \; Prüfung}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Ausgaben} \; Ausgaben}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Auswertungen} \; Auswertungen }}
+			&\rotatebox{90}{\mbox{\ref{Mission:Lizenz} \; Lizenz}}
+			&\rotatebox{90}{\mbox{\ref{Mission:Akzeptanz} \; Akzeptanz}}
 			\\\hline
 			\ref{Frage:Grundlagen}&Grundlagen&X&X&-&X&X&-&-\\
 			\ref{Frage:Basis}&Basis&X&X&-&X&X&-&-\\
@@ -322,29 +335,29 @@
 			\ref{Frage:Darstellung}&Darstellung&-&X&-&X&-&-&-\\
 			\ref{Frage:Forschung}&Forschung&X&-&-&-&X&-&-\\
 			\hline
-		\end{tabular*}
+		\end{tabularx}
 		\caption{Fragen $\to$ Mission}
 		\label{tab:Fragen->Mission}
 	\end{table}
 
 	\begin{table}
-		\begin{tabular*}{\linewidth-10.95pt}{@{\extracolsep{\fill}}r@{ }l|*{15}{c}|}
+		\begin{tabularx}{\linewidth-10.95pt}{@{\extracolsep{\fill}\hspace{.3cm}}rl|*{15}{c}@{\hspace{0.4cm}}|}
 			\multicolumn{2}{l|}{\diagbox{\textbf{Mission}}{\textbf{Ziele}}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Daten} Daten}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Form} Form}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Eingaben} Eingaben}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Prüfung} Prüfung}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Ausgaben} Ausgaben}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Auswertungen} Auswertungen}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Anpassbarkeit} Anpassbarkeit}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Individualität} Individualität}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Internet} Internet}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Kommunikation} Kommunikation}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Zugriff} Zugriff}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Unabhängigkeit} Unabhängigkeit}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Rekursion} Rekursion}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Bedienbarkeit} Bedienbarkeit}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Lizenz} Lizenz}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Daten} \; Daten}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Form} \; Form}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Eingaben} \; Eingaben}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Prüfung} \; Prüfung}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Ausgaben} \; Ausgaben}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Auswertungen} \; Auswertungen}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Anpassbarkeit} \; Anpassbarkeit}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Individualität} \; Individualität}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Internet} \; Internet}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Kommunikation} \; Kommunikation}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Zugriff} \; Zugriff}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Unabhängigkeit} \; Unabhängigkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Rekursion} \; Rekursion}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Bedienbarkeit} \; Bedienbarkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Lizenz} \; Lizenz}}
 			\\\hline
 			\ref{Mission:Daten}&Daten&X&X&X&-&-&-&-&-&-&-&-&-&-&-&-\\
 			\ref{Mission:Definitionen}&Definitionen&X&-&X&-&-&-&-&-&-&-&-&-&-&-&-\\
@@ -356,7 +369,7 @@
 			\hdashline[2pt/2pt]
 			\ref{Mission:Akzeptanz}&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
 			\hline
-		\end{tabular*}
+		\end{tabularx}
 		\caption{Mission $\to$ Ziele (Anforderungen)}
 		\label{tab:Mission->Ziele}
 	\end{table}
@@ -364,23 +377,23 @@
 	Die \tablename~\vref{tab:Fragen->Ziele} ist eine Kombination aus den \tablename n~\vref{tab:Fragen->Mission} und~\vref{tab:Mission->Ziele}. Die Fragen \emph{Akzeptanz} und \emph{Lizenz} kommen aus Abschnitt~\vref{sec:Mission} \emph{Mission} dazu. Mit einem kleinen x werden Spalten markiert, deren Punkte für die Erfüllung der Anforderungen in den Zeilen nicht nötig, aber von Interesse sind.
 
 	\begin{table}
-		\begin{tabular*}{\linewidth-10.95pt}{@{\extracolsep{\fill}}r@{ }l|*{15}{c}|}
+		\begin{tabularx}{\linewidth-10.95pt}{@{\extracolsep{\fill}\hspace{.3cm}}rl|*{15}{c}@{\hspace{0.4cm}}|}
 			\multicolumn{2}{l|}{\diagbox{\textbf{Fragen}}{\textbf{Ziele}}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Daten} Daten}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Form} Form}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Eingaben} Eingaben}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Prüfung} Prüfung}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Ausgaben} Ausgaben}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Auswertungen} Auswertungen}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Anpassbarkeit} Anpassbarkeit}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Individualität} Individualität}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Internet} Internet}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Kommunikation} Kommunikation}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Zugriff} Zugriff}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Unabhängigkeit} Unabhängigkeit}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Rekursion} Rekursion}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Bedienbarkeit} Bedienbarkeit}}
-			&\rotatebox{90}{\mbox{\ref{Ziel:Lizenz} Lizenz}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Daten} \; Daten}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Form} \; Form}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Eingaben} \; Eingaben}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Prüfung} \; Prüfung}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Ausgaben} \; Ausgaben}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Auswertungen} \; Auswertungen}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Anpassbarkeit} \; Anpassbarkeit}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Individualität} \; Individualität}}
+			&\rotatebox{90}{\mbox{ \ref{Ziel:Internet} \; Internet}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Kommunikation} \; Kommunikation}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Zugriff} \; Zugriff}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Unabhängigkeit} \; Unabhängigkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Rekursion} \; Rekursion}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Bedienbarkeit} \; Bedienbarkeit}}
+			&\rotatebox{90}{\mbox{\ref{Ziel:Lizenz} \; Lizenz}}
 			\\\hline
 			\ref{Frage:Grundlagen}&Grundlagen&X&X&X&-&X&X&x&-&-&-&-&-&-&-&-\\
 			\ref{Frage:Basis}&Basis&X&X&X&-&X&X&x&x&-&-&-&-&-&-&-\\
@@ -400,7 +413,7 @@
 			&Lizenz&-&-&-&-&-&-&-&-&-&-&-&-&-&-&X\\
 			&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
 			\hline
-		\end{tabular*}
+		\end{tabularx}
 		\caption{Fragen $\to$ Ziele (Anforderungen)}
 		\label{tab:Fragen->Ziele}
 	\end{table}
@@ -408,7 +421,7 @@
 	%==================================================
 
 	\chapter{Design} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
+
 	\thispagestyle{scrheadings}
 
 	Diese Projekt soll Open Source sein. Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)} und für die Software die \emph{GNU Affero General Public License (APGL)}. Die \emph{GNU General Public License (GPL)} reicht für die Software nicht, da das Programm auch mittels eines Servers betrieben werden kann und soll. Damit das Projekt gegebenenfalls durch verschiedene Entwickler gleichzeitig bearbeitet werden kann und wegen des Konfigurationsmanagements wurde es als ein GitHub Projekt erstellt (\seename~\cite{bib:ASBA}).
@@ -459,21 +472,21 @@
 
 	\end{enumerate}
 
-	... % ANFORDERUNGEN bearbeiten.
+	\par \textbf{> > > ANFORDERUNGEN bearbeiten. < < <} % ANFORDERUNGEN bearbeiten.
 
 	\section{Datenstruktur}
 	\label{Datenstruktur}
 
-	... % DATENSTRUKTUR bearbeiten.
+	\par \textbf{> > > DATENSTRUKTUR bearbeiten. < < <} % DATENSTRUKTUR bearbeiten.
 
 	\section{Bausteine}
 	\label{Bausteine}
 
-	... % BAUSTEINE bearbeiten.
+	\par \textbf{> > > BAUSTEINE bearbeiten. < < <} % BAUSTEINE bearbeiten.
 
 	\appendix
 	\chapter{\appendixname} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
+
 	\thispagestyle{scrheadings}
 
 	\section{Werkzeuge} %========================================================
@@ -531,7 +544,8 @@
 
 	\end{itemize}
 
-	% QEDEQ Werkzeuge auflisten?
+	\par \textbf{> > > QEDEQ Werkzeuge auflisten? < < <} % QEDEQ Werkzeuge auflisten?
+
 	\paragraph{Im Projekt \emph{qedeq} verwendete Werkzeuge}
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
@@ -556,94 +570,100 @@
 	\section{Aussagenlogik} %====================================================
 	\label{sec:Aussagenlogik}
 
-% SYMBOLE übernehmrn
-	Die \tablename~\vref{tab:aussagenlogische Symbole}\footnote{ Die Tabelle ist eine Erweiterung und Umsortierung der Wahrheitstafel aus Kapitel~2.2 von \cite{bib:Junktor}, ohne Angabe der Formeln.} definiert für die zweiwertige Logik die Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung. So ergeben sich, abhängig von den Wahrheitswerten der Ope randen A und B, die in der Tabelle angegebenen Wahrheitswerte für die Operationen. Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren ausgefüllt. Dabei werden die Konstanten als 0-stellige Operatoren angesehen. Hat der Inhalt einer Zelle keine Relevanz, so bleibt sie leer, ist kein Wert bekannt, steht dort "`-"'. - Für die Symbole und Namen sind auch Alternativen angegeben.
+	Die \tablename~\vref{tab:aussagenlogische Symbole}\footnote{ Die Tabelle ist eine Erweiterung und Umsortierung der Wahrheitstafel aus Kapitel~2.2 von \cite{bib:Junktor}, ohne Angabe der Formeln.} definiert für die zweiwertige Logik die Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung. So ergeben sich, abhängig von den Wahrheitswerten der Operanden A und B, die in der Tabelle angegebenen Wahrheitswerte für die Operationen. Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh für die Konstanten und die unären und binären Operatoren ausgefüllt. Dabei werden die Konstanten als 0-stellige Operatoren angesehen. Hat der Inhalt einer Zelle keine Relevanz, so bleibt sie leer, ist kein Wert bekannt, steht dort "`-"'. - Für die Symbole und Namen sind in der Spalte \emph{Namen} auch Alternativen angegeben.
 
+	% NOCH offen:
+	% - Zelleninhalt senkrecht zentrieren
+	% - ctable verwenden ?
 	\begin{table}\begin{threeparttable}
-		\newcommand{\tablegroup}{\hdashline[3pt/2pt]}
-		\newcommand{\tableline}{\hdashline[1pt/3pt]}
+		\setlength\extrarowheight{0,9pt}
+		\newcommand{\tablegroup}{\hdashline[6pt/3pt]}
+		\newcommand{\tableline}{\hdashline[3pt/3pt]}
+		\newcommand{\gapline}{\cdashline{1-1}[1pt/3pt]\cdashline{9-11}[1pt/3pt]}
+		\newcommand{\mrW}{\multirow{2}*{\WWtrue}}
+		\newcommand{\mrF}{\multirow{2}*{\WWfalse}}
+		\setlength\tabcolsep{3pt}
 		\begin{tabularx}{\linewidth}{c||c:cc:cccc|X:X|c|}
 			\textbf{Oper}\tnote{1}&\textbf{0}&\multicolumn{2}{c:}{\textbf{1}}&\multicolumn{4}{c|}{\textbf{2}}& \textbf{Name}& \textbf{Sprechweise}&\textbf{P\tnote{1}}\\
-			\hline %_____________________________________________________________
-			A&-&W&F&W&W&F&F&-&Aussage A&\\
-			\tableline %.........................................................
-			B&-&-&-&W&F&W&F&-&Aussage B&\\
+			\hline %-------------------------------------------------------------
+			A&-&\WWtrue&\WWfalse&\WWtrue&\WWtrue&\WWfalse&\WWfalse&-&Aussage A&\\
+			\tableline %...............................................
+			B&-&-&-&\WWtrue&\WWfalse&\WWtrue&\WWfalse&-&Aussage B&\\
 			\hline\hline %=======================================================
 			\rowcolor{cLightLightGray}
-			$\ltrue$&W&&&&&&&-&wahr&\\
-			\tableline %.........................................................
-			$\lnfalse$&"&&&&&&&-&nicht falsch&\\
-			\tableline %.........................................................
+			$\ltrue$&\mrW&&&&&&&-&wahr&\\
+			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+			$\lnfalse$&&&&&&&&-&nicht falsch&\\
+			\tableline %...............................................
 			\rowcolor{cLightLightGray}
-			$\lfalse$&F&&&&&&&-&falsch&\\
-			\tableline %.........................................................
-			$\lntrue$&"&&&&&&&-&nicht wahr&\\
-			\hline %_____________________________________________________________
-			$\lutrue A$&&W&W&&&&&-&wahr&7\\
-			\tableline %.........................................................
-			$\lnufalse A$&&"&"&&&&&-&nicht falsch&7\\
-			\tableline %.........................................................
+			$\lfalse$&\mrF&&&&&&&-&falsch&\\
+			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+			$\lntrue$&&&&&&&&-&nicht wahr&\\
+			\hline %-------------------------------------------------------------
+			$\lutrue A$&&\mrW&\mrW&&&&&-&wahr&7\\
+			\gapline % . . . . . . . . . . . . . . . . . . . . . . . .
+			$\lnufalse A$&&&&&&&&-&nicht falsch&7\\
+			\tableline %...............................................
 			\rowcolor{cLightGray}
-			$(A)$&&W&F&&&&&Klammerung&A ist geklammert&7\\
-			\tableline %.........................................................
+			$(A)$&&\WWtrue&\WWfalse&&&&&Klammerung&A ist geklammert&7\\
+			\tableline %...............................................
 			\rowcolor{cLightGray}
-			$\lnot A$&&F&W&&&&&Negation&nicht A&7\\
-			\tableline %.........................................................
-			$\lufalse A$&&F&F&&&&&-&falsch&7\\
-			\tableline %.........................................................
-			$\lnutrue A$&&"&"&&&&&-&nicht wahr&7\\
-			\hline %_____________________________________________________________
-			$A\lbtrue B$&&&&W&W&W&W&Tautologie&wahr&6\\
-			\tableline %.........................................................
-			$A\lnbfalse B$&&&&"&"&"&"&-&nicht falsch&6\\
-			\tableline %.........................................................
-			$A\lor B$&&&&W&W&W&F&Disjunktion, Adjunktion&A oder B&4\\
-			\tableline %.........................................................
+			$\lnot A$&&\WWfalse&\WWtrue&&&&&Negation&nicht A&7\\
+			\tableline %...............................................
+			$\lufalse A$&&\mrF&\mrF&&&&&-&falsch&7\\
+			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+			$\lnutrue A$&&&&&&&&-&nicht wahr&7\\
+			\hline %-------------------------------------------------------------
+			$A\lbtrue B$&&&&\mrW&\mrW&\mrW&\mrW&Tautologie&wahr&6\\
+			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+			$A\lnbfalse B$&&&&&&&&-&nicht falsch&6\\
+			\tableline %...............................................
+			$A\lor B$&&&&\WWtrue&\WWtrue&\WWtrue&\WWfalse&Disjunktion, Adjunktion&A oder B&4\\
+			\tableline %...............................................
+			$A\lleftimp B$&&&&\WWtrue&\WWtrue&\WWfalse&\WWtrue&Replikation, Konversion ($\subset$)&A folgt aus B&1\\
+			\tableline %...............................................
+			$A\lleft B$&&&&\WWtrue&\WWtrue&\WWfalse&\WWfalse&Präpendenz,\newline Identität von A ($\rfloor$)&A&2\\
+			\tablegroup %----------------------------------------------
+			\rowcolor{cLightGray}
+			$A\limp B$&&&&\WWtrue&\WWfalse&\WWtrue&\WWtrue&Implikation, Subjunktion,\newline Konditional ($\supset$)&aus A folgt B&1\\
+			\tableline %...............................................
+			$A\lright B$&&&&\WWtrue&\WWfalse&\WWtrue&\WWfalse&Postpendenz,\newline Identität von B ($\lfloor)$&B&2\\
+			\tableline %...............................................
+			\rowcolor{cLightGray}
+			$A\lequiv B$&&&&\mrW&\mrF&\mrF&\mrW&Äquivalenz, Bijunktion,\newline Bikonditional&A genau dann, wenn B&3\\
+			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+			$A\lnxor B$&&&&&&&&-&nicht (entweder A oder B) \tnote{3}&4\\
+			\tableline %...............................................
+			\rowcolor{cLightGray}
+			$A\land B$&&&&\WWtrue&\WWfalse&\WWfalse&\WWfalse&Konjunktion&A und B&5\\
+			\tablegroup %----------------------------------------------
+			$A\lnand B$&&&&\WWfalse&\WWtrue&\WWtrue&\WWtrue&NAND\tnote{2},\newline Sheffer-Funktion ($\mid, \uparrow, \barwedge$)&nicht (A und B) \tnote{3}&4\\
+			\tableline %...............................................
 			\rowcolor{cLightLightGray}
-			$A\lleftimp B$&&&&W&W&F&W&Replikation, Konversion\newline$\subset$&A folgt aus B&1\\
-			\tableline %.........................................................
-			$A\lleft B$&&&&W&W&F&F&Präpendenz\newline Identität von A\newline$\rfloor$&A&2\\
-			\tablegroup %--------------------------------------------------------
-			\rowcolor{cLightGray}
-			$A\limp B$&&&&W&F&W&W&Implikation, Subjunktion,\newline Konditional\newline$\supset$&aus A folgt B&1\\
-			\tableline %.........................................................
-			$A\lright B$&&&&W&F&W&F&Postpendenz, Identität von B\newline$\lfloor$&B&2\\
-			\tableline %.........................................................
-			\rowcolor{cLightGray}
-			$A\lequiv B$&&&&W&F&F&W&Äquivalenz, Bijunktion,\newline Bikonditional&A genau dann, wenn B&3\\
-			\tableline %.........................................................
-			$A\lnxor B$&&&&"&"&"&"&-&nicht (entweder A oder B) \tnote{3}&4\\
-			\tableline %.........................................................
-			\rowcolor{cLightGray}
-			$A\land B$&&&&W&F&F&F&Konjunktion&A und B&5\\
-			\tablegroup %--------------------------------------------------------
-			$A\lnand B$&&&&F&W&W&W&NAND\tnote{2}, Sheffer-Funktion\newline$\mid, \uparrow, \barwedge$&nicht (A und B) \tnote{3}&4\\
-			\tableline %.........................................................
-			$A\lnequiv B$&&&&F&W&W&F&Kontravalenz\newline$\not\equiv$&{\small nicht (A genau dann, wenn B)} \tnote{2}&3\\
-			\tableline %.........................................................
-			\rowcolor{cLightLightGray}
-			$A\lxor B$&&&&"&"&"&"&XOR,\newline ausschließende Disjunktion\newline$\veebar, \oplus$&entweder A oder B&4\\
-			\tableline %.........................................................
-			$A\lnright B$&&&&F&W&F&W&Postnonpendenz,\newline Negation von B\newline$\lceil$&nicht B&2\\
-			\tableline %.........................................................
-			$A\lnimp B$&&&&F&W&F&F&Postsektion, nur A\newline$\not\supset$&nicht (aus A folgt B) \tnote{3}&1\\
-			\tablegroup %--------------------------------------------------------
-			$A\lnleft B$&&&&F&F&W&W&Pränonpendenz,\newline Negation von A$\rceil$&nicht A&2\\
-			\tableline %.........................................................
-			$A\lnleftimp B$&&&&F&F&W&F&Präsektion, nur B\newline$\not\subset$&nicht (A folgt aus B) \tnote{3}&1\\
-			\tableline %.........................................................
-			$A\lnor B$&&&&F&F&F&W&NOR\tnote{2}, Peirce-Funktion\newline$\downarrow, \overline\vee$&nicht (A oder B) \tnote{3}&4\\
-			\tableline %.........................................................
-			$A\lbfalse B$&&&&F&F&F&F&Kontradiktion&falsch&6\\
-			\tableline
-			$A\lnbtrue B$&&&&"&"&"&"&-&nicht wahr&6\\
+			$A\lxor B$&&&&\mrF&\mrW&\mrW&\mrF&ausschließende Disjunktion,\newline XOR ($\veebar, \oplus$)&entweder A oder B&4\\
+			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+			$A\lnequiv B$&&&&&&&&Kontravalenz ($\not\equiv$)&{\small nicht (A genau dann, wenn B)} \tnote{2}&3\\
+			\tableline %...............................................
+			$A\lnright B$&&&&\WWfalse&\WWtrue&\WWfalse&\WWtrue&Postnonpendenz,\newline Negation von B ($\lceil$)&nicht B&2\\
+			\tableline %...............................................
+			$A\lnimp B$&&&&\WWfalse&\WWtrue&\WWfalse&\WWfalse&Postsektion, nur A ($\not\supset$)&nicht (aus A folgt B) \tnote{3}&1\\
+			\tablegroup %----------------------------------------------
+			$A\lnleft B$&&&&\WWfalse&\WWfalse&\WWtrue&\WWtrue&Pränonpendenz,\newline Negation von A ($\rceil$)&nicht A&2\\
+			\tableline %...............................................
+			$A\lnleftimp B$&&&&\WWfalse&\WWfalse&\WWtrue&\WWfalse&Präsektion, nur B ($\not\subset$)&nicht (A folgt aus B) \tnote{3}&1\\
+			\tableline %...............................................
+			$A\lnor B$&&&&\WWfalse&\WWfalse&\WWfalse&\WWtrue&NOR\tnote{2}, Peirce-Funktion ($\downarrow, \overline\vee$)&nicht (A oder B) \tnote{3}&4\\
+			\tableline %...............................................
+			$A\lbfalse B$&&&&\mrF&\mrF&\mrF&\mrF&Kontradiktion&falsch&6\\
+			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+			$A\lnbtrue B$&&&&&&&&-&nicht wahr&6\\
 			\hline\hline %=======================================================
 			\rowcolor{cLightGray}
-			$A=B$&&&&W&F&F&W&Identität&A gleich B&0\\
-			\tableline %.........................................................
+			$A=B$&&&&\WWtrue&\WWfalse&\WWfalse&\WWtrue&Identität&A gleich B&0\\
+			\tableline %...............................................
 			\rowcolor{cLightGray}
-			$A\ne B$&&&&F&W&W&F&Ungleichheit&A ungleich B&0\\
-			\tableline %.........................................................
+			$A\ne B$&&&&\WWfalse&\WWtrue&\WWtrue&\WWfalse&Ungleichheit&A ungleich B&0\\
+			\tableline %...............................................
 			\rowcolor{cLightGray}
 			$A\defeq B$&&&&&&&&Definition&A definiert als B&0\\
 			\hline %_____________________________________________________________
@@ -657,86 +677,93 @@
 		\end{tablenotes}
 	\end{threeparttable}\end{table}
 
-	Die Tabelle enthält auch viele ungebräuchliche Operationen. Diese sind nur deshalb definiert, damit für alle 22 möglichen 0-, 1- und 2-stelligen logischen Operationen (gestützt auf die Wahrheitswerte) Operatoren benannt sind. Wenn für eine bestimmte Kombination von Wahrheitswerten mehr als ein Operatorsymbol angegeben ist - erkennbar an den \glq"\grq statt der Wahrheitswerte, so haben diese höchstens für solche Logiken, in denen nicht alle der üblichen Axiome, insbesondere nicht das Axiom $A\lor \lnot A = \ltrue$, vorhanden sind, verschieden.
+	Wenn für eine bestimmte Kombination von Wahrheitswerten mehr als eine Operation angegeben ist, so können diese Operationen höchstens für solche Logiken, in denen nicht alle der üblichen Axiome, insbesondere nicht das Axiom $A\lor\lnot A=\ltrue$, vorhanden sind, verschieden sein, \textdh verschiedene Ergebnisse liefern.
 
-	Am verbreitesten sind neben den Klammern nur die logischen Operatoren $\lnot$, $\land$, $\lor$, $\limp$ und $\lequiv$, gelegentlich auch $\lleftimp$ und $\lxor$, sowie die Konstanten $\ltrue$ und $\lfalse$, die auch als 0-stellige Operatoren aufgefasst werden können. Die entsprechenden Zeilen in der Tabelle sind grau hinterlegt. Die Symbole $\ltrue$ und $\lfalse$ als 1- und zweistellige Operatoren, $\lleftimp$, $\lright$ und $\lleft$ sowie die durchgestrichenen Symbole sind nur deshalb eingeführt worden, damit Operatorsymbole für alle 22 möglichen 0-, 1- und 2-stelligen logischen Operanden (gestützt auf die Wahrheitswerte) und für alle negierten Operanden vorhanden sind. - Die Wahrheitswerte W und F  der normalen und durchgestrichenen Operatoren sind jeweils vertauscht.
+	Um vollständig zu sein, \textdh für alle 22 möglichen Kombinationen von Wahrheitswerten für höchstens zwei Variable Operatorsymbole zu haben, enthält die Tabelle auch viele ungebräuchliche Operatoren. Am verbreitesten sind neben den Klammern nur die logischen Operatoren $\lnot$, $\land$, $\lor$, $\limp$ und $\lequiv$, gelegentlich auch $\lleftimp$ und $\lxor$, sowie die Konstanten $\ltrue$ und $\lfalse$. Die entsprechenden Zeilen in der Tabelle sind grau hinterlegt. Zu jedem normalen Operator, getrennt nach Konstanten und unären und binären Operatoren, gibt es einen durchgestrichenen (negierten) Operator und umgekehrt. Die Wahrheitswerte \WWtrue\ und \WWfalse\ sind jeweils vertauscht. Die Symbole $\ltrue$, $\lfalse$, $\lntrue$ und $\lnfalse$ werden hier auch als unäre und binäre Operatoren verwendet.
 
-	Identität ($=$) und Ungleichheit  ($\ne$) sind im engeren Sinne keine logischen Operatoren und Definition ($\defeq$) schon gar nicht, während $\lequiv$ und $\lnequiv$ per Axiom oder eine Definition über einen logischen Ausdruck eingeführt werden müssen. $=$, $\ne$ und $defeq$ sind ebenfalls grau hinterlegt.
+	Identität ($=$) und Ungleichheit  ($\ne$) sind im engeren Sinne keine logischen Operatoren und die Definition ($\defeq$) schon gar nicht, während $\lequiv$ und $\lnequiv$ per Axiom oder eine Definition über einen logischen Ausdruck eingeführt werden müssen. $=$, $\ne$ und $defeq$ sind ebenfalls grau hinterlegt.
 
-	Zur Klammerersparnis werden die üblichen Regeln verwendet, d.\@ h.\@ dass Operatoren mit höherer Priorität stärker binden, als solche mit niedriger Priorität. Bei gleicher Priorität binden unäre (1-stellige) Operatoren von rechts nach links\footnote{ Unäre Operatoren stehen hier stets links \emph{vor} dem Operanden.} und binäre (2-stellige) von links nach rechts.
+	Zur Klammerersparnis werden die üblichen Regeln verwendet, \textdh dass Operatoren mit höherer Priorität stärker binden, als solche mit niedrigerer Priorität. Bei gleicher Priorität binden unäre Operatoren von rechts nach links\footnote{ Unäre Operatoren stehen hier stets links \emph{vor} dem Operanden, so dass es gar keine andere Möglichkeit gibt.} und binäre von links nach rechts.
 
-	Da Computerprogramme verwenden werden, müssen die Axiome, Sätze, Beweise, etc.\@ in streng formaler Form vorliegen. Die Formalisierung stützt sich im Wesentlichen auf~\cite{bib:Aussagenlogik}. (\alsoname~\cite{bib:LogikDe, bib:LogikEn}).
-
-%%%§§§	In diesem Kapitel wurden viele Gedanken, Symbole und Bezeichnungen aus~\cite{bib:Aussagenlogik} verwendet. (\alsoname~\cite{bib:LogikDe, bib:LogikEn}).
+	Da Computerprogramme verwenden werden, müssen die Axiome, Sätze, Beweise, \textetc in streng formaler Form vorliegen. Die Formalisierung stützt sich im Wesentlichen auf~\cite{bib:Aussagenlogik}. (\alsoname~\cite{bib:LogikDe, bib:LogikEn}).
 
 	Es werden folgende Mengen\footnote{ Hier wird die naive Mengenlehre vorausgesetzt.} definiert:
-
 	\begin{itemize}
+		\newcommand{\Item}[3]{\item\begin{tabbing}\hspace{0.7cm}\=\hspace{5cm}\=\kill #1\>#2\>#3\end{tabbing}}
 
-		\item $\mathbb{N}_0$ $\ $
-		Menge der \emph{natürlichen Zahlen} einschließlich $0$.
+		\Item{$\mathbb{N}_0$}{}
+		{Menge der \emph{natürlichen Zahlen} einschließlich $0$.}
 
-		\item $\mathcal{A} \defeq \{A_n|n\in \mathbb{N}_0\}$
-		Menge der \emph{atomaren Formeln} (Satzbuchstaben), kurz: \emph{Atome}.
+		\Item{$\mathcal{F}\mathrm{a}$}{$\defeq\{A_n|n\in \mathbb{N}_0\}$}
+		{Menge der \emph{atomaren Formeln} (Satzbuchstaben), kurz: \emph{Atome}.}
 
-		\item $\mathcal{S}_\mathrm{g} \defeq \{(,\,)\}$
-		Menge der \emph{Gliederungszeichen}
+		\Item{$\mathcal{G}$}{$\defeq\{(,)\}$}
+		{Menge der \emph{Gliederungszeichen}.}
 
-		\item $\mathcal{S}_\mathrm{o} \defeq \{\lnot,\,\land,\,\lor,\,\limp,\,\lequiv\}$
-		Menge der \emph{Operatoren}
-<
-		\item $\mathcal{S}_\mathrm{q} \defeq \{\forall,\,\exists\}$
-		Menge der \emph{Quantoren}
+		\Item{$\mathcal{U}$}{$\defeq\{\lnot\}$}
+		{Menge der \emph{unären Operatoren}.}
 
-		\item $\mathcal{S} \defeq \mathcal{S}_\mathrm{g}\cup\mathcal{S}_\mathrm{o}\cup\mathcal{S}_\mathrm{q}$
-		Menge der \emph{logischen Symbole}.
+		\Item{$\mathcal{B}$}{$\defeq\{\land,\lor,\limp,\lequiv\}$}
+		{Menge der \emph{binären Operatoren}.}
 
-		\item $\mathcal{G} \defeq \mathcal{A}\cup\mathcal{S}$
-		\emph{Alphabet} der logischen Sprache.
+		\Item{$\mathcal{Q}$}{$\defeq\{\forall,\exists\}$}
+		{Menge der \emph{Quantoren}.}
 
-	\end{itemize}
-	Die Symbole werden noch um Quantoren und die in der \tablename~\vref{tab:aussagenlogische Symbole} vorhandenen, noch nicht aufgeführten Operatorsvmbole ergänzt
-	\begin{itemize}
+		\Item{$\mathcal{S}$}{$\defeq\mathcal{G}\cup\mathcal{U}\cup\mathcal{B}\cup\mathcal{Q}$}
+		{Menge der \emph{logischen Symbole}.}
 
-		\item $\mathcal{S}_\mathrm{z} \defeq \{\lntrue,\,\lnfalse,\,\lxor\}$
-		Menge der \emph{zusätzlichen} Symbole.
-
-		\item $\mathcal{S}_\mathrm{zo} =  \{\,\lnand,\,\lnor,\,\lnor,\,\lnimp,\,\lnequiv,\,
-		\lleftimp \lnleftimp,\,
-		\ltrue,\,\lntrue,\,\lfalse,\,\lnfalse\}$
-		Menge der \emph{zusätzlichen} Operatoren.
-
-		\item $\mathcal{S}_\mathrm{zq} = \{\bigwedge,\,\bigvee\}$
-		Menge der \emph{zusätzlichen} \emph{Quantoren}
-
-		\item $\mathcal{S}_\mathrm{z} = \mathcal{S}_\mathrm{zg}\cup\mathcal{S}_\mathrm{zo}\cup\mathcal{S}_\mathrm{zq}$
-		Menge der\emph{zusätzlichen} logischen Symbole.
-
-		\item $\mathcal{G}_\mathrm{e} = \mathcal{G}\cup\mathcal{S}_\mathrm{z}$
-		\emph{Erweitertes} Alphabet der logischen Sprache.
+		\Item{$\mathcal{A}$}{$\defeq\mathcal{F}_\mathrm{a}\cup\mathcal{S}$}
+		{\emph{Alphabet} der logischen Sprache.}
 
 	\end{itemize}
 
-%	$A$, $B$, $x$, $A(x)$, W und F haben die übliche Bedeutung.
+	Die Symbole werden noch um Konstant, Quantoren und die in der \tablename~\vref{tab:aussagenlogische Symbole} vorhandenen, noch nicht aufgeführten Operatorsvmbole ergänzt:
+
+	\begin{itemize}
+		\newcommand{\Item}[3]{\item\begin{tabbing}\hspace{0.7cm}\=\hspace{5cm}\=\kill #1\>#2\>#3\end{tabbing}}
+
+		\Item{$\mathcal{K}$}{$\defeq\{\ltrue,\lfalse,\lntrue,\lnfalse\}$}
+		{Menge der Konstanten.}
+
+		\Item{$\mathcal{U}_\mathrm{z}$}{$\defeq\{\ltrue,\lfalse,\lntrue,\lnfalse\}$}
+		{Menge der \emph{zusätzlichen} unären Operatoren.}
+
+		\Item{$\mathcal{B}_\mathrm{z}$}{$\defeq\{\lleftimp,\lright,\lleft,\lxor,\ltrue,\lfalse,\lnand,\lnor,\lnimp,\lnequiv,\lnleftimp,\lnright,\lnleft,\lnxor,\lntrue,\lnfalse\}$}
+		{\\\>\>Menge der \emph{zusätzlichen} binären Operatoren.}
+
+		\Item{$\mathcal{Q}_\mathrm{z}$}{$\defeq\{\bigwedge,\bigvee\}$}
+		{Menge der \emph{zusätzlichen} \emph{Quantoren}}
+
+		\Item{$\mathcal{S}_\mathrm{z}$}{$\defeq\mathcal{K}\cup\mathcal{O}_\mathrm{z}\cup\mathcal{Q}_\mathrm{z}$}
+		{Menge der \emph{zusätzlichen} logischen Symbole.}
+
+		\Item{$\mathcal{A}_\mathrm{e}$}{$\defeq\mathcal{A}\cup\mathcal{S}_\mathrm{z}$}
+		{\emph{Erweitertes} Alphabet der logischen Sprache.}
+
+	\end{itemize}
+
+% EINARBEITEN
+%	$A$, $B$, $x$, $A(x)$, \WWtrue und F haben die übliche Bedeutung.
 %	\begin{itemize}
 %		\item $A$ und $B$ sind beliebige, auch zusammengesetzte, \emph{Aussagen}.
 %		\item $x$ ist eine Variable, deren mögliche Werte bekannt sind.
-%		\item $A(x)$ ist eine Aussage, die von $x$ abhängig ist. Für verschiedene Werte von $x$ kann, muss aber nicht, $A(x)$ verschiedene Wahrheitswerte annehmen.
-%		\item W ist der Wahrheitswert für \emph{wahr}.
+%		\item $A(x)$ ist eine Aussage, die von $x$ abhängig ist.
+%			Für verschiedene Werte von $x$ kann $A(x)$ verschiedene Wahrheitswerte annehmen, muss das aber nicht,
+%		\item \WWtrue ist der Wahrheitswert für \emph{wahr}.
 %		\item F ist der Wahrheitswert für \emph{falsch}.
 %	\end{itemize}
 
-	\par ... % AUSSAGENLOGIK bearbeiten.
+	\par \textbf{> > > AUSSAGENLOGIK bearbeiten. < < <} % AUSSAGENLOGIK bearbeiten.
 
 	\section{Prädikatenlogik} %==================================================
 	\label{Prädikatenlogik}
 
-	... % PRÄDIKATENLOGIK bearbeiten.
+	\par \textbf{> > > PRÄDIKATENLOGIK bearbeiten. < < <} % PRÄDIKATENLOGIK bearbeiten.
 
 	\section{Mengenlehre} %======================================================
 	\label{Mengenlehre}
 
-	... % MENGENLEHRE bearbeiten.
+	\par \textbf{> > > PRÄDIKATENLOGIK bearbeiten. < < <} % MENGENLEHRE bearbeiten.
 
 	\section{Offene Aufgaben} %==================================================
 	\label{Offene Aufgaben}
@@ -782,7 +809,7 @@
 	\thispagestyle{scrheadings}
 
 	%=== Literaturverzeichnis ===================================================
-	
+
    	\begin{flushleft}
 		\begin{thebibliography}{12}
 			\ihead{\textnormal{\textsf{\textbf{\bibname}}}}
