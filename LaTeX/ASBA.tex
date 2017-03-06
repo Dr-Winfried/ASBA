@@ -46,11 +46,11 @@
 \usepackage{cancel} % Place lines through maths formulae.
 % Tabellen
 \usepackage{ctable} % Flexible typesetting of table and figure floats using key/value directives
-% % \usepackage{ctable fast die Eigenschaften der Pakete
+%%\usepackage{ctable fast die Eigenschaften der Pakete
 % \usepackage{array} %
 % \usepackage{tabularx} % Erweiterung von tabular*
 % \usepackage{booktabs} % Nicer layout of tables
-% % zusammen und lädt zusätzlich noch die Pakete
+%% zusammen und lädt zusätzlich noch die Pakete
 % \usepackage{rotating} % Rotating tools, including rotated full page floats
 % \usepackage{xspace} % Behandelt Zwischenraum nach Makros
 % \usepackage{color} % LaTeX upport for color, for those dvi drivers that can produce coloured text
@@ -92,8 +92,8 @@
 %
 % Wahrheitswerte
 %
-\newcommand{\WWtrue}{W}
-\newcommand{\WWfalse}{F}
+\newcommand{\texttrue}{W}
+\newcommand{\textfalse}{F}
 %
 % Innerhalb dieses Kommentars sind die Wahrheitswerte stets W und F
 %
@@ -570,190 +570,179 @@
 	\section{Aussagenlogik} %====================================================
 	\label{sec:Aussagenlogik}
 
-	Die \tablename~\vref{tab:aussagenlogische Symbole}\footnote{ Die Tabelle ist eine Erweiterung und Umsortierung der Wahrheitstafel aus Kapitel~2.2 von \cite{bib:Junktor}, ohne Angabe der Formeln.} definiert für die zweiwertige Logik die Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung. So ergeben sich, abhängig von den Wahrheitswerten der Operanden A und B, die in der Tabelle angegebenen Wahrheitswerte für die Operationen. Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh für die Konstanten und die unären und binären Operatoren ausgefüllt. Dabei werden die Konstanten als 0-stellige Operatoren angesehen. Hat der Inhalt einer Zelle keine Relevanz, so bleibt sie leer, ist kein Wert bekannt, steht dort "`-"'. - Für die Symbole und Namen sind in der Spalte \emph{Namen} auch Alternativen angegeben.
+	\subsection{Konstante und Operatoren}
+	\label{sub:Operatoren}
 
-	% NOCH offen:
-	% - Zelleninhalt senkrecht zentrieren
-	% - ctable verwenden ?
-	\begin{table}\begin{threeparttable}
-		\setlength\extrarowheight{0,9pt}
+	Die \tablename~\vref{tab:aussagenlogische Symbole}\footnote{ Die Tabelle ist eine Erweiterung und Umsortierung der Wahrheitstafel aus Kapitel~2.2 von \cite{bib:Junktor}, ohne Angabe der Formeln.} definiert für die zweiwertige Logik die Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung. So ergeben sich, abhängig von den Wahrheitswerten der Operanden A und B, die in der Tabelle angegebenen Wahrheitswerte für die Operationen. Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh\ für die Konstanten und die unären und binären Operatoren ausgefüllt. Dabei werden die Konstanten als 0-stellige Operatoren angesehen. Hat der Inhalt einer Zelle keine Relevanz, so bleibt sie leer, ist kein Wert bekannt, steht dort ein Minuszeichen. - Für die Symbole und Namen sind in der Spalte \emph{Namen} auch Alternativen angegeben.
+
+% ZELLEN vertikal zentrieren
+	\begin{table}
+		\setlength\extrarowheight{1.5pt}
 		\newcommand{\tablegroup}{\hdashline[6pt/3pt]}
 		\newcommand{\tableline}{\hdashline[3pt/3pt]}
 		\newcommand{\gapline}{\cdashline{1-1}[1pt/3pt]\cdashline{9-11}[1pt/3pt]}
-		\newcommand{\mrW}{\multirow{2}*{\WWtrue}}
-		\newcommand{\mrF}{\multirow{2}*{\WWfalse}}
+		\newcommand{\mrW}{\multirow{2}*{\texttrue}}
+		\newcommand{\mrF}{\multirow{2}*{\textfalse}}
 		\setlength\tabcolsep{3pt}
-		\begin{tabularx}{\linewidth}{c||c:cc:cccc|X:X|c|}
-			\textbf{Oper}\tnote{1}&\textbf{0}&\multicolumn{2}{c:}{\textbf{1}}&\multicolumn{4}{c|}{\textbf{2}}& \textbf{Name}& \textbf{Sprechweise}&\textbf{P\tnote{1}}\\
-			\hline %-------------------------------------------------------------
-			A&-&\WWtrue&\WWfalse&\WWtrue&\WWtrue&\WWfalse&\WWfalse&-&Aussage A&\\
-			\tableline %...............................................
-			B&-&-&-&\WWtrue&\WWfalse&\WWtrue&\WWfalse&-&Aussage B&\\
-			\hline\hline %=======================================================
-			\rowcolor{cLightLightGray}
-			$\ltrue$&\mrW&&&&&&&-&wahr&\\
-			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
-			$\lnfalse$&&&&&&&&-&nicht falsch&\\
-			\tableline %...............................................
-			\rowcolor{cLightLightGray}
-			$\lfalse$&\mrF&&&&&&&-&falsch&\\
-			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
-			$\lntrue$&&&&&&&&-&nicht wahr&\\
-			\hline %-------------------------------------------------------------
-			$\lutrue A$&&\mrW&\mrW&&&&&-&wahr&7\\
-			\gapline % . . . . . . . . . . . . . . . . . . . . . . . .
-			$\lnufalse A$&&&&&&&&-&nicht falsch&7\\
-			\tableline %...............................................
-			\rowcolor{cLightGray}
-			$(A)$&&\WWtrue&\WWfalse&&&&&Klammerung&A ist geklammert&7\\
-			\tableline %...............................................
-			\rowcolor{cLightGray}
-			$\lnot A$&&\WWfalse&\WWtrue&&&&&Negation&nicht A&7\\
-			\tableline %...............................................
-			$\lufalse A$&&\mrF&\mrF&&&&&-&falsch&7\\
-			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
-			$\lnutrue A$&&&&&&&&-&nicht wahr&7\\
-			\hline %-------------------------------------------------------------
-			$A\lbtrue B$&&&&\mrW&\mrW&\mrW&\mrW&Tautologie&wahr&6\\
-			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
-			$A\lnbfalse B$&&&&&&&&-&nicht falsch&6\\
-			\tableline %...............................................
-			$A\lor B$&&&&\WWtrue&\WWtrue&\WWtrue&\WWfalse&Disjunktion, Adjunktion&A oder B&4\\
-			\tableline %...............................................
-			$A\lleftimp B$&&&&\WWtrue&\WWtrue&\WWfalse&\WWtrue&Replikation, Konversion ($\subset$)&A folgt aus B&1\\
-			\tableline %...............................................
-			$A\lleft B$&&&&\WWtrue&\WWtrue&\WWfalse&\WWfalse&Präpendenz,\newline Identität von A ($\rfloor$)&A&2\\
-			\tablegroup %----------------------------------------------
-			\rowcolor{cLightGray}
-			$A\limp B$&&&&\WWtrue&\WWfalse&\WWtrue&\WWtrue&Implikation, Subjunktion,\newline Konditional ($\supset$)&aus A folgt B&1\\
-			\tableline %...............................................
-			$A\lright B$&&&&\WWtrue&\WWfalse&\WWtrue&\WWfalse&Postpendenz,\newline Identität von B ($\lfloor)$&B&2\\
-			\tableline %...............................................
-			\rowcolor{cLightGray}
-			$A\lequiv B$&&&&\mrW&\mrF&\mrF&\mrW&Äquivalenz, Bijunktion,\newline Bikonditional&A genau dann, wenn B&3\\
-			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
-			$A\lnxor B$&&&&&&&&-&nicht (entweder A oder B) \tnote{3}&4\\
-			\tableline %...............................................
-			\rowcolor{cLightGray}
-			$A\land B$&&&&\WWtrue&\WWfalse&\WWfalse&\WWfalse&Konjunktion&A und B&5\\
-			\tablegroup %----------------------------------------------
-			$A\lnand B$&&&&\WWfalse&\WWtrue&\WWtrue&\WWtrue&NAND\tnote{2},\newline Sheffer-Funktion ($\mid, \uparrow, \barwedge$)&nicht (A und B) \tnote{3}&4\\
-			\tableline %...............................................
-			\rowcolor{cLightLightGray}
-			$A\lxor B$&&&&\mrF&\mrW&\mrW&\mrF&ausschließende Disjunktion,\newline XOR ($\veebar, \oplus$)&entweder A oder B&4\\
-			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
-			$A\lnequiv B$&&&&&&&&Kontravalenz ($\not\equiv$)&{\small nicht (A genau dann, wenn B)} \tnote{2}&3\\
-			\tableline %...............................................
-			$A\lnright B$&&&&\WWfalse&\WWtrue&\WWfalse&\WWtrue&Postnonpendenz,\newline Negation von B ($\lceil$)&nicht B&2\\
-			\tableline %...............................................
-			$A\lnimp B$&&&&\WWfalse&\WWtrue&\WWfalse&\WWfalse&Postsektion, nur A ($\not\supset$)&nicht (aus A folgt B) \tnote{3}&1\\
-			\tablegroup %----------------------------------------------
-			$A\lnleft B$&&&&\WWfalse&\WWfalse&\WWtrue&\WWtrue&Pränonpendenz,\newline Negation von A ($\rceil$)&nicht A&2\\
-			\tableline %...............................................
-			$A\lnleftimp B$&&&&\WWfalse&\WWfalse&\WWtrue&\WWfalse&Präsektion, nur B ($\not\subset$)&nicht (A folgt aus B) \tnote{3}&1\\
-			\tableline %...............................................
-			$A\lnor B$&&&&\WWfalse&\WWfalse&\WWfalse&\WWtrue&NOR\tnote{2}, Peirce-Funktion ($\downarrow, \overline\vee$)&nicht (A oder B) \tnote{3}&4\\
-			\tableline %...............................................
-			$A\lbfalse B$&&&&\mrF&\mrF&\mrF&\mrF&Kontradiktion&falsch&6\\
-			\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
-			$A\lnbtrue B$&&&&&&&&-&nicht wahr&6\\
-			\hline\hline %=======================================================
-			\rowcolor{cLightGray}
-			$A=B$&&&&\WWtrue&\WWfalse&\WWfalse&\WWtrue&Identität&A gleich B&0\\
-			\tableline %...............................................
-			\rowcolor{cLightGray}
-			$A\ne B$&&&&\WWfalse&\WWtrue&\WWtrue&\WWfalse&Ungleichheit&A ungleich B&0\\
-			\tableline %...............................................
-			\rowcolor{cLightGray}
-			$A\defeq B$&&&&&&&&Definition&A definiert als B&0\\
-			\hline %_____________________________________________________________
-		\end{tabularx}
-		\caption{Definition von aussagenlogischen Symbolen.}
-		\label{tab:aussagenlogische Symbole}
-		\begin{tablenotes}
-			\item[1] \emph{Oper} steht für \emph{Operation} und \emph{P} für \emph{Priorität}.
-			\item[2] Diese Operationen werden auch als logische Schaltelemente in logischen Schaltungen verwendet.
-			\item[3] Das \emph{nicht} darf nicht in die Klammer hineingezogen werden, da sich sonst die Bedeutung ändern würde oder unklar wäre!
-		\end{tablenotes}
-	\end{threeparttable}\end{table}
+		\begin{threeparttable}
+			\begin{tabularx}{\linewidth}{c||c:cc:cccc|X:X|c|}
+				\textbf{Oper}\tnote{1}&\textbf{0}&\multicolumn{2}{c:}{\textbf{1}}&\multicolumn{4}{c|}{\textbf{2}}& \textbf{Name}& \textbf{Sprechweise}&\textbf{P\tnote{1}}\\
+				\hline %-------------------------------------------------------------
+				A&-&\texttrue&\textfalse&\texttrue&\texttrue&\textfalse&\textfalse&-&Aussage A&\\
+				\tableline %...............................................
+				B&-&-&-&\texttrue&\textfalse&\texttrue&\textfalse&-&Aussage B&\\
+				\hline\hline %=======================================================
+				\rowcolor{cLightLightGray}
+				$\ltrue$&\mrW&&&&&&&-&wahr&\\
+				\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+				$\lnfalse$&&&&&&&&-&nicht falsch&\\
+				\tableline %...............................................
+				\rowcolor{cLightLightGray}
+				$\lfalse$&\mrF&&&&&&&-&falsch&\\
+				\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+				$\lntrue$&&&&&&&&-&nicht wahr&\\
+				\hline %-------------------------------------------------------------
+				$\lutrue A$&&\mrW&\mrW&&&&&-&wahr&6\\
+				\gapline % . . . . . . . . . . . . . . . . . . . . . . . .
+				$\lnufalse A$&&&&&&&&-&nicht falsch&6\\
+				\tableline %...............................................
+				\rowcolor{cLightGray}
+				$(A)$&&\texttrue&\textfalse&&&&&Klammerung&A ist geklammert&7\\
+				\tableline %...............................................
+				\rowcolor{cLightGray}
+				$\lnot A$&&\textfalse&\texttrue&&&&&Negation&nicht A&6\\
+				\tableline %...............................................
+				$\lufalse A$&&\mrF&\mrF&&&&&-&falsch&6\\
+				\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+				$\lnutrue A$&&&&&&&&-&nicht wahr&6\\
+				\hline %-------------------------------------------------------------
+				$A\lbtrue B$&&&&\mrW&\mrW&\mrW&\mrW&Tautologie&wahr&5\\
+				\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+				$A\lnbfalse B$&&&&&&&&-&nicht falsch&5\\
+				\tableline %...............................................
+				$A\lor B$&&&&\texttrue&\texttrue&\texttrue&\textfalse&Disjunktion; Adjunktion&A oder B&3\\
+				\tableline %...............................................
+				$A\lleftimp B$&&&&\texttrue&\texttrue&\textfalse&\texttrue&Replikation; Konversion ($\subset$)&A folgt aus B&1\\
+				\tableline %...............................................
+				$A\lleft B$&&&&\texttrue&\texttrue&\textfalse&\textfalse&Präpendenz;\newline Identität von A ($\rfloor$)&A&2\\
+				\tablegroup %----------------------------------------------
+				\rowcolor{cLightGray}
+				$A\limp B$&&&&\texttrue&\textfalse&\texttrue&\texttrue&Implikation; Subjunktion;\newline Konditional ($\supset$)&aus A folgt B&1\\
+				\tableline %...............................................
+				$A\lright B$&&&&\texttrue&\textfalse&\texttrue&\textfalse&Postpendenz;\newline Identität von B ($\lfloor)$&B&2\\
+				\tableline %...............................................
+				\rowcolor{cLightGray}
+				$A\lequiv B$&&&&\mrW&\mrF&\mrF&\mrW&Bijunktion; Bikonditional;\newline Äquivalenz&A genau dann, wenn B;\newline A ist äquivalent zu B&1\\
+				\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+				$A\lnxor B$&&&&&&&&-&nicht (entweder A oder B)&3\\
+				\tableline %...............................................
+				\rowcolor{cLightGray}
+				$A\land B$&&&&\texttrue&\textfalse&\textfalse&\textfalse&Konjunktion&A und B&4\\
+				\tablegroup %----------------------------------------------
+				$A\lnand B$&&&&\textfalse&\texttrue&\texttrue&\texttrue&NAND\tnote{2};\newline Sheffer-Funktion ($\mid, \uparrow, \barwedge$)&nicht (A und B)&4\\
+				\tableline %...............................................
+				\rowcolor{cLightLightGray}
+				$A\lxor B$&&&&\mrF&\mrW&\mrW&\mrF&ausschließende Disjunktion;\newline XOR ($\veebar, \oplus$)&entweder A oder B&3\\
+				\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+				$A\lnequiv B$&&&&&&&&Kontravalenz ($\not\equiv$)&{\small nicht (A genau dann, wenn B)}&1\\
+				\tableline %...............................................
+				$A\lnright B$&&&&\textfalse&\texttrue&\textfalse&\texttrue&Postnonpendenz;\newline Negation von B ($\lceil$)&nicht B&2\\
+				\tableline %...............................................
+				$A\lnimp B$&&&&\textfalse&\texttrue&\textfalse&\textfalse&Postsektion; nur A ($\not\supset$)&nicht (aus A folgt B)&1\\
+				\tablegroup %----------------------------------------------
+				$A\lnleft B$&&&&\textfalse&\textfalse&\texttrue&\texttrue&Pränonpendenz;\newline Negation von A ($\rceil$)&nicht A&2\\
+				\tableline %...............................................
+				$A\lnleftimp B$&&&&\textfalse&\textfalse&\texttrue&\textfalse&Präsektion; nur B ($\not\subset$)&nicht (A folgt aus B)&1\\
+				\tableline %...............................................
+				$A\lnor B$&&&&\textfalse&\textfalse&\textfalse&\texttrue&NOR\tnote{2}; Peirce-Funktion ($\downarrow, \overline\vee$)&nicht (A oder B)&3\\
+				\tableline %...............................................
+				$A\lbfalse B$&&&&\mrF&\mrF&\mrF&\mrF&Kontradiktion&falsch&5\\
+				\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
+				$A\lnbtrue B$&&&&&&&&-&nicht wahr&5\\
+				\hline\hline %=======================================================
+				\rowcolor{cLightGray}
+				$A=B$&&&&\texttrue&\textfalse&\textfalse&\texttrue&Identität&A gleich B&0\\
+				\tableline %...............................................
+				\rowcolor{cLightGray}
+				$A\ne B$&&&&\textfalse&\texttrue&\texttrue&\textfalse&Ungleichheit&A ungleich B&0\\
+				\tableline %...............................................
+				\rowcolor{cLightGray}
+				$A\defeq B$&&&&&&&&Definition&A definiert als B&0\\
+				\hline %_____________________________________________________________
+			\end{tabularx}
+			\caption{Definition von aussagenlogischen Symbolen.}
+			\label{tab:aussagenlogische Symbole}
+			\begin{tablenotes}
+				\item[1] \emph{Oper} steht für \emph{Operation} und \emph{P} für \emph{Priorität}.
+				\item[2] Diese Operationen werden auch als logische Schaltelemente in logischen Schaltungen verwendet.
+			\end{tablenotes}
+		\end{threeparttable}
+	\end{table}
 
-	Wenn für eine bestimmte Kombination von Wahrheitswerten mehr als eine Operation angegeben ist, so können diese Operationen höchstens für solche Logiken, in denen nicht alle der üblichen Axiome, insbesondere nicht das Axiom $A\lor\lnot A=\ltrue$, vorhanden sind, verschieden sein, \textdh verschiedene Ergebnisse liefern.
+	Um vollständig zu sein, \textdh\ für alle 22 möglichen Kombinationen von Wahrheitswerten für höchstens zwei Variable Operatorsymbole zu haben, enthält die Tabelle auch viele ungebräuchliche Operatoren. Am verbreitetsten sind neben den Klammern nur die logischen Operatoren $\lnot, \land, \lor, \limp$ und $\lequiv$, gelegentlich auch $\lleftimp$ und $\lxor$, sowie die Konstanten $\ltrue$ und $\lfalse$. Die entsprechenden Zeilen in der Tabelle sind grau hinterlegt. Zu jedem normalen Operator, getrennt nach Konstanten und unären und binären Operatoren, gibt es einen durchgestrichenen (negierten) Operator und umgekehrt. Die Wahrheitswerte \texttrue\ und \textfalse\ sind jeweils vertauscht. Das \emph{nicht} vor geklammerten Ausdrücken darf nicht in die Klammer hineingezogen werden, da sich sonst die Bedeutung ändern würde oder unklar wäre! Die Symbole $\ltrue, \lfalse, \lntrue$ und $\lnfalse$ werden hier nicht nur für Konstante, sondern auch als unäre und binäre Operatoren verwendet.
 
-	Um vollständig zu sein, \textdh für alle 22 möglichen Kombinationen von Wahrheitswerten für höchstens zwei Variable Operatorsymbole zu haben, enthält die Tabelle auch viele ungebräuchliche Operatoren. Am verbreitesten sind neben den Klammern nur die logischen Operatoren $\lnot$, $\land$, $\lor$, $\limp$ und $\lequiv$, gelegentlich auch $\lleftimp$ und $\lxor$, sowie die Konstanten $\ltrue$ und $\lfalse$. Die entsprechenden Zeilen in der Tabelle sind grau hinterlegt. Zu jedem normalen Operator, getrennt nach Konstanten und unären und binären Operatoren, gibt es einen durchgestrichenen (negierten) Operator und umgekehrt. Die Wahrheitswerte \WWtrue\ und \WWfalse\ sind jeweils vertauscht. Die Symbole $\ltrue$, $\lfalse$, $\lntrue$ und $\lnfalse$ werden hier auch als unäre und binäre Operatoren verwendet.
+	Wenn für eine bestimmte Kombination von Wahrheitswerten mehr als eine Operation angegeben ist, so sind diese Operationen in der zweiwertigen Aussagenlogik alle gleich. Bei der formalen Definition setzen wir aber keine Zweiwertigkeit voraus, so dass je nach Definition der Operatoren und Auswahl der Axiome die Operatoren verschieden sein können, \textdh\ verschiedene Ergebnisse liefern.
 
-	Identität ($=$) und Ungleichheit  ($\ne$) sind im engeren Sinne keine logischen Operatoren und die Definition ($\defeq$) schon gar nicht, während $\lequiv$ und $\lnequiv$ per Axiom oder eine Definition über einen logischen Ausdruck eingeführt werden müssen. $=$, $\ne$ und $defeq$ sind ebenfalls grau hinterlegt.
+	Identität ($=$) und Ungleichheit  ($\ne$) sind im engeren Sinne keine logischen Operatoren und die Definition ($\defeq$) schon gar nicht, während $\lequiv$ und $\lnequiv$ (trotz gleicher Wahrheitswerte) über ein Axiom oder eine Definition eingeführt werden müssen. $=, \ne$ und $\defeq$ sind ebenfalls grau hinterlegt.
 
-	Zur Klammerersparnis werden die üblichen Regeln verwendet, \textdh dass Operatoren mit höherer Priorität stärker binden, als solche mit niedrigerer Priorität. Bei gleicher Priorität binden unäre Operatoren von rechts nach links\footnote{ Unäre Operatoren stehen hier stets links \emph{vor} dem Operanden, so dass es gar keine andere Möglichkeit gibt.} und binäre von links nach rechts.
+	\subsection{Klammerregeln}
+	\label{sub:Klammerregeln}
 
-	Da Computerprogramme verwenden werden, müssen die Axiome, Sätze, Beweise, \textetc in streng formaler Form vorliegen. Die Formalisierung stützt sich im Wesentlichen auf~\cite{bib:Aussagenlogik}. (\alsoname~\cite{bib:LogikDe, bib:LogikEn}).
+	Zur Klammerersparnis werden die üblichen Regeln verwendet, \textdh\ dass Operatoren mit höherer Priorität stärker binden, als solche mit niedrigerer Priorität. Bei gleicher Priorität binden Klammern von innen nach außen, unäre Operatoren von rechts nach links\footnote{ Unäre Operatoren - außer Klammern - stehen hier stets links \emph{vor} dem Operanden, so dass es gar keine andere Möglichkeit gibt.} und binäre von links nach rechts. Es gilt also mit abnehmender Priorität:
 
-	Es werden folgende Mengen\footnote{ Hier wird die naive Mengenlehre vorausgesetzt.} definiert:
+	Klammern
 	\begin{itemize}
-		\newcommand{\Item}[3]{\item\begin{tabbing}\hspace{0.7cm}\=\hspace{5cm}\=\kill #1\>#2\>#3\end{tabbing}}
-
-		\Item{$\mathbb{N}_0$}{}
-		{Menge der \emph{natürlichen Zahlen} einschließlich $0$.}
-
-		\Item{$\mathcal{F}\mathrm{a}$}{$\defeq\{A_n|n\in \mathbb{N}_0\}$}
-		{Menge der \emph{atomaren Formeln} (Satzbuchstaben), kurz: \emph{Atome}.}
-
-		\Item{$\mathcal{G}$}{$\defeq\{(,)\}$}
-		{Menge der \emph{Gliederungszeichen}.}
-
-		\Item{$\mathcal{U}$}{$\defeq\{\lnot\}$}
-		{Menge der \emph{unären Operatoren}.}
-
-		\Item{$\mathcal{B}$}{$\defeq\{\land,\lor,\limp,\lequiv\}$}
-		{Menge der \emph{binären Operatoren}.}
-
-		\Item{$\mathcal{Q}$}{$\defeq\{\forall,\exists\}$}
-		{Menge der \emph{Quantoren}.}
-
-		\Item{$\mathcal{S}$}{$\defeq\mathcal{G}\cup\mathcal{U}\cup\mathcal{B}\cup\mathcal{Q}$}
-		{Menge der \emph{logischen Symbole}.}
-
-		\Item{$\mathcal{A}$}{$\defeq\mathcal{F}_\mathrm{a}\cup\mathcal{S}$}
-		{\emph{Alphabet} der logischen Sprache.}
-
+		\item $(\dots)$
+	\end{itemize}
+	Unäre Operatoren
+	\begin{itemize}
+		\item $\lnot, \lutrue, \lufalse, \lnutrue, \lnufalse$
+	\end{itemize}
+	Binäre Operatoren
+	\begin{itemize}
+		\item $\lbtrue, \lbfalse, \lnbtrue, \lnbfalse$
+		\item $\land, \lnand$
+		\item $\lor, \lxor, \lnor, \lnxor$
+		\item $\lleft, \lright, \lnleft, \lnright$
+		\item $\lleftimp, \lequiv, \limp, \lnleftimp, \lnequiv, \lnimp$
+	\end{itemize}
+	Nichtlogische Operatoren
+	\begin{itemize}
+		\item $=, \ne, \defeq$
 	\end{itemize}
 
-	Die Symbole werden noch um Konstant, Quantoren und die in der \tablename~\vref{tab:aussagenlogische Symbole} vorhandenen, noch nicht aufgeführten Operatorsvmbole ergänzt:
+	\subsection{Formalisierung}
+	\label{sub:Formalisierung}
 
-	\begin{itemize}
-		\newcommand{\Item}[3]{\item\begin{tabbing}\hspace{0.7cm}\=\hspace{5cm}\=\kill #1\>#2\>#3\end{tabbing}}
+	Da Computerprogramme verwendet werden, müssen die Axiome, Sätze, Beweise, \textetc\ in streng formaler Form vorliegen. Die Formalisierung stützt sich im Wesentlichen auf~\cite{bib:Aussagenlogik}. (\alsoname~\cite{bib:LogikDe, bib:LogikEn}).
 
-		\Item{$\mathcal{K}$}{$\defeq\{\ltrue,\lfalse,\lntrue,\lnfalse\}$}
-		{Menge der Konstanten.}
+	\begingroup
+		\newcommand{\Item}[3]{\item[]\begin{tabbing}\hspace{0.7cm}\=\hspace{5cm}\=\kill#1\>#2\>#3\end{tabbing}}
 
-		\Item{$\mathcal{U}_\mathrm{z}$}{$\defeq\{\ltrue,\lfalse,\lntrue,\lnfalse\}$}
-		{Menge der \emph{zusätzlichen} unären Operatoren.}
+		Es werden folgende Mengen\footnote{ Hier wird die naive Mengenlehre vorausgesetzt.} definiert:
+		\begin{itemize}
+			\Item{$\mathbb{N}_0$}{}{Menge der \emph{natürlichen Zahlen} einschließlich $0$.}
+			\Item{$\mathcal{V}$}{$\defeq\{P_n|n\in \mathbb{N}_0\}$}{Menge der \emph{atomaren Formeln} (Satzbuchstaben), kurz: \emph{Atome}.}
+			\Item{$\mathcal{J}$}{$\defeq\mathcal{U}\cup\mathcal{B}\cup\mathcal{G}$}{Menge der \emph{Junktoren} und Gliederungszeichen, mit:}
+			\begin{itemize}
+				\Item{$\mathcal{U}$}{$\defeq\{\lnot\}$}{Menge der \emph{unären Operatoren}.}
+				\Item{$\mathcal{B}$}{$\defeq\{\land,\lor,\limp,\lequiv\}$}{Menge der \emph{binären Operatoren}.}
+				\Item{$\mathcal{G}$}{$\defeq\{(,)\}$}{Menge der \emph{Gliederungszeichen}.}
+			\end{itemize}
+			\Item{$\mathcal{A}$}{$\defeq\mathcal{V}\cup\mathcal{J}$}{\emph{Alphabet} der logischen Sprache.}
+		\end{itemize}
+		Die Symbole werden noch um die weiteren in der \tablename~\vref{tab:aussagenlogische Symbole} vorhandenen, bisher nicht verwendeten Symbole ergänzt.
+		\begin{itemize}
+			\Item{$\mathcal{J}_\mathrm{e}$}{$\defeq\mathcal{K}\cup\mathcal{U}_\mathrm{e}\cup\mathcal{B}_\mathrm{e}\cup\mathcal{G}$}{\emph{Erweiterte} Menge der Junktoren und Gliederungszeichen, mit:}
+			\begin{itemize}
+				\Item{$\mathcal{K}$}{$\defeq\{\ltrue,\lfalse,\lntrue,\lnfalse\}$}{Menge der \emph{Konstanten}.}
+				\Item{$\mathcal{U}_\mathrm{e}$}{$\defeq\mathcal{U}\cup\{\ltrue,\lfalse,\lntrue,\lnfalse\}$}{\emph{Erweiterte} Menge der unären Operatoren.}			\Item{$\mathcal{B}_\mathrm{e}$}{$\defeq\mathcal{B}\cup\{\lleftimp,\lright,\lleft,\lxor,\ltrue,\lfalse,\lnand,\lnor,\lnimp,\lnequiv,\lnleftimp,\lnright,\lnleft,\lnxor,\lntrue,\lnfalse\}$}{\\\>\>\emph{Erweiterte} Menge der binären Operatoren.}
+			\end{itemize}
+			\Item{$\mathcal{A}_\mathrm{e}$}{$\defeq\mathcal{V}\cup\mathcal{J}_\mathrm{e}$}{\emph{Erweitertes} Alphabet der logischen Sprache.}
+		\end{itemize}
+	\endgroup
 
-		\Item{$\mathcal{B}_\mathrm{z}$}{$\defeq\{\lleftimp,\lright,\lleft,\lxor,\ltrue,\lfalse,\lnand,\lnor,\lnimp,\lnequiv,\lnleftimp,\lnright,\lnleft,\lnxor,\lntrue,\lnfalse\}$}
-		{\\\>\>Menge der \emph{zusätzlichen} binären Operatoren.}
-
-		\Item{$\mathcal{Q}_\mathrm{z}$}{$\defeq\{\bigwedge,\bigvee\}$}
-		{Menge der \emph{zusätzlichen} \emph{Quantoren}}
-
-		\Item{$\mathcal{S}_\mathrm{z}$}{$\defeq\mathcal{K}\cup\mathcal{O}_\mathrm{z}\cup\mathcal{Q}_\mathrm{z}$}
-		{Menge der \emph{zusätzlichen} logischen Symbole.}
-
-		\Item{$\mathcal{A}_\mathrm{e}$}{$\defeq\mathcal{A}\cup\mathcal{S}_\mathrm{z}$}
-		{\emph{Erweitertes} Alphabet der logischen Sprache.}
-
-	\end{itemize}
-
-% EINARBEITEN
-%	$A$, $B$, $x$, $A(x)$, \WWtrue und F haben die übliche Bedeutung.
-%	\begin{itemize}
-%		\item $A$ und $B$ sind beliebige, auch zusammengesetzte, \emph{Aussagen}.
-%		\item $x$ ist eine Variable, deren mögliche Werte bekannt sind.
-%		\item $A(x)$ ist eine Aussage, die von $x$ abhängig ist.
-%			Für verschiedene Werte von $x$ kann $A(x)$ verschiedene Wahrheitswerte annehmen, muss das aber nicht,
-%		\item \WWtrue ist der Wahrheitswert für \emph{wahr}.
-%		\item F ist der Wahrheitswert für \emph{falsch}.
-%	\end{itemize}
-
-	\par \textbf{> > > AUSSAGENLOGIK bearbeiten. < < <} % AUSSAGENLOGIK bearbeiten.
+	\par \textbf{> > > AUSSAGENLOGIK weiter bearbeiten. < < <} % AUSSAGENLOGIK weiter bearbeiten.
 
 	\section{Prädikatenlogik} %==================================================
 	\label{Prädikatenlogik}
