@@ -1,8 +1,8 @@
 # ASBA ######
 
-**Axiome, Sätze, Beweise und Ausgaben**
+**Axiome, Sätze, Beweise und Auswertungen**
 
-Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form
+Projekt zur maschinellen Überprüfung von mathematischen Beweisen, deren Ausgabe in lesbarer Form und Auswertungen, wie Statistiken und vorausgesetzte Axiome und Prämissen.
 
 ## Überblick #####
 

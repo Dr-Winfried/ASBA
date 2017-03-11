@@ -2,7 +2,7 @@
 Projekt
 =======
 
-    ASBA - Axiome, Sätze, Beweise und Ausgaben
+    ASBA - Axiome, Sätze, Beweise und Auswertungen
 
 
 ============
