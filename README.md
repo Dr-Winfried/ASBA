@@ -2,7 +2,7 @@
 
 **Axiome, Sätze, Beweise und Auswertungen**
 
-Projekt zur maschinellen Überprüfung von mathematischen Beweisen, deren Ausgabe in lesbarer Form und Auswertungen, wie Statistiken und vorausgesetzte Axiome und Prämissen.
+Projekt zur maschinellen Überprüfung von mathematischen Beweisen, deren Ausgabe in lesbarer Form und Auswertungen, wie zum Beispiel Statistiken und vorausgesetzte Axiome und Prämissen.
 
 ## Überblick #####
 
@@ -43,7 +43,7 @@ Das System kann nicht alles beantworten. Als Hilfe zur Beantwortung soll das Sys
   - Fachbegriffe
   - Fachgebiete
   - Ausgabeschemata
-  
+
   Dabei sind alle Begriffe nur innerhalb eines Fachgebietes und seiner untergeordneten Fachgebiete gültig, solange sie nicht umdefiniert werden. Das oberste Fachgebiet ist die ganze Mathematik.
 - Vorhandene Beweise können automatisch geprüft werden.
 - Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener Ausgabeschemata erfolgen.
