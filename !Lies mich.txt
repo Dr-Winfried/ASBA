@@ -66,6 +66,8 @@ Konfigurationsmanagement:
 
 LaTeX:
 - MiKTeX
+- Strawberry Perl (64-Bit)
+- TeXstudio
 
 qedeq:
 - qedeq

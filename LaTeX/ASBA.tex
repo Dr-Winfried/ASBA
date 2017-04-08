@@ -28,128 +28,194 @@
 
 \documentclass[english,ngerman,parskip=half,headsepline,footsepline]{scrreprt}
 
-%%%% Pakete %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Pakete %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % allgemein
-\usepackage[utf8]{inputenc} % Input encoding specification
+\usepackage[utf8]{inputenc}% Input encoding specification
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{scrlayer-scrpage}
-\usepackage{geometry} % Flexible and complete interface to document dimensions.
-\usepackage{microtype} % Subliminal refinements towards typographical perfection.
+\usepackage{geometry}% Flexible and complete interface to document dimensions.
+\usepackage{microtype}% Subliminal refinements towards typographical perfection.
 \usepackage{graphicx}
-\usepackage[table]{xcolor} % Driver-independent color extensions for LaTeX and pdfLaTeX - vor "color"?
-\usepackage{babel} % Multilingual support for plain TeX or LaTeX.
-% mathematische Pakete
-\usepackage{amsmath} %% ASM mathematical facilities for LaLeX.
-\usepackage{amsfonts} % TeX fonts from the American Mathematical Society.
-\usepackage{amssymb} % Symbols from the American Mathematical Society.
-\usepackage{mathtools} % Mathematical tools to use with asmmath.
-\usepackage{mathabx} % Three series of mathematical symbols.
-\usepackage{mathpazo} % Fonts to typeset mathematics to match palatino.
-\usepackage{cancel} % Place lines through maths formulae.
+\usepackage[table]{xcolor}% Driver-independent color extensions for LaTeX and pdfLaTeX - vor 'color'?
+\usepackage{babel}% Multilingual support for plain TeX or LaTeX.
+%\usepackage{makeidx}% Indexing - Entweder 'makeidx' oder 'splitidx'
+\usepackage[protected,idxcommands]{splitidx}% mehrere Indizes - ersetzt 'makeidx'
+%\usepackage{hvindex}% Support for indexing - after 'babel
+%\usepackage{showidx}% Index auf Seitenrand anzeigen - Zum Testen der Indizes - Fehler: Gibt direkt und nicht auf Rand aus
+%\usepackage{multicol}% An environment for multicolumn output
+% mathematische Pakete<
+\usepackage[fleqn]{amsmath}% Mathematical facilities for LaLeX from ASM
+\usepackage{amsfonts}% TeX fonts from the American Mathematical Society.
+\usepackage{amssymb}% Symbols from the American Mathematical Society.
+\usepackage{mathtools}% Mathematical tools to use with asmmath.
+\usepackage{mathabx}% Three series of mathematical symbols.
+\usepackage{mathpazo}% Fonts to typeset mathematics to match palatino.
+\usepackage{cancel}% Place lines through maths formulae.
 % Tabellen
-\usepackage{ctable} % Flexible typesetting of table and figure floats using key/value directives
+\usepackage{ctable}% Flexible typesetting of table and figure floats using key/value directives
 %% Das Paket ctable fast die Eigenschaften der Pakete
-% \usepackage{array} %
-% \usepackage{tabularx} % Erweiterung von tabular*
-% \usepackage{booktabs} % Nicer layout of tables
+% \usepackage{array}%
+% \usepackage{tabularx}% Erweiterung von tabular*
+% \usepackage{booktabs}% Nicer layout of tables
 %% zusammen und lädt zusätzlich noch die Pakete
-% \usepackage{rotating} % Rotating tools, including rotated full page floats
-% \usepackage{xspace} % Behandelt Zwischenraum nach Makros
-% \usepackage{color} % LaTeX upport for color, for those dvi drivers that can produce coloured text
-% \usepackage{xkeyval} % Extension of the keyval package
-\usepackage{threeparttable} % Tables with captions and notes all the same width.
-\usepackage{multirow} % Create tabular cell spanning multiple rows.
-\usepackage{caption} % Customizing captions in floating environments.
-\usepackage{diagbox} % Table heads with diagonal lines.
-\usepackage{arydshln} % Draw dash-lines in array/tabular.
+% \usepackage{rotating}% Rotating tools, including rotated full page floats
+% \usepackage{xspace}% Behandelt Zwischenraum nach Makros
+% \usepackage{color}% LaTeX upport for color, for those dvi drivers that can produce coloured text
+% \usepackage{xkeyval}% Extension of the keyval package
+\usepackage{threeparttable}% Tables with captions and notes all the same width.
+\usepackage{multirow}% Create tabular cell spanning multiple rows.
+\usepackage{caption}% Customizing captions in floating environments.
+\usepackage{diagbox}% Table heads with diagonal lines.
+\usepackage{arydshln}% Draw dash-lines in array/tabular.
 % Verweise
 \usepackage{varioref}
-\usepackage[colorlinks,linktoc=all]{hyperref} % Extensive support for hypertext in LaTeX - muss als letztes Paket angegeben werden.
+\usepackage[colorlinks,linktoc=all]{hyperref}% Extensive support for hypertext in LaTeX - muss als letztes Paket angegeben werden.
 
-%%% Einstellung von globalen Werten %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Einstellung von globalen Werten und Makro-Redefinitionen %%%%%%%%%%%%%%%%%%%
 
-\geometry{textwidth=170mm,textheight=256mm,twoside}
+\geometry{textwidth=170mm,textheight=256mm,twoside}% optional Option 'showframe' zum Testen
 
-% Kopfzeilen
-\newcommand*{\texthead}[1]{\textnormal{\textsf{\textbf{#1}}}}
-\newcommand*{\newchapter}[1]{
+% Kopfzeilen ===================================================================
+\newcommand*{\texthead}[1]{\textnormal{\textsf{\textbf{#1}}}}% Schriftart für Kopf- und Fußzeilen
+\newcommand{\Lehead}[1]{\lehead{\texthead{#1}}}
+\newcommand{\Cehead}[1]{\cehead{\texthead{#1}}}
+\newcommand{\Rehead}[1]{\rehead{\texthead{#1}}}
+\newcommand{\Lohead}[1]{\lohead{\texthead{#1}}}
+\newcommand{\Cohead}[1]{\cohead{\texthead{#1}}}
+\newcommand{\Rohead}[1]{\rohead{\texthead{#1}}}
+\newcommand{\Ohead}[1]{\ohead{\texthead{#1}}}
+\newcommand{\Chead}[1]{\chead{\texthead{#1}}}
+\newcommand{\Ihead}[1]{\ihead{\texthead{#1}}}
+\newcommand{\Ofoot}[1]{\ofoot{\textnormal{\textbf{#1}}}}
+\newcommand{\Cfoot}[1]{\cfoot{\textnormal{#1}}}
+\newcommand{\Ifoot}[1]{\ifoot{\textnormal{#1}}}
+\newcommand{\Thispagestyle}{\thispagestyle{scrheadings}}
+
+% Kopfzeilen mit 'scrlayer-scrpage'
+%         \Lehead \Cehead \Rehead | \Lohead \Cohead \Rohead
+% \Ohead: \Lehead                                   \Rohead
+% \Chead:         \Cehead                   \Cohead
+% \Ihead:                 \Rehead   \Lohead
+%% ASBA <Chapter-Überschrift> \Chaptername~\thechapter | \sectionname~\thesection <Section-Überschrift> ASBA
+%Initialisierung
+\Ohead{ASBA}%      bleibt unverändert
+\Chead{}%          wird laufend verändert
+\Ihead{Copyright}% wird laufend verändert
+
+% Kapitel ======================================================================
+
+\newcommand*{\Chaptername}{\chaptername}% wird ab Anhang mit 'Anhang' überschrieben
+\newcommand*{\nextchapter}{%            direkt vor \chapter (auch im Kommentar)
+	\Thispagestyle%                     Kopfzeile aktivieren - vor \clearpage
+	\clearpage%                         neue Seite
+}
+\newcommand*{\newchapter}[1]{%          direkt nach \chapter
 	\markboth{#1}{}
-	\ohead{\texthead{ASBA}}
-	\chead{\texthead{#1}}
-	\ihead{\texthead{\chaptername~\thechapter}}
-	\thispagestyle{scrheadings}
+	\Chead{\leftmark}%                  Mitte in der Kopfzeile = <Kapitelname>
+	\Ihead{\Chaptername~\thechapter}%   Innen in der Kopfzeile = Kapitel/Anhang <Nr.>
+	\Thispagestyle%                     Kopfzeile aktivieren
 }
-\newcommand*{\newsection}[1]{
+\newcommand*{\likechapter}[1]{% statt \newchapter wenn \chapter nur im Kommentar
+	\markboth{#1}{}
+	\Chead{\leftmark}%                  Mitte in der Kopfzeile = <Kapitelname>
+	\Ihead{}%                           Innen in der Kopfzeile = <leer>
+	\Thispagestyle%                     Kopfzeile aktivieren
+	\addcontentsline{toc}{chapter}{#1}% Eintrag im Inhaltsverzeichnis
+}
+\newcommand{\Appendix}{\appendix\renewcommand{\Chaptername}{\appendixname}}
+
+% Abschnitte ===================================================================
+
+\newcommand*{\Sectionname}{\sectionname}% kann überschrieben werden
+\newcommand*{\nextsection}{%            direkt vor \section (auch im Kommentar)
+}
+\newcommand*{\newsection}[1]{%          direkt nach \section
 	\markright{#1}
-	\lehead{\texthead{ASBA}}
-	\cehead{\texthead{\leftmark}}
-	\rehead{\texthead{\chaptername~\thechapter}}
-	\lohead{\texthead{\sectionname~\thesection}}
-	\cohead{\texthead{#1}}
-	\rohead{\texthead{ASBA}}
-	\thispagestyle{scrheadings}
+	\Cohead{\rightmark}
+	\Lohead{\Sectionname~\thesection}
+	\Thispagestyle%                     Kopfzeile aktivieren
+}
+\newcommand{\likesection}[1]{% statt \newsection wenn \section nur im Kommentar
+	\markright{#1}
+	\Cohead{\rightmark}
+	\Lohead{}
+	\Thispagestyle%                     Kopfzeile aktivieren
+	\addcontentsline{toc}{section}{#1}% Eintrag im Inhaltsverzeichnis
 }
 
-% Fußzeilen
-\ifoot{\textnormal{\today}}
-\cfoot{\textnormal{Winfried Teschers}}
-\ofoot{\textnormal{\textbf{\thepage}}}
-\deffootnote[10pt] % Markenbreite
-{10pt} % Einzug - für Blocksatz: Markenbreite
-{0pt} % Absatzeinzug für Folgeabsätze
-{\makebox[9pt][r]{\textsuperscript{\thefootnotemark} }} % Fußnotenzeichen; < Markenbreite
+% Fußzeilen ====================================================================
+\Ofoot{\thepage}
+\Cfoot{Winfried Teschers}
+\Ifoot{\today}
 
-% Vordefinierte Werte ändern
-\setcounter{tocdepth}{2}
-\setcounter{secnumdepth}{3}
-\setlength\extrarowheight{1pt}
-\captionsetup{labelfont=bf}
+% Fußnoten ---------------------------------------------------------------------
+\deffootnote[10pt]% Markenbreite
+{10pt}% Einzug - für Blocksatz: Markenbreite
+{0pt}% Absatzeinzug für Folgeabsätze
+{\makebox[9pt][r]{\textsuperscript{\thefootnotemark} }}% Fußnotenzeichen; < Markenbreite
+
+% Indices ======================================================================
+\makeindex
+\newindex[Symbolverzeichnis]{sym}
+\newindex[Index]{idx}
+% Indexierung
+\newcommand*{\Idx}[1]{#1\idx{#1}}% normaler Index
+\newcommand*{\Sdx}[1]{#1\sym{$#1$}}% Symbol
+
+% Vordefinierte Werte ändern ==================================================
+\setcounter{tocdepth}{2}%       Tiefe des Inhaltsverzeichnisses: 2 => subsection
+\setcounter{secnumdepth}{3}%    Nummerierung:                    3 => subsubsection
+\setlength\extrarowheight{1pt}% Tabellenzellenhöhe vergrößern (sonst stoßen die großen Buchstaben oben an)
+\captionsetup{labelfont=bf}%    Tabellenbeschriftung in bf = bold font
+
 % Empfehlung aus: Herbert Voß, LaTeX Referenz, 3. Auflage, Berlin 2014; Seite 37f
-\renewcommand{\floatpagefraction}{0.7} % Empfehlung: 0.5-0.8 Voreinstellung: 0.9
-\renewcommand{\textfraction}{0.15}     %             0.1-0.3                 0.05
-\renewcommand{\topfraction}{0.8}       %             0.5-0.85                0.9
-\renewcommand{\bottomfraction}{0.5}    %             0.2-0.5                 0.9
-\setcounter{topnumber}{3}              %                                     2
-\setcounter{totalnumber}{15}           %                                     3
+\renewcommand{\floatpagefraction}{0.7}% Empfehlung: 0.5-0.8 Voreinstellung: 0.9
+\renewcommand{\textfraction}{0.15}%                 0.1-0.3                 0.05
+\renewcommand{\topfraction}{0.8}%                   0.5-0.85                0.9
+\renewcommand{\bottomfraction}{0.5}%                0.2-0.5                 0.9
+\setcounter{topnumber}{3}%                                                  2
+\setcounter{totalnumber}{15}%                                               3
 
-% Neue Elemente
-\newcounter{Enumi}
+% Neue Elemente ---------------------------------------------------------------
+\newcounter{Enumi}% für unterbrochene Listennummerierung
 
-%%%% Definitionen für den Mathematiksatz %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% sonstige nützliche Kommandos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% logische Symbole - Siehe Anhang, Definition von aussagenlogischen Symbolen %%%
-
-%% sonstige nützliche Kommandos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Strukturbezeichnungen ergänzen
 \newcommand*{\sectionname}{Abschnitt}
 \newcommand*{\subsectionname}{Unterabschnitt}
 \newcommand*{\subsubsectionname}{Paragraph}
+
+% Ablürzungen mit Punkten; zur Unterscheidung vom Satzende
 \newcommand*{\textbzw}{bzw.\@ }
-\newcommand*{\textdh}{d.\@ h.\@}
+\newcommand*{\textdh}{d.\@\,h.\@}
 \newcommand*{\textetc}{etc.\@}
 \newcommand*{\textggf}{ggf.\@}
 \newcommand*{\textusw}{usw.\@}
-\newcommand*{\textzB}{z.\@ B.\@}
-\newcommand*{\textZB}{Z.\@ B.\@}
-\newcommand*{\clq}{'} % linker Anfang für Zeichen (character left quote)
-\newcommand*{\crq}{'} % rechtes Ende für Zeichen (character right quote)
-\newcommand*{\cse}{, } % Zeichen zwischen zwei Zeichen (character seperator)
-\newcommand*{\csp}{\crqt\cset\clqt} % \clq für Tabellen
-\newcommand*{\clqt}{} % \clq für Tabellen
-\newcommand*{\crqt}{} % \crq für Tabellen
-\newcommand*{\cset}{~} % \cse für Tabellen
-\newcommand*{\cspt}{\crqt\cset\clqt} % \csp für Tabellen
+\newcommand*{\textzB}{z.\@\,B.\@}
+\newcommand*{\textZB}{Z.\@\,B.\@}
 
-%% Farben %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Quotierung von Symbolen ...
+% ... im Text - \clq <Symbol>\csp <Symbol>\crq\
+\newcommand*{\clq}{'}% linker Anfang für Zeichen (character left quote)
+\newcommand*{\crq}{'}% rechtes Ende für Zeichen (character right quote)
+\newcommand*{\cse}{, }% Zeichen zwischen zwei (gequoteten) Zeichen (character seperator)
+\newcommand*{\csp}{\crqt\cset\clqt}% Zeichen insgesamt zwischen zwei Zeichen (character space)
+% ... in Tabellen - \clqt <Symbol>\cspt <Symbol>\crqt\
+\newcommand*{\clqt}{}% \clq für Tabellen
+\newcommand*{\crqt}{}% \crq für Tabellen
+\newcommand*{\cset}{~}% \cse für Tabellen
+\newcommand*{\cspt}{\crqt\cset\clqt}% \csp für Tabellen
 
-\definecolor{cNormalUse}{rgb}{.80,.80,.80}
-\definecolor{cRareUse}{rgb}{.90,.90,.99}
+%%%% Titelseite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%% Titelseite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\titlehead{{\Large Dr. Winfried Teschers}\\Anton-Günther-Straße 26c\\91083 Baiersdorf\\{\footnotesize winfried.teschers@t-online.de}}
+\titlehead{
+	{\Large Dr. Winfried Teschers}\\
+	Anton-Günther-Straße 26c\\91083 Baiersdorf\\
+	{\footnotesize winfried.teschers@t-online.de}
+}
 \subject{Projektdokument}
 \title{{\Huge ASBA}\\Axiome, Sätze, Beweise und Auswertungen}
 \subtitle{Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form}
@@ -157,295 +223,350 @@
 \date{\today}
 \publishers{Es wird ein System beschrieben, das zu eingegebenen Axiomen, Sätzen, und Beweisen letztere prüft, Auswertungen generiert und zu gegebenen Ausgabeschemata eine Ausgabe der Elemente in üblicher Formelschreibweise im \LaTeX-Format erstellt.}
 
-%%%% Dokument %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Dokument %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 	\maketitle
-	\tableofcontents
-	% Kopfzeilen
-	\ohead{\texthead{ASBA}}
-	\chead{\texthead{\contentsname}}
-	\ihead{}
-	\thispagestyle{scrheadings}
-	\vfill
-	Copyright \copyright\ 2017 Winfried Teschers
-	\bigskip
+
+	~\vfill Copyright \copyright\ 2017 Winfried Teschers\bigskip
+
 	\selectlanguage{english}
-	Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version~1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You should have received a copy of the GNU Free Documentation License along with this document.  If not, see \url{http://www.gnu.org/licenses/}.
+	Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version~1.3 or any later version published by the Free Software Foundation;
+	with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+	You should have received a copy of the GNU Free Documentation License along with this document.
+	If not, see \url{http://www.gnu.org/licenses/}.
 	\selectlanguage{ngerman}
 
-	\cleardoublepage
-	\chapter{Analyse} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\label{cha:Analyse}
+	\nextchapter
+	\renewcommand*{\Chaptername}{\contentsname}
+%	\chapter{\contentsname}% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\likechapter{\contentsname}
+	\label{cha:Inhaltsverzeichnis}
+
+	\tableofcontents
+
+	\nextchapter
+	\renewcommand*{\Chaptername}{\chaptername}
+	\chapter{Analyse}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\newchapter{Analyse}
+	\label{cha:Analyse}
 
-	In der Mathematik gibt es eine unüberschaubare Menge an Axiomen, Sätzen, Beweisen, Fachbegriffen\footnote{\emph{Fachbegriffe} sind Namen für Axiome, Sätze, Beweise und Fachgebiete. Symbole können als spezielle Fachbegriffe aufgefasst werden.} und Fachgebieten. Dabei soll ein \emph{Fachgebiet} einen Teil der Mathematik mit einer zugehörigen Basis von Axiomen, Sätzen und spezifischen Fachbegriffen sein, zum Beispiel \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}\footnote{Ein Fachgebiet kann hier sehr klein sein und im Extremfall kein einziges Element enthalten. \emph{Umgebung} wäre in diesem Projekt eine bessere Bezeichnung, könnte aber zu Verwechslungen führen, da dies schon ein verbreiteter Fachbegriff ist.}. Zu den meisten Fachgebieten gibt es auch noch ungelöste Probleme.
-
-	Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, Beweise automatisch zu überprüfen. Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
-
-	Ein System mit ähnlicher Aufgabenstellung findet sich im GitHub Projekt Hilbert~II (\seename~\cite{bib:HilbertII, bib:qedeq}). Einige Ideen sind von dort übernommen worden.
-
-	{% Die drei jetzt definierten Kommandos sollen nur lokal gelten.
-		\newcommand*{\vsll}{\hspace{-1.0cm}}
-		\newcommand*{\vsl}{\hspace{-6pt}\vsll}
-		\newcommand*{\vsc}{\hspace{6pt}}
-
-		\section{Fragen} %===========================================================
-		\label{sec:Fragen}
-		\newsection{Fragen}
-
-		Einige der Fragen, die in diesem Zusammenhang auftauchen, werden hier formuliert:
-
-		\begin{enumerate}
-
-			\item \label{Frage:Grundlagen} \emph{Grundlagen}: Was sind die Grundlagen? Zum Beispiel welche Logik und Mengenlehre.
-
-			\item \label{Frage:Basis} \emph{Basis}: Welche wichtigen Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete gibt es? Welche davon sind Standard?
-
-			\item \label{Frage:Axiome} \emph{Axiome}: Welche Axiome werden bei einem Satz oder Beweis vorausgesetzt? Allgemein anerkannte oder auch strittige, wie zum Beispiel den \emph{Satz vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
-
-			\item \label{Frage:Beweis} \emph{Beweis}: Ist ein Beweis fehlerfrei?
-
-			\item \label{Frage:Konstruktion} \emph{Konstruktion}: Gibt es einen konstruktiven Beweis?
-
-			\item \label{Frage:Vergleiche} \emph{Vergleiche}: Welcher Beweis ist besser? Nach welchem Kriterium? Zum Beispiel elegant, kurz, einsichtig oder wenige Axiome. Was heißt eigentlich \emph{elegant}?
-
-			\item \label{Frage:Definitionen} \emph{Definitionen}: Was ist mit einem Fachbegriff oder Fachgebiet jeweils genau gemeint? Zum Beispiel \emph{Stetigkeit}, \emph{Integral} und \emph{Analysis}.
-
-			\item \label{Frage:Abhängigkeiten} \emph{Abhängigkeiten}: Wie heißt ein Fachbegriff oder Fachgebiet in einer anderen Sprache? Ist wirklich dasselbe gemeint? Was ist mit Fachbegriffen in verschiedenen Fachgebieten?
-
-			\item \label{Frage:Überblick} \emph{Überblick}: Ist ein Axiom, Satz, Beweis, Fachbegriff oder Fachgebiet schon einmal \textendash\ \textggf\ abweichend \textendash\ definiert, formuliert oder bewiesen worden?
-
-			\item \label{Frage:Darstellung} \emph{Darstellung}: Wie kann man einen Satz und den zugehörigen Beweis \textendash\ \textggf\ auch spezifisch für ein Fachgebiet \textendash\ darstellen?
-
-			\item \label{Frage:Forschung} \emph{Forschung}: Welche Probleme gibt es noch zu erforschen.
-
-		\end{enumerate}
-
-		\section{Eigenschaften} %======================================================
-		\label{sec:Eigenschaften}
-		\newsection{Eigenschaften}
-
-		Ausgehend von den Fragen in \sectionname~\vref{sec:Fragen} soll ein System entwickelt werden, das die folgenden Eigenschaften hat:
-
-		\begin{enumerate}
-
-			\item \label{Eigenschaft:Daten} \emph{Daten}: Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete können in formaler Form gespeichert werden \textendash\ auch nicht oder unvollständig bewiesene Sätze. Dabei soll die übliche mathematische Schreibweise verwendet werden können.
-
-			\item \label{Eigenschaft:Definitionen} \emph{Definitionen}: Es können Fachbegriffe für Axiome, Sätze, Beweise und Fachgebiete \textendash\ letztere mit eigenen Axiomen, Sätzen, Beweisen, Fachbegriffen und über- oder untergeordneten Fachgebieten \textendash\ definiert werden. Die Definitionen dürfen wiederum an dieser Stelle schon bekannte Fachbegriffe und Fachgebiete verwenden.
-
-			\item \label{Eigenschaft:Prüfung} \emph{Prüfung}: Vorhandene Beweise können automatisch geprüft werden.
-
-			\item \label{Eigenschaft:Ausgaben} \emph{Ausgaben}: Die Axiome, Sätze und Beweise können in üblicher Schreibweise \textendash\ abhängig von Sprache und Fachgebiet \textendash\ ausgegeben werden.
-
-			\item \label{Eigenschaft:Auswertungen} \emph{Auswertungen}: Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \sectionname~\vref{sec:Fragen} behandelten Fragen.
-
-			\setcounter{Enumi}{\value{enumi}}% Die Nummerierung soll fortgeführt werden.
-		\end{enumerate}
-
-		Damit das System nicht umsonst erstellt wird und möglichst breite Verwendung findet, werden noch zwei Punkte angefügt:
-
-		\begin{enumerate}
-			\setcounter{enumi}{\value{Enumi}}
-
-			\item \label{Eigenschaft:Lizenz} \emph{Lizenz}: Die Software ist \emph{Open Source}.
-
-			\item \label{Eigenschaft:Akzeptanz} \emph{Akzeptanz}: Das System wird von Mathematikern akzeptiert und verwendet.
-
-		\end{enumerate}
-
-		\tablename~\vref{tab:Fragen->Eigenschaften} zeigt, wie sich die Eigenschaften zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten. Mit einem X werden die Spalten einer Zeile markiert, deren zugehörige Eigenschaften zur Beantwortung der entsprechenden Frage beitragen sollen. Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellten Fragen beantworten, was allerdings illusorisch ist.
-
-		\begin{table}
-			\begin{tabularx}{\linewidth-10.95pt}{@{\hspace{.5cm}}rl@{\extracolsep{\fill}}|*{7}{c}@{\hspace{1cm}}|}
-				\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.5cm]{\textbf{Frage}\\~}{\\\textbf{Eigenschaft}}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Daten}\vsc Daten}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Definitionen}\vsc Definitionen}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Prüfung}\vsc Prüfung}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Ausgaben}\vsc Ausgaben}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Auswertungen}\vsc Auswertungen }}
-				&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Lizenz}\vsc Lizenz}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Akzeptanz}\vsc Akzeptanz}}
-				\\\hline
-				\ref{Frage:Grundlagen}&Grundlagen&X&X&-&X&X&-&-\\
-				\ref{Frage:Basis}&Basis&X&X&-&X&X&-&-\\
-				\ref{Frage:Axiome}&Axiome&X&X&-&X&X&-&-\\
-				\hdashline[2pt/2pt]
-				\ref{Frage:Beweis}&Beweis&X&-&X&X&-&-&-\\
-				\ref{Frage:Konstruktion}&Konstruktion&X&-&-&X&-&-&-\\
-				\ref{Frage:Vergleiche}&Vergleiche&X&-&-&-&X&-&-\\
-				\hdashline[2pt/2pt]
-				\ref{Frage:Definitionen}&Definitionen&X&X&-&X&-&-&-\\
-				\ref{Frage:Abhängigkeiten}&Abhängigkeiten&X&-&-&X&-&-&-\\
-				\ref{Frage:Überblick}&Überblick&X&-&-&-&X&-&-\\
-				\hdashline[2pt/2pt]
-				\ref{Frage:Darstellung}&Darstellung&-&X&-&X&-&-&-\\
-				\ref{Frage:Forschung}&Forschung&X&-&-&-&X&-&-\\
-				\hline
-			\end{tabularx}
-			\caption{Fragen $\to$ Eigenschaften}
-			\label{tab:Fragen->Eigenschaften}
-		\end{table}
-
-		\section{Ziele} %========================================================
-		\label{sec:Ziele}
-		\newsection{Ziele}
-
-		Um die Eigenschaften von \sectionname~\vref{sec:Eigenschaften} zu erreichen, werden für das System die folgenden Ziele\footnote{ Es sind eigentlich Anforderungen. Da dieser Begriff aber auch im \chaptername~\vref{cha:Design} verwendet wird, werden die Anforderungen hier \emph{Ziele} genannt.} gesetzt:
-
-		\begin{enumerate}
-
-			\item \label{Ziel:Daten} \emph{Daten}: Es enthält möglichst viele wichtige Axiome, Sätze, Beweise, Fachbegriffe, Fachgebiete und Ausgabeschemata\footnote{Um den Punkt~\ref{Eigenschaft:Ausgaben} von \sectionname~\vref{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische Ausgabeschemata benötigt, welche die Art der Ausgaben beschreiben.}.
-
-			\item \label{Ziel:Form} \emph{Form}: Die Daten liegt in formaler, geprüfter Form vor.
-
-			\item \label{Ziel:Eingaben} \emph{Eingaben}: Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise.
-
-			\item \label{Ziel:Prüfung} \emph{Prüfung}: Vorhandene Beweise können automatisch geprüft werden.
-
-			\item \label{Ziel:Ausgaben} \emph{Ausgaben}: Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener Ausgabeschemata erfolgen.
-
-			\item \label{Ziel:Auswertungen} \emph{Auswertungen}: Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich. Insbesondere kann zu jedem Beweis angegeben werden, wie viele Beweisschritte und welche Axiome und Sätze\footnote{Sätze, die quasi als Axiome verwendet werden.} er verwendet.
-
-			\item \label{Ziel:Anpassbarkeit} \emph{Anpassbarkeit}: Fachbegriffe und die Darstellung bei der Ausgabe können mit Hilfe von \textendash\ gegebenenfalls unbenannten \textendash\ untergeordneten Fachgebieten angepasst werden.
-
-			\item \label{Ziel:Individualität} \emph{Individualität}: Axiome und Sätze können für jeden Beweis individuell vorausgesetzt werden. Dabei sind fachgebietsspezifische Fachbegriffe erlaubt.
-
-			\item \label{Ziel:Internet} \emph{Internet}: Die Daten können auf mehrere Dateien verteilt sein. Ein Teil davon \textendash\ oder sogar alle \textendash\ können im Internet liegen.
-
-			\item \label{Ziel:Kommunikation} \emph{Kommunikation}: Die Kommunikation mit dem System kann mit den Fachbegriffen der einzelnen Fachgebiete erfolgen.
-
-			\item \label{Ziel:Zugriff} \emph{Zugriff}: Der Zugriff auf das System kann lokal und über das Internet erfolgen.
-
-			\item \label{Ziel:Unabhängigkeit} \emph{Unabhängigkeit}: Das System kann online und offline arbeiten.
-
-			\item \label{Ziel:Rekursion} \emph{Rekursion}: Es kann rekursiv über alle verwendeten Dateien \textendash\ auch solchen, die im Internet liegen \textendash\ ausgewertet werden.
-
-			\item \label{Ziel:Bedienbarkeit} \emph{Bedienbarkeit}: Das System ist einfach zu bedienen.
-
-			\item \label{Ziel:Lizenz} \emph{Lizenz}: Die Software ist \emph{Open Source}.
-
-			\setcounter{Enumi}{\value{enumi}}% Die Nummerierung soll fortgeführt werden.
-		\end{enumerate}
-
-		Der Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit das System effizient arbeiten kann und um die Akzeptanz zu erhöhen:
-
-		\begin{enumerate}
-			\setcounter{enumi}{\value{Enumi}}
-
-			\item \label{Ziel:Zwischenspeicher} \emph{Zwischenspeicher}: Wichtige Auswertungen können angehängt an vorhandene oder separat in eigenen Dateien zwischengespeichert werden.
-
-		\end{enumerate}
-
-		\tablename~\vref{tab:Eigenschaften->Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften in \sectionname~\vref{sec:Eigenschaften} verhalten. Mit einem X werden wieder die Spalten einer Zeile markiert, deren zugehörige Ziele zur Sicherstellung der entsprechenden Eigenschaft beitragen sollen. Idealerweise sollte durch Erreichen aller aufgestellten Ziele das System alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
-
-		\begin{table}
-			\begin{tabularx}{\linewidth-10.95pt}{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{16}{c}@{\hspace{0.4cm}}|}
-				\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]{\textbf{Eigenschaft}\\~}{\\\\\\\textbf{Ziel}}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Daten}\vsc Daten}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Form}\vsc Form}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Eingaben}\vsc Eingaben}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Prüfung}\vsc Prüfung}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Ausgaben}\vsc Ausgaben}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Auswertungen}\vsc Auswertungen}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Anpassbarkeit}\vsc Anpassbarkeit}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Individualität}\vsc Individualität}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Internet}\vsc Internet}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Kommunikation}\vsc Kommunikation}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Zugriff}\vsc Zugriff}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Unabhängigkeit}\vsc Unabhängigkeit}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Rekursion}\vsc Rekursion}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Bedienbarkeit}\vsc Bedienbarkeit}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Lizenz}\vsc Lizenz}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Zwischenspeicher}\vsc Zwischenspeicher}}
-				\\\hline
-				\ref{Eigenschaft:Daten}&Daten&X&X&X&-&-&-&-&-&-&-&-&-&-&-&-&-\\
-				\ref{Eigenschaft:Definitionen}&Definitionen&X&-&X&-&-&-&-&-&-&-&-&-&-&-&-&-\\
-				\ref{Eigenschaft:Prüfung}&Prüfung&-&-&-&X&-&-&-&-&-&-&-&-&-&-&-&-\\
-				\hdashline[2pt/2pt]
-				\ref{Eigenschaft:Ausgaben}&Ausgaben&-&-&-&-&X&-&-&-&-&-&-&-&-&-&-&-\\
-				\ref{Eigenschaft:Auswertungen}&Auswertungen&-&-&-&-&-&X&-&-&-&-&-&-&-&-&-&-\\
-				\ref{Eigenschaft:Lizenz}&Lizenz&-&-&-&-&-&-&-&-&-&-&-&-&-&-&X&-\\
-				\hdashline[2pt/2pt]
-				\ref{Eigenschaft:Akzeptanz}&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
-				\hline
-			\end{tabularx}
-			\caption{Eigenschaften $\to$ Ziele}
-			\label{tab:Eigenschaften->Ziele}
-		\end{table}
-
-		\section{Zusammenfassung} %========================================================
-		\label{sec:Zusammenfassung}
-		\newsection{Zusammenfassung}
-
-		Die \tablename~\vref{tab:Fragen->Ziele} ist eine Kombination aus den \tablename n~\vref{tab:Fragen->Eigenschaften} und~\vref{tab:Eigenschaften->Ziele} und zeigt, wie sich die Ziele in \sectionname~\vref{sec:Ziele} zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten. Auch hier werden mit einem X die Spalten einer Zeile markiert, deren zugehörige Ziele für die Beantwortung der entsprechenden Frage nötig sind. Mit einem kleinen x werden sie markiert, wenn sie zur Beantwortung der Fragen nicht nötig, aber von Interesse sind. Idealerweise sollte das Erreichen aller aufgestellten Ziele wieder alle gestellten Fragen beantworten, was natürlich auch illusorisch ist.
-
-		\begin{table}
-			\begin{tabularx}{\linewidth-10.95pt}{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{15}{c}@{\hspace{0.4cm}}|}
-				\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]{\textbf{Frage}\\~}{\\\\\\\textbf{Ziel}}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Daten}\vsc Daten}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Form}\vsc Form}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Eingaben}\vsc Eingaben}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Prüfung}\vsc Prüfung}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Ausgaben}\vsc Ausgaben}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Auswertungen}\vsc Auswertungen}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Anpassbarkeit}\vsc Anpassbarkeit}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Individualität}\vsc Individualität}}
-				&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Internet}\vsc Internet}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Kommunikation}\vsc Kommunikation}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Zugriff}\vsc Zugriff}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Unabhängigkeit}\vsc Unabhängigkeit}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Rekursion}\vsc Rekursion}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Bedienbarkeit}\vsc Bedienbarkeit}}
-				&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Lizenz}\vsc Lizenz}}
-				\\\hline
-				\ref{Frage:Grundlagen}&Grundlagen&X&X&X&-&X&X&x&-&-&-&-&-&-&-&-\\
-				\ref{Frage:Basis}&Basis&X&X&X&-&X&X&x&x&-&-&-&-&-&-&-\\
-				\ref{Frage:Axiome}&Axiome&X&X&X&-&X&X&x&-&-&-&-&-&-&-&-\\
-				\hdashline[2pt/2pt]
-				\ref{Frage:Beweis}&Beweis&X&X&X&X&X&-&-&x&-&-&-&-&-&-&-\\
-				\ref{Frage:Konstruktion}&Konstruktion&X&X&X&-&X&-&-&x&-&-&-&-&-&-&-\\
-				\ref{Frage:Vergleiche}&Vergleiche&X&X&X&-&-&X&-&x&-&-&-&-&-&-&-\\
-				\hdashline[2pt/2pt]
-				\ref{Frage:Definitionen}&Definitionen&X&X&X&-&X&-&x&-&-&-&-&-&-&-&-\\
-				\ref{Frage:Abhängigkeiten}&Abhängigkeiten&X&X&X&-&X&-&x&-&-&-&-&-&-&-&-\\
-				\ref{Frage:Überblick}&Überblick&X&X&X&-&-&X&x&-&-&-&-&-&-&-&-\\
-				\hdashline[2pt/2pt]
-				\ref{Frage:Darstellung}&Darstellung&X&-&X&-&X&-&x&-&-&-&-&-&-&-&-\\
-				\ref{Frage:Forschung}&Forschung&X&X&X&-&-&X&x&-&-&-&-&-&-&-&-\\
-				\hline
-				\multicolumn{17}{l|}{Die nächsten beiden Punkte sind Eigenschaften aus \sectionname~\vref{sec:Eigenschaften}:}\\
-				\hline
-				\ref{Eigenschaft:Lizenz}&Lizenz&-&-&-&-&-&-&-&-&-&-&-&-&-&-&X\\
-				\ref{Eigenschaft:Akzeptanz}&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
-				\hline
-			\end{tabularx}
-			\caption{Fragen $\to$ Ziele}
-			\label{tab:Fragen->Ziele}
-		\end{table}
+	In der Mathematik gibt es eine unüberschaubare Menge an Axiomen, Sätzen, Beweisen, Fachbegriffen%
+	\footnote{%
+		\emph{\Idx{Fachbegriff}}\emph{e} sind Namen für Axiome, Sätze, Beweise und Fachgebiete.
+		Symbole können als spezielle Fachbegriffe aufgefasst werden.
 	}
+	und Fachgebieten.
+	Dabei soll ein \emph{\Idx{Fachgebiet}} einen Teil der Mathematik mit einer zugehörigen Basis von Axiomen, Sätzen und spezifischen Fachbegriffen sein, zum Beispiel \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}%
+	\footnote{%
+		Ein Fachgebiet kann hier sehr klein sein und im Extremfall kein einziges Element enthalten.
+		\emph{Umgebung} wäre in diesem Projekt eine bessere Bezeichnung, könnte aber zu Verwechslungen führen, da dies schon ein verbreiteter Fachbegriff ist.
+	}%
+	.
+	Zu den meisten Fachgebieten gibt es auch noch ungelöste Probleme.
 
-	\cleardoublepage
-	\chapter{Design} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\label{cha:Design}
+	Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, Beweise automatisch zu überprüfen.
+	Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
+
+	Ein System mit ähnlicher Aufgabenstellung findet sich im GitHub Projekt Hilbert~II (\seename~\cite{bib:HilbertII, bib:qedeq}).
+	Einige Ideen sind von dort übernommen worden.
+
+	\nextsection
+	\section{Fragen}%==========================================================
+	\newsection{Fragen}
+	\label{sec:Fragen}
+
+	Einige der Fragen, die in diesem Zusammenhang auftauchen, werden hier formuliert:
+
+	\begin{enumerate}
+
+		\item \label{Frage:Grundlagen} \emph{Grundlagen}: Was sind die Grundlagen? Zum Beispiel welche Logik und Mengenlehre.
+
+		\item \label{Frage:Basis} \emph{Basis}: Welche wichtigen Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete gibt es? Welche davon sind Standard?
+
+		\item \label{Frage:Axiome} \emph{Axiome}: Welche Axiome werden bei einem Satz oder Beweis vorausgesetzt? Allgemein anerkannte oder auch strittige, wie zum Beispiel den \emph{Satz vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
+
+		\item \label{Frage:Beweis} \emph{Beweis}: Ist ein Beweis fehlerfrei?
+
+		\item \label{Frage:Konstruktion} \emph{Konstruktion}: Gibt es einen konstruktiven Beweis?
+
+		\item \label{Frage:Vergleiche} \emph{Vergleiche}: Welcher Beweis ist besser? Nach welchem Kriterium? Zum Beispiel elegant, kurz, einsichtig oder wenige Axiome.
+		Was heißt eigentlich \emph{elegant}?
+
+		\item \label{Frage:Definitionen} \emph{Definitionen}: Was ist mit einem Fachbegriff oder Fachgebiet jeweils genau gemeint? Zum Beispiel \emph{Stetigkeit}, \emph{Integral} und \emph{Analysis}.
+
+		\item \label{Frage:Abhängigkeiten} \emph{Abhängigkeiten}: Wie heißt ein Fachbegriff oder Fachgebiet in einer anderen Sprache? Ist wirklich dasselbe gemeint? Was ist mit Fachbegriffen in verschiedenen Fachgebieten?
+
+		\item \label{Frage:Überblick} \emph{Überblick}: Ist ein Axiom, Satz, Beweis, Fachbegriff oder Fachgebiet schon einmal -- \textggf\ abweichend -- definiert, formuliert oder bewiesen worden?
+
+		\item \label{Frage:Darstellung} \emph{Darstellung}: Wie kann man einen Satz und den zugehörigen Beweis -- \textggf\ auch spezifisch für ein Fachgebiet -- darstellen?
+
+		\item \label{Frage:Forschung} \emph{Forschung}: Welche Probleme gibt es noch zu erforschen.
+
+	\end{enumerate}
+
+	\nextsection
+	\section{Eigenschaften}%==================================================
+	\newsection{Eigenschaften}
+	\label{sec:Eigenschaften}
+
+	Ausgehend von den Fragen in \sectionname~\vref{sec:Fragen} soll ein System entwickelt werden, das die folgenden Eigenschaften hat:
+
+	\begin{enumerate}
+
+		\item \label{Eigenschaft:Daten} \emph{Daten}: Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete können in formaler Form gespeichert werden -- auch nicht oder unvollständig bewiesene Sätze.
+		Dabei soll die übliche mathematische Schreibweise verwendet werden können.
+
+		\item \label{Eigenschaft:Definitionen} \emph{Definitionen}: Es können Fachbegriffe für Axiome, Sätze, Beweise und Fachgebiete -- letztere mit eigenen Axiomen, Sätzen, Beweisen, Fachbegriffen und über- oder untergeordneten Fachgebieten -- definiert werden.
+		Die Definitionen dürfen wiederum an dieser Stelle schon bekannte Fachbegriffe und Fachgebiete verwenden.
+
+		\item \label{Eigenschaft:Prüfung} \emph{Prüfung}: Vorhandene Beweise können automatisch geprüft werden.
+
+		\item \label{Eigenschaft:Ausgaben} \emph{Ausgaben}: Die Axiome, Sätze und Beweise können in üblicher Schreibweise -- abhängig von Sprache und Fachgebiet -- ausgegeben werden.
+
+		\item \label{Eigenschaft:Auswertungen} \emph{Auswertungen}: Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \sectionname~\vref{sec:Fragen} behandelten Fragen.
+
+		\setcounter{Enumi}{\value{enumi}}% Die Nummerierung soll fortgeführt werden.
+	\end{enumerate}
+
+	Damit das System nicht umsonst erstellt wird und möglichst breite Verwendung findet, werden noch zwei Punkte angefügt:
+
+	\begin{enumerate}
+		\setcounter{enumi}{\value{Enumi}}
+
+		\item \label{Eigenschaft:Lizenz} \emph{Lizenz}: Die Software ist \emph{Open Source}.
+
+		\item \label{Eigenschaft:Akzeptanz} \emph{Akzeptanz}: Das System wird von Mathematikern akzeptiert und verwendet.
+
+	\end{enumerate}
+
+	\tablename~\vref{tab:Fragen->Eigenschaften} zeigt, wie sich die Eigenschaften zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
+	Mit einem X werden die Spalten einer Zeile markiert, deren zugehörige Eigenschaften zur Beantwortung der entsprechenden Frage beitragen sollen.
+	Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellten Fragen beantworten, was allerdings illusorisch ist.
+
+	% Abstände für die nächsten drei Tabellen
+	\newcommand*{\vsll}{\hspace{-1.0cm}}
+	\newcommand*{\vsl}{\hspace{-6pt}\vsll}
+	\newcommand*{\vsc}{\hspace{6pt}}
+
+	\begin{table}
+		\begin{tabularx}{\linewidth-10.95pt}{@{\hspace{.5cm}}rl@{\extracolsep{\fill}}|*{7}{c}@{\hspace{1cm}}|}
+			\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.5cm]{\textbf{Frage}\\~}{\\\textbf{Eigenschaft}}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Daten}\vsc Daten}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Definitionen}\vsc Definitionen}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Prüfung}\vsc Prüfung}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Ausgaben}\vsc Ausgaben}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Auswertungen}\vsc Auswertungen }}
+			&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Lizenz}\vsc Lizenz}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Eigenschaft:Akzeptanz}\vsc Akzeptanz}}
+			\\\hline
+			\ref{Frage:Grundlagen}&Grundlagen&X&X&-&X&X&-&-\\
+			\ref{Frage:Basis}&Basis&X&X&-&X&X&-&-\\
+			\ref{Frage:Axiome}&Axiome&X&X&-&X&X&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Beweis}&Beweis&X&-&X&X&-&-&-\\
+			\ref{Frage:Konstruktion}&Konstruktion&X&-&-&X&-&-&-\\
+			\ref{Frage:Vergleiche}&Vergleiche&X&-&-&-&X&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Definitionen}&Definitionen&X&X&-&X&-&-&-\\
+			\ref{Frage:Abhängigkeiten}&Abhängigkeiten&X&-&-&X&-&-&-\\
+			\ref{Frage:Überblick}&Überblick&X&-&-&-&X&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Darstellung}&Darstellung&-&X&-&X&-&-&-\\
+			\ref{Frage:Forschung}&Forschung&X&-&-&-&X&-&-\\
+			\hline
+		\end{tabularx}
+		\caption{Fragen $\to$ Eigenschaften}
+		\label{tab:Fragen->Eigenschaften}
+	\end{table}
+
+	\nextsection
+	\section{Ziele}%==========================================================
+	\newsection{Ziele}
+	\label{sec:Ziele}
+
+	Um die Eigenschaften von \sectionname~\vref{sec:Eigenschaften} zu erreichen, werden für das System die folgenden Ziele%
+	\footnote{%
+		Es sind eigentlich Anforderungen.
+		Da dieser Begriff aber auch im \chaptername~\vref{cha:Design} verwendet wird, werden die Anforderungen hier \emph{\Idx{Ziel}}\emph{e} genannt.
+	}
+	gesetzt:
+
+	\begin{enumerate}
+
+		\item \label{Ziel:Daten} \emph{Daten}: Es enthält möglichst viele wichtige Axiome, Sätze, Beweise, Fachbegriffe, Fachgebiete und Ausgabeschemata%
+		\footnote{%
+			Um den Punkt~\ref{Eigenschaft:Ausgaben} von \sectionname~\vref{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische Ausgabeschemata benötigt, welche die Art der Ausgaben beschreiben.
+		}%
+		.
+
+		\item \label{Ziel:Form} \emph{Form}: Die Daten liegt in formaler, geprüfter Form vor.
+
+		\item \label{Ziel:Eingaben} \emph{Eingaben}: Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise.
+
+		\item \label{Ziel:Prüfung} \emph{Prüfung}: Vorhandene Beweise können automatisch geprüft werden.
+
+		\item \label{Ziel:Ausgaben} \emph{Ausgaben}: Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener Ausgabeschemata erfolgen.
+
+		\item \label{Ziel:Auswertungen} \emph{Auswertungen}: Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
+		Insbesondere kann zu jedem Beweis angegeben werden, wie viele Beweisschritte und welche Axiome und Sätze%
+		\footnote{Sätze, die quasi als Axiome verwendet werden.}
+		er verwendet.
+
+		\item \label{Ziel:Anpassbarkeit} \emph{Anpassbarkeit}: Fachbegriffe und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten Fachgebieten angepasst werden.
+
+		\item \label{Ziel:Individualität} \emph{Individualität}: Axiome und Sätze können für jeden Beweis individuell vorausgesetzt werden.
+		Dabei sind fachgebietsspezifische Fachbegriffe erlaubt.
+
+		\item \label{Ziel:Internet} \emph{Internet}: Die Daten können auf mehrere Dateien verteilt sein.
+		Ein Teil davon -- oder sogar alle -- können im Internet liegen.
+
+		\item \label{Ziel:Kommunikation} \emph{Kommunikation}: Die Kommunikation mit dem System kann mit den Fachbegriffen der einzelnen Fachgebiete erfolgen.
+
+		\item \label{Ziel:Zugriff} \emph{Zugriff}: Der Zugriff auf das System kann lokal und über das Internet erfolgen.
+
+		\item \label{Ziel:Unabhängigkeit} \emph{Unabhängigkeit}: Das System kann online und offline arbeiten.
+
+		\item \label{Ziel:Rekursion} \emph{Rekursion}: Es kann rekursiv über alle verwendeten Dateien -- auch solchen, die im Internet liegen -- ausgewertet werden.
+
+		\item \label{Ziel:Bedienbarkeit} \emph{Bedienbarkeit}: Das System ist einfach zu bedienen.
+
+		\item \label{Ziel:Lizenz} \emph{Lizenz}: Die Software ist \emph{Open Source}.
+
+		\setcounter{Enumi}{\value{enumi}}% Die Nummerierung soll fortgeführt werden.
+	\end{enumerate}
+
+	Der Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit das System effizient arbeiten kann und um die Akzeptanz zu erhöhen:
+
+	\begin{enumerate}
+		\setcounter{enumi}{\value{Enumi}}
+
+		\item \label{Ziel:Zwischenspeicher} \emph{Zwischenspeicher}: Wichtige Auswertungen können angehängt an vorhandene oder separat in eigenen Dateien zwischengespeichert werden.
+
+	\end{enumerate}
+
+	\tablename~\vref{tab:Eigenschaften->Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften in \sectionname~\vref{sec:Eigenschaften} verhalten.
+	Mit einem X werden wieder die Spalten einer Zeile markiert, deren zugehörige Ziele zur Sicherstellung der entsprechenden Eigenschaft beitragen sollen.
+	Idealerweise sollte durch Erreichen aller aufgestellten Ziele das System alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
+
+	\begin{table}
+		\begin{tabularx}{\linewidth-10.95pt}{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{16}{c}@{\hspace{0.4cm}}|}
+			\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]{\textbf{Eigenschaft}\\~}{\\\\\\\textbf{Ziel}}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Daten}\vsc Daten}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Form}\vsc Form}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Eingaben}\vsc Eingaben}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Prüfung}\vsc Prüfung}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Ausgaben}\vsc Ausgaben}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Auswertungen}\vsc Auswertungen}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Anpassbarkeit}\vsc Anpassbarkeit}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Individualität}\vsc Individualität}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Internet}\vsc Internet}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Kommunikation}\vsc Kommunikation}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Zugriff}\vsc Zugriff}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Unabhängigkeit}\vsc Unabhängigkeit}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Rekursion}\vsc Rekursion}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Bedienbarkeit}\vsc Bedienbarkeit}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Lizenz}\vsc Lizenz}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Zwischenspeicher}\vsc Zwischenspeicher}}
+			\\\hline
+			\ref{Eigenschaft:Daten}&Daten&X&X&X&-&-&-&-&-&-&-&-&-&-&-&-&-\\
+			\ref{Eigenschaft:Definitionen}&Definitionen&X&-&X&-&-&-&-&-&-&-&-&-&-&-&-&-\\
+			\ref{Eigenschaft:Prüfung}&Prüfung&-&-&-&X&-&-&-&-&-&-&-&-&-&-&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Eigenschaft:Ausgaben}&Ausgaben&-&-&-&-&X&-&-&-&-&-&-&-&-&-&-&-\\
+			\ref{Eigenschaft:Auswertungen}&Auswertungen&-&-&-&-&-&X&-&-&-&-&-&-&-&-&-&-\\
+			\ref{Eigenschaft:Lizenz}&Lizenz&-&-&-&-&-&-&-&-&-&-&-&-&-&-&X&-\\
+			\hdashline[2pt/2pt]
+			\ref{Eigenschaft:Akzeptanz}&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
+			\hline
+		\end{tabularx}
+		\caption{Eigenschaften $\to$ Ziele}
+		\label{tab:Eigenschaften->Ziele}
+	\end{table}
+
+	\nextsection
+	\section{Zusammenfassung}%================================================
+	\newsection{Zusammenfassung}
+	\label{sec:Zusammenfassung}
+
+	Die \tablename~\vref{tab:Fragen->Ziele} ist eine Kombination aus den \tablename n~\vref{tab:Fragen->Eigenschaften} und~\vref{tab:Eigenschaften->Ziele} und zeigt, wie sich die Ziele in \sectionname~\vref{sec:Ziele} zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
+	Auch hier werden mit einem X die Spalten einer Zeile markiert, deren zugehörige Ziele für die Beantwortung der entsprechenden Frage nötig sind.
+	Mit einem kleinen x werden sie markiert, wenn sie zur Beantwortung der Fragen nicht nötig, aber von Interesse sind.
+	Idealerweise sollte das Erreichen aller aufgestellten Ziele wieder alle gestellten Fragen beantworten, was natürlich auch illusorisch ist.
+
+	\begin{table}
+		\begin{tabularx}{\linewidth-10.95pt}{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{15}{c}@{\hspace{0.4cm}}|}
+			\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]{\textbf{Frage}\\~}{\\\\\\\textbf{Ziel}}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Daten}\vsc Daten}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Form}\vsc Form}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Eingaben}\vsc Eingaben}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Prüfung}\vsc Prüfung}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Ausgaben}\vsc Ausgaben}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Auswertungen}\vsc Auswertungen}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Anpassbarkeit}\vsc Anpassbarkeit}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Individualität}\vsc Individualität}}
+			&\rotatebox{90}{\mbox{\vsll\ref{Ziel:Internet}\vsc Internet}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Kommunikation}\vsc Kommunikation}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Zugriff}\vsc Zugriff}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Unabhängigkeit}\vsc Unabhängigkeit}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Rekursion}\vsc Rekursion}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Bedienbarkeit}\vsc Bedienbarkeit}}
+			&\rotatebox{90}{\mbox{\vsl\ref{Ziel:Lizenz}\vsc Lizenz}}
+			\\\hline
+			\ref{Frage:Grundlagen}&Grundlagen&X&X&X&-&X&X&x&-&-&-&-&-&-&-&-\\
+			\ref{Frage:Basis}&Basis&X&X&X&-&X&X&x&x&-&-&-&-&-&-&-\\
+			\ref{Frage:Axiome}&Axiome&X&X&X&-&X&X&x&-&-&-&-&-&-&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Beweis}&Beweis&X&X&X&X&X&-&-&x&-&-&-&-&-&-&-\\
+			\ref{Frage:Konstruktion}&Konstruktion&X&X&X&-&X&-&-&x&-&-&-&-&-&-&-\\
+			\ref{Frage:Vergleiche}&Vergleiche&X&X&X&-&-&X&-&x&-&-&-&-&-&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Definitionen}&Definitionen&X&X&X&-&X&-&x&-&-&-&-&-&-&-&-\\
+			\ref{Frage:Abhängigkeiten}&Abhängigkeiten&X&X&X&-&X&-&x&-&-&-&-&-&-&-&-\\
+			\ref{Frage:Überblick}&Überblick&X&X&X&-&-&X&x&-&-&-&-&-&-&-&-\\
+			\hdashline[2pt/2pt]
+			\ref{Frage:Darstellung}&Darstellung&X&-&X&-&X&-&x&-&-&-&-&-&-&-&-\\
+			\ref{Frage:Forschung}&Forschung&X&X&X&-&-&X&x&-&-&-&-&-&-&-&-\\
+			\hline
+			\multicolumn{17}{l|}{Die nächsten beiden Punkte sind Eigenschaften aus \sectionname~\vref{sec:Eigenschaften}:}\\
+			\hline
+			\ref{Eigenschaft:Lizenz}&Lizenz&-&-&-&-&-&-&-&-&-&-&-&-&-&-&X\\
+			\ref{Eigenschaft:Akzeptanz}&Akzeptanz&X&X&X&X&X&X&X&X&X&X&X&X&X&X&X\\
+			\hline
+		\end{tabularx}
+		\caption{Fragen $\to$ Ziele}
+		\label{tab:Fragen->Ziele}
+	\end{table}
+
+	\nextchapter
+	\chapter{Design}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\newchapter{Design}
+	\label{cha:Design}
 
-	Diese Projekt soll Open Source sein. Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)} und für die Software die \emph{GNU Affero General Public License (APGL)}. Die \emph{GNU General Public License (GPL)} reicht für die Software nicht, da das Programm auch mittels eines Servers betrieben werden kann und soll. Damit das Projekt gegebenenfalls durch verschiedene Entwickler gleichzeitig bearbeitet werden kann und wegen des Konfigurationsmanagements wurde es als ein GitHub Projekt erstellt (\seename~\cite{bib:ASBA}).
+	Diese Projekt soll Open Source sein.
+	Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)} und für die Software die \emph{GNU Affero General Public License (APGL)}.
+	Die \emph{GNU General Public License (GPL)} reicht für die Software nicht, da das Programm auch mittels eines Servers betrieben werden kann und soll.
+	Damit das Projekt gegebenenfalls durch verschiedene Entwickler gleichzeitig bearbeitet werden kann und wegen des Konfigurationsmanagements wurde es als ein GitHub Projekt erstellt (\seename~\cite{bib:ASBA}).
 
 	Wenn die Lizenzen nicht mitgeliefert wurden, können sie unter \url{http://www.gnu.org/licenses/} gefunden werden.
 
-	\section{Anforderungen}
-	\label{Anforderungen}
+	\nextsection
+	\section{Anforderungen}%==================================================
 	\newsection{Anforderungen}
+	\label{Anforderungen}
 
-	Die Anforderungen ergeben sich zunächst aus den Zielen in \sectionname~\vref{sec:Ziele}. Die beiden Ziele \ref{Ziel:Daten}~\emph{Daten} und \ref{Ziel:Lizenz}~\emph{Lizenz} sind für die Entwicklung des Systems von sekundärer Bedeutung und werden daher in diesen \sectionname\ nicht übernommen. Die anderen Ziele werden noch verfeinert.
+	Die Anforderungen ergeben sich zunächst aus den Zielen in \sectionname~\vref{sec:Ziele}.
+	Die beiden Ziele \ref{Ziel:Daten}~\emph{Daten} und \ref{Ziel:Lizenz}~\emph{Lizenz} sind für die Entwicklung des Systems von sekundärer Bedeutung und werden daher in diesen \sectionname\ nicht übernommen.
+	Die anderen Ziele werden noch verfeinert.
 
-	\textbf{> > > ZIELE in Anforderungen umwandeln. < < <} % ZIELE in Anforderungen umwandeln.
+	\textbf{> > > ZIELE in Anforderungen umwandeln. < < <}% ZIELE in Anforderungen umwandeln.
 	\begin{enumerate}
 
-		\item \label{Anforderung:Form} \emph{Form}: Die Daten liegt in formaler, geprüfter Form vor. (\seename\ Ziel~\vref{Ziel:Form})
+		\item \label{Anforderung:Form} \emph{Form}: Die Daten liegt in formaler, geprüfter Form vor.
+		(\seename\ Ziel~\vref{Ziel:Form})
 
-		\item \label{Anforderung:Eingaben} \emph{Eingaben}: Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise. Folgende Daten können eingegeben werden:
+		\item \label{Anforderung:Eingaben} \emph{Eingaben}: Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise.
+		Folgende Daten können eingegeben werden:
 		\begin{enumerate}
 			\item Axiome
 			\item Sätze
@@ -454,63 +575,86 @@
 			\item Fachgebiete
 			\item Ausgabeschemata
 		\end{enumerate}
-		Dabei sind alle Begriffe nur innerhalb eines Fachgebietes und seiner untergeordneten Fachgebiete gültig, solange sie nicht umdefiniert werden. Das oberste Fachgebiet ist die ganze Mathematik. (\seename\ Ziel~\vref{Ziel:Eingaben})
+		Dabei sind alle Begriffe nur innerhalb eines Fachgebietes und seiner untergeordneten Fachgebiete gültig, solange sie nicht umdefiniert werden.
+	Das oberste Fachgebiet ist die ganze Mathematik.
+	(\seename\ Ziel~\vref{Ziel:Eingaben})
 
-		\item \label{Anforderung:Prüfung} \emph{Prüfung}: Vorhandene Beweise können automatisch geprüft werden. (\seename\ Ziel~\vref{Ziel:Prüfung})
+		\item \label{Anforderung:Prüfung} \emph{Prüfung}: Vorhandene Beweise können automatisch geprüft werden.
+		(\seename\ Ziel~\vref{Ziel:Prüfung})
 
-		\item \label{Anforderung:Ausgaben} \emph{Ausgaben}: Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener Ausgabeschemata erfolgen. (\seename\ Ziel~\vref{Ziel:Ausgaben})
+		\item \label{Anforderung:Ausgaben} \emph{Ausgaben}: Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener Ausgabeschemata erfolgen.
+		(\seename\ Ziel~\vref{Ziel:Ausgaben})
 
-		\item \label{Anforderung:Auswertungen} \emph{Auswertungen}: Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich. Insbesondere kann zu jedem Beweis angegeben werden, wie viele Beweisschritte und welche Axiome und Sätze\footnote{Sätze, die quasi als Axiome verwendet werden.} er verwendet. (\seename\ Ziel~\vref{Ziel:Auswertungen})
+		\item \label{Anforderung:Auswertungen} \emph{Auswertungen}: Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
+		Insbesondere kann zu jedem Beweis angegeben werden, wie viele Beweisschritte und welche Axiome und Sätze%
+		\footnote{Sätze, die quasi als Axiome verwendet werden.}
+		er verwendet.
+		(\seename\ Ziel~\vref{Ziel:Auswertungen})
 
-		\item \label{Anforderung:Anpassbarkeit} \emph{Anpassbarkeit}: Fachbegriffe und die Darstellung bei der Ausgabe können mit Hilfe von \textendash\ gegebenenfalls unbenannten \textendash\ untergeordneten Fachgebieten angepasst werden. (\seename\ Ziel~\vref{Ziel:Anpassbarkeit})
+		\item \label{Anforderung:Anpassbarkeit} \emph{Anpassbarkeit}: Fachbegriffe und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten Fachgebieten angepasst werden.
+		(\seename\ Ziel~\vref{Ziel:Anpassbarkeit})
 
-		\item \label{Anforderung:Individualität} \emph{Individualität}: Axiome und Sätze können für jeden Beweis individuell vorausgesetzt werden. Dabei sind fachgebietsspezifische Fachbegriffe erlaubt. (\seename\ Ziel~\vref{Ziel:Individualität})
+		\item \label{Anforderung:Individualität} \emph{Individualität}: Axiome und Sätze können für jeden Beweis individuell vorausgesetzt werden.
+		Dabei sind fachgebietsspezifische Fachbegriffe erlaubt.
+		(\seename\ Ziel~\vref{Ziel:Individualität})
 
-		\item \label{Anforderung:Internet} \emph{Internet}: Die Daten können auf mehrere Dateien verteilt sein. Ein Teil davon \textendash\ oder sogar alle \textendash\ können im Internet liegen. (\seename\ Ziel~\vref{Ziel:Internet})
+		\item \label{Anforderung:Internet} \emph{Internet}: Die Daten können auf mehrere Dateien verteilt sein.
+		Ein Teil davon -- oder sogar alle -- können im Internet liegen.
+		(\seename\ Ziel~\vref{Ziel:Internet})
 
-		\item \label{Anforderung:Kommunikation} \emph{Kommunikation}: Die Kommunikation mit dem System kann mit den Fachbegriffen der einzelnen Fachgebiete erfolgen. (\seename\ Ziel~\vref{Ziel:Kommunikation})
+		\item \label{Anforderung:Kommunikation} \emph{Kommunikation}: Die Kommunikation mit dem System kann mit den Fachbegriffen der einzelnen Fachgebiete erfolgen.
+		(\seename\ Ziel~\vref{Ziel:Kommunikation})
 
-		\item \label{Anforderung:Zugriff} \emph{Zugriff}: Der Zugriff auf das System kann lokal und über das Internet erfolgen. (\seename\ Ziel~\vref{Ziel:Zugriff})
+		\item \label{Anforderung:Zugriff} \emph{Zugriff}: Der Zugriff auf das System kann lokal und über das Internet erfolgen.
+		(\seename\ Ziel~\vref{Ziel:Zugriff})
 
-		\item \label{Anforderung:Unabhängigkeit} \emph{Unabhängigkeit}: Das System kann offline und online arbeiten. (\seename\ Ziel~\vref{Ziel:Unabhängigkeit})
+		\item \label{Anforderung:Unabhängigkeit} \emph{Unabhängigkeit}: Das System kann offline und online arbeiten.
+		(\seename\ Ziel~\vref{Ziel:Unabhängigkeit})
 
-		\item \label{Anforderung:Rekursion} \emph{Rekursion}: Es kann rekursiv über alle verwendeten Dateien \textendash\ auch solchen, die im Internet liegen \textendash\ ausgewertet werden. (\seename\ Ziel~\vref{Ziel:Rekursion})
+		\item \label{Anforderung:Rekursion} \emph{Rekursion}: Es kann rekursiv über alle verwendeten Dateien -- auch solchen, die im Internet liegen -- ausgewertet werden.
+		(\seename\ Ziel~\vref{Ziel:Rekursion})
 
-		\item \label{Anforderung:Bedienbarkeit} \emph{Bedienbarkeit}: Das System ist einfach zu bedienen. (\seename\ Ziel~\vref{Ziel:Bedienbarkeit})
+		\item \label{Anforderung:Bedienbarkeit} \emph{Bedienbarkeit}: Das System ist einfach zu bedienen.
+		(\seename\ Ziel~\vref{Ziel:Bedienbarkeit})
 
 	\end{enumerate}
 
-	\textbf{> > > ANFORDERUNGEN bearbeiten. < < <} % ANFORDERUNGEN bearbeiten.
+	\textbf{> > > ANFORDERUNGEN bearbeiten. < < <}% ANFORDERUNGEN bearbeiten.
 
-	\section{Datenstruktur}
-	\label{Datenstruktur}
+	\nextsection
+	\section{Datenstruktur}%====================================================
 	\newsection{Datenstruktur}
+	\label{Datenstruktur}
 
-	\textbf{> > > DATENSTRUKTUR bearbeiten. < < <} % DATENSTRUKTUR bearbeiten.
+	\textbf{> > > DATENSTRUKTUR bearbeiten. < < <}% DATENSTRUKTUR bearbeiten.
 
-	\section{Bausteine}
-	\label{Bausteine}
+	\nextsection
+	\section{Bausteine}%========================================================
 	\newsection{Bausteine}
+	\label{Bausteine}
 
-	\textbf{> > > BAUSTEINE bearbeiten. < < <} % BAUSTEINE bearbeiten.
+	\textbf{> > > BAUSTEINE bearbeiten. < < <}% BAUSTEINE bearbeiten.
 
-	\appendix
-	\chapter{\appendixname} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\label{cha:\appendixname}
-	\newchapter{\appendixname}
+	\Appendix
 
-	\section{Werkzeuge} %========================================================
-	\label{sec:Werkzeuge}
+	\nextchapter
+	\chapter{Projektumgebung}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newchapter{Projektumgebung}
+	\label{cha:Projektumgebung}
+
+	\nextsection
+	\section{Werkzeuge}%========================================================
 	\newsection{Werkzeuge}
+	\label{sec:Werkzeuge}
 
-	Da dies ein Open Source Projekt sein soll, müssen alle Werkzeuge, die zum Ablauf der Software erforderlich sind, ebenfalls Open Source sein. Für die reine Entwicklung sollte das auch gelten.
-
-	Im Folgenden verweist der Pfeil~($\rightarrow$) stets auf einen Link ins Internet.
+	Da dies ein Open Source Projekt sein soll, müssen alle Werkzeuge, die zum Ablauf der Software erforderlich sind, ebenfalls Open Source sein.
+	Für die reine Entwicklung sollte das auch gelten, muss es aber nicht.
 
 	\paragraph{Werkzeuge, die zum Ablauf der Software erforderlich sind}
 	\begin{itemize}
 
-		\item\label{Werkzeug:MiKTeX}\emph{MiK\TeX} für Dokumentation und Ausgaben in \LaTeX. $\rightarrow$~\url{https://miktex.org/} \textendash\ Lizenz \seename~\cite{bib:MiKTeX}
+		\item\label{Werkzeug:MiKTeX}\emph{MiK\TeX} für Dokumentation und Ausgaben in \LaTeX.
+		$\rightarrow$~\url{https://miktex.org/} -- Lizenz \seename~\cite{bib:MiKTeX}
 
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
@@ -519,17 +663,27 @@
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 
-		\item\label{Werkzeug:GitHub}\emph{GitHub} als Online Konfigurationsmanagementsystem zur Zusammenarbeit verschiedener Entwickler. $\rightarrow$~\url{https://github.com/} \textendash\ Lizenz \seename~\cite{bib:GPLii}
+		\item\label{Werkzeug:GitHub}\emph{GitHub} als Online Konfigurationsmanagementsystem zur Zusammenarbeit verschiedener Entwickler.
+		$\rightarrow$~\url{https://github.com/} -- Lizenz \seename~\cite{bib:GPLii}
 
-		\item\label{Werkzeug:Git}GitHub benötigt \emph{Git} als Konfigurationsmanagementsystem. $\rightarrow$~\url{https://git-scm.com/} \textendash\ Lizenz \seename~\cite{bib:GPLii}
+		\item\label{Werkzeug:Git}GitHub benötigt \emph{Git} als Konfigurationsmanagementsystem.
+		$\rightarrow$~\url{https://git-scm.com/} -- Lizenz \seename~\cite{bib:GPLii}
 
-		\item\label{Werkzeug:VSC}\emph{Visual Studio Community 2017}\footnote{Visual Studio Community ist zwar nicht Open Source, darf aber zur Entwicklung von Open Source Software unentgeltlich verwendet werden.} (\emph{VS}) als Entwicklungsumgebung für C++. $\rightarrow$~\url{https://www.visualstudio.com/downloads/} \textendash\ Lizenz \seename~\cite{bib:EULA}
+		\item\label{Werkzeug:VSC}\emph{Visual Studio Community 2017}%
+		\footnote{%
+			Visual Studio Community ist zwar nicht Open Source, darf aber zur Entwicklung von Open Source Software unentgeltlich verwendet werden.
+		}
+		(\emph{VS}) als Entwicklungsumgebung für C++.
+		$\rightarrow$~\url{https://www.visualstudio.com/downloads/} -- Lizenz \seename~\cite{bib:EULA}
 
-		\item\label{Werkzeug:Doxygen}\emph{Doxygen} als Dokumentationssystem für C++. $\rightarrow$~\url{http://www.stack.nl/~dimitri/doxygen/} \textendash\ Lizenz \seename~\cite{bib:GPLii}
+		\item\label{Werkzeug:Doxygen}\emph{Doxygen} als Dokumentationssystem für C++.
+		$\rightarrow$~\url{http://www.stack.nl/~dimitri/doxygen/} -- Lizenz \seename~\cite{bib:GPLii}
 
-		\item\label{Werkzeug:Ghostscript}Doxygen benötigt \emph{Ghostscript} als Interpreter für Postscript und PDF. $\rightarrow$~\url{http://ghostscript.com/} \textendash\ Lizenz \seename~\cite{bib:AGPL}
+		\item\label{Werkzeug:Ghostscript}Doxygen benötigt \emph{Ghostscript} als Interpreter für Postscript und PDF.
+		$\rightarrow$~\url{http://ghostscript.com/} -- Lizenz \seename~\cite{bib:AGPL}
 
-		\item\label{Werkzeug:Graphviz}Doxygen benötigt \emph{Graphviz} mit \emph{Dot} zur Erzeugung und Visualisierung von Graphen. $\rightarrow$~\url{http://www.graphviz.org/Home.php} \textendash\ Lizenz \seename~\cite{bib:EPL}
+		\item\label{Werkzeug:Graphviz}Doxygen benötigt \emph{Graphviz} mit \emph{Dot} zur Erzeugung und Visualisierung von Graphen.
+		$\rightarrow$~\url{http://www.graphviz.org/Home.php} -- Lizenz \seename~\cite{bib:EPL}
 
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
@@ -538,11 +692,17 @@
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 
-		\item\label{Werkzeug:TeXstudio}\emph{\TeX studio} als Editor für \LaTeX. $\rightarrow$~\url{http://www.texstudio.org/} \textendash\ Lizenz \seename~\cite{bib:GPLii}
+		\item\label{Werkzeug:TeXstudio}\emph{\TeX studio} als Editor für \LaTeX.
+		$\rightarrow$~\url{http://www.texstudio.org/} -- Lizenz \seename~\cite{bib:GPLii}
 
-		\item\label{Werkzeug:Notepadpp}\emph{Notepad++} als Text-Editor. $\rightarrow$~\url{https://notepad-plus-plus.org/} \textendash\ Lizenz \seename~\cite{bib:GPLi}
+		\item\label{Werkzeug:Perl}\emph{Strawberry Perl} als Interpreter für Perl.
+		$\rightarrow$~\url{http://strawberryperl.com/} -- Lizenz: Various OSI-compatible Open Source licenses, or given to the public domain
 
-		\item\label{Werkzeug:WinMerge}\emph{WinMerge} zum Vergleich von Dateien und Verzeichnissen. $\rightarrow$~\url{http://winmerge.org/} \textendash\ Lizenz \seename~\cite{bib:GPLi}
+		\item\label{Werkzeug:Notepadpp}\emph{Notepad++} als Text-Editor.
+		$\rightarrow$~\url{https://notepad-plus-plus.org/} -- Lizenz \seename~\cite{bib:GPLi}
+
+		\item\label{Werkzeug:WinMerge}\emph{WinMerge} zum Vergleich von Dateien und Verzeichnissen.
+		$\rightarrow$~\url{http://winmerge.org/} -- Lizenz \seename~\cite{bib:GPLi}
 
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
@@ -551,117 +711,150 @@
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 
-		\item\label{Werkzeug:VSC DB}In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete. \textendash\ Lizenz \seename~\cite{bib:EULA}
+		\item\label{Werkzeug:VSC DB}In \emph{Visual Studio Community 2015} integrierte Datenbank für Axiome, Sätze, Beweise, Fachbegriffe und Fachgebiete.
+		-- Lizenz \seename~\cite{bib:EULA}
 
-		\item\label{Werkzeug:RapidXml}\emph{RapidXml} für Ein- und Ausgabe in XML. $\rightarrow$~\url{http://rapidxml.sourceforge.net/index.htm} \textendash\ Lizenz \seename\ wahlweise~\cite{bib:BSLi} oder~\cite{bib:MIT}
+		\item\label{Werkzeug:RapidXml}\emph{RapidXml} für Ein- und Ausgabe in XML.
+		$\rightarrow$~\url{http://rapidxml.sourceforge.net/index.htm} -- Lizenz \seename\ wahlweise~\cite{bib:BSLi} oder~\cite{bib:MIT}
 
 	\end{itemize}
 
 	\paragraph{Im Projekt \emph{qedeq} verwendete Werkzeuge}
 
-	\textbf{> > > QEDEQ Werkzeuge auflisten? < < <} % QEDEQ Werkzeuge auflisten?
+	\textbf{> > > QEDEQ Werkzeuge auflisten? < < <}% QEDEQ Werkzeuge auflisten?
 
 	\begin{itemize}
 		\setcounter{enumi}{\value{Enumi}}
 
-		\item\label{Werkzeug:Java}\emph{Java} als Programmiersprache \textendash\ Laufzeitumgebung. $\rightarrow$~\url{https://www.java.com/de/download/win10.jsp} \textendash\ Lizenz \seename~\cite{bib:JavaSE}
+		\item\label{Werkzeug:Java}\emph{Java} als Programmiersprache -- Laufzeitumgebung.
+		$\rightarrow$~\url{https://www.java.com/de/download/win10.jsp} -- Lizenz \seename~\cite{bib:JavaSE}
 
-		\item\label{Werkzeug:Apache Ant}\emph{Apache Ant} als Java Bibliothek und Kommandozeilen-Werkzeug um Java Programme zu erzeugen. $\rightarrow$~\url{http://ant.apache.org/} \textendash\ Lizenz \seename~\cite{bib:Apacheii}
+		\item\label{Werkzeug:Apache Ant}\emph{Apache Ant} als Java Bibliothek und Kommandozeilen-Werkzeug um Java Programme zu erzeugen.
+		$\rightarrow$~\url{http://ant.apache.org/} -- Lizenz \seename~\cite{bib:Apacheii}
 
-		\item\label{Werkzeug:Checkstyle}\emph{Checkstyle} zur statischen Code-Analyse für Java. $\rightarrow$~\url{http://checkstyle.sourceforge.net/} \textendash\ Lizenz \seename~\cite{bib:LGPLii}
+		\item\label{Werkzeug:Checkstyle}\emph{Checkstyle} zur statischen Code-Analyse für Java.
+		$\rightarrow$~\url{http://checkstyle.sourceforge.net/} -- Lizenz \seename~\cite{bib:LGPLii}
 
-		\item\label{Werkzeug:Clover}\emph{Clover}\footnote{Clover ist proprietäre Software, aber auf Anfrage frei für 30 Tage. Danach ist eine einmalige Lizenzgebühr fällig.} als Testwerkzeug zur Analyse der Code-Abdeckung. $\rightarrow$~\url{https://www.atlassian.com/software/clover/} \textendash\ Lizenz \seename~\cite{bib:Clover}
+		\item\label{Werkzeug:Clover}\emph{Clover}%
+		\footnote{%
+			Clover ist proprietäre Software, aber auf Anfrage frei für 30 Tage.
+			Danach ist eine einmalige Lizenzgebühr fällig.
+		}
+		als Testwerkzeug zur Analyse der Code-Abdeckung.
+		$\rightarrow$~\url{https://www.atlassian.com/software/clover/} -- Lizenz \seename~\cite{bib:Clover}
 
-		\item\label{Werkzeug:Eclipse Java}\emph{Eclipse IDE for Java Developers} als Entwicklungsumgebung für Java. $\rightarrow$~\url{http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon1a/} \textendash\ Lizenz \seename~\cite{bib:OSI}
+		\item\label{Werkzeug:Eclipse Java}\emph{Eclipse IDE for Java Developers} als Entwicklungsumgebung für Java.
+		$\rightarrow$~\url{http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon1a/} -- Lizenz \seename~\cite{bib:OSI}
 
-		\item\label{Werkzeug:JUnit}\emph{JUnit} zur Erzeugung von wiederholbaren Tests. $\rightarrow$~\url{http://junit.org/junit4/} \textendash\ Lizenz \seename~\cite{bib:EPL}
+		\item\label{Werkzeug:JUnit}\emph{JUnit} zur Erzeugung von wiederholbaren Tests.
+		$\rightarrow$~\url{http://junit.org/junit4/} -- Lizenz \seename~\cite{bib:EPL}
 
-		\item\label{Werkzeug:Xerces2}\emph{Xerces2} als XML-Parser in Java. $\rightarrow$~\url{http://xerces.apache.org/xerces2-j/} \textendash\ Lizenzen \seename~\cite{bib:Apacheii, bib:SAX, bib:WDCDL, bib:WDCSNL}
+		\item\label{Werkzeug:Xerces2}\emph{Xerces2} als XML-Parser in Java.
+		$\rightarrow$~\url{http://xerces.apache.org/xerces2-j/} -- Lizenzen \seename~\cite{bib:Apacheii, bib:SAX, bib:WDCDL, bib:WDCSNL}
 
 		\setcounter{Enumi}{\value{enumi}}
 	\end{itemize}
 
-	\section{Aussagenlogik} %====================================================
-	\label{sec:Aussagenlogik}
-	\newsection{Aussagenlogik}
+	\nextchapter
+	\chapter{Mathematische Grundlagen}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newchapter{Mathematische Grundlagen}
+	\label{cha:Grundlagen}
 
-	\subsection{Konstante und Operatoren} %--------------------------------------
+	\nextsection
+	\section{Aussagenlogik}%====================================================
+	\newsection{Aussagenlogik}
+	\label{sec:Aussagenlogik}
+
+	\subsection{Konstante und Operatoren}%--------------------------------------
 	\label{sub:Operatoren}
 
-	Die \tablename~\vref{tab:Symbole} \footnote{Die \tablename\ basiert auf den Wahrheitstafeln in~\cite{bib:Junktor} Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.} definiert für die zweiwertige Logik Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung. So ergeben sich, abhängig von den Wahrheitswerten der Operanden A und B \footnote{Im Gegensatz zu \subsubsectionname~\vref{subsub:Bausteine} können A und B hier beliebige Aussagen \textendash\ auch Formeln \textendash\ sein, nicht nur Atome.}, die in der \tablename\ angegebenen Wahrheitswerte für die Operationen. Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh\ für die Konstanten, die unären und die binären Operatoren ausgefüllt. Dabei werden die Konstanten als 0-stellige Operatoren angesehen. Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein Wert bekannt, so bleibt sie leer.
+	Die \tablename~\vref{tab:Symbole}
+	\footnote{%
+		Die \tablename\ basiert auf den Wahrheitstafeln in~\cite{bib:Junktor} Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.
+	}
+	definiert für die zweiwertige Logik Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung.
+	So ergeben sich, abhängig von den Wahrheitswerten der Operanden A und B
+	\footnote{%
+		Im Gegensatz zu \subsubsectionname~\vref{subsub:Bausteine} können A und B hier beliebige Aussagen -- auch Formeln -- sein, nicht nur Atome.
+	}%
+	,
+	die in der \tablename\ angegebenen Wahrheitswerte für die Operationen.
+	Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh\ für die Konstanten, die unären und die binären Operatoren ausgefüllt.
+	Dabei werden die Konstanten als 0-stellige Operatoren angesehen.
+	Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein Wert bekannt, so bleibt sie leer.
 
+	% ==========================================================================
+	% Definitionen für die folgende Tabelle und den späteren Gebrauch der Symbole
 	% Logische Operatoren als Addition und Multiplikation
 	\newcommand*{\add}{+}
 	\newcommand*{\mult}{\cdot}
-	% Wahrheitswerte ------------------------------------------------------------
-	\newcommand*{\texttrue}{W}  % in einem Kommentar stets 'W'
-	\newcommand*{\textfalse}{F} % in einem Kommentar stets 'F'
-	% Konstante -----------------------------------------------------------------
-	\newcommand*{\ltrue}{\top}                           %       W       - wahr
-%	\newcommand*{\lnfalse}{\notbot}                      %       "       - nicht falsch
-	\newcommand*{\lfalse}{\bot}                          %       F       - falsch
-%	\newcommand*{\lntrue}{\nottop}                       %       "       - nicht wahr
-	% unäre Operatoren ----------------------------------------------------------
-	%                                                       A  - W F     - Aussage A
-%	\newcommand*{\lutrue}{\operatorname{\top}}           % *A  - W W     - wahr [unär]
-%	\newcommand*{\lnufalse}{\operatorname{\notbot}}      % *A  - " "     - nicht falsch [unär]
-%	             Klammern                                % (A) - W F     - geklammert
-%	             \lnot                                   % *A  - F W     - nicht
-%	\newcommand*{\lufalse}{\operatorname{\bot}}          % *A  - F F     - falsch [unär]
-%	\newcommand*{\lnutrue}{\operatorname{\nottop}}       % *A  - " "     - nicht wahr [unär]
-	% binäre Operatoren ---------------------------------------------------------
-	%                                                       A  - W W F F - Aussage A
-	%                                                       B  - W F W F - Aussage B
-	% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%	\newcommand*{\lbtrue}{\operatorname{\top}}           % A*B - W W W W - wahr [binär]
-%	\newcommand*{\lnbfalse}{\operatorname{\notbot}}      % A*B - " " " " - nicht falsch [binär]
-	%            \lor                                    % A*B - W W W F - A oder B
-	\newcommand*{\lnxor}{\operatorname{\cancel{\lxor}}}  % A*B - " " " " - nicht (entweder A oder B)
-	\newcommand*{\lleftimp}{\leftarrow}                  % A*B - W W F W - A folgt aus B
-	\newcommand*{\lleftimpA}{\Leftarrow}
-	\newcommand*{\lleftimpB}{\subset}
-	\newcommand*{\lleft}{\operatorname{\rfloor}}         % A*B - W W F F - A
-	% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	\newcommand*{\lrightimp}{\rightarrow}                % A*B - W F W W - aus A folgt B
-	\newcommand*{\lrightimpA}{\Rightarrow}
-	\newcommand*{\lrightimpB}{\supset}
-	\newcommand*{\limp}{\lrightimp}
-	\newcommand*{\lright}{\operatorname{\lfloor}}        % A*B - W F W F - B
-	\newcommand*{\lequiv}{\leftrightarrow}               % A*B - W F F W - A genau dann, wenn B
-	\newcommand*{\lequivA}{\Leftrightarrow}
-	%            \land                                   % A*B - W F F F - A und B
+	% Wahrheitswerte -----------------------------------------------------------
+	\newcommand*{\texttrue}{W}%  in einem Kommentar stets 'W'
+	\newcommand*{\textfalse}{F}% in einem Kommentar stets 'F'
+	% Konstante ----------------------------------------------------------------
+	\newcommand*{\ltrue}{\top}%                            W       - wahr
+%	\newcommand*{\lnfalse}{\notbot}%                       "       - nicht falsch
+	\newcommand*{\lfalse}{\bot}%                           F       - falsch
+%	\newcommand*{\lntrue}{\nottop}%                        "       - nicht wahr
+	% unäre Operatoren ---------------------------------------------------------
+	%                                                      W F     - Aussage A
+%	\newcommand*{\lutrue}{\operatorname{\top}}%            W W     - wahr [unär]
+%	\newcommand*{\lnufalse}{\operatorname{\notbot}}%       " "     - nicht falsch [unär]
+	%	                                                   W F     - A
+	%	             \lnot                                 F W     - nicht
+%	\newcommand*{\lufalse}{\operatorname{\bot}}%          F F     - falsch [unär]
+%	\newcommand*{\lnutrue}{\operatorname{\nottop}}%        " "     - nicht wahr [unär]
+	% binäre Operatoren --------------------------------------------------------
+	%                                                      W W F F - Aussage A
+	%                                                      W F W F - Aussage B
+	%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%	\newcommand*{\lbtrue}{\operatorname{\top}}%            W W W W - wahr [binär]
+%	\newcommand*{\lnbfalse}{\operatorname{\notbot}}%       " " " " - nicht falsch [binär]
+	%            \lor                                      W W W F - A oder B
+	\newcommand*{\lnxor}{\operatorname{\cancel{\lxor}}}%   " " " " - nicht (entweder A oder B)
+	\newcommand*{\lleftimp}{\leftarrow}%                   W W F W - A folgt aus B
+	\newcommand*{\lleftimpA}{\Leftarrow}%
+	\newcommand*{\lleftimpB}{\subset}%
+	\newcommand*{\lleft}{\operatorname{\rfloor}}%          W W F F - A
+	%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	\newcommand*{\lrightimp}{\rightarrow}%                 W F W W - aus A folgt B
+	\newcommand*{\lrightimpA}{\Rightarrow}%
+	\newcommand*{\lrightimpB}{\supset}%
+	\newcommand*{\limp}{\lrightimp}%
+	\newcommand*{\lright}{\operatorname{\lfloor}}%         W F W F - B
+	\newcommand*{\lequiv}{\leftrightarrow}%                W F F W - A genau dann, wenn B
+	\newcommand*{\lequivA}{\Leftrightarrow}%
+	%            \land                                     W F F F - A und B
 	\newcommand*{\landA}{\&}
 	\newcommand*{\landB}{\mult}
-	% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	\newcommand*{\lnand}{\uparrow}                       % A*B - F W W W - nicht (A und B)
-	\newcommand*{\lnandA}{\barwedge}
-	\newcommand*{\lnandB}{\mid}
-	\newcommand*{\lxor}{\add}                            % A*B - F W W F - entweder A oder B
-	\newcommand*{\lxorA}{\operatorname{\dot\lor}}
-	\newcommand*{\lxorB}{\veebar}
-	\newcommand*{\lxorC}{\oplus}
-	\newcommand*{\lnequiv}{\nleftrightarrow}             % A*B - " " " " - nicht (A genau dann, wenn B)
-	\newcommand*{\lnequivA}{\nLeftrightarrow}
-	\newcommand*{\lnequivB}{\notequiv}
-	\newcommand*{\lnright}{\lceil}                       % A*B - F W F W - nicht B
-	\newcommand*{\lnrightimp}{\nrightarrow}              % A*B - F W F F - nicht (aus A folgt B)
-	\newcommand*{\lnrightimpA}{\nRightarrow}
-	\newcommand*{\lnrightimpB}{\nsupset}
-	\newcommand*{\lnimp}{\lnrightimp}
-	% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	\newcommand*{\lnleft}{\rceil}                        % A*B - F F W W - nicht A
-	\newcommand*{\lnleftimp}{\nleftarrow}                % A*B - F F W F - nicht (A folgt aus B)
-	\newcommand*{\lnleftimpA}{\nLeftarrow}
-	\newcommand*{\lnleftimpB}{\nsubset}
-	\newcommand*{\lnor}{\downarrow}                      % A*B - F F F W - nicht (A oder B)
-	\newcommand*{\lnorA}{\operatorname{\overline\vee}}
-%	\newcommand*{\lbfalse}{\operatorname{\bot}}          % A*B - F F F F - falsch [binär]
-%	\newcommand*{\lnbtrue}{\operatorname{\nottop}}       % A*B - " " " " - nicht wahr [binär]
-	% Gleichheit ----------------------------------------------------------------
-	%              =
-	%             \ne
-	\newcommand*{\defeq}{\coloneqq}
-	% Prioritäten ---------------------------------------------------------------
+	%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	\newcommand*{\lnand}{\uparrow}%                        F W W W - nicht (A und B)
+	\newcommand*{\lnandA}{\barwedge}%
+	\newcommand*{\lnandB}{\mid}%
+	\newcommand*{\lxor}{\add}%                             F W W F - entweder A oder B
+	\newcommand*{\lxorA}{\operatorname{\dot\lor}}%
+	\newcommand*{\lxorB}{\veebar}%
+	\newcommand*{\lxorC}{\oplus}%
+	\newcommand*{\lnequiv}{\nleftrightarrow}%              " " " " - nicht (A genau dann, wenn B)
+	\newcommand*{\lnequivA}{\nLeftrightarrow}%
+	\newcommand*{\lnequivB}{\notequiv}%
+	\newcommand*{\lnright}{\lceil}%                        F W F W - nicht B
+	\newcommand*{\lnrightimp}{\nrightarrow}%               F W F F - nicht (aus A folgt B)
+	\newcommand*{\lnrightimpA}{\nRightarrow}%
+	\newcommand*{\lnrightimpB}{\nsupset}%
+	\newcommand*{\lnimp}{\lnrightimp}%
+	%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	\newcommand*{\lnleft}{\rceil}%                         F F W W - nicht A
+	\newcommand*{\lnleftimp}{\nleftarrow}%                 F F W F - nicht (A folgt aus B)
+	\newcommand*{\lnleftimpA}{\nLeftarrow}%
+	\newcommand*{\lnleftimpB}{\nsubset}%
+	\newcommand*{\lnor}{\downarrow}%                       F F F W - nicht (A oder B)
+	\newcommand*{\lnorA}{\operatorname{\overline\vee}}%
+%	\newcommand*{\lbfalse}{\operatorname{\bot}}%           F F F F - falsch [binär]
+%	\newcommand*{\lnbtrue}{\operatorname{\nottop}}%        " " " " - nicht wahr [binär]
+	% Sonstige -----------------------------------------------------------------
+	\newcommand*{\defeq}{\coloneqq}%                               - definitionsgemäß gleich
+	% Prioritäten - jeweils Prio p* für Symbol \l* -----------------------------
 	\newcounter{prio}                                            \stepcounter{prio}
 	\newcounter{pnequiv}   \setcounter{pnequiv}   {\value{prio}}
 	\newcounter{pequiv}    \setcounter{pequiv}    {\value{prio}} \stepcounter{prio}
@@ -684,12 +877,13 @@
 	\newcounter{pnand}     \setcounter{pnand}     {\value{prio}}
 	\newcounter{pand}      \setcounter{pand}      {\value{prio}} \stepcounter{prio}
 	\newcounter{pnot}      \setcounter{pnot}      {\value{prio}}
+	% Farben
+	\definecolor{cNormalUse}{rgb}{.80,.80,.80}
+	\definecolor{cRareUse}{rgb}{.90,.90,.99}
+	% ==========================================================================
 
 	% ZELLEN vertikal zentrieren
 	\begin{table}
-		\renewcommand*{\clq}{}
-		\renewcommand*{\crq}{}
-		\renewcommand*{\cse}{~}
 		\newcommand*{\tablegroup}{\hdashline[6pt/3pt]}
 		\newcommand*{\tableline}{\hdashline[3pt/3pt]}
 		\newcommand*{\gapline}{\cdashline{1-1}[1pt/3pt]\cdashline{9-11}[1pt/3pt]}
@@ -698,271 +892,303 @@
 		\begin{threeparttable}
 			\begin{tabularx}{\linewidth-10.95pt}{c||c:cc:cccc|X:X|c|}
 
-				\textbf{Junktor}\tnote{1}&\textbf{0}&\multicolumn{2}{c:}{\textbf{1}}&\multicolumn{4}{c|}{\textbf{2}}& \textbf{Name}& \textbf{Sprechweise}\tnote{2}&\textbf{Prio}\\
-				\hline %-------------------------------------------------------------
 				A &-&\texttrue&\textfalse&\texttrue&\texttrue&\textfalse&\textfalse& -&Aussage A&-\\
-				\tableline %...............................................
+				\tableline%.................................................
 				B &-&-&-&\texttrue&\textfalse&\texttrue&\textfalse& -&Aussage B&-\\
-				\hline\hline %===================================================
+				\hline%---------------------------------------------------------
+
+				\textbf{Junktor}\tnote{1}&\textbf{0}&\multicolumn{2}{c:}{\textbf{1}}&\multicolumn{4}{c|}{\textbf{2}}& \textbf{Name}& \textbf{Sprechweise}\tnote{2}&\textbf{Prio}\\
+				\hline\hline%===================================================
 
 				\rowcolor{cRareUse}
-				\clqt$\ltrue$\crqt &\texttrue&-&-&-&-&-&-& ~&Wahr&-\\
-				\tableline %...............................................
+				\clqt$\ltrue$\crqt&\texttrue&-&-&-&-&-&-& Verum&Wahr&-\\
+				\tableline%.................................................
 				\rowcolor{cRareUse}
-				\clqt$\lfalse$\crqt &\textfalse&-&-&-&-&-&-& ~&Falsch&-\\
-				\hline %-------------------------------------------------------------
+				\clqt$\lfalse$\crqt &\textfalse&-&-&-&-&-&-& Falsum&Falsch&-\\
+				\hline%---------------------------------------------------------
 
-				~ &-&\texttrue&\texttrue&-&-&-&-& ~&&-\tnote{4}\\
-				\tableline %...............................................
+				~ &-&\texttrue&\texttrue&-&-&-&-& ~&&-\\
+				\tableline%.................................................
 				\rowcolor{cNormalUse}
-				\clqt$(\dots)$\crqt &-&\texttrue&\textfalse&-&-&-&-& Klammerung\tnote{3}&A ist geklammert&-\tnote{5}\\
-				\tableline %...............................................
+				\clqt$(\dots)$\crqt &-&\texttrue&\textfalse&-&-&-&-& Klammerung\tnote{3}&A ist geklammert&6\tnote{4}\\
+				\tableline%.................................................
 				\rowcolor{cNormalUse}
-				\clqt$\lnot$\crqt &-&\textfalse&\texttrue&-&-&-&-& Negation&Nicht A&\thepnot\tnote{6}\\
-				\tableline %...............................................
-				~ &-&\textfalse&\textfalse&-&-&-&-& ~&&-\tnote{4}\\
-				\hline %-------------------------------------------------------------
+				\clqt$\lnot$\crqt &-&\textfalse&\texttrue&-&-&-&-& Negation&Nicht A&\thepnot\tnote{5}\\
+				\tableline%.................................................
+				~ &-&\textfalse&\textfalse&-&-&-&-& ~&&-\\
+				\hline%---------------------------------------------------------
 
-				~ &-&-&-&\texttrue&\texttrue&\texttrue&\texttrue& Tautologie&&-\tnote{4}\\
-				\tableline %...............................................
+				~ &-&-&-&\texttrue&\texttrue&\texttrue&\texttrue& Tautologie&&-\\
+				\tableline%.................................................
 				\rowcolor{cNormalUse}
 				\clqt$\lor$\crqt &-&-&-&\texttrue&\texttrue&\texttrue&\textfalse& Disjunktion; Adjunktion;\newline Alternative&A oder B&\thepor\\
-				\tableline %...............................................
+				\tableline%.................................................
 				\rowcolor{cRareUse}
 				\clqt$\lleftimp$\cspt$\lleftimpA$\cspt$\lleftimpB$\crqt &-&-&-&\texttrue&\texttrue&\textfalse&\texttrue& Replikation; Konversion&A folgt aus B&\thepleftimp\\
-				\tableline %...............................................
-				\clqt$\lleft$\crqt &-&-&-&\texttrue&\texttrue&\textfalse&\textfalse& Präpendenz&Identität von A&-\tnote{4}\\
-				\tablegroup %----------------------------------------------
+				\tableline%.................................................
+				\clqt$\lleft$\crqt &-&-&-&\texttrue&\texttrue&\textfalse&\textfalse& Präpendenz&Identität von A&-\\
+				\tablegroup%------------------------------------------------
 
 				\rowcolor{cNormalUse}
-				\clqt$\lrightimp$\cspt$\lrightimpA$\cspt$\lrightimpB$\crqt &-&-&-&\texttrue&\textfalse&\texttrue&\texttrue& Implikation; Subjunktion;\newline Konditional&Wenn A so B; Aus A folgt B;\newline A nur dann wenn B&\theprightimp\\
-				\tableline %...............................................
-				\clqt$\lright$\crqt &-&-&-&\texttrue&\textfalse&\texttrue&\textfalse& Postpendenz&Identität von B&-\tnote{4}\\
-				\tableline %...............................................
+				\clqt$\lrightimp$\cspt$\lrightimpA$\cspt$\lrightimpB$\crqt &-&-&-&\texttrue&\textfalse&\texttrue&\texttrue& Implikation; Subjunktion;\newline Konditional&Wenn A so B; Aus A folgt B; A nur dann wenn B&\theprightimp\\
+				\tableline%.................................................
+				\clqt$\lright$\crqt &-&-&-&\texttrue&\textfalse&\texttrue&\textfalse& Postpendenz&Identität von B&-\\
+				\tableline%.................................................
 				\rowcolor{cNormalUse}
-				\clqt$\lequiv$\cspt$\lequivA$\crqt &-&-&-&\texttrue&\textfalse&\textfalse&\texttrue& Äquivalenz \tnote{7}; Bijunktion;\newline Bikonditional&A genau dann wenn B;\newline A dann und nur dann wenn B&\thepequiv\\
-				\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
-				\clqt$\lnxor$\crqt &-&-&-&"&"&"&"& ~&&\\
-				\tableline %...............................................
+				\clqt$\lequiv$\cspt$\lequivA$\crqt &-&-&-&\texttrue&\textfalse&\textfalse&\texttrue& Äquivalenz; Bijunktion;\newline Bikonditional&A genau dann wenn B; A dann und nur dann wenn B&\thepequiv\\
+				\gapline%. . . . . . . . . . . . . . . . . . . . . . . . . .
+				\clqt$\lnxor$\crqt &-&-&-&"&"&"&"& ~&&-\\
+				\tableline%.................................................
 				\rowcolor{cNormalUse}
 				\clqt$\land$\cspt$\landA$\cspt$\landB$\crqt &-&-&-&\texttrue&\textfalse&\textfalse&\textfalse& Konjunktion&{\small A und B; Sowohl A als auch B}&\thepand\\
-				\tablegroup %----------------------------------------------
+				\tablegroup%------------------------------------------------
 
 				\rowcolor{cRareUse}
 				\clqt$\lnand$\cspt$\lnandA$\cspt$\lnandB$\crqt &-&-&-&\textfalse&\texttrue&\texttrue&\texttrue& NAND; Unverträglichkeit;\newline Sheffer-Funktion&Nicht zugleich A und B&\thepnand\\
-				\tableline %...............................................
+				\tableline%.................................................
 				\rowcolor{cRareUse}
 				\clqt$\lxor$\cspt$\lxorA$\cspt$\lxorB$\cspt$\lxorC$\crqt &-&-&-&\textfalse&\texttrue&\texttrue&\textfalse& XOR; Antivalenz;\newline ausschließende Disjunktion&Entweder A oder B&\thepxor\\
-				\gapline %. . . . . . . . . . . . . . . . . . . . . . . . .
-				\clqt$\lnequiv$\cspt$\lnequivA$\cspt$\lnequivB$\crqt &-&-&-&"&"&"&"& Kontravalenz&&\thepnequiv\\
-				\tableline %...............................................
-				$\lnright$ &-&-&-&\textfalse&\texttrue&\textfalse&\texttrue& Postnonpendenz&Negation von B&-\tnote{4}\\
-				\tableline %...............................................
-				\clqt$\lnrightimp$\cspt$\lnrightimpA$\cspt$\lnrightimpB$\crqt &-&-&-&\textfalse&\texttrue&\textfalse&\textfalse& Postsektion&&\thepnrightimp\\
-				\tablegroup %----------------------------------------------
+				\gapline%. . . . . . . . . . . . . . . . . . . . . . . . . .
+				\clqt$\lnequiv$\cspt$\lnequivA$\cspt$\lnequivB$\crqt &-&-&-&"&"&"&"& Kontravalenz&&-\\
+				\tableline%.................................................
+				$\lnright$ &-&-&-&\textfalse&\texttrue&\textfalse&\texttrue& Postnonpendenz&Negation von B&-\\
+				\tableline%.................................................
+				\clqt$\lnrightimp$\cspt$\lnrightimpA$\cspt$\lnrightimpB$\crqt &-&-&-&\textfalse&\texttrue&\textfalse&\textfalse& Postsektion&&-\\
+				\tablegroup%------------------------------------------------
 
-				\clqt$\lnleft$\crqt &-&-&-&\textfalse&\textfalse&\texttrue&\texttrue& Pränonpendenz&Negation von A&-\tnote{4}\\
-				\tableline %...............................................
-				\clqt$\lnleftimp$\cspt$\lnleftimpA$\cspt$\lnleftimpB$\crqt &-&-&-&\textfalse&\textfalse&\texttrue&\textfalse& Präsektion&&\thepnleftimp\\
-				\tableline %...............................................
+				\clqt$\lnleft$\crqt &-&-&-&\textfalse&\textfalse&\texttrue&\texttrue& Pränonpendenz&Negation von A&-\\
+				\tableline%.................................................
+				\clqt$\lnleftimp$\cspt$\lnleftimpA$\cspt$\lnleftimpB$\crqt &-&-&-&\textfalse&\textfalse&\texttrue&\textfalse& Präsektion&&-\\
+				\tableline%.................................................
 				\rowcolor{cRareUse}
 				\clqt$\lnor$\cspt$\lnorA$\crqt &-&-&-&\textfalse&\textfalse&\textfalse&\texttrue& NOR; Nihilation;\newline Peirce-Funktion&Weder A noch B&\thepnor\\
-				\tableline %...............................................
-				~ &-&-&-&\textfalse&\textfalse&\textfalse&\textfalse& Kontradiktion&&-\tnote{4}\\
-				\hline\hline %===================================================
-
-				\rowcolor{cNormalUse}
-				$=$ &-&-&-&-&-&-&-& Identität; Gleichheit\tnote{7}&A ist gleich B&-\tnote{8}\\
-				\tableline %...............................................
-				\rowcolor{cNormalUse}
-				$\defeq$ &-&-&-&-&-&-&-& Definition\tnote{7}&A ist definiert als B&-\tnote{8}\\
-				\hline %_____________________________________________________________
+				\tableline%.................................................
+				~ &-&-&-&\textfalse&\textfalse&\textfalse&\textfalse& Kontradiktion&&-\\
+				\hline%_________________________________________________________
 			\end{tabularx}
 			\begin{tablenotes}
 				\footnotesize
-				\item[1] Operatorsymbole. \clq$\subset$\crq, \clq$\supset$\crq, \clq$\nsubset$\crq\ und \clq$\nsupset$\crq, dürfen nicht mit den entsprechenden Mengensymbolen verwechselt werden; gleiches gilt für \clq$+$\crq\ und \clq$\cdot$\crq\ mit Addition und Multiplikation.
-				\item[2] Ist eine Zelle in dieser Spalte leer, so sind die angegebenen Junktoren nur aus Symmetriegründen definiert.
-				\item[3] Klammerung wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet.
-				\item[4] Wegen Nichtgebrauch wird keine Priorität angegeben.
-				\item[5] Die Priorität der Klammern ist größer als die aller Operatoren.
-				\item[6] Die Priorität der unären Operatoren muss größer sein als die aller mehrwertigen (\textzB\  binären) Operatoren. Wenn alle unären Operatoren auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
-				\item[7] Identität und Definition sind keine aussagenlogischen Operatoren. Daher werden keine Wahrheitswerte angegeben. Zudem dürfen sie nicht mit der (aussagenlogischen) Äquivalenz verwechselt werden.
-				\item[8] Die Priorität von \clq$=$\crq\ und \clq$\defeq$\crq\ ist kleiner als die aller logischen Operatoren.
+				\item[1] \emph{Operatorsymbole} -- \clq$\subset$\crq, \clq$\supset$\crq, \clq$\nsubset$\crq\ und \clq$\nsupset$\crq, dürfen nicht mit den entsprechenden Mengensymbolen verwechselt werden; gleiches gilt für \clq$+$\crq\ und \clq$\cdot$\crq\ mit Addition und Multiplikation.
+				\item[2] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle binären Operationen aufzuführen.
+				\item[3] Klammerung ist genau genommen kein Operator und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet.
+				\item[4] Die Priorität der Klammern ist größer als die aller Operatoren.
+				\item[5] Die Priorität der unären Operatoren muss größer sein als die aller mehrwertigen, also auch der binären Operatoren.
+				Wenn alle unären Operatoren auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
 			\end{tablenotes}
 			\caption{Definition von aussagenlogischen Symbolen.}
 			\label{tab:Symbole}
 		\end{threeparttable}
 	\end{table}
 
-	Für einige Junktoren sowie Namen und Sprechweisen sind auch Alternativen angegeben. Die meisten durchgestrichenen (\textdh\ negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt. Normalerweise werden im Folgenden nur die in der Spalte \emph{Junktor} jeweils zuerst angegebenen Symbole verwendet.
+	Für einige Junktoren, Namen und Sprechweisen sind auch Alternativen angegeben.
+	Die durchgestrichenen (\textdh\ negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt.
+	Wenn für eine bestimmte Kombination von Wahrheitswerten mehr als eine Zeile angegeben ist, so sind die zugehörigen Operationen in der zweiwertigen Aussagenlogik alle gleich.
+	Bei der formalen Definition setzen wir aber keine Zweiwertigkeit voraus, so dass je nach Definition die Operationen verschiedene Ergebnisse liefern können.
 
-	Um vollständig zu sein, \textdh\ alle 22 möglichen Kombinationen von Wahrheitswerten für höchstens zwei Variable zu berücksichtigen, enthält die \tablename\ auch viele ungebräuchliche Junktoren und Operationen. Die Zeilen mit den Klammern, den verbreitetsten Junktoren und \clq$=$\crq\ und \clq$\defeq$\crq\ sind in der \tablename\ grau hinterlegt. Hellgrau hinterlegt sind Zeilen mit weniger gebräuchlichen Junktoren. Die vier Operationen ohne Angabe eines Junktors sind uninteressant und brauchen keine Priorität.
+	Um vollständig zu sein, \textdh\ alle 22 möglichen Kombinationen von Wahrheitswerten für höchstens zwei Variable zu berücksichtigen, enthält die \tablename\ auch viele ungebräuchliche Junktoren und Operationen.
+	Die Zeilen mit den Klammern und den gebräuchlichsten Junktoren sind in der \tablename\ grau hinterlegt.
+	Hellgrau hinterlegt sind Zeilen mit weniger gebräuchlichen Junktoren.
+	Die restlichen Operationen sind uninteressant und brauchen daher keine Priorität.
 
-	Wenn für eine bestimmte Kombination von Wahrheitswerten mehr als eine Zeile angegeben ist, so sind die zugehörigen Operationen in der zweiwertigen Aussagenlogik alle gleich. Bei der formalen Definition setzen wir aber keine Zweiwertigkeit voraus, so dass je nach Definition die Operationen verschiedene Ergebnisse liefern können.
-
-	\subsection{Klammerregeln} %-------------------------------------------------
+	\subsection{Klammerregeln}%-------------------------------------------------
 	\label{sub:Klammerregeln}
 
-	Zur Klammerersparnis werden die üblichen Regeln verwendet, \textdh\ dass Operatoren mit höherer Priorität stärker binden, als solche mit niedrigerer Priorität, so dass redundante Klammern weggelassen werden können. Bei gleicher Priorität binden Klammern von innen nach außen. Für die Operatoren gilt Rechtsklammerung\footnote{Unäre Operatoren \textendash\ außer Klammern \textendash\ stehen hier stets links \emph{vor} dem Operanden, so dass es nur Rechtsklammerung geben kann. Zitat aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5: \emph{Diese hat gegenüber Linksklammerung Vorteile bei der Niederschrift von Tautologien in $\limp$, [...]}}. Es gilt also mit abnehmender Priorität:
+	Zur Klammerersparnis werden die üblichen Regeln verwendet, \textdh\ dass Operatoren mit höherer Priorität stärker binden, als solche mit niedrigerer Priorität, so dass redundante Klammern weggelassen werden können.
+	Bei gleicher Priorität binden Klammern von innen nach außen.
+	Für die Operatoren gilt Rechtsklammerung%
+	\footnote{%
+		Unäre Operatoren -- außer Klammern -- stehen hier stets links \emph{vor} dem Operanden, so dass es nur Rechtsklammerung geben kann.
+		Zur Rechtsklammerung bei binären Operationen hier ein Zitat aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5: \emph{Diese hat gegenüber Linksklammerung Vorteile bei der Niederschrift von Tautologien in $\limp$, [...]}
+	}%
+	.
+	Es gilt also mit abnehmender Priorität:
 
-	{
-		\renewcommand*{\clq}{}
-		\renewcommand*{\crqt}{}
-		\renewcommand*{\cse}{~}
+	Klammern
+	\begin{itemize}
+		\item \clqt$(\dots)$\crqt
+	\end{itemize}
 
-		Klammern
-		\begin{itemize}
-			\item \clqt$(\dots)$\crqt
-		\end{itemize}
+	Unäre logische Operatoren
+	\begin{itemize}
+		\item \clqt$\lnot$\crqt
+		%       \thepnot
+	\end{itemize}
 
-		Unäre logische Operatoren
-		\begin{itemize}
-			\item \clqt$\lnot$\crqt
-			%       \thepnot
-		\end{itemize}
+	Binäre logische Operatoren
+	\begin{itemize}
+		\item $\land\quad\mult\quad\lnand$
+		%   \thepand,\thepmult, \thepnand
+		\item $\lor\quad\add\quad\lnor$
+		%   \thepor,\thepadd  \thepnor
+		%\item $\lleft\quad\lright\quad\lnleft\quad\lnright$
+		%    \thepleft, \thepright, \thepnleft, \thepnright
+		\item $\lleftimp\quad\lrightimp$
+		%   \thepleftimp, \theprightimp
+		\item $\lequiv$
+		%   \thepequiv
+	\end{itemize}
 
-		Binäre logische Operatoren
-		\begin{itemize}
-			\item \clqt$\land$\cspt$\mult$\cspt$\lnand$\crqt
-			%       \thepand, \thepmult,  \thepnand
-
-			\item \clqt$\lor$\cspt$\add$\cspt$\lnor$\crqt
-			%       \thepor, \thepadd,  \thepnor
-
-			%\item \clqt$\lleft$\cspt$\lright$\cspt$\lnleft$\cspt$\lnright$\crqt
-	        %       \thepleft,  \thepright,  \thepnleft,  \thepnright
-
-			\item \clqt$\lleftimp$\cspt$\lrightimp$\cspt$\lnleftimp$\cspt$\lnrightimp$\crqt
-			%       \thepleftimp,  \theprightimp,  \thepnleftimp,  \thepnrightimp
-
-			\item \clqt$\lequiv$\cspt$\lnequiv$\crqt
-			%       \thepequiv,  \thepnequiv
-		\end{itemize}
-
-		Nichtlogische Operatoren
-		\begin{itemize}
-			\item \clqt$=$\cspt$\defeq$\crqt
-		\end{itemize}
-	}
+	Nichtlogische Zeichen
+	\begin{itemize}
+		\item $=\quad\defeq\quad\equiv$
+	\end{itemize}
 
 	Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5 entnommen und ergänzt.
 
-	\subsection{Formalisierung} %------------------------------------------------
+	\subsection{Formalisierung}%------------------------------------------------
 	\label{sub:Formalisierung}
 
-	Da Computerprogramme verwendet werden, müssen die Axiome, Sätze, Beweise, \textetc\ in streng formaler Form vorliegen. Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik} mit Auslassungen, Umsortierungen und Änderungen; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
+	Da Computerprogramme verwendet werden, müssen die Axiome, Sätze, Beweise, \textetc\ in streng formaler Form vorliegen.
+	Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
 
-	{
-		\subsubsection{Bausteine der aussagenlogischen Sprache}
-		\label{subsub:Bausteine}
-
-		\newcommand*{\ItemB}[2]{\item[]\makebox[0.7cm][l]{#1}\makebox[4.0cm][l]{#2}}
-		\newcommand*{\ItemF}[2]{\item[]\makebox[2.0cm][l]{#1}\makebox[4.5cm][l]{#2}}
-
-		\newcommand*{\asN}{\mathbb{N}_0}
-		\newcommand*{\asK}{\mathcal{K}}
-		\newcommand*{\asV}{\mathcal{V}}
-		\newcommand*{\asU}{\mathcal{U}}
-		\newcommand*{\asB}{\mathcal{B}}
-		\newcommand*{\asG}{\mathcal{G}}
-		\newcommand*{\asS}{\mathcal{J}}
-		\newcommand*{\asA}{\mathcal{A}}
-		\newcommand*{\asF}{\mathcal{F}}
-		\newcommand*{\asX}{\mathcal{X}}
-		\newcommand*{\ase}{_\mathrm{e}}
-		\newcommand*{\asBe}{\asB\ase}
-		\newcommand*{\asSe}{\asS\ase}
-		\newcommand*{\asAe}{\asA\ase}
-		\newcommand*{\asFe}{\asF\ase}
-		\newcommand*{\asXe}{\asX\ase}
-
-		Es werden zur Erfassung der Symbole die folgenden Mengen\footnote{Hier wird die naive Mengenlehre vorausgesetzt.} definiert:
-		\begin{itemize}
-
-			\ItemB{$\asK$}{$\defeq\{\ltrue,\lfalse\}$} Menge der \emph{Konstanten}.
-
-			\ItemB{$\asU$}{$\defeq\{\lnot\}$} Menge der \emph{unären Operatoren}.
-
-			\ItemB{$\asB$}{$\defeq\{\land,\lor,\limp,\lequiv\}$} Menge der \emph{binären Operatoren}.
-
-			\ItemB{$\asBe$}{$\defeq\asB\cup\{\mult,\add,\lnand,\lnor,\lleftimp\}$} \emph{Erweiterte} Menge der binären Operatoren.
-
-			\ItemB{$\asG$}{$\defeq\{~'('~,~')'~\}$} Menge der \emph{Gliederungszeichen}.
-
-		\end{itemize}
-
-		Damit sind alle in der \tablename~\vref{tab:Symbole} verwendeten logischen Konstanten und Operatoren\footnote{Jeweils nur die ersten der grau hinterlegten Zeilen sowie \clq$\mult$\crq. Man beachte, dass \clq$=$\crq, $\ne$ und \clq$\defeq$\crq\ hier keine logischen Operatoren sind \textemdash\ \seename~\vref{sub:Klammerregeln}.} sowie die Klammern erfasst und es können die folgende Mengen definiert werden:
-		\begin{itemize}
-
-			\ItemB{$\asN$}{$\defeq$} Menge der \emph{natürlichen Zahlen} einschließlich $0$.\footnote{Für alle endlichen Formeln und endlichen Mengen davon \textendash\ und nur solche betrachten wir \textendash\ wird jeweils nur eine endliche Teilmenge aus $\asN$ gebraucht. Somit gibt es keine Schwierigkeiten mit unendlichen Mengen.}
-
-			\ItemB{$\asV$}{$\defeq\{P_n|n\in \mathbb{N}_0\}$} Menge der \emph{atomaren Formeln} (Satzbuchstaben), kurz: \emph{Atome}.
-
-			\ItemB{$\asS$}{$\defeq\asU\cup\asB\cup\asG$} Menge der \emph{Symbole}.\footnote{Junktoren und Gliederungszeichen}
-
-			\ItemB{$\asSe$}{$\defeq\asU\cup\asBe\cup\asG\cup\asK$} \emph{Erweiterte} Menge der Symbole.\footnote{Konstanten, Junktoren und Gliederungszeichen}
-
-			\ItemB{$\asA$}{$\defeq\asV\cup\asS$} \emph{Alphabet} der logischen Sprache.
-
-			\ItemB{$\asAe$}{$\defeq\asV\cup\asSe$} \emph{Erweitertes} Alphabet der logischen Sprache.
-
-		\end{itemize}
-		Für Elemente von $\asV$ werden auch die großen lateinischen Buchstaben $A$, $B$, $C$, $\dots$ verwendet.
-
-		\subsubsection{Formationsregeln}
-		\label{subsub:Formeln}
-
-		Es werden nun rekursiv noch zwei Mengen von Formeln definiert:
-		\begin{itemize}
-
-			\ItemF{$\asF$}{\clq$\defeq$\crqt}{Menge der \emph{aussagenlogischen Formeln}.}
-
-			\item[]$\asV\subset\asF$
-
-			\ItemF{$A\in\asF$ }{dann auch $(\circ A)\in\asF$}{für~$\circ\in\asU$}
-
-			\ItemF{$A,B\in\asF$}{dann auch $(A\circ B)\in\asF$}{für~$\circ\in\asB$}
-
-			\item[] Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asF$, \textdh\ aussagenlogische Formeln.
-
-		\end{itemize}
-		und
-		\begin{itemize}
-
-			\ItemF{$\asFe$}{\clq$\defeq$\crqt}{Menge der \emph{erweiterten} aussagenlogischen Formeln.}
-
-			\item[]$(\asV\cup\asK)\subset\asFe$
-
-			\ItemF{$A\in\asFe$}{dann auch $(\circ A)\in\asFe$}{für~$\circ\in\asU$}
-
-			\ItemF{$A,B\in\asFe$}{dann auch $(A\circ B)\in\asFe$}{für~$\circ\in\asBe$}
-
-			\item[] Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFe$, \textdh\ erweiterte aussagenlogische Formeln.
-
-		\end{itemize}
-		Wie man leicht sieht, ist stets $\asX\subset\asXe$ für $\asX\in\{\asB,\asS,\asA,\asF\}$. Durch Anwendung der Klammerregeln von \subsubsectionname~\vref{subsub:Bausteine} lassen sich in der Regel noch die meisten Klammern einsparen. Die Namen der Operationen finden sich in der \tablename~\vref{tab:Symbole}. Für Elemente von $\asF$ und $\asFe$ werden auch die kleinen griechischen Buchstaben $\varphi$, $\psi$, $\dots$ verwendet.
+	Computerprogramme können mit der \emph{Polnischen Notation}\idx{Polnische Notation}%
+	\footnote{%
+		Bei der \emph{Polnischen Notation} wird eine zweistellige Operation $(A\circ B)$ dargestellt als $\circ A B$.
+		Eine Zwischenstufe ist $\circ(A,B)$, bei der noch die redundanten Gliederungszeichen Komma und Klammern -- auch andere als die runden -- hinzukommen, so dass die Operationen optisch besser getrennt und dadurch für Menschen besser lesbar werden.
+		Durch einfaches Weglassen der Gliederungszeichen ergibt sich dann die Polnische Notation.
 	}
+	besser umgehen und Klammern sind dort überflüssig.
+	Daher werden viele Formeln auch in die Polnische Notation überführt.
+
+	\subsubsection{Bausteine der aussagenlogischen Sprache}
+	\label{subsub:Bausteine}
+
+	% Definition der verwendeten Mengenbezeichnungen ---------------------------
+	\newcommand*{\ItemB}[2]{\item[]\makebox[0.7cm][l]{#1}\makebox[4.0cm][l]{#2}}
+	\newcommand*{\ItemF}[2]{\item[]\makebox[2.0cm][l]{#1}\makebox[4.5cm][l]{#2}}
+
+	\newcommand*{\ase}{_\mathrm{e}}
+	\newcommand*{\asp}{^\mathrm{p}}
+	\newcommand*{\aspe}{^\mathrm{p}_\mathrm{e}}
+
+	\newcommand*{\asN}{\mathbb{N}_0}
+	\newcommand*{\asA}{\mathcal{A}}
+	\newcommand*{\asB}{\mathcal{B}}
+	\newcommand*{\asC}{\mathcal{C}}
+	\newcommand*{\asF}{\mathcal{F}}
+	\newcommand*{\asJ}{\mathcal{J}}
+	\newcommand*{\asS}{\mathcal{S}}
+	\newcommand*{\asU}{\mathcal{U}}
+	\newcommand*{\asV}{\mathcal{V}}
+	\newcommand*{\asX}{\mathcal{X}}
+	\newcommand*{\asAe}{\asA\ase}
+	\newcommand*{\asBe}{\asB\ase}
+	\newcommand*{\asXe}{\asX\ase}
+	\newcommand*{\asFe}{\asF\ase}
+	\newcommand*{\asFp}{\asF\asp}
+	\newcommand*{\asFpe}{\asF\aspe}
+	% --------------------------------------------------------------------------
+
+	Für die Definition von neuen Elementen wird wie üblich \clq$\defeq$\crq\ verwendet.
+	Damit werden zur Erfassung der logischen Symbole die folgenden Mengen%
+	\footnote{Hier wird die naive Mengenlehre vorausgesetzt.}
+	definiert:
+	\begin{align}
+		%
+		&\Sdx{\asN}&&\defeq&& &&\textrm{Menge der \emph{natürlichen Zahlen}\idx{natürlichen Zahlen, Menge der} einschließlich 0.}\\
+		%
+		&\Sdx{\asC}&&\defeq&&\{\ltrue,\lfalse\}&&\textrm{Menge der \emph{Konstanten}\idx{Konstanten, Menge der}.}\\
+		%
+		&\Sdx{\asU}&&\defeq&&\{\lnot\}&&\textrm{Menge der \emph{unären Operatoren}\idx{unären Operatoren, Menge der}.}\\
+		%
+		&\Sdx{\asB}&&\defeq&&\{\land,\lor,\limp,\lequiv\}&&\textrm{Menge der \emph{binären Operatoren}\idx{binären Operatoren, Menge der.}}\\
+		%
+		&\Sdx{\asBe}&&\defeq&&\asB\cup\{\mult,\add,\lnand,\lnor,\lleftimp\}&&\textrm{\emph{Erweiterte} Menge der binären Operatoren\idx{binären Operatoren, erweiterte Menge der}.}
+		%
+	\end{align}
+
+	Damit sind alle in der \tablename~\vref{tab:Symbole} verwendeten wesentlichen Konstanten und Operatoren%
+	\footnote{%5
+		Jeweils nur die ersten der grau hinterlegten Zeilen sowie \clq$\mult$\crq.
+		Man beachte, dass \clq$=$\csp$\ne$\csp$\defeq$\crq\ und Klammerung keine logischen Operatoren sind -- \seename~\vref{sub:Klammerregeln}.
+	}
+	erfasst und es können die folgende Mengen definiert werden:
+	\begin{align}
+		%
+		&\Sdx{\asV}&&\defeq&&\{P_n|n\in\mathbb{N}_0\}&&\textrm{Menge der \emph{atomaren Formeln}\idx{atomare Formeln, Menge der}}\\
+		%
+		&\Sdx{\asJ}&&\defeq&&\asU\cup\asB&&\textrm{Menge der \emph{Junktoren}\idx{Junktoren, Menge der}, \textbzw\ Operatoren.}\\
+		%
+		&\Sdx{\asS}&&\defeq&&\asU\cup\asBe\cup\asC&&\textrm{Menge der \emph{Symbole}\idx{Symbole, Menge der}.}\\
+		%
+		&\Sdx{\asA}&&\defeq&&\asV\cup\asJ&&\textrm{\emph{\idx{Alphabet der logischen Sprache}}.}\\
+		%
+		&\Sdx{\asAe}&&\defeq&&\asV\cup\asS&&\textrm{\emph{Erweitertes} Alphabet der logischen Sprache\idx{Alphabet der logischen Sprache, erweitertes}.}
+		%
+	\end{align}
+	Für Elemente aus $\asV$ werden auch die großen lateinischen Buchstaben $A$, $B$, $C$, $\dots$ verwendet.
+
+	Für alle endlichen Formeln und endlichen Mengen davon -- und nur solche betrachten wir -- wird jeweils nur eine endliche Teilmenge aus $\asN$ gebraucht.
+	Somit gibt es keine Schwierigkeiten mit unendlichen Mengen.
+	Die atomaren Formeln werden auch \emph{\Idx{Satzbuchstabe}}\emph{n} oder kurz \emph{\Idx{Atom}}\emph{e}. genannt.
+
+	\subsubsection{Formationsregeln}
+	\label{subsub:Formeln}
+
+	Neben dem (erweiterten) Alphabet werden noch Klammern als Gliederungszeichen verwendet.
+	Damit können nun rekursiv drei Mengen von Formeln definiert werden:
+
+	$\asF$ sei die Menge der auf folgende Weise definierten \emph{aussagenlogischen Formeln}\idx{aussagenlogische Formel}:
+	\begin{align}
+		&\asV\subset\asF\\
+		&A\in\asF&&\textrm{dann auch}\quad\quad(\circ A)\in\asF&&\textrm{für}~\circ\in\asU\\
+		&A,B\in\asF&&\textrm{dann auch}\quad\quad(A\circ B)\in\asF&&\textrm{für}~\circ\in\asB
+	\end{align}
+	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asF$.
+
+	$\asFe$ sei die Menge der auf folgende Weise definierten \emph{erweiterten} aussagenlogischen Formeln\idx{aussagenlogische Formel, erweiterte}:
+	\begin{align}
+		&\asV, \asC\subset\asFe\\
+		&A\in\asFe&&\textrm{dann auch}\quad\quad(\circ A)\in\asFe&&\textrm{für}~\circ\in\asU\\
+		&A,B\in\asFe&&\textrm{dann auch}\quad\quad(A\circ B)\in\asFe&&\textrm{für}~\circ\in\asBe
+	\end{align}
+	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFe$.
+
+	$\asFp$ sei die Menge der auf folgende Weise definierten aussagenlogischen Formeln in \emph{Polnischer Notation}\idx{aussagenlogische Formel in Polnischer Notation}:
+	\begin{align}
+		&\asV\subset\asFp\\
+		&A\in\asFp&&\textrm{dann auch}\quad\quad\circ A\in\asFp&&\textrm{für}~\circ\in\asU\\
+		&A,B\in\asFp&&\textrm{dann auch}\quad\quad\circ A B\in\asFp&&\textrm{für}~\circ\in\asB
+	\end{align}
+	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFp$.
+
+	$\asFpe$ sei die Menge der auf folgende Weise definierten \emph{erweiterten} aussagenlogischen Formeln in Polnischer Notation\idx{aussagenlogische Formel in Polnischer Notation, erweiterte}:
+	\begin{align}
+		&\asV, \asC\subset\asFpe\\
+		&A\in\asFpe&&\textrm{dann auch}\quad\quad\circ A\in\asFpe&&\textrm{für}~\circ\in\asU\\
+		&A,B\in\asFpe&&\textrm{dann auch}\quad\quad\circ A B\in\asFpe&&\textrm{für}~\circ\in\asBe
+	\end{align}
+	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFe$.
+
+	Wie man leicht sieht, ist $\asJ\subset\asS$ und $\asX\subset\asXe$ für $\asX\in\{\asA,\asB,\asF,\asFp\}$.
+	Durch Anwendung der Klammerregeln von \subsubsectionname~\vref{subsub:Bausteine} lassen sich in der Regel noch die meisten Klammern der Formeln aus $\asF$ und $\asFe$ einsparen.
+	Die Formeln aus $\asFp$ und $\asFpe$ sind Klammerfrei.
+	Die Namen der Operationen finden sich in der \tablename~\vref{tab:Symbole}.
+	Für Elemente von $\asX\in\{\asF, \asFe, \asFp, \asFpe\}$ die kleinen griechischen Buchstaben $\varphi$, $\psi$, $\dots$ verwendet.
 
 	\subsubsection{Aussagenlogische Axiome}
 	\label{sec:Axiome}
 
-	\textbf{> > > AUSSAGENLOGIK weiter bearbeiten. < < <} % AUSSAGENLOGIK weiter bearbeiten.
+	\textbf{> > > AUSSAGENLOGIK weiter bearbeiten. < < <}% AUSSAGENLOGIK weiter bearbeiten.
 
-	\section{Prädikatenlogik} %==================================================
-	\label{Prädikatenlogik}
+	\nextsection
+	\section{Prädikatenlogik}%==================================================
 	\newsection{Prädikatenlogik}
+	\label{Prädikatenlogik}
 
-	\textbf{> > > PRÄDIKATENLOGIK bearbeiten. < < <} % PRÄDIKATENLOGIK bearbeiten.
+	\textbf{> > > PRÄDIKATENLOGIK bearbeiten. < < <}% PRÄDIKATENLOGIK bearbeiten.
 
-	\section{Mengenlehre} %======================================================
-	\label{Mengenlehre}
+	\nextsection
+	\section{Mengenlehre}%======================================================
 	\newsection{Mengenlehre}
+	\label{Mengenlehre}
 
-	\textbf{> > > PRÄDIKATENLOGIK bearbeiten. < < <} % MENGENLEHRE bearbeiten.
+	\textbf{> > > PRÄDIKATENLOGIK bearbeiten. < < <}% MENGENLEHRE bearbeiten.
 
-	\section{Offene Aufgaben} %==================================================
-	\label{Offene Aufgaben}
+	\nextsection
+	\section{Offene Aufgaben}%==================================================
 	\newsection{Offene Aufgaben}
+	\label{sec:Offene Aufgaben}
 
 	\begin{enumerate}
 		\item TODOs bearbeiten
@@ -981,101 +1207,255 @@
 		\item Ausgabeschemata sammeln und eingeben
 	\end{enumerate}
 
-	%%%% Verzeichnisse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\clearpage
+	\nextchapter
+	\chapter{Ideen}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newchapter{Ideen}
+	\label{cha:Ideen}
 
-	%=== Tabellenverzeichnis ====================================================
+	\nextsection
+	\section{Definition von Junktoren durch andere}%============================
+	\newsection{Definition von Junktoren durch andere}
+	\label{sec:Junktordefinitionen}
 
-	\ihead{\textnormal{\textsf{\textbf{\listtablename}}}}
+	In den Formeln stehen jeweils links die Formeln in üblicher Schreibweise mit Klammern und rechts in Polnischer Notation (ohne Klammern).
+
+	% JUNKTOREN definieren und Übereinstimmung ableiten:
+
+	\subsection{logisches Axiomensystem}%---------------------------------------
+	\label{sub:Axiome}
+	Gegebene Operatoren: $\lnot,\land,\limp$\par
+	Axiome:
+	\begin{align}
+		%
+		&(\alpha\limp\beta\limp\gamma)\limp(\alpha\limp\beta)\limp(\alpha\limp\gamma)
+		&&\limp\limp\alpha\limp\beta\gamma\limp\limp\alpha\beta\limp\alpha\gamma\\
+		%
+		&\alpha\limp\beta\limp\alpha\land\beta
+		&&\limp\alpha\limp\beta\land\alpha\beta\\
+		%
+		&\alpha\land\beta\limp\alpha ;\quad\alpha\land\beta\limp\beta
+		&&\limp\land\alpha\beta\alpha ;\quad\limp\land\alpha\beta\beta\\
+		%
+		&(\alpha\limp\lnot\beta)\limp(\beta\limp\lnot\alpha)
+		&&\limp\limp\alpha\lnot\beta\limp\beta\lnot\alpha
+		%
+	\end{align}
+	Definierte Operatoren: $\lor,\lequiv,\mult,\add,\lnand,\lnor,\lleftimp,\lfalse,\ltrue$
+	\begin{align}
+		(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\limp\beta)
+		&\lor\alpha\beta&\defeq\lnot\limp\lnot\alpha\beta\\
+		%
+		(\alpha\lequiv\beta)&\defeq((\alpha\limp\beta)\land(\beta\limp\alpha))
+		&(\alpha\lequiv\beta)&\defeq((\alpha\limp\beta)\land(\beta\limp\alpha))\\
+		%
+		(\alpha\mult\beta)&\defeq(\alpha\land\beta)
+		&(\alpha\mult\beta)&\defeq(\alpha\land\beta)\\
+		%
+		(\alpha\add\beta)&\defeq((\alpha\lor\beta)\land\lnot(\alpha\land\beta))
+		&(\alpha\add\beta)&\defeq((\alpha\lor\beta)\land\lnot(\alpha\land\beta))\\
+		%
+		(\alpha\lnand\beta)&\defeq\lnot(\alpha\land\beta)
+		&(\alpha\lnand\beta)&\defeq\lnot(\alpha\land\beta)\\
+		%
+		(\alpha\lnor\beta)&\defeq\lnot(\alpha\lor\beta)
+		&(\alpha\lnor\beta)&\defeq\lnot(\alpha\lor\beta)\\
+		%
+		(\alpha\lleftimp\beta)&\defeq(\beta\limp\alpha)
+		&(\alpha\lleftimp\beta)&\defeq(\beta\limp\alpha)\\
+		%
+		\lfalse&\defeq(p_0\land\lnot p_0)
+		&\lfalse&\defeq(p_0\land\lnot p_0)\\
+		%
+		\ltrue&\defeq\lnot\lfalse
+		&\ltrue&\defeq\lnot\lfalse
+		%
+	\end{align}
+	Zu zeigen
+	\begin{align}
+		(\alpha\limp\beta)&\equiv\lnot(\alpha\land\lnot\beta)
+		&\limp\alpha\beta&\equiv\lnot\land\alpha\lnot\beta
+	\end{align}
+
+	\subsection{nicht, und, oder}%----------------------------------------------
+	\label{sub:Standard}
+	Gegebene Operatoren: $\lnot,\land,\lor$\par
+	Definierte Operatoren: $\limp,\lequiv,\mult,\add,\lnand,\lnor,\lleftimp,\lfalse,\ltrue$
+	\begin{align}
+	\end{align}
+	Zu zeigen:
+	\begin{align}
+		(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\land\lnot\beta)
+	\end{align}
+
+	\subsection{nicht, und}%----------------------------------------------------
+	Gegebene Operatoren: $\lnot,\land$\par
+	Definierter Operator: $\lor$
+	\begin{align}
+		(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\land\lnot\beta)
+	\end{align}
+	Zu zeigen:
+	\begin{align}
+		(\alpha\lor\beta)&\equiv\lnot(\lnot\alpha\land\lnot\beta)
+	\end{align}
+	Zur Definition der Operatoren $\limp,\lequiv,\mult,\add,\lnand,\lnor,\lleftimp,\lfalse,\ltrue$ siehe \subsectionname~\vref{sub:Standard}
+
+	\subsection{nicht, oder}%---------------------------------------------------
+	Gegebene Operatoren: $\lnot,\lor$\par
+	Definierter Operator: $\land$
+	\begin{align}
+		(\alpha\land\beta)&\defeq\lnot(\lnot\alpha\lor\lnot\beta))
+	\end{align}
+
+	\subsection{nicht, impliziert}%---------------------------------------------
+	Gegebene Operatoren: $\lnot,\limp$\par
+	Definierte Operatoren: $\land,\lor$
+	\begin{align}
+		(\alpha\land\beta)&\defeq\dots\\
+		(\alpha\lor\beta)&\defeq\dots
+	\end{align}
+
+	\subsection{NAND}%----------------------------------------------------------
+	Gegebener Operator: $\lnand$\par
+	Definierte Operatoren: $\lnot,\land,\lor$
+	\begin{align}
+		\lnot\alpha&\defeq\dots\\
+		(\alpha\land\beta)&\defeq\dots\\
+		(\alpha\lor\beta)&\defeq\dots
+	\end{align}
+
+	\subsection{NOR}%-----------------------------------------------------------
+	Gegebener Operator: $\lnor$\par
+	Definierte Operatoren: $\lnot,\land,\lor$
+	\begin{align}
+		\lnot\alpha&\defeq\dots\\
+		(\alpha\land\beta)&\defeq\dots\\
+		(\alpha\lor\beta)&\defeq\dots
+	\end{align}
+
+	\nextchapter
+	\chapter{Verzeichnisse}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newchapter{Verzeichnisse}
+	\label{cha:Verzeichnisse}
+
+	\nextsection
+%	\section{\listfigurename}% Abbildungsverzeichnis ===========================
+	\likesection{\listfigurename}
+	\label{sec:Abbildungsverzeichnis}
+	\begin{minipage}{\textwidth-10.95pt}
+		\addcontentsline{lof}{section}{*** Noch keine \figurename en vorhanden. ***}
+		\listoffigures
+	\end{minipage}\par
+
+	\nextsection
+%	\section{\listtablename}% Tabellenverzeichnis ==============================
+	\likesection{\listtablename}
+	\label{sec:Tabellenverzeichnis}
 	\begin{minipage}{\textwidth-10.95pt}
 		\listoftables
-		\addcontentsline{toc}{chapter}{\listtablename}
 	\end{minipage}\par
-	\thispagestyle{scrheadings}
+	\vspace{1.2cm}
 
-	%=== Abbildungsverzeichnis ==================================================
+	\nextsection
+%	\section{Symbolverzeichnis}% ===============================================
+	\likesection{Symbolverzeichnis}%
+	\label{sec:Symbole}%
+%	\extendtheindex{}{}{}{}
+	\printsubindex[sym]
 
-	\ihead{\textnormal{\textsf{\textbf{\listfigurename}}}}
-	\begin{minipage}{\textwidth-10.95pt}
-		\listoffigures
-		\addcontentsline{toc}{chapter}{\listfigurename}
-		\addcontentsline{lof}{section}{<Noch keine \figurename en vorhanden.>}
-	\end{minipage}\par
-	\thispagestyle{scrheadings}
-
-	%=== Literaturverzeichnis ===================================================
-
+	\nextsection
+%	\section{\bibname}% Literaturverzeichnis ===================================
 	\begin{flushleft}
 		\begin{thebibliography}{12}
-			\ihead{\textnormal{\textsf{\textbf{\bibname}}}}
-			\thispagestyle{scrheadings}
-			\addcontentsline{toc}{chapter}{\bibname}
+			\likesection{\bibname}
+			\label{sec:Literaturverzeichnis}
 
-			\bibitem{bib:Rautenberg}Wolfgang Rautenberg, \emph{Einführung in die Mathematische Logik}: Ein Lehrbuch, 3. Auflage, Vieweg+Teubner 2008
+			\bibitem{bib:Rautenberg}Wolfgang Rautenberg,
+			\emph{Einführung in die Mathematische Logik}:
+			Ein Lehrbuch, 3.\@ Auflage, Vieweg+Teubner 2008
 
-			\bibitem{bib:Apacheii}\emph{Apache License}, Version 2.0 $\rightarrow$~\url{http://www.apache.org/licenses/LICENSE-2.0} \textendash\ 02.01.2004 (09.03.2017)
-			\footnote{Der Pfeil~($\rightarrow$) verweist stets auf einen Link ins Internet. Das Datum hinter dem Link \textendash\ sofern vorhanden \textendash\ gibt die letzte Änderung des Dokuments, der Lizenz oder der entsprechenden Seite an. Das kann vom Datum der Seite oder der Copyright-Angabe abweichen. Das geklammerte Datum gibt den Zeitpunkt an, als diese Seite im Rahmen der Erstellung dieses Dokuments zum letzten Mal angeschaut wurde. Dies gilt für alle hier aufgelisteten Literaturangaben.}
+			\bibitem{bib:Apacheii}\emph{Apache License}, Version 2.0 $\rightarrow$~\url{http://www.apache.org/licenses/LICENSE-2.0} -- 02.01.2004 (09.03.2017)%
+			\footnote{%
+				Der Pfeil~($\rightarrow$) verweist stets auf einen Link ins Internet.
+				Das Datum hinter dem Link -- sofern vorhanden -- gibt die letzte Änderung des Dokuments, der Lizenz oder der entsprechenden Seite an.
+				Das kann vom Datum der Seite oder der Copyright-Angabe abweichen.
+				Das geklammerte Datum gibt den Zeitpunkt an, als diese Seite im Rahmen der Erstellung dieses Dokuments zum letzten Mal angeschaut wurde.
+				Dies gilt für alle hier aufgelisteten Literaturangaben.
+			}
 
-			\bibitem{bib:BSLi}\emph{Boost Software License} 1.0 $\rightarrow$~\url{http://www.boost.org/users/license.html} \textendash\ 17.08.2003 (09.03.2017)
+			\bibitem{bib:BSLi}\emph{Boost Software License} 1.0 $\rightarrow$~\url{http://www.boost.org/users/license.html} -- 17.08.2003 (09.03.2017)
 
-			\bibitem{bib:EPL}\emph{Eclipse Public License} Version 1.0 $\rightarrow$~\url{http://www.eclipse.org/org/documents/epl-v10.php} \textendash\ (09.03.2017)
+			\bibitem{bib:EPL}\emph{Eclipse Public License} Version 1.0 $\rightarrow$~\url{http://www.eclipse.org/org/documents/epl-v10.php} -- (09.03.2017)
 
-			\bibitem{bib:AGPL}\emph{GNU Affero General Public License} \textendash\ $\rightarrow$~\url{http://www.gnu.org/licenses/agpl} 19.11.2007 (09.02.2017)
+			\bibitem{bib:AGPL}\emph{GNU Affero General Public License} -- $\rightarrow$~\url{http://www.gnu.org/licenses/agpl} 19.11.2007 (09.02.2017)
 
-			\bibitem{bib:GPLi}\emph{GNU General Public License} $\rightarrow$~\url{http://www.gnu.org/licenses/old-licenses/gpl-1.0} \textendash\ 02.1989 (09.03.2017)
+			\bibitem{bib:GPLi}\emph{GNU General Public License} $\rightarrow$~\url{http://www.gnu.org/licenses/old-licenses/gpl-1.0} -- 02.1989 (09.03.2017)
 
-			\bibitem{bib:GPLii}\emph{GNU General Public License}, Version 2 $\rightarrow$~\url{http://www.gnu.org/licenses/old-licenses/gpl-2.0} \textendash\ 06.1991 (09.03.2017)
+			\bibitem{bib:GPLii}\emph{GNU General Public License}, Version 2 $\rightarrow$~\url{http://www.gnu.org/licenses/old-licenses/gpl-2.0} -- 06.1991 (09.03.2017)
 
-			\bibitem{bib:LGPLii}\emph{GNU Lesser General Public License}, Version 2.1 $\rightarrow$~\url{http://www.gnu.org/licenses/old-licenses/lgpl-2.1} \textendash\ 02.1999 (09.03.2017)
+			\bibitem{bib:LGPLii}\emph{GNU Lesser General Public License}, Version 2.1 $\rightarrow$~\url{http://www.gnu.org/licenses/old-licenses/lgpl-2.1} -- 02.1999 (09.03.2017)
 
-			\bibitem{bib:Clover}Lizenz für \emph{Clover} $\rightarrow$~\url{https://www.atlassian.com/software/clover} \textendash\ 2017 (09.03.2017)
+			\bibitem{bib:Clover}Lizenz für \emph{Clover} $\rightarrow$~\url{https://www.atlassian.com/software/clover} -- 2017 (09.03.2017)
 
-			\bibitem{bib:EULA}Lizenz für \emph{Microsoft Visual Studio Express 2015} $\rightarrow$~\url{https://www.visualstudio.com/de/license-terms/mt171551/} \textendash\ 2017 (09.03.2017)
+			\bibitem{bib:EULA}Lizenz für \emph{Microsoft Visual Studio Express 2015} $\rightarrow$~\url{https://www.visualstudio.com/de/license-terms/mt171551/} -- 2017 (09.03.2017)
 
-			\bibitem{bib:MiKTeX}Lizenz für \emph{MikTeX} $\rightarrow$~\url{https://miktex.org/kb/copying} \textendash\ 14.01.2014 (09.03.2017)
+			\bibitem{bib:MiKTeX}Lizenz für \emph{MikTeX} $\rightarrow$~\url{https://miktex.org/kb/copying} -- 14.01.2014 (09.03.2017)
 
-			\bibitem{bib:SAX}Lizenz für \emph{SAX} $\rightarrow$~\url{http://www.saxproject.org/copying.html} \textendash\ 05.05.2000 (09.03.2017)
+			\bibitem{bib:SAX}Lizenz für \emph{SAX} $\rightarrow$~\url{http://www.saxproject.org/copying.html} -- 05.05.2000 (09.03.2017)
 
-			\bibitem{bib:MIT}\emph{MIT License} $\rightarrow$~\url{https://opensource.org/licenses/MIT/} \textendash\ (09.03.2017)
+			\bibitem{bib:MIT}\emph{MIT License} $\rightarrow$~\url{https://opensource.org/licenses/MIT/} -- (09.03.2017)
 
-			\bibitem{bib:JavaSE}\emph{Oracle Binary Code License Agreement} $\rightarrow$~\url{http://java.com/license} \textendash\ 02.04.2013 (09.03.2017)
+			\bibitem{bib:JavaSE}\emph{Oracle Binary Code License Agreement} $\rightarrow$~\url{http://java.com/license} -- 02.04.2013 (09.03.2017)
 
-			\bibitem{bib:OSI}\emph{OSI Certified Open Source Software} $\rightarrow$~\url{https://opensource.org/pressreleases/certified-open-source.php} \textendash\ 16.06.1999 (09.03.2017)
+			\bibitem{bib:OSI}\emph{OSI Certified Open Source Software} $\rightarrow$~\url{https://opensource.org/pressreleases/certified-open-source.php} -- 16.06.1999 (09.03.2017)
 
-			\bibitem{bib:WDCDL}\emph{W3C Document License} $\rightarrow$~\url{http://www.w3.org/Consortium/Legal/2015/doc-license} \textendash\ 01.02.2015 (09.03.2017)
+			\bibitem{bib:WDCDL}\emph{W3C Document License} $\rightarrow$~\url{http://www.w3.org/Consortium/Legal/2015/doc-license} -- 01.02.2015 (09.03.2017)
 
-			\bibitem{bib:WDCSNL}\emph{W3C Software Notice and License} $\rightarrow$~\url{http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231.html} \textendash\ 13.05.2015 (09.03.2017)
+			\bibitem{bib:WDCSNL}\emph{W3C Software Notice and License} $\rightarrow$~\url{http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231.html} -- 13.05.2015 (09.03.2017)
 
-			\bibitem{bib:HilbertII}\emph{Hilbert II \textendash\ Introduction} $\rightarrow$~\url{http://www.qedeq.org/} \textendash\ 20.01.2014 (09.03.2017)
+			\bibitem{bib:HilbertII}\emph{Hilbert II -- Introduction} $\rightarrow$~\url{http://www.qedeq.org/} -- 20.01.2014 (09.03.2017)
 
-			\bibitem{bib:qedeq}\emph{Formal Correct Mathematical Knowledge}: GitHub Repository von Projekt Hilbert II $\rightarrow$~\url{https://github.com/m-31/qedeq/} \textendash\ 04.08.2016 (09.03.2017)
+			\bibitem{bib:qedeq}\emph{Formal Correct Mathematical Knowledge}: GitHub Repository von Projekt Hilbert II $\rightarrow$~\url{https://github.com/m-31/qedeq/} -- 04.08.2016 (09.03.2017)
 
-			\bibitem{bib:ASBA}\emph{ASBA \textendash\ Axiome, Sätze, Beweise und Auswertungen}. Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form: GitHub Repository von Projekt ASBA $\rightarrow$~\url{https://github.com/Dr-Winfried/ASBA} \textendash\ laufend (laufend)
+			\bibitem{bib:ASBA}\emph{ASBA -- Axiome, Sätze, Beweise und Auswertungen}.
+			Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form: GitHub Repository von Projekt ASBA $\rightarrow$~\url{https://github.com/Dr-Winfried/ASBA} -- laufend (laufend)
 
-			\bibitem{bib:LogikDe}Meyling, Michael: \emph{Anfangsgründe der mathematischen Logik} \textendash\ 24. Mai 2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_logic_v1_de.pdf} \textendash\ (09.03.2017)
+			\bibitem{bib:LogikDe}Meyling, Michael: \emph{Anfangsgründe der mathematischen Logik} -- 24.~Mai~2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_logic_v1_de.pdf} -- (09.03.2017)
 
-			\bibitem{bib:PrädikatenlogikDe}Meyling, Michael: \emph{Formale Prädikatenlogik} \textendash\ 24. Mai 2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_formal_logic_v1_de.pdf} \textendash\ (09.03.2017)
+			\bibitem{bib:PrädikatenlogikDe}Meyling, Michael: \emph{Formale Prädikatenlogik} -- 24.~Mai~2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_formal_logic_v1_de.pdf} -- (09.03.2017)
 
-			\bibitem{bib:MengenlehreDe}Meyling, Michael: \emph{Axiomatische Mengenlehre} \textendash\ 24. Mai 2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_set_theory_v1_de.pdf} \textendash\ (09.03.2017)
+			\bibitem{bib:MengenlehreDe}Meyling, Michael: \emph{Axiomatische Mengenlehre} -- 24.~Mai~2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_set_theory_v1_de.pdf} -- (09.03.2017)
 
-			\bibitem{bib:LogikEn}Meyling, Michael: \emph{Elements of Mathematical Logic} \textendash\ May 24, 2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_logic_v1_en.pdf} \textendash\ (09.03.2017)
+			\bibitem{bib:LogikEn}Meyling, Michael: \emph{Elements of Mathematical Logic} -- May~24,~2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_logic_v1_en.pdf} -- (09.03.2017)
 
-			\bibitem{bib:PrädikatenlogikEn}Meyling, Michael: \emph{Formal Predicate Calculus} \textendash\ May 24, 2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_formal_logic_v1_en.pdf} \textendash\ (09.03.2017)
+			\bibitem{bib:PrädikatenlogikEn}Meyling, Michael: \emph{Formal Predicate Calculus} -- May~24,~2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_formal_logic_v1_en.pdf} -- (09.03.2017)
 
-			\bibitem{bib:MengenlehreEn}Meyling, Michael: \emph{Axiomatic Set Theory} \textendash\ May 24, 2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_set_theory_v1_en.pdf} \textendash\ (09.03.2017)
+			\bibitem{bib:MengenlehreEn}Meyling, Michael: \emph{Axiomatic Set Theory} -- May~24,~2013 (in Bearbeitung) $\rightarrow$~\url{http://www.qedeq.org/current/doc/math/qedeq_set_theory_v1_en.pdf} -- (09.03.2017)
 
-			\bibitem{bib:Junktor}Wikipedia: \emph{Aussagenlogik} \chaptername~2.2 \emph{Mögliche Junktoren} \textendash\ 02.03.2017 $\rightarrow$~\url{https://de.wikipedia.org/wiki/Junktor#M.C3.B6gliche_Junktoren} \textendash\ 20.01.2016 (09.03.2017)
+			\bibitem{bib:Junktor}Wikipedia: \emph{Aussagenlogik} \chaptername~2.2 \emph{Mögliche Junktoren} -- 02.03.2017 $\rightarrow$~\url{https://de.wikipedia.org/wiki/Junktor#M.C3.B6gliche_Junktoren} -- 20.01.2016 (09.03.2017)
 
-			\bibitem{bib:Aussagenlogik}Wikipedia: \emph{Aussagenlogik} \chaptername~4 \emph{Formaler Zugang} \textendash\ 24.02.2017 $\rightarrow$~\url{https://de.wikipedia.org/wiki/Aussagenlogik#Formaler_Zugang} \textendash\ 13.02.2017 (09.03.2017)
+			\bibitem{bib:Aussagenlogik}Wikipedia: \emph{Aussagenlogik} \chaptername~4 \emph{Formaler Zugang} -- 24.02.2017 $\rightarrow$~\url{https://de.wikipedia.org/wiki/Aussagenlogik#Formaler_Zugang} -- 13.02.2017 (09.03.2017)
 
-			\bibitem{bib:Prädikatenlogik}Wikipedia: \emph{Prädikatenlogik erster Stufe} \textendash\ 24.02.2017 $\rightarrow$~\url{https://de.wikipedia.org/wiki/Pr%C3%A4dikatenlogik_erster_Stufe} \textendash\ 17.07.2016 (09.03.2017)
+			\bibitem{bib:Prädikatenlogik}Wikipedia: \emph{Prädikatenlogik erster Stufe} -- 24.02.2017 $\rightarrow$~\url{https://de.wikipedia.org/wiki/Pr%C3%A4dikatenlogik_erster_Stufe} -- 17.07.2016 (09.03.2017)
 
-			\bibitem{bib:Mengenlehre}Wikipedia: \emph{Mengenlehre} \textendash\ 24.02.2017 $\rightarrow$~\url{https://de.wikipedia.org/wiki/Mengenlehre} \textendash\ 03.03.2017 (09.03.2017)
+			\bibitem{bib:Mengenlehre}Wikipedia: \emph{Mengenlehre} -- 24.02.2017 $\rightarrow$~\url{https://de.wikipedia.org/wiki/Mengenlehre} -- 03.03.2017 (09.03.2017)
 
 		\end{thebibliography}
 	\end{flushleft}
-	\thispagestyle{scrheadings}
+
+	\nextchapter
+%	\chapter{\indexname}% Index %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\extendtheindex{}{
+		\likechapter{\indexname}
+		\label{cha:Index}
+	}{}{}
+	\printindex[idx]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Damit Änderungen in den Index-Verzeichnissen im PSF-Dokument erscheinen, muss
+% splitindex.pl aufgerufen und das TeX-Dokument erneut übersetzt werden:
+%   <MiKTeXhome>\scripts\splitindex\splitindex.pl ASBA.idx
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
 
-%%%% Ende des Dokuments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Ende des Dokuments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
