@@ -217,14 +217,25 @@ pip-log.txt
 ###############
 .mr.developer.cfg
 Externe Dokumente/
-nppBackup/
-Verknüpfungen/
-LaTeX/ASBA.aux
-LaTeX/ASBA.dvi
-LaTeX/ASBA.lof
-LaTeX/ASBA.lot
-LaTeX/ASBA.out
-LaTeX/ASBA.synctex.gz
-LaTeX/ASBA.toc
+*.bak
 *.lnk
-
+*.url
+# LaTeX
+*.aux
+*.bbl
+*.bcf
+*.bit
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.glo
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.synctex.gz
+*.toc
