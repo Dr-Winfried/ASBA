@@ -217,10 +217,14 @@ pip-log.txt
 ###############
 .mr.developer.cfg
 Externe Dokumente/
+nppBackup/
 *.bak
 *.lnk
 *.url
-# LaTeX
+
+#############
+## LaTeX
+#############
 *.aux
 *.bbl
 *.bcf
@@ -229,13 +233,18 @@ Externe Dokumente/
 *.dvi
 *.fdb_latexmk
 *.fls
+*.glg
 *.glo
+*.gls
+*.glsdefs
 *.idx
 *.ilg
 *.ind
+*.ist
 *.lof
 *.log
 *.lot
 *.out
+*.sym
 *.synctex.gz
 *.toc
