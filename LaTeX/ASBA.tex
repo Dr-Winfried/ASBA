@@ -384,42 +384,38 @@
 %\newcommand*{\lnbtrue}{\operatorname{\nottop}}%     " " " " - nicht wahr
 
 % Verwendete Mengenbezeichnungen ===============================================
+
 % \gs* = globales Symbol
+\newcommand*{\gsN}{\mathbb{N}}%    Menge der natürlichen Zahlen ohne 0
+\newcommand*{\gsNo}{\mathbb{N}_0}% Menge der natürlichen Zahlen einschließlich 0
+
 % \as* = aussagenlogisches Symbol
-\newcommand*{\gsN}{\mathbb{N}_0}% Menge der natürlichen Zahlen
-
-\newcommand*{\ase}{_\mathrm{e}}%  Index für 'erweitert'
-\newcommand*{\asp}{^\mathrm{P}}%  Index für 'polnische Notation'
-\newcommand*{\aspe}{\asp\ase}%    Kombination der beiden Indizes
-\newcommand*{\asb}{^\mathrm{B}}%  Index für 'Basis'
-
-\newcommand*{\asA}{\mathcal{A}}%  Alphabet der logischen Sprache
-\newcommand*{\asB}{\mathcal{B}}%  Menge der binären Operatoren
-\newcommand*{\asC}{\mathcal{C}}%  Menge der Konstanten
-\newcommand*{\asF}{\mathcal{F}}%  Menge der aussagenlogischen Formeln
-\newcommand*{\asJ}{\mathcal{J}}%  Menge der Junktoren
-%TODO: asS gibt's nicht mehr
-\newcommand*{\asS}{\mathcal{S}}%  Menge der Symbole
-\newcommand*{\asU}{\mathcal{U}}%  Menge der unären Operatoren
-\newcommand*{\asV}{\mathcal{V}}%  Menge der atomaren Formeln
-\newcommand*{\asX}{\mathcal{X}}%  Mengenvariable
-\newcommand*{\asAx}{\mathcal{A}_x}%  Teilmenge des Alphabets der log. Sprache
-\newcommand*{\asJx}{\mathcal{J}_x}%  Teilmenge der binären Operatoren
-%TODO: asBe gibt's nicht mehr
-\newcommand*{\asBe}{\asB\ase}%    erweiterte Menge der binären Operatoren
-\newcommand*{\asXe}{\asX\ase}%    erweiterte Menge der Konstanten
-\newcommand*{\asFe}{\asF\ase}%    erweiterte Menge zur Mengenvariablen
-\newcommand*{\asFp}{\asF\asp}%    Formeln in polnischer Notation
-\newcommand*{\asFep}{\asF\aspe}%  erweiterte Formeln in polnischer Notation
-
-\newcommand*{\asO}{\mathcal{O}}%  logische Operatoren und Indizes
-\newcommand*{\asObool}{\asO_\mathrm{bool}}
-\newcommand*{\asOand}{\asO_\mathrm{and}}
-\newcommand*{\asOor}{\asO_\mathrm{or}}
-\newcommand*{\asOimp}{\asO_\mathrm{imp}}
-\newcommand*{\asOrep}{\asO_\mathrm{rep}}
-\newcommand*{\asOnand}{\asO_\mathrm{nand}}
-\newcommand*{\asOnor}{\asO_\mathrm{nor}}
+\newcommand*{\asA}{\mathcal{A}}%       Alphabet der Sprache
+\newcommand*{\asAx}{\mathcal{A}_x}%    ... davon eine Teilmenge bzgl. \asJx
+\newcommand*{\asAy}{\mathcal{A}_y}%    entsprechend \asAx
+\newcommand*{\asB}{\mathcal{B}}%       Menge der binären Operatoren
+\newcommand*{\asC}{\mathcal{C}}%       Menge der Konstanten
+\newcommand*{\asF}{\mathcal{F}}%       Menge der Formeln
+\newcommand*{\asFp}{\mathcal{F}^p}%    ... in polnischer Notation
+\newcommand*{\asFx}{\mathcal{F}_x}%    Teilenge der Formeln
+\newcommand*{\asFxp}{\mathcal{F}_x^p}% ... bzgl. \asJx in polnischer Notation
+\newcommand*{\asFy}{\mathcal{F}_y}%    entsprechend \asFx
+\newcommand*{\asFyp}{\mathcal{F}_y^p}% entsprechend \asFxp
+\newcommand*{\asJ}{\mathcal{J}}%       Menge der Junktoren
+\newcommand*{\asJx}{\mathcal{J}_x}%    Teilmenge der Junktoren
+\newcommand*{\asJy}{\mathcal{J}_y}%    entsprechend \asJx
+\newcommand*{\asM}{\mathcal{M}}%       Metaoperatoren und "Gleichheiten"
+\newcommand*{\asU}{\mathcal{U}}%       Menge der unären Operatoren
+\newcommand*{\asV}{\mathcal{V}}%       Menge der atomaren Formeln
+\newcommand*{\asX}{\mathcal{X}}%       Mengenvariable
+% verschiedene Indizes für Teilmengen von \asA, \asF, \asFp und \asJ
+\newcommand*{\xAnd}{\mathrm{and}}%
+\newcommand*{\xBool}{\mathrm{bool}}%
+\newcommand*{\xImp}{\mathrm{imp}}%
+\newcommand*{\xNand}{\mathrm{nand}}%
+\newcommand*{\xNor}{\mathrm{nor}}%
+\newcommand*{\xOr}{\mathrm{or}}%
+\newcommand*{\xRep}{\mathrm{rep}}%
 
 %% sonstige nützliche Kommandos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -429,11 +425,12 @@
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
 \newcommand*{\formulaspace}{&&&&}%         Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
-\newcommand*{\charqt}[1]{\enquote*{#1}}% Quotierung einzelner Zeichen (character)
+\newcommand*{\charqt}[1]{\enquote*{#1}}% Quotierung von Zeichen    (character)
 \newcommand*{\strqt}[1]{\enquote{#1}}%   Quotierung von Zeichenketten (string)
 % Nur mit Parameter im Mathematikmodus!
+%TODO einzelne Symbole in `...´ einschließen!
 \newcommand*{\symqt}[1]{\charqt{#1}}%    Quotierung einzelner Symbole (symbol)
-\newcommand*{\forqt}[1]{\strqt{#1}}%     Quotierung von Formeln       (formula)
+\newcommand*{\forqt}[1]{\strqt{#1}}%     Quotierung von Formeln      (formula)
 
 % Strukturbezeichnungen ergänzen
 \newcommand*{\sectionname}{Abschnitt}
@@ -451,6 +448,9 @@
 \newcommand*{\textzB}{z.\@\,B.\@ }
 \newcommand*{\textZB}{Z.\@\,B.\@ }
 
+% Ergebnis von Makros verschwinden lassen
+\newcommand*{\hidden}[1]{}
+
 %%%% Glossareinträge %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Indices und Symbole ==========================================================
@@ -464,15 +464,6 @@
 \GlsSetQuote{+}% wegen Gebrauch von ngerman; see glossaries guide for beginners
 \makeglossaries
 \setacronymstyle{long-sc-short}
-% Symbol/Index und Glossareintrag
-\newcommand*{\glsSym}[1]{\glspl{#1}\sym{\gls{#1}}}% Symbol - Im Mathematikmodus!
-\newcommand*{\glsIdx}[1]{\gls{#1}\idx{\gls{#1}}}%     normal
-\newcommand*{\GlsIdx}[1]{\Gls{#1}\idx{\gls{#1}}}%     groß
-\newcommand*{\glsIdxBg}[2]{#2\idx{\gls{#1}}}%                  Beugung
-\newcommand*{\GlsIdxBg}[2]{#2\idx{\gls{#1}}}%         groß und Beugung
-\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%          Plural
-\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}% groß und Plural
-\newcommand*{\glsIdxHid}[1]{\idx{\gls{#1}}}%          unsichtbare
 
 % ==============================================================================
 
@@ -539,21 +530,21 @@
 	name={$ \eq$},
 	plural={\eq},% im Mathematikmodus
 	description={%
-		Metaoperator: ... ist gleich ..%
+		Metaoperator: ... gleich ..%
 	}
 }
 \newglossaryentry{equiv}{
 	name={$ \equiv$},
 	plural={\equiv},% im Mathematikmodus
 	description={%
-		(Meta-)Operator: ... ist äquivalent zu ..%
+		(Meta-)Operator: ... äquivalent zu ..%
 	}
 }
 \newglossaryentry{ne}{
 	name={$ \ne$},
 	plural={\ne},% im Mathematikmodus
 	description={%
-		Metaoperator: ... ist ungleich ..%
+		Metaoperator: ... ungleich ..%
 	}
 }
 \newglossaryentry{metaand}{
@@ -574,7 +565,7 @@
 	name={$ \metaimp$},
 	plural={\metaimp},% im Mathematikmodus
 	description={%
-		Metaoperator: wenn ... dann ..%
+		Metaoperator: ... dann auch ..%
 	}
 }
 \newglossaryentry{metaor}{
@@ -598,112 +589,148 @@
 	name={$ \lfalse$},
 	plural={\lfalse},% im Mathematikmodus
 	description={%
-		Metaoperator: Falsch%
+		Aussagenlogische Konstante: Falsch%
 	}
 }
 \newglossaryentry{ltrue}{
 	name={$ \ltrue$},
 	plural={\ltrue},% im Mathematikmodus
 	description={%
-		Metaoperator: Wahr%
+		Aussagenlogische Konstante: Wahr%
 	}
 }
 
 % Symbole für Mengen
 
+\newglossaryentry{gsN}{
+	name={$ \gsN$},
+	plural={\gsN},% im Mathematikmodus
+	description={%
+		Menge der natürlichen Zahlen ohne 0%
+	}
+}
+\newglossaryentry{gsNo}{
+	name={$ \gsNo$},
+	plural={\gsNo},% im Mathematikmodus - erfolgt im falschen Zeichensatz!
+	description={%
+		Menge der natürlichen Zahlen einschließlich 0%
+	}
+}
 \newglossaryentry{asA}{
 	name={$ \asA$},
 	plural={\asA},% im Mathematikmodus
 	description={%
-		Alphabet der logischen Sprache%
+		Alphabet der aussagenlogischen Sprache%
 	}
 }
 \newglossaryentry{asAx}{
 	name={$ \asAx$},
 	plural={\asAx},% im Mathematikmodus
 	description={%
-		Teilmenge des Alphabets der logischen Sprache%
+		Teilmenge des Alphabets $\asA$ der aussagenlogischen Sprache%
 	}
 }
 \newglossaryentry{asB}{
 	name={$ \asB$},
 	plural={\asB},% im Mathematikmodus
 	description={%
-		Menge der binären Operatoren%
+		Menge der aussagenlogischen, binären Operatoren%
 	}
 }
 \newglossaryentry{asC}{
 	name={$ \asC$},
 	plural={\asC},% im Mathematikmodus
 	description={%
-		Menge der Konstanten%
+		Menge der aussagenlogischen Konstanten%
 	}
 }
 \newglossaryentry{asF}{
 	name={$ \asF$},
 	plural={\asF},% im Mathematikmodus
 	description={%
-		Menge der aussagenlogischen Formeln%
+		Menge der aussagenlogischen Formeln mit Klammerung%
+	}
+}
+\newglossaryentry{asFp}{
+	name={$ \asFp$},
+	plural={\asFp},% im Mathematikmodus
+	description={%
+		Menge der aussagenlogischen Formeln in polnischer Notation%
+	}
+}
+\newglossaryentry{asFx}{
+	name={$ \asFx$},
+	plural={\asFx},% im Mathematikmodus
+	description={%
+		Teilmenge der Menge $\asF$
+		der aussagenlogischen Formeln mit Klammerung%
+	}
+}
+\newglossaryentry{asFxp}{
+	name={$ \asFxp$},
+	plural={\asFxp},% im Mathematikmodus
+	description={%
+		Teilmenge der Menge $\asF$
+		der aussagenlogischen Formeln in polnischer Notation%
 	}
 }
 \newglossaryentry{asJ}{
 	name={$ \asJ$},
 	plural={\asJ},% im Mathematikmodus
 	description={%
-		Menge der Junktoren%
+		Menge der aussagenlogischen Operatoren%
 	}
 }
 \newglossaryentry{asJx}{
 	name={$ \asJx$},
 	plural={\asJx},% im Mathematikmodus
 	description={%
-		Teilmenge der binären Operatoren
+		Teilmenge der Menge $\asJ$ der aussagenlogischen Operatoren
 	}
 }
-\newglossaryentry{asO}{
-	name={$ \asO$},
-	plural={\asO},% im Mathematikmodus
+\newglossaryentry{asM}{
+	name={$ \asM$},
+	plural={\asM},% im Mathematikmodus
 	description={%
-		logische Operatoren und Indizes%
-	}
-}
-%TODO: asS gibt's nicht mehr
-\newglossaryentry{asS}{
-	name={$ \asS$},
-	plural={\asS},% im Mathematikmodus
-	description={%
-		Menge der Symbole%
+		Menge der Metaoperatoren und der mit Gleichheit verwandten Symbole%
 	}
 }
 \newglossaryentry{asU}{
 	name={$ \asU$},
 	plural={\asU},% im Mathematikmodus
 	description={%
-		Menge der unären Operatoren%
+		Menge der aussagenlogischen, unären Operatoren%
 	}
 }
 \newglossaryentry{asV}{
 	name={$ \asV$},
 	plural={\asV},% im Mathematikmodus
 	description={%
-		Menge der atomaren Formeln%
-	}
-}
-\newglossaryentry{gsN}{
-	name={$ \gsN$},
-	plural={\gsN},% im Mathematikmodus
-	description={%
-		Menge der natürlichen Zahlen einschließlich 0%
+		Menge der aussagenlogischen, atomaren Formeln%
 	}
 }
 
 % keine Symbole mehr
 
+\newglossaryentry{Aussage}{
+	name={Aussage},
+	plural={Aussagen},
+	description={%
+		Eine Aussage in natürlicher Sprache oder als Formel,
+		die einen Wahrheitswert liefert%
+	}
+}
+\newglossaryentry{Aussagenlogik}{
+	name={Aussagenlogik},
+	description={%
+		\see \sectionname~\vref{sec:Aussagenlogik}%
+	}
+}
 \newglossaryentry{Beweisschritt}{
 	name={Beweisschritt},
 	plural={Beweisschritte},
 	description={%
-		Eine Vorschrift, wie aus konkreten Aussagen eine weitere folgt%
+		Eine Vorschrift, wie aus vorgegebenen Aussagen eine weitere folgt%
 	}
 }
 \newcommand*{\ASBA}{\textsf{\glsIdx{ASBA}}}
@@ -813,7 +840,7 @@
 		(\see \sectionname~\vref{sec:Prädikatenlogik}).
 		\textZB kann man eine \forqt{$Gruppe$} als
 		ein dreistelliges Prädikat \forqt{$Gruppe(G,+,\cdot)$} definieren,
-		in dem \symqt{$G$} eine Menge und \symqt{$+$} und \symqt{$\cdot$}
+		in dem $G$ eine Menge und \symqt{$+$} und \symqt{$\cdot$}
 		Operationen in \forqt{$G \times G$} sind,
 		so dass die Gruppenaxiome erfüllt sind%
 	}
@@ -829,7 +856,8 @@
 	plural={Sätze},
 	description={%
 		Eine mathematische Aussage,
-		dass eine bestimmte Aussage aus gegebenen Voraussetzungen folgt%
+		dass eine bestimmte Folgerung
+		aus gegebenen Voraussetzungen abgeleitet werden kann%
 	}
 }
 \newglossaryentry{vergleichbar}{
@@ -848,6 +876,25 @@
 		Beide müssen dann nur von derselben Art sein%
 	}%
 }
+\newglossaryentry{Wahrheitswert}{
+	name={Wahrheitswert},
+	plural={Wahrheitswerte},
+	description={%
+		Wahrheitswerte sind die Werte \strqt{wahr} und \strqt{falsch},
+		oft auch als \strqt{true} und \strqt{false}
+		oder einfach \charqt{1} und \charqt{0} bezeichnet.
+	}
+}
+
+% Symbol/Index und Glossareintrag ==============================================
+
+\newcommand*{\glsSym}[1]{\glspl{#1}\sym{\gls{#1}}}% Symbol - Im Mathematikmodus!
+\newcommand*{\glsIdx}[1]{\gls{#1}\idx{\gls{#1}}}%     normal
+\newcommand*{\GlsIdx}[1]{\Gls{#1}\idx{\gls{#1}}}%     groß
+\newcommand*{\glsIdxBg}[2]{#2\idx{\gls{#1}}}%                  Beugung
+\newcommand*{\GlsIdxBg}[2]{#2\idx{\gls{#1}}}%         groß und Beugung
+\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%          Plural
+\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}% groß und Plural
 
 %%%% Titelseite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1754,11 +1801,10 @@
 	In diesem \sectionname{} wird vorausgesetzt:
 	\begin{itemize}
 
-		\item \symqt{$=$}, \symqt{$\ne$}, \symqt{$\equiv$} und \symqt{$\defeq$}
+		\item {$=$}, $\ne$, $\equiv$ und $\defeq$
 		werden im selben Zusammenhang verwendet.
 
-		\item \symqt{$A$}, \symqt{$B$}, \symqt{$P$} und \symqt{$Q$}
-		sind \glsIdx{vergleichbar},
+		\item $A$, $B$, $P$ und $Q$ sind \glsIdx{vergleichbar},
 		\textdh Ausdrücke derselben Art.
 
 	\end{itemize}
@@ -1767,8 +1813,8 @@
 
 		\item $\glsSym{eq}$~~(\emph{\Idx{Gleichheit}}):
 		\forqt{$A = B$} heißt,
-		dass \symqt{$A$} und \symqt{$B$} sich in den
-		\glsIdxPl{intEigenschaftA} nicht unterscheiden.
+		dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA}
+		nicht unterscheiden.
 		Welche das sind,
 		ergibt sich normalerweise aus dem Zusammenhang%
 		\footnote{%
@@ -1782,7 +1828,7 @@
 		}
 		oder muss explizit angegeben werden.
 		\textZB sind zwei Operatoren gleich,
-		wenn sie stets denselben Wahrheitswert liefern.
+		wenn sie stets denselben \emph{\gls{Wahrheitswert}} liefern.
 
 		Inwieweit die Begriffe \emph{Gleichheit} und \emph{Identität}
 		korrelieren,
@@ -1791,12 +1837,12 @@
 
 		\item $\glsSym{ne}$~~(\emph{\Idx{Ungleichheit}}):
 		\forqt{$A \ne B$} heißt,
-		dass \symqt{$A$} und \symqt{$B$} sich in mindestens einer der
+		dass $A$ und $B$ sich in mindestens einer der
 		\glsIdxPl{intEigenschaftA} unterscheiden.
 
 		\item $\glsSym{equiv}$~~(\emph{\Idx{Äquivalenz}}):
 		\forqt{$A \equiv B$} heißt,
-		dass \symqt{$A$} und \symqt{$B$} sich in den
+		dass $A$ und $B$ sich in den
 		\glsIdxPl{intEigenschaftA} nicht unterscheiden.
 		Welche das sind,
 		ergibt sich wie bei \symqt{$=$} aus dem Zusammenhang
@@ -1805,23 +1851,20 @@
 		muss mit \forqt{$A=B$} stets auch \forqt{$A \equiv B$} gelten,
 		\textdh alle \glsIdxPl{intEigenschaftA}
 		von \symqt{$\equiv$}
-		müssen auch \glsIdxPl{intEigenschaftA}
-		von \symqt{$A=B$} sein.
+		müssen auch \glsIdxBg{intEigenschaftA}{interessierende Eigenschaften}
+		von \forqt{$A=B$} sein.
 
 		\item $\glsSym{defeq}$~~(\emph{\Idx{Definition}}):
 		\forqt{$A \defeq B$} bedeutet,
-		dass \symqt{$A$} definitionsgemäß gleich \symqt{$B$} ist.
-		Gewissermaßen ist \symqt{$A$}
-		nur eine andere Schreibweise für \symqt{$B$}.
-		\symqt{$A$} und \symqt{$B$} können sich gegenseitig ersetzten.
+		dass $A$ definitionsgemäß gleich $B$ ist.
+		Gewissermaßen ist $A$
+		nur eine andere Schreibweise für $B$.
+		$A$ und $B$ können sich gegenseitig ersetzten.
 
-		Nach dieser Definition sind \symqt{$P$} und \symqt{$Q$}
-		schon dann gleich,
-		wenn nach der Ersetzung aller Vorkommen von
-		\symqt{$A$} in \symqt{$P$} durch \symqt{$B$} und
-		\symqt{$A$} in \symqt{$Q$} durch \symqt{$B$}
-		die resultierenden Ausdrücke
-		\symqt{$\overline{P}$} und \symqt{$\overline{Q}$} gleich sind.
+		Nach dieser Definition sind $P$ und $Q$ schon dann gleich,
+		wenn nach der Ersetzung aller Vorkommen von $A$ in $P$ und $Q$ durch $B$
+		die resultierenden Ausdrücke $\overline{P}$ und $\overline{Q}$
+		gleich sind.
 
 	\end{itemize}
 
@@ -1846,11 +1889,11 @@
 
 		\item $A \defeq B$
 
-		\item \symqt{$\overline{P}$} ergibt sich aus \symqt{$P$} durch
-		Ersetzung aller Vorkommen (Teilausdrücke) \symqt{$A$} durch \symqt{$B$}.
+		\item $\overline{P}$ ergibt sich aus $P$ durch
+		Ersetzung aller Vorkommen (Teilausdrücke) $A$ durch $B$.
 
-		\item \symqt{$\overline{Q}$} ergibt sich aus \symqt{$Q$} durch
-		Ersetzung aller Vorkommen (Teilausdrücke) \symqt{$A$} durch \symqt{$B$}.
+		\item $\overline{Q}$ ergibt sich aus $Q$ durch
+		Ersetzung aller Vorkommen (Teilausdrücke) $A$ durch $B$.
 
 	\end{itemize}
 
@@ -1860,6 +1903,16 @@
 		\item $(\overline{P} = \overline{Q}) \metaequiv (P = Q)$
 
 	\end{itemize}
+
+	Schließlich sei noch
+	\begin{equation}
+		\glsSym{asM} \defeq \{
+		\glsIdxBg{metaand}{\metaund}, \glsIdxBg{metaor}{\metaoder},
+		\glsSym{metaimp}, \glsSym{metaequiv}, \glsSym{metarep},
+		\glsSym{eq}, \glsSym{ne}, \glsSym{equiv}, \glsSym{defeq} \}
+		\label{for:asM}
+	\end{equation}
+	die Menge der Metaoperatoren und der mit Gleichheit verwandten Symbole
 
 	\section{Formale Elemente}%=================================================
 	\beginsection{Formale Elemente}
@@ -1951,6 +2004,7 @@
 	\section{Aussagenlogik}%====================================================
 	\beginsection{Aussagenlogik}
 	\label{sec:Aussagenlogik}
+	\hidden{\glsIdx{Aussagenlogik}}
 
 	\subsection{Konstante und Operatoren}%--------------------------------------
 	\label{sub:Operatoren}
@@ -1963,7 +2017,7 @@
 	definiert für die zweiwertige Logik Konstanten- und Operatorsymbole
 	über die Wahrheitswerte ihrer Anwendung.
 	So ergeben sich,
-	abhängig von den Wahrheitswerten der Operanden \symqt{$A$} und \symqt{$B$}
+	abhängig von den Wahrheitswerten der Operanden $A$ und $B$
 	\footnote{%
 		Im Gegensatz zu \subsubsectionname~\vref{subsub:Bausteine}
 		können A und B hier beliebige Aussagen -- auch Formeln -- sein.%
@@ -2217,6 +2271,8 @@
 				\footnotesize
 
 				\item[1] \emph{Operatorsymbole}. Sie stehen meistens für die Operatoren selbst.
+				Der Einfachheit halber bezeichnen wir auch die beiden Konstanten
+				$\ltrue$ und $\lfalse$ als Junktoren \textbzw Operatorsymbole.
 
 				Die Operatoren \symqt{$\subset$}, \symqt{$\supset$},
 				\symqt{$\nsubset$} und \symqt{$\nsupset$} haben hier nicht die
@@ -2369,226 +2425,259 @@
 	\subsubsection{Bausteine der aussagenlogischen Sprache}% - - - - - - - - - -
 	\label{subsub:Bausteine}
 
-\todo{Hier weitermachen.}% TODO >>> Hier weitermachen <<<.
-
-	Für die Definition von neuen Elementen
-	wird wie üblich \symqt{$\defeq$} verwendet.
-	Die Konstanten werden wieder als null-stellige Operatoren angesehen.
-	Dann werden zur Erfassung der logischen Symbole
-	die folgenden Mengen definiert:
+	Zur Einteilung der aussagenlogischen Junktoren
+	werden die folgenden Mengen definiert:
 	\begin{align}
 		%
-		& \glsSym{gsN}  & & \defeq & &
-		& & \textrm{Menge der \emph{natürlichen Zahlen}%
-		\idx{natürlichen Zahlen, Menge der} einschließlich 0}  \label{def:N} \\
+		& \gsNo\hidden{\gls{gsNo}}  & & \defeq & &
+		& & \text{Menge der \emph{natürlichen Zahlen} einschließlich 0}
+		\idx{natürlichen Zahlen, Menge der} \label{def:N} \\
 		%
-		& \glsSym{asC}  & & \defeq & & \{ \lfalse, \ltrue \}
-		& & \textrm{Menge der \emph{Konstanten}%
-		\idx{Konstanten, Menge der}.}                          \label{def:C} \\
+		& \glsSym{asC}  & & \defeq & & \{ \ltrue, \lfalse \}
+		& & \text{Menge der \emph{aussagenlogischen Konstanten}}
+		\idx{Konstanten, Menge der}         \label{def:C} \\
 		%
 		& \glsSym{asU}  & & \defeq & & \{ \lnot \}
-		& & \textrm{Menge der \emph{unären Operatoren}%
-		\idx{unären Operatoren, Menge der}.}                   \label{def:U} \\
+		& & \text{Menge der \emph{unären aussagenlogischen Operatoren}}
+		\idx{unären Operatoren, Menge der}  \label{def:U} \\
 		%
 		& \glsSym{asB}  & & \defeq & &
 		\{ \land, \lor, \limp, \lequiv, \lrep, \lnand, \lnor, \lmult, \ladd \}
-		& & \textrm{Menge der \emph{binären Operatoren}%
-		\idx{binären Operatoren, Menge der}.}                  \label{def:B} \\
-		\formulatoleft
+		& & \text{Menge der \emph{binären aussagenlogischen Operatoren}}
+		\idx{binären Operatoren, Menge der} \label{def:B} \formulatoleft
 		%
 	\end{align}
+
 	Damit sind alle in der \tablename~\vref{tab:Symbole} verwendeten
 	wesentlichen Konstanten und Operatoren%
 	\footnote{%
 		Jeweils nur die ersten der grau hinterlegten Zeilen sowie \symqt{$\lmult$}.%
 	}
-%TODO: asJx, asAx sind neu
 	erfasst und es können die folgende Mengen definiert werden:
 	\begin{align}
 		%
-		& \glsSym{asV}  & & \defeq    & & \{ p_n | n \in \gsN \}
-		& & \textrm{Menge der \emph{atomaren Formeln}%
-		\idx{atomaren Formeln, Menge der ($\asV)$}}         \label{def:V} \\
+		& \glsSym{asV}  & & \defeq    & & \{ p_n | n \in \gsNo \}
+		& & \text{Menge der \emph{atomaren Formeln}}
+		\idx{atomaren Formeln, Menge der}         \label{def:V}  \\
 		%
 		& \glsSym{asJ}  & & \defeq    & &\asC \cup \asU \cup \asB
-		& & \textrm{Menge der \emph{Junktoren}%
-		\idx{Junktoren, Menge der}, \textbzw Operatoren.}   \label{def:J} \\
-		%
-		& \glsSym{asJx} & & \subseteq & & \asJ
-		& & \textrm{\emph{Teilmenge} der Junktoren für eine Indexvariable }
-		x                                                   \label{def:Bx}\\
+		& & \text{Menge der \emph{Junktoren}, \textbzw \emph{Operatoren}}
+		\idx{Junktoren, Menge der}                \label{def:J}  \\
 		%
 		& \glsSym{asA}  & & \defeq    & & \asV \cup \asJ
-		& & \textrm{\emph{Alphabet der logischen Sprache%
-		\idx{Alphabet der logischen Sprache}}.}             \label{def:A} \\
+		& & \text{\emph{Alphabet der aussagenlogischen Sprache (für }} \asJ
+		\text{\emph{)}}
+		\idx{Alphabet der logischen Sprache}      \label{def:A}  \\
 		%
-		& \glsSym{asAx} & & \defeq    & & \asV \cup \asJx
-		& & \textrm{\emph{Alphabet der logischen Sprache%
-		\idx{Teil-Alphabet der logischen Sprache}}.}        \label{def:Ax} \\
+		& \glsSym{asJx} & & \subseteq & & \asJ
+		& & \text{eine Teilmenge von } \asJ \text{ für eine Indexvariable }
+		x                                         \label{def:Bx} \\
+		%
+		& \glsSym{asAx} & & \defeq    & & \asV \cup \asJx \quad
+		& & \text{Alphabet der aussagenlogischen Sprache \emph{für} } \asJx
+		\idx{Teil-Alphabet der aussagenlogischen Sprache} \label{def:Ax}
+		\formulatoleft
 		%
 	\end{align}
 	Für Elemente aus $\asV$ werden hier normalerweise
 	die großen lateinischen Buchstaben $A$, $B$, $C$, $\dots$ verwendet.
-
-%TODO Wirklich nur endlich viele Formeln?
-	Offensichtlich wird für alle endlichen Mengen von Formeln
-	(\seename \vref{subsub:Formeln})
-	-- und nur solche Mengen betrachten wir --
-	jeweils nur eine endliche Teilmenge aus $\gsN$ gebraucht.
-	Somit gibt es keine Schwierigkeiten mit unendlichen Mengen.
-	Die atomaren Formeln werden auch \emph{\Idx{Satzbuchstabe}}\emph{n}
+	Die Elemente aus $\asV$ (atomaren Formeln) werden auch \emph{\Idx{Satzbuchstabe}}\emph{n}
 	oder kurz \emph{\Idx{Atom}}\emph{e}. genannt.
 
 	\subsubsection{Aussagenlogische Formeln}%- - - - - - - - - - - - - - - - - -
 	\label{subsub:Formeln}
 
-	Neben dem (erweiterten) Alphabet
+	Neben dem Alphabet $\asA$
 	werden noch Klammern als Gliederungszeichen verwendet.
-	Damit können nun rekursiv drei Mengen von Formeln definiert werden:
-	$\asF$ sei die Menge der auf folgende Weise definierten
-	\emph{aussagenlogischen Formeln}\idx{aussagenlogische Formel}:
-	\begin{align}
-		%
-		\asV    \subset \asF \\
-		%
-		A           \in \asF &   \quad \quad \textrm{dann auch} &
-		(\circ A)   \in \asF & & \textrm{für} \quad & \circ \in \asU \\
-		%
-		A, B        \in \asF &   \quad \quad \textrm{dann auch} &
-		(A \circ B) \in \asF & & \textrm{für} \quad & \circ \in \asB
-		\formulatoleft
-		%
-	\end{align}
-	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asF$.
+	Damit können nun rekursiv für jede Teilmenge $\asJx$ von $\asJ$
+	zwei Mengen von Formeln definiert werden:
 
-	$\asFe$ sei die Menge der auf folgende Weise definierten \emph{erweiterten}
-	aussagenlogischen Formeln\idx{aussagenlogische Formel, erweiterte}:
+	$\glsSym{asFx}$ sei die Menge der auf folgende Weise definierten
+	\emph{aussagenlogischen Formeln mit Klammerung}%
+	\idx{aussagenlogische Formel mit Klammerung}:
 	\begin{align}
-		%
-		\asV, \asC \subset \asFe \\
-		%
-		A              \in \asFe & \quad \quad \textrm{dann auch} &
-		(\circ A)      \in \asFe & & \textrm{für} \quad & \circ \in \asU  \\
-		%
-		A, B           \in \asFe & \quad \quad \textrm{dann auch} &
-%TODO: asBe gibt's nicht mehr
-		(A \circ B)    \in \asFe & & \textrm{für} \quad & \circ \in \asBe
-		\formulatoleft
-		%
+		\asV            \subset    \asFx
+		\\
+		\asJx \cap \asC \subset    \asFx
+		\\
+		A                      \in \asFx
+		& \metaimp (\circ A)   \in \asFx
+		& , \quad \text{für} \quad \circ \in \asU \cap \asJx
+		\\
+		A, B            \in        \asFx
+		& \metaimp (A \circ B) \in \asFx
+		& , \quad \text{für} \quad \circ \in \asB \cap \asJx
 	\end{align}
-	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFe$.
+	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFx$.
+	\\Für $\asJ = \asJx$ sei noch $\asF \defeq \glsSym{asFx}$.
 
-	$\asFp$ sei die Menge der auf folgende Weise definierten
+	$\glsSym{asFxp}$ sei die Menge der auf folgende Weise definierten
 	aussagenlogischen Formeln in \emph{Polnischer Notation}%
 	\idx{aussagenlogische Formel in Polnischer Notation}:
 	\begin{align}
-		%
-		\asV    \subset \asFp \\
-		%
-		A           \in \asFp &   \quad \quad \textrm{dann auch} &
-		(\circ A)   \in \asFp & & \textrm{für} \quad & \circ \in \asU \\
-		%
-		A, B        \in \asFp &   \quad \quad \textrm{dann auch} &
-		\circ A B   \in \asFp & & \textrm{für} \quad & \circ \in \asB
-		\formulatoleft
-		%
+		\asV            \subset  \asFxp
+		\\
+		\asJx \cap \asC \subset  \asFxp
+		\\
+		A                    \in \asFxp
+		& \metaimp \circ A   \in \asFxp
+		& , \quad \text{für} \quad \circ \in \asU \cap \asJx
+		\\
+		A, B                 \in \asFxp
+		& \metaimp \circ A B \in \asFxp
+		& , \quad \text{für} \quad \circ \in \asB \cap \asJx
 	\end{align}
-	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFp$.
+	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFxp$.
+	\\Für $\asJ = \asJx$ sei noch $\asFp \defeq \glsSym{asFxp}$.
 
-	$\asFep$ sei die Menge der auf folgende Weise definierten
-	\emph{erweiterten} aussagenlogischen Formeln in Polnischer Notation%
-	\idx{aussagenlogische Formel in Polnischer Notation, erweiterte}:
-	\begin{align}
-		\asV, \asC \subset \asFep \\
-		%
-		A              \in \asFep & \quad \quad \textrm{dann auch} &
-		(\circ A)      \in \asFep & & \textrm{für} \quad & \circ \in \asU  \\
-		%
-		A, B           \in \asFep & \quad \quad \textrm{dann auch} &
-%TODO: asBe gibt's nicht mehr
-		\circ A B      \in \asFep & & \textrm{für} \quad & \circ \in \asBe
-		\formulatoleft
-	\end{align}
-	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFep$.
+	Wie man leicht sieht, gilt:
+	\begin{equation}
+		\asJx \subset \asJy \subseteq \asJ \metaimp
+		\begin{cases}
+			\asAx  \subset \asAy  \subseteq \asA \\
+			\asFx  \subset \asFy  \subseteq \asF \\
+			\asFxp \subset \asFyp \subseteq \asFp
+		\end{cases}
+	\end{equation}
 
-	Wie man leicht sieht,
-%TODO: asS gibt's nicht mehr
-	ist $ \asJ \subset \asS $ und $ \asX \subset \asXe $
-	für $ \asX\in\{ \asA, \asB, \asF, \asFp \} $.
 	Durch Anwendung der Klammerregeln von
 	\subsubsectionname~\vref{subsub:Bausteine}
-	lassen sich in der Regel noch die meisten Klammern
-	der Formeln aus $\asF$ und $\asFe$ einsparen.
-	Die Formeln aus $\asFp$ und $\asFep$ sind frei von Klammern.
-	Die Namen der Operationen finden sich in der \tablename~\vref{tab:Symbole}.
+	lassen sich in der Regel noch viele Klammern
+	der Formeln aus $\asFx$ einsparen.
+	Die Formeln aus $\asFxp$ sind frei von Klammern.
+	Die Namen der Operatoren finden sich in der \tablename~\vref{tab:Symbole}.
 	Für aussagenlogische Formeln,
-	\textdh von Elementen aus $\asX\in\{ \asF, \asFe, \asFp, \asFep \}$,
+	\textdh von Elementen aus $\asF$ \textbzw $\asFp$,
 	werden hier normalerweise die kleinen griechischen Buchstaben
 	$\alpha$, $\beta$, $\gamma$, $\dots$ verwendet.
-	Das können auch atomare Formeln sein (\seename \eqref{def:V}).
+	Sie können dabei auch atomare Formeln bezeichnen (\seename \eqref{def:V}).
 
-	\subsection{Logische Axiome}%-----------------------------------------------
+	\subsection{Aussagenlogische Axiome}%---------------------------------------
 	\label{sub:logAxiome}
 
-	Es werden noch weitere Mengen von Operatoren eingeführt,
-	die jeweils ausreichen,
-	alle anderen Operatoren und die beiden Konstanten zu definieren:
+%TODO Signatur definieren
+
+	Es werden noch bestimmte Teilmengen von $\asJ$ eingeführt,
+	die jeweils ausreichen alle anderen Elemente aus $\asJ$ zu definieren:
 	\begin{align}
-		& \asObool & \defeq & & & \{ \lnot, \land, \lor \} \label{def:Obool} \\
-		& \asOand  & \defeq & & & \{ \lnot, \land       \} \label{def:Oand}  \\
-		& \asOor   & \defeq & & & \{ \lnot, \lor        \} \label{def:Oor}   \\
-		& \asOimp  & \defeq & & & \{ \lnot, \limp       \} \label{def:Oimp}  \\
-		& \asOrep  & \defeq & & & \{ \lnot, \lrep       \} \label{def:Orep}  \\
-		& \asOnand & \defeq & & & \{ \lnand             \} \label{def:Onand} \\
-		& \asOnor  & \defeq & & & \{ \lnor              \} \label{def:Onor}
-		\formulatoleft
+		& \asJ_\xBool &\defeq & & & \{ \lnot, \land, \lor \} \label{def:Jbool}\\
+		& \asJ_\xAnd  &\defeq & & & \{ \lnot, \land       \} \label{def:Jand} \\
+		& \asJ_\xOr   &\defeq & & & \{ \lnot, \lor        \} \label{def:Jor}  \\
+		& \asJ_\xImp  &\defeq & & & \{ \lnot, \limp       \} \label{def:Jimp} \\
+		& \asJ_\xRep  &\defeq & & & \{ \lnot, \lrep       \} \label{def:Jrep} \\
+		& \asJ_\xNand &\defeq & & & \{ \lnand             \} \label{def:Jnand}\\
+		& \asJ_\xNor  &\defeq & & & \{ \lnor              \} \label{def:Jnor}
+		\formulatoleft\formulatoleft\formulatoleft\formulatoleft\formulatoleft
 	\end{align}
-	Ausgehend von \symqt{$\lnot$} und \symqt{$\land$}
-%TODO: asS gibt's nicht mehr
-	werden die weiteren Operatoren und Konstanten aus $\asS$ definiert:
+
+	Im Folgenden stehen jeweils
+	links die Formeln in üblicher Schreibweise mit Klammern
+	und rechts in Polnischer Notation (ohne Klammern).
+
+	Ausgehend von den Junktoren \textbzw Operatoren aus $\asJ_\xBool$
+	werden die restlichen Operatoren aus $\asJ$ definiert.
+	Die Definitionen sind in zwei Gruppen eingeteilt,
+	und zwar die mit den Operatoren aus $\asJ_\xAnd$:
 	\begin{align}
-		%
-		&                 (A \limp B) & \defeq & & & (\lnot (A \land (\lnot B)))
-		& \formulaspace &   \limp A B & \defeq & & & \lnot \land A \lnot B
-		\label{def:imp}   \\
-		%
-		&                 (A \lrep B) & \defeq & & & (B \limp A)
-		& \formulaspace &   \lrep A B & \defeq & & & \limp B A
-		\label{def:rep}   \\
-		%
-		&               (A \lequiv B) & \defeq & & & ((A\limp B)\land(A\lrep B))
-		& \formulaspace & \lequiv A B & \defeq & & & \land \limp A B \lrep A B
-		\label{def:equiv} \\
-		%
-		&             (A \lor B) & \defeq & & & (\lnot((\lnot A)\land(\lnot B)))
-		& \formulaspace &    \lor A B & \defeq & & & \lnot \land \lnot A \lnot B
-		\label{def:or}    \\
-		%
-		&                (A \lnand B) & \defeq & & & (\lnot (A \land B ))
-		& \formulaspace &  \lnand A B & \defeq & & & \lnot \land A B
-		\label{def:nand}  \\
-		%
-		&                 (A \lnor B) & \defeq & & & (\lnot (A \lor B))
-		& \formulaspace &   \lnor A B & \defeq & & & \lnot \lor A B
-		\label{def:nor}   \\
-		%
-		&                (A \lmult B) & \defeq & & & (A \land B)
-		& \formulaspace &  \lmult A B & \defeq & & & \land A B
-		\label{def:mult}  \\
-		%
-		&           (A \ladd B) & \defeq & & & ((A\lor B)\land(\lnot(A\land B)))
-		& \formulaspace &   \ladd A B & \defeq & & & \land\lor A B\lnot\land A B
-		\label{def:add}   \\
-		%
+		% folgt ------------------------
+		&                (A \limp B)  &\defeq & & & (\lnot (A \land (\lnot B)))
+		& \formulaspace &   \limp A B &\defeq & & & \lnot \land A \lnot B
+		\label{def:imp}
+		\\
+		% sofern -----------------------
+		&                (A \lrep B)  &\defeq & & & (\lnot (B \land (\lnot A)))
+		& \formulaspace &   \lrep B A &\defeq & & & \lnot \land B \lnot A
+		\label{def:rep}
+		\\
+		% genau dann -------------------
+		&              (A \lequiv B)  &\defeq & & & ((A\limp B)\land(A\lrep B))
+		& \formulaspace & \lequiv A B &\defeq & & & \land \limp A B \lrep A B
+		\label{def:equiv}
+		\\
+		%falsch ------------------------
 		&                     \lfalse & \defeq & & & (p_0 \land (\lnot p_0))
 		& \formulaspace &     \lfalse & \defeq & & & \land p_0 \lnot p_0
-		\label{def:false} \\
-		%
+		\label{def:false}
+		\\
+		% mal --------------------------
+		&               (A \lmult B)  & \defeq & & & (A \land B)
+		& \formulaspace &  \lmult A B & \defeq & & & \land A B
+		\label{def:mult}
+		\\
+		% NAND -------------------------
+		&               (A \lnand B)  &\defeq & & & (\lnot (A \land B ))
+		& \formulaspace &  \lnand A B &\defeq & & & \lnot \land A B
+		\label{def:nand}
+		\formulatoleft
+	\end{align}
+	und die mit den Operatoren  aus $\asJ_\xOr$:
+	\begin{align}
+		% NOR --------------------------
+		&                (A \lnor B)  & \defeq & & & (\lnot (A \lor B))
+		& \formulaspace &   \lnor A B & \defeq & & & \lnot \lor A B
+		\label{def:nor}
+		\\
+		% plus -------------------------
+		& (A \ladd B) & \defeq & & & ((A\lor B)\land(\lnot(A\land B)))
+		& \formulaspace &   \ladd A B & \defeq & & & \land\lor A B\lnot\land A B
+		\label{def:add}
+		\\
+		% wahr -------------------------
 		&                      \ltrue & \defeq & & & (p_0 \lor (\lnot p_0))
 		& \formulaspace &      \ltrue & \defeq & & & \lor p_0 \lnot p_0
-		\label{def:true}  \formulatoleft
-		%
+		\label{def:true}
+		\formulatoleft
 	\end{align}
+	Ist \symqt{$\lor$} oder \symqt{$\land$} nicht vorgegeben,
+	\textdh wird von den Elementen aus $\asJ_\xAnd$ \textbzw $\asJ_\xOr$
+	statt von denen von $\asJ_\xBool$ ausgegengen,
+	so muss man den fehlenden Operator mittels
+	der passenden der beiden folgenden Definitionen einführen:
+	\begin{align}
+		% und --------------------------
+		&         (A \land B) & \defeq & & & (\lnot ((\lnot A) \lor (\lnot B)))
+		& \formulaspace &    \land A B &\defeq & & & \lnot \lor \lnot A \lnot B
+		\label{def:and}
+		\\
+		% oder -------------------------
+		&          (A \lor B) & \defeq & & & (\lnot ((\lnot A) \land (\lnot B)))
+		& \formulaspace &    \lor A B &\defeq & & & \lnot \land \lnot A \lnot B
+		\label{def:or}
+		\formulatoleft
+	\end{align}
+	Nun sind wieder alle Operatoren definiert:
+
+\todo{Hier weitermachen.}% TODO >>> Hier weitermachen <<< restliche Signaturen
+
+	Entsprechend wählt man bei Vorgabe von $\asJ_\xImp$ \textbzw $\asJ_\xRep$
+	eine von den beiden folgenden Definitionen aus:
+	\begin{align}
+		% und --------------------------
+		&             (A \land B) & \defeq & & & (???)
+		& \formulaspace &    \land A B &\defeq & & & ???
+		\label{def:and2}
+		\\
+		% oder -------------------------
+		&              (A \lor B) & \defeq & & & (???)
+		& \formulaspace &    \land A B &\defeq & & & ???
+		\label{def:or2}
+		\formulatoleft
+	\end{align}
+	und bei Vorgabe von $\asJ_\xNand$ \textbzw $\asJ_\xNor$
+	eine von:
+	\begin{align}
+	% und --------------------------
+	&             (A \land B) & \defeq & & & (???)
+	& \formulaspace &    \land A B &\defeq & & & ???
+	\label{def:and3}
+	\\
+	% oder -------------------------
+	&              (A \lor B) & \defeq & & & (???)
+	& \formulaspace &    \land A B &\defeq & & & ???
+	\label{def:or3}
+	\formulatoleft
+	\end{align}
+
 	Aus \ref{def:rep} folgt durch Vertauschung der Variablen unmittelbar
 	\begin{align}
 		%
@@ -2597,30 +2686,13 @@
 		\label{eq:imp}   \formulatoleft
 		%
 	\end{align}
-	Analog zu \ref{def:imp} und \ref{def:or} sollte noch
-	\begin{align}
-		%
-		&                 (A \lrep B) & \equiv & & & (\lnot ((\lnot A) \land B))
-		& \formulaspace &   \lrep A B & \equiv & & & \lnot \land \lnot A B
-		\label{eq:ref}   \\
-		%
-		&             (A \land B) & \equiv & & & (\lnot((\lnot A)\lor(\lnot B)))
-		& \formulaspace &   \land A B & \equiv & & & \lnot \lor \lnot A \lnot B
-		\label{eq:and}    \formulatoleft
-		%
-	\end{align}
-	gelten, was aber erst noch zu beweisen ist.
 
-	Es werden nun die logischen \glsIdxPl{Axiom}
+	Es werden nun die aussagenlogischen \glsIdxPl{Axiom}
 	-- ohne Quantoren --
-%TODO: asS gibt's nicht mehr
-	mit Hilfe der Operatoren aus $\asOand$ definiert
+	mit Hilfe der Operatoren aus $\asJ_\xAnd$ definiert
 	und zusätzlich alle Elemente von $\asJ$ (\seename~\vref{def:J}),
-	\textdh alle logischen Operatoren und Konstanten aus $\asJ$.
+	\textdh alle aussagenlogischen Operatoren und Konstanten aus $\asJ$.
 
-	Im Folgenden stehen jeweils
-	links die Formeln in üblicher Schreibweise mit Klammern
-	und rechts in Polnischer Notation (ohne Klammern).
 %##	Die in den \subsubsectionname en~\vref{subsub:OperatorenAnfang}
 %##	bis \vref{subsub:OperatorenEnde} fehlenden Definitionen von Operatoren
 %##	sollen mit denen aus \subsubsectionname~\vref{subsub:AussagenlogischeAxiome}
@@ -2629,7 +2701,7 @@
 \todo{Junktoren definieren und Übereinstimmung ableiten.}%##
 %TODO Junktoren definieren und Übereinstimmung ableiten. %##
 
-	\subsubsection{Logisches Axiomensystem}% - - - - - - - - - - - - - - - - - -
+	\subsubsection{Aussagenlogisches Axiomensystem}% - - - - - - - - - - - - - -
 	\label{subsub:AussagenlogischeAxiome}
 	Gegebene Operatoren: $\lnot, \land, \limp$\par
 	\glsIdxPl{Axiom}:
@@ -2780,6 +2852,7 @@
 	\section{Prädikatenlogik}%==================================================
 	\beginsection{Prädikatenlogik}
 	\label{sec:Prädikatenlogik}
+	\hidden{\glsIdx{Praedikatenlogik}}
 
 \todo{Prädikatenlogik bearbeiten.}%##
 %TODO Prädikatenlogik bearbeiten. %##
