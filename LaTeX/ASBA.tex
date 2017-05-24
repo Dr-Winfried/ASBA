@@ -29,7 +29,7 @@
 \documentclass[english,ngerman,parskip=half,headsepline,footsepline,
 	fleqn,notitlepage]{scrreprt}
 
-%%%% Pakete %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pakete #######################################################################
 
 % allgemein --------------------------------------------------------------------
 \usepackage[utf8]{inputenc}% Input encoding specification
@@ -77,19 +77,19 @@
 \usepackage[protected,idxcommands]{splitidx}% mehrere Indizes - statt 'makeidx'
 %\usepackage{hvindex}% Support for indexing - after 'babel
 %\usepackage{showidx}% Index auf Seitenrand anzeigen - Zum Testen der Indizes
-% TODO Fehler: 'showindex' gibt direkt und nicht auf Rand aus %##
+%TODO Fehler: 'showindex' gibt direkt und nicht auf Rand aus
 \usepackage{glossaries}% Create glossaries and lists of acronyms
 %\usepackage{glossaries-german}% German language module for glossaries package
 
 % Verweise ---------------------------------------------------------------------
 %\usepackage[germanb]{minitoc}\dosectoc% Unterverzeichnisse erstellen
-% TODO Fehler: 'minitoc' funktioniert nicht
+%TODO Fehler: 'minitoc' funktioniert nicht
 \usepackage{varioref}
 \usepackage[colorlinks,linktoc=all]{hyperref}% Extensive support for hypertext
 \usepackage{glossaries}% Create glossaries and lists of acronyms
 % lädt     {glossaries-german}% German language module for glossaries package
 
-%%% Einstellung von globalen Werten und Makro-Redefinitionen %%%%%%%%%%%%%%%%%%%
+% Einstellung von globalen Werten und Makro-Redefinitionen #####################
 
 \geometry{textwidth=170mm,textheight=256mm,twoside}% optional Option 'showframe'
 
@@ -142,8 +142,8 @@
 	\Pagestyle%                         veränderte Kopfzeile aktivieren ...
 	\Thispagestyle%                     sicherheitshalber auch für diese Seite.
 	\addcontentsline{toc}{#1}{#2}%      Eintrag ins Inhaltsverzeichnis
-	%TODO Fehler: 2. Seite Kopf Mitte für Lit.-Verz. = Abildungsverzeichnis %##
-	%TODO Fehler: Links vom Inhaltsverz. nach Tab.-Verz. 1 Seite zu früh    %##
+	%TODO Fehler: 2. Seite Kopf Mitte für Lit.-Verz. = Abildungsverzeichnis
+	%TODO Fehler: Links vom Inhaltsverz. nach Tab.-Verz. 1 Seite zu früh
 }
 % Indizes ======================================================================
 \newcommand*{\idxdictionary}[1]{%       nur für Indices
@@ -199,7 +199,7 @@
 % Neue Elemente ----------------------------------------------------------------
 \newcounter{Enumi}% für unterbrochene Listennummerierung
 
-%% Bildelemente %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bildelemente #################################################################
 
 \newcommand*{\textbild}[1]{\textbf{\textsf{#1}}}% Textauszeichnungen für Text im Bild
 \newcommand*{\Datei}[4][0.5]{% #2 x #3 = (-#2/2,-#3/2),(#2/2,#3/2)
@@ -288,24 +288,25 @@
 	\put(-1.5,-1.0){\makebox(3.0,1.5){\textbild{#1}}}
 }
 
-%% Metasprachliche Symbole %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Metasprachliche Symbole ######################################################
 
-\newcommand*{\metaund}{\&\&}%              Und-Symbol  für Texte
-\newcommand*{\metaoder}{||}%               Oder-Symbol für Texte
-\newcommand*{\metaand}{\;\metaund\;}%      Und-Symbol  für Formeln
-\newcommand*{\metaor}{\;\metaoder\;}%      Oder-Symbol für Formeln
+\newcommand*{\metaund}{\&\&}%               Und-Symbol  für Texte
+\newcommand*{\metaoder}{||}%                Oder-Symbol für Texte
+\newcommand*{\metaand}{\;\metaund\;}%       Und-Symbol  für Formeln
+\newcommand*{\metaor}{\;\metaoder\;}%       Oder-Symbol für Formeln
 % Nur im Mathematikmodus!
-\newcommand*{\metaimp}{\Rightarrow}%       aus ... folgt ...
-\newcommand*{\metarep}{\Leftarrow}%        ... folgt aus ...
-\newcommand*{\metaequiv}{\Leftrightarrow}% ... genau dann wenn ...
-\newcommand*{\defeq}{:=}%                  definitionsgemäß gleich
-\newcommand*{\eq}{=}%                      Gleichheit
+\newcommand*{\metaimp}{\Rightarrow}%        aus ... folgt ...
+\newcommand*{\metarep}{\Leftarrow}%         ... folgt aus ...
+\newcommand*{\metaequiv}{\Leftrightarrow}%  ... genau dann wenn ...
+\newcommand*{\metadefeq}{:\Leftrightarrow}% ... def.gem. genau dann wenn ...
+\newcommand*{\defeq}{:=}%                   ... definitionsgemäß gleich ...
+\newcommand*{\eq}{=}%                       ... gleich ...
 
-%% Mathematische Symbole %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematische Symbole ########################################################
 
 % Beispieloperatoren ===========================================================
 % \*bsp
-\newcommand*{\opbsp}{\ast}
+\newcommand*{\opbsp}{\circ}
 \newcommand*{\relbsp}{\sim}
 \newcommand*{\releqbsp}{\simeq}
 \newcommand*{\lrelbsp}{\lhd}
@@ -338,7 +339,7 @@
 % binäre Operatoren ------------------------------------------------------------
 %                                                    W W F F - Aussage A
 %                                                    W F W F - Aussage B
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %\newcommand*{\lbtrue}{\operatorname{\top}}%         W W W W - wahr [binär]
 %\newcommand*{\lnbfalse}{\operatorname{\notbot}}%    " " " " - nicht falsch
 %            \lor                                    W W W F - A oder B
@@ -346,7 +347,7 @@
 \newcommand*{\lrepA}{\Leftarrow}%
 \newcommand*{\lrepB}{\subset}%
 \newcommand*{\lleft}{\operatorname{\rfloor}}%        W W F F - A
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \newcommand*{\limp}{\rightarrow}%                    W F W W - aus A folgt B
 \newcommand*{\limpA}{\Rightarrow}%
 \newcommand*{\limpB}{\supset}%
@@ -358,7 +359,7 @@
 %            \land                                   W F F F - A und B
 \newcommand*{\landA}{\&}
 \newcommand*{\landB}{\lmult}
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \newcommand*{\lnand}{\uparrow}%                      F W W W - nicht
 \newcommand*{\lnandA}{\barwedge}%                              (A und B)
 \newcommand*{\lnandB}{\mid}%
@@ -373,7 +374,7 @@
 \newcommand*{\lnimp}{\nrightarrow}%                  F W F F - nicht
 \newcommand*{\lnimpA}{\nRightarrow}%                         (aus A folgt B)
 \newcommand*{\lnimpB}{\nsupset}%
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \newcommand*{\lnleft}{\rceil}%                       F F W W - nicht A
 \newcommand*{\lnrep}{\nleftarrow}%                   F F W F - nicht
 \newcommand*{\lnrepA}{\nLeftarrow}%                          (A folgt aus B)
@@ -417,7 +418,7 @@
 \newcommand*{\xOr}{\mathrm{or}}%
 \newcommand*{\xRep}{\mathrm{rep}}%
 
-%% sonstige nützliche Kommandos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% sonstige nützliche Kommandos #################################################
 
 % Im Parameter von '\turl' muss '\' vor jedem Zeichen aus '{}#&%$' ein '\'
 % stehen und '\' / '~' durch '\textbackslash' / '\textasctilde' ersetzt werden.
@@ -425,7 +426,7 @@
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
 \newcommand*{\formulaspace}{&&&&}%         Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
-\newcommand*{\charqt}[1]{\enquote*{#1}}% Quotierung von Zeichen    (character)
+\newcommand*{\charqt}[1]{'#1'}%          Quotierung von Zeichen    (character)
 \newcommand*{\strqt}[1]{\enquote{#1}}%   Quotierung von Zeichenketten (string)
 % Nur mit Parameter im Mathematikmodus!
 %TODO einzelne Symbole in `...´ einschließen!
@@ -451,7 +452,7 @@
 % Ergebnis von Makros verschwinden lassen
 \newcommand*{\hidden}[1]{}
 
-%%%% Glossareinträge %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Glossareinträge ##############################################################
 
 % Indices und Symbole ==========================================================
 \makeindex
@@ -473,16 +474,14 @@
 	name={$ \lrelbsp$},
 	plural={\lrelbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation
-		mit Umkehrrelation $\rreleqbsp$%
+		Beispiel für eine Relation mit Umkehrrelation $\rreleqbsp$%
 	}
 }
 \newglossaryentry{lreleqbsp}{
 	name={$ \lreleqbsp$},
 	plural={\lreleqbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation
-		mit Gleichheit und Umkehrrelation $\rreleqbsp$%
+		Beispiel für eine Relation mit Gleichheit und Umkehrrelation $\rreleqbsp$%
 	}
 }
 \newglossaryentry{relbsp}{
@@ -496,24 +495,21 @@
 	name={$ \releqbsp$},
 	plural={\releqbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation
-		mit Gleichheit%
+		Beispiel für eine Relation mit Gleichheit%
 	}
 }
 \newglossaryentry{rrelbsp}{
 	name={$ \rrelbsp$},
 	plural={\rrelbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation
-		mit Umkehrrelation $\lrelbsp$%
+		Beispiel für eine Relation mit Umkehrrelation $\lrelbsp$%
 	}
 }
 \newglossaryentry{rreleqbsp}{
 	name={$ \rreleqbsp$},
 	plural={\rreleqbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation
-		mit Gleichheit und Umkehrrelation $\lreleqbsp$%
+		Beispiel für eine Relation mit Gleichheit und Umkehrrelation $\lreleqbsp$%
 	}
 }
 
@@ -552,6 +548,13 @@
 	plural={\metaand},% im Mathematikmodus
 	description={%
 		Metaoperator: ... oder ..%
+	}
+}
+\newglossaryentry{metadefeq}{
+	name={$ \metadefeq$},
+	plural={\metadefeq},% im Mathematikmodus
+	description={%
+		Metaoperator: ... definitionsgemäß genau dann wenn ..%
 	}
 }
 \newglossaryentry{metaequiv}{
@@ -773,8 +776,7 @@
 	name={Fachgebiet},
 	plural={Fachgebiete},
 	description={%
-		Ein Teil der Mathematik mit einer zugehörigen Basis aus Axiomen,
-		Sätzen und spezifischen Fachbegriffen und Darstellungen%
+		Ein Teil der Mathematik mit einer zugehörigen Basis aus Axiomen, Sätzen und spezifischen Fachbegriffen und Darstellungen%
 	}
 }
 \newglossaryentry{FormalelementV}{
@@ -782,67 +784,51 @@
 	plural={formale Elemente}, % viele ...
 	description={%
 		Ein mathematisches Element in formaler Schreibweise.
-		Bis auf wenige Aussagen kommen darin
-		\glsIdxPl{MetaausdruckV} nicht mehr vor%
+		Bis auf wenige Aussagen kommen darin \glsIdxPl{MetaausdruckV} nicht mehr vor%
 	}%
 }
 \newglossaryentry{intEigenschaftA}{
 	name={interessierende Eigenschaft},      % eine ...
 	plural={interessierenden Eigenschaften}, % alle ...
 	description={
-		Interessierende Eigenschaften sind solche,
-		die \textbzgl \symqt{$=$} \textbzw \symqt{$\equiv$}
-		von Interesse sind.
-		\textZB ist die interessierende Eigenschaft der Operanden
-		der Gleichung \forqt{$y=f(x)$}
-		normalerweise der Wert (von \forqt{$y$} und \forqt{$f(x)$}),
-		und nicht deren Darstellung (Zeichenketten)%
+		Interessierende Eigenschaften sind solche, die \textbzgl \symqt{$=$} \textbzw \symqt{$\equiv$} von Interesse sind.
+		\textZB ist die interessierende Eigenschaft der Operanden der Gleichung \forqt{$y=f(x)$} normalerweise der Wert (von \forqt{$y$} und \forqt{$f(x)$}), und nicht deren Darstellung (Zeichenketten)%
 	}%
 }
 \newglossaryentry{MetaausdruckV}{
 	name={metasprachlicher Ausdruck},   % ein   ...
 	plural={metasprachliche Ausdrücke}, % viele ...
 	description={%
-		Eine in normaler Sprache verfasste Aussage,
-		die auch zusammengesetzt sein kann%
+		Eine in normaler Sprache verfasste Aussage, die auch zusammengesetzt sein kann%
 	}%
 }
 \newglossaryentry{MetaaussageV}{
 	name={metasprachliche Aussage},    % eine   ...
 	plural={metasprachliche Aussagen}, % viele ...
 	description={%
-		Eine in \glsIdx{Metasprache} verfasste Aussage,
-		die auch zusammengesetzt sein kann%
+		Eine in \glsIdx{Metasprache} verfasste Aussage, die auch zusammengesetzt sein kann%
 	}%
 }
 \newglossaryentry{MetaoperatorV}{
 	name={metasprachlicher Operator},    % ein   ...
 	plural={metasprachliche Operatoren}, % viele ...
 	description={%
-		Ein Operator,
-		deren Operanden \glsIdxPl{MetaausdruckV} sind%
+		Ein Operator, deren Operanden \glsIdxPl{MetaausdruckV} sind%
 	}%
 }
 \newglossaryentry{Metasprache}{
 	name={Metasprache},
 	plural={Metasprachen},
 	description={%
-		Eine Sprache,
-		in der Aussagen über Elemente einer anderen Sprache
-		getroffen werden können%
+		Eine Sprache, in der Aussagen über Elemente einer anderen Sprache getroffen werden können%
 	}%
 }
 \newglossaryentry{Praedikat}{
 	name={Prädikat},
 	plural={Prädikate},
 	description={%
-		Ein Element der \glsIdx{Praedikatenlogik}
-		(\see \sectionname~\vref{sec:Prädikatenlogik}).
-		\textZB kann man eine \forqt{$Gruppe$} als
-		ein dreistelliges Prädikat \forqt{$Gruppe(G,+,\cdot)$} definieren,
-		in dem $G$ eine Menge und \symqt{$+$} und \symqt{$\cdot$}
-		Operationen in \forqt{$G \times G$} sind,
-		so dass die Gruppenaxiome erfüllt sind%
+		Ein Element der \glsIdx{Praedikatenlogik} (\see \sectionname~\vref{sec:Prädikatenlogik}).
+		\textZB kann man eine \forqt{$Gruppe$} als ein dreistelliges Prädikat \forqt{$Gruppe(G,+,\cdot)$} definieren, in dem $G$ eine Menge und \symqt{$+$} und \symqt{$\cdot$} Operationen in \forqt{$G \times G$} sind, so dass die Gruppenaxiome erfüllt sind%
 	}
 }
 \newglossaryentry{Praedikatenlogik}{
@@ -855,24 +841,23 @@
 	name={Satz},
 	plural={Sätze},
 	description={%
-		Eine mathematische Aussage,
-		dass eine bestimmte Folgerung
-		aus gegebenen Voraussetzungen abgeleitet werden kann%
+		Eine mathematische Aussage, dass eine bestimmte Folgerung aus gegebenen Voraussetzungen abgeleitet werden kann%
+	}
+}
+\newglossaryentry{Schlussregel}{
+	name={Schlussregel},
+	plural={Schlussregeln},
+	description={%
+		\see \sectionname~\vref{sec:Schlussregeln}%
 	}
 }
 \newglossaryentry{vergleichbar}{
 	name={vergleichbar},
 	plural={vergleichbare},
 	description={
-		Zwei \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{FormalelementV}
-		heißen
-		-- auf eine bestimmte Art --
-		vergleichbar,
-		wenn sie auf diese Art (\textzB als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
+		Zwei \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{FormalelementV} heißen -- auf eine bestimmte Art -- vergleichbar, wenn sie auf diese Art (\textzB als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
 		Die Art muss implizit bekannt oder explizit angegeben sein.
-		Meistens genügt es zu wissen,
-		was für
-		\glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{FormalelementV} es sind.
+		Meistens genügt es zu wissen, was für \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{FormalelementV} es sind.
 		Beide müssen dann nur von derselben Art sein%
 	}%
 }
@@ -880,9 +865,7 @@
 	name={Wahrheitswert},
 	plural={Wahrheitswerte},
 	description={%
-		Wahrheitswerte sind die Werte \strqt{wahr} und \strqt{falsch},
-		oft auch als \strqt{true} und \strqt{false}
-		oder einfach \charqt{1} und \charqt{0} bezeichnet.
+		Wahrheitswerte sind die Werte \strqt{wahr} und \strqt{falsch}, oft auch als \strqt{true} und \strqt{false} oder einfach \charqt{1} und \charqt{0} bezeichnet%
 	}
 }
 
@@ -896,7 +879,7 @@
 \newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%          Plural
 \newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}% groß und Plural
 
-%%%% Titelseite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Titelseite ###################################################################
 
 \titlehead{
 	{\Large Dr. Winfried Teschers}\\
@@ -905,79 +888,58 @@
 }
 \subject{Projektdokument}
 \title{{\Huge \ASBA}\\Axiome, Sätze, Beweise und Auswertungen}
-\subtitle{Projekt zur maschinellen Überprüfung von mathematischen Beweisen
-	und deren Ausgabe in lesbarer Form}
+\subtitle{Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form}
 \author{Winfried Teschers}
 \date{\today}
 \publishers{\vspace{1cm}\normalsize
-	Es wird ein Programmsystem beschrieben,
-	das zu eingegebenen Axiomen, Sätzen, und Beweisen letztere prüft,
-	Auswertungen generiert
-	und zu gegebenen Ausgabeschemata eine Ausgabe der Elemente
-	in üblicher Formelschreibweise im \LaTeX-Format erstellt.
+	Es wird ein Programmsystem beschrieben, das zu eingegebenen Axiomen, Sätzen, und Beweisen letztere prüft, Auswertungen generiert und zu gegebenen Ausgabeschemata eine Ausgabe der Elemente in üblicher Formelschreibweise im \LaTeX-Format erstellt.
 }
 
-%%%% Dokument %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokument #####################################################################
 
 \begin{document}
 	\maketitle
 
 	~\vfill Copyright \copyright{} 2017 Winfried Teschers\bigskip
 
-	Permission is granted to copy, distribute and/or modify this document under
-	the terms of the GNU Free Documentation License, Version~1.3 or any later
-	version published by the Free Software Foundation;
-	with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-	You should have received a copy of the GNU Free Documentation License along
-	with this document.
+	Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version~1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+	You should have received a copy of the GNU Free Documentation License along with this document.
 	If not, see \url{http://www.gnu.org/licenses/}.
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
-	%chapter{\contentsname}% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%chapter{\contentsname}% Inhaltsverzeichnis % ##############################
 	\likechapter{\contentsname}
 	\label{cha:Inhaltsverzeichnis}
 
 	\tableofcontents
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
-	\chapter{Analyse}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{Analyse}% #########################################################
 	\beginchapter{Analyse}
 	\label{cha:Analyse}
 
-	In der Mathematik gibt es eine unüberschaubare Menge an
-	\glsIdxPl{Axiom}n, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n, \emph{\glsIdxPl{Fachbegriff}n}%
+	In der Mathematik gibt es eine unüberschaubare Menge an \glsIdxPl{Axiom}n, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n, \emph{\glsIdxPl{Fachbegriff}n}%
 	\footnote{%
-		\emph{\glsIdxPl{Fachbegriff}} sind Namen für mathematische Elemente und
-		Konstruktionen,
-		\textzB \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet}.
+		\emph{\glsIdxPl{Fachbegriff}} sind Namen für mathematische Elemente und Konstruktionen, \textzB \glsIdxPl{Axiom}, \glsIdxPl{Satz},  \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet}.
 		Symbole können als spezielle \glsIdxPl{Fachbegriff} aufgefasst werden.%
 	}
 	und \emph{\glsIdxPl{Fachgebiet}n}%
 	\footnote{%
-		Ein \emph{\glsIdx{Fachgebiet}} ist ein Teil der Mathematik
-		mit einer zugehörigen Basis an Axiomen,
-		\glsIdxPl{Satz}n und spezifischen \glsIdxPl{Fachbegriff}n und Darstellungen.
+		Ein \emph{\glsIdx{Fachgebiet}} ist ein Teil der Mathematik mit einer zugehörigen Basis an Axiomen, \glsIdxPl{Satz}n und spezifischen \glsIdxPl{Fachbegriff}n und Darstellungen.
 		\textZB \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}.
-		Ein \glsIdx{Fachgebiet} kann sehr klein sein
-		und im Extremfall kein einziges Element enthalten.
-		\emph{Umgebung} wäre eine bessere Bezeichnung,
-		ist aber schon ein verbreiteter \glsIdx{Fachbegriff},
-		so dass hier die Bezeichnung \glsIdx{Fachgebiet} verwendet wird.%
+		Ein \glsIdx{Fachgebiet} kann sehr klein sein und im Extremfall kein einziges Element enthalten.
+		\emph{Umgebung} wäre eine bessere Bezeichnung, ist aber schon ein verbreiteter \glsIdx{Fachbegriff}, so dass hier die Bezeichnung \glsIdx{Fachgebiet} verwendet wird.%
 	}.
 	Zu den meisten \glsIdxPl{Fachgebiet}n gibt es noch ungelöste Probleme.
 
-	Es fehlt ein System, das einen Überblick bietet
-	und die Möglichkeit, \glsIdxPl{Beweis} automatisch zu überprüfen.
-	Außerdem sollte all dies in üblicher mathematischer Schreibweise
-	ein- und ausgegeben werden können.
-	In diesem Dokument werden
-	die Grundlagen für das zu entwickelnde \ASBA\ behandelt.
+	Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, \glsIdxPl{Beweis} automatisch zu überprüfen.
+	Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
+	In diesem Dokument werden die Grundlagen für das zu entwickelnde \ASBA\ behandelt.
 
-	Ein Programmsystem mit ähnlicher Aufgabenstellung findet sich
-	im GitHub Projekt Hilbert~II (\seename~\cite{bib:HilbertII, bib:qedeq}).
+	Ein Programmsystem mit ähnlicher Aufgabenstellung findet sich im GitHub Projekt Hilbert~II (\seename~\cite{bib:HilbertII, bib:qedeq}).
 	Einige Ideen sind von dort übernommen worden.
 
-	\section{Fragen}%===========================================================
+	\section{Fragen}% ==========================================================
 	\beginsection{Fragen}
 	\label{sec:Fragen}
 
@@ -991,15 +953,12 @@
 		\textZB welche Logik und Mengenlehre.
 
 		\item \label{Frage:Basis} \emph{Basis}:
-		Welche wichtigen \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis},
-		\glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} gibt es?
+		Welche wichtigen \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} gibt es?
 		Welche davon sind Standard?
 
 		\item \label{Frage:Axiome} \emph{\glsIdxPl{Axiom}}:
 		Welche \glsIdxPl{Axiom} werden bei einem \glsIdx{Satz} oder \glsIdx{Beweis} vorausgesetzt?
-		Allgemein anerkannte oder auch strittige,
-		wie \textzB den \emph{Satz vom ausgeschlossenen Dritten}
-		(\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
+		Allgemein anerkannte oder auch strittige, wie \textzB den \emph{Satz vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
 
 		\item \label{Frage:Beweis} \emph{\glsIdx{Beweis}}:
 		Ist ein \glsIdx{Beweis} fehlerfrei?
@@ -1020,25 +979,20 @@
 		\item \label{Frage:Abhängigkeiten} \emph{Abhängigkeiten}:
 		Wie heißt ein \glsIdx{Fachbegriff} in einer anderen Sprache?
 		Ist wirklich dasselbe gemeint?
-		Was ist mit \glsIdxPl{Fachbegriff}n
-		in verschiedenen \glsIdxPl{Fachgebiet}n?
+		Was ist mit \glsIdxPl{Fachbegriff}n in verschiedenen \glsIdxPl{Fachgebiet}n?
 
 		\item \label{Frage:Überblick} \emph{Überblick}:
-		Ist ein \glsIdx{Axiom}, \glsIdx{Satz}, \glsIdx{Beweis} oder Fachbegriff schon einmal
-		-- \textggf abweichend --
-		definiert, formuliert oder bewiesen worden?
+		Ist ein \glsIdx{Axiom}, \glsIdx{Satz}, \glsIdx{Beweis} oder Fachbegriff schon einmal -- \textggf abweichend -- definiert, formuliert oder bewiesen worden?
 
 		\item \label{Frage:Darstellung} \emph{Darstellung}:
-		Wie kann man einen \glsIdx{Satz} und den zugehörigen \glsIdx{Beweis}
-		-- \textggf auch spezifisch für ein \glsIdx{Fachgebiet} --
-		darstellen?
+		Wie kann man einen \glsIdx{Satz} und den zugehörigen \glsIdx{Beweis} -- \textggf auch spezifisch für ein \glsIdx{Fachgebiet} -- darstellen?
 
 		\item \label{Frage:Forschung} \emph{Forschung}:
 		Welche Probleme gibt es noch zu erforschen.
 
 	\end{enumerate}
 
-	\section{Eigenschaften}%====================================================
+	\section{Eigenschaften}% ===================================================
 	\beginsection{Eigenschaften}
 	\label{sec:Eigenschaften}
 
@@ -1047,42 +1001,25 @@
 	\begin{enumerate}
 
 		\item \label{Eigenschaft:Daten} \emph{Daten}:
-		\glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis},
-		\glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet}
-		können in formaler Form gespeichert werden
-		-- auch nicht oder unvollständig bewiesene \glsIdxPl{Satz}.
-		Dabei soll die übliche mathematische Schreibweise
-		verwendet werden können.
+		\glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} können in formaler Form gespeichert werden -- auch nicht oder unvollständig bewiesene \glsIdxPl{Satz}.
+		Dabei soll die übliche mathematische Schreibweise verwendet werden können.
 
 		\item \label{Eigenschaft:Definitionen} \emph{Definitionen}:
-		Es können \glsIdxPl{Fachbegriff} für \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}
-		und \glsIdxPl{Fachgebiet}
-		-- letztere mit eigenen Axiomen, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n,
-		\glsIdxPl{Fachbegriff}n und über- oder untergeordneten
-		\glsIdxPl{Fachgebiet}n --
-		definiert werden.
-		Die Definitionen dürfen wiederum an dieser Stelle
-		schon bekannte \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} verwenden.
+		Es können \glsIdxPl{Fachbegriff} für \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet} -- letztere mit eigenen Axiomen, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n, \glsIdxPl{Fachbegriff}n und über- oder untergeordneten \glsIdxPl{Fachgebiet}n -- definiert werden.
+		Die Definitionen dürfen wiederum an dieser Stelle schon bekannte \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} verwenden.
 
 		\item \label{Eigenschaft:Prüfung} \emph{Prüfung}:
 		Vorhandene \glsIdxPl{Beweis} können automatisch geprüft werden.
 
 		\item \label{Eigenschaft:Ausgaben} \emph{Ausgaben}:
-		Die \glsIdxPl{Axiom}, \glsIdxPl{Satz} und \glsIdxPl{Beweis} können in üblicher Schreibweise
-		-- abhängig von Sprache und \glsIdx{Fachgebiet} --
-		ausgegeben werden.
+		Die \glsIdxPl{Axiom}, \glsIdxPl{Satz} und \glsIdxPl{Beweis} können in üblicher Schreibweise -- abhängig von Sprache und \glsIdx{Fachgebiet} -- ausgegeben werden.
 
 		\item \label{Eigenschaft:Auswertungen} \emph{Auswertungen}:
-		Zusätzlich zur Ausgabe der gespeicherten Daten
-		sind verschiedene Auswertungen möglich,
-		unter anderem für die meisten der unter \sectionname~\vref{sec:Fragen}
-		behandelten Fragen.
+		Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \sectionname~\vref{sec:Fragen} behandelten Fragen.
 
 		\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 	\end{enumerate}
-	Damit \ASBA\ nicht umsonst erstellt wird
-	und möglichst breite Verwendung findet,
-	werden noch zwei Punkte angefügt:
+	Damit \ASBA\ nicht umsonst erstellt wird und möglichst breite Verwendung findet, werden noch zwei Punkte angefügt:
 	\begin{enumerate}
 		\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
 
@@ -1092,14 +1029,10 @@
 		\item \label{Eigenschaft:Akzeptanz} \emph{Akzeptanz}:
 		\ASBA\ wird von Mathematikern akzeptiert und verwendet.
 	\end{enumerate}
-	\tablename~\vref{tab:Fragen->Eigenschaften} zeigt,
-	wie sich die Eigenschaften zu den Fragen in
-	\sectionname~\vref{sec:Fragen} verhalten.
-	Mit einem X werden die Spalten einer Zeile markiert,
-	deren zugehörige Eigenschaften zur Beantwortung
-	der entsprechenden Frage beitragen sollen.
-	Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften
-	alle gestellten Fragen beantworten, was allerdings illusorisch ist.
+
+	\tablename~\vref{tab:Fragen->Eigenschaften} zeigt, wie sich die Eigenschaften zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
+	Mit einem X werden die Spalten einer Zeile markiert, deren zugehörige Eigenschaften zur Beantwortung der entsprechenden Frage beitragen sollen.
+	Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellten Fragen beantworten, was allerdings illusorisch ist.
 
 	% Abstände für die nächsten drei Tabellen
 	\newcommand*{\vsL}{\hspace{-1.0cm}}%   für 1-stellige Zahlen
@@ -1158,74 +1091,57 @@
 		\label{tab:Fragen->Eigenschaften}
 	\end{table}
 
-	\section{Ziele}%============================================================
+	\section{Ziele}% ===========================================================
 	\beginsection{Ziele}
 	\label{sec:Ziele}
 
-	Um die Eigenschaften von \sectionname~\vref{sec:Eigenschaften} zu erreichen,
-	werden für \ASBA\ die folgenden Ziele%
+	Um die Eigenschaften von \sectionname~\vref{sec:Eigenschaften} zu erreichen, werden für \ASBA\ die folgenden Ziele%
 	\footnote{%
 		Es sind eigentlich Anforderungen.
-		Da dieser Begriff auch im \chaptername~\vref{cha:Design} verwendet wird,
-		werden die Anforderungen hier \emph{\Idx{Ziel}}\emph{e} genannt.%
+		Da dieser Begriff auch im \chaptername~\vref{cha:Design} verwendet wird, werden die Anforderungen hier \emph{\Idx{Ziel}}\emph{e} genannt.%
 	}
 	gesetzt:
 	\begin{enumerate}
 
 		\item \label{Ziel:Daten} \emph{Daten}:
-		Es enthält möglichst viele wichtige
-		\glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff},
-		\glsIdxPl{Fachgebiet} und \glsIdxPl{Ausgabeschema}%
+		Es enthält möglichst viele wichtige \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff}, \glsIdxPl{Fachgebiet} und \glsIdxPl{Ausgabeschema}%
 		\footnote{%
-			Um den Punkt~\ref{Eigenschaft:Ausgaben}
-			von \sectionname~\vref{sec:Eigenschaften} erfüllen zu können,
-			werden noch fachgebietsspezifische
-			\glsIdxPl{Ausgabeschema} benötigt,
-			welche die Art der Ausgaben beschreiben.%
+			Um den Punkt~\ref{Eigenschaft:Ausgaben} von \sectionname~\vref{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \glsIdxPl{Ausgabeschema} benötigt, 	welche die Art der Ausgaben beschreiben.%
 		}.
 
 		\item \label{Ziel:Form} \emph{Form}:
 		Die Daten liegt in formaler, geprüfter Form vor.
 
 		\item \label{Ziel:Eingaben} \emph{Eingaben}:
-		Die Eingabe von Daten erfolgt in einer formalen Syntax
-		unter Verwendung der üblichen mathematischen Schreibweise.
+		Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise.
 
 		\item \label{Ziel:Prüfung} \emph{Prüfung}:
 		Vorhandene \glsIdxPl{Beweis} können automatisch geprüft werden.
 
 		\item \label{Ziel:Ausgaben} \emph{Ausgaben}:
-		Die Ausgabe kann in einer eindeutigen, formalen Syntax
-		gemäß vorhandener \glsIdxPl{Ausgabeschema} erfolgen.
+		Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener \glsIdxPl{Ausgabeschema} erfolgen.
 
 		\item \label{Ziel:Auswertungen} \emph{Auswertungen}:
 		Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
-		Insbesondere kann zu jedem \glsIdx{Beweis} angegeben werden,
-		wie viele Beweisschritte
-		und welche \glsIdxPl{Axiom} und \glsIdxPl{Satz}%
-		\footnote{\glsIdxPl{Satz}, die quasi als \glsIdxPl{Axiom} verwendet werden.}
+		Insbesondere kann zu jedem \glsIdx{Beweis} angegeben werden, wie viele Beweisschritte und welche \glsIdxPl{Axiom} und \glsIdxPl{Satz}%
+		\footnote{
+			\glsIdxPl{Satz}, die quasi als \glsIdxPl{Axiom} verwendet werden.%
+		}
 		er verwendet.
 
 		\item \label{Ziel:Anpassbarkeit} \emph{Anpassbarkeit}:
-		\glsIdxPl{Fachbegriff} und die Darstellung bei der Ausgabe können
-		mit Hilfe von
-		-- gegebenenfalls unbenannten --
-		untergeordneten \glsIdxPl{Fachgebiet}n angepasst werden.
+		\glsIdxPl{Fachbegriff} und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten \glsIdxPl{Fachgebiet}n angepasst werden.
 
 		\item \label{Ziel:Individualität} \emph{Individualität}:
-		\glsIdxPl{Axiom} und \glsIdxPl{Satz} können
-		für jeden \glsIdx{Beweis} individuell vorausgesetzt werden.
+		\glsIdxPl{Axiom} und \glsIdxPl{Satz} können für jeden \glsIdx{Beweis} individuell vorausgesetzt werden.
 		Dabei sind fachgebietsspezifische \glsIdxPl{Fachbegriff} erlaubt.
 
 		\item \label{Ziel:Internet} \emph{Internet}:
 		Die Daten können auf mehrere Dateien verteilt sein.
-		Ein Teil davon
-		-- oder sogar alle --
-		können im Internet liegen.
+		Ein Teil davon -- oder sogar alle -- können im Internet liegen.
 
 		\item \label{Ziel:Kommunikation} \emph{Kommunikation}:
-		Die Kommunikation mit \ASBA\ kann mit den
-		\glsIdxPl{Fachbegriff}n der einzelnen \glsIdxPl{Fachgebiet} erfolgen.
+		Die Kommunikation mit \ASBA\ kann mit den \glsIdxPl{Fachbegriff}n der einzelnen \glsIdxPl{Fachgebiet} erfolgen.
 
 		\item \label{Ziel:Zugriff} \emph{Zugriff}:
 		Der Zugriff auf \ASBA\ kann lokal und über das Internet erfolgen.
@@ -1234,9 +1150,7 @@
 		\ASBA\ kann online und offline arbeiten.
 
 		\item \label{Ziel:Rekursion} \emph{Rekursion}:
-		Es kann rekursiv über alle verwendeten Dateien
-		-- auch solchen, die im Internet liegen --
-		ausgewertet werden.
+		Es kann rekursiv über alle verwendeten Dateien -- auch solchen, die im Internet liegen -- ausgewertet werden.
 
 		\item \label{Ziel:Bedienbarkeit} \emph{Bedienbarkeit}:
 		\ASBA\ ist einfach zu bedienen.
@@ -1246,26 +1160,19 @@
 
 		\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 	\end{enumerate}
-	Der Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt,
-	damit \ASBA\ effizient arbeiten kann
-	und um die Akzeptanz zu erhöhen:
+
+	Der Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit \ASBA\ effizient arbeiten kann und um die Akzeptanz zu erhöhen:
 	\begin{enumerate}
 		\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
 
 		\item \label{Ziel:Zwischenspeicher} \emph{Zwischenspeicher}:
-		Wichtige Auswertungen können an vorhandenen Dateien angehängt
-		oder separat in eigenen Dateien gespeichert werden.
+		Wichtige Auswertungen können an vorhandenen Dateien angehängt oder separat in eigenen Dateien gespeichert werden.
 
 	\end{enumerate}
-	\tablename~\vref{tab:Eigenschaften->Ziele} zeigt wieder,
-	wie sich die Ziele zu den Eigenschaften
-	in \sectionname~\vref{sec:Eigenschaften} verhalten.
-	Mit einem X werden wieder die Spalten einer Zeile markiert,
-	deren zugehörige Ziele zur
-	Sicherstellung der entsprechenden Eigenschaft beitragen sollen.
-	Idealerweise sollte durch Erreichen aller aufgestellten Ziele
-	\gls{ASBA} alle angegebenen Eigenschaften aufweisen,
-	was wahrscheinlich ebenfalls illusorisch ist.
+
+	\tablename~\vref{tab:Eigenschaften->Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften in \sectionname~\vref{sec:Eigenschaften} verhalten.
+	Mit einem X werden wieder die Spalten einer Zeile markiert, deren zugehörige Ziele zur Sicherstellung der entsprechenden Eigenschaft beitragen sollen.
+	Idealerweise sollte durch Erreichen aller aufgestellten Ziele \gls{ASBA} alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
 	\begin{table}[ht]
 		\begin{tabularx}{\linewidth-10.95pt}
 			{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{16}{c}@{\hspace{0.4cm}}|}
@@ -1327,24 +1234,14 @@
 		\label{tab:Eigenschaften->Ziele}% Erst nach '\caption'!
 	\end{table}
 
-	\section{Zusammenfassung}%==================================================
+	\section{Zusammenfassung}% =================================================
 	\beginsection{Zusammenfassung}
 	\label{sec:Zusammenfassung}
 
-	Die \tablename~\vref{tab:Fragen->Ziele} ist eine Kombination aus den
-	\tablename n~\vref{tab:Fragen->Eigenschaften}
-	und~\vref{tab:Eigenschaften->Ziele}
-	und zeigt, wie sich die Ziele in \sectionname~\vref{sec:Ziele}
-	zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
-	Auch hier werden mit einem X die Spalten einer Zeile markiert,
-	deren zugehörige Ziele für die Beantwortung der entsprechenden Frage
-	nötig sind.
-	Mit einem kleinen x werden sie markiert,
-	wenn sie zur Beantwortung der Fragen nicht nötig,
-	aber von Interesse sind.
-	Idealerweise sollte das Erreichen aller aufgestellten Ziele
-	wieder alle gestellten Fragen beantworten,
-	was natürlich auch illusorisch ist.
+	Die \tablename~\vref{tab:Fragen->Ziele} ist eine Kombination aus den \tablename n~\vref{tab:Fragen->Eigenschaften} und~\vref{tab:Eigenschaften->Ziele} und zeigt, wie sich die Ziele in \sectionname~\vref{sec:Ziele} zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
+	Auch hier werden mit einem X die Spalten einer Zeile markiert, deren zugehörige Ziele für die Beantwortung der entsprechenden Frage nötig sind.
+	Mit einem kleinen x werden sie markiert, wenn sie zur Beantwortung der Fragen nicht nötig, aber von Interesse sind.
+	Idealerweise sollte das Erreichen aller aufgestellten Ziele wieder alle gestellten Fragen beantworten, was natürlich auch illusorisch ist.
 	\begin{table}[ht]
 		\begin{tabularx}{\linewidth-10.95pt}
 			{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{15}{c}@{\hspace{0.4cm}}|}
@@ -1421,21 +1318,18 @@
 	\end{table}
 	\clearpage
 
-	\section{Die Umgebung von \textsf{ASBA}}%===================================
+	\section{Die Umgebung von \textsf{ASBA}}% ==================================
 	\beginsection{Die Umgebung von \textsf{ASBA}}
 	\label{sec:Umgebung}
 
-	In der \figurename~\vref{fig:Umgebung} wird beschrieben,
-	welche Interaktionen \ASBA\ mit der Umgebung hat,
-	\textdh welche Ein- und Ausgaben existieren
-	und woher sie kommen \textbzw wohin sie gehen.
+	In der \figurename~\vref{fig:Umgebung} wird beschrieben, welche Interaktionen \ASBA\ mit der Umgebung hat, \textdh welche Ein- und Ausgaben existieren und woher sie kommen \textbzw wohin sie gehen.
 	\begin{figure}[h]
 		\setlength\unitlength{1cm}
 		\begin{picture}(17.0,7.0)(-8.4,-3.5)
-%			% Gitter                                            %##
-%			\color{lightgray}%                                  %##
-%			\multiput(-8.4,-3.0)(+0.0,1.0){ 7}{\line(1,0){17.0}}%##
-%			\multiput(-7.9,-3.5)(+1.0,0.0){17}{\line(0,1){ 7.0}}%##
+%%%			% Gitter                                            %%%
+%%%			\color{lightgray}%                                  %%%
+%%%			\multiput(-8.4,-3.0)(+0.0,1.0){ 7}{\line(1,0){17.0}}%%%
+%%%			\multiput(-7.9,-3.5)(+1.0,0.0){17}{\line(0,1){ 7.0}}%%%
 			\linethickness{1.5pt}
 			% Hintergrund (grau) ===============================================
 			\color{gray}
@@ -1528,12 +1422,7 @@
 			\item[\vonnach{Datei}{\ASBA}]\label{dat:ausDatei}
 			Inhalte der Datei.
 			\item[\nachvon{Datei}{\ASBA}]\label{dat:inDatei}
-			Die Datei wird um zusätzliche Auswertungen ergänzt,
-			\textzB ob die \glsIdxPl{Beweis} korrekt sind,
-			welche \glsIdxPl{Axiom} und \glsIdxPl{Satz}
-			-- auch externe aus dem Internet --
-			verwendet wurden,
-			Anzahl der Beweisschritte \textusw
+			Die Datei wird um zusätzliche Auswertungen ergänzt, \textzB ob die \glsIdxPl{Beweis} korrekt sind, welche \glsIdxPl{Axiom} und \glsIdxPl{Satz} -- auch externe aus dem Internet -- verwendet wurden, Anzahl der Beweisschritte \textusw
 		\end{description}
 
 		\item[(4)]\label{dat:Terminal}
@@ -1543,22 +1432,19 @@
 			\item[\nachvon{Terminal}{\ASBA}]\label{dat:inTerminal}
 			Antworten auf Anweisungen, Auswertungen \textusw
 		\end{description}
-		Außerdem interaktive Ein- und Ausgabe durch einen Anwender,
-		wie in (5) beschrieben.
+		Außerdem interaktive Ein- und Ausgabe durch einen Anwender, wie in (5) beschrieben.
 
 		\item[(5)]\label{dat:Anwender}
 		\begin{description}
 			\item[\hinundher{Anwender}{\ASBA}]\label{dat:mitAnwender}
-			Interaktive Ein- und Ausgaben durch einen Anwender
-			mit Komponenten von (3), (4) und (6).
+			Interaktive Ein- und Ausgaben durch einen Anwender mit Komponenten von (3), (4) und (6).
 			-- Die Kommunikation läuft \textiAlg über ein Terminal.
 		\end{description}
 
 		\item[(6)]\label{dat:Ausgabe}
 		\begin{description}
 			\item[\nachvon{Ausgabe}{\ASBA}]\label{dat:inAusgabe}
-			Inhalte von Datei und Datenbank in lesbarer Form,
-			\textua mit Hilfe von \glsIdxPl{Ausgabeschema} auch in Formelschreibweise.
+			Inhalte von Datei und Datenbank in lesbarer Form, \textua mit Hilfe von \glsIdxPl{Ausgabeschema} auch in Formelschreibweise.
 			Die Ausgabe kann auch in eine Datei erfolgen,
 			\textzB im \LaTeX-Format.
 		\end{description}
@@ -1590,8 +1476,7 @@
 		\item[(d)] \label{dat:AnwenderTerminal}
 		\begin{description}
 			\item[\hinundher{Anwender}{Terminal}]\label{dat:Anwender22Terminal}
-			Interaktive Ein- und Ausgabe durch einen Anwender,
-			wie in (5) beschrieben.
+			Interaktive Ein- und Ausgabe durch einen Anwender, wie in (5) beschrieben.
 		\end{description}
 
 		\item[(e)] \label{dat:TerminalDatei}
@@ -1605,145 +1490,93 @@
 	Die Datenflüsse (a) bis (e) erfolgen außerhalb von \ASBA
 	und werden nicht weiter behandelt.
 
-	Die Datenbank und die Datei enthalten im Prinzip die gleichen Daten,
-	wobei sie in der Datei im Textformat in lesbarer Form
-	und in der Datenbank in einem internen Format vorliegen.
-	Zudem enthält die Datenbank \textiAlg sehr viel mehr Daten.
-	Es handelt sich dabei jeweils um die folgenden Daten:
+	Die Datenbank und die Datei enthalten im Prinzip die gleichen Daten, wobei sie in der Datei im Textformat in lesbarer Form und in der Datenbank in einem internen Format vorliegen.
+	Zudem enthält die Datenbank \textiAlg sehr viel mehr Daten. Es handelt sich dabei jeweils um die folgenden Daten:
 	\begin{description}
 
 		\item[\glsIdxPl{Axiom}]         \label{Daten:Axiom}
-		Ein \glsIdx{Axiom} ist eine Aussage oder Behauptung,
-		die nicht aus anderen Aussagen abgeleitet werden kann.
-		Es können wie bei Sätzen Voraussetzungen vorhanden sein,
-		aber keine \glsIdx{Beweis}.
+		Ein \glsIdx{Axiom} ist eine Aussage oder Behauptung, die nicht aus anderen Aussagen abgeleitet werden kann.
+		Es können wie bei Sätzen Voraussetzungen vorhanden sein, aber keine \glsIdx{Beweis}.
 
 		\item[\glsIdxPl{Satz}]          \label{Daten:Satz}
-		Ein \glsIdx{Satz} besteht aus einer Anzahl von Voraussetzungen,
-		einer Behauptung und einem \glsIdx{Beweis},
-		der die Behauptung aus den Voraussetzungen ableitet.
-		Letztere können \glsIdxPl{Axiom} und andere Sätze sein,
-		auf die dann verwiesen wird.
+		Ein \glsIdx{Satz} besteht aus einer Anzahl von Voraussetzungen, einer Behauptung und einem \glsIdx{Beweis}, der die Behauptung aus den Voraussetzungen ableitet.
+		Letztere können \glsIdxPl{Axiom} und andere Sätze sein, auf die dann verwiesen wird.
 
 		\item[\glsIdxPl{Beweis}]        \label{Daten:Beweis}
-		Ein \glsIdx{Beweis} besteht aus einer Folge von
-		\glsIdxBg{Beweisschritt}{Beweisschritten},
-		die aus gegebenen Voraussetzungen eine Behauptung ableitet.
+		Ein \glsIdx{Beweis} besteht aus einer Folge von \glsIdxBg{Beweisschritt}{Beweisschritten}, die aus gegebenen Voraussetzungen eine Behauptung ableitet.
 
 		\item[\glsIdxPl{Fachbegriff}]   \label{Daten:Fachbegriff}
-		Ein \glsIdx{Fachbegriff} ist ein Name für ein \glsIdx{Praedikat}
-		in einem bestimmten \glsIdx{Fachgebiet}.
+		Ein \glsIdx{Fachbegriff} ist ein Name für ein \glsIdx{Praedikat} in einem bestimmten \glsIdx{Fachgebiet}.
 
 		\item[\glsIdxPl{Fachgebiet}]    \label{Daten:Fachgebiet}
-		Ein Fachgebiet ist ein Teil der Mathematik mit einer zugehörigen Basis
-		von \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Fachbegriff} und
-		\glsIdxPl{Ausgabeschema},
-		quasi eine untergeordnete Datenbank.
+		Ein Fachgebiet ist ein Teil der Mathematik mit einer zugehörigen Basis von \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Ausgabeschema}, quasi eine untergeordnete Datenbank.
 
 		\item[\glsIdxPl{Ausgabeschema}] \label{Daten:Ausgabeschema}
-		Eine Beschreibung,
-		wie ein bestimmtes mathematisches Objekt ausgegeben werden soll.
-		Dies kann \textzB ein Stück
-		\LaTeX-Code mit entsprechenden Parametern sein.
+		Eine Beschreibung, wie ein bestimmtes mathematisches Objekt ausgegeben werden soll.
+		Dies kann \textzB ein Stück \LaTeX-Code mit entsprechenden Parametern sein.
 
 		\item[Auswertungen]             \label{Daten:Auswertung}
-		Statistische und andere Auswertungen,
-		die bestimmten Elementen der Datei \textbzw Datenbank zugeordnet sind.
-		\textZB können zu einem \glsIdx{Satz}
-		alle für einen Beweis notwendigen \glsIdxPl{Axiom} angegeben werden
-		-- als Verweise.
+		Statistische und andere Auswertungen, die bestimmten Elementen der Datei \textbzw Datenbank zugeordnet sind.
+		\textZB können zu einem \glsIdx{Satz} alle für einen Beweis notwendigen \glsIdxPl{Axiom} angegeben werden -- als Verweise.
 
 	\end{description}
 	Die Daten können interne und externe Verweise enthalten.
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
-	\chapter{Mathematische Grundlagen}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{Mathematische Grundlagen}% ########################################
 	\beginchapter{Mathematische Grundlagen}
 	\label{cha:Grundlagen}
 
-	\section{Metasprache}%======================================================
+	Die mathematischen Grundlagen werden einerseits gebraucht um die erlaubten Beweisschritte zu definieren (\seename~\vref{sec:Schlussregeln}), andererseits dienen sie auch zum Testen von \ASBA. Alle hier aufgeführten Axiome, Sätze und Beweise sollen dazu kodiert und von \ASBA ausgewertet werden.
+
+	\section{Metasprache}% =====================================================
 	\beginsection{Metasprache}
 	\label{sec:Metasprache}
 
-	Wenn man über eine Sprache spricht, braucht man auch eine Sprache,
-	in der Aussagen über die erstere getroffen werden können.
-	Wenn die zuerst genannte Sprache die der Mathematik ist,
-	nimmt man üblicherweise die natürliche Sprache als \glsIdx{Metasprache}.
-	Leider ist diese oft ungenau,
-	nicht immer eindeutig und abhängig vom Zusammenhang,
-	in dem sie gesprochen wird%
+	Wenn man über eine Sprache spricht, braucht man auch eine Sprache, in der Aussagen über die erstere getroffen werden können.
+	Wenn die zuerst genannte Sprache die der Mathematik ist, nimmt man üblicherweise die natürliche Sprache als \glsIdx{Metasprache}.
+	Leider ist diese oft ungenau, nicht immer eindeutig und abhängig vom Zusammenhang, in dem sie gesprochen wird%
 	\footnote{%
-		Man betrachte die beiden Aussagen
-		\enquote{Studenten und Rentner zahlen die Hälfte.}
-		und
-		\enquote{Studenten oder Rentner zahlen die Hälfte.},
-		die beide das gleiche meinen.
+		Man betrachte die beiden Aussagen \enquote{Studenten und Rentner zahlen die Hälfte.} und \enquote{Studenten oder Rentner zahlen die Hälfte.}, die beide das gleiche meinen.
 		-- Entnommen aus \cite{bib:Rautenberg} \sectionname~1.2 Bemerkung 1.
 
-		Ein weiteres Problem ist,
-		dass man unauflösbare Widersprüche formulieren kann,
-		\textzB \enquote{%
-			Der Barbier ist der Mann im Ort,
-			der genau die Männer im Ort rasiert,
-			die sich nicht selbst rasieren.%
+		Ein weiteres Problem ist, dass man unauflösbare Widersprüche formulieren kann, \textzB \enquote{%
+			Der Barbier ist der Mann im Ort, der genau die Männer im Ort rasiert, die sich nicht selbst rasieren.%
 		}.
 		Und der Barbier?
-		Wenn er sich selbst rasiert,
-		dann rasiert er sich nicht selbst,
-		und wenn er sich nicht selbst rasiert,
-		dann rasiert er sich selbst.
+		Wenn er sich selbst rasiert, dann rasiert er sich nicht selbst, und wenn er sich nicht selbst rasiert, dann rasiert er sich selbst.
 		Was denn nun?
 		-- Quelle unbekannt) --
-		Das Problem ist verwandt mit dem Problem der
-		\enquote{Menge aller Mengen, die sich nicht selbst enthalten}.%
+		Das Problem ist verwandt mit dem Problem der \enquote{Menge aller Mengen, die sich nicht selbst enthalten}.%
 	}.
-	Um diese Probleme in den Griff zu bekommen,
-	wird die \glsIdx{Metasprache} teilweise formalisiert.
-	Durch diese Formalisierung
-	erinnert sie dann teilweise schon an mathematische Formeln.
-	Die Sprachebenen müssen aber sorgfältig unterschieden werden.
+	Um diese Probleme in den Griff zu bekommen, wird die \glsIdx{Metasprache} teilweise formalisiert.
+	Durch diese Formalisierung erinnert sie dann teilweise schon an mathematische Formeln.
+	Die Sprachebenen sollten aber sorgfältig unterschieden werden.
 
-	\subsection{Metasprachliche Ausdrücke}%=====================================
+	\subsection{Metasprachliche Ausdrücke}% ====================================
 	\beginsection{\glsIdxPl{MetaausdruckV}}
 	\label{sub:Metaausdruck}
 
-	Ein \emph{\glsIdx{MetaausdruckV}}
-	ist eine in normaler Sprache verfasste Aussage,
-	wie \textzB
+	Ein \emph{\glsIdx{MetaausdruckV}} ist eine in normaler Sprache verfasste Aussage, wie \textzB
 	(a) \strqt{Morgen scheint die Sonne.},
 	(b) \strqt{Ich bin 1,83\,m groß.},
 	(c) \strqt{Ich habe ein rotes Auto und das kann 200\,km/h schnell fahren.},
 	\textusw
-	In einem erweiterten Sinne gehören auch Relationen
-	einschließlich ihrer Operanden dazu%
+	In einem erweiterten Sinne gehören auch Relationen einschließlich ihrer Operanden dazu%
 	\footnote{%
-		Wird statt des Symbols der Name der zugehörigen Relation verwendet,
-		ist dies unmittelbar einleuchtend.
-		So wird \textzB aus der Formel \forqt{$A<B$}
-		die \glsIdx{MetaaussageV} \strqt{$A$ ist kleiner als $B$}.%
+		Wird statt des Symbols der Name der zugehörigen Relation verwendet, ist dies unmittelbar einleuchtend.
+		So wird \textzB aus der Formel \forqt{$A<B$} die \glsIdx{MetaaussageV} \strqt{$A$ ist kleiner als $B$}.%
 	},
 	wie \textzB \forqt{$A=A$}, \forqt{$A \equiv B$}, \forqt{$A<B$}, \textusw
 
-	Während die Beispiele (a) und (b) einfache,
-	nicht mehr zerlegbare \glsIdxPl{MetaausdruckV} sind,
-	ist Beispiel (c) zusammengesetzt.
-	Für alle drei Aussagen lässt sich feststellen,
-	ob sie richtig sind oder nicht.
-	Das kann man für den zweiten Teil von (c) allein aber nicht,
-	wenn man nicht weiss worauf sich \strqt{das} bezieht.
-	Natürlich muss auch der Zusammenhang,
-	in dem ein \glsIdx{MetaausdruckV} formuliert wird,
-	bekannt sein,
-	denn \textzB ist die Bedeutung von \strqt{Ich} nur dann bekannt,
-	wenn man weiß von wem die Aussage ist.
-	Auf eine exakte Definition von \strqt{\glsIdx{MetaausdruckV}}
-	wird verzichtet, weil das intuitive Verständnis hier ausreicht.
-	In erster Näherung können aber alle sprachlichen Ausdrücke,
-	die im Prinzip überprüft werden können,
-	als \glsIdxPl{MetaausdruckV} betrachtet werden.
+	Während die Beispiele (a) und (b) einfache, nicht mehr zerlegbare \glsIdxPl{MetaausdruckV} sind, ist Beispiel (c) zusammengesetzt.
+	Für alle drei Aussagen lässt sich feststellen, ob sie richtig sind oder nicht.
+	Das kann man für den zweiten Teil von (c) allein aber nicht, wenn man nicht weiss worauf sich \strqt{das} bezieht.
+	Natürlich muss auch der Zusammenhang, in dem ein \glsIdx{MetaausdruckV} formuliert wird, bekannt sein, denn \textzB ist die Bedeutung von \strqt{Ich} nur dann bekannt, wenn man weiß von wem die Aussage ist.
+	Auf eine exakte Definition von \strqt{\glsIdx{MetaausdruckV}} wird verzichtet, weil das intuitive Verständnis hier ausreicht.
+	In erster Näherung können aber alle sprachlichen Ausdrücke, die im Prinzip überprüft werden können, als \glsIdxPl{MetaausdruckV} betrachtet werden.
 
-	Zusammengesetzte \glsIdxPl{MetaausdruckV} wie (c)
-	können zum Teil formalisiert werden.
+	Zusammengesetzte \glsIdxPl{MetaausdruckV} wie (c) können zum Teil formalisiert werden.
 	Dies wird mit den folgenden Definitionen erreicht:
 
 	Sind $A$ und $B$ \glsIdxPl{MetaausdruckV}, dann wird definiert:
@@ -1766,42 +1599,26 @@
 
 	\end{itemize}
 
-	Offensichtlich sind das alles ebenfalls \glsIdxPl{MetaausdruckV},
-	jetzt aber zumindest teilweise formalisiert.
-	(c) lässt sich dann ausdrücken als
-	\strqt{\strqt{Ich habe ein rotes Auto} $\metaund$
-		\strqt{das kann 200\,km/h schnell fahren.}}.
+	Offensichtlich sind das alles ebenfalls \glsIdxPl{MetaausdruckV}, jetzt aber zumindest teilweise formalisiert.
+	(c) lässt sich dann ausdrücken als \strqt{\strqt{Ich habe ein rotes Auto} $\metaund$ \strqt{das kann 200\,km/h schnell fahren.}}.
 
-	Um Verwechslungen mit den logischen Symbolen zu vermeiden,
-	werden für \strqt{und} und \strqt{oder}
-	die Symbole \symqt{$\metaund$} und \symqt{$\metaoder$} verwendet.
+	Um Verwechslungen mit den logischen Symbolen zu vermeiden, werden für \strqt{und} und \strqt{oder} die Symbole \symqt{$\metaund$} und \symqt{$\metaoder$} verwendet.
 	Ein Symbol für \strqt{nicht} wird hier nicht gebraucht.
 
-	\GlsIdxPl{MetaausdruckV} können auch geklammert werden,
-	um die Reihenfolge der Auswertung eindeutig zu machen.
-	\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$},
-	\symqt{$\metaand$} und \symqt{$\metaoder$}
-	heißen \emph{\glsIdxPl{MetaoperatorV}}.
-	Ihre Prioritäten werden im \subsectionname~\vref{sub:Klammerregeln}
-	zusammen mit anderen Operatoren definiert.
+	\GlsIdxPl{MetaausdruckV} können auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
+	\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaand$} und \symqt{$\metaoder$} heißen \emph{\glsIdxPl{MetaoperatorV}}.
+	Ihre Prioritäten werden im \subsectionname~\vref{sub:Klammerregeln} zusammen mit anderen Operatoren definiert.
 
-	Sollen zwei \glsIdxPl{MetaausdruckV} miteinander verglichen werden,
-	muss klar sein auf welche Art;
-	ob \textzB als Zeichenfolgen
-	-- mit oder ohne Wertung der Zwischenräume --,
-	als Wahrheitswerte
-	oder auf sonstige Art.
-	Wenn die Art des Vergleichs implizit oder explizit klar ist
-	und sich die beiden Ausdrücke damit vergleichen lassen,
-	heißen sie \emph{\glsIdx{vergleichbar}}.
+	Sollen zwei \glsIdxPl{MetaausdruckV} miteinander verglichen werden, muss klar sein auf welche Art; ob \textzB als Zeichenfolgen -- mit oder ohne Wertung der Zwischenräume --, als Wahrheitswerte oder auf sonstige Art.
+	Wenn die Art des Vergleichs implizit oder explizit klar ist und sich die beiden Ausdrücke damit vergleichen lassen, heißen sie \emph{\glsIdx{vergleichbar}}.
 
-	\subsection{Mit Gleichheit verwandte Symbole}%------------------------------
+	\subsection{Mit Gleichheit verwandte Symbole}% -----------------------------
 	\label{sub:Gleichheit}
 
 	In diesem \sectionname{} wird vorausgesetzt:
 	\begin{itemize}
 
-		\item {$=$}, $\ne$, $\equiv$ und $\defeq$
+		\item {$=$}, $\ne$, $\equiv$, $\defeq$ und $\metadefeq$%
 		werden im selben Zusammenhang verwendet.
 
 		\item $A$, $B$, $P$ und $Q$ sind \glsIdx{vergleichbar},
@@ -1812,71 +1629,46 @@
 	\begin{itemize}
 
 		\item $\glsSym{eq}$~~(\emph{\Idx{Gleichheit}}):
-		\forqt{$A = B$} heißt,
-		dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA}
-		nicht unterscheiden.
-		Welche das sind,
-		ergibt sich normalerweise aus dem Zusammenhang%
+		\forqt{$A = B$} heißt, dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA} nicht unterscheiden.
+		Welche das sind, ergibt sich normalerweise aus dem Zusammenhang%
 		\footnote{%
-			Statt von einem \emph{Zusammenhang}
-			könnte man auch von einer \emph{Umgebung} sprechen.
-			Diese Bezeichnung ist aber auch ein verbreiteter Fachbegriff.
-			Die Exaktheit der Begriffe in diesem Dokument
-			soll für Erstellung von \ASBA\ ausreichen;
-			was darüber hinausgeht,
-			ist nicht Inhalt dieses Dokuments.%
+			Statt von einem \emph{Zusammenhang} könnte man auch von einer \emph{Umgebung} sprechen.
+			Diese Bezeichnung ist aber auch ein verbreiteter Fachbegriff, so dass auf seine Verwendung verzichtet wird.
+			Die Exaktheit der Begriffe in diesem Dokument soll für Erstellung von \ASBA\ ausreichen; was darüber hinausgeht, ist nicht Inhalt dieses Dokuments.%
 		}
 		oder muss explizit angegeben werden.
-		\textZB sind zwei Operatoren gleich,
-		wenn sie stets denselben \emph{\gls{Wahrheitswert}} liefern.
+		\textZB sind zwei Operatoren gleich, wenn sie stets denselben \emph{\gls{Wahrheitswert}} liefern.
 
-		Inwieweit die Begriffe \emph{Gleichheit} und \emph{Identität}
-		korrelieren,
-		wird hier nicht erörtert.
+		Inwieweit die Begriffe \emph{Gleichheit} und \emph{Identität} korrelieren, wird hier nicht erörtert.
 		\seename~\cite{bib:Identitaet}
 
 		\item $\glsSym{ne}$~~(\emph{\Idx{Ungleichheit}}):
-		\forqt{$A \ne B$} heißt,
-		dass $A$ und $B$ sich in mindestens einer der
-		\glsIdxPl{intEigenschaftA} unterscheiden.
+		\forqt{$A \ne B$} heißt, dass $A$ und $B$ sich in mindestens einer der \glsIdxPl{intEigenschaftA} unterscheiden.
 
 		\item $\glsSym{equiv}$~~(\emph{\Idx{Äquivalenz}}):
-		\forqt{$A \equiv B$} heißt,
-		dass $A$ und $B$ sich in den
-		\glsIdxPl{intEigenschaftA} nicht unterscheiden.
-		Welche das sind,
-		ergibt sich wie bei \symqt{$=$} aus dem Zusammenhang
-		oder wird explizit angegeben.
-		Werden \symqt{$=$} und \symqt{$\equiv$} im selben Zusammenhang verwendet,
-		muss mit \forqt{$A=B$} stets auch \forqt{$A \equiv B$} gelten,
-		\textdh alle \glsIdxPl{intEigenschaftA}
-		von \symqt{$\equiv$}
-		müssen auch \glsIdxBg{intEigenschaftA}{interessierende Eigenschaften}
-		von \forqt{$A=B$} sein.
+		\forqt{$A \equiv B$} heißt, dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA} nicht unterscheiden.
+		Welche das sind, ergibt sich wie bei \symqt{$=$} aus dem Zusammenhang oder wird explizit angegeben.
+		Werden \symqt{$=$} und \symqt{$\equiv$} im selben Zusammenhang verwendet, muss mit \forqt{$A=B$} stets auch \forqt{$A \equiv B$} gelten, \textdh alle \glsIdxPl{intEigenschaftA} von \symqt{$\equiv$} müssen auch \glsIdxBg{intEigenschaftA}{interessierende Eigenschaften} von \forqt{$A=B$} sein.
 
 		\item $\glsSym{defeq}$~~(\emph{\Idx{Definition}}):
-		\forqt{$A \defeq B$} bedeutet,
-		dass $A$ definitionsgemäß gleich $B$ ist.
-		Gewissermaßen ist $A$
-		nur eine andere Schreibweise für $B$.
+		\forqt{$A \defeq B$} heißt, dass $A$ definitionsgemäß gleich $B$ ist.
+		Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
 		$A$ und $B$ können sich gegenseitig ersetzten.
 
-		Nach dieser Definition sind $P$ und $Q$ schon dann gleich,
-		wenn nach der Ersetzung aller Vorkommen von $A$ in $P$ und $Q$ durch $B$
-		die resultierenden Ausdrücke $\overline{P}$ und $\overline{Q}$
-		gleich sind.
+		Nach dieser Definition sind $P$ und $Q$ schon dann gleich, wenn nach der Ersetzung aller Vorkommen von $A$ in $P$ und $Q$ durch $B$ die resultierenden Ausdrücke $\overline{P}$ und $\overline{Q}$ gleich sind.
+
+		\item $\glsSym{metadefeq}$~~(\emph{\Idx{Metadefinition}}):
+		\forqt{$A \metadefeq B$} heißt, dass der Metaausdruck $A$ definitionsgemäß gleich dem Metaausdruck $B$ ist, wobei $B$ auch eine Definition in natürlicher Sprache sein kann.
+		Oft wird damit Gleichheit (\symqt{$=$}), Äquivalenz (\symqt{$\equiv$}) oder eine andere Relation definiert.
 
 	\end{itemize}
 
 	Es gilt dann:
 	\begin{itemize}
 
-		\item Die interessierenden Eigenschaften für \symqt{$\equiv$}
-		sind auch solche für \symqt{$=$}.
+		\item Die interessierenden Eigenschaften für \symqt{$\equiv$} sind auch solche für \symqt{$=$}.
 
-		\item Für \symqt{$=$} können
-		-- müssen aber nicht --
-		mehr Eigenschaften von Interesse sein als für \symqt{$\equiv$}.
+		\item Für \symqt{$=$} können -- müssen aber nicht -- mehr Eigenschaften von Interesse sein als für \symqt{$\equiv$}.
 
 		\item $(A = B) \metaor (A \ne B)$
 
@@ -1889,19 +1681,15 @@
 
 		\item $A \defeq B$
 
-		\item $\overline{P}$ ergibt sich aus $P$ durch
-		Ersetzung aller Vorkommen (Teilausdrücke) $A$ durch $B$.
+		\item $\overline{P}$ ergibt sich aus $P$ durch Ersetzung aller Vorkommen (Teilausdrücke) $A$ durch $B$.
 
-		\item $\overline{Q}$ ergibt sich aus $Q$ durch
-		Ersetzung aller Vorkommen (Teilausdrücke) $A$ durch $B$.
+		\item $\overline{Q}$ ergibt sich aus $Q$ durch Ersetzung aller Vorkommen (Teilausdrücke) $A$ durch $B$.
 
 	\end{itemize}
 
 	gilt schließlich:
 	\begin{itemize}
-
 		\item $(\overline{P} = \overline{Q}) \metaequiv (P = Q)$
-
 	\end{itemize}
 
 	Schließlich sei noch
@@ -1914,51 +1702,23 @@
 	\end{equation}
 	die Menge der Metaoperatoren und der mit Gleichheit verwandten Symbole
 
-	\section{Formale Elemente}%=================================================
+	\section{Formale Elemente}% ================================================
 	\beginsection{Formale Elemente}
 	\label{sec:Formalelement}
 
-	Ein \emph{\glsIdx{FormalelementV}} kann \textzB
-	eine Menge, Zeichenfolge, Zahl, Formel, \textusw sein.
-	Zwei \glsIdxPl{FormalelementV} $A$ und $B$ sind \emph{\glsIdx{vergleichbar}},
-	wenn beide von derselben Art sind,
-	\textdh wenn \textzB jeweils beide
-	Mengen, Zeichenfolgen, Zahlen oder Formeln
-	-- die vergleichbare Ergebnisse liefern --
-	sind.
+	Ein \emph{\glsIdx{FormalelementV}} kann \textzB eine Menge, Zeichenfolge, Zahl, Formel, \textusw sein.
+	Zwei \glsIdxPl{FormalelementV} $A$ und $B$ sind \emph{\glsIdx{vergleichbar}}, wenn beide von derselben Art sind, \textdh wenn \textzB jeweils beide Mengen, Zeichenfolgen, Zahlen oder Formeln -- die vergleichbare Ergebnisse liefern -- sind.
 
-	Intuitiv scheint klar zu sein,
-	was damit  gemeint ist.
-	Wenn aber entschieden werden muss,
-	ob \textzB (a) \strqt{1+1} gleich \strqt{2}
-	oder (b) \strqt{1+1} gleich \strqt{1 + 1} ist,
-	muss man erst entscheiden,
-	von welcher Art die beiden zu vergleichenden Ausdrücke sind,
-	\textdh \emph{wie} verglichen wird.
-	Wenn sie als jeweiliges Ergebnis der beiden Formeln verglichen werden,
-	dann ist (a) richtig.
-	Wenn sie als Formeln,
-	\textdh als Zeichenfolgen,
-	verglichen werden ist (a) falsch.
-	Wenn die Ausdrücke in (b) als Zeichenfolgen verglichen werden,
-	ist (b) dann richtig,
-	wenn der Zwischenraum zwischen den einzelnen Zeichen nicht zählt.
+	Intuitiv scheint klar zu sein, was damit  gemeint ist.
+	Wenn aber entschieden werden muss, ob \textzB (a) \strqt{1+1} gleich \strqt{2} oder (b) \strqt{1+1} gleich \strqt{1 + 1} ist, muss man erst entscheiden, von welcher Art die beiden zu vergleichenden Ausdrücke sind, \textdh \emph{wie} verglichen wird.
+	Wenn sie als jeweiliges Ergebnis der beiden Formeln verglichen werden, dann ist (a) richtig.
+	Wenn sie als Formeln, \textdh als Zeichenfolgen, verglichen werden ist (a) falsch.
+	Wenn die Ausdrücke in (b) als Zeichenfolgen verglichen werden, ist (b) dann richtig, wenn der Zwischenraum zwischen den einzelnen Zeichen nicht zählt.
 	Wenn er aber zählt, ist (b) falsch.
 
-%##	Bei der Entwicklung von ASBA
-%##	müssen diese Feinheiten stets berücksichtigt werden.
-
-	Im Zusammenhang mit binären Relationen werden noch einige Verabredungen
-	getroffen.
-	Dazu seien
-	\symqt{$\glsSym{relbsp}$},       \symqt{$\glsSym{releqbsp}$},
-	\symqt{$\glsSym{lrelbsp}$},      \symqt{$\glsSym{rrelbsp}$},
-	\symqt{$\glsSym{lreleqbsp}$} und \symqt{$\glsSym{rreleqbsp}$}
-	Beispielsymbole für Relationen und
-	\symqt{$\glsSym{eq}$}        und \symqt{$\glsSym{ne}$} die in \sectionname~\vref{sub:Gleichheit}
-	definierten Symbole für Gleichheit und Ungleichheit.
-	Wenn dann nichts anderes gesagt wird,
-	gelte stets:
+	Im Zusammenhang mit binären Relationen werden noch einige Verabredungen getroffen.
+	Dazu seien \symqt{$\glsSym{relbsp}$}, \symqt{$\glsSym{releqbsp}$}, \symqt{$\glsSym{lrelbsp}$}, \symqt{$\glsSym{rrelbsp}$}, 	\symqt{$\glsSym{lreleqbsp}$} und \symqt{$\glsSym{rreleqbsp}$} Beispielsymbole für Relationen und \symqt{$\glsSym{eq}$} und \symqt{$\glsSym{ne}$} die in \sectionname~\vref{sub:Gleichheit} definierten Symbole für Gleichheit und Ungleichheit.
+	Wenn dann nichts anderes gesagt wird gelte stets:
 	\begin{align}
 		& ((A \relbsp   B) \metaor (A = B)) & \metaequiv &&& (A \releqbsp  B)
 		\label{eq:coreleq}   \\
@@ -1967,68 +1727,52 @@
 		& (A \lreleqbsp B)                  & \metaequiv &&& (B \rreleqbsp A)
 		\label{eq:colrreleq} \formulatoleft
 	\end{align}
-	Mit der Definition einer Relation der einen Seite
-	ist damit automatisch auch die der anderen Seite erfolgt,
-	mit der Ausnahme,
-	dass man \forqt{$A \relbsp B$} so nicht mit Hilfe von \forqt{$A \releqbsp B$}
-	definieren kann.
+
+	Mit der Definition einer Relation der einen Seite ist damit automatisch auch die der anderen Seite erfolgt, mit der Ausnahme, dass man \forqt{$A \relbsp B$} so nicht mit Hilfe von \forqt{$A \releqbsp B$} definieren kann.
 	Dies könnte man zwar mit Hilfe des Ansatzes
 	\begin{align}
 		& (A \relbsp B) &\formulaspace \metaequiv &&&
 		(A \releqbsp B) \metaand (A \ne B) \label{eq:corel} \formulatoleft
 	\end{align}
-	versuchen,
-	aber die so definierte Relation \symqt{$\relbsp$} kann,
-	muss aber nicht mit der in \vref{eq:coreleq} übereinstimmen.
-	Allerdings lässt sich \vref{eq:coreleq} aus \vref{eq:corel} ableiten
-	und wenn \forqt{$(A = B) \metaimp (A \releqbsp B)$} gilt,
-	auch \vref{eq:corel} aus \vref{eq:coreleq}.
-	-- Auf einen Beweis verzichten wir hier.
+	versuchen, aber die so definierte Relation \symqt{$\relbsp$} kann, muss aber nicht mit der in \ref{eq:coreleq} übereinstimmen.
+	Allerdings lässt sich \ref{eq:coreleq} aus \ref{eq:corel} ableiten und wenn \forqt{$(A \eq B) \metaimp (A \releqbsp B)$} gilt, auch \ref{eq:corel} aus \ref{eq:coreleq}.
+	-- Auf einen Beweis wird hier verzichtet.
 
-	Es sei noch angemerkt, dass wegen \vref{eq:corel}
-	die Definition von \symqt{$\metarep$} in \sectionname~\vref{sub:Metaausdruck}
-	überflüssig ist
-	und wegen der Klammerregeln
-	(\seename \subsectionname~\vref{sub:Klammerregeln})
-	auch alle Klammern in diesem \sectionname~\ref{sec:Formalelement}.
-	Die Prioritäten der Operatoren \symqt{$\lrelbsp$}, \symqt{$\rrelbsp$},
-	\symqt{$\lreleqbsp$} und \symqt{$\rreleqbsp$}
-	unterscheiden sich normalerweise nicht;
-	ebensowenig die der Operatoren \symqt{$\relbsp$} und \symqt{$\releqbsp$},
-	die aber durchaus verschieden von den Prioritäten
-	von \symqt{$=$} und \symqt{$\ne$} sein können.
+	Es sei noch angemerkt, dass wegen \vref{eq:corel} die Definition von \symqt{$\metarep$} in \sectionname~\vref{sub:Metaausdruck} überflüssig ist und wegen der Klammerregeln (\seename \subsectionname~\vref{sub:Klammerregeln}) auch alle Klammern in diesem \sectionname~\ref{sec:Formalelement}.
+	Die Prioritäten der Operatoren \symqt{$\lrelbsp$}, \symqt{$\rrelbsp$}, \symqt{$\lreleqbsp$} und \symqt{$\rreleqbsp$} unterscheiden sich normalerweise nicht; ebensowenig die der Operatoren \symqt{$\relbsp$} und \symqt{$\releqbsp$}, die aber durchaus verschieden von den Prioritäten von \symqt{$=$} und \symqt{$\ne$} sein können.
 
 	Als Beispielsymbol für binäre Operatoren wird \symqt{$\opbsp$} verwendet.
 	Damit zusammenhängende Verabredungen werden hier nicht getroffen.
 
-	\section{Aussagenlogik}%====================================================
+	\section{Schlussregeln}% ===================================================
+	\beginsection{Schlussregeln}
+	\label{sec:Schlussregeln}
+	\hidden{\glsIdx{Schlussregel}}
+
+\todo{Schlussregeln bearbeiten.}%%%
+%TODO Schlussregeln bearbeiten. %%%
+
+	\section{Aussagenlogik}% ===================================================
 	\beginsection{Aussagenlogik}
 	\label{sec:Aussagenlogik}
 	\hidden{\glsIdx{Aussagenlogik}}
 
-	\subsection{Konstante und Operatoren}%--------------------------------------
+	\subsection{Konstante und Operatoren}% -------------------------------------
 	\label{sub:Operatoren}
 
 	Die \tablename~\vref{tab:Symbole}
 	\footnote{%
-		Die \tablename{} basiert auf den Wahrheitstafeln in~\cite{bib:Junktor}
-		Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.%
+		Die \tablename{} basiert auf den Wahrheitstafeln in~\cite{bib:Junktor} Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.%
 	}
-	definiert für die zweiwertige Logik Konstanten- und Operatorsymbole
-	über die Wahrheitswerte ihrer Anwendung.
-	So ergeben sich,
-	abhängig von den Wahrheitswerten der Operanden $A$ und $B$
+	definiert für die zweiwertige Logik Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung.
+	So ergeben sich, abhängig von den Wahrheitswerten der Operanden $A$ und $B$
 	\footnote{%
-		Im Gegensatz zu \subsubsectionname~\vref{subsub:Bausteine}
-		können A und B hier beliebige Aussagen -- auch Formeln -- sein.%
+		Im Gegensatz zu \subsubsectionname~\vref{subsub:Bausteine} können A und B hier beliebige Aussagen -- auch Formeln -- sein.%
 	},
 	die in der \tablename{} angegebenen Wahrheitswerte für die Operationen.
-	Die mit 0, 1 und 2 benannten Spalten werden jeweils
-	nur für die 0-, 1- und 2-stelligen Operatoren, \textdh
-	für die Konstanten, die unären und die binären Operatoren ausgefüllt.
+	Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh für die Konstanten, die unären und die binären Operatoren ausgefüllt.
 	Dabei werden die Konstanten als 0-stellige Operatoren angesehen.
-	Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen,
-	ist kein Wert bekannt, so bleibt sie leer.
+	Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein Wert bekannt, so bleibt sie leer.
 
 	% ==========================================================================
 	% Definitionen für die folgende Tabelle; siehe auch die Symbole im Vorspann
@@ -2077,13 +1821,13 @@
 				\texttrue  & \textfalse & \texttrue  & \textfalse &
 				- & Aussage B & - \\
 
-				\hline%--- Überschrift -----------------------------------------
+				\hline% -- Überschrift -----------------------------------------
 
 				\textbf{Junktor}\tnote{1}&\textbf{0}&\multicolumn{2}{c:}{%
 				\textbf{1}}&\multicolumn{4}{c|}{\textbf{2}}& \textbf{%
 				Name}&\textbf{Sprechweise}\tnote{2}&\textbf{Prio}\\%Kein Fehler!
 
-				\hline\hline%=== Konstante =====================================
+				\hline\hline% == Konstante =====================================
 
 				\rowcolor{cRareUse}
 				$\glsSym{ltrue}$
@@ -2096,7 +1840,7 @@
 				$\glsSym{lfalse}$
 				& \textfalse & - & - & - & - & - & - & Falsum & Falsch & - \\
 
-				\hline%--- unäre Operatoren ------------------------------------
+				\hline% -- unäre Operatoren ------------------------------------
 
 				& - & \texttrue  & \texttrue  & - & - & - & -
 				&                     &                  & -                 \\
@@ -2121,7 +1865,7 @@
 				& - & \textfalse & \textfalse & - & - & - & -
 				&                     &                  & -                 \\
 
-				\hline%--- binäre Operatoren -----------------------------------
+				\hline% -- binäre Operatoren -----------------------------------
 
 				~ & - & - & - &\texttrue&\texttrue&\texttrue&\texttrue
 				& Tautologie
@@ -2155,7 +1899,7 @@
 				& Identität von A
 				& - \\
 
-				\tablegroup%------------------------------------------------
+				\tablegroup% -----------------------------------------------
 
 				\rowcolor{cNormalUse}
 				$\Sym{\limp}$ $\limpA$ $\limpB$
@@ -2190,7 +1934,7 @@
 				& {\small A und B; Sowohl A als auch B}
 				& \thepand \\
 
-				\tablegroup%------------------------------------------------
+				\tablegroup% -----------------------------------------------
 
 				\rowcolor{cRareUse}
 				$\Sym{\lnand}$ $\lnandA$ $\lnandB$
@@ -2232,7 +1976,7 @@
 				&
 				& - \\
 
-				\tablegroup%------------------------------------------------
+				\tablegroup% -----------------------------------------------
 
 				$\lnleft$
 				& - & - & - &\textfalse&\textfalse&\texttrue&\texttrue
@@ -2270,39 +2014,21 @@
 			\begin{tablenotes}
 				\footnotesize
 
-				\item[1] \emph{Operatorsymbole}. Sie stehen meistens für die Operatoren selbst.
-				Der Einfachheit halber bezeichnen wir auch die beiden Konstanten
-				$\ltrue$ und $\lfalse$ als Junktoren \textbzw Operatorsymbole.
+				\item[1] \emph{Operatorsymbole}.
+				Sie stehen meistens für die Operatoren selbst.
+				Der Einfachheit halber bezeichnen wir auch die beiden Konstanten $\ltrue$ und $\lfalse$ als Junktoren \textbzw Operatorsymbole.
 
-				Die Operatoren \symqt{$\subset$}, \symqt{$\supset$},
-				\symqt{$\nsubset$} und \symqt{$\nsupset$} haben hier nicht die
-				Bedeutung der entsprechenden Operatoren der Mengenlehre
-				und dürfen nicht damit verwechselt werden;
-				entsprechendes gilt für \symqt{$+$} und \symqt{$\cdot$}
-				mit Addition und Multiplikation.
+				Die Operatoren \symqt{$\subset$}, \symqt{$\supset$}, \symqt{$\nsubset$} und \symqt{$\nsupset$} haben hier nicht die Bedeutung der entsprechenden Operatoren der Mengenlehre und dürfen nicht damit verwechselt werden; entsprechendes gilt für \symqt{$+$} und \symqt{$\cdot$} mit Addition und Multiplikation.
 
-				\item[2] Ist eine Zelle in dieser Spalte leer,
-				so ist die zugehörige Zeile nur vorhanden,
-				um alle binären Operationen aufzuführen.
+				\item[2] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle binären Operationen aufzuführen.
 
-				\item[3] Klammerung ist genau genommen kein Operator
-				und wird nicht nur bei logischen,
-				sondern auch bei anderen Ausdrücken verwendet.
+				\item[3] Klammerung ist genau genommen kein Operator und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet.
 
-				\item[4] Die Priorität der Klammern
-				ist größer als die aller Operatoren.
+				\item[4] Die Priorität der Klammern ist größer als die aller Operatoren.
 
-				\item[5] Die Priorität der unären Operatoren
-				muss größer sein als die aller mehrwertigen,
-				also auch der binären Operatoren.
-				Wenn alle unären Operatoren
-				auf derselben Seite des Operanden stehen,
-				brauchen sie eigentlich keine Priorität,
-				da die Auswertung nur von innen (dem Operanden)
-				nach außen erfolgen kann.
-				Nur wenn es sowohl links-, als auch rechtsseitige
-				unäre Operatoren gibt,
-				muss man für diese Prioritäten definieren.
+				\item[5] Die Priorität der unären Operatoren muss größer sein als die aller mehrwertigen, also auch der binären Operatoren.
+				Wenn alle unären Operatoren auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
+				Nur wenn es sowohl links-, als auch rechtsseitige unäre Operatoren gibt, muss man für diese Prioritäten definieren.
 
 			\end{tablenotes}
 			\caption{Definition von aussagenlogischen Symbolen.}
@@ -2310,52 +2036,30 @@
 		\end{threeparttable}
 	\end{table}
 
-	Für einige Junktoren, Namen und Sprechweisen
-	sind auch Alternativen angegeben.
-	Die durchgestrichenen (\textdh negierten) Symbole sind ungebräuchlich
-	und nur aus formalen Gründen aufgeführt.
-	Wenn für eine bestimmte Kombination von Wahrheitswerten
-	mehr als eine Zeile angegeben ist,
-	so sind die zugehörigen Operationen
-	in der zweiwertigen Aussagenlogik alle gleich.
-	Bei der formalen Definition setzen wir aber keine Zweiwertigkeit voraus,
-	so dass je nach Definition
-	die Operationen verschiedene Ergebnisse liefern können.
+	Für einige Junktoren, Namen und Sprechweisen sind auch Alternativen angegeben.
+	Die durchgestrichenen (\textdh negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt.
+	Wenn für eine bestimmte Kombination von Wahrheitswerten mehr als eine Zeile angegeben ist, so sind die zugehörigen Operationen in der zweiwertigen Aussagenlogik alle gleich.
+	Bei der formalen Definition setzen wir aber keine Zweiwertigkeit voraus, so dass je nach Definition die Operationen verschiedene Ergebnisse liefern können.
 
-	Um vollständig zu sein,
-	\textdh alle 22 möglichen Kombinationen von Wahrheitswerten
-	für höchstens zwei Variable zu berücksichtigen,
-	enthält die \tablename{}
-	auch viele ungebräuchliche Junktoren und Operationen.
-	Die Zeilen mit den Klammern und den gebräuchlichsten Junktoren
-	sind in der \tablename{} grau hinterlegt.
+	Um vollständig zu sein, \textdh alle 22 möglichen Kombinationen von Wahrheitswerten für höchstens zwei Variable zu berücksichtigen, enthält die \tablename{} auch viele ungebräuchliche Junktoren und Operationen.
+	Die Zeilen mit den Klammern und den gebräuchlichsten Junktoren sind in der \tablename{} grau hinterlegt.
 	Hellgrau hinterlegt sind Zeilen mit weniger gebräuchlichen Junktoren.
-	Die restlichen Operationen sind uninteressant
-	und brauchen daher keine Priorität.
+	Die restlichen Operationen sind uninteressant und brauchen daher keine Priorität.
 
-	\subsection{Klammerregeln}%-------------------------------------------------
+	\subsection{Klammerregeln}% ------------------------------------------------
 	\label{sub:Klammerregeln}
 
-	Zur Klammerersparnis werden die üblichen Regeln verwendet,
-	\textdh dass Operatoren mit höherer Priorität stärker binden,
-	als solche mit niedrigerer Priorität.
+	Zur Klammerersparnis werden die üblichen Regeln verwendet, \textdh dass Operatoren mit höherer Priorität stärker binden, als solche mit niedrigerer Priorität.
 
 	Für die Operatoren derselben Priorität gilt Rechtsklammerung%
 	\footnote{%
-		Unäre Operatoren stehen hier stets links \emph{vor} dem Operanden,
-		so dass es nur Rechtsklammerung geben kann.
-		Zur Rechtsklammerung bei binären Operationen ein Zitat
-		aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5:
+		Unäre Operatoren stehen hier stets links \emph{vor} dem Operanden, so dass es nur Rechtsklammerung geben kann.
+		Zur Rechtsklammerung bei binären Operationen ein Zitat aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5:
 		\enquote{Diese hat gegenüber Linksklammerung Vorteile
 		bei der Niederschrift von Tautologien in $\limp$, [...]}%
 	}.
-	Im Folgenden wird nur noch ein Teil der logischen Operatoren aus der
-	\tablename~\vref{tab:Symbole} und
-	der \glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren}
-	aus \subsectionname~\vref{sub:Metaausdruck}
-	berücksichtigt.
-	Diese werden in der \tablename~\vref{tab:Prioritaeten}
-	mit abnehmender Priorität aufgelistet.
+	Im Folgenden wird nur noch ein Teil der logischen Operatoren aus der 	\tablename~\vref{tab:Symbole} und der \glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren} aus \subsectionname~\vref{sub:Metaausdruck} berücksichtigt.
+	Diese werden in der \tablename~\vref{tab:Prioritaeten} mit abnehmender Priorität aufgelistet.
 	\begin{table}
 		\begin{center}
 			\begin{tabular}[c]{|l|l|}
@@ -2386,70 +2090,62 @@
 				& $ \glsSym{metarep} \quad \glsSym{metaimp} $ \\
 				& $ \glsSym{metaequiv}                      $ \\
 				\hline
+				Metasprachliche Definition
+				& $ \glsSym{metadefeq}                      $ \\
+				\hline
+				\parbox[][1.1cm][c]{5.9cm}{%
+					Strukturelemente der natürlichen Sprache, \textzB Satzzeichen
+				}
+				& . \quad , \quad ; \quad \textusw \\
+				\hline
 			\end{tabular}
 		\end{center}
 		\vspace{-0.5cm}
 		\caption{Prioritäten von Operatoren in abnehmender Reihenfolge}
 		\label{tab:Prioritaeten}% Erst nach '\caption'!
 	\end{table}
-	Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg}
-	Kapitel~1.1 Seite~5 entnommen und ergänzt und die der
-	\glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren} daran angeglichen.
 
-	\subsection{Formalisierung}%------------------------------------------------
+	Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5 entnommen und ergänzt und die der \glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren} daran angeglichen.
+
+	\subsection{Formalisierung}% -----------------------------------------------
 	\label{sub:Formalisierung}
 
-	Da sie die Grundlage
-	-- quasi das Fundament --
-	des mathematischen Inhalts von \ASBA\ sind,
-	müssen die \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \textusw der Aussagenlogik
-	in streng formaler Form vorliegen.
-	Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik};
-	\alsoname~\cite{bib:LogikDe, bib:LogikEn}.
-	Da Computerprogramme mit der
-	\emph{Polnischen Notation}\idx{Polnische Notation}%
+	Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \ASBA\ sind, müssen die \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \textusw der Aussagenlogik in streng formaler Form vorliegen.
+	Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
+	Da Computerprogramme mit der \emph{Polnischen Notation}\idx{Polnische Notation}%
 	\footnote{%
-		Bei der \emph{Polnischen Notation} wird eine zweistellige
-		Operation $(A\circ B)$ dargestellt als $\circ A B$.
-		Eine Zwischenstufe ist $\circ(A,B)$,
-		bei der noch die redundanten Gliederungszeichen Komma und Klammern
-		-- auch andere als die runden --
-		hinzukommen, so dass die Operationen optisch besser getrennt
-		und dadurch für Menschen besser lesbar werden.
-		Durch einfaches Weglassen der Gliederungszeichen
-		ergibt sich dann die Polnische Notation.%
+		Bei der \emph{Polnischen Notation} wird eine zweistellige Operation $(A\circ B)$ dargestellt als $\circ A B$.
+		Eine Zwischenstufe ist $\circ(A,B)$, bei der noch die redundanten Gliederungszeichen Komma und Klammern -- auch andere als die runden -- hinzukommen, so dass die Operationen optisch besser getrennt und dadurch für Menschen besser lesbar werden.
+		Durch einfaches Weglassen der Gliederungszeichen ergibt sich dann die Polnische Notation.%
 	}
-	besser umgehen können und Klammern dort überflüssig sind,
-	werden viele Formeln auch in die Polnische Notation überführt.
+	besser umgehen können und Klammern dort überflüssig sind, werden viele Formeln auch in die Polnische Notation überführt.
 
 	\subsubsection{Bausteine der aussagenlogischen Sprache}% - - - - - - - - - -
 	\label{subsub:Bausteine}
 
-	Zur Einteilung der aussagenlogischen Junktoren
-	werden die folgenden Mengen definiert:
+	Zur Einteilung der aussagenlogischen Junktoren werden die folgenden Mengen definiert:
 	\begin{align}
 		%
 		& \gsNo\hidden{\gls{gsNo}}  & & \defeq & &
-		& & \text{Menge der \emph{natürlichen Zahlen} einschließlich 0}
+		&     & \text{Menge der \emph{natürlichen Zahlen} einschließlich 0}
 		\idx{natürlichen Zahlen, Menge der} \label{def:N} \\
 		%
 		& \glsSym{asC}  & & \defeq & & \{ \ltrue, \lfalse \}
-		& & \text{Menge der \emph{aussagenlogischen Konstanten}}
+		& ,\; & \text{Menge der \emph{aussagenlogischen Konstanten}}
 		\idx{Konstanten, Menge der}         \label{def:C} \\
 		%
 		& \glsSym{asU}  & & \defeq & & \{ \lnot \}
-		& & \text{Menge der \emph{unären aussagenlogischen Operatoren}}
+		& ,\; & \text{Menge der \emph{unären aussagenlogischen Operatoren}}
 		\idx{unären Operatoren, Menge der}  \label{def:U} \\
 		%
 		& \glsSym{asB}  & & \defeq & &
 		\{ \land, \lor, \limp, \lequiv, \lrep, \lnand, \lnor, \lmult, \ladd \}
-		& & \text{Menge der \emph{binären aussagenlogischen Operatoren}}
-		\idx{binären Operatoren, Menge der} \label{def:B} \formulatoleft
+		& ,\; & \text{Menge der \emph{binären aussagenlogischen Operatoren}}
+		\idx{binären Operatoren, Menge der} \label{def:B}
 		%
 	\end{align}
 
-	Damit sind alle in der \tablename~\vref{tab:Symbole} verwendeten
-	wesentlichen Konstanten und Operatoren%
+	Damit sind alle in der \tablename~\vref{tab:Symbole} verwendeten wesentlichen Konstanten und Operatoren%
 	\footnote{%
 		Jeweils nur die ersten der grau hinterlegten Zeilen sowie \symqt{$\lmult$}.%
 	}
@@ -2457,75 +2153,71 @@
 	\begin{align}
 		%
 		& \glsSym{asV}  & & \defeq    & & \{ p_n | n \in \gsNo \}
-		& & \text{Menge der \emph{atomaren Formeln}}
+		& ,\; & \text{Menge der \emph{atomaren Formeln}}
 		\idx{atomaren Formeln, Menge der}         \label{def:V}  \\
 		%
 		& \glsSym{asJ}  & & \defeq    & &\asC \cup \asU \cup \asB
-		& & \text{Menge der \emph{Junktoren}, \textbzw \emph{Operatoren}}
+		& ,\; & \text{Menge der \emph{Junktoren}, \textbzw \emph{Operatoren}}
 		\idx{Junktoren, Menge der}                \label{def:J}  \\
 		%
 		& \glsSym{asA}  & & \defeq    & & \asV \cup \asJ
-		& & \text{\emph{Alphabet der aussagenlogischen Sprache (für }} \asJ
+		& ,\; & \text{\emph{Alphabet der aussagenlogischen Sprache (für }} \asJ
 		\text{\emph{)}}
 		\idx{Alphabet der logischen Sprache}      \label{def:A}  \\
 		%
 		& \glsSym{asJx} & & \subseteq & & \asJ
-		& & \text{eine Teilmenge von } \asJ \text{ für eine Indexvariable }
+		& ,\; & \text{eine Teilmenge von } \asJ \text{ für eine Indexvariable }
 		x                                         \label{def:Bx} \\
 		%
 		& \glsSym{asAx} & & \defeq    & & \asV \cup \asJx \quad
-		& & \text{Alphabet der aussagenlogischen Sprache \emph{für} } \asJx
+		& ,\; & \text{Alphabet der aussagenlogischen Sprache \emph{für} } \asJx
 		\idx{Teil-Alphabet der aussagenlogischen Sprache} \label{def:Ax}
 		\formulatoleft
 		%
 	\end{align}
-	Für Elemente aus $\asV$ werden hier normalerweise
-	die großen lateinischen Buchstaben $A$, $B$, $C$, $\dots$ verwendet.
-	Die Elemente aus $\asV$ (atomaren Formeln) werden auch \emph{\Idx{Satzbuchstabe}}\emph{n}
-	oder kurz \emph{\Idx{Atom}}\emph{e}. genannt.
+	Für Elemente aus $\asV$ werden hier normalerweise die großen lateinischen Buchstaben $A$, $B$, $C$, \textbzw verwendet.
+	Die Elemente aus $\asV$ (atomaren Formeln) werden auch \emph{\Idx{Satzbuchstabe}}\emph{n} oder kurz \emph{\Idx{Atom}}\emph{e}. genannt.
 
-	\subsubsection{Aussagenlogische Formeln}%- - - - - - - - - - - - - - - - - -
+	\subsubsection{Aussagenlogische Formeln}%  - - - - - - - - - - - - - - - - -
 	\label{subsub:Formeln}
 
-	Neben dem Alphabet $\asA$
-	werden noch Klammern als Gliederungszeichen verwendet.
-	Damit können nun rekursiv für jede Teilmenge $\asJx$ von $\asJ$
-	zwei Mengen von Formeln definiert werden:
+	Neben dem Alphabet $\asA$ \textbzw. $\asAx$ werden noch Klammern als Gliederungszeichen verwendet.
+	Damit können nun rekursiv für jede Teilmenge $\asJx$ von $\asJ$ zwei Mengen von Formeln definiert werden:
 
-	$\glsSym{asFx}$ sei die Menge der auf folgende Weise definierten
-	\emph{aussagenlogischen Formeln mit Klammerung}%
+	$\glsSym{asFx}$ sei die Menge der auf folgende Weise definierten \emph{aussagenlogischen Formeln mit Klammerung}%
 	\idx{aussagenlogische Formel mit Klammerung}:
 	\begin{align}
-		\asV            \subset    \asFx
+		&                & \asV            \subset \asFx
 		\\
-		\asJx \cap \asC \subset    \asFx
+		&                & \asJx \cap \asC \subset \asFx
 		\\
-		A                      \in \asFx
-		& \metaimp (\circ A)   \in \asFx
-		& , \quad \text{für} \quad \circ \in \asU \cap \asJx
+		A                                \in \asFx
+		& \quad \metaimp &  (\circ A)    \in \asFx
+		& & , \quad \text{für} \quad \circ \in \asU \cap \asJx
 		\\
-		A, B            \in        \asFx
-		& \metaimp (A \circ B) \in \asFx
-		& , \quad \text{für} \quad \circ \in \asB \cap \asJx
+		A, B                             \in \asFx
+		& \quad \metaimp & (A \circ B)   \in \asFx
+		& & , \quad \text{für} \quad \circ \in \asB \cap \asJx
+		\formulatoleft
 	\end{align}
 	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFx$.
 	\\Für $\asJ = \asJx$ sei noch $\asF \defeq \glsSym{asFx}$.
 
-	$\glsSym{asFxp}$ sei die Menge der auf folgende Weise definierten
-	aussagenlogischen Formeln in \emph{Polnischer Notation}%
+	$\glsSym{asFxp}$ sei die Menge der auf folgende Weise definierten aussagenlogischen Formeln in \emph{Polnischer Notation}%
 	\idx{aussagenlogische Formel in Polnischer Notation}:
 	\begin{align}
-		\asV            \subset  \asFxp
+		&                & \asV            \subset \asFxp
 		\\
-		\asJx \cap \asC \subset  \asFxp
+		&                & \asJx \cap \asC \subset \asFxp
 		\\
-		A                    \in \asFxp
-		& \metaimp \circ A   \in \asFxp
-		& , \quad \text{für} \quad \circ \in \asU \cap \asJx
+		A                            \in \asFxp
+		& \quad \metaimp & \circ A   \in \asFxp
+		& & , \quad \text{für} \quad \circ \in \asU \cap \asJx
 		\\
-		A, B                 \in \asFxp
-		& \metaimp \circ A B \in \asFxp
-		& , \quad \text{für} \quad \circ \in \asB \cap \asJx
+		A, B                         \in \asFxp
+		& \quad \metaimp & \circ A B \in \asFxp
+		& & , \quad \text{für} \quad \circ \in \asB \cap \asJx
+		\formulatoleft
 	\end{align}
 	Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFxp$.
 	\\Für $\asJ = \asJx$ sei noch $\asFp \defeq \glsSym{asFxp}$.
@@ -2540,25 +2232,27 @@
 		\end{cases}
 	\end{equation}
 
-	Durch Anwendung der Klammerregeln von
-	\subsubsectionname~\vref{subsub:Bausteine}
-	lassen sich in der Regel noch viele Klammern
-	der Formeln aus $\asFx$ einsparen.
+	Durch Anwendung der Klammerregeln von \subsubsectionname~\vref{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der Formeln aus $\asFx$ einsparen.
 	Die Formeln aus $\asFxp$ sind frei von Klammern.
 	Die Namen der Operatoren finden sich in der \tablename~\vref{tab:Symbole}.
-	Für aussagenlogische Formeln,
-	\textdh von Elementen aus $\asF$ \textbzw $\asFp$,
-	werden hier normalerweise die kleinen griechischen Buchstaben
-	$\alpha$, $\beta$, $\gamma$, $\dots$ verwendet.
+	Für aussagenlogische Formeln, \textdh von Elementen aus $\asF$ \textbzw $\asFp$, werden hier normalerweise die kleinen griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw verwendet.
 	Sie können dabei auch atomare Formeln bezeichnen (\seename \eqref{def:V}).
 
-	\subsection{Aussagenlogische Axiome}%---------------------------------------
-	\label{sub:logAxiome}
+	\subsection{Definition aussagenlogische Operatoren durch andere}% ----------
+	\label{sub:ausOperatorDef}
+
+	Im folgenden gelte für zwei aussagenlogische Formeln $\alpha$ und $\beta$:
+	\begin{itemize}
+
+		\item $\alpha  \eq   \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$ stimmen -- \textggf nach vollständiger Klammerung -- als Zeichenkette überein.
+
+		\item $\alpha \equiv \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$ können mit Hilfe erlaubter Substitutionen und geltender Axiome -- \seename~\vref{sub:ausAxiome} -- ineinander überführt werden.
+
+	\end{itemize}
 
 %TODO Signatur definieren
 
-	Es werden noch bestimmte Teilmengen von $\asJ$ eingeführt,
-	die jeweils ausreichen alle anderen Elemente aus $\asJ$ zu definieren:
+	Es werden verschiedene Teilmengen von $\asJ$ eingeführt, die jeweils ausreichen alle anderen Elemente aus $\asJ$ zu definieren:
 	\begin{align}
 		& \asJ_\xBool &\defeq & & & \{ \lnot, \land, \lor \} \label{def:Jbool}\\
 		& \asJ_\xAnd  &\defeq & & & \{ \lnot, \land       \} \label{def:Jand} \\
@@ -2570,14 +2264,10 @@
 		\formulatoleft\formulatoleft\formulatoleft\formulatoleft\formulatoleft
 	\end{align}
 
-	Im Folgenden stehen jeweils
-	links die Formeln in üblicher Schreibweise mit Klammern
-	und rechts in Polnischer Notation (ohne Klammern).
+	Im Folgenden stehen jeweils links die Formeln in üblicher Schreibweise mit Klammern und rechts in Polnischer Notation (ohne Klammern).
+	Ferner seien $A$ und $B$ beliebige, nicht notwendig verschiedene Formeln aus der passenden Menge $\asFx$ \textbzw der um die mit Hilfe der Definitionen erweiterten Formelmenge.
 
-	Ausgehend von den Junktoren \textbzw Operatoren aus $\asJ_\xBool$
-	werden die restlichen Operatoren aus $\asJ$ definiert.
-	Die Definitionen sind in zwei Gruppen eingeteilt,
-	und zwar die mit den Operatoren aus $\asJ_\xAnd$:
+	Ausgehend von den Junktoren \textbzw Operatoren aus $\asJ_\xBool$ werden die restlichen Operatoren aus $\asJ$ definiert. Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den Operatoren aus $\asJ_\xAnd$:
 	\begin{align}
 		% folgt ------------------------
 		&                (A \limp B)  &\defeq & & & (\lnot (A \land (\lnot B)))
@@ -2610,7 +2300,7 @@
 		\label{def:nand}
 		\formulatoleft
 	\end{align}
-	und die mit den Operatoren  aus $\asJ_\xOr$:
+	und die mit den Operatoren aus $\asJ_\xOr$:
 	\begin{align}
 		% NOR --------------------------
 		&                (A \lnor B)  & \defeq & & & (\lnot (A \lor B))
@@ -2628,81 +2318,79 @@
 		\label{def:true}
 		\formulatoleft
 	\end{align}
-	Ist \symqt{$\lor$} oder \symqt{$\land$} nicht vorgegeben,
-	\textdh wird von den Elementen aus $\asJ_\xAnd$ \textbzw $\asJ_\xOr$
-	statt von denen von $\asJ_\xBool$ ausgegengen,
-	so muss man den fehlenden Operator mittels
-	der passenden der beiden folgenden Definitionen einführen:
+
+	Ist \symqt{$\lor$} oder \symqt{$\land$} nicht vorgegeben, \textdh wird von den Elementen aus $\asJ_\xAnd$ \textbzw $\asJ_\xOr$ statt von denen aus $\asJ_\xBool$ ausgegengen, so muss man den fehlenden Operator mittels der passenden der beiden folgenden Definitionen einführen:
 	\begin{align}
-		% und --------------------------
-		&         (A \land B) & \defeq & & & (\lnot ((\lnot A) \lor (\lnot B)))
-		& \formulaspace &    \land A B &\defeq & & & \lnot \lor \lnot A \lnot B
-		\label{def:and}
-		\\
-		% oder -------------------------
+		% oder aus und -----------------
 		&          (A \lor B) & \defeq & & & (\lnot ((\lnot A) \land (\lnot B)))
-		& \formulaspace &    \lor A B &\defeq & & & \lnot \land \lnot A \lnot B
-		\label{def:or}
-		\formulatoleft
-	\end{align}
-	Nun sind wieder alle Operatoren definiert:
-
-\todo{Hier weitermachen.}% TODO >>> Hier weitermachen <<< restliche Signaturen
-
-	Entsprechend wählt man bei Vorgabe von $\asJ_\xImp$ \textbzw $\asJ_\xRep$
-	eine von den beiden folgenden Definitionen aus:
-	\begin{align}
-		% und --------------------------
-		&             (A \land B) & \defeq & & & (???)
-		& \formulaspace &    \land A B &\defeq & & & ???
-		\label{def:and2}
+		& \formulaspace & \lor  A B & \defeq & & & \lnot \land \lnot A \lnot B
+		\label{def:orand}
 		\\
-		% oder -------------------------
-		&              (A \lor B) & \defeq & & & (???)
-		& \formulaspace &    \land A B &\defeq & & & ???
-		\label{def:or2}
+		% und aus oder -----------------
+		&          (A \land B) & \defeq & & & (\lnot ((\lnot A) \lor (\lnot B)))
+		& \formulaspace & \land A B & \defeq & & & \lnot \lor \lnot A \lnot B
+		\label{def:andor}
 		\formulatoleft
 	\end{align}
-	und bei Vorgabe von $\asJ_\xNand$ \textbzw $\asJ_\xNor$
-	eine von:
+	Nun sind wieder alle Operatoren definiert.
+
+	Entsprechend wird bei Vorgabe von $\asJ_\xImp$ \textbzw $\asJ_\xRep$ die passende der beiden folgenden Definitionen ausgewählt:
 	\begin{align}
-	% und --------------------------
-	&             (A \land B) & \defeq & & & (???)
-	& \formulaspace &    \land A B &\defeq & & & ???
-	\label{def:and3}
-	\\
-	% oder -------------------------
-	&              (A \lor B) & \defeq & & & (???)
-	& \formulaspace &    \land A B &\defeq & & & ???
-	\label{def:or3}
-	\formulatoleft
+		% oder aus imp -----------------
+		&              (A \lor  B)  & \defeq & & & (imp)
+		& \formulaspace & \lor  A B & \defeq & & &  imp
+		\label{def:orrep}
+		\\
+		% und aus rep ------------------
+		&              (A \land B)  & \defeq & & & (rep)
+		& \formulaspace & \land A B & \defeq & & &  rep
+		\label{def:andrep}
+		\formulatoleft
 	\end{align}
-
-	Aus \ref{def:rep} folgt durch Vertauschung der Variablen unmittelbar
+	woraufhin dann \ref{def:imp} \textbzw \ref{def:rep} als Gleichung nachzuweisen ist.
+	Da aus \ref{def:rep} durch Vertauschung der Variablen unmittelbar
 	\begin{align}
-		%
-		&                 (A \limp B) & \equiv & & & (B \lrep A)
-		& \formulaspace &   \limp A B & \equiv & & & \lrep B A
-		\label{eq:imp}   \formulatoleft
-		%
+		&              (A \lrep B)  & \equiv & & & (B \limp A)
+		& \formulaspace & \lrep A B & \equiv & & &    \limp B A
+		\label{eq:repimp}
+		\formulatoleft
 	\end{align}
+	folgt, vermindert sich der Aufwand dazu erheblich.
 
-	Es werden nun die aussagenlogischen \glsIdxPl{Axiom}
-	-- ohne Quantoren --
-	mit Hilfe der Operatoren aus $\asJ_\xAnd$ definiert
-	und zusätzlich alle Elemente von $\asJ$ (\seename~\vref{def:J}),
-	\textdh alle aussagenlogischen Operatoren und Konstanten aus $\asJ$.
+	Bei Vorgabe von $\asJ_\xNand$ \textbzw $\asJ_\xNor$ schließlich
+	wird die passende Definition aus
+	\begin{align}
+		% oder aus nor -----------------
+		&              (A \lor  B)  & \defeq & & & (nor)
+		& \formulaspace & \lor  A B & \defeq & & &  nor
+		\label{def:ornor}
+		\\
+		% und aus nand -----------------
+		&              (A \land B)  & \defeq & & & (nand)
+		& \formulaspace & \land A B & \defeq & & &  nand
+		\label{def:andnand}
+		\formulatoleft
+	\end{align}
+	und, da \symqt{$\lnot$} weder in $\asJ_\xNand$ noch in $\asJ_\xNor$ vorhanden ist, aus
+	\begin{align}
+		% nicht aus nor ----------------
+		&                (\lnot A) & \defeq & & & (nor)
+		& \formulaspace & \lnot A  & \defeq & & &  nor
+		\label{def:notnor}
+		\\
+		% nicht aus nand ---------------
+		&                (\lnot A) & \defeq & & & (nand)
+		& \formulaspace & \lnot A  & \defeq & & &  nand
+		\label{def:notnand}
+		\formulatoleft
+	\end{align}
+	ausgewählt und es ist \ref{def:nand} \textbzw \ref{def:nor} als Gleichung nachzuweisen.
 
-%##	Die in den \subsubsectionname en~\vref{subsub:OperatorenAnfang}
-%##	bis \vref{subsub:OperatorenEnde} fehlenden Definitionen von Operatoren
-%##	sollen mit denen aus \subsubsectionname~\vref{subsub:AussagenlogischeAxiome}
-%##	übereinstimmen.
-
-\todo{Junktoren definieren und Übereinstimmung ableiten.}%##
-%TODO Junktoren definieren und Übereinstimmung ableiten. %##
+	Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden Definitionen \ref{def:imp} bis \ref{def:notnor} ausgehend vom jeweils passenden $\asFx$ genau die gesamte Formelmenge $\asF$ erzeugt werden kann.
 
 	\subsubsection{Aussagenlogisches Axiomensystem}% - - - - - - - - - - - - - -
-	\label{subsub:AussagenlogischeAxiome}
+	\label{subsub:ausAxiome}
+
 	Gegebene Operatoren: $\lnot, \land, \limp$\par
 	\glsIdxPl{Axiom}:
 	\begin{align}
@@ -2780,92 +2468,92 @@
 		\formulatoleft
 	\end{align}
 
-	\subsection{Definition von Junktoren durch andere}%-------------------------
-	\label{sub:Junktordefinitionen}
+%%%	\subsection{Definition von Junktoren durch andere}% ------------------------
+%%%	\label{sub:Junktordefinitionen}
+%%%
+%%%	\subsubsection{nicht, und, oder}%  - - - - - - - - - - - - - - - - - - - - -
+%%%	\label{subsub:Standard}
+%%%	\label{subsub:OperatorenAnfang}
+%%%	Gegebene Operatoren: $\lnot, \land, \lor$\par
+%%%	Definierte Operatoren:
+%%%	$\limp, \lequiv, \lmult, \ladd, \lnand, \lnor, \lrep, \lfalse, \ltrue$
+%%%	\begin{align}
+%%%	\end{align}
+%%%	Zu zeigen:
+%%%	\begin{align}
+%%%		(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\land\lnot\beta)
+%%%	\end{align}
+%%%
+%%%	\subsubsection{nicht, und}%  - - - - - - - - - - - - - - - - - - - - - - - -
+%%%	Gegebene Operatoren: $\lnot, \land$\par
+%%%	Definierter Operator: $\lor$
+%%%	\begin{align}
+%%%		(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\land\lnot\beta)
+%%%	\end{align}
+%%%	Zu zeigen:
+%%%	\begin{align}
+%%%		(\alpha\lor\beta)&\equiv\lnot(\lnot\alpha\land\lnot\beta)
+%%%	\end{align}
+%%%	Zur Definition der Operatoren $\limp, \lequiv, \lmult, \ladd, \lnand, \lnor,
+%%%	\lrep, \lfalse, \ltrue$ siehe \subsubsectionname~\vref{subsub:Standard}
+%%%
+%%%	\subsubsection{nicht, oder}% - - - - - - - - - - - - - - - - - - - - - - - -
+%%%	Gegebene Operatoren: $\lnot, \lor$\par
+%%%	Definierter Operator: $\land$
+%%%	\begin{align}
+%%%		(\alpha\land\beta)&\defeq\lnot(\lnot\alpha\lor\lnot\beta))
+%%%	\end{align}
+%%%
+%%%	\subsubsection{nicht, impliziert}% - - - - - - - - - - - - - - - - - - - - -
+%%%	Gegebene Operatoren: $\lnot, \limp$\par
+%%%	Definierte Operatoren: $\land, \lor$
+%%%	\begin{align}
+%%%		(\alpha\land\beta)&\defeq\dots\\
+%%%		(\alpha\lor\beta)&\defeq\dots
+%%%	\end{align}
+%%%
+%%%	\subsubsection{NAND}%  - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%%%	Gegebener Operator: $\lnand$\par
+%%%	Definierte Operatoren: $\lnot, \land, \lor$
+%%%	\begin{align}
+%%%		\lnot\alpha&\defeq\dots\\
+%%%		(\alpha\land\beta)&\defeq\dots\\
+%%%		(\alpha\lor\beta)&\defeq\dots
+%%%	\end{align}
+%%%
+%%%	\subsubsection{NOR}% - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%%%	\label{subsub:OperatorenEnde}
+%%%	Gegebener Operator: $\lnor$\par
+%%%	Definierte Operatoren: $\lnot, \land, \lor$
+%%%	\begin{align}
+%%%		\lnot\alpha&\defeq\dots\\
+%%%		(\alpha\land\beta)&\defeq\dots\\
+%%%		(\alpha\lor\beta)&\defeq\dots
+%%%	\end{align}
 
-	\subsubsection{nicht, und, oder}%- - - - - - - - - - - - - - - - - - - - - -
-	\label{subsub:Standard}
-	\label{subsub:OperatorenAnfang}
-	Gegebene Operatoren: $\lnot, \land, \lor$\par
-	Definierte Operatoren:
-	$\limp, \lequiv, \lmult, \ladd, \lnand, \lnor, \lrep, \lfalse, \ltrue$
-	\begin{align}
-	\end{align}
-	Zu zeigen:
-	\begin{align}
-		(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\land\lnot\beta)
-	\end{align}
-
-	\subsubsection{nicht, und}%- - - - - - - - - - - - - - - - - - - - - - - - -
-	Gegebene Operatoren: $\lnot, \land$\par
-	Definierter Operator: $\lor$
-	\begin{align}
-		(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\land\lnot\beta)
-	\end{align}
-	Zu zeigen:
-	\begin{align}
-		(\alpha\lor\beta)&\equiv\lnot(\lnot\alpha\land\lnot\beta)
-	\end{align}
-	Zur Definition der Operatoren $\limp, \lequiv, \lmult, \ladd, \lnand, \lnor,
-	\lrep, \lfalse, \ltrue$ siehe \subsubsectionname~\vref{subsub:Standard}
-
-	\subsubsection{nicht, oder}% - - - - - - - - - - - - - - - - - - - - - - - -
-	Gegebene Operatoren: $\lnot, \lor$\par
-	Definierter Operator: $\land$
-	\begin{align}
-		(\alpha\land\beta)&\defeq\lnot(\lnot\alpha\lor\lnot\beta))
-	\end{align}
-
-	\subsubsection{nicht, impliziert}% - - - - - - - - - - - - - - - - - - - - -
-	Gegebene Operatoren: $\lnot, \limp$\par
-	Definierte Operatoren: $\land, \lor$
-	\begin{align}
-		(\alpha\land\beta)&\defeq\dots\\
-		(\alpha\lor\beta)&\defeq\dots
-	\end{align}
-
-	\subsubsection{NAND}%- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	Gegebener Operator: $\lnand$\par
-	Definierte Operatoren: $\lnot, \land, \lor$
-	\begin{align}
-		\lnot\alpha&\defeq\dots\\
-		(\alpha\land\beta)&\defeq\dots\\
-		(\alpha\lor\beta)&\defeq\dots
-	\end{align}
-
-	\subsubsection{NOR}% - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	\label{subsub:OperatorenEnde}
-	Gegebener Operator: $\lnor$\par
-	Definierte Operatoren: $\lnot, \land, \lor$
-	\begin{align}
-		\lnot\alpha&\defeq\dots\\
-		(\alpha\land\beta)&\defeq\dots\\
-		(\alpha\lor\beta)&\defeq\dots
-	\end{align}
-
-	\subsection{Aussagenlogische Axiome}%---------------------------------------
+	\subsection{Aussagenlogische Axiome}% --------------------------------------
 	\label{sub:ausAxiome}
 
-\todo{Aussagenlogik weiter bearbeiten.}%##
-%TODO Aussagenlogik weiter bearbeiten. %##
+\todo{Aussagenlogik weiter bearbeiten.}%%%
+%TODO Aussagenlogik weiter bearbeiten. %%%
 
-	\section{Prädikatenlogik}%==================================================
+	\section{Prädikatenlogik}% =================================================
 	\beginsection{Prädikatenlogik}
 	\label{sec:Prädikatenlogik}
 	\hidden{\glsIdx{Praedikatenlogik}}
 
-\todo{Prädikatenlogik bearbeiten.}%##
-%TODO Prädikatenlogik bearbeiten. %##
+\todo{Prädikatenlogik bearbeiten.}%%%
+%TODO Prädikatenlogik bearbeiten. %%%
 
-	\section{Mengenlehre}%======================================================
+	\section{Mengenlehre}% =====================================================
 	\beginsection{Mengenlehre}
 	\label{sec:Mengenlehre}
 
-\todo{Mengenlehre bearbeiten.}%##
-%TODO Mengenlehre bearbeiten. %##
+\todo{Mengenlehre bearbeiten.}%%%
+%TODO Mengenlehre bearbeiten. %%%
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
-	\chapter{Design}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{Design}% ##########################################################
 	\beginchapter{Design}
 	\label{cha:Design}
 
@@ -2881,7 +2569,7 @@
 	Wenn die Lizenzen nicht mitgeliefert wurden,
 	können sie unter \url{http://www.gnu.org/licenses/} gefunden werden.
 
-	\section{Anforderungen}%====================================================
+	\section{Anforderungen}% ===================================================
 	\beginsection{Anforderungen}
 	\label{sec:Anforderungen}
 
@@ -2893,8 +2581,8 @@
 	und werden daher in diesen \sectionname{} nicht übernommen.
 	Die anderen Ziele werden noch verfeinert.
 
-%\todo{Ziele aus Abschnitt "Ziele" in Anforderungen umwandeln.}%##
-% TODO Ziele aus Abschnitt "Ziele" in Anforderungen umwandeln. %##
+\todo{Ziele aus Abschnitt "Ziele" in Anforderungen umwandeln.}%%%
+%TODO Ziele aus Abschnitt "Ziele" in Anforderungen umwandeln. %%%
 	\begin{enumerate}
 
 		\item \label{Anforderung:Form} \emph{Form}:
@@ -2981,39 +2669,39 @@
 
 	\end{enumerate}
 
-	\section{Axiome}%===========================================================
+	\section{Axiome}% ==========================================================
 	\beginsection{\glsIdxPl{Axiom}}
 	\label{sec:Axiome}
-\todo{Axiome auswählen und definieren.}%##
-%TODO Axiome auswählen und definieren. %##
+\todo{Axiome auswählen und definieren.}%%%
+%TODO Axiome auswählen und definieren. %%%
 
-	\section{Beweise}%==========================================================
+	\section{Beweise}% =========================================================
 	\beginsection{\glsIdxPl{Beweis}}
 	\label{sec:Beweise}
-\todo{Schlussregeln auswählen und Beweise definieren.}%##
-%TODO Schlussregeln auswählen und Beweise definieren. %##
+\todo{Schlussregeln auswählen und Beweise definieren.}%%%
+%TODO Schlussregeln auswählen und Beweise definieren. %%%
 
-	\section{Datenstruktur}%====================================================
+	\section{Datenstruktur}% ===================================================
 	\beginsection{Datenstruktur}
 	\label{sec:Datenstruktur}
-\todo{Datenstruktur abstrakt und in XML definieren.}%##
-%TODO Datenstruktur abstrakt und in XML definieren. %##
+\todo{Datenstruktur abstrakt und in XML definieren.}%%%
+%TODO Datenstruktur abstrakt und in XML definieren. %%%
 
-	\section{Bausteine}%========================================================
+	\section{Bausteine}% =======================================================
 	\beginsection{Bausteine}
 	\label{sec:Bausteine}
-\todo{Bausteine? definieren.}%##
-%TODO Bausteine? definieren. %##
+\todo{Bausteine? definieren.}%%%
+%TODO Bausteine? definieren. %%%
 
 	\appendix
 	\renewcommand*{\Chaptername}{\appendixname}
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
-	\chapter{Anhang}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{Anhang}% ##########################################################
 	\beginchapter{Anhang}
 	\label{cha:Anhang}
 
-	\section{Werkzeuge}%========================================================
+	\section{Werkzeuge}% =======================================================
 	\beginsection{Werkzeuge}
 	\label{sec:Werkzeuge}
 
@@ -3023,7 +2711,7 @@
 	ebenfalls Open Source sein.
 	Für die reine Entwicklung sollte das auch gelten, muss es aber nicht.
 
-	\paragraph{Werkzeuge zur Übersetzung der Quelldateien}%---------------------
+	\paragraph{Werkzeuge zur Übersetzung der Quelldateien}% --------------------
 
 	\begin{enumerate}
 
@@ -3053,7 +2741,7 @@
 		\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 	\end{enumerate}
 
-	\paragraph{Werkzeuge für die Entwicklung}%----------------------------------
+	\paragraph{Werkzeuge für die Entwicklung}% ---------------------------------
 
 	\begin{enumerate}
 		\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
@@ -3121,7 +2809,7 @@
 		\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 	\end{enumerate}
 
-	\paragraph{Werkzeuge zur Bearbeitung der Quelldateien}%---------------------
+	\paragraph{Werkzeuge zur Bearbeitung der Quelldateien}% --------------------
 
 	\begin{enumerate}
 		\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
@@ -3150,54 +2838,54 @@
 		\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 	\end{enumerate}
 
-%##	\paragraph{Im Projekt \emph{qedeq} verwendete Werkzeuge}%-------------------
-%##
-%##	\begin{itemize}
-%##		\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
-%##
-%##		\item\label{Werkzeug:Java}\emph{Java}
-%##		als Programmiersprache und Laufzeitumgebung.
-%##		\tourl{https://www.java.com/de/download/win10.jsp}
-%##		-- Lizenz \seename~\cite{bib:JavaSE}
-%##
-%##		\item\label{Werkzeug:Apache Ant}\emph{Apache Ant}
-%##		als Java Bibliothek und Kommandozeilen-Werkzeug
-%##		um Java Programme zu erzeugen.
-%##		\tourl{http://ant.apache.org/}
-%##		-- Lizenz \seename~\cite{bib:Apacheii}
-%##
-%##		\item\label{Werkzeug:Checkstyle}\emph{Checkstyle}
-%##		zur statischen Code-Analyse für Java.
-%##		\tourl{http://checkstyle.sourceforge.net/}
-%##		-- Lizenz \seename~\cite{bib:LGPLii}
-%##
-%##		\item\label{Werkzeug:Clover}\emph{Clover}%
-%##		\footnote{%
-%##			Clover ist proprietäre Software, aber auf Anfrage frei für 30 Tage.
-%##			Danach ist eine einmalige Lizenzgebühr fällig.%
-%##		}
-%##		als Testwerkzeug zur Analyse der Code-Abdeckung.
-%##		\tourl{https://www.atlassian.com/software/clover/}
-%##		-- Lizenz \seename~\cite{bib:Clover}
-%##
-%##		\item\label{Werkzeug:Eclipse Java}\emph{Eclipse IDE for Java Developers}
-%##		als Entwicklungsumgebung für Java.
-%##		\tourl{http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon1a/}
-%##		-- Lizenz \seename~\cite{bib:OSI}
-%##
-%##		\item\label{Werkzeug:JUnit}\emph{JUnit}
-%##		zur Erzeugung von wiederholbaren Tests.
-%##		\tourl{http://junit.org/junit4/}
-%##		-- Lizenz \seename~\cite{bib:EPL}
-%##
-%##		\item\label{Werkzeug:Xerces2}\emph{Xerces2} als XML-Parser in Java.
-%##		\tourl{http://xerces.apache.org/xerces2-j/}
-%##		-- Lizenzen \seename~\cite{bib:Apacheii, bib:SAX, bib:WDCDL, bib:WDCSNL}
-%##
-%##		\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
-%##	\end{itemize}
+%%%	\paragraph{Im Projekt \emph{qedeq} verwendete Werkzeuge}% ------------------
+%%%
+%%%	\begin{itemize}
+%%%		\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
+%%%
+%%%		\item\label{Werkzeug:Java}\emph{Java}
+%%%		als Programmiersprache und Laufzeitumgebung.
+%%%		\tourl{https://www.java.com/de/download/win10.jsp}
+%%%		-- Lizenz \seename~\cite{bib:JavaSE}
+%%%
+%%%		\item\label{Werkzeug:Apache Ant}\emph{Apache Ant}
+%%%		als Java Bibliothek und Kommandozeilen-Werkzeug
+%%%		um Java Programme zu erzeugen.
+%%%		\tourl{http://ant.apache.org/}
+%%%		-- Lizenz \seename~\cite{bib:Apacheii}
+%%%
+%%%		\item\label{Werkzeug:Checkstyle}\emph{Checkstyle}
+%%%		zur statischen Code-Analyse für Java.
+%%%		\tourl{http://checkstyle.sourceforge.net/}
+%%%		-- Lizenz \seename~\cite{bib:LGPLii}
+%%%
+%%%		\item\label{Werkzeug:Clover}\emph{Clover}%
+%%%		\footnote{%
+%%%			Clover ist proprietäre Software, aber auf Anfrage frei für 30 Tage.
+%%%			Danach ist eine einmalige Lizenzgebühr fällig.%
+%%%		}
+%%%		als Testwerkzeug zur Analyse der Code-Abdeckung.
+%%%		\tourl{https://www.atlassian.com/software/clover/}
+%%%		-- Lizenz \seename~\cite{bib:Clover}
+%%%
+%%%		\item\label{Werkzeug:Eclipse Java}\emph{Eclipse IDE for Java Developers}
+%%%		als Entwicklungsumgebung für Java.
+%%%		\tourl{http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon1a/}
+%%%		-- Lizenz \seename~\cite{bib:OSI}
+%%%
+%%%		\item\label{Werkzeug:JUnit}\emph{JUnit}
+%%%		zur Erzeugung von wiederholbaren Tests.
+%%%		\tourl{http://junit.org/junit4/}
+%%%		-- Lizenz \seename~\cite{bib:EPL}
+%%%
+%%%		\item\label{Werkzeug:Xerces2}\emph{Xerces2} als XML-Parser in Java.
+%%%		\tourl{http://xerces.apache.org/xerces2-j/}
+%%%		-- Lizenzen \seename~\cite{bib:Apacheii, bib:SAX, bib:WDCDL, bib:WDCSNL}
+%%%
+%%%		\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
+%%%	\end{itemize}
 
-	\section{Offene Aufgaben}%==================================================
+	\section{Offene Aufgaben}% =================================================
 	\beginsection{Offene Aufgaben}
 	\label{sec:Offene Aufgaben}
 
@@ -3216,42 +2904,42 @@
 	\end{enumerate}
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
-	\chapter{Ideen}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{Ideen}% ###########################################################
 	\beginchapter{Ideen}
 	\label{cha:Ideen}
 
-	\section{Test der Referenzen}                                  %##
-	\beginsection{Test der Referenzen}                             %##
-	\label{sec:Referenzen}                                         %##
+	\section{Test der Referenzen}                                  %%%
+	\beginsection{Test der Referenzen}                             %%%
+	\label{sec:Referenzen}                                         %%%
 
-	cha:Inhaltsverzeichnis:    \vref{cha:Inhaltsverzeichnis}       %##
-	Fehler: Link 1 Seite zu früh                                   %##
+	cha:Inhaltsverzeichnis:    \vref{cha:Inhaltsverzeichnis}       %%%
+	Fehler: Link 1 Seite zu früh                                   %%%
 
-	dic:Tabellenverzeichnis:   \vref{dic:Tabellenverzeichnis}      %##
-	Fehler: Link 1 Seite zu früh                                   %##
+	dic:Tabellenverzeichnis:   \vref{dic:Tabellenverzeichnis}      %%%
+	Fehler: Link 1 Seite zu früh                                   %%%
 
-	dic:Abbildungsverzeichnis: \vref{dic:Abbildungsverzeichnis} ok %##
+	dic:Abbildungsverzeichnis: \vref{dic:Abbildungsverzeichnis} ok %%%
 
-	dic:Literaturverzeichnis:  \vref{dic:Literaturverzeichnis}  ok %##
+	dic:Literaturverzeichnis:  \vref{dic:Literaturverzeichnis}  ok %%%
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
-	%chapter{Tabellenverzeichnis}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%chapter{Tabellenverzeichnis}% #############################################
 	\likechapter[section]{\listtablename}
-%##	\addcontentsline{lot}{chapter}{Test der 2. Seite Tabellenverzeichnis}%##
+%%%	\addcontentsline{lot}{chapter}{Test der 2. Seite Tabellenverzeichnis}%%%
 	\label{dic:Tabellenverzeichnis}
 	\listoftables
 	\Thispagestyle%              veränderte Kopfzeile für diese Seite aktivieren
 
 	%section{Abbildungsverzeichnis}=============================================
 	\likechapter[section]{\listfigurename}
-%##	\addcontentsline{lof}{chapter}{Test der 2. Seite Abbildungsverzeichnis}%##
+%%%	\addcontentsline{lof}{chapter}{Test der 2. Seite Abbildungsverzeichnis}%%%
 	\begin{minipage}{\linewidth-10.95pt}
 		\label{dic:Abbildungsverzeichnis}
 		\listoffigures
 	\end{minipage}
 	\Thispagestyle%              veränderte Kopfzeile für diese Seite aktivieren
 
-	%chapter{Literaturverzeichnis}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%chapter{Literaturverzeichnis}% ############################################
 	\begin{flushleft}
 		\begin{thebibliography}{12}
 			\likechapter[section]{\bibname}  % erst hier!
@@ -3483,14 +3171,14 @@
 	}
 	\printglossaries
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ##############################################################################
 % Damit Änderungen in den Verzeichnissen im PDF-Dokument erscheinen, müssen
 % "splitindex.pl" und "makeglossaries" aufgerufen
 % und dann das TeX-Dokument erneut übersetzt werden:
 %     <MiKTeXhome>\scripts\splitindex\splitindex.pl        ASBA.idx
 %     <MiKTeXhome>\scriptsmiktex\bin\x64\makeglossaries.ex ASBA.glo
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ##############################################################################
 
 \end{document}
 
-%%%% Ende des Dokuments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ende des Dokuments ###########################################################
