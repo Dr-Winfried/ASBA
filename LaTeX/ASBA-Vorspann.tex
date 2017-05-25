@@ -1,0 +1,886 @@
+%%############################################################################%%
+%%                                                                            %%
+%% Datei:  ASBA-Vorspann.tex                                                  %%
+%% Inhalt: Vorspann für die Datei ASBA.txt                                    %%
+%%                                                                            %%
+%% Copyright (C) 2017  Winfried Teschers                                      %%
+%%                                                                            %%
+%% This program is free software: you can redistribute it and/or modify       %%
+%% it under the terms of the GNU Affero General Public License as published   %%
+%% by the Free Software Foundation, either version 3 of the License, or       %%
+%% (at your option) any later version.                                        %%
+%%                                                                            %%
+%% This program is distributed in the hope that it will be useful,            %%
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of             %%
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              %%
+%% GNU Affero General Public License for more details.                        %%
+%%                                                                            %%
+%% You should have received a copy of the GNU Affero General Public License   %%
+%% along with this program.  If not, see <http://www.gnu.org/licenses/>.      %%
+%%                                                                            %%
+%% Dr. Winfried Teschers                                                      %%
+%% Anton-Günther-Str. 26c                                                     %%
+%% 91083 Baiersdorf                                                           %%
+%% Germany                                                                    %%
+%%                                                                            %%
+%% e-mail: winfried.teschers@t-online.de                                      %%
+%%                                                                            %%
+%%############################################################################%%
+
+% !TeX root = ASBA.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+
+\documentclass[english, ngerman, parskip=half, headsepline, footsepline, fleqn, notitlepage]{scrreprt}
+
+% Pakete #######################################################################
+
+% allgemein --------------------------------------------------------------------
+\usepackage[utf8]{inputenc}% Input encoding specification
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}% Flexible and complete interface to document dimensions.
+\usepackage{microtype}% Subliminal refinements towards typographical perfection.
+\usepackage{graphicx}% Alternative interface to graphics functions.
+\usepackage{pict2e}% New implementation of picture commands.
+\usepackage{multicol}% An environment for multicolumn output
+\usepackage{babel}% Multilingual support for plain TeX or LaTeX.
+\usepackage[autostyle]{csquotes}% Contex sensitive quotation facilities
+
+% mathematische Pakete ---------------------------------------------------------
+\usepackage{amsmath}% Mathematical facilities for LaLeX from ASM
+\usepackage{amsfonts}% TeX fonts from the American Mathematical Society.
+\usepackage{amssymb}% Symbols from the American Mathematical Society.
+\usepackage{mathtools}% Mathematical tools to use with asmmath.
+\usepackage{mathabx}% Three series of mathematical symbols.
+\usepackage{mathpazo}% Fonts to typeset mathematics to match palatino.
+%\usepackage{cancel}% Place lines through maths formulae.
+
+% Tabellen ---------------------------------------------------------------------
+\usepackage[table]{xcolor}% Driver-independent color extensions - vor 'color'?
+%\usepackage{ctable}% Flexible typesetting of table and figure using key/value
+%% Das Paket ctable fast die Eigenschaften der Pakete
+\usepackage{array}%
+\usepackage{tabularx}% Erweiterung von tabular*
+\usepackage{booktabs}% Nicer layout of tables
+%% zusammen und lädt zusätzlich noch die Pakete
+\usepackage{rotating}% Rotating tools, including rotated full page floats
+\usepackage{xspace}% Behandelt Zwischenraum nach Makros
+\usepackage{color}% LaTeX support for color
+\usepackage{xkeyval}% Extension of the keyval package
+% Ende der von 'ctable' geladenen Pakete
+\usepackage{threeparttable}% Tables with captions and notes all the same width.
+\usepackage{multirow}% Create tabular cell spanning multiple rows.
+\usepackage{diagbox}% Table heads with diagonal lines.
+\usepackage{arydshln}% Draw dash-lines in array/tabular.
+\usepackage{caption}% Customizing captions in floating environments.
+
+% Indizes ----------------------------------------------------------------------
+%\usepackage{makeidx}% Indexing - Entweder 'makeidx' oder 'splitidx'
+\usepackage[protected,idxcommands]{splitidx}% mehrere Indizes - statt 'makeidx'
+%\usepackage{hvindex}% Support for indexing - after 'babel
+%\usepackage{showidx}% Index auf Seitenrand anzeigen - Zum Testen der Indizes
+%TODO Fehler: 'showindex' gibt direkt und nicht auf Rand aus
+\usepackage{glossaries}% Create glossaries and lists of acronyms
+%\usepackage{glossaries-german}% German language module for glossaries package
+
+% Verweise ---------------------------------------------------------------------
+%\usepackage[germanb]{minitoc}\dosectoc% Unterverzeichnisse erstellen
+%TODO Fehler: 'minitoc' funktioniert nicht
+\usepackage{varioref}
+\usepackage[colorlinks,linktoc=all]{hyperref}% Extensive support for hypertext
+\usepackage{glossaries}% Create glossaries and lists of acronyms
+% lädt     {glossaries-german}% German language module for glossaries package
+
+% Einstellung von globalen Werten und Makro-Redefinitionen #####################
+
+\geometry{textwidth=170mm,textheight=256mm,twoside}% optional Option 'showframe'
+
+% Kopfzeilen ===================================================================
+\newcommand*{\texthead}[1]{\textnormal{\textsf{\textbf{#1}}}}% Schriftart
+\newcommand*{\Lehead}[1]{\lehead{\texthead{#1}}}
+\newcommand*{\Cehead}[1]{\cehead{\texthead{#1}}}
+\newcommand*{\Rehead}[1]{\rehead{\texthead{#1}}}
+\newcommand*{\Lohead}[1]{\lohead{\texthead{#1}}}
+\newcommand*{\Cohead}[1]{\cohead{\texthead{#1}}}
+\newcommand*{\Rohead}[1]{\rohead{\texthead{#1}}}
+\newcommand*{\Ohead}[1]{\ohead{\texthead{#1}}}
+\newcommand*{\Chead}[1]{\chead{\texthead{#1}}}
+\newcommand*{\Ihead}[1]{\ihead{\texthead{#1}}}
+\newcommand*{\Ofoot}[1]{\ofoot{\textnormal{\textbf{#1}}}}
+\newcommand*{\Cfoot}[1]{\cfoot{\textnormal{#1}}}
+\newcommand*{\Ifoot}[1]{\ifoot{\textnormal{#1}}}
+\newcommand*{\Pagestyle}{\pagestyle{scrheadings}}
+\newcommand*{\Thispagestyle}{\thispagestyle{scrheadings}}
+
+% Kopfzeilen mit 'scrlayer-scrpage'
+%         \Lehead \Cehead \Rehead | \Lohead \Cohead \Rohead
+% \Ohead: \Lehead                                   \Rohead
+% \Chead:         \Cehead                   \Cohead
+% \Ihead:                 \Rehead   \Lohead
+% ASBA <Chapter-Überschrift> \Chaptername~\thechapter
+%                            \sectionname~\thesection <Section-Überschrift> ASBA
+%Initialisierung
+\Ohead{ASBA}%      bleibt unverändert
+\Chead{Copyright}% wird laufend verändert
+\Ihead{}%          wird laufend verändert
+
+% Kapitel ======================================================================
+\newcommand*{\Chaptername}{\chaptername}% wird mit 'Anhang' überschrieben
+
+\newcommand*{\beforechapter}{% direkt vor \chapter (auch im Kommentar)
+	\Thispagestyle%        Kopfzeile für diese Seite aktivieren - vor \clearpage
+	\clearpage%            neue Seite
+}
+\newcommand*{\beginchapter}[1]{%        direkt nach \chapter
+	\Chead{#1}%                         Kopfzeile Mitte = <Kapitelname>
+	\Ihead{\Chaptername~\thechapter}%   Kopfzeile Innen = Kapitel/Anhang <Nr.>
+	\Pagestyle%                         veränderte Kopfzeile aktivieren
+	\Thispagestyle%                     ... auch für diese Seite, da ...
+}%                                      '\chapter' Kopf-/Fußzeilen deaktiviert
+\newcommand*{\likechapter}[2][chapter]{%statt \beginchapter für Inhalts-,
+	%                                   Tabellen- und Abbildungsverzeichnis
+	\Chead{#2}%                         Mitte in der Kopfzeile = <Kapitelname>
+	\Ihead{}%                           Innen in der Kopfzeile = <leer>
+	\Pagestyle%                         veränderte Kopfzeile aktivieren ...
+	\Thispagestyle%                     sicherheitshalber auch für diese Seite.
+	\addcontentsline{toc}{#1}{#2}%      Eintrag ins Inhaltsverzeichnis
+	%TODO Fehler: 2. Seite Kopf Mitte für Lit.-Verz. = Abildungsverzeichnis
+}
+\newcommand*{\Endchapter}{% am Ende eines Kapitels
+	\Thispagestyle% sicherheitshalber Kopfzeile für diese Seite aktivieren
+}
+% Indizes ======================================================================
+\newcommand*{\idxdictionary}[1]{%       nur für Indices
+	\Thispagestyle%       Kopfzeile für diese Seite aktivieren - vor \clearpage
+	\clearpage%                         neue Seite
+	\extendtheindex{}{%                 aktiviert die Kopfzeile für Index-Seiten
+		\Chead{#1}%                     Mitte in der Kopfzeile = <Kapitelname>
+		\Ihead{}%                       Innen in der Kopfzeile = <leer>
+		\Pagestyle%                     veränderte Kopfzeile aktivieren
+		\Thispagestyle%                 ... auch für diese Seite
+		\addcontentsline{toc}{section}{#1}% Eintrag ins Inhaltsverzeichnis
+	}{}{}
+}
+\newcommand*{\glodictionary}[1]{%       nur für Glossary
+	\Chead{#1}%                         Mitte in der Kopfzeile = <Kapitelname>
+	\Ihead{}%                           Innen in der Kopfzeile = <leer>
+	\Pagestyle%                         veränderte Kopfzeile aktivieren
+}
+
+% Abschnitte ===================================================================
+\newcommand*{\beginsection}[1]{%        direkt nach \section
+	\Cohead{#1}%                        oben rechts mittig = <Abschnittsname>
+	\Lohead{\sectionname~\thesection}%  oben rechts innen = <Abschnittsnummer>
+	\Pagestyle%                         veränderte Kopfzeile aktivieren
+}
+
+% Fußzeilen ====================================================================
+\Ofoot{\thepage}
+\Cfoot{Winfried Teschers}
+\Ifoot{\today}
+\Pagestyle%                                       aktiviert Kopf- und Fußzeilen
+
+% Fußnoten ---------------------------------------------------------------------
+\deffootnote[10pt]% Markenbreite
+{10pt}% Einzug - für Blocksatz: Markenbreite
+{0pt}% Absatzeinzug für Folgeabsätze
+{\makebox[9pt][r]{\textsuperscript{\thefootnotemark} }}% Zeichen; < Markenbreite
+
+% Vordefinierte Werte ändern ===================================================
+\setcounter{tocdepth}{3}%    Tiefe des Inhaltsverzeichnisses: 2 => subsection
+\setcounter{secnumdepth}{3}% Nummerierung:                    3 => subsubsection
+\setlength\extrarowheight{1pt}% Tabellenzellenhöhe vergrößern
+\captionsetup{labelfont=bf}%    Tabellenbeschriftung in bf = bold font
+
+% Empfehlung aus: Herbert Voß, LaTeX Referenz, 3. Auflage, Berlin 2014; S. 37f
+\renewcommand{\floatpagefraction}{0.7}% Empfehlung: 0.5-0.8 Voreinstellung: 0.9
+\renewcommand{\textfraction}{0.15}%                 0.1-0.3                 0.05
+\renewcommand{\topfraction}{0.8}%                   0.5-0.85                0.9
+\renewcommand{\bottomfraction}{0.5}%                0.2-0.5                 0.9
+\setcounter{topnumber}{3}%                                                  2
+\setcounter{totalnumber}{15}%                                               3
+
+% Neue Elemente ----------------------------------------------------------------
+\newcounter{Enumi}% für unterbrochene Listennummerierung
+
+% Bildelemente #################################################################
+
+\newcommand*{\textbild}[1]{\textbf{\textsf{#1}}}% Textauszeichnungen für Text im Bild
+\newcommand*{\Datei}[4][0.5]{% #2 x #3 = (-#2/2,-#3/2),(#2/2,#3/2)
+	% [Eck-Radius], Breite, Höhe, Name
+	\put(0,0){\oval[#1](#2,#3)}
+	\put(0,0){\makebox(0,0){\textbild{#4}}}
+}
+\newcommand*{\Datenbank}[5]{% 2(#1) x 2(#2+#3) = (-#1,-#2-#3),(+#1,+#2+#3)
+	% Halbmesser x, Halbmesser y, halbe Höhe, Name - Ursprung in der Mitte
+	\put(0.0,-#3){
+		\qbezier(-#1,0.0)(-#1,-#2)(0.0,-#2)
+		\qbezier(+#1,0.0)(+#1,-#2)(0.0,-#2)
+	}
+	\put(0,0){\Line(-#1,-#3)(-#1, #3)}
+	\put(0,0){\Line( #1,-#3)( #1, #3)}
+	\put(0.0,#3){
+		\qbezier(-#1,0.0)(-#1,-#2)(0.0,-#2)
+		\qbezier( #1,0.0)( #1,-#2)(0.0,-#2)
+		\qbezier(-#1,0.0)(-#1, #2)(0.0, #2)
+		\qbezier( #1,0.0)( #1, #2)(0.0, #2)
+	}
+	\makebox(0,0){\textbild{#4}}
+	\makebox(0,-#3){\textbild{#5}}
+}
+% '\Männchen' (mit 'ä') führt zu Fehler
+\newcommand*{\Maennchen}{% 1x2 = (-0.5,-1.7),(+0.5,+0.3) Ursprung im Kopf
+	\put(0,0){\circle{0.6}}
+	\Line(0.0,-0.3)(0.0,-1.2)
+	\polyline(-0.5,-0.3)(0.0,-0.6)(0.5,-0.3)
+	\polyline(-0.5,-1.7)(0.0,-1.2)(0.5,-1.7)
+}
+\newcommand*{\Marker}[2][0.5]{% 2x#1 x 2x#1 - Kreis mit Text
+	{
+		\linethickness{0.5pt}
+		\color{white}
+		\put(0,0){\circle*{#1}}
+		\color{black}
+		\put(0,0){\circle{#1}}
+		\put(0,0){\makebox(0,0){\small\textbild{#2}}}
+	}
+}
+\newcommand*{\marker}[2][0.5]{% 2x#1 x 2x#1 - Kreis mit Text - grau
+	{
+		\linethickness{0.5pt}
+		\color{white}
+		\put(0,0){\circle*{#1}}
+		\color{gray}
+		\put(0,0){\circle{#1}}
+		\put(0,0){\makebox(0,0){\small\textbild{#2}}}
+	}
+}
+\newcommand*{\Papier}[3]{% 3x#1+#2 = (0.0,-#2),(2.1,#1) Ursprung links unten
+	% Länge (Höhe), Länge Abschluss, Name
+	\polyline(0.0,-0.01)(+0.0,+#1)(+2.8,+#1)(+2.8,-0.01)
+	\qbezier(+2.1,+#2)(+2.6,+#2)(+2.8,0.0)
+	\qbezier(+2.1,+#2)(+1.6,+#2)(+1.4,0.0)
+	\qbezier(+0.7,-#2)(+1.2,-#2)(+1.4,0.0)
+	\qbezier(+0.7,-#2)(+0.2,-#2)(+0.0,0.0)
+	\put(0,0){\makebox(+2.8,+#1){\textbild{#3}}}
+}
+\newcommand*{\Terminal}[1]{% 2x2 =(-1.0,-1.4),(+1.0,+0.6)Ursprung im Monitor
+	% Bildschirm
+	%		\put(0,0){\polygon(-1.0,-0.6)(+1.0,-0.6)(+1.0,+0.6)(-1.0,+0.6)}
+	\put(-1.0,-0.6){\framebox(2,1.2){#1}}
+	\put(0,0){\oval[0.1](1.65,0.85)}
+	% Hals
+	\put(0,0){\Line(-0.2,-0.6)(-0.2,-1.0)}
+	\put(0,0){\Line(+0.2,-0.6)(+0.2,-1.0)}
+	% Tastatur
+	\multiput(-1.0,-1.0)(+0.0,-0.133){4}{\line(1,0){2.0}}
+	\multiput(-1.0,-1,0)(+0.2,+0.0){11}{\line(0,-1){0.4}}
+}
+\newcommand*{\Wolke}[1]{% 3.0x1.5 = (-1.5,-1.0),(+1.5,+0.5)
+	% unterer Bogen
+	\qbezier(-1.5,+0.0)(-1.5,-1.0)(-0.0,-1.0)
+	\qbezier(+1.5,+0.0)(+1.5,-1.0)(+0.0,-1.0)
+	% oberer Bogen rechts
+	\qbezier(+1.5,+0.0)(+1.5,+0.5)(+0.8,+0.5)
+	\qbezier(+0.4,+0.4)(+0.4,+0.5)(+0.8,+0.5)
+	% oberer Bogen Mitte
+	\qbezier(+0.5,+0.2)(+0.5,+0.5)(+0.0,+0.5)
+	\qbezier(-0.4,+0.4)(-0.4,+0.5)(-0.0,+0.5)
+	% oberer Bogen links
+	\qbezier(-0.3,+0.2)(-0.3,+0.5)(-0.8,+0.5)
+	\qbezier(-1.5,+0.0)(-1.5,+0.5)(-0.8,+0.5)
+	\put(-1.5,-1.0){\makebox(3.0,1.5){\textbild{#1}}}
+}
+
+% Metasprachliche Symbole ######################################################
+
+\newcommand*{\metaund}{\&\&}%               Und-Symbol  für Texte
+\newcommand*{\metaoder}{||}%                Oder-Symbol für Texte
+\newcommand*{\metaand}{\;\metaund\;}%       Und-Symbol  für Formeln
+\newcommand*{\metaor}{\;\metaoder\;}%       Oder-Symbol für Formeln
+% Nur im Mathematikmodus!
+\newcommand*{\metaimp}{\Rightarrow}%        aus ... folgt ...
+\newcommand*{\metarep}{\Leftarrow}%         ... folgt aus ...
+\newcommand*{\metaequiv}{\Leftrightarrow}%  ... genau dann wenn ...
+\newcommand*{\metadefeq}{:\Leftrightarrow}% ... def.gem. genau dann wenn ...
+\newcommand*{\defeq}{:=}%                   ... definitionsgemäß gleich ...
+\newcommand*{\eq}{=}%                       ... gleich ...
+
+% Mathematische Symbole ########################################################
+
+% Beispieloperatoren ===========================================================
+% \*bsp
+\newcommand*{\opbsp}{\circ}
+\newcommand*{\relbsp}{\sim}
+\newcommand*{\releqbsp}{\simeq}
+\newcommand*{\lrelbsp}{\lhd}
+\newcommand*{\rrelbsp}{\rhd}
+\newcommand*{\lreleqbsp}{\unlhd}
+\newcommand*{\rreleqbsp}{\unrhd}
+
+% Definitionen für die Tabelle der Junktoren ===================================
+% \l*  -           logischer Operator
+% \ln* - negierter logischer Operator
+% Logische Operatoren als Addition und Multiplikation
+\newcommand*{\ladd}{+}
+\newcommand*{\lmult}{\cdot}
+% Wahrheitswerte ---------------------------------------------------------------
+\newcommand*{\texttrue}{W}%  in einem Kommentar stets 'W'
+\newcommand*{\textfalse}{F}% in einem Kommentar stets 'F'
+% Konstante --------------------------------------------------------------------
+\newcommand*{\ltrue}{\top}%      W - wahr
+%\newcommand*{\lnfalse}{\notbot}% " - nicht falsch
+\newcommand*{\lfalse}{\bot}%     F - falsch
+%\newcommand*{\lntrue}{\nottop}%  " - nicht wahr
+% unäre Operatoren -------------------------------------------------------------
+%                                                 W F - Aussage A
+%\newcommand*{\lutrue}{\operatorname{\top}}%      W W - wahr [unär]
+%\newcommand*{\lnufalse}{\operatorname{\notbot}}% " " - nicht falsch [unär]
+%                                                 W F - A
+%             \lnot                               F W - nicht
+%\newcommand*{\lufalse}{\operatorname{\bot}}%     F F - falsch [unär]
+%\newcommand*{\lnutrue}{\operatorname{\nottop}}%  " " - nicht wahr [unär]
+% binäre Operatoren ------------------------------------------------------------
+%                                                    W W F F - Aussage A
+%                                                    W F W F - Aussage B
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%\newcommand*{\lbtrue}{\operatorname{\top}}%         W W W W - wahr [binär]
+%\newcommand*{\lnbfalse}{\operatorname{\notbot}}%    " " " " - nicht falsch
+%            \lor                                    W W W F - A oder B
+\newcommand*{\lrep}{\leftarrow}%                     W W F W - A folgt aus B
+\newcommand*{\lrepA}{\Leftarrow}%
+\newcommand*{\lrepB}{\subset}%
+\newcommand*{\lleft}{\operatorname{\rfloor}}%        W W F F - A
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\newcommand*{\limp}{\rightarrow}%                    W F W W - aus A folgt B
+\newcommand*{\limpA}{\Rightarrow}%
+\newcommand*{\limpB}{\supset}%
+\newcommand*{\lright}{\operatorname{\lfloor}}%       W F W F - B
+\newcommand*{\lequiv}{\leftrightarrow}%              W F F W - A genau dann,
+\newcommand*{\lequivA}{\Leftrightarrow}%                       wenn B
+%            \lnxor                                  " " " " - nicht
+%                                                         (entweder A oder B)
+%            \land                                   W F F F - A und B
+\newcommand*{\landA}{\&}
+\newcommand*{\landB}{\lmult}
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\newcommand*{\lnand}{\uparrow}%                      F W W W - nicht
+\newcommand*{\lnandA}{\barwedge}%                              (A und B)
+\newcommand*{\lnandB}{\mid}%
+\newcommand*{\lxor}{\ladd}%                          F W W F - entweder A
+\newcommand*{\lxorA}{\operatorname{\dot\lor}}%                 oder B
+\newcommand*{\lxorB}{\veebar}%
+\newcommand*{\lxorC}{\oplus}%
+\newcommand*{\lnequiv}{\nleftrightarrow}%            " " " " - nicht
+\newcommand*{\lnequivA}{\nLeftrightarrow}%            (A genau dann, wenn B)
+\newcommand*{\lnequivB}{\notequiv}%
+\newcommand*{\lnright}{\lceil}%                      F W F W - nicht B
+\newcommand*{\lnimp}{\nrightarrow}%                  F W F F - nicht
+\newcommand*{\lnimpA}{\nRightarrow}%                         (aus A folgt B)
+\newcommand*{\lnimpB}{\nsupset}%
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\newcommand*{\lnleft}{\rceil}%                       F F W W - nicht A
+\newcommand*{\lnrep}{\nleftarrow}%                   F F W F - nicht
+\newcommand*{\lnrepA}{\nLeftarrow}%                          (A folgt aus B)
+\newcommand*{\lnrepB}{\nsubset}%
+\newcommand*{\lnor}{\downarrow}%                     F F F W - nicht
+\newcommand*{\lnorA}{\operatorname{\overline\vee}}%            (A oder B)
+%\newcommand*{\lbfalse}{\operatorname{\bot}}%        F F F F - falsch[binär]
+%\newcommand*{\lnbtrue}{\operatorname{\nottop}}%     " " " " - nicht wahr
+
+% Verwendete Mengenbezeichnungen ===============================================
+
+% \gs* = globales Symbol
+\newcommand*{\gsN}{\mathbb{N}}%    Menge der natürlichen Zahlen ohne 0
+\newcommand*{\gsNo}{\mathbb{N}_0}% Menge der natürlichen Zahlen einschließlich 0
+
+% \as* = aussagenlogisches Symbol
+\newcommand*{\asA}{\mathcal{A}}%       Alphabet der Sprache
+\newcommand*{\asAx}{\mathcal{A}_x}%    ... davon eine Teilmenge bzgl. \asJx
+\newcommand*{\asAy}{\mathcal{A}_y}%    entsprechend \asAx
+\newcommand*{\asB}{\mathcal{B}}%       Menge der binären Operatoren
+\newcommand*{\asC}{\mathcal{C}}%       Menge der Konstanten
+\newcommand*{\asF}{\mathcal{F}}%       Menge der Formeln
+\newcommand*{\asFp}{\mathcal{F}^p}%    ... in polnischer Notation
+\newcommand*{\asFx}{\mathcal{F}_x}%    Teilenge der Formeln
+\newcommand*{\asFxp}{\mathcal{F}_x^p}% ... bzgl. \asJx in polnischer Notation
+\newcommand*{\asFy}{\mathcal{F}_y}%    entsprechend \asFx
+\newcommand*{\asFyp}{\mathcal{F}_y^p}% entsprechend \asFxp
+\newcommand*{\asJ}{\mathcal{J}}%       Menge der Junktoren
+\newcommand*{\asJx}{\mathcal{J}_x}%    Teilmenge der Junktoren
+\newcommand*{\asJy}{\mathcal{J}_y}%    entsprechend \asJx
+\newcommand*{\asM}{\mathcal{M}}%       Metaoperatoren und "Gleichheiten"
+\newcommand*{\asU}{\mathcal{U}}%       Menge der unären Operatoren
+\newcommand*{\asV}{\mathcal{V}}%       Menge der atomaren Formeln
+\newcommand*{\asX}{\mathcal{X}}%       Mengenvariable
+% verschiedene Indizes für Teilmengen von \asA, \asF, \asFp und \asJ
+\newcommand*{\xAnd}{\mathrm{and}}%
+\newcommand*{\xBool}{\mathrm{bool}}%
+\newcommand*{\xImp}{\mathrm{imp}}%
+\newcommand*{\xNand}{\mathrm{nand}}%
+\newcommand*{\xNor}{\mathrm{nor}}%
+\newcommand*{\xOr}{\mathrm{or}}%
+\newcommand*{\xRep}{\mathrm{rep}}%
+
+% sonstige nützliche Kommandos #################################################
+
+% Im Parameter von '\turl' muss '\' vor jedem Zeichen aus '{}#&%$' ein '\'
+% stehen und '\' / '~' durch '\textbackslash' / '\textasctilde' ersetzt werden.
+\newcommand*{\tourl}[1]{$\rightarrow$~\url{#1}}
+\newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
+\newcommand*{\formulaspace}{&&&&}%         Für Platz zwischen den Formeln
+\newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
+\newcommand*{\charqt}[1]{'#1'}%          Quotierung von Zeichen    (character)
+\newcommand*{\strqt}[1]{\enquote{#1}}%   Quotierung von Zeichenketten (string)
+% Nur mit Parameter im Mathematikmodus!
+%TODO einzelne Symbole in `...´ einschließen!
+\newcommand*{\symqt}[1]{\charqt{#1}}%    Quotierung einzelner Symbole (symbol)
+\newcommand*{\forqt}[1]{\strqt{#1}}%     Quotierung von Formeln      (formula)
+
+% Strukturbezeichnungen ergänzen
+\newcommand*{\sectionname}{Abschnitt}
+\newcommand*{\subsectionname}{Unterabschnitt}
+\newcommand*{\subsubsectionname}{Paragraph}
+
+% Abkürzungen mit Punkten; zur Unterscheidung vom Satzende
+\newcommand*{\textbzgl}{bzgl.\@ }
+\newcommand*{\textbzw}{bzw.\@ }
+\newcommand*{\textdh}{d.\@\,h.\@ }
+\newcommand*{\textggf}{ggf.\@ }
+\newcommand*{\textiAlg}{i.\@\,Alg.\@ }
+\newcommand*{\textua}{u.\@\,a.\@ }
+\newcommand*{\textusw}{usw.\@ }
+\newcommand*{\textzB}{z.\@\,B.\@ }
+\newcommand*{\textZB}{Z.\@\,B.\@ }
+
+% Ergebnis von Makros verschwinden lassen
+\newcommand*{\hidden}[1]{}
+
+% Glossareinträge ##############################################################
+
+% Indices und Symbole ==========================================================
+\makeindex
+\newindex[Symbolverzeichnis]{sym}
+\newindex[Index]{idx}
+\newcommand*{\Idx}[1]{#1\idx{#1}}%   normaler Index
+\newcommand*{\Sym}[1]{#1\sym{$#1$}}% Symbol - Nur im Mathematikmodus verwenden!
+
+% Glossareinträge ==============================================================
+\GlsSetQuote{+}% wegen Gebrauch von ngerman; see glossaries guide for beginners
+\makeglossaries
+\setacronymstyle{long-sc-short}
+
+% ==============================================================================
+
+% Symbole für Beispieloperatoren
+
+\newglossaryentry{lrelbsp}{
+	name={$ \lrelbsp$},
+	plural={\lrelbsp},% im Mathematikmodus
+	description={%
+		Beispiel für eine Relation mit Umkehrrelation $\rreleqbsp$%
+	}
+}
+\newglossaryentry{lreleqbsp}{
+	name={$ \lreleqbsp$},
+	plural={\lreleqbsp},% im Mathematikmodus
+	description={%
+		Beispiel für eine Relation mit Gleichheit und Umkehrrelation $\rreleqbsp$%
+	}
+}
+\newglossaryentry{relbsp}{
+	name={$ \relbsp$},
+	plural={\relbsp},% im Mathematikmodus
+	description={%
+		Beispiel für eine Relation%
+	}
+}
+\newglossaryentry{releqbsp}{
+	name={$ \releqbsp$},
+	plural={\releqbsp},% im Mathematikmodus
+	description={%
+		Beispiel für eine Relation mit Gleichheit%
+	}
+}
+\newglossaryentry{rrelbsp}{
+	name={$ \rrelbsp$},
+	plural={\rrelbsp},% im Mathematikmodus
+	description={%
+		Beispiel für eine Relation mit Umkehrrelation $\lrelbsp$%
+	}
+}
+\newglossaryentry{rreleqbsp}{
+	name={$ \rreleqbsp$},
+	plural={\rreleqbsp},% im Mathematikmodus
+	description={%
+		Beispiel für eine Relation mit Gleichheit und Umkehrrelation $\lreleqbsp$%
+	}
+}
+
+% Symbole für Metaoperatoren
+
+\newglossaryentry{defeq}{
+	name={$ \defeq$},
+	plural={\defeq},% im Mathematikmodus
+	description={%
+		Metaoperator: ... definitionsgemäß gleich ..%
+	}
+}
+\newglossaryentry{eq}{
+	name={$ \eq$},
+	plural={\eq},% im Mathematikmodus
+	description={%
+		Metaoperator: ... gleich ..%
+	}
+}
+\newglossaryentry{equiv}{
+	name={$ \equiv$},
+	plural={\equiv},% im Mathematikmodus
+	description={%
+		(Meta-)Operator: ... äquivalent zu ..%
+	}
+}
+\newglossaryentry{ne}{
+	name={$ \ne$},
+	plural={\ne},% im Mathematikmodus
+	description={%
+		Metaoperator: ... ungleich ..%
+	}
+}
+\newglossaryentry{metaand}{
+	name={$ \metaund$},
+	plural={\metaand},% im Mathematikmodus
+	description={%
+		Metaoperator: ... oder ..%
+	}
+}
+\newglossaryentry{metadefeq}{
+	name={$ \metadefeq$},
+	plural={\metadefeq},% im Mathematikmodus
+	description={%
+		Metaoperator: ... definitionsgemäß genau dann wenn ..%
+	}
+}
+\newglossaryentry{metaequiv}{
+	name={$ \metaequiv$},
+	plural={\metaequiv},% im Mathematikmodus
+	description={%
+		Metaoperator: ... genau dann wenn ..%
+	}
+}
+\newglossaryentry{metaimp}{
+	name={$ \metaimp$},
+	plural={\metaimp},% im Mathematikmodus
+	description={%
+		Metaoperator: ... dann auch ..%
+	}
+}
+\newglossaryentry{metaor}{
+	name={$ \metaoder$},
+	plural={\metaor},% im Mathematikmodus
+	description={%
+		Metaoperator: ... oder ..%
+	}
+}
+\newglossaryentry{metarep}{
+	name={$ \metarep$},
+	plural={\metarep},% im Mathematikmodus
+	description={%
+		Metaoperator: ... sofern ..%
+	}
+}
+
+% sonstige Operatoren
+
+\newglossaryentry{lfalse}{
+	name={$ \lfalse$},
+	plural={\lfalse},% im Mathematikmodus
+	description={%
+		Aussagenlogische Konstante: Falsch%
+	}
+}
+\newglossaryentry{ltrue}{
+	name={$ \ltrue$},
+	plural={\ltrue},% im Mathematikmodus
+	description={%
+		Aussagenlogische Konstante: Wahr%
+	}
+}
+
+% Symbole für Mengen
+
+\newglossaryentry{gsN}{
+	name={$ \gsN$},
+	plural={\gsN},% im Mathematikmodus
+	description={%
+		Menge der natürlichen Zahlen ohne 0%
+	}
+}
+\newglossaryentry{gsNo}{
+	name={$ \gsNo$},
+	plural={\gsNo},% im Mathematikmodus - erfolgt im falschen Zeichensatz!
+	description={%
+		Menge der natürlichen Zahlen einschließlich 0%
+	}
+}
+\newglossaryentry{asA}{
+	name={$ \asA$},
+	plural={\asA},% im Mathematikmodus
+	description={%
+		Alphabet der aussagenlogischen Sprache%
+	}
+}
+\newglossaryentry{asAx}{
+	name={$ \asAx$},
+	plural={\asAx},% im Mathematikmodus
+	description={%
+		Teilmenge des Alphabets $\asA$ der aussagenlogischen Sprache%
+	}
+}
+\newglossaryentry{asB}{
+	name={$ \asB$},
+	plural={\asB},% im Mathematikmodus
+	description={%
+		Menge der aussagenlogischen, binären Operatoren%
+	}
+}
+\newglossaryentry{asC}{
+	name={$ \asC$},
+	plural={\asC},% im Mathematikmodus
+	description={%
+		Menge der aussagenlogischen Konstanten%
+	}
+}
+\newglossaryentry{asF}{
+	name={$ \asF$},
+	plural={\asF},% im Mathematikmodus
+	description={%
+		Menge der aussagenlogischen Formeln mit Klammerung%
+	}
+}
+\newglossaryentry{asFp}{
+	name={$ \asFp$},
+	plural={\asFp},% im Mathematikmodus
+	description={%
+		Menge der aussagenlogischen Formeln in polnischer Notation%
+	}
+}
+\newglossaryentry{asFx}{
+	name={$ \asFx$},
+	plural={\asFx},% im Mathematikmodus
+	description={%
+		Teilmenge der Menge $\asF$
+		der aussagenlogischen Formeln mit Klammerung%
+	}
+}
+\newglossaryentry{asFxp}{
+	name={$ \asFxp$},
+	plural={\asFxp},% im Mathematikmodus
+	description={%
+		Teilmenge der Menge $\asF$
+		der aussagenlogischen Formeln in polnischer Notation%
+	}
+}
+\newglossaryentry{asJ}{
+	name={$ \asJ$},
+	plural={\asJ},% im Mathematikmodus
+	description={%
+		Menge der aussagenlogischen Operatoren%
+	}
+}
+\newglossaryentry{asJx}{
+	name={$ \asJx$},
+	plural={\asJx},% im Mathematikmodus
+	description={%
+		Teilmenge der Menge $\asJ$ der aussagenlogischen Operatoren
+	}
+}
+\newglossaryentry{asM}{
+	name={$ \asM$},
+	plural={\asM},% im Mathematikmodus
+	description={%
+		Menge der Metaoperatoren und der mit Gleichheit verwandten Symbole%
+	}
+}
+\newglossaryentry{asU}{
+	name={$ \asU$},
+	plural={\asU},% im Mathematikmodus
+	description={%
+		Menge der aussagenlogischen, unären Operatoren%
+	}
+}
+\newglossaryentry{asV}{
+	name={$ \asV$},
+	plural={\asV},% im Mathematikmodus
+	description={%
+		Menge der aussagenlogischen, atomaren Formeln%
+	}
+}
+
+% keine Symbole mehr
+
+\newglossaryentry{Aussage}{
+	name={Aussage},
+	plural={Aussagen},
+	description={%
+		Eine Aussage in natürlicher Sprache oder als Formel,
+		die einen Wahrheitswert liefert%
+	}
+}
+\newglossaryentry{Aussagenlogik}{
+	name={Aussagenlogik},
+	description={%
+		\see \sectionname~\vref{sec:Aussagenlogik}%
+	}
+}
+\newglossaryentry{Beweisschritt}{
+	name={Beweisschritt},
+	plural={Beweisschritte},
+	description={%
+		Eine Vorschrift, wie aus vorgegebenen Aussagen eine weitere folgt%
+	}
+}
+\newcommand*{\ASBA}{\textsf{\glsIdx{ASBA}}}
+\newacronym{ASBA}{ASBA}{
+	Das zu entwickelnde Programmsystem,
+	das \textbf{A}xiome, \textbf{S}ätze,
+	\textbf{B}eweise und \textbf{A}uswertungen behandeln kann%
+}
+\newglossaryentry{Ausgabeschema}{
+	name={Ausgabeschema},
+	plural={Ausgabeschemata},
+	description={%
+		Ein Schema, mit dem bestimmte mathematische Objekte
+		ausgegeben werden sollen%
+	}
+}
+\newglossaryentry{Axiom}{
+	name={Axiom},
+	plural={Axiome},
+	description={%
+		Eine Formel, die unbewiesen als wahr angesehen wird%
+	}
+}
+\newglossaryentry{Beweis}{
+	name={Beweis},
+	plural={Beweise},
+	description={%
+		Eine zulässige
+		Ableitung einer Folgerung aus gegebenen Voraussetzungen%
+	}
+}
+\newglossaryentry{Fachbegriff}{
+	name={Fachbegriff},
+	plural={Fachbegriffe},
+	description={%
+		Ein Name für einen mathematischen Begriff%
+	}
+}
+\newglossaryentry{Fachgebiet}{
+	name={Fachgebiet},
+	plural={Fachgebiete},
+	description={%
+		Ein Teil der Mathematik mit einer zugehörigen Basis aus Axiomen, Sätzen und spezifischen Fachbegriffen und Darstellungen%
+	}
+}
+\newglossaryentry{FormalelementV}{
+	name={formales Element},   % ein   ...
+	plural={formale Elemente}, % viele ...
+	description={%
+		Ein mathematisches Element in formaler Schreibweise.
+		Bis auf wenige Aussagen kommen darin \glsIdxPl{MetaausdruckV} nicht mehr vor%
+	}%
+}
+\newglossaryentry{intEigenschaftA}{
+	name={interessierende Eigenschaft},      % eine ...
+	plural={interessierenden Eigenschaften}, % alle ...
+	description={
+		Interessierende Eigenschaften sind solche, die \textbzgl \symqt{$=$} \textbzw \symqt{$\equiv$} von Interesse sind.
+		\textZB ist die interessierende Eigenschaft der Operanden der Gleichung \forqt{$y=f(x)$} normalerweise der Wert (von \forqt{$y$} und \forqt{$f(x)$}), und nicht deren Darstellung (Zeichenketten)%
+	}%
+}
+\newglossaryentry{MetaausdruckV}{
+	name={metasprachlicher Ausdruck},   % ein   ...
+	plural={metasprachliche Ausdrücke}, % viele ...
+	description={%
+		Eine in normaler Sprache verfasste Aussage, die auch zusammengesetzt sein kann%
+	}%
+}
+\newglossaryentry{MetaaussageV}{
+	name={metasprachliche Aussage},    % eine   ...
+	plural={metasprachliche Aussagen}, % viele ...
+	description={%
+		Eine in \glsIdx{Metasprache} verfasste Aussage, die auch zusammengesetzt sein kann%
+	}%
+}
+\newglossaryentry{MetaoperatorV}{
+	name={metasprachlicher Operator},    % ein   ...
+	plural={metasprachliche Operatoren}, % viele ...
+	description={%
+		Ein Operator, deren Operanden \glsIdxPl{MetaausdruckV} sind%
+	}%
+}
+\newglossaryentry{Metasprache}{
+	name={Metasprache},
+	plural={Metasprachen},
+	description={%
+		Eine Sprache, in der Aussagen über Elemente einer anderen Sprache getroffen werden können%
+	}%
+}
+\newglossaryentry{Praedikat}{
+	name={Prädikat},
+	plural={Prädikate},
+	description={%
+		Ein Element der \glsIdx{Praedikatenlogik} (\see \sectionname~\vref{sec:Prädikatenlogik}).
+		\textZB kann man eine \forqt{$Gruppe$} als ein dreistelliges Prädikat \forqt{$Gruppe(G,+,\cdot)$} definieren, in dem $G$ eine Menge und \symqt{$+$} und \symqt{$\cdot$} Operationen in \forqt{$G \times G$} sind, so dass die Gruppenaxiome erfüllt sind%
+	}
+}
+\newglossaryentry{Praedikatenlogik}{
+	name={Prädikatenlogik},
+	description={%
+		\see \sectionname~\vref{sec:Prädikatenlogik}%
+	}
+}
+\newglossaryentry{Satz}{
+	name={Satz},
+	plural={Sätze},
+	description={%
+		Eine mathematische Aussage, dass eine bestimmte Folgerung aus gegebenen Voraussetzungen abgeleitet werden kann%
+	}
+}
+\newglossaryentry{Schlussregel}{
+	name={Schlussregel},
+	plural={Schlussregeln},
+	description={%
+		\see \sectionname~\vref{sec:Schlussregeln}%
+	}
+}
+\newglossaryentry{vergleichbar}{
+	name={vergleichbar},
+	plural={vergleichbare},
+	description={
+		Zwei \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{FormalelementV} heißen -- auf eine bestimmte Art -- vergleichbar, wenn sie auf diese Art (\textzB als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
+		Die Art muss implizit bekannt oder explizit angegeben sein.
+		Meistens genügt es zu wissen, was für \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{FormalelementV} es sind.
+		Beide müssen dann nur von derselben Art sein%
+	}%
+}
+\newglossaryentry{Wahrheitswert}{
+	name={Wahrheitswert},
+	plural={Wahrheitswerte},
+	description={%
+		Wahrheitswerte sind die Werte \strqt{wahr} und \strqt{falsch}, oft auch als \strqt{true} und \strqt{false} oder einfach \charqt{1} und \charqt{0} bezeichnet%
+	}
+}
+
+% Symbol/Index und Glossareintrag ==============================================
+
+\newcommand*{\glsSym}[1]{\glspl{#1}\sym{\gls{#1}}}% Symbol - Im Mathematikmodus!
+\newcommand*{\glsIdx}[1]{\gls{#1}\idx{\gls{#1}}}%     normal
+\newcommand*{\GlsIdx}[1]{\Gls{#1}\idx{\gls{#1}}}%     groß
+\newcommand*{\glsIdxBg}[2]{#2\idx{\gls{#1}}}%                  Beugung
+\newcommand*{\GlsIdxBg}[2]{#2\idx{\gls{#1}}}%         groß und Beugung
+\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%          Plural
+\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}% groß und Plural

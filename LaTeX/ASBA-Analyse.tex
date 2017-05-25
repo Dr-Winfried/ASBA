@@ -1,0 +1,642 @@
+%%############################################################################%%
+%%                                                                            %%
+%% Datei:  ASBA-Analyse.tex                                                   %%
+%% Inhalt: Kapitel "Analyse"                                                  %%
+%%                                                                            %%
+%% Copyright (C) 2017  Winfried Teschers                                      %%
+%%                                                                            %%
+%% This program is free software: you can redistribute it and/or modify       %%
+%% it under the terms of the GNU Affero General Public License as published   %%
+%% by the Free Software Foundation, either version 3 of the License, or       %%
+%% (at your option) any later version.                                        %%
+%%                                                                            %%
+%% This program is distributed in the hope that it will be useful,            %%
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of             %%
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              %%
+%% GNU Affero General Public License for more details.                        %%
+%%                                                                            %%
+%% You should have received a copy of the GNU Affero General Public License   %%
+%% along with this program.  If not, see <http://www.gnu.org/licenses/>.      %%
+%%                                                                            %%
+%% Dr. Winfried Teschers                                                      %%
+%% Anton-Günther-Str. 26c                                                     %%
+%% 91083 Baiersdorf                                                           %%
+%% Germany                                                                    %%
+%%                                                                            %%
+%% e-mail: winfried.teschers@t-online.de                                      %%
+%%                                                                            %%
+%%############################################################################%%
+
+% !TeX root = ASBA.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+
+\chapter{Analyse}% #############################################################
+\beginchapter{Analyse}
+\label{cha:Analyse}
+
+In der Mathematik gibt es eine unüberschaubare Menge an \glsIdxPl{Axiom}n, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n, \emph{\glsIdxPl{Fachbegriff}n}%
+\footnote{%
+	\emph{\glsIdxPl{Fachbegriff}} sind Namen für mathematische Elemente und Konstruktionen, \textzB \glsIdxPl{Axiom}, \glsIdxPl{Satz},  \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet}.
+	Symbole können als spezielle \glsIdxPl{Fachbegriff} aufgefasst werden.%
+}
+und \emph{\glsIdxPl{Fachgebiet}n}%
+\footnote{%
+	Ein \emph{\glsIdx{Fachgebiet}} ist ein Teil der Mathematik mit einer zugehörigen Basis an Axiomen, \glsIdxPl{Satz}n und spezifischen \glsIdxPl{Fachbegriff}n und Darstellungen.
+	\textZB \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}.
+	Ein \glsIdx{Fachgebiet} kann sehr klein sein und im Extremfall kein einziges Element enthalten.
+	\emph{Umgebung} wäre eine bessere Bezeichnung, ist aber schon ein verbreiteter \glsIdx{Fachbegriff}, so dass hier die Bezeichnung \glsIdx{Fachgebiet} verwendet wird.%
+}.
+Zu den meisten \glsIdxPl{Fachgebiet}n gibt es noch ungelöste Probleme.
+
+Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, \glsIdxPl{Beweis} automatisch zu überprüfen.
+Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
+In diesem Dokument werden die Grundlagen für das zu entwickelnde \ASBA\ behandelt.
+
+Ein Programmsystem mit ähnlicher Aufgabenstellung findet sich im GitHub Projekt Hilbert~II (\seename~\cite{bib:HilbertII, bib:qedeq}).
+Einige Ideen sind von dort übernommen worden.
+
+\section{Fragen}% ==============================================================
+\beginsection{Fragen}
+\label{sec:Fragen}
+
+Einige der Fragen, die in diesem Zusammenhang auftauchen,
+werden hier formuliert:
+
+\begin{enumerate}
+	
+	\item \label{Frage:Grundlagen} \emph{Grundlagen}:
+	Was sind die Grundlagen?
+	\textZB welche Logik und Mengenlehre.
+	
+	\item \label{Frage:Basis} \emph{Basis}:
+	Welche wichtigen \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} gibt es?
+	Welche davon sind Standard?
+	
+	\item \label{Frage:Axiome} \emph{\glsIdxPl{Axiom}}:
+	Welche \glsIdxPl{Axiom} werden bei einem \glsIdx{Satz} oder \glsIdx{Beweis} vorausgesetzt?
+	Allgemein anerkannte oder auch strittige, wie \textzB den \emph{Satz vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
+	
+	\item \label{Frage:Beweis} \emph{\glsIdx{Beweis}}:
+	Ist ein \glsIdx{Beweis} fehlerfrei?
+	
+	\item \label{Frage:Konstruktion} \emph{Konstruktion}:
+	Gibt es einen konstruktiven \glsIdx{Beweis}?
+	
+	\item \label{Frage:Vergleiche} \emph{Vergleiche}:
+	Welcher \glsIdx{Beweis} ist besser?
+	Nach welchem Kriterium?
+	\textZB elegant, kurz, einsichtig oder wenige \glsIdxPl{Axiom}.
+	Was heißt eigentlich \emph{elegant}?
+	
+	\item \label{Frage:Definitionen} \emph{Definitionen}:
+	Was ist mit einem \glsIdx{Fachbegriff} jeweils genau gemeint?
+	\textZB \emph{Stetigkeit}, \emph{Integral} und \emph{Analysis}.
+	
+	\item \label{Frage:Abhängigkeiten} \emph{Abhängigkeiten}:
+	Wie heißt ein \glsIdx{Fachbegriff} in einer anderen Sprache?
+	Ist wirklich dasselbe gemeint?
+	Was ist mit \glsIdxPl{Fachbegriff}n in verschiedenen \glsIdxPl{Fachgebiet}n?
+	
+	\item \label{Frage:Überblick} \emph{Überblick}:
+	Ist ein \glsIdx{Axiom}, \glsIdx{Satz}, \glsIdx{Beweis} oder Fachbegriff schon einmal -- \textggf abweichend -- definiert, formuliert oder bewiesen worden?
+	
+	\item \label{Frage:Darstellung} \emph{Darstellung}:
+	Wie kann man einen \glsIdx{Satz} und den zugehörigen \glsIdx{Beweis} -- \textggf auch spezifisch für ein \glsIdx{Fachgebiet} -- darstellen?
+	
+	\item \label{Frage:Forschung} \emph{Forschung}:
+	Welche Probleme gibt es noch zu erforschen.
+	
+\end{enumerate}
+
+\section{Eigenschaften}% =======================================================
+\beginsection{Eigenschaften}
+\label{sec:Eigenschaften}
+
+Ausgehend von den Fragen in \sectionname~\vref{sec:Fragen}
+soll \ASBA\ entwickelt werden, das die folgenden Eigenschaften hat:
+\begin{enumerate}
+	
+	\item \label{Eigenschaft:Daten} \emph{Daten}:
+	\glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} können in formaler Form gespeichert werden -- auch nicht oder unvollständig bewiesene \glsIdxPl{Satz}.
+	Dabei soll die übliche mathematische Schreibweise verwendet werden können.
+	
+	\item \label{Eigenschaft:Definitionen} \emph{Definitionen}:
+	Es können \glsIdxPl{Fachbegriff} für \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet} -- letztere mit eigenen Axiomen, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n, \glsIdxPl{Fachbegriff}n und über- oder untergeordneten \glsIdxPl{Fachgebiet}n -- definiert werden.
+	Die Definitionen dürfen wiederum an dieser Stelle schon bekannte \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} verwenden.
+	
+	\item \label{Eigenschaft:Prüfung} \emph{Prüfung}:
+	Vorhandene \glsIdxPl{Beweis} können automatisch geprüft werden.
+	
+	\item \label{Eigenschaft:Ausgaben} \emph{Ausgaben}:
+	Die \glsIdxPl{Axiom}, \glsIdxPl{Satz} und \glsIdxPl{Beweis} können in üblicher Schreibweise -- abhängig von Sprache und \glsIdx{Fachgebiet} -- ausgegeben werden.
+	
+	\item \label{Eigenschaft:Auswertungen} \emph{Auswertungen}:
+	Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \sectionname~\vref{sec:Fragen} behandelten Fragen.
+	
+	\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
+\end{enumerate}
+Damit \ASBA\ nicht umsonst erstellt wird und möglichst breite Verwendung findet, werden noch zwei Punkte angefügt:
+\begin{enumerate}
+	\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
+	
+	\item \label{Eigenschaft:Lizenz} \emph{Lizenz}:
+	Die Software ist \emph{Open Source}.
+	
+	\item \label{Eigenschaft:Akzeptanz} \emph{Akzeptanz}:
+	\ASBA\ wird von Mathematikern akzeptiert und verwendet.
+\end{enumerate}
+
+\tablename~\vref{tab:Fragen->Eigenschaften} zeigt, wie sich die Eigenschaften zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
+Mit einem X werden die Spalten einer Zeile markiert, deren zugehörige Eigenschaften zur Beantwortung der entsprechenden Frage beitragen sollen.
+Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellten Fragen beantworten, was allerdings illusorisch ist.
+
+% Abstände für die nächsten drei Tabellen
+\newcommand*{\vsL}{\hspace{-1.0cm}}%   für 1-stellige Zahlen
+\newcommand*{\vsl}{\hspace{-6pt}\vsL}% für 2-stellige Zahlen
+\newcommand*{\vsc}{\hspace{6pt}}%      für die gedrehten Überschriften
+
+\begin{table}[h]
+	\begin{tabularx}{\linewidth-10.95pt}
+		{@{\hspace{.5cm}}rl@{\extracolsep{\fill}}|*{7}{c}@{\hspace{1cm}}|}
+		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.5cm]%
+			{\textbf{Frage}\\~}{\\\textbf{Eigenschaft}}}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Eigenschaft:Daten}        \vsc Daten        }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Eigenschaft:Definitionen} \vsc Definitionen }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Eigenschaft:Prüfung}      \vsc Prüfung      }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Eigenschaft:Ausgaben}     \vsc Ausgaben     }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Eigenschaft:Auswertungen} \vsc Auswertungen }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Eigenschaft:Lizenz}       \vsc Lizenz       }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Eigenschaft:Akzeptanz}    \vsc Akzeptanz    }}
+		\\\hline
+		\ref{Frage:Grundlagen}      & Grundlagen
+		& X & X & - & X & X & - & - \\
+		\ref{Frage:Basis}           & Basis
+		& X & X & - & X & X & - & - \\
+		\ref{Frage:Axiome}          & \glsIdxPl{Axiom}
+		& X & X & - & X & X & - & - \\
+		\hdashline[2pt/2pt]
+		\ref{Frage:Beweis}          & \glsIdx{Beweis}
+		& X & - & X & X & - & - & - \\
+		\ref{Frage:Konstruktion}    & Konstruktion
+		& X & - & - & X & - & - & - \\
+		\ref{Frage:Vergleiche}      & Vergleiche
+		& X & - & - & - & X & - & - \\
+		\hdashline[2pt/2pt]
+		\ref{Frage:Definitionen}    & Definitionen
+		& X & X & - & X & - & - & - \\
+		\ref{Frage:Abhängigkeiten}  & Abhängigkeiten
+		& X & - & - & X & - & - & - \\
+		\ref{Frage:Überblick}       & Überblick
+		& X & - & - & - & X & - & - \\
+		\hdashline[2pt/2pt]
+		\ref{Frage:Darstellung}     & Darstellung
+		& - & X & - & X & - & - & - \\
+		\ref{Frage:Forschung}       & Forschung
+		& X & - & - & - & X & - & - \\
+		\hline
+	\end{tabularx}
+	\caption{\ref{sec:Fragen} Fragen
+		$\to$ \ref{sec:Eigenschaften} Eigenschaften}
+	\label{tab:Fragen->Eigenschaften}
+\end{table}
+
+\section{Ziele}% ===============================================================
+\beginsection{Ziele}
+\label{sec:Ziele}
+
+Um die Eigenschaften von \sectionname~\vref{sec:Eigenschaften} zu erreichen, werden für \ASBA\ die folgenden Ziele%
+\footnote{%
+	Es sind eigentlich Anforderungen.
+	Da dieser Begriff auch im \chaptername~\vref{cha:Design} verwendet wird, werden die Anforderungen hier \emph{\Idx{Ziel}}\emph{e} genannt.%
+}
+gesetzt:
+\begin{enumerate}
+	
+	\item \label{Ziel:Daten} \emph{Daten}:
+	Es enthält möglichst viele wichtige \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff}, \glsIdxPl{Fachgebiet} und \glsIdxPl{Ausgabeschema}%
+	\footnote{%
+		Um den Punkt~\ref{Eigenschaft:Ausgaben} von \sectionname~\vref{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \glsIdxPl{Ausgabeschema} benötigt, 	welche die Art der Ausgaben beschreiben.%
+	}.
+	
+	\item \label{Ziel:Form} \emph{Form}:
+	Die Daten liegt in formaler, geprüfter Form vor.
+	
+	\item \label{Ziel:Eingaben} \emph{Eingaben}:
+	Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise.
+	
+	\item \label{Ziel:Prüfung} \emph{Prüfung}:
+	Vorhandene \glsIdxPl{Beweis} können automatisch geprüft werden.
+	
+	\item \label{Ziel:Ausgaben} \emph{Ausgaben}:
+	Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener \glsIdxPl{Ausgabeschema} erfolgen.
+	
+	\item \label{Ziel:Auswertungen} \emph{Auswertungen}:
+	Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
+	Insbesondere kann zu jedem \glsIdx{Beweis} angegeben werden, wie viele Beweisschritte und welche \glsIdxPl{Axiom} und \glsIdxPl{Satz}%
+	\footnote{
+		\glsIdxPl{Satz}, die quasi als \glsIdxPl{Axiom} verwendet werden.%
+	}
+	er verwendet.
+	
+	\item \label{Ziel:Anpassbarkeit} \emph{Anpassbarkeit}:
+	\glsIdxPl{Fachbegriff} und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten \glsIdxPl{Fachgebiet}n angepasst werden.
+	
+	\item \label{Ziel:Individualität} \emph{Individualität}:
+	\glsIdxPl{Axiom} und \glsIdxPl{Satz} können für jeden \glsIdx{Beweis} individuell vorausgesetzt werden.
+	Dabei sind fachgebietsspezifische \glsIdxPl{Fachbegriff} erlaubt.
+	
+	\item \label{Ziel:Internet} \emph{Internet}:
+	Die Daten können auf mehrere Dateien verteilt sein.
+	Ein Teil davon -- oder sogar alle -- können im Internet liegen.
+	
+	\item \label{Ziel:Kommunikation} \emph{Kommunikation}:
+	Die Kommunikation mit \ASBA\ kann mit den \glsIdxPl{Fachbegriff}n der einzelnen \glsIdxPl{Fachgebiet} erfolgen.
+	
+	\item \label{Ziel:Zugriff} \emph{Zugriff}:
+	Der Zugriff auf \ASBA\ kann lokal und über das Internet erfolgen.
+	
+	\item \label{Ziel:Unabhängigkeit} \emph{Unabhängigkeit}:
+	\ASBA\ kann online und offline arbeiten.
+	
+	\item \label{Ziel:Rekursion} \emph{Rekursion}:
+	Es kann rekursiv über alle verwendeten Dateien -- auch solchen, die im Internet liegen -- ausgewertet werden.
+	
+	\item \label{Ziel:Bedienbarkeit} \emph{Bedienbarkeit}:
+	\ASBA\ ist einfach zu bedienen.
+	
+	\item \label{Ziel:Lizenz} \emph{Lizenz}:
+	Die Software ist \emph{Open Source}.
+	
+	\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
+\end{enumerate}
+
+Der Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit \ASBA\ effizient arbeiten kann und um die Akzeptanz zu erhöhen:
+\begin{enumerate}
+	\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
+	
+	\item \label{Ziel:Zwischenspeicher} \emph{Zwischenspeicher}:
+	Wichtige Auswertungen können an vorhandenen Dateien angehängt oder separat in eigenen Dateien gespeichert werden.
+	
+\end{enumerate}
+
+\tablename~\vref{tab:Eigenschaften->Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften in \sectionname~\vref{sec:Eigenschaften} verhalten.
+Mit einem X werden wieder die Spalten einer Zeile markiert, deren zugehörige Ziele zur Sicherstellung der entsprechenden Eigenschaft beitragen sollen.
+Idealerweise sollte durch Erreichen aller aufgestellten Ziele \gls{ASBA} alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
+\begin{table}[ht]
+	\begin{tabularx}{\linewidth-10.95pt}
+		{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{16}{c}@{\hspace{0.4cm}}|}
+		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]%
+			{\textbf{Eigenschaft}\\~}{\\\\\\\textbf{Ziel}}}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Daten}            \vsc Daten            }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Form}             \vsc Form             }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Eingaben}         \vsc Eingaben         }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Prüfung}          \vsc Prüfung          }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Ausgaben}         \vsc Ausgaben         }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Auswertungen}     \vsc Auswertungen     }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Anpassbarkeit}    \vsc Anpassbarkeit    }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Individualität}   \vsc Individualität   }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Internet}         \vsc Internet         }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Kommunikation}    \vsc Kommunikation    }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Zugriff}          \vsc Zugriff          }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Unabhängigkeit}   \vsc Unabhängigkeit   }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Rekursion}        \vsc Rekursion        }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Bedienbarkeit}    \vsc Bedienbarkeit    }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Lizenz}           \vsc Lizenz           }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Zwischenspeicher} \vsc Zwischenspeicher }}
+		\\\hline
+		\ref{Eigenschaft:Daten}        & Daten%
+		& X & X & X & - & - & - & - & - & - & - & - & - & - & - & - &-\\
+		\ref{Eigenschaft:Definitionen} & Definitionen%
+		& X & - & X & - & - & - & - & - & - & - & - & - & - & - & - &-\\
+		\ref{Eigenschaft:Prüfung}      & Prüfung
+		& - & - & - & X & - & - & - & - & - & - & - & - & - & - & - &-\\
+		\hdashline[2pt/2pt]
+		\ref{Eigenschaft:Ausgaben}     & Ausgaben%
+		& - & - & - & - & X & - & - & - & - & - & - & - & - & - & - &-\\
+		\ref{Eigenschaft:Auswertungen} & Auswertungen%
+		& - & - & - & - & - & X & - & - & - & - & - & - & - & - & - &-\\
+		\ref{Eigenschaft:Lizenz}       & Lizenz%
+		& - & - & - & - & - & - & - & - & - & - & - & - & - & - & X &-\\
+		\hdashline[2pt/2pt]
+		\ref{Eigenschaft:Akzeptanz}    & Akzeptanz%
+		& X & X & X & X & X & X & X & X & X & X & X & X & X & X & X &X\\
+		\hline
+	\end{tabularx}
+	\caption{\ref{sec:Eigenschaften}
+		Eigenschaften $\to$ \ref{sec:Ziele} Ziele}
+	\label{tab:Eigenschaften->Ziele}% Erst nach '\caption'!
+\end{table}
+
+\section{Zusammenfassung}% =====================================================
+\beginsection{Zusammenfassung}
+\label{sec:Zusammenfassung}
+
+Die \tablename~\vref{tab:Fragen->Ziele} ist eine Kombination aus den \tablename n~\vref{tab:Fragen->Eigenschaften} und~\vref{tab:Eigenschaften->Ziele} und zeigt, wie sich die Ziele in \sectionname~\vref{sec:Ziele} zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
+Auch hier werden mit einem X die Spalten einer Zeile markiert, deren zugehörige Ziele für die Beantwortung der entsprechenden Frage nötig sind.
+Mit einem kleinen x werden sie markiert, wenn sie zur Beantwortung der Fragen nicht nötig, aber von Interesse sind.
+Idealerweise sollte das Erreichen aller aufgestellten Ziele wieder alle gestellten Fragen beantworten, was natürlich auch illusorisch ist.
+\begin{table}[ht]
+	\begin{tabularx}{\linewidth-10.95pt}
+		{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{15}{c}@{\hspace{0.4cm}}|}
+		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]%
+			{\textbf{Frage}\\~}{\\\\\\\textbf{Ziel}}}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Daten}            \vsc Daten            }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Form}             \vsc Form             }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Eingaben}         \vsc Eingaben         }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Prüfung}          \vsc Prüfung          }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Ausgaben}         \vsc Ausgaben         }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Auswertungen}     \vsc Auswertungen     }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Anpassbarkeit}    \vsc Anpassbarkeit    }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Individualität}   \vsc Individualität   }}
+		&\rotatebox{90}{%
+			\mbox{\vsL\ref{Ziel:Internet}         \vsc Internet         }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Kommunikation}    \vsc Kommunikation    }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Zugriff}          \vsc Zugriff          }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Unabhängigkeit}   \vsc Unabhängigkeit   }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Rekursion}        \vsc Rekursion        }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Bedienbarkeit}    \vsc Bedienbarkeit    }}
+		&\rotatebox{90}{%
+			\mbox{\vsl\ref{Ziel:Lizenz}           \vsc Lizenz           }}
+		\\\hline
+		\ref{Frage:Grundlagen}      & Grundlagen%
+		& X & X & X & - & X & X & x & - & - & - & - & - & - & - & - \\
+		\ref{Frage:Basis}           & Basis%
+		& X & X & X & - & X & X & x & x & - & - & - & - & - & - & - \\
+		\ref{Frage:Axiome}          & \glsIdxPl{Axiom}%
+		& X & X & X & - & X & X & x & - & - & - & - & - & - & - & - \\
+		\hdashline[2pt/2pt]
+		\ref{Frage:Beweis}          & \glsIdx{Beweis}%
+		& X & X & X & X & X & - & - & x & - & - & - & - & - & - & - \\
+		\ref{Frage:Konstruktion}    & Konstruktion%
+		& X & X & X & - & X & - & - & x & - & - & - & - & - & - & - \\
+		\ref{Frage:Vergleiche}      & Vergleiche%
+		& X & X & X & - & - & X & - & x & - & - & - & - & - & - & - \\
+		\hdashline[2pt/2pt]
+		\ref{Frage:Definitionen}    & Definitionen%
+		& X & X & X & - & X & - & x & - & - & - & - & - & - & - & - \\
+		\ref{Frage:Abhängigkeiten}  & Abhängigkeiten%
+		& X & X & X & - & X & - & x & - & - & - & - & - & - & - & - \\
+		\ref{Frage:Überblick}       & Überblick%
+		& X & X & X & - & - & X & x & - & - & - & - & - & - & - & - \\
+		\hdashline[2pt/2pt]
+		\ref{Frage:Darstellung}     & Darstellung%
+		& X & - & X & - & X & - & x & - & - & - & - & - & - & - & - \\
+		\ref{Frage:Forschung}       & Forschung%
+		& X & X & X & - & - & X & x & - & - & - & - & - & - & - & - \\
+		\hline
+		\multicolumn{17}{l|}{Die nächsten beiden Punkte
+			sind Eigenschaften aus \sectionname~\vref{sec:Eigenschaften}:}\\
+		\hline
+		\ref{Eigenschaft:Lizenz}    & Lizenz%
+		& - & - & - & - & - & - & - & - & - & - & - & - & - & - & X \\
+		\ref{Eigenschaft:Akzeptanz} & Akzeptanz%
+		& X & X & X & X & X & X & X & X & X & X & X & X & X & X & X \\
+		\hline
+	\end{tabularx}
+	\caption{\ref{sec:Fragen} Fragen $\to$ \ref{sec:Ziele} Ziele}
+	\label{tab:Fragen->Ziele}% Erst nach '\caption'!
+\end{table}
+\clearpage
+
+\section{Die Umgebung von \textsf{ASBA}}% ======================================
+\beginsection{Die Umgebung von \textsf{ASBA}}
+\label{sec:Umgebung}
+
+In der \figurename~\vref{fig:Umgebung} wird beschrieben, welche Interaktionen \ASBA\ mit der Umgebung hat, \textdh welche Ein- und Ausgaben existieren und woher sie kommen \textbzw wohin sie gehen.
+\begin{figure}[h]
+	\setlength\unitlength{1cm}
+	\begin{picture}(17.0,7.0)(-8.4,-3.5)
+	%%%			% Gitter                                            %%%
+	%%%			\color{lightgray}%                                  %%%
+	%%%			\multiput(-8.4,-3.0)(+0.0,1.0){ 7}{\line(1,0){17.0}}%%%
+	%%%			\multiput(-7.9,-3.5)(+1.0,0.0){17}{\line(0,1){ 7.0}}%%%
+	\linethickness{1.5pt}
+	% Hintergrund (grau) ===============================================
+	\color{gray}
+	% rechts: externes ASBA mit Pfeilen --------------------------------
+	\put(+3.00,-0.50){\framebox(2.40,1.60){\huge\textbf{\ASBA}}}
+	\put(+3.00,-0.50){\makebox(2.40,1.50)[t]{\textbild{externes}}}
+	\put(+4.00,+1.12){\vector(-1,+2){0.45}}% <--- externes ASBA
+	\put(+4.00,+2.05){\vector(+1,-2){0.47}}% ---> externes ASBA
+	\put(+3.81,+1.57){\marker{a}}
+	% rechts oben: externe Datenbank mit Pfeilen -----------------------
+	\put(+7.30,+2.30){\Datenbank{1.20}{0.40}{0.80}{\small externe}{\small Datenbank}}
+	\put(+5.41,+1.10){\vector(+1,+1){0.70}}% <--- externes ASBA
+	\put(+6.14,+1.39){\vector(-1,-1){0.72}}% ---> externes ASBA
+	\put(+5.60,+1.23){\marker{b}}
+	% Verbindung Auswertungen ---> Männchen ----------------------------
+	\put(+5.60,-2.30){\vector(-1,0){4.05}}%  Auswertungen ---> Männchen
+	\put(+3.50,-2.30){\marker{c}}
+	% Verbindung Männchen <---> Terminal -------------------------------
+	\put(-2.00,-2.00){\vector(+1,0){2.45}}% Männchen <--- Terminal
+	\put(+0.40,-2.30){\vector(-1,0){2.40}}% Männchen ---> Terminal
+	\put(-0.75,-2.15){\marker{d}}
+	% Verbindung Terminal <---> Datei ----------------------------------
+	\put(-5.50,-1.50){\vector(+3,-1){1.50}}% Terminal <--- Datei
+	\put(-4.01,-2.30){\vector(-3,+1){1.60}}% Terminal ---> Datei
+	\put(-5.00,-1.90){\marker{e}}
+	% Vordergrund (schwarz) ============================================
+	\color{black}
+	% rechts oben: Wolke mit Pfeilen -----------------------------------
+	\put(+3.40,+3.00){\Wolke{Internet}}
+	\put(+2.00,+2.54){\vector(-1,-1){0.98}}% ---> ASBA
+	\put(+1.53,+1.53){\vector(+1,+1){0.75}}% <--- ASBA
+	\put(+1.50,+1.95){\Marker{1}}
+	% links oben: Datenbank mit Pfeilen --------------------------------
+	\put(-7.00,+2.00){\Datenbank{1.50}{0.50}{1.00}{Datenbank}{}}
+	\put(-5.50,+2.20){\vector(+4,-1){3.95}}% ---> ASBA
+	\put(-1.51,+0.90){\vector(-4,+1){4.00}}% <--- ASBA
+	\put(-3.70,+1.55){\Marker{2}}
+	% links Mitte: Datei mit Pfeilen -----------------------------------
+	\put(-7.00,-1.00){\Datei{3.00}{2.00}{Datei}}
+	\put(-5.50,-0.80){\vector(+4,+1){3.95}}% ---> ASBA
+	\put(-1.51,-0.10){\vector(-4,-1){4.00}}% <--- ASBA
+	\put(-3.70,-0.45){\Marker{3}}
+	%links unten: Rechner mit Pfeilen ----------------------------------
+	\put(-3.00,-2.10){\Terminal{Terminal}}
+	\put(-2.50,-1.48){\vector(+1,+1){0.95}}% ---> ASBA
+	\put(-1.10,-0.52){\vector(-1,-1){0.95}}% <--- ASBA
+	\put(-2.00,-1.00){\Marker{4}}
+	% Mitte unten: Männchen mit Pfeilen --------------------------------
+	\put(+1.00,-1.80){\Maennchen}
+	\put(+0.85,-1.50){\vector(0,+1){1.00}}% ---> ASBA
+	\put(+1.15,-0.51){\vector(0,-1){1.00}}% <--- ASBA
+	\put(+0.80,-1.02){\Marker{5}}
+	% rechts unten: Papier mit Pfeil -----------------------------------
+	\put(+5.60,-3.00){\Papier{+2.00}{+0.30}{Ausgabe}}
+	\put(+1.51,-0.55){\vector(+4,-1){+4.10}}% <--- ASBA
+	\put(+3.25,-1.05){\Marker{6}}
+	% Mitte: ASBA ------------------------------------------------------
+	\linethickness{3pt}
+	\put(-1.5,-0.5){\framebox(3.0,2.0){\Huge\textbf{\ASBA}}}
+	\end{picture}
+	\caption{Die Umgebung von \ASBA}
+	\label{fig:Umgebung}% Erst nach '\caption'!
+\end{figure}
+
+In den in \figurename~\vref{fig:Umgebung} abgebildeten Datenflüssen (1) bis
+(6) und (a) bis (e) werden die folgenden Daten übertragen:
+\begin{itemize}
+	\newcommand*{\vonnach}[2]{#1 $\rightarrow$ #2}
+	\newcommand*{\nachvon}[2]{\vonnach{#2}{#1}}
+	\newcommand*{\hinundher}[2]{#1 $\leftrightarrow$ #2}
+	
+	\item[(1)]\label{dat:Internet}
+	\begin{description}
+		\item[\vonnach{\ASBA}{Internet}]\label{dat:ausInternet}
+		Inhalte der Datenbank.
+		\item[\nachvon{\ASBA}{Internet}]\label{dat:inInternet}
+		Inhalte der externen Datenbank.
+	\end{description}
+	
+	\item[(2)]\label{dat:Datenbank}
+	\begin{description}
+		\item[\vonnach{Datenbank}{\ASBA}]\label{dat:ausDatenbank}
+		Inhalte der Datenbank und Antworten auf Datenbankanweisungen.
+		\item[\nachvon{Datenbank}{\ASBA}]\label{dat:inDatenbank}
+		Inhalte der Datei, der externen Datenbank und Datenbankanweisungen.
+	\end{description}
+	
+	\item[(3)]\label{dat:Datei}
+	\begin{description}
+		\item[\vonnach{Datei}{\ASBA}]\label{dat:ausDatei}
+		Inhalte der Datei.
+		\item[\nachvon{Datei}{\ASBA}]\label{dat:inDatei}
+		Die Datei wird um zusätzliche Auswertungen ergänzt, \textzB ob die \glsIdxPl{Beweis} korrekt sind, welche \glsIdxPl{Axiom} und \glsIdxPl{Satz} -- auch externe aus dem Internet -- verwendet wurden, Anzahl der Beweisschritte \textusw
+	\end{description}
+	
+	\item[(4)]\label{dat:Terminal}
+	\begin{description}
+		\item[\vonnach{Terminal}{\ASBA}]\label{dat:ausTerminal}
+		Anweisungen, Daten und Batchprogramme.
+		\item[\nachvon{Terminal}{\ASBA}]\label{dat:inTerminal}
+		Antworten auf Anweisungen, Auswertungen \textusw
+	\end{description}
+	Außerdem interaktive Ein- und Ausgabe durch einen Anwender, wie in (5) beschrieben.
+	
+	\item[(5)]\label{dat:Anwender}
+	\begin{description}
+		\item[\hinundher{Anwender}{\ASBA}]\label{dat:mitAnwender}
+		Interaktive Ein- und Ausgaben durch einen Anwender mit Komponenten von (3), (4) und (6).
+		-- Die Kommunikation läuft \textiAlg über ein Terminal.
+	\end{description}
+	
+	\item[(6)]\label{dat:Ausgabe}
+	\begin{description}
+		\item[\nachvon{Ausgabe}{\ASBA}]\label{dat:inAusgabe}
+		Inhalte von Datei und Datenbank in lesbarer Form, \textua mit Hilfe von \glsIdxPl{Ausgabeschema} auch in Formelschreibweise.
+		Die Ausgabe kann auch in eine Datei erfolgen,
+		\textzB im \LaTeX-Format.
+	\end{description}
+	
+	\item[(a)]\label{dat:extInternet}
+	Nur die für \ASBA\ relevanten Daten:
+	\begin{description}
+		\item[\vonnach{Internet}{externes \ASBA}]\label{dat:ausextInternet}
+		Inhalte der Datenbank.
+		\item[\nachvon{Internet}{externes \ASBA}]\label{dat:inextInternet}
+		Inhalte der externen Datenbank.
+	\end{description}
+	
+	\item[(b)]\label{dat:extDatenbank}
+	Nur die für \ASBA\ relevanten Daten:
+	\begin{description}
+		\item[\vonnach{externe Datenbank}{externes \ASBA}]
+		\label{dat:ausextDatenbank} Inhalte der externen Datenbank.
+		\item[\nachvon{externe Datenbank}{externes \ASBA}]
+		\label{dat:inextDatenbank} Inhalte der Datenbank.
+	\end{description}
+	
+	\item[(c)]\label{dat:AusgabeAnwender}
+	\begin{description}
+		\item[\vonnach{Ausgabe}{Anwender}]\label{dat:Ausgabe2Anwender}
+		Alle Daten der Ausgabe.
+	\end{description}
+	
+	\item[(d)] \label{dat:AnwenderTerminal}
+	\begin{description}
+		\item[\hinundher{Anwender}{Terminal}]\label{dat:Anwender22Terminal}
+		Interaktive Ein- und Ausgabe durch einen Anwender, wie in (5) beschrieben.
+	\end{description}
+	
+	\item[(e)] \label{dat:TerminalDatei}
+	\begin{description}
+		\item[\hinundher{Terminal}{Datei}]\label{dat:Terminal22Datei}
+		Erstellen und Bearbeiten der Datei durch einen Anwender.
+		-- siehe (d)
+	\end{description}
+	
+\end{itemize}
+Die Datenflüsse (a) bis (e) erfolgen außerhalb von \ASBA
+und werden nicht weiter behandelt.
+
+Die Datenbank und die Datei enthalten im Prinzip die gleichen Daten, wobei sie in der Datei im Textformat in lesbarer Form und in der Datenbank in einem internen Format vorliegen.
+Zudem enthält die Datenbank \textiAlg sehr viel mehr Daten. Es handelt sich dabei jeweils um die folgenden Daten:
+\begin{description}
+	
+	\item[\glsIdxPl{Axiom}]         \label{Daten:Axiom}
+	Ein \glsIdx{Axiom} ist eine Aussage oder Behauptung, die nicht aus anderen Aussagen abgeleitet werden kann.
+	Es können wie bei Sätzen Voraussetzungen vorhanden sein, aber keine \glsIdx{Beweis}.
+	
+	\item[\glsIdxPl{Satz}]          \label{Daten:Satz}
+	Ein \glsIdx{Satz} besteht aus einer Anzahl von Voraussetzungen, einer Behauptung und einem \glsIdx{Beweis}, der die Behauptung aus den Voraussetzungen ableitet.
+	Letztere können \glsIdxPl{Axiom} und andere Sätze sein, auf die dann verwiesen wird.
+	
+	\item[\glsIdxPl{Beweis}]        \label{Daten:Beweis}
+	Ein \glsIdx{Beweis} besteht aus einer Folge von \glsIdxBg{Beweisschritt}{Beweisschritten}, die aus gegebenen Voraussetzungen eine Behauptung ableitet.
+	
+	\item[\glsIdxPl{Fachbegriff}]   \label{Daten:Fachbegriff}
+	Ein \glsIdx{Fachbegriff} ist ein Name für ein \glsIdx{Praedikat} in einem bestimmten \glsIdx{Fachgebiet}.
+	
+	\item[\glsIdxPl{Fachgebiet}]    \label{Daten:Fachgebiet}
+	Ein Fachgebiet ist ein Teil der Mathematik mit einer zugehörigen Basis von \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Ausgabeschema}, quasi eine untergeordnete Datenbank.
+	
+	\item[\glsIdxPl{Ausgabeschema}] \label{Daten:Ausgabeschema}
+	Eine Beschreibung, wie ein bestimmtes mathematisches Objekt ausgegeben werden soll.
+	Dies kann \textzB ein Stück \LaTeX-Code mit entsprechenden Parametern sein.
+	
+	\item[Auswertungen]             \label{Daten:Auswertung}
+	Statistische und andere Auswertungen, die bestimmten Elementen der Datei \textbzw Datenbank zugeordnet sind.
+	\textZB können zu einem \glsIdx{Satz} alle für einen Beweis notwendigen \glsIdxPl{Axiom} angegeben werden -- als Verweise.
+	
+\end{description}
+Die Daten können interne und externe Verweise enthalten.
+
+\Endchapter

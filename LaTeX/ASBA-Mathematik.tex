@@ -1,0 +1,1063 @@
+%%############################################################################%%
+%%                                                                            %%
+%% Datei:  ASBA-Mathematik.tex                                                %%
+%% Inhalt: Kapitel "Mathematische Grundlagen"                                 %%
+%%                                                                            %%
+%% Copyright (C) 2017  Winfried Teschers                                      %%
+%%                                                                            %%
+%% This program is free software: you can redistribute it and/or modify       %%
+%% it under the terms of the GNU Affero General Public License as published   %%
+%% by the Free Software Foundation, either version 3 of the License, or       %%
+%% (at your option) any later version.                                        %%
+%%                                                                            %%
+%% This program is distributed in the hope that it will be useful,            %%
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of             %%
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              %%
+%% GNU Affero General Public License for more details.                        %%
+%%                                                                            %%
+%% You should have received a copy of the GNU Affero General Public License   %%
+%% along with this program.  If not, see <http://www.gnu.org/licenses/>.      %%
+%%                                                                            %%
+%% Dr. Winfried Teschers                                                      %%
+%% Anton-Günther-Str. 26c                                                     %%
+%% 91083 Baiersdorf                                                           %%
+%% Germany                                                                    %%
+%%                                                                            %%
+%% e-mail: winfried.teschers@t-online.de                                      %%
+%%                                                                            %%
+%%############################################################################%%
+
+% !TeX root = ASBA.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+
+\chapter{Mathematische Grundlagen}% ############################################
+\beginchapter{Mathematische Grundlagen}
+\label{cha:Grundlagen}
+
+Die mathematischen Grundlagen werden einerseits gebraucht um die erlaubten Beweisschritte zu definieren (\seename~\vref{sec:Schlussregeln}), andererseits dienen sie auch zum Testen von \ASBA. Alle hier aufgeführten Axiome, Sätze und Beweise sollen dazu kodiert und von \ASBA ausgewertet werden.
+
+\section{Metasprache}% =========================================================
+\beginsection{Metasprache}
+\label{sec:Metasprache}
+
+Wenn man über eine Sprache spricht, braucht man auch eine Sprache, in der Aussagen über die erstere getroffen werden können.
+Wenn die zuerst genannte Sprache die der Mathematik ist, nimmt man üblicherweise die natürliche Sprache als \glsIdx{Metasprache}.
+Leider ist diese oft ungenau, nicht immer eindeutig und abhängig vom Zusammenhang, in dem sie gesprochen wird%
+\footnote{%
+	Man betrachte die beiden Aussagen \enquote{Studenten und Rentner zahlen die Hälfte.} und \enquote{Studenten oder Rentner zahlen die Hälfte.}, die beide das gleiche meinen.
+	-- Entnommen aus \cite{bib:Rautenberg} \sectionname~1.2 Bemerkung 1.
+	
+	Ein weiteres Problem ist, dass man unauflösbare Widersprüche formulieren kann, \textzB \enquote{%
+		Der Barbier ist der Mann im Ort, der genau die Männer im Ort rasiert, die sich nicht selbst rasieren.%
+	}.
+	Und der Barbier?
+	Wenn er sich selbst rasiert, dann rasiert er sich nicht selbst, und wenn er sich nicht selbst rasiert, dann rasiert er sich selbst.
+	Was denn nun?
+	-- Quelle unbekannt) --
+	Das Problem ist verwandt mit dem Problem der \enquote{Menge aller Mengen, die sich nicht selbst enthalten}.%
+}.
+Um diese Probleme in den Griff zu bekommen, wird die \glsIdx{Metasprache} teilweise formalisiert.
+Durch diese Formalisierung erinnert sie dann teilweise schon an mathematische Formeln.
+Die Sprachebenen sollten aber sorgfältig unterschieden werden.
+
+\subsection{Metasprachliche Ausdrücke}% ========================================
+\beginsection{\glsIdxPl{MetaausdruckV}}
+\label{sub:Metaausdruck}
+
+Ein \emph{\glsIdx{MetaausdruckV}} ist eine in normaler Sprache verfasste Aussage, wie \textzB
+(a) \strqt{Morgen scheint die Sonne.},
+(b) \strqt{Ich bin 1,83\,m groß.},
+(c) \strqt{Ich habe ein rotes Auto und das kann 200\,km/h schnell fahren.},
+\textusw
+In einem erweiterten Sinne gehören auch Relationen einschließlich ihrer Operanden dazu%
+\footnote{%
+	Wird statt des Symbols der Name der zugehörigen Relation verwendet, ist dies unmittelbar einleuchtend.
+	So wird \textzB aus der Formel \forqt{$A<B$} die \glsIdx{MetaaussageV} \strqt{$A$ ist kleiner als $B$}.%
+},
+wie \textzB \forqt{$A=A$}, \forqt{$A \equiv B$}, \forqt{$A<B$}, \textusw
+
+Während die Beispiele (a) und (b) einfache, nicht mehr zerlegbare \glsIdxPl{MetaausdruckV} sind, ist Beispiel (c) zusammengesetzt.
+Für alle drei Aussagen lässt sich feststellen, ob sie richtig sind oder nicht.
+Das kann man für den zweiten Teil von (c) allein aber nicht, wenn man nicht weiss worauf sich \strqt{das} bezieht.
+Natürlich muss auch der Zusammenhang, in dem ein \glsIdx{MetaausdruckV} formuliert wird, bekannt sein, denn \textzB ist die Bedeutung von \strqt{Ich} nur dann bekannt, wenn man weiß von wem die Aussage ist.
+Auf eine exakte Definition von \strqt{\glsIdx{MetaausdruckV}} wird verzichtet, weil das intuitive Verständnis hier ausreicht.
+In erster Näherung können aber alle sprachlichen Ausdrücke, die im Prinzip überprüft werden können, als \glsIdxPl{MetaausdruckV} betrachtet werden.
+
+Zusammengesetzte \glsIdxPl{MetaausdruckV} wie (c) können zum Teil formalisiert werden.
+Dies wird mit den folgenden Definitionen erreicht:
+
+Sind $A$ und $B$ \glsIdxPl{MetaausdruckV}, dann wird definiert:
+\begin{itemize}
+	
+	\item \forqt{$A \glsSym{metaimp}   B$} steht für
+	\strqt{\emph{Wenn} $A$ [gilt] \emph{dann} [gilt] [auch] $B$}.
+	
+	\item \forqt{$A \glsSym{metarep}   B$} steht für
+	\strqt{$A$ [gilt] \emph{sofern} $B$ [gilt]}.
+	
+	\item \forqt{$A \glsSym{metaequiv} B$} steht für
+	\strqt{$A$ [gilt] \emph{genau dann wenn} $B$ [gilt]}.
+	
+	\item \forqt{$A \glsSym{metaand}   B$} steht für
+	\strqt{[Es gilt] $A$ \emph{und} $B$}.
+	
+	\item \forqt{$A \glsSym{metaor}    B$} steht für
+	\strqt{[Es gilt] $A$ \emph{oder} $B$}.
+	
+\end{itemize}
+
+Offensichtlich sind das alles ebenfalls \glsIdxPl{MetaausdruckV}, jetzt aber zumindest teilweise formalisiert.
+(c) lässt sich dann ausdrücken als \strqt{\strqt{Ich habe ein rotes Auto} $\metaund$ \strqt{das kann 200\,km/h schnell fahren.}}.
+
+Um Verwechslungen mit den logischen Symbolen zu vermeiden, werden für \strqt{und} und \strqt{oder} die Symbole \symqt{$\metaund$} und \symqt{$\metaoder$} verwendet.
+Ein Symbol für \strqt{nicht} wird hier nicht gebraucht.
+
+\GlsIdxPl{MetaausdruckV} können auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
+\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaand$} und \symqt{$\metaoder$} heißen \emph{\glsIdxPl{MetaoperatorV}}.
+Ihre Prioritäten werden im \subsectionname~\vref{sub:Klammerregeln} zusammen mit anderen Operatoren definiert.
+
+Sollen zwei \glsIdxPl{MetaausdruckV} miteinander verglichen werden, muss klar sein auf welche Art; ob \textzB als Zeichenfolgen -- mit oder ohne Wertung der Zwischenräume --, als Wahrheitswerte oder auf sonstige Art.
+Wenn die Art des Vergleichs implizit oder explizit klar ist und sich die beiden Ausdrücke damit vergleichen lassen, heißen sie \emph{\glsIdx{vergleichbar}}.
+
+\subsection{Mit Gleichheit verwandte Symbole}% ---------------------------------
+\label{sub:Gleichheit}
+
+In diesem \sectionname{} wird vorausgesetzt:
+\begin{itemize}
+	
+	\item {$=$}, $\ne$, $\equiv$, $\defeq$ und $\metadefeq$%
+	werden im selben Zusammenhang verwendet.
+	
+	\item $A$, $B$, $P$ und $Q$ sind \glsIdx{vergleichbar},
+	\textdh Ausdrücke derselben Art.
+	
+\end{itemize}
+Dann werden folgende Symbole definiert:
+\begin{itemize}
+	
+	\item $\glsSym{eq}$~~(\emph{\Idx{Gleichheit}}):
+	\forqt{$A = B$} heißt, dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA} nicht unterscheiden.
+	Welche das sind, ergibt sich normalerweise aus dem Zusammenhang%
+	\footnote{%
+		Statt von einem \emph{Zusammenhang} könnte man auch von einer \emph{Umgebung} sprechen.
+		Diese Bezeichnung ist aber auch ein verbreiteter Fachbegriff, so dass auf seine Verwendung verzichtet wird.
+		Die Exaktheit der Begriffe in diesem Dokument soll für Erstellung von \ASBA\ ausreichen; was darüber hinausgeht, ist nicht Inhalt dieses Dokuments.%
+	}
+	oder muss explizit angegeben werden.
+	\textZB sind zwei Operatoren gleich, wenn sie stets denselben \emph{\gls{Wahrheitswert}} liefern.
+	
+	Inwieweit die Begriffe \emph{Gleichheit} und \emph{Identität} korrelieren, wird hier nicht erörtert.
+	\seename~\cite{bib:Identitaet}
+	
+	\item $\glsSym{ne}$~~(\emph{\Idx{Ungleichheit}}):
+	\forqt{$A \ne B$} heißt, dass $A$ und $B$ sich in mindestens einer der \glsIdxPl{intEigenschaftA} unterscheiden.
+	
+	\item $\glsSym{equiv}$~~(\emph{\Idx{Äquivalenz}}):
+	\forqt{$A \equiv B$} heißt, dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA} nicht unterscheiden.
+	Welche das sind, ergibt sich wie bei \symqt{$=$} aus dem Zusammenhang oder wird explizit angegeben.
+	Werden \symqt{$=$} und \symqt{$\equiv$} im selben Zusammenhang verwendet, muss mit \forqt{$A=B$} stets auch \forqt{$A \equiv B$} gelten, \textdh alle \glsIdxPl{intEigenschaftA} von \symqt{$\equiv$} müssen auch \glsIdxBg{intEigenschaftA}{interessierende Eigenschaften} von \forqt{$A=B$} sein.
+	
+	\item $\glsSym{defeq}$~~(\emph{\Idx{Definition}}):
+	\forqt{$A \defeq B$} heißt, dass $A$ definitionsgemäß gleich $B$ ist.
+	Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
+	$A$ und $B$ können sich gegenseitig ersetzten.
+	
+	Nach dieser Definition sind $P$ und $Q$ schon dann gleich, wenn nach der Ersetzung aller Vorkommen von $A$ in $P$ und $Q$ durch $B$ die resultierenden Ausdrücke $\overline{P}$ und $\overline{Q}$ gleich sind.
+	
+	\item $\glsSym{metadefeq}$~~(\emph{\Idx{Metadefinition}}):
+	\forqt{$A \metadefeq B$} heißt, dass der Metaausdruck $A$ definitionsgemäß gleich dem Metaausdruck $B$ ist, wobei $B$ auch eine Definition in natürlicher Sprache sein kann.
+	Oft wird damit Gleichheit (\symqt{$=$}), Äquivalenz (\symqt{$\equiv$}) oder eine andere Relation definiert.
+	
+\end{itemize}
+
+Es gilt dann:
+\begin{itemize}
+	
+	\item Die interessierenden Eigenschaften für \symqt{$\equiv$} sind auch solche für \symqt{$=$}.
+	
+	\item Für \symqt{$=$} können -- müssen aber nicht -- mehr Eigenschaften von Interesse sein als für \symqt{$\equiv$}.
+	
+	\item $(A = B) \metaor (A \ne B)$
+	
+	\item $(A = B) \metaimp (A \equiv B)$
+	
+\end{itemize}
+
+Und unter den Voraussetzungen:
+\begin{itemize}
+	
+	\item $A \defeq B$
+	
+	\item $\overline{P}$ ergibt sich aus $P$ durch Ersetzung aller Vorkommen (Teilausdrücke) $A$ durch $B$.
+	
+	\item $\overline{Q}$ ergibt sich aus $Q$ durch Ersetzung aller Vorkommen (Teilausdrücke) $A$ durch $B$.
+	
+\end{itemize}
+
+gilt schließlich:
+\begin{itemize}
+	\item $(\overline{P} = \overline{Q}) \metaequiv (P = Q)$
+\end{itemize}
+
+Schließlich sei noch
+\begin{equation}
+\glsSym{asM} \defeq \{
+\glsIdxBg{metaand}{\metaund}, \glsIdxBg{metaor}{\metaoder},
+\glsSym{metaimp}, \glsSym{metaequiv}, \glsSym{metarep},
+\glsSym{eq}, \glsSym{ne}, \glsSym{equiv}, \glsSym{defeq} \}
+\label{for:asM}
+\end{equation}
+die Menge der Metaoperatoren und der mit Gleichheit verwandten Symbole
+
+\section{Formale Elemente}% ====================================================
+\beginsection{Formale Elemente}
+\label{sec:Formalelement}
+
+Ein \emph{\glsIdx{FormalelementV}} kann \textzB eine Menge, Zeichenfolge, Zahl, Formel, \textusw sein.
+Zwei \glsIdxPl{FormalelementV} $A$ und $B$ sind \emph{\glsIdx{vergleichbar}}, wenn beide von derselben Art sind, \textdh wenn \textzB jeweils beide Mengen, Zeichenfolgen, Zahlen oder Formeln -- die vergleichbare Ergebnisse liefern -- sind.
+
+Intuitiv scheint klar zu sein, was damit  gemeint ist.
+Wenn aber entschieden werden muss, ob \textzB (a) \strqt{1+1} gleich \strqt{2} oder (b) \strqt{1+1} gleich \strqt{1 + 1} ist, muss man erst entscheiden, von welcher Art die beiden zu vergleichenden Ausdrücke sind, \textdh \emph{wie} verglichen wird.
+Wenn sie als jeweiliges Ergebnis der beiden Formeln verglichen werden, dann ist (a) richtig.
+Wenn sie als Formeln, \textdh als Zeichenfolgen, verglichen werden ist (a) falsch.
+Wenn die Ausdrücke in (b) als Zeichenfolgen verglichen werden, ist (b) dann richtig, wenn der Zwischenraum zwischen den einzelnen Zeichen nicht zählt.
+Wenn er aber zählt, ist (b) falsch.
+
+Im Zusammenhang mit binären Relationen werden noch einige Verabredungen getroffen.
+Dazu seien \symqt{$\glsSym{relbsp}$}, \symqt{$\glsSym{releqbsp}$}, \symqt{$\glsSym{lrelbsp}$}, \symqt{$\glsSym{rrelbsp}$}, 	\symqt{$\glsSym{lreleqbsp}$} und \symqt{$\glsSym{rreleqbsp}$} Beispielsymbole für Relationen und \symqt{$\glsSym{eq}$} und \symqt{$\glsSym{ne}$} die in \sectionname~\vref{sub:Gleichheit} definierten Symbole für Gleichheit und Ungleichheit.
+Wenn dann nichts anderes gesagt wird gelte stets:
+\begin{align}
+& ((A \relbsp   B) \metaor (A = B)) & \metaequiv &&& (A \releqbsp  B)
+\label{eq:coreleq}   \\
+& (A \lrelbsp   B)                  & \metaequiv &&& (B \rrelbsp   A)
+\label{eq:colrrel}   \\
+& (A \lreleqbsp B)                  & \metaequiv &&& (B \rreleqbsp A)
+\label{eq:colrreleq} \formulatoleft
+\end{align}
+
+Mit der Definition einer Relation der einen Seite ist damit automatisch auch die der anderen Seite erfolgt, mit der Ausnahme, dass man \forqt{$A \relbsp B$} so nicht mit Hilfe von \forqt{$A \releqbsp B$} definieren kann.
+Dies könnte man zwar mit Hilfe des Ansatzes
+\begin{align}
+& (A \relbsp B) &\formulaspace \metaequiv &&&
+(A \releqbsp B) \metaand (A \ne B) \label{eq:corel} \formulatoleft
+\end{align}
+versuchen, aber die so definierte Relation \symqt{$\relbsp$} kann, muss aber nicht mit der in \ref{eq:coreleq} übereinstimmen.
+Allerdings lässt sich \ref{eq:coreleq} aus \ref{eq:corel} ableiten und wenn \forqt{$(A \eq B) \metaimp (A \releqbsp B)$} gilt, auch \ref{eq:corel} aus \ref{eq:coreleq}.
+-- Auf einen Beweis wird hier verzichtet.
+
+Es sei noch angemerkt, dass wegen \vref{eq:corel} die Definition von \symqt{$\metarep$} in \sectionname~\vref{sub:Metaausdruck} überflüssig ist und wegen der Klammerregeln (\seename \subsectionname~\vref{sub:Klammerregeln}) auch alle Klammern in diesem \sectionname~\ref{sec:Formalelement}.
+Die Prioritäten der Operatoren \symqt{$\lrelbsp$}, \symqt{$\rrelbsp$}, \symqt{$\lreleqbsp$} und \symqt{$\rreleqbsp$} unterscheiden sich normalerweise nicht; ebensowenig die der Operatoren \symqt{$\relbsp$} und \symqt{$\releqbsp$}, die aber durchaus verschieden von den Prioritäten von \symqt{$=$} und \symqt{$\ne$} sein können.
+
+Als Beispielsymbol für binäre Operatoren wird \symqt{$\opbsp$} verwendet.
+Damit zusammenhängende Verabredungen werden hier nicht getroffen.
+
+\section{Schlussregeln}% =======================================================
+\beginsection{Schlussregeln}
+\label{sec:Schlussregeln}
+\hidden{\glsIdx{Schlussregel}}
+
+\todo{Schlussregeln bearbeiten.}%%%
+%TODO Schlussregeln bearbeiten. %%%
+
+\section{Aussagenlogik}% =======================================================
+\beginsection{Aussagenlogik}
+\label{sec:Aussagenlogik}
+\hidden{\glsIdx{Aussagenlogik}}
+
+\subsection{Konstante und Operatoren}% -----------------------------------------
+\label{sub:Operatoren}
+
+Die \tablename~\vref{tab:Symbole}
+\footnote{%
+	Die \tablename{} basiert auf den Wahrheitstafeln in~\cite{bib:Junktor} Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.%
+}
+definiert für die zweiwertige Logik Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung.
+So ergeben sich, abhängig von den Wahrheitswerten der Operanden $A$ und $B$
+\footnote{%
+	Im Gegensatz zu \subsubsectionname~\vref{subsub:Bausteine} können A und B hier beliebige Aussagen -- auch Formeln -- sein.%
+},
+die in der \tablename{} angegebenen Wahrheitswerte für die Operationen.
+Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh für die Konstanten, die unären und die binären Operatoren ausgefüllt.
+Dabei werden die Konstanten als 0-stellige Operatoren angesehen.
+Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein Wert bekannt, so bleibt sie leer.
+
+% ==============================================================================
+% Definitionen für die folgende Tabelle; siehe auch die Symbole im Vorspann
+% Prioritäten - jeweils Prio p* für Symbol \l* ---------------------------------
+\newcounter{prio}                                        \stepcounter{prio}
+\newcounter{pnequiv} \setcounter{pnequiv} {\value{prio}}
+\newcounter{pequiv}  \setcounter{pequiv}  {\value{prio}} \stepcounter{prio}
+\newcounter{pnrep}   \setcounter{pnrep}   {\value{prio}}
+\newcounter{prep}    \setcounter{prep}    {\value{prio}}
+\newcounter{pnimp}   \setcounter{pnimp}   {\value{prio}}
+\newcounter{pimp}    \setcounter{pimp}    {\value{prio}} \stepcounter{prio}
+%	\newcounter{pnleft}  \setcounter{pnleft}  {\value{prio}}
+%	\newcounter{pleft}   \setcounter{pleft}   {\value{prio}}
+%	\newcounter{pnright} \setcounter{pnright} {\value{prio}}
+%	\newcounter{pright}  \setcounter{pright}  {\value{prio}} \stepcounter{prio}
+\newcounter{padd}    \setcounter{padd}    {\value{prio}}
+%	\newcounter{pnxor}   \setcounter{pnxor}   {\value{prio}}
+\newcounter{pxor}    \setcounter{pxor}    {\value{prio}}
+\newcounter{pnor}    \setcounter{pnor}    {\value{prio}}
+\newcounter{por}     \setcounter{por}     {\value{prio}} \stepcounter{prio}
+\newcounter{pmult}   \setcounter{pmult}   {\value{prio}}
+\newcounter{pnand}   \setcounter{pnand}   {\value{prio}}
+\newcounter{pand}    \setcounter{pand}    {\value{prio}} \stepcounter{prio}
+\newcounter{pnot}    \setcounter{pnot}    {\value{prio}}
+% Farben
+\definecolor{cNormalUse}{rgb}{.80,.80,.80}
+\definecolor{cRareUse}{rgb}{.90,.90,.99}
+% ==============================================================================
+
+\begin{table}
+	\newcommand*{\tablegroup}{\hdashline[6pt/3pt]}
+	\newcommand*{\tableline}{\hdashline[3pt/3pt]}
+	\newcommand*{\gapline}{%
+		\cdashline{1-1}[1pt/3pt]\cdashline{9-11}[1pt/3pt]}
+	\setlength\tabcolsep{3pt}
+	\setlength\extrarowheight{1.5pt}
+	\begin{threeparttable}
+		\begin{tabularx}{\linewidth-10.95pt}{c||c:cc:cccc|X:X|c|}
+			
+			A & - & \texttrue & \textfalse &%
+			\texttrue  & \texttrue  & \textfalse & \textfalse &
+			- & Aussage A & - \\
+			
+			\tableline%.................................................
+			B & - & -       & -        &%
+			\texttrue  & \textfalse & \texttrue  & \textfalse &
+			- & Aussage B & - \\
+			
+			\hline% -- Überschrift -----------------------------------------
+			
+			\textbf{Junktor}\tnote{1}&\textbf{0}&\multicolumn{2}{c:}{%
+				\textbf{1}}&\multicolumn{4}{c|}{\textbf{2}}& \textbf{%
+				Name}&\textbf{Sprechweise}\tnote{2}&\textbf{Prio}\\%Kein Fehler!
+			
+			\hline\hline% == Konstante =====================================
+			
+			\rowcolor{cRareUse}
+			$\glsSym{ltrue}$
+			& \texttrue  & - & - & - & - & - & - & Verum  & Wahr   & - \\
+			
+			\tableline%.................................................
+			
+			\rowcolor{cRareUse}
+			
+			$\glsSym{lfalse}$
+			& \textfalse & - & - & - & - & - & - & Falsum & Falsch & - \\
+			
+			\hline% -- unäre Operatoren ------------------------------------
+			
+			& - & \texttrue  & \texttrue  & - & - & - & -
+			&                     &                  & -                 \\
+			
+			\tableline%.................................................
+			
+			\rowcolor{cNormalUse}
+			
+			$\Sym{(\dots)}$
+			& - & \texttrue  & \textfalse & - & - & - & -
+			& Klammerung\tnote{3} & A ist geklammert & 6\tnote{4}        \\
+			
+			\tableline%.................................................
+			
+			\rowcolor{cNormalUse}
+			$\Sym{\lnot}$
+			& - & \textfalse & \texttrue  & - & - & - & -
+			& Negation            & Nicht A          & \thepnot\tnote{5} \\
+			
+			\tableline%.................................................
+			
+			& - & \textfalse & \textfalse & - & - & - & -
+			&                     &                  & -                 \\
+			
+			\hline% -- binäre Operatoren -----------------------------------
+			
+			~ & - & - & - &\texttrue&\texttrue&\texttrue&\texttrue
+			& Tautologie
+			&
+			& - \\
+			
+			\tableline%.................................................
+			
+			\rowcolor{cNormalUse}
+			
+			$\Sym{\lor}$
+			& - & - & - &\texttrue&\texttrue&\texttrue&\textfalse
+			& Disjunktion; Adjunktion;\newline Alternative
+			& A oder B
+			& \thepor \\
+			
+			\tableline%.................................................
+			
+			\rowcolor{cRareUse}
+			$\Sym{\lrep}$ $\lrepA$ $\lrepB$
+			& - & - & - &\texttrue&\texttrue&\textfalse&\texttrue
+			& Replikation; Konversion;\newline konverse Implikation
+			& A folgt aus B
+			& \theprep \\
+			
+			\tableline%.................................................
+			
+			$\lleft$
+			& - & - & - &\texttrue&\texttrue&\textfalse&\textfalse
+			& Präpendenz
+			& Identität von A
+			& - \\
+			
+			\tablegroup% -----------------------------------------------
+			
+			\rowcolor{cNormalUse}
+			$\Sym{\limp}$ $\limpA$ $\limpB$
+			& - & - & - &\texttrue&\textfalse&\texttrue&\texttrue
+			& Implikation; Subjunktion;\newline Konditional
+			& Wenn A so B; Aus A folgt B; A nur dann wenn B
+			& \thepimp \\
+			
+			\tableline%.................................................
+			
+			$\lright$
+			& - & - & - &\texttrue&\textfalse&\texttrue&\textfalse
+			& Postpendenz
+			& Identität von B
+			& - \\
+			
+			\tableline%.................................................
+			
+			\rowcolor{cNormalUse}
+			$\Sym{\lequiv}$ $\lequivA$
+			& - & - & - &\texttrue&\textfalse&\textfalse&\texttrue
+			& Äquivalenz; Bijunktion;\newline Bikonditional
+			& A genau dann wenn B; A dann und nur dann wenn B
+			& \thepequiv \\
+			
+			\tableline%.................................................
+			
+			\rowcolor{cNormalUse}
+			$\Sym{\land}$ $\landA$ $\landB$
+			& - & - & - &\texttrue&\textfalse&\textfalse&\textfalse
+			& Konjunktion
+			& {\small A und B; Sowohl A als auch B}
+			& \thepand \\
+			
+			\tablegroup% -----------------------------------------------
+			
+			\rowcolor{cRareUse}
+			$\Sym{\lnand}$ $\lnandA$ $\lnandB$
+			& - & - & - &\textfalse&\texttrue&\texttrue&\texttrue
+			& NAND; Unverträglichkeit;\newline Sheffer-Funktion
+			& Nicht zugleich A und B
+			& \thepnand \\
+			
+			\tableline%.................................................
+			
+			\rowcolor{cRareUse}
+			$\Sym{\lxor}$ $\lxorA$ $\lxorB$ $\lxorC$
+			& - & - & - &\textfalse&\texttrue&\texttrue&\textfalse
+			& XOR; Antivalenz;\newline ausschließende Disjunktion
+			& Entweder A oder B
+			& \thepxor \\
+			
+			\gapline%. . . . . . . . . . . . . . . . . . . . . . . . . .
+			
+			$\lnequiv$ $\lnequivA$ $\lnequivB$
+			& - & - & - &"&"&"&"
+			& Kontravalenz
+			&
+			& - \\
+			
+			\tableline%.................................................
+			
+			$\lnright$
+			& - & - & - &\textfalse&\texttrue&\textfalse&\texttrue
+			& Postnonpendenz
+			& Negation von B
+			& - \\
+			
+			\tableline%.................................................
+			
+			$\lnimp$ $\lnimpA$ $\lnimpB$
+			& - & - & - &\textfalse&\texttrue&\textfalse&\textfalse
+			& Postsektion
+			&
+			& - \\
+			
+			\tablegroup% -----------------------------------------------
+			
+			$\lnleft$
+			& - & - & - &\textfalse&\textfalse&\texttrue&\texttrue
+			& Pränonpendenz
+			& Negation von A
+			& - \\
+			
+			\tableline%.................................................
+			
+			$\lnrep$ $\lnrepA$ $\lnrepB$
+			& - & - & - &\textfalse&\textfalse&\texttrue&\textfalse
+			& Präsektion
+			&
+			& - \\
+			
+			\tableline%.................................................
+			
+			\rowcolor{cRareUse}
+			$\Sym{\lnor}$ $\lnorA$
+			& - & - & - &\textfalse&\textfalse&\textfalse&\texttrue
+			& NOR; Nihilation;\newline Peirce-Funktion
+			& Weder A noch B
+			& \thepnor \\
+			
+			\tableline%.................................................
+			
+			~
+			& - & - & - &\textfalse&\textfalse&\textfalse&\textfalse
+			& Kontradiktion
+			&
+			& - \\
+			
+			\hline%_____________________________________________________________
+		\end{tabularx}
+		\begin{tablenotes}
+			\footnotesize
+			
+			\item[1] \emph{Operatorsymbole}.
+			Sie stehen meistens für die Operatoren selbst.
+			Der Einfachheit halber bezeichnen wir auch die beiden Konstanten $\ltrue$ und $\lfalse$ als Junktoren \textbzw Operatorsymbole.
+			
+			Die Operatoren \symqt{$\subset$}, \symqt{$\supset$}, \symqt{$\nsubset$} und \symqt{$\nsupset$} haben hier nicht die Bedeutung der entsprechenden Operatoren der Mengenlehre und dürfen nicht damit verwechselt werden; entsprechendes gilt für \symqt{$+$} und \symqt{$\cdot$} mit Addition und Multiplikation.
+			
+			\item[2] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle binären Operationen aufzuführen.
+			
+			\item[3] Klammerung ist genau genommen kein Operator und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet.
+			
+			\item[4] Die Priorität der Klammern ist größer als die aller Operatoren.
+			
+			\item[5] Die Priorität der unären Operatoren muss größer sein als die aller mehrwertigen, also auch der binären Operatoren.
+			Wenn alle unären Operatoren auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
+			Nur wenn es sowohl links-, als auch rechtsseitige unäre Operatoren gibt, muss man für diese Prioritäten definieren.
+			
+		\end{tablenotes}
+		\caption{Definition von aussagenlogischen Symbolen.}
+		\label{tab:Symbole}% Erst nach '\caption'!
+	\end{threeparttable}
+\end{table}
+
+Für einige Junktoren, Namen und Sprechweisen sind auch Alternativen angegeben.
+Die durchgestrichenen (\textdh negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt.
+Wenn für eine bestimmte Kombination von Wahrheitswerten mehr als eine Zeile angegeben ist, so sind die zugehörigen Operationen in der zweiwertigen Aussagenlogik alle gleich.
+Bei der formalen Definition setzen wir aber keine Zweiwertigkeit voraus, so dass je nach Definition die Operationen verschiedene Ergebnisse liefern können.
+
+Um vollständig zu sein, \textdh alle 22 möglichen Kombinationen von Wahrheitswerten für höchstens zwei Variable zu berücksichtigen, enthält die \tablename{} auch viele ungebräuchliche Junktoren und Operationen.
+Die Zeilen mit den Klammern und den gebräuchlichsten Junktoren sind in der \tablename{} grau hinterlegt.
+Hellgrau hinterlegt sind Zeilen mit weniger gebräuchlichen Junktoren.
+Die restlichen Operationen sind uninteressant und brauchen daher keine Priorität.
+
+\subsection{Klammerregeln}% ----------------------------------------------------
+\label{sub:Klammerregeln}
+
+Zur Klammerersparnis werden die üblichen Regeln verwendet, \textdh dass Operatoren mit höherer Priorität stärker binden, als solche mit niedrigerer Priorität.
+
+Für die Operatoren derselben Priorität gilt Rechtsklammerung%
+\footnote{%
+	Unäre Operatoren stehen hier stets links \emph{vor} dem Operanden, so dass es nur Rechtsklammerung geben kann.
+	Zur Rechtsklammerung bei binären Operationen ein Zitat aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5:
+	\enquote{Diese hat gegenüber Linksklammerung Vorteile
+		bei der Niederschrift von Tautologien in $\limp$, [...]}%
+}.
+Im Folgenden wird nur noch ein Teil der logischen Operatoren aus der \tablename~\vref{tab:Symbole} und der \glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren} aus \subsectionname~\vref{sub:Metaausdruck} berücksichtigt.
+Diese werden in der \tablename~\vref{tab:Prioritaeten} mit abnehmender Priorität aufgelistet.
+\begin{table}
+	\begin{center}
+		\begin{tabular}[c]{|l|l|}
+			\hline
+			Klammern
+			& $      (      \quad      )                          $ \\
+			\hline
+			Unäre logische Operatoren
+			& $ \Sym{\lnot}                                       $ \\
+			\hdashline
+			& $ \Sym{\land} \quad \Sym{\lmult} \quad \Sym{\lnand} $ \\
+			Binäre logische Operatoren
+			& $ \Sym{\lor}  \quad \Sym{\ladd}  \quad \Sym{\lnor}  $ \\
+			& $ \Sym{\lrep} \quad \Sym{\limp}                     $ \\
+			& $ \Sym{\lequiv}                                     $ \\
+			\hline
+			\parbox[][1.5cm][c]{6.2cm}{%
+				Mit Gleichheit verwandte Symbole;
+				\small ihre Prioritäten untereinander sind nicht eindeutig
+				und bleiben daher undefiniert.
+			}
+			& $ \glsSym{eq} \quad \glsSym{ne} \quad
+			\glsSym{equiv}  \quad \glsSym{defeq}        $ \\
+			\hline
+			& $ \glsSym{metaor}                         $ \\
+			\GlsIdxPl{MetaoperatorV}
+			& $ \glsSym{metaand}                        $ \\
+			& $ \glsSym{metarep} \quad \glsSym{metaimp} $ \\
+			& $ \glsSym{metaequiv}                      $ \\
+			\hline
+			Metasprachliche Definition
+			& $ \glsSym{metadefeq}                      $ \\
+			\hline
+			\parbox[][1.1cm][c]{5.9cm}{%
+				Strukturelemente der natürlichen Sprache, \textzB Satzzeichen
+			}
+			& . \quad , \quad ; \quad \textusw \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\vspace{-0.5cm}
+	\caption{Prioritäten von Operatoren in abnehmender Reihenfolge}
+	\label{tab:Prioritaeten}% Erst nach '\caption'!
+\end{table}
+
+Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5 entnommen und ergänzt und die der \glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren} daran angeglichen.
+
+\subsection{Formalisierung}% ---------------------------------------------------
+\label{sub:Formalisierung}
+
+Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \ASBA\ sind, müssen die \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \textusw der Aussagenlogik in streng formaler Form vorliegen.
+Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
+Da Computerprogramme mit der \emph{Polnischen Notation}\idx{Polnische Notation}%
+\footnote{%
+	Bei der \emph{Polnischen Notation} wird eine zweistellige Operation $(A\circ B)$ dargestellt als $\circ A B$.
+	Eine Zwischenstufe ist $\circ(A,B)$, bei der noch die redundanten Gliederungszeichen Komma und Klammern -- auch andere als die runden -- hinzukommen, so dass die Operationen optisch besser getrennt und dadurch für Menschen besser lesbar werden.
+	Durch einfaches Weglassen der Gliederungszeichen ergibt sich dann die Polnische Notation.%
+}
+besser umgehen können und Klammern dort überflüssig sind, werden viele Formeln auch in die Polnische Notation überführt.
+
+\subsubsection{Bausteine der aussagenlogischen Sprache}% - - - - - - - - - - - -
+\label{subsub:Bausteine}
+
+Zur Einteilung der aussagenlogischen Junktoren werden die folgenden Mengen definiert:
+\begin{align}
+%
+& \gsNo\hidden{\gls{gsNo}}  & & \defeq & &
+&     & \text{Menge der \emph{natürlichen Zahlen} einschließlich 0}
+\idx{natürlichen Zahlen, Menge der} \label{def:N} \\
+%
+& \glsSym{asC}  & & \defeq & & \{ \ltrue, \lfalse \}
+& ,\; & \text{Menge der \emph{aussagenlogischen Konstanten}}
+\idx{Konstanten, Menge der}         \label{def:C} \\
+%
+& \glsSym{asU}  & & \defeq & & \{ \lnot \}
+& ,\; & \text{Menge der \emph{unären aussagenlogischen Operatoren}}
+\idx{unären Operatoren, Menge der}  \label{def:U} \\
+%
+& \glsSym{asB}  & & \defeq & &
+\{ \land, \lor, \limp, \lequiv, \lrep, \lnand, \lnor, \lmult, \ladd \}
+& ,\; & \text{Menge der \emph{binären aussagenlogischen Operatoren}}
+\idx{binären Operatoren, Menge der} \label{def:B}
+%
+\end{align}
+
+Damit sind alle in der \tablename~\vref{tab:Symbole} verwendeten wesentlichen Konstanten und Operatoren%
+\footnote{%
+	Jeweils nur die ersten der grau hinterlegten Zeilen sowie \symqt{$\lmult$}.%
+}
+erfasst und es können die folgende Mengen definiert werden:
+\begin{align}
+%
+& \glsSym{asV}  & & \defeq    & & \{ p_n | n \in \gsNo \}
+& ,\; & \text{Menge der \emph{atomaren Formeln}}
+\idx{atomaren Formeln, Menge der}         \label{def:V}  \\
+%
+& \glsSym{asJ}  & & \defeq    & &\asC \cup \asU \cup \asB
+& ,\; & \text{Menge der \emph{Junktoren}, \textbzw \emph{Operatoren}}
+\idx{Junktoren, Menge der}                \label{def:J}  \\
+%
+& \glsSym{asA}  & & \defeq    & & \asV \cup \asJ
+& ,\; & \text{\emph{Alphabet der aussagenlogischen Sprache (für }} \asJ
+\text{\emph{)}}
+\idx{Alphabet der logischen Sprache}      \label{def:A}  \\
+%
+& \glsSym{asJx} & & \subseteq & & \asJ
+& ,\; & \text{eine Teilmenge von } \asJ \text{ für eine Indexvariable }
+x                                         \label{def:Bx} \\
+%
+& \glsSym{asAx} & & \defeq    & & \asV \cup \asJx \quad
+& ,\; & \text{Alphabet der aussagenlogischen Sprache \emph{für} } \asJx
+\idx{Teil-Alphabet der aussagenlogischen Sprache} \label{def:Ax}
+\formulatoleft
+%
+\end{align}
+Für Elemente aus $\asV$ werden hier normalerweise die großen lateinischen Buchstaben $A$, $B$, $C$, \textbzw verwendet.
+Die Elemente aus $\asV$ (atomaren Formeln) werden auch \emph{\Idx{Satzbuchstabe}}\emph{n} oder kurz \emph{\Idx{Atom}}\emph{e}. genannt.
+
+\subsubsection{Aussagenlogische Formeln}%  - - - - - - - - - - - - - - - - -
+\label{subsub:Formeln}
+
+Neben dem Alphabet $\asA$ \textbzw. $\asAx$ werden noch Klammern als Gliederungszeichen verwendet.
+Damit können nun rekursiv für jede Teilmenge $\asJx$ von $\asJ$ zwei Mengen von Formeln definiert werden:
+
+$\glsSym{asFx}$ sei die Menge der auf folgende Weise definierten \emph{aussagenlogischen Formeln mit Klammerung}%
+\idx{aussagenlogische Formel mit Klammerung}:
+\begin{align}
+&                & \asV            \subset \asFx
+\\
+&                & \asJx \cap \asC \subset \asFx
+\\
+A                                \in \asFx
+& \quad \metaimp &  (\circ A)    \in \asFx
+& & , \quad \text{für} \quad \circ \in \asU \cap \asJx
+\\
+A, B                             \in \asFx
+& \quad \metaimp & (A \circ B)   \in \asFx
+& & , \quad \text{für} \quad \circ \in \asB \cap \asJx
+\formulatoleft
+\end{align}
+Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFx$.
+\\Für $\asJ = \asJx$ sei noch $\asF \defeq \glsSym{asFx}$.
+
+$\glsSym{asFxp}$ sei die Menge der auf folgende Weise definierten aussagenlogischen Formeln in \emph{Polnischer Notation}%
+\idx{aussagenlogische Formel in Polnischer Notation}:
+\begin{align}
+&                & \asV            \subset \asFxp
+\\
+&                & \asJx \cap \asC \subset \asFxp
+\\
+A                            \in \asFxp
+& \quad \metaimp & \circ A   \in \asFxp
+& & , \quad \text{für} \quad \circ \in \asU \cap \asJx
+\\
+A, B                         \in \asFxp
+& \quad \metaimp & \circ A B \in \asFxp
+& & , \quad \text{für} \quad \circ \in \asB \cap \asJx
+\formulatoleft
+\end{align}
+Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFxp$.
+\\Für $\asJ = \asJx$ sei noch $\asFp \defeq \glsSym{asFxp}$.
+
+Wie man leicht sieht, gilt:
+\begin{equation}
+\asJx \subset \asJy \subseteq \asJ \metaimp
+\begin{cases}
+\asAx  \subset \asAy  \subseteq \asA \\
+\asFx  \subset \asFy  \subseteq \asF \\
+\asFxp \subset \asFyp \subseteq \asFp
+\end{cases}
+\end{equation}
+
+Durch Anwendung der Klammerregeln von \subsubsectionname~\vref{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der Formeln aus $\asFx$ einsparen.
+Die Formeln aus $\asFxp$ sind frei von Klammern.
+Die Namen der Operatoren finden sich in der \tablename~\vref{tab:Symbole}.
+Für aussagenlogische Formeln, \textdh von Elementen aus $\asF$ \textbzw $\asFp$, werden hier normalerweise die kleinen griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw verwendet.
+Sie können dabei auch atomare Formeln bezeichnen (\seename \eqref{def:V}).
+
+\subsection{Definition aussagenlogische Operatoren durch andere}% ----------
+\label{sub:ausOperatorDef}
+
+Im folgenden gelte für zwei aussagenlogische Formeln $\alpha$ und $\beta$:
+\begin{itemize}
+	
+	\item $\alpha  \eq   \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$ stimmen -- \textggf nach vollständiger Klammerung -- als Zeichenkette überein.
+	
+	\item $\alpha \equiv \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$ können mit Hilfe erlaubter Substitutionen und geltender Axiome -- \seename~\vref{sub:ausAxiome} -- ineinander überführt werden.
+	
+\end{itemize}
+
+%TODO Signatur definieren
+
+Es werden verschiedene Teilmengen von $\asJ$ eingeführt, die jeweils ausreichen alle anderen Elemente aus $\asJ$ zu definieren:
+\begin{align}
+& \asJ_\xBool &\defeq & & & \{ \lnot, \land, \lor \} \label{def:Jbool}\\
+& \asJ_\xAnd  &\defeq & & & \{ \lnot, \land       \} \label{def:Jand} \\
+& \asJ_\xOr   &\defeq & & & \{ \lnot, \lor        \} \label{def:Jor}  \\
+& \asJ_\xImp  &\defeq & & & \{ \lnot, \limp       \} \label{def:Jimp} \\
+& \asJ_\xRep  &\defeq & & & \{ \lnot, \lrep       \} \label{def:Jrep} \\
+& \asJ_\xNand &\defeq & & & \{ \lnand             \} \label{def:Jnand}\\
+& \asJ_\xNor  &\defeq & & & \{ \lnor              \} \label{def:Jnor}
+\formulatoleft\formulatoleft\formulatoleft\formulatoleft\formulatoleft
+\end{align}
+
+Im Folgenden stehen jeweils links die Formeln in üblicher Schreibweise mit Klammern und rechts in Polnischer Notation (ohne Klammern).
+Ferner seien $A$ und $B$ beliebige, nicht notwendig verschiedene Formeln aus der passenden Menge $\asFx$ \textbzw der um die mit Hilfe der Definitionen erweiterten Formelmenge.
+
+Ausgehend von den Junktoren \textbzw Operatoren aus $\asJ_\xBool$ werden die restlichen Operatoren aus $\asJ$ definiert. Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den Operatoren aus $\asJ_\xAnd$:
+\begin{align}
+% folgt ------------------------
+&                (A \limp B)  &\defeq & & & (\lnot (A \land (\lnot B)))
+& \formulaspace &   \limp A B &\defeq & & & \lnot \land A \lnot B
+\label{def:imp}
+\\
+% sofern -----------------------
+&                (A \lrep B)  &\defeq & & & (\lnot (B \land (\lnot A)))
+& \formulaspace &   \lrep B A &\defeq & & & \lnot \land B \lnot A
+\label{def:rep}
+\\
+% genau dann -------------------
+&              (A \lequiv B)  &\defeq & & & ((A\limp B)\land(A\lrep B))
+& \formulaspace & \lequiv A B &\defeq & & & \land \limp A B \lrep A B
+\label{def:equiv}
+\\
+%falsch ------------------------
+&                     \lfalse & \defeq & & & (p_0 \land (\lnot p_0))
+& \formulaspace &     \lfalse & \defeq & & & \land p_0 \lnot p_0
+\label{def:false}
+\\
+% mal --------------------------
+&               (A \lmult B)  & \defeq & & & (A \land B)
+& \formulaspace &  \lmult A B & \defeq & & & \land A B
+\label{def:mult}
+\\
+% NAND -------------------------
+&               (A \lnand B)  &\defeq & & & (\lnot (A \land B ))
+& \formulaspace &  \lnand A B &\defeq & & & \lnot \land A B
+\label{def:nand}
+\formulatoleft
+\end{align}
+und die mit den Operatoren aus $\asJ_\xOr$:
+\begin{align}
+% NOR --------------------------
+&                (A \lnor B)  & \defeq & & & (\lnot (A \lor B))
+& \formulaspace &   \lnor A B & \defeq & & & \lnot \lor A B
+\label{def:nor}
+\\
+% plus -------------------------
+& (A \ladd B) & \defeq & & & ((A\lor B)\land(\lnot(A\land B)))
+& \formulaspace &   \ladd A B & \defeq & & & \land\lor A B\lnot\land A B
+\label{def:add}
+\\
+% wahr -------------------------
+&                      \ltrue & \defeq & & & (p_0 \lor (\lnot p_0))
+& \formulaspace &      \ltrue & \defeq & & & \lor p_0 \lnot p_0
+\label{def:true}
+\formulatoleft
+\end{align}
+
+Ist \symqt{$\lor$} oder \symqt{$\land$} nicht vorgegeben, \textdh wird von den Elementen aus $\asJ_\xAnd$ \textbzw $\asJ_\xOr$ statt von denen aus $\asJ_\xBool$ ausgegengen, so muss man den fehlenden Operator mittels der passenden der beiden folgenden Definitionen einführen:
+\begin{align}
+% oder aus und -----------------
+&          (A \lor B) & \defeq & & & (\lnot ((\lnot A) \land (\lnot B)))
+& \formulaspace & \lor  A B & \defeq & & & \lnot \land \lnot A \lnot B
+\label{def:orand}
+\\
+% und aus oder -----------------
+&          (A \land B) & \defeq & & & (\lnot ((\lnot A) \lor (\lnot B)))
+& \formulaspace & \land A B & \defeq & & & \lnot \lor \lnot A \lnot B
+\label{def:andor}
+\formulatoleft
+\end{align}
+Nun sind wieder alle Operatoren definiert.
+
+Entsprechend wird bei Vorgabe von $\asJ_\xImp$ \textbzw $\asJ_\xRep$ die passende der beiden folgenden Definitionen ausgewählt:
+\begin{align}
+% oder aus imp -----------------
+&              (A \lor  B)  & \defeq & & & (imp)
+& \formulaspace & \lor  A B & \defeq & & &  imp
+\label{def:orrep}
+\\
+% und aus rep ------------------
+&              (A \land B)  & \defeq & & & (rep)
+& \formulaspace & \land A B & \defeq & & &  rep
+\label{def:andrep}
+\formulatoleft
+\end{align}
+woraufhin dann \ref{def:imp} \textbzw \ref{def:rep} als Gleichung nachzuweisen ist.
+Da aus \ref{def:rep} durch Vertauschung der Variablen unmittelbar
+\begin{align}
+&              (A \lrep B)  & \equiv & & & (B \limp A)
+& \formulaspace & \lrep A B & \equiv & & &    \limp B A
+\label{eq:repimp}
+\formulatoleft
+\end{align}
+folgt, vermindert sich der Aufwand dazu erheblich.
+
+Bei Vorgabe von $\asJ_\xNand$ \textbzw $\asJ_\xNor$ schließlich
+wird die passende Definition aus
+\begin{align}
+% oder aus nor -----------------
+&              (A \lor  B)  & \defeq & & & (nor)
+& \formulaspace & \lor  A B & \defeq & & &  nor
+\label{def:ornor}
+\\
+% und aus nand -----------------
+&              (A \land B)  & \defeq & & & (nand)
+& \formulaspace & \land A B & \defeq & & &  nand
+\label{def:andnand}
+\formulatoleft
+\end{align}
+und, da \symqt{$\lnot$} weder in $\asJ_\xNand$ noch in $\asJ_\xNor$ vorhanden ist, aus
+\begin{align}
+% nicht aus nor ----------------
+&                (\lnot A) & \defeq & & & (nor)
+& \formulaspace & \lnot A  & \defeq & & &  nor
+\label{def:notnor}
+\\
+% nicht aus nand ---------------
+&                (\lnot A) & \defeq & & & (nand)
+& \formulaspace & \lnot A  & \defeq & & &  nand
+\label{def:notnand}
+\formulatoleft
+\end{align}
+ausgewählt und es ist \ref{def:nand} \textbzw \ref{def:nor} als Gleichung nachzuweisen.
+
+Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden Definitionen \ref{def:imp} bis \ref{def:notnor} ausgehend vom jeweils passenden $\asFx$ genau die gesamte Formelmenge $\asF$ erzeugt werden kann.
+
+\subsubsection{Aussagenlogisches Axiomensystem}% - - - - - - - - - - - - - - - -
+\label{subsub:ausAxiome}
+
+Gegebene Operatoren: $\lnot, \land, \limp$\par
+\glsIdxPl{Axiom}:
+\begin{align}
+%
+&(\alpha\limp\beta\limp\gamma)\limp(\alpha\limp\beta)%
+\limp(\alpha\limp\gamma)
+\formulaspace&&%
+\limp\limp\alpha\limp\beta\gamma\limp\limp\alpha\beta%
+\limp\alpha\gamma\\
+%
+&\alpha\limp\beta\limp\alpha\land\beta
+\formulaspace&&%
+\limp\alpha\limp\beta\land\alpha\beta\\
+%
+&\alpha\land\beta\limp\alpha ;\quad\alpha\land\beta\limp\beta
+\formulaspace&&%
+\limp\land\alpha\beta\alpha ;\quad\limp\land\alpha\beta\beta\\
+%
+&(\alpha\limp\lnot\beta)\limp(\beta\limp\lnot\alpha)
+\formulaspace&&%
+\limp\limp\alpha\lnot\beta\limp\beta\lnot\alpha
+\formulatoleft
+%
+\end{align}
+Definierte Operatoren: $\lor, \lequiv, \lmult, \ladd,
+\lnand, \lnor, \lrep, \lfalse, \ltrue$
+\begin{align}
+(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\limp\beta)
+\formulaspace&%
+\lor\alpha\beta&\defeq\lnot\limp\lnot\alpha\beta\\
+%
+(\alpha\lequiv\beta)&\defeq
+((\alpha\limp\beta)\land(\beta\limp\alpha))
+\formulaspace&%
+(\alpha\lequiv\beta)&\defeq((\alpha\limp\beta)%
+\land(\beta\limp\alpha))\\
+%
+(\alpha\lmult\beta)&\defeq(\alpha\land\beta)
+\formulaspace&%
+(\alpha\lmult\beta)&\defeq(\alpha\land\beta)\\
+%
+(\alpha\ladd\beta)&\defeq((\alpha\lor\beta)%
+\land\lnot(\alpha\land\beta))
+\formulaspace&%
+(\alpha\ladd\beta)&\defeq((\alpha\lor\beta)%
+\land\lnot(\alpha\land\beta))\\
+%
+(\alpha\lnand\beta)&\defeq\lnot(\alpha\land\beta)
+\formulaspace&%
+(\alpha\lnand\beta)&\defeq\lnot(\alpha\land\beta)\\
+%
+(\alpha\lnor\beta)&\defeq\lnot(\alpha\lor\beta)
+\formulaspace&%
+(\alpha\lnor\beta)&\defeq\lnot(\alpha\lor\beta)\\
+%
+(\alpha\lrep\beta)&\defeq(\beta\limp\alpha)
+\formulaspace&%
+(\alpha\lrep\beta)&\defeq(\beta\limp\alpha)\\
+%
+\lfalse&\defeq(p_0\land\lnot p_0)
+\formulaspace&%
+\lfalse&\defeq(p_0\land\lnot p_0)\\
+%
+\ltrue&\defeq\lnot\lfalse
+\formulaspace&%
+\ltrue&\defeq\lnot\lfalse
+\formulatoleft
+%
+\end{align}
+Zu zeigen
+\begin{align}
+(\alpha\limp\beta)&\equiv\lnot(\alpha\land\lnot\beta)
+\formulaspace
+&\limp\alpha\beta&\equiv\lnot\land\alpha\lnot\beta
+\formulatoleft
+\end{align}
+
+%%%	\subsection{Definition von Junktoren durch andere}% ------------------------
+%%%	\label{sub:Junktordefinitionen}
+%%%
+%%%	\subsubsection{nicht, und, oder}%  - - - - - - - - - - - - - - - - - - - - -
+%%%	\label{subsub:Standard}
+%%%	\label{subsub:OperatorenAnfang}
+%%%	Gegebene Operatoren: $\lnot, \land, \lor$\par
+%%%	Definierte Operatoren:
+%%%	$\limp, \lequiv, \lmult, \ladd, \lnand, \lnor, \lrep, \lfalse, \ltrue$
+%%%	\begin{align}
+%%%	\end{align}
+%%%	Zu zeigen:
+%%%	\begin{align}
+%%%		(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\land\lnot\beta)
+%%%	\end{align}
+%%%
+%%%	\subsubsection{nicht, und}%  - - - - - - - - - - - - - - - - - - - - - - - -
+%%%	Gegebene Operatoren: $\lnot, \land$\par
+%%%	Definierter Operator: $\lor$
+%%%	\begin{align}
+%%%		(\alpha\lor\beta)&\defeq\lnot(\lnot\alpha\land\lnot\beta)
+%%%	\end{align}
+%%%	Zu zeigen:
+%%%	\begin{align}
+%%%		(\alpha\lor\beta)&\equiv\lnot(\lnot\alpha\land\lnot\beta)
+%%%	\end{align}
+%%%	Zur Definition der Operatoren $\limp, \lequiv, \lmult, \ladd, \lnand, \lnor,
+%%%	\lrep, \lfalse, \ltrue$ siehe \subsubsectionname~\vref{subsub:Standard}
+%%%
+%%%	\subsubsection{nicht, oder}% - - - - - - - - - - - - - - - - - - - - - - - -
+%%%	Gegebene Operatoren: $\lnot, \lor$\par
+%%%	Definierter Operator: $\land$
+%%%	\begin{align}
+%%%		(\alpha\land\beta)&\defeq\lnot(\lnot\alpha\lor\lnot\beta))
+%%%	\end{align}
+%%%
+%%%	\subsubsection{nicht, impliziert}% - - - - - - - - - - - - - - - - - - - - -
+%%%	Gegebene Operatoren: $\lnot, \limp$\par
+%%%	Definierte Operatoren: $\land, \lor$
+%%%	\begin{align}
+%%%		(\alpha\land\beta)&\defeq\dots\\
+%%%		(\alpha\lor\beta)&\defeq\dots
+%%%	\end{align}
+%%%
+%%%	\subsubsection{NAND}%  - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%%%	Gegebener Operator: $\lnand$\par
+%%%	Definierte Operatoren: $\lnot, \land, \lor$
+%%%	\begin{align}
+%%%		\lnot\alpha&\defeq\dots\\
+%%%		(\alpha\land\beta)&\defeq\dots\\
+%%%		(\alpha\lor\beta)&\defeq\dots
+%%%	\end{align}
+%%%
+%%%	\subsubsection{NOR}% - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%%%	\label{subsub:OperatorenEnde}
+%%%	Gegebener Operator: $\lnor$\par
+%%%	Definierte Operatoren: $\lnot, \land, \lor$
+%%%	\begin{align}
+%%%		\lnot\alpha&\defeq\dots\\
+%%%		(\alpha\land\beta)&\defeq\dots\\
+%%%		(\alpha\lor\beta)&\defeq\dots
+%%%	\end{align}
+
+\subsection{Aussagenlogische Axiome}% ------------------------------------------
+\label{sub:ausAxiome}
+
+\todo{Aussagenlogik weiter bearbeiten.}%%%
+%TODO Aussagenlogik weiter bearbeiten. %%%
+
+\section{Prädikatenlogik}% =====================================================
+\beginsection{Prädikatenlogik}
+\label{sec:Prädikatenlogik}
+\hidden{\glsIdx{Praedikatenlogik}}
+
+\todo{Prädikatenlogik bearbeiten.}%%%
+%TODO Prädikatenlogik bearbeiten. %%%
+
+\section{Mengenlehre}% =========================================================
+\beginsection{Mengenlehre}
+\label{sec:Mengenlehre}
+
+\todo{Mengenlehre bearbeiten.}%%%
+%TODO Mengenlehre bearbeiten. %%%
+
+\Endchapter

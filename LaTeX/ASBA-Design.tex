@@ -1,0 +1,174 @@
+%%############################################################################%%
+%%                                                                            %%
+%% Datei:  ASBA-Design.tex                                                    %%
+%% Inhalt: Kapitel "Design"                                                   %%
+%%                                                                            %%
+%% Copyright (C) 2017  Winfried Teschers                                      %%
+%%                                                                            %%
+%% This program is free software: you can redistribute it and/or modify       %%
+%% it under the terms of the GNU Affero General Public License as published   %%
+%% by the Free Software Foundation, either version 3 of the License, or       %%
+%% (at your option) any later version.                                        %%
+%%                                                                            %%
+%% This program is distributed in the hope that it will be useful,            %%
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of             %%
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              %%
+%% GNU Affero General Public License for more details.                        %%
+%%                                                                            %%
+%% You should have received a copy of the GNU Affero General Public License   %%
+%% along with this program.  If not, see <http://www.gnu.org/licenses/>.      %%
+%%                                                                            %%
+%% Dr. Winfried Teschers                                                      %%
+%% Anton-Günther-Str. 26c                                                     %%
+%% 91083 Baiersdorf                                                           %%
+%% Germany                                                                    %%
+%%                                                                            %%
+%% e-mail: winfried.teschers@t-online.de                                      %%
+%%                                                                            %%
+%%############################################################################%%
+
+% !TeX root = ASBA.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+
+\chapter{Design}% ##############################################################
+\beginchapter{Design}
+\label{cha:Design}
+
+Diese Projekt soll Open Source sein.
+Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)}
+und für die Software die \emph{GNU Affero General Public License (APGL)}.
+Die \emph{GNU General Public License (GPL)} reicht für die Software nicht,
+da das Programm auch mittels eines Servers betrieben werden kann und soll.
+Damit das Projekt gegebenenfalls durch verschiedene Entwickler gleichzeitig
+bearbeitet werden kann und wegen des Konfigurationsmanagements
+wurde es als ein GitHub Projekt erstellt (\seename~\cite{bib:ASBA}).
+
+Wenn die Lizenzen nicht mitgeliefert wurden,
+können sie unter \url{http://www.gnu.org/licenses/} gefunden werden.
+
+\section{Anforderungen}% =======================================================
+\beginsection{Anforderungen}
+\label{sec:Anforderungen}
+
+Die Anforderungen ergeben sich zunächst
+aus den Zielen in \sectionname~\vref{sec:Ziele}.
+Die beiden Ziele \ref{Ziel:Daten}~\emph{Daten}
+und \ref{Ziel:Lizenz}~\emph{Lizenz}
+sind für die Entwicklung von \ASBA\ von sekundärer Bedeutung
+und werden daher in diesen \sectionname{} nicht übernommen.
+Die anderen Ziele werden noch verfeinert.
+
+\todo{Ziele aus Abschnitt "Ziele" in Anforderungen umwandeln.}%%%
+%TODO Ziele aus Abschnitt "Ziele" in Anforderungen umwandeln. %%%
+\begin{enumerate}
+	
+	\item \label{Anforderung:Form} \emph{Form}:
+	Die Daten liegt in formaler, geprüfter Form vor.
+	(\seename{} Ziel~\vref{Ziel:Form})
+	
+	\item \label{Anforderung:Eingaben} \emph{Eingaben}:
+	Die Eingabe von Daten erfolgt in einer formalen Syntax
+	unter Verwendung der üblichen mathematischen Schreibweise.
+	Folgende Daten können eingegeben werden:
+	\begin{enumerate}
+		\item \glsIdxPl{Axiom}
+		\item \glsIdxPl{Satz}
+		\item \glsIdxPl{Beweis}
+		\item \glsIdxPl{Fachbegriff}
+		\item \glsIdxPl{Fachgebiet}
+		\item \glsIdxPl{Ausgabeschema}
+	\end{enumerate}
+	Dabei sind alle Begriffe nur innerhalb eines \glsIdxPl{Fachgebiet}s
+	und seiner untergeordneten \glsIdxPl{Fachgebiet} gültig,
+	solange sie nicht umdefiniert werden.
+	Das oberste \glsIdx{Fachgebiet} ist die ganze Mathematik.
+	(\seename{} Ziel~\vref{Ziel:Eingaben})
+	
+	\item \label{Anforderung:Prüfung} \emph{Prüfung}:
+	Vorhandene \glsIdxPl{Beweis} können automatisch geprüft werden.
+	(\seename{} Ziel~\vref{Ziel:Prüfung})
+	
+	\item \label{Anforderung:Ausgaben} \emph{Ausgaben}:
+	Die Ausgabe kann in einer eindeutigen, formalen Syntax
+	gemäß vorhandener \glsIdxPl{Ausgabeschema} erfolgen.
+	(\seename{} Ziel~\vref{Ziel:Ausgaben})
+	
+	\item \label{Anforderung:Auswertungen} \emph{Auswertungen}:
+	Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
+	Insbesondere kann zu jedem \glsIdx{Beweis} angegeben werden,
+	wie viele Beweisschritte und welche \glsIdxPl{Axiom} und \glsIdxPl{Satz}%
+	\footnote{\glsIdxPl{Satz}, die quasi als \glsIdxPl{Axiom} verwendet werden.}
+	er verwendet.
+	(\seename{} Ziel~\vref{Ziel:Auswertungen})
+	
+	\item \label{Anforderung:Anpassbarkeit} \emph{Anpassbarkeit}:
+	\glsIdxPl{Fachbegriff}
+	und die Darstellung bei der Ausgabe können mit Hilfe von
+	-- gegebenenfalls unbenannten --
+	untergeordneten \glsIdxPl{Fachgebiet}n angepasst werden.
+	(\seename{} Ziel~\vref{Ziel:Anpassbarkeit})
+	
+	\item \label{Anforderung:Individualität} \emph{Individualität}:
+	\glsIdxPl{Axiom} und \glsIdxPl{Satz} können
+	für jeden \glsIdx{Beweis} individuell vorausgesetzt werden.
+	Dabei sind fachgebietsspezifische \glsIdxPl{Fachbegriff} erlaubt.
+	(\seename{} Ziel~\vref{Ziel:Individualität})
+	
+	\item \label{Anforderung:Internet} \emph{Internet}:
+	Die Daten können auf mehrere Dateien verteilt sein.
+	Ein Teil davon --
+	oder sogar alle --
+	können im Internet liegen.
+	(\seename{} Ziel~\vref{Ziel:Internet})
+	
+	\item \label{Anforderung:Kommunikation} \emph{Kommunikation}:
+	Die Kommunikation mit \ASBA\ kann mit den
+	\glsIdxPl{Fachbegriff}n der einzelnen \glsIdxPl{Fachgebiet} erfolgen.
+	(\seename{} Ziel~\vref{Ziel:Kommunikation})
+	
+	\item \label{Anforderung:Zugriff} \emph{Zugriff}:
+	Der Zugriff auf \ASBA\ kann lokal und über das Internet erfolgen.
+	(\seename{} Ziel~\vref{Ziel:Zugriff})
+	
+	\item \label{Anforderung:Unabhängigkeit} \emph{Unabhängigkeit}:
+	\ASBA\ kann offline und online arbeiten.
+	(\seename{} Ziel~\vref{Ziel:Unabhängigkeit})
+	
+	\item \label{Anforderung:Rekursion} \emph{Rekursion}:
+	Es kann rekursiv über alle verwendeten Dateien
+	-- auch solchen, die im Internet liegen --
+	ausgewertet werden.
+	(\seename{} Ziel~\vref{Ziel:Rekursion})
+	
+	\item \label{Anforderung:Bedienbarkeit} \emph{Bedienbarkeit}:
+	\ASBA\ ist einfach zu bedienen.
+	(\seename{} Ziel~\vref{Ziel:Bedienbarkeit})
+	
+\end{enumerate}
+
+\section{Axiome}% ==============================================================
+\beginsection{\glsIdxPl{Axiom}}
+\label{sec:Axiome}
+\todo{Axiome auswählen und definieren.}%%%
+%TODO Axiome auswählen und definieren. %%%
+
+\section{Beweise}% =============================================================
+\beginsection{\glsIdxPl{Beweis}}
+\label{sec:Beweise}
+\todo{Schlussregeln auswählen und Beweise definieren.}%%%
+%TODO Schlussregeln auswählen und Beweise definieren. %%%
+
+\section{Datenstruktur}% =======================================================
+\beginsection{Datenstruktur}
+\label{sec:Datenstruktur}
+\todo{Datenstruktur abstrakt und in XML definieren.}%%%
+%TODO Datenstruktur abstrakt und in XML definieren. %%%
+
+\section{Bausteine}% ===========================================================
+\beginsection{Bausteine}
+\label{sec:Bausteine}
+\todo{Bausteine? definieren.}%%%
+%TODO Bausteine? definieren. %%%
+
+\Endchapter
