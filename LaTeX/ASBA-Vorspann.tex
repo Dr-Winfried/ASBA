@@ -146,6 +146,7 @@
 	\Pagestyle%                         veränderte Kopfzeile aktivieren ...
 	\Thispagestyle%                     sicherheitshalber auch für diese Seite.
 	\addcontentsline{toc}{#1}{#2}%      Eintrag ins Inhaltsverzeichnis
+	%TODO Fehler: 1. Seite Inhaltsverzeichnis ohne Kopf- und Fußzeilen
 	%TODO Fehler: 2. Seite Kopf Mitte für Lit.-Verz. = Abildungsverzeichnis
 }
 \newcommand*{\Endchapter}{% am Ende eines Kapitels
@@ -549,6 +550,13 @@
 		Metaoperator: ... ungleich ..%
 	}
 }
+\newglossaryentry{notequiv}{
+	name={$ \notequiv$},
+	plural={\notequiv},% im Mathematikmodus
+	description={%
+		(Meta-)Operator: ... nicht äquivalent zu ..%
+	}
+}
 \newglossaryentry{metaand}{
 	name={$ \metaund$},
 	plural={\metaand},% im Mathematikmodus
@@ -771,6 +779,13 @@
 		Ableitung einer Folgerung aus gegebenen Voraussetzungen%
 	}
 }
+\newglossaryentry{BoolscheSignatur}{
+	name={Boolsche Signatur},
+	plural={Boolschen Signatur},% Dativ
+	description={%
+		Die \glsIdx{logischeSignaturV} $\{\lnot, \land, \lor\}$%
+	}
+}
 \newglossaryentry{Fachbegriff}{
 	name={Fachbegriff},
 	plural={Fachbegriffe},
@@ -796,9 +811,15 @@
 \newglossaryentry{intEigenschaftA}{
 	name={interessierende Eigenschaft},      % eine ...
 	plural={interessierenden Eigenschaften}, % alle ...
-	description={
-		Interessierende Eigenschaften sind solche, die \textbzgl \symqt{$=$} \textbzw \symqt{$\equiv$} von Interesse sind.
-		\textZB ist die interessierende Eigenschaft der Operanden der Gleichung \forqt{$y=f(x)$} normalerweise der Wert (von \forqt{$y$} und \forqt{$f(x)$}), und nicht deren Darstellung (Zeichenketten)%
+	description={%
+		Solche Eigenschaften von Ausdrücken, die im aktuellen Zusammenhang von Interesse sind.%
+	}%
+}
+\newglossaryentry{logischeSignaturV}{
+	name={logische Signatur},     % eine  ...
+	plural={logische Signaturen}, % viele ...
+	description={%
+		Eine in \glsIdx{Metasprache} verfasste Aussage, die auch zusammengesetzt sein kann%
 	}%
 }
 \newglossaryentry{MetaausdruckV}{
@@ -878,9 +899,11 @@
 % Symbol/Index und Glossareintrag ==============================================
 
 \newcommand*{\glsSym}[1]{\glspl{#1}\sym{\gls{#1}}}% Symbol - Im Mathematikmodus!
-\newcommand*{\glsIdx}[1]{\gls{#1}\idx{\gls{#1}}}%     normal
-\newcommand*{\GlsIdx}[1]{\Gls{#1}\idx{\gls{#1}}}%     groß
-\newcommand*{\glsIdxBg}[2]{#2\idx{\gls{#1}}}%                  Beugung
-\newcommand*{\GlsIdxBg}[2]{#2\idx{\gls{#1}}}%         groß und Beugung
-\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%          Plural
-\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}% groß und Plural
+\newcommand*{\glsIdx}[1]{\gls{#1}\idx{\gls{#1}}}%        normal
+\newcommand*{\GlsIdx}[1]{\Gls{#1}\idx{\gls{#1}}}%        groß
+\newcommand*{\glsIdxBg}[2]{#2\idx{\gls{#1}}}%                     Beugung
+\newcommand*{\GlsIdxBg}[2]{#2\idx{\gls{#1}}}%            groß und Beugung
+\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%             Plural
+\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}%    groß und Plural
+\newcommand*{\glsIdxX}[1]{\glsIdxPl{#1}}% Sonderfall
+\newcommand*{\GlsIdxX}[1]{\glsIdxPl{#1}}% Sonderfall und groß
