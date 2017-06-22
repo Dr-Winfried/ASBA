@@ -19,7 +19,7 @@
 %% along with this program.  If not, see <http://www.gnu.org/licenses/>.      %%
 %%                                                                            %%
 %% Dr. Winfried Teschers                                                      %%
-%% Anton-Günther-Str. 26c                                                     %%
+%% Anton-Günther-Straße 26c                                                   %%
 %% 91083 Baiersdorf                                                           %%
 %% Germany                                                                    %%
 %%                                                                            %%
@@ -55,7 +55,7 @@
 \usepackage{mathtools}% Mathematical tools to use with asmmath.
 \usepackage{mathabx}% Three series of mathematical symbols.
 \usepackage{mathpazo}% Fonts to typeset mathematics to match palatino.
-%\usepackage{cancel}% Place lines through maths formulae.
+%\usepackage{cancel}% Place lines through mathematical formulae.
 
 % Tabellen ---------------------------------------------------------------------
 \usepackage[table]{xcolor}% Driver-independent color extensions - vor 'color'?
@@ -78,11 +78,12 @@
 
 % Indizes ----------------------------------------------------------------------
 %\usepackage{makeidx}% Indexing - Entweder 'makeidx' oder 'splitidx'
-\usepackage[protected,idxcommands]{splitidx}% mehrere Indizes - statt 'makeidx'
+\usepackage[protected]{splitidx}% mehrere Indizes - statt 'makeidx'
 %\usepackage{hvindex}% Support for indexing - after 'babel
 %\usepackage{showidx}% Index auf Seitenrand anzeigen - Zum Testen der Indizes
 %TODO Fehler: 'showindex' gibt direkt und nicht auf Rand aus
 \usepackage{glossaries}% Create glossaries and lists of acronyms
+%TODO Fehler: 'hyperfirst' hat keine Wirkung'.
 %\usepackage{glossaries-german}% German language module for glossaries package
 
 % Verweise ---------------------------------------------------------------------
@@ -122,9 +123,9 @@
 % ASBA <Chapter-Überschrift> \Chaptername~\thechapter
 %                            \sectionname~\thesection <Section-Überschrift> ASBA
 %Initialisierung
-\Ohead{ASBA}%      bleibt unverändert
-\Chead{Copyright}% wird laufend verändert
-\Ihead{}%          wird laufend verändert
+\Ohead{ASBA}%               bleibt unverändert
+\Chead{Inhaltsverzeichnis}% wird laufend verändert
+\Ihead{}%                   wird laufend verändert
 
 % Kapitel ======================================================================
 \newcommand*{\Chaptername}{\chaptername}% wird mit 'Anhang' überschrieben
@@ -146,8 +147,7 @@
 	\Pagestyle%                         veränderte Kopfzeile aktivieren ...
 	\Thispagestyle%                     sicherheitshalber auch für diese Seite.
 	\addcontentsline{toc}{#1}{#2}%      Eintrag ins Inhaltsverzeichnis
-	%TODO Fehler: 1. Seite Inhaltsverzeichnis ohne Kopf- und Fußzeilen
-	%TODO Fehler: 2. Seite Kopf Mitte für Lit.-Verz. = Abildungsverzeichnis
+	%TODO Fehler: 2. Seite Kopf Mitte für Literaturverzeichnis = Abbildungsverzeichnis
 }
 \newcommand*{\Endchapter}{% am Ende eines Kapitels
 	\Thispagestyle% sicherheitshalber Kopfzeile für diese Seite aktivieren
@@ -187,7 +187,8 @@
 \deffootnote[10pt]% Markenbreite
 {10pt}% Einzug - für Blocksatz: Markenbreite
 {0pt}% Absatzeinzug für Folgeabsätze
-{\makebox[9pt][r]{\textsuperscript{\thefootnotemark} }}% Zeichen; < Markenbreite
+{\makebox[9pt][r]{\textsuperscript{\thefootnotemark)} }}% Zeichen; < Markenbreite
+\deffootnotemark {\textsuperscript{\thefootnotemark)}}
 
 % Vordefinierte Werte ändern ===================================================
 \setcounter{tocdepth}{3}%    Tiefe des Inhaltsverzeichnisses: 2 => subsection
@@ -305,7 +306,7 @@
 \newcommand*{\metaimp}{\Rightarrow}%        aus ... folgt ...
 \newcommand*{\metarep}{\Leftarrow}%         ... folgt aus ...
 \newcommand*{\metaequiv}{\Leftrightarrow}%  ... genau dann wenn ...
-\newcommand*{\metadefeq}{:\Leftrightarrow}% ... def.gem. genau dann wenn ...
+\newcommand*{\metadefeq}{:\Leftrightarrow}% ... definitionsgemäß genau dann wenn
 \newcommand*{\defeq}{:=}%                   ... definitionsgemäß gleich ...
 \newcommand*{\eq}{=}%                       ... gleich ...
 
@@ -425,6 +426,15 @@
 \newcommand*{\xOr}{\mathrm{or}}%
 \newcommand*{\xRep}{\mathrm{rep}}%
 
+% sonstige mathematische Zeichen ===============================================
+
+\newcommand*{\abltb}{\vdash}%           ... ableitbar ...
+\newcommand*{\subst}{\curvearrowright}% ... substituiert durch ...
+
+% sonstige Kommandos für den Mathematiksatz ####################################
+
+\mathtoolsset{showonlyrefs,showmanualtags}% Nur mit \ref referenzierte Gleichungen, aber alle manuellen Tags
+
 % sonstige nützliche Kommandos #################################################
 
 % Im Parameter von '\turl' muss '\' vor jedem Zeichen aus '{}#&%$' ein '\'
@@ -433,10 +443,10 @@
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
 \newcommand*{\formulaspace}{&&&&}%         Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
-\newcommand*{\charqt}[1]{'#1'}%          Quotierung von Zeichen    (character)
+\newcommand*{\charqt}[1]{'#1'}%          Quotierung von Zeichen    (character) %\newcommand*{\charqt}[1]{\guilsinglleft#1\guilsinglright}%  ... Alternative
 \newcommand*{\strqt}[1]{\enquote{#1}}%   Quotierung von Zeichenketten (string)
+%\newcommand*{\strqt}[1]{\guillemotleft#1\guillemotright}%     ... Alternative
 % Nur mit Parameter im Mathematikmodus!
-%TODO einzelne Symbole in `...´ einschließen!
 \newcommand*{\symqt}[1]{\charqt{#1}}%    Quotierung einzelner Symbole (symbol)
 \newcommand*{\forqt}[1]{\strqt{#1}}%     Quotierung von Formeln      (formula)
 
@@ -473,295 +483,472 @@
 \makeglossaries
 \setacronymstyle{long-sc-short}
 
+% Symbol/Index und Glossareintrag ==============================================
+
+\newcommand*{\idx}[1]{\sindex[idx]{#1}}
+\newcommand*{\sym}[1]{\sindex[sym]{#1}}
+\newcommand*{\glsSym}[1]{\glspl{#1}\sym{\gls{#1}}}% Symbol - Im Mathematikmodus!
+\newcommand*{\glsIdx}[1]{\gls{#1}\idx{\gls{#1}}}%        normal
+\newcommand*{\GlsIdx}[1]{\Gls{#1}\idx{\gls{#1}}}%        groß
+\newcommand*{\glsIdxBg}[2]{#2\idx{\gls{#1}}}%                     Beugung
+\newcommand*{\GlsIdxBg}[2]{#2\idx{\gls{#1}}}%            groß und Beugung
+\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%             Plural
+\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}%    groß und Plural
+\newcommand*{\glsIdxX}[1]{\glsIdxPl{#1}}% Sonderfall
+\newcommand*{\GlsIdxX}[1]{\GlsIdxPl{#1}}% Sonderfall und groß
+\newcommand*{\Tag}[1]{\tag{\glsPl{#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag in Formel
+
 % ==============================================================================
 
-% Symbole für Beispieloperatoren
+% Symbole für Beispieloperatoren -----------------------------------------------
 
 \newglossaryentry{lrelbsp}{
 	name={$ \lrelbsp$},
 	plural={\lrelbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation mit Umkehrrelation $\rreleqbsp$%
+		Ein Beispielsymbol für eine Relation mit Umkehrrelation $\rrelbsp$%
 	}
 }
 \newglossaryentry{lreleqbsp}{
 	name={$ \lreleqbsp$},
 	plural={\lreleqbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation mit Gleichheit und Umkehrrelation $\rreleqbsp$%
+		Ein Beispielsymbol für eine Relation mit Gleichheit und Umkehrrelation $\rreleqbsp$%
 	}
 }
 \newglossaryentry{relbsp}{
 	name={$ \relbsp$},
 	plural={\relbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation%
+		Ein Beispielsymbol für eine Relation%
 	}
 }
 \newglossaryentry{releqbsp}{
 	name={$ \releqbsp$},
 	plural={\releqbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation mit Gleichheit%
+		Ein Beispielsymbol für eine Relation mit Gleichheit%
 	}
 }
 \newglossaryentry{rrelbsp}{
 	name={$ \rrelbsp$},
 	plural={\rrelbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation mit Umkehrrelation $\lrelbsp$%
+		Ein Beispielsymbol für eine Relation mit Umkehrrelation $\lrelbsp$%
 	}
 }
 \newglossaryentry{rreleqbsp}{
 	name={$ \rreleqbsp$},
 	plural={\rreleqbsp},% im Mathematikmodus
 	description={%
-		Beispiel für eine Relation mit Gleichheit und Umkehrrelation $\lreleqbsp$%
+		Ein Beispielsymbol für eine Relation mit Gleichheit und Umkehrrelation $\lreleqbsp$%
 	}
 }
 
-% Symbole für Metaoperatoren
+% Symbole für Metaoperatoren ---------------------------------------------------
 
 \newglossaryentry{defeq}{
 	name={$ \defeq$},
 	plural={\defeq},% im Mathematikmodus
 	description={%
-		Metaoperator: ... definitionsgemäß gleich ..%
+		Ein \glsIdx{MetaoperatorV}: ... definitionsgemäß gleich ..%
 	}
 }
 \newglossaryentry{eq}{
 	name={$ \eq$},
 	plural={\eq},% im Mathematikmodus
 	description={%
-		Metaoperator: ... gleich ..%
+		Ein \glsIdx{MetaoperatorV}: ... gleich (ist dasselbe wie, ist identisch zu) ..%
 	}
 }
 \newglossaryentry{equiv}{
 	name={$ \equiv$},
 	plural={\equiv},% im Mathematikmodus
 	description={%
-		(Meta-)Operator: ... äquivalent zu ..%
-	}
-}
-\newglossaryentry{ne}{
-	name={$ \ne$},
-	plural={\ne},% im Mathematikmodus
-	description={%
-		Metaoperator: ... ungleich ..%
-	}
-}
-\newglossaryentry{notequiv}{
-	name={$ \notequiv$},
-	plural={\notequiv},% im Mathematikmodus
-	description={%
-		(Meta-)Operator: ... nicht äquivalent zu ..%
+		Ein (Meta-)Operator: ... äquivalent (ist das gleiche wie, ist so wie) zu ..%
 	}
 }
 \newglossaryentry{metaand}{
 	name={$ \metaund$},
 	plural={\metaand},% im Mathematikmodus
 	description={%
-		Metaoperator: ... oder ..%
+		Ein \glsIdx{MetaoperatorV}: ... oder ... (\seealso~\glsSym{mid})%
 	}
 }
 \newglossaryentry{metadefeq}{
 	name={$ \metadefeq$},
 	plural={\metadefeq},% im Mathematikmodus
 	description={%
-		Metaoperator: ... definitionsgemäß genau dann wenn ..%
+		Ein \glsIdx{MetaoperatorV}: ... definitionsgemäß gleich (definitionsgemäß genau dann, wenn) ..%
 	}
 }
 \newglossaryentry{metaequiv}{
 	name={$ \metaequiv$},
 	plural={\metaequiv},% im Mathematikmodus
 	description={%
-		Metaoperator: ... genau dann wenn ..%
+		Ein \glsIdx{MetaoperatorV}: ... genau dann wenn ..%
 	}
 }
 \newglossaryentry{metaimp}{
 	name={$ \metaimp$},
 	plural={\metaimp},% im Mathematikmodus
 	description={%
-		Metaoperator: ... dann auch ..%
+		Ein \glsIdx{MetaoperatorV}: ... dann auch ..%
 	}
 }
 \newglossaryentry{metaor}{
 	name={$ \metaoder$},
 	plural={\metaor},% im Mathematikmodus
 	description={%
-		Metaoperator: ... oder ..%
+		Ein \glsIdx{MetaoperatorV}: ... oder ..%
 	}
 }
 \newglossaryentry{metarep}{
 	name={$ \metarep$},
 	plural={\metarep},% im Mathematikmodus
 	description={%
-		Metaoperator: ... sofern ..%
+		Ein \glsIdx{MetaoperatorV}: ... sofern ..%
+	}
+}
+\newglossaryentry{mid}{
+	name={$ \mid$},
+	plural={\mid},% im Mathematikmodus
+	description={%
+		Ein \glsIdx{MetaoperatorV}: ... und ... (\seealso~\glsSym{metaand})%
+	}
+}
+\newglossaryentry{ne}{
+	name={$ \ne$},
+	plural={\ne},% im Mathematikmodus
+	description={%
+		Ein \glsIdx{MetaoperatorV}: ... ungleich (nicht dasselbe wie, nicht identisch zu) ..%
+	}
+}
+\newglossaryentry{notequiv}{
+	name={$ \notequiv$},
+	plural={\notequiv},% im Mathematikmodus
+	description={%
+		Ein (Meta-)Operator: ... nicht äquivalent (ist nicht das gleiche wie, ist nicht so wie) ..%
 	}
 }
 
-% sonstige Operatoren
+% sonstige mathematische Symbole -----------------------------------------------
 
+\newglossaryentry{abltb}{
+	name={$ \abltb$},
+	plural={\abltb},% im Mathematikmodus
+	description={%
+		Ableitungsrelation: ... ableitbar ...
+		(\seename\ \emph{\glsIdx{ableitbar}})%
+	}
+}
 \newglossaryentry{lfalse}{
 	name={$ \lfalse$},
 	plural={\lfalse},% im Mathematikmodus
 	description={%
-		Aussagenlogische Konstante: Falsch%
+		Eine Aussagenlogische Konstante: Falsch%
 	}
 }
 \newglossaryentry{ltrue}{
 	name={$ \ltrue$},
 	plural={\ltrue},% im Mathematikmodus
 	description={%
-		Aussagenlogische Konstante: Wahr%
+		Eine Aussagenlogische Konstante: Wahr%
+	}
+}
+\newglossaryentry{subst}{
+	name={$ \subst$},
+	plural={\subst},% im Mathematikmodus
+	description={%
+		Substitution: ... substituiert durch ...
+		(siehe die Definition in \subsectionname~\vref{sub:Basisregeln})%
 	}
 }
 
-% Symbole für Mengen
+% Symbole für Mengen -----------------------------------------------------------
 
 \newglossaryentry{gsN}{
 	name={$ \gsN$},
 	plural={\gsN},% im Mathematikmodus
 	description={%
-		Menge der natürlichen Zahlen ohne 0%
+		Die Menge der natürlichen Zahlen ohne 0%
 	}
 }
 \newglossaryentry{gsNo}{
 	name={$ \gsNo$},
 	plural={\gsNo},% im Mathematikmodus - erfolgt im falschen Zeichensatz!
 	description={%
-		Menge der natürlichen Zahlen einschließlich 0%
+		Die Menge der natürlichen Zahlen einschließlich 0%
 	}
 }
 \newglossaryentry{asA}{
 	name={$ \asA$},
 	plural={\asA},% im Mathematikmodus
 	description={%
-		Alphabet der aussagenlogischen Sprache%
+		Das Alphabet der aussagenlogischen Sprache%
 	}
 }
 \newglossaryentry{asAx}{
 	name={$ \asAx$},
 	plural={\asAx},% im Mathematikmodus
 	description={%
-		Teilmenge des Alphabets $\asA$ der aussagenlogischen Sprache%
+		Eine Teilmenge des Alphabets $\asA$ der aussagenlogischen Sprache%
 	}
 }
 \newglossaryentry{asB}{
 	name={$ \asB$},
 	plural={\asB},% im Mathematikmodus
 	description={%
-		Menge der aussagenlogischen, binären Operatoren%
+		Die Menge der aussagenlogischen, binären Operatoren%
 	}
 }
 \newglossaryentry{asC}{
 	name={$ \asC$},
 	plural={\asC},% im Mathematikmodus
 	description={%
-		Menge der aussagenlogischen Konstanten%
+		Die Menge der aussagenlogischen Konstanten%
 	}
 }
 \newglossaryentry{asF}{
 	name={$ \asF$},
 	plural={\asF},% im Mathematikmodus
 	description={%
-		Menge der aussagenlogischen Formeln mit Klammerung%
+		Die Menge der aussagenlogischen Formeln mit Klammerung%
 	}
 }
 \newglossaryentry{asFp}{
 	name={$ \asFp$},
 	plural={\asFp},% im Mathematikmodus
 	description={%
-		Menge der aussagenlogischen Formeln in polnischer Notation%
+		Die Menge der aussagenlogischen Formeln in polnischer Notation%
 	}
 }
 \newglossaryentry{asFx}{
 	name={$ \asFx$},
 	plural={\asFx},% im Mathematikmodus
 	description={%
-		Teilmenge der Menge $\asF$
-		der aussagenlogischen Formeln mit Klammerung%
+		Eine Teilmenge der Menge $\asF$ der aussagenlogischen Formeln mit Klammerung%
 	}
 }
 \newglossaryentry{asFxp}{
 	name={$ \asFxp$},
 	plural={\asFxp},% im Mathematikmodus
 	description={%
-		Teilmenge der Menge $\asF$
-		der aussagenlogischen Formeln in polnischer Notation%
+		Eine Teilmenge der Menge $\asF$ der aussagenlogischen Formeln in polnischer Notation%
 	}
 }
 \newglossaryentry{asJ}{
 	name={$ \asJ$},
 	plural={\asJ},% im Mathematikmodus
 	description={%
-		Menge der aussagenlogischen Operatoren%
+		Die Menge der aussagenlogischen Operatoren%
 	}
 }
 \newglossaryentry{asJx}{
 	name={$ \asJx$},
 	plural={\asJx},% im Mathematikmodus
 	description={%
-		Teilmenge der Menge $\asJ$ der aussagenlogischen Operatoren
+		Eine Teilmenge der Menge $\asJ$ der aussagenlogischen Operatoren
 	}
 }
 \newglossaryentry{asM}{
 	name={$ \asM$},
 	plural={\asM},% im Mathematikmodus
 	description={%
-		Menge der Metaoperatoren und der mit Gleichheit verwandten Symbole%
+		Die Menge der \glsIdxPl{MetaoperatorV} und der mit Gleichheit verwandten Symbole%
 	}
 }
 \newglossaryentry{asU}{
 	name={$ \asU$},
 	plural={\asU},% im Mathematikmodus
 	description={%
-		Menge der aussagenlogischen, unären Operatoren%
+		Die Menge der aussagenlogischen unären Operatoren%
 	}
 }
 \newglossaryentry{asV}{
 	name={$ \asV$},
 	plural={\asV},% im Mathematikmodus
 	description={%
-		Menge der aussagenlogischen, atomaren Formeln%
+		Die Menge der aussagenlogischen \glsIdxPl{atomareFormelA}%
 	}
 }
 
-% keine Symbole mehr
+% Schlussregeln ----------------------------------------------------------------
 
-\newglossaryentry{Aussage}{
-	name={Aussage},
-	plural={Aussagen},
+\newcommand*{\tagAR}{AR}% Argument für \tag
+\newglossaryentry{AR}{
+	name={(AR)},
+	plural={(\text{AR})},% im Mathematikmodus
 	description={%
-		Eine Aussage in natürlicher Sprache oder als Formel,
-		die einen Wahrheitswert liefert%
+		\glsIdx{Anfangsregel}%
 	}
 }
-\newglossaryentry{Aussagenlogik}{
-	name={Aussagenlogik},
+\newcommand*{\tagMR}{MR}% Argument für \tag
+\newglossaryentry{MR}{
+	name={(MR)},
+	plural={(\text{MR})},% im Mathematikmodus
 	description={%
-		\see \sectionname~\vref{sec:Aussagenlogik}%
+		\glsIdx{Monotonieregel}%
 	}
 }
-\newglossaryentry{Beweisschritt}{
-	name={Beweisschritt},
-	plural={Beweisschritte},
+\newcommand*{\tagSR}{SR}% Argument für \tag
+\newglossaryentry{SR}{
+	name={(SR)},
+	plural={(\text{SR})},% im Mathematikmodus
 	description={%
-		Eine Vorschrift, wie aus vorgegebenen Aussagen eine weitere folgt%
+		\glsIdx{Schnittregel} (Modus ponens)%
 	}
 }
-\newcommand*{\ASBA}{\textsf{\glsIdx{ASBA}}}
+\newcommand*{\tagTR}{TR}% Argument für \tag
+\newglossaryentry{TR}{
+	name={(TR)},
+	plural={(\text{TR})},% im Mathematikmodus
+	description={%
+		\glsIdx{Abtrennungsregel}%
+	}
+}
+\newcommand*{\tagandB}{$\land$B}% Argument für \tag
+\newglossaryentry{andB}{
+	name={($ \land     $B)},
+	plural={(\land\text{B})},% im Mathematikmodus
+	description={%
+		Beseitigung von \symqt{$\land$}%
+	}
+}
+\newcommand*{\tagandE}{$\land$E}% Argument für \tag
+\newglossaryentry{andE}{
+	name={($ \land     $E)},
+	plural={(\land\text{E})},% im Mathematikmodus
+	description={%
+		Einführung von \symqt{$\land$}%
+	}
+}
+\newcommand*{\tagimpB}{$\limp$B}% Argument für \tag
+\newglossaryentry{impB}{
+	name={($ \limp     $B)},
+	plural={(\limp\text{B})},% im Mathematikmodus
+	description={%
+		Beseitigung von \symqt{$\limp$}%
+	}
+}
+\newcommand*{\tagimpE}{$\limp$E}% Argument für \tag
+\newglossaryentry{impE}{
+	name={($ \limp     $E)},
+	plural={(\limp\text{E})},% im Mathematikmodus
+	description={%
+		Einführung von \symqt{$\limp$}%
+	}
+}
+\newcommand*{\tagnota}{$\lnot$1}% Argument für \tag
+\newglossaryentry{nota}{
+	name={($ \lnot     $1)},
+	plural={(\lnot\text{1})},% im Mathematikmodus
+	description={%
+		Einführung/Beseitigung von \symqt{$\lnot$} Teil 1%
+	}
+}
+\newcommand*{\tagnotb}{$\lnot$2}% Argument für \tag
+\newglossaryentry{notb}{
+	name={($ \lnot     $2)},
+	plural={(\lnot\text{2})},% im Mathematikmodus
+	description={%
+		Einführung/Beseitigung von \symqt{$\lnot$} Teil 2%
+	}
+}
+\newcommand*{\tagnotc}{$\lnot$3}% Argument für \tag
+\newglossaryentry{notc}{
+	name={($ \lnot     $3)},
+	plural={(\lnot\text{3})},% im Mathematikmodus
+	description={%
+		Beweistechnik \strqt{Indirekter Beweis}%
+	}
+}
+\newcommand*{\tagnotd}{$\lnot$4}% Argument für \tag
+\newglossaryentry{notd}{% statt "notE"
+	name={($ \lnot     $4)},
+	plural={(\lnot\text{4})},% im Mathematikmodus
+	description={%
+		Reductio ad absurdum (indirekter Beweis)%
+	}
+}
+%%%\newglossaryentry{orB}{
+%%%	name={($ \lor     $B)},
+%%%	plural={(\lor\text{B})},% im Mathematikmodus
+%%%	description={%
+%%%		Beseitigung von \symqt{$\lor$}%
+%%%	}
+%%%}
+%%%\newglossaryentry{orE}{
+%%%	name={($ \lor     $E)},
+%%%	plural={(\lor\text{E})},% im Mathematikmodus
+%%%	description={%
+%%%		Einführung von \symqt{$\lor$}%
+%%%	}
+%%%}
+
+% keine Symbole mehr -----------------------------------------------------------
+
+\newglossaryentry{ableitbar}{
+	name={ableitbar},
+	plural={ableitbare},
+	description={%
+		Wenn sich eine Formel $\beta$ aus einer Formel $\alpha$ mittels zulässiger Transaktionen ableiten lässt, heißt $\beta$ ableitbar aus $\alpha$.
+		Sprechweise: \forqt{$\alpha$ ableitbar $\beta$}.
+		Eine oder beide Formeln $\alpha$ \textbzw $\beta$ dürfen dabei durch Formelmengen ersetzt werden.
+		(\seealso\ \symqt{\glsIdx{abltb}} und \glsIdx{Ableitungsrelation})
+		-- Synonym: \glsIdx{beweisbar}%
+	}
+}
+\newglossaryentry{Ableitungsrelation}{
+	name={Ableitungsrelation},
+	plural={Ableitungsrelationen},
+	description={%
+		Die Relation \symqt{\glsIdx{abltb}}%
+	}
+}
+\newglossaryentry{Abtrennungsregel}{
+	name={Abtrennungsregel},
+	plural={Abtrennungsregeln},
+	description={%
+		Eine \emph{\glsIdx{Schlussregel}} - siehe~\glsIdx{TR}%
+	}
+}
+\newglossaryentry{Anfangsregel}{
+	name={Anfangsregel},
+	plural={Anfangsregeln},
+	description={%
+		Eine \emph{\glsIdx{Schlussregel}} um beginnen zu können - siehe~\glsIdx{AR}%
+	}
+}
+\newcommand*{\ASBA}{\glsIdx{ASBA}}
 \newacronym{ASBA}{ASBA}{
-	Das zu entwickelnde Programmsystem,
-	das \textbf{A}xiome, \textbf{S}ätze,
-	\textbf{B}eweise und \textbf{A}uswertungen behandeln kann%
+	Programmsystem, das \textbf{A}xiome, \textbf{S}ätze, \textbf{B}eweise und \textbf{A}uswertungen behandeln kann%
+}
+\newglossaryentry{atomareFormelA}{
+	name={atomare Formel},     % eine ...
+	plural={atomaren Formeln}, % alle ...
+	description={%
+		Eine Formel, die sich nicht weiter zerlegen lässt%
+	}%
 }
 \newglossaryentry{Ausgabeschema}{
 	name={Ausgabeschema},
 	plural={Ausgabeschemata},
 	description={%
-		Ein Schema, mit dem bestimmte mathematische Objekte
-		ausgegeben werden sollen%
+		Ein Schema, mit dem bestimmte mathematische Objekte ausgegeben werden sollen%
+	}
+}
+\newglossaryentry{Aussage}{
+	name={Aussage},
+	plural={Aussagen},
+	description={%
+		Eine Aussage in natürlicher Sprache oder als Formel, die einen Wahrheitswert liefert%
+	}
+}
+\newglossaryentry{Aussagenlogik}{
+	name={Aussagenlogik},
+	description={%
+		\seename\ \sectionname~\vref{sec:Aussagenlogik}%
 	}
 }
 \newglossaryentry{Axiom}{
@@ -771,12 +958,33 @@
 		Eine Formel, die unbewiesen als wahr angesehen wird%
 	}
 }
+\newglossaryentry{Basisregel}{
+	name={Basisregel},
+	plural={Basisregeln},
+	description={%
+		Eine \emph{\glsIdx{Schlussregel}}, die nicht mehr auf andere zurückgeführt wird%
+	}
+}
 \newglossaryentry{Beweis}{
 	name={Beweis},
 	plural={Beweise},
 	description={%
-		Eine zulässige
-		Ableitung einer Folgerung aus gegebenen Voraussetzungen%
+		Eine zulässige Ableitung von Folgerungen aus gegebenen Voraussetzungen%
+	}
+}
+\newglossaryentry{beweisbar}{
+	name={beweisbar},
+	plural={beweisbare},
+	description={%
+		Synonym zu \emph{ableitbar}%
+	}
+}
+
+\newglossaryentry{Beweisschritt}{
+	name={Beweisschritt},
+	plural={Beweisschritte},
+	description={%
+		Eine Vorschrift, wie aus vorgegebenen Aussagen eine weitere folgt%
 	}
 }
 \newglossaryentry{BoolscheSignatur}{
@@ -805,7 +1013,7 @@
 	plural={formale Elemente}, % viele ...
 	description={%
 		Ein mathematisches Element in formaler Schreibweise.
-		Bis auf wenige Aussagen kommen darin \glsIdxPl{MetaausdruckV} nicht mehr vor%
+		Bis auf wenige Aussagen kommen darin \emph{\glsIdxPl{MetaausdruckV}} nicht mehr vor%
 	}%
 }
 \newglossaryentry{intEigenschaftA}{
@@ -819,7 +1027,7 @@
 	name={logische Signatur},     % eine  ...
 	plural={logische Signaturen}, % viele ...
 	description={%
-		Eine in \glsIdx{Metasprache} verfasste Aussage, die auch zusammengesetzt sein kann%
+		Eine in \emph{\glsIdx{Metasprache}} verfasste Aussage, die auch zusammengesetzt sein kann%
 	}%
 }
 \newglossaryentry{MetaausdruckV}{
@@ -833,14 +1041,14 @@
 	name={metasprachliche Aussage},    % eine   ...
 	plural={metasprachliche Aussagen}, % viele ...
 	description={%
-		Eine in \glsIdx{Metasprache} verfasste Aussage, die auch zusammengesetzt sein kann%
+		Eine in \emph{\glsIdx{Metasprache}} verfasste Aussage, die auch zusammengesetzt sein kann%
 	}%
 }
 \newglossaryentry{MetaoperatorV}{
 	name={metasprachlicher Operator},    % ein   ...
 	plural={metasprachliche Operatoren}, % viele ...
 	description={%
-		Ein Operator, deren Operanden \glsIdxPl{MetaausdruckV} sind%
+		Ein Operator, dessen Operanden \emph{\glsIdxPl{MetaausdruckV}} sind%
 	}%
 }
 \newglossaryentry{Metasprache}{
@@ -850,18 +1058,25 @@
 		Eine Sprache, in der Aussagen über Elemente einer anderen Sprache getroffen werden können%
 	}%
 }
+\newglossaryentry{Monotonieregel}{
+	name={Monotonieregel},
+	plural={Monotonieregeln},
+	description={%
+		Eine \emph{\glsIdx{Schlussregel}} - siehe~\glsIdx{MR}%
+	}
+}
 \newglossaryentry{Praedikat}{
 	name={Prädikat},
 	plural={Prädikate},
 	description={%
-		Ein Element der \glsIdx{Praedikatenlogik} (\see \sectionname~\vref{sec:Prädikatenlogik}).
-		\textZB kann man eine \forqt{$Gruppe$} als ein dreistelliges Prädikat \forqt{$Gruppe(G,+,\cdot)$} definieren, in dem $G$ eine Menge und \symqt{$+$} und \symqt{$\cdot$} Operationen in \forqt{$G \times G$} sind, so dass die Gruppenaxiome erfüllt sind%
+		Ein Element der \emph{\glsIdx{Praedikatenlogik}} (\see \sectionname~\vref{sec:Praedikatenlogik}).
+		\textZB kann man eine \forqt{$Gruppe$} als ein zweistelliges Prädikat \forqt{$Gruppe(G,+)$} definieren, in dem $G$ eine Menge und \symqt{$+$} eine Operation, \textdh eine (zweistellige) Funktion \forqt{$+: G \times G \rightarrow G$} ist, so dass die Gruppenaxiome erfüllt sind%
 	}
 }
 \newglossaryentry{Praedikatenlogik}{
 	name={Prädikatenlogik},
 	description={%
-		\see \sectionname~\vref{sec:Prädikatenlogik}%
+		\seename\ \sectionname~\vref{sec:Praedikatenlogik}%
 	}
 }
 \newglossaryentry{Satz}{
@@ -875,17 +1090,24 @@
 	name={Schlussregel},
 	plural={Schlussregeln},
 	description={%
-		\see \sectionname~\vref{sec:Schlussregeln}%
+		Eine Regel für eine (zulässige) Umwandlung von Formeln%
+	}
+}
+\newglossaryentry{Schnittregel}{
+	name={Schnittregel},
+	plural={Schnittregeln},
+	description={%
+		Eine \emph{\glsIdx{Schlussregel}} - siehe~\glsIdx{SR}%
 	}
 }
 \newglossaryentry{vergleichbar}{
 	name={vergleichbar},
 	plural={vergleichbare},
 	description={
-		Zwei \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{FormalelementV} heißen -- auf eine bestimmte Art -- vergleichbar, wenn sie auf diese Art (\textzB als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
+		Zwei \emph{\glsIdxPl{MetaausdruckV}} \textbzw \emph{\glsIdxPl{FormalelementV}} heißen -- auf eine bestimmte Art -- vergleichbar, wenn sie auf diese Art (\textzB als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
 		Die Art muss implizit bekannt oder explizit angegeben sein.
 		Meistens genügt es zu wissen, was für \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{FormalelementV} es sind.
-		Beide müssen dann nur von derselben Art sein%
+		Sie müssen dann nur von derselben Art sein%
 	}%
 }
 \newglossaryentry{Wahrheitswert}{
@@ -895,15 +1117,10 @@
 		Wahrheitswerte sind die Werte \strqt{wahr} und \strqt{falsch}, oft auch als \strqt{true} und \strqt{false} oder einfach \charqt{1} und \charqt{0} bezeichnet%
 	}
 }
-
-% Symbol/Index und Glossareintrag ==============================================
-
-\newcommand*{\glsSym}[1]{\glspl{#1}\sym{\gls{#1}}}% Symbol - Im Mathematikmodus!
-\newcommand*{\glsIdx}[1]{\gls{#1}\idx{\gls{#1}}}%        normal
-\newcommand*{\GlsIdx}[1]{\Gls{#1}\idx{\gls{#1}}}%        groß
-\newcommand*{\glsIdxBg}[2]{#2\idx{\gls{#1}}}%                     Beugung
-\newcommand*{\GlsIdxBg}[2]{#2\idx{\gls{#1}}}%            groß und Beugung
-\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%             Plural
-\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}%    groß und Plural
-\newcommand*{\glsIdxX}[1]{\glsIdxPl{#1}}% Sonderfall
-\newcommand*{\GlsIdxX}[1]{\glsIdxPl{#1}}% Sonderfall und groß
+\newglossaryentry{zulaessigeTransformation}{
+	name={zulässige Transformation},
+	plural={zulässige Transformation},
+	description={%
+		Die Anwendung einer \glsIdx{Basisregel} oder einer davon abgeleiteten sonstigen \glsIdx{Schlussregel}%
+	}
+}

@@ -18,7 +18,7 @@
 %% along with this program.  If not, see <http://www.gnu.org/licenses/>.      %%
 %%                                                                            %%
 %% Dr. Winfried Teschers                                                      %%
-%% Anton-Günther-Str. 26c                                                     %%
+%% Anton-Günther-Straße 26c                                                   %%
 %% 91083 Baiersdorf                                                           %%
 %% Germany                                                                    %%
 %%                                                                            %%
@@ -40,7 +40,7 @@
 	{\footnotesize winfried.teschers@t-online.de}
 }
 \subject{Projektdokument}
-\title{{\Huge \ASBA}\\Axiome, Sätze, Beweise und Auswertungen}
+\title{{\Huge ASBA}\\Axiome, Sätze, Beweise und Auswertungen}
 \subtitle{Projekt zur maschinellen Überprüfung von mathematischen Beweisen und deren Ausgabe in lesbarer Form}
 \author{Winfried Teschers}
 \date{\today}
@@ -59,10 +59,7 @@
 	You should have received a copy of the GNU Free Documentation License along with this document.
 	If not, see \url{http://www.gnu.org/licenses/}.
 
-	\beforechapter
 	%chapter{Inhaltsverzeichnis}% ##############################################
-	\likechapter{\contentsname}
-	\label{cha:Inhaltsverzeichnis}
 	\tableofcontents
 	\Endchapter
 
@@ -70,47 +67,47 @@
 	\input{ASBA-Mathematik}
 	\input{ASBA-Design}
 	\input{ASBA-Anhang}
-	\input{ASBA-Ideen}
+%%%	\input{ASBA-Ideen}
 
-	\beforechapter
-	\likechapter{Verzeichnisse}
-	\Endchapter
+	\chapter{Verzeichnisse}% ###################################################
+	\beginchapter{Verzeichnisse}
+	\label{cha:Verzeichnisse}
 
 	%section{Tabellenverzeichnis}% =============================================
 	\likechapter[section]{\listtablename}
-%%%	\addcontentsline{lot}{chapter}{Test der 2. Seite Tabellenverzeichnis}%%%
-	\label{dic:Tabellenverzeichnis}
-	\listoftables
-	\Thispagestyle%              veränderte Kopfzeile für diese Seite aktivieren
+	\begin{minipage}{\linewidth-10.95pt}
+		\label{dic:Tabellenverzeichnis}
+		\listoftables
+	\end{minipage}
+	\Endchapter
 
 	%section{Abbildungsverzeichnis}% ===========================================
 	\likechapter[section]{\listfigurename}
-%%%	\addcontentsline{lof}{chapter}{Test der 2. Seite Abbildungsverzeichnis}%%%
 	\begin{minipage}{\linewidth-10.95pt}
 		\label{dic:Abbildungsverzeichnis}
 		\listoffigures
 	\end{minipage}
-	\Thispagestyle%              veränderte Kopfzeile für diese Seite aktivieren
+	\Endchapter
 
 	\input{ASBA-Literaturverzeichnis}
 
-% Indizes und Glossaries #######################################################
+	% Indizes und Glossars #####################################################
 
-% Um Kopf- und Fußzeilen und korrekte Referenzen zu erhalten, müssen die
-% Programme 'splitindices.pl' und 'makeglossaries.exe' aufgerufen und die
-% erzeugten Dateien 'ASBA-*.ind' und 'ASBA.gls' modifiziert werden. Dies tut das
-% Batchprogramm 'erzeugeIndizes.bat' und fügt mit Hilfe des Batchprogramms
-% 'einfuegen.bat' in die Dateien 'ASBA-*.ind' und 'ASBA.gls' nach der ersten
-% bzw. zweiten Zeile je eine Zeile mit "  \insert*" bzw. "\insertglo" und dem
-% anschließenden Kommentar "% -- Eingefuegt" ein.
-%
-% Nach der ersten Übersetzung dieser Datei muss das Programm 'einfuegen.bat'
-% manuell aufgerufen werden. Danach ist noch eine Übersetzung notwendig.
-%
-% Die Kommandos '\insert*' und '\insertglo' müssen vor Aufruf von '\printindex'
-% bzw. '\printglossaries' mit '\newcommand' definiert werden.
-%
-% '*' steht für die vorhandenen Indizes 'idx' und 'sym'.
+	% Um Kopf- und Fußzeilen und korrekte Referenzen zu erhalten, müssen die
+	% Programme 'splitindices.pl' und 'makeglossaries.exe' aufgerufen und die
+	% erzeugten Dateien 'ASBA-*.ind' und 'ASBA.gls' modifiziert werden.
+	% Dies tut das Batchprogramm 'erzeugeIndizes.bat' und fügt mit Hilfe des
+	% Batchprogramms 'einfuegen.bat' in die Dateien 'ASBA-*.ind' und 'ASBA.gls'
+	% nach der ersten bzw. zweiten Zeile je eine Zeile mit "  \insert*" bzw.
+	% "\insertglo" und dem anschließenden Kommentar "% -- Eingefuegt" ein.
+	%
+	% Nach der ersten Übersetzung dieser Datei muss das Programm 'einfuegen.bat'
+	% manuell aufgerufen werden. Danach ist noch eine Übersetzung notwendig.
+	%
+	% Die Kommandos '\insert*' und '\insertglo' müssen vor Aufruf von
+	% '\printindex' bzw. '\printglossaries' mit '\newcommand' definiert werden.
+	%
+	% '*' steht für die vorhandenen Indizes 'idx' und 'sym'.
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
 	\idxdictionary{Index}% Index ===============================================

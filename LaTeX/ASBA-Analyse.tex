@@ -19,7 +19,7 @@
 %% along with this program.  If not, see <http://www.gnu.org/licenses/>.      %%
 %%                                                                            %%
 %% Dr. Winfried Teschers                                                      %%
-%% Anton-Günther-Str. 26c                                                     %%
+%% Anton-Günther-Straße 26c                                                   %%
 %% 91083 Baiersdorf                                                           %%
 %% Germany                                                                    %%
 %%                                                                            %%
@@ -156,7 +156,7 @@ Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellt
 \newcommand*{\vsl}{\hspace{-6pt}\vsL}% für 2-stellige Zahlen
 \newcommand*{\vsc}{\hspace{6pt}}%      für die gedrehten Überschriften
 
-\begin{table}[h]
+\begin{table}[!htb]
 	\begin{tabularx}{\linewidth-10.95pt}
 		{@{\hspace{.5cm}}rl@{\extracolsep{\fill}}|*{7}{c}@{\hspace{1cm}}|}
 		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.5cm]%
@@ -287,10 +287,11 @@ Der Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit \ASBA\ effizi
 
 \end{enumerate}
 
-\tablename~\vref{tab:Eigenschaften->Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften in \sectionname~\vref{sec:Eigenschaften} verhalten.
+Die \tablename~\vref{tab:Eigenschaften->Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften in \sectionname~\vref{sec:Eigenschaften} verhalten.
 Mit einem X werden wieder die Spalten einer Zeile markiert, deren zugehörige Ziele zur Sicherstellung der entsprechenden Eigenschaft beitragen sollen.
 Idealerweise sollte durch Erreichen aller aufgestellten Ziele \gls{ASBA} alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
-\begin{table}[ht]
+
+\begin{table}[!htb]
 	\begin{tabularx}{\linewidth-10.95pt}
 		{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{16}{c}@{\hspace{0.4cm}}|}
 		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]%
@@ -355,11 +356,7 @@ Idealerweise sollte durch Erreichen aller aufgestellten Ziele \gls{ASBA} alle an
 \beginsection{Zusammenfassung}
 \label{sec:Zusammenfassung}
 
-Die \tablename~\vref{tab:Fragen->Ziele} ist eine Kombination aus den \tablename n~\vref{tab:Fragen->Eigenschaften} und~\vref{tab:Eigenschaften->Ziele} und zeigt, wie sich die Ziele in \sectionname~\vref{sec:Ziele} zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
-Auch hier werden mit einem X die Spalten einer Zeile markiert, deren zugehörige Ziele für die Beantwortung der entsprechenden Frage nötig sind.
-Mit einem kleinen x werden sie markiert, wenn sie zur Beantwortung der Fragen nicht nötig, aber von Interesse sind.
-Idealerweise sollte das Erreichen aller aufgestellten Ziele wieder alle gestellten Fragen beantworten, was natürlich auch illusorisch ist.
-\begin{table}[ht]
+\begin{table}[!htb]
 	\begin{tabularx}{\linewidth-10.95pt}
 		{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{15}{c}@{\hspace{0.4cm}}|}
 		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]%
@@ -433,6 +430,12 @@ Idealerweise sollte das Erreichen aller aufgestellten Ziele wieder alle gestellt
 	\caption{\ref{sec:Fragen} Fragen $\to$ \ref{sec:Ziele} Ziele}
 	\label{tab:Fragen->Ziele}% Erst nach '\caption'!
 \end{table}
+
+Die \tablename~\vref{tab:Fragen->Ziele} ist eine Kombination aus den \tablename n~\vref{tab:Fragen->Eigenschaften} und~\vref{tab:Eigenschaften->Ziele} und zeigt, wie sich die Ziele in \sectionname~\vref{sec:Ziele} zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
+Auch hier werden mit einem X die Spalten einer Zeile markiert, deren zugehörige Ziele für die Beantwortung der entsprechenden Frage nötig sind.
+Mit einem kleinen x werden sie markiert, wenn sie zur Beantwortung der Fragen nicht nötig, aber von Interesse sind.
+Idealerweise sollte das Erreichen aller aufgestellten Ziele alle gestellten Fragen beantworten, was natürlich auch illusorisch ist.
+
 \clearpage
 
 \section{Umgebung von \textsf{ASBA}}% ======================================
@@ -440,7 +443,7 @@ Idealerweise sollte das Erreichen aller aufgestellten Ziele wieder alle gestellt
 \label{sec:Umgebung}
 
 In der \figurename~\vref{fig:Umgebung} wird beschrieben, welche Interaktionen \ASBA\ mit der Umgebung hat, \textdh welche Ein- und Ausgaben existieren und woher sie kommen \textbzw wohin sie gehen.
-\begin{figure}[h]
+\begin{figure}[!htb]
 	\setlength\unitlength{1cm}
 	\begin{picture}(17.0,7.0)(-8.4,-3.5)
 	%%%			% Gitter                                            %%%
@@ -665,6 +668,6 @@ Gebraucht werden also:
 
 \paragraph{Beweise} zu gegebenen Voraussetzungen und Folgerungen lassen sich als Folge von zulässigen Transformationen, beginnend mit den Voraussetzungen und endend mit den Folgerungen, darstellen.
 
-\paragraph{Transformationsregeln} definieren, welche Transformationen von gegebenen Formelmengen zulässig sind.\footnote{\seename~\cite und~\cite{bib:NatuerlichesSchliessen}}
+\paragraph{Transformationsregeln} definieren, welche Transformationen von gegebenen Formelmengen zulässig sind.\footnote{\seename~\cite{bib:Rautenberg,bib:Schlussregel,bib:NatuerlichesSchliessen}}
 
 \Endchapter
