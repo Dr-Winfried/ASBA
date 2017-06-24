@@ -49,9 +49,10 @@
 \usepackage[autostyle]{csquotes}% Contex sensitive quotation facilities
 
 % mathematische Pakete ---------------------------------------------------------
-\usepackage{amsmath}% Mathematical facilities for LaLeX from ASM
+\usepackage[fleqn]{amsmath}% Mathematical facilities for LaLeX from ASM
 \usepackage{amsfonts}% TeX fonts from the American Mathematical Society.
 \usepackage{amssymb}% Symbols from the American Mathematical Society.
+\usepackage{amsopn}% Provides a command \DeclareMathOperator.
 \usepackage{mathtools}% Mathematical tools to use with asmmath.
 \usepackage{mathabx}% Three series of mathematical symbols.
 \usepackage{mathpazo}% Fonts to typeset mathematics to match palatino.
@@ -298,36 +299,37 @@
 
 % Metasprachliche Symbole ######################################################
 
-\newcommand*{\metaund}{\&\&}%               Und-Symbol  für Texte
-\newcommand*{\metaoder}{||}%                Oder-Symbol für Texte
-\newcommand*{\metaand}{\;\metaund\;}%       Und-Symbol  für Formeln
-\newcommand*{\metaor}{\;\metaoder\;}%       Oder-Symbol für Formeln
+\newcommand*{\und}{\mid}%                           Und-Symbol für Schlussregeln
+\newcommand*{\metaund}{\&\&}%                       Und-Symbol für Texte
+\newcommand*{\metaoder}{||}%                       Oder-Symbol für Texte
 % Nur im Mathematikmodus!
-\newcommand*{\metaimp}{\Rightarrow}%        aus ... folgt ...
-\newcommand*{\metarep}{\Leftarrow}%         ... folgt aus ...
-\newcommand*{\metaequiv}{\Leftrightarrow}%  ... genau dann wenn ...
-\newcommand*{\metadefeq}{:\Leftrightarrow}% ... definitionsgemäß genau dann wenn
-\newcommand*{\defeq}{:=}%                   ... definitionsgemäß gleich ...
-\newcommand*{\eq}{=}%                       ... gleich ...
+\DeclareMathOperator{\metaand}{\;\metaund\;}%      Und-Symbol  für Formeln
+\DeclareMathOperator{\metaor}{\;\metaoder\;}%      Oder-Symbol für Formeln
+\DeclareMathOperator{\metaimp}{\Rightarrow}%       aus ... folgt ...
+\DeclareMathOperator{\metarep}{\Leftarrow}%        ... folgt aus ...
+\DeclareMathOperator{\metaequiv}{\Leftrightarrow}% ... genau dann wenn ...
+\DeclareMathOperator{\metadefeq}{:\Leftrightarrow}%... definitionsgemäß -"- ...
+\DeclareMathOperator{\eq}{=}%                      ... gleich ...
+\DeclareMathOperator{\defeq}{:=}%                  ... definitionsgemäß -"- ...
 
 % Mathematische Symbole ########################################################
 
 % Beispieloperatoren ===========================================================
 % \*bsp
-\newcommand*{\opbsp}{\circ}
-\newcommand*{\relbsp}{\sim}
-\newcommand*{\releqbsp}{\simeq}
-\newcommand*{\lrelbsp}{\lhd}
-\newcommand*{\rrelbsp}{\rhd}
-\newcommand*{\lreleqbsp}{\unlhd}
-\newcommand*{\rreleqbsp}{\unrhd}
+\DeclareMathOperator{\opbsp}{\circ}
+\DeclareMathOperator{\relbsp}{\sim}
+\DeclareMathOperator{\releqbsp}{\simeq}
+\DeclareMathOperator{\lrelbsp}{\lhd}
+\DeclareMathOperator{\rrelbsp}{\rhd}
+\DeclareMathOperator{\lreleqbsp}{\unlhd}
+\DeclareMathOperator{\rreleqbsp}{\unrhd}
 
 % Definitionen für die Tabelle der Junktoren ===================================
 % \l*  -           logischer Operator
 % \ln* - negierter logischer Operator
 % Logische Operatoren als Addition und Multiplikation
-\newcommand*{\ladd}{+}
-\newcommand*{\lmult}{\cdot}
+\DeclareMathOperator{\ladd}{+}
+\DeclareMathOperator{\lmult}{\cdot}
 % Wahrheitswerte ---------------------------------------------------------------
 \newcommand*{\texttrue}{W}%  in einem Kommentar stets 'W'
 \newcommand*{\textfalse}{F}% in einem Kommentar stets 'F'
@@ -337,60 +339,60 @@
 \newcommand*{\lfalse}{\bot}%     F - falsch
 %\newcommand*{\lntrue}{\nottop}%  " - nicht wahr
 % unäre Operatoren -------------------------------------------------------------
-%                                                 W F - Aussage A
-%\newcommand*{\lutrue}{\operatorname{\top}}%      W W - wahr [unär]
-%\newcommand*{\lnufalse}{\operatorname{\notbot}}% " " - nicht falsch [unär]
-%                                                 W F - A
-%             \lnot                               F W - nicht
-%\newcommand*{\lufalse}{\operatorname{\bot}}%     F F - falsch [unär]
-%\newcommand*{\lnutrue}{\operatorname{\nottop}}%  " " - nicht wahr [unär]
+%                                                        W F - Aussage A
+%\DeclareMathOperator{\lutrue}{\operatorname{\top}}%     W W - wahr
+%\DeclareMathOperator{\lnufalse}{\operatorname{\notbot}}%" " - nicht falsch
+%                                                        W F - A
+%             \lnot                                      F W - nicht
+%\DeclareMathOperator{\lufalse}{\operatorname{\bot}}%    F F - falsch
+%\DeclareMathOperator{\lnutrue}{\operatorname{\nottop}}% " " - nicht wahr
 % binäre Operatoren ------------------------------------------------------------
-%                                                    W W F F - Aussage A
-%                                                    W F W F - Aussage B
+%                                                        W W F F - Aussage A
+%                                                        W F W F - Aussage B
 %  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%\newcommand*{\lbtrue}{\operatorname{\top}}%         W W W W - wahr [binär]
-%\newcommand*{\lnbfalse}{\operatorname{\notbot}}%    " " " " - nicht falsch
-%            \lor                                    W W W F - A oder B
-\newcommand*{\lrep}{\leftarrow}%                     W W F W - A folgt aus B
-\newcommand*{\lrepA}{\Leftarrow}%
-\newcommand*{\lrepB}{\subset}%
-\newcommand*{\lleft}{\operatorname{\rfloor}}%        W W F F - A
+%\DeclareMathOperator{\lbtrue}{\operatorname{\top}}%     W W W W - wahr [binär]
+%\DeclareMathOperator{\lnbfalse}{\operatorname{\notbot}}%" " " " - nicht falsch
+%            \lor                                        W W W F - A oder B
+\DeclareMathOperator{\lrep}{\leftarrow}%                 W W F W - A folgt aus B
+\DeclareMathOperator{\lrepA}{\Leftarrow}%
+\DeclareMathOperator{\lrepB}{\subset}%
+\DeclareMathOperator{\lleft}{\operatorname{\rfloor}}%    W W F F - A
 %  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\newcommand*{\limp}{\rightarrow}%                    W F W W - aus A folgt B
-\newcommand*{\limpA}{\Rightarrow}%
-\newcommand*{\limpB}{\supset}%
-\newcommand*{\lright}{\operatorname{\lfloor}}%       W F W F - B
-\newcommand*{\lequiv}{\leftrightarrow}%              W F F W - A genau dann,
-\newcommand*{\lequivA}{\Leftrightarrow}%                       wenn B
-%            \lnxor                                  " " " " - nicht
-%                                                         (entweder A oder B)
-%            \land                                   W F F F - A und B
-\newcommand*{\landA}{\&}
-\newcommand*{\landB}{\lmult}
-%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\newcommand*{\lnand}{\uparrow}%                      F W W W - nicht
-\newcommand*{\lnandA}{\barwedge}%                              (A und B)
-\newcommand*{\lnandB}{\mid}%
-\newcommand*{\lxor}{\ladd}%                          F W W F - entweder A
-\newcommand*{\lxorA}{\operatorname{\dot\lor}}%                 oder B
-\newcommand*{\lxorB}{\veebar}%
-\newcommand*{\lxorC}{\oplus}%
-\newcommand*{\lnequiv}{\nleftrightarrow}%            " " " " - nicht
-\newcommand*{\lnequivA}{\nLeftrightarrow}%            (A genau dann, wenn B)
-\newcommand*{\lnequivB}{\notequiv}%
-\newcommand*{\lnright}{\lceil}%                      F W F W - nicht B
-\newcommand*{\lnimp}{\nrightarrow}%                  F W F F - nicht
-\newcommand*{\lnimpA}{\nRightarrow}%                         (aus A folgt B)
-\newcommand*{\lnimpB}{\nsupset}%
-%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\newcommand*{\lnleft}{\rceil}%                       F F W W - nicht A
-\newcommand*{\lnrep}{\nleftarrow}%                   F F W F - nicht
-\newcommand*{\lnrepA}{\nLeftarrow}%                          (A folgt aus B)
-\newcommand*{\lnrepB}{\nsubset}%
-\newcommand*{\lnor}{\downarrow}%                     F F F W - nicht
-\newcommand*{\lnorA}{\operatorname{\overline\vee}}%            (A oder B)
-%\newcommand*{\lbfalse}{\operatorname{\bot}}%        F F F F - falsch[binär]
-%\newcommand*{\lnbtrue}{\operatorname{\nottop}}%     " " " " - nicht wahr
+\DeclareMathOperator{\limp}{\rightarrow}%                W F W W - aus A folgt B
+\DeclareMathOperator{\limpA}{\Rightarrow}%
+\DeclareMathOperator{\limpB}{\supset}%
+\DeclareMathOperator{\lright}{\operatorname{\lfloor}}%   W F W F - B
+\DeclareMathOperator{\lequiv}{\leftrightarrow}%          W F F W - A genau dann,
+\DeclareMathOperator{\lequivA}{\Leftrightarrow}%                    wenn B
+%            \lnxor                                      " " " " - nicht
+%                                                            (entweder A oder B)
+%            \land                                       W F F F - A und B
+\DeclareMathOperator{\landA}{\&}
+\DeclareMathOperator{\landB}{\lmult}
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\DeclareMathOperator{\lnand}{\uparrow}%                  F W W W - nicht
+\DeclareMathOperator{\lnandA}{\barwedge}%                          (A und B)
+\DeclareMathOperator{\lnandB}{\mid}%
+\DeclareMathOperator{\lxor}{\ladd}%                      F W W F - entweder A
+\DeclareMathOperator{\lxorA}{\operatorname{\dot\lor}}%                 oder B
+\DeclareMathOperator{\lxorB}{\veebar}%
+\DeclareMathOperator{\lxorC}{\oplus}%
+\DeclareMathOperator{\lnequiv}{\nleftrightarrow}%        " " " " - nicht
+\DeclareMathOperator{\lnequivA}{\nLeftrightarrow}%        (A genau dann, wenn B)
+\DeclareMathOperator{\lnequivB}{\notequiv}%
+\DeclareMathOperator{\lnright}{\lceil}%                  F W F W - nicht B
+\DeclareMathOperator{\lnimp}{\nrightarrow}%              F W F F - nicht
+\DeclareMathOperator{\lnimpA}{\nRightarrow}%                     (aus A folgt B)
+\DeclareMathOperator{\lnimpB}{\nsupset}%
+%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\DeclareMathOperator{\lnleft}{\rceil}%                   F F W W - nicht A
+\DeclareMathOperator{\lnrep}{\nleftarrow}%               F F W F - nicht
+\DeclareMathOperator{\lnrepA}{\nLeftarrow}%                      (A folgt aus B)
+\DeclareMathOperator{\lnrepB}{\nsubset}%
+\DeclareMathOperator{\lnor}{\downarrow}%                 F F F W - nicht
+\DeclareMathOperator{\lnorA}{\operatorname{\overline\vee}}%        (A oder B)
+%\DeclareMathOperator{\lbfalse}{\operatorname{\bot}}%    F F F F - falsch[binär]
+%\DeclareMathOperator{\lnbtrue}{\operatorname{\nottop}}% " " " " - nicht wahr
 
 % Verwendete Mengenbezeichnungen ===============================================
 
@@ -428,8 +430,9 @@
 
 % sonstige mathematische Zeichen ===============================================
 
-\newcommand*{\abltb}{\vdash}%           ... ableitbar ...
-\newcommand*{\subst}{\curvearrowright}% ... substituiert durch ...
+\DeclareMathOperator{\abltb}{\vdash}%           ... ableitbar ...
+\DeclareMathOperator{\subst}{\leftarrowtail}%   ... substituiert durch ...
+%%%\DeclareMathOperator{\subst}{\curvearrowright}% ... substituiert durch ...
 
 % sonstige Kommandos für den Mathematiksatz ####################################
 
@@ -572,7 +575,8 @@
 	name={$ \metaund$},
 	plural={\metaand},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... oder ... (\seealso~\glsSym{mid})%
+		Ein \glsIdx{MetaoperatorV}: ... und ...
+		Die Priorität ist höher als die von \symqt{\glsIdx{und}}%
 	}
 }
 \newglossaryentry{metadefeq}{
@@ -610,13 +614,6 @@
 		Ein \glsIdx{MetaoperatorV}: ... sofern ..%
 	}
 }
-\newglossaryentry{mid}{
-	name={$ \mid$},
-	plural={\mid},% im Mathematikmodus
-	description={%
-		Ein \glsIdx{MetaoperatorV}: ... und ... (\seealso~\glsSym{metaand})%
-	}
-}
 \newglossaryentry{ne}{
 	name={$ \ne$},
 	plural={\ne},% im Mathematikmodus
@@ -629,6 +626,22 @@
 	plural={\notequiv},% im Mathematikmodus
 	description={%
 		Ein (Meta-)Operator: ... nicht äquivalent (ist nicht das gleiche wie, ist nicht so wie) ..%
+	}
+}
+\newglossaryentry{subst}{
+	name={$ \subst$},
+	plural={\subst},% im Mathematikmodus
+	description={%
+		Substitution: ... substituiert durch ...
+		(siehe die Definition in \subsectionname~\vref{sub:Basisregeln})%
+	}
+}
+\newglossaryentry{und}{
+	name={$ \und$},
+	plural={\und},% im Mathematikmodus
+	description={%
+		Ein \glsIdx{MetaoperatorV}: ... und ...
+		Die Priorität ist niedriger als die von \symqt{\glsIdx{metaand}}%
 	}
 }
 
@@ -654,14 +667,6 @@
 	plural={\ltrue},% im Mathematikmodus
 	description={%
 		Eine Aussagenlogische Konstante: Wahr%
-	}
-}
-\newglossaryentry{subst}{
-	name={$ \subst$},
-	plural={\subst},% im Mathematikmodus
-	description={%
-		Substitution: ... substituiert durch ...
-		(siehe die Definition in \subsectionname~\vref{sub:Basisregeln})%
 	}
 }
 
@@ -805,6 +810,22 @@
 	plural={(\text{TR})},% im Mathematikmodus
 	description={%
 		\glsIdx{Abtrennungsregel}%
+	}
+}
+\newcommand*{\tageqB}{$\eq$B}% Argument für \tag
+\newglossaryentry{eqB}{
+	name={($ \eq     $B)},
+	plural={(\eq\text{B})},% im Mathematikmodus
+	description={%
+		Beseitigung von \symqt{$\eq$}%
+	}
+}
+\newcommand*{\tageqE}{$\eq$E}% Argument für \tag
+\newglossaryentry{eqE}{
+	name={($ \eq     $E)},
+	plural={(\eq\text{E})},% im Mathematikmodus
+	description={%
+		Einführung von \symqt{$\eq$}%
 	}
 }
 \newcommand*{\tagandB}{$\land$B}% Argument für \tag
@@ -962,7 +983,8 @@
 	name={Basisregel},
 	plural={Basisregeln},
 	description={%
-		Eine \emph{\glsIdx{Schlussregel}}, die nicht mehr auf andere zurückgeführt wird%
+		Eine \emph{\glsIdx{Schlussregel}}, die nicht mehr auf andere zurückgeführt wird.
+		Obwohl das auch auf die \glsIdxPl{Identitaetsregel} zutrifft, werden diese hier aber nicht dazu gezählt.%
 	}
 }
 \newglossaryentry{Beweis}{
@@ -979,7 +1001,6 @@
 		Synonym zu \emph{ableitbar}%
 	}
 }
-
 \newglossaryentry{Beweisschritt}{
 	name={Beweisschritt},
 	plural={Beweisschritte},
@@ -1008,13 +1029,28 @@
 		Ein Teil der Mathematik mit einer zugehörigen Basis aus Axiomen, Sätzen und spezifischen Fachbegriffen und Darstellungen%
 	}
 }
-\newglossaryentry{FormalelementV}{
+\newglossaryentry{formalesElementV}{
 	name={formales Element},   % ein   ...
 	plural={formale Elemente}, % viele ...
 	description={%
 		Ein mathematisches Element in formaler Schreibweise.
 		Bis auf wenige Aussagen kommen darin \emph{\glsIdxPl{MetaausdruckV}} nicht mehr vor%
 	}%
+}
+\newglossaryentry{gueltigeSchlussregel}{
+	name={gültige Schlussregel},
+	plural={gültige Schlussregeln},
+	description={%
+		Eine \glsIdx{Schlussregel} die aus den \glsIdxPl{Basisregel} und den schon als gültig abgeleiteten \glsIdxPl{Schlussregel} abgeleitet werden kann%
+	}
+}
+\newglossaryentry{Identitaetsregel}{
+	name={Identitätsregel},
+	plural={Identitätsregeln},
+	description={%
+		Eigentlich eine \glsIdx{Basisregel} zur Identität.
+		Da sie nur zur Rechtfertigung der Substitution verwendet werden, werden sie hier aber nicht dazu gezählt.%
+	}
 }
 \newglossaryentry{intEigenschaftA}{
 	name={interessierende Eigenschaft},      % eine ...
@@ -1104,9 +1140,9 @@
 	name={vergleichbar},
 	plural={vergleichbare},
 	description={
-		Zwei \emph{\glsIdxPl{MetaausdruckV}} \textbzw \emph{\glsIdxPl{FormalelementV}} heißen -- auf eine bestimmte Art -- vergleichbar, wenn sie auf diese Art (\textzB als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
+		Zwei \emph{\glsIdxPl{MetaausdruckV}} \textbzw \emph{\glsIdxPl{formalesElementV}} heißen -- auf eine bestimmte Art -- vergleichbar, wenn sie auf diese Art (\textzB als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
 		Die Art muss implizit bekannt oder explizit angegeben sein.
-		Meistens genügt es zu wissen, was für \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{FormalelementV} es sind.
+		Meistens genügt es zu wissen, was für \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{formalesElementV} es sind.
 		Sie müssen dann nur von derselben Art sein%
 	}%
 }
@@ -1117,10 +1153,11 @@
 		Wahrheitswerte sind die Werte \strqt{wahr} und \strqt{falsch}, oft auch als \strqt{true} und \strqt{false} oder einfach \charqt{1} und \charqt{0} bezeichnet%
 	}
 }
-\newglossaryentry{zulaessigeTransformation}{
-	name={zulässige Transformation},
-	plural={zulässige Transformation},
+\newglossaryentry{zulaessigeTransformationA}{
+	name={zulässige Transformation},      % eine ...
+	plural={zulässigen Transformationen}, % alle ...
 	description={%
-		Die Anwendung einer \glsIdx{Basisregel} oder einer davon abgeleiteten sonstigen \glsIdx{Schlussregel}%
+		Eine zulässige Umformung oder Erzeugung einer Formel aus einer vorgegebenen Menge von Formeln,
+		\textdh die Anwendung einer \glsIdxBg{gueltigeSchlussregel}{gültigen Schlussregel}%
 	}
 }

@@ -61,7 +61,7 @@ Um diese Probleme in den Griff zu bekommen, wird die \glsIdx{Metasprache} zum Te
 Durch diese Formalisierung erinnert sie dann teilweise schon an mathematische Formeln.
 Die Sprachebenen sollten aber sorgfältig unterschieden werden.
 
-\subsection{Metasprachliche Ausdrücke}% ========================================
+\subsection{Metasprachliche Ausdrücke}% ----------------------------------------
 \beginsection{\glsIdxPl{MetaausdruckV}}
 \label{sub:Metaausdruck}
 
@@ -105,18 +105,22 @@ Dies wird mit den folgenden Definitionen erreicht:
 	& \text{\strqt{[Es gilt] $A$ \emph{oder} $B$}.}
 	\formulatoleft
 \end{align}
+Bei den Schlussregeln\footnote{\seename\ \sectionname~\vref{sec:Schlussregeln}} wird \symqt{$\und$} statt \symqt{$\metaund$} bei unterschiedlicher Priorität\footnote{\seename\ \tablename~\vref{tab:Prioritaeten}} verwendet.
+\begin{align}
+	& A \Sym{\und} B & \text{steht für } & \text{\strqt{$A$ \emph{und} $B$}.}
+	\formulatoleft
+\end{align}
 
 Offensichtlich sind das alles ebenfalls \glsIdxPl{MetaausdruckV}, jetzt aber teilweise formalisiert.
 (c) lässt sich dann ausdrücken als \strqt{\strqt{Ich habe ein rotes Auto} $\metaund$ \strqt{das kann 200\,km/h schnell fahren.}}.
 
 Um Verwechslungen mit den logischen Symbolen zu vermeiden, werden für \strqt{und} und \strqt{oder} die Symbole \symqt{$\metaund$} und \symqt{$\metaoder$} verwendet.
-$A$ und $B$ können dabei ohne Bedeutungsveränderung vertauscht werden.
+$A$ und $B$ können als Operanden von \symqt{$\metaequiv$}, \symqt{$\metaund$}, \symqt{$\metaoder$} und \symqt{$\und$} ohne Bedeutungsveränderung vertauscht werden.
+Wird in einer Formel nur einer der Operatoren \symqt{$\metaund$}, \symqt{$\metaoder$} oder \symqt{$\und$} verwendet, können die Operanden beliebig permutiert werden, so dass dann auch eine Klammerung überflüssig ist.
 -- Ein Symbol für \strqt{nicht} wird hier nicht gebraucht.
 
-Bei den Schlussregeln (\seename\ \sectionname~\vref{sec:Schlussregeln}) wird \symqt{$\mid$} statt \symqt{$\metaund$} bei unterschiedlicher Priorität verwendet.
-
 \GlsIdxPl{MetaausdruckV} können auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
-\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaund$} und \symqt{$\metaoder$} heißen \emph{\glsIdxPl{MetaoperatorV}}.
+\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaund$}, \symqt{$\metaoder$} und \symqt{$\und$} heißen \emph{\glsIdxPl{MetaoperatorV}}.
 Ihre Prioritäten werden im \subsectionname~\vref{sub:Klammerregeln} zusammen mit anderen Operatoren definiert.
 
 Sollen zwei \glsIdxPl{MetaausdruckV} miteinander verglichen werden, muss klar sein auf welche Art; ob \textzB als Zeichenfolgen -- mit oder ohne Wertung der Zwischenräume --, als \glsIdxPl{Wahrheitswert} oder auf sonstige Art.
@@ -173,9 +177,9 @@ Unter den Voraussetzungen von \subsubsectionname~\vref{subsub:Voraussetzungen} w
 	\item[$\glsSym{metadefeq}$~\emph{\Idx{Metadefinition}}]\label{def:Metadefinition}
 	\forqt{$A \metadefeq B$} heißt, dass der Metaausdruck $A$ \emph{definitionsgemäß gleich} dem Metaausdruck $B$ ist, wobei $B$ auch eine Definition in natürlicher Sprache sein kann.
 	$A$ und $B$ können sich gegenseitig ersetzten.
+	$B$ darf dabei von $A$ weder direkt noch indirekt abhängen, \textdh $A$ darf in $B$ und zugehörigen Definitionen noch nicht vorkommen.
 
-	Üblicherweise sind $A$ und $B$ hier Aussagen, so dass man \forqt{$A \metadefeq B$} auch als \strqt{$A$ gilt \emph{definitionsgemäß genau dann, wenn} $B$ gilt} lesen kann.
-
+	Üblicherweise ist $A$ hier eine Bezeichnung und $B$ eine Aussage, so dass man \forqt{$A \metadefeq B$} auch als \strqt{$A$ \emph{steht für} $B$} lesen kann.
 	Oft wird damit Gleichheit (\symqt{$=$}), Äquivalenz (\symqt{$\equiv$}) oder eine andere Relation definiert.
 
 	\item[$\glsSym{defeq}$~\emph{\Idx{Definition}}]
@@ -185,14 +189,20 @@ Unter den Voraussetzungen von \subsubsectionname~\vref{subsub:Voraussetzungen} w
 	\footnote{%
 		Nach den Definitionen von \symqt{$\metadefeq$} und \symqt{$\defeq$} sind zwei Ausdrücke $P$ und $Q$ schon dann gleich, wenn nach der Ersetzung aller Vorkommen von $A$ durch $B$ sowohl in $P$ als auch in $Q$ die resultierenden Ausdrücke $\overline{P}$ und $\overline{Q}$ gleich sind.%
 	}
-	-- Man beachte, dass dies \symqt{$\metadefeq$} und \symqt{$\defeq$} verschiedene Sprachebenen sind.
+	$B$ darf dabei von $A$ weder direkt noch indirekt abhängen, \textdh $A$ darf in $B$ und zugehörigen Definitionen noch nicht vorkommen.
+	-- Man beachte, dass \symqt{$\metadefeq$} und \symqt{$\defeq$} verschiedene Sprachebenen sind.
+
+	Üblicherweise ist $A$ hier eine Variable und $B$ eine Formel, so dass man \forqt{$A \defeq B$} auch als \strqt{$A$ \emph{steht für} $B$} lesen kann.
 
 \end{description}
 Es sei noch
 \begin{equation}
 	\label{eq:asM}
 	\glsSym{asM} \defeq \{
-		\glsIdxBg{metaand}{\metaund}, \glsIdxBg{metaor}{\metaoder}, \glsSym{metaimp}, \glsSym{metaequiv}, \glsSym{metarep}, \glsSym{eq}, \glsSym{ne}, \glsSym{equiv}, \glsSym{notequiv}, \glsSym{metadefeq}, \glsSym{defeq}
+		\glsSym{und}, \glsIdxBg{metaand}{\metaund}, \glsIdxBg{metaor}{\metaoder},
+		\glsSym{metaimp}, \glsSym{metaequiv}, \glsSym{metarep},
+		\glsSym{eq}, \glsSym{ne}, \glsSym{equiv}, \glsSym{notequiv},
+		\glsSym{metadefeq}, \glsSym{defeq}
 	\}
 \end{equation}
 die Menge der \glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren} und der mit Gleichheit verwandten Symbole.
@@ -201,8 +211,8 @@ die Menge der \glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren} und der mit 
 \beginsection{Formale Elemente}
 \label{sec:Formalelement}
 
-Ein \emph{\glsIdx{FormalelementV}} kann \textzB eine Menge, Zeichenfolge, Zahl, Formel, \textusw sein.
-Zwei \glsIdxPl{FormalelementV} $A$ und $B$ sind \emph{\glsIdx{vergleichbar}}, wenn beide von derselben Art sind, \textdh wenn \textzB jeweils beide Mengen, Zeichenfolgen, Zahlen oder Formeln -- die vergleichbare Ergebnisse liefern -- sind.
+Ein \emph{\glsIdx{formalesElementV}} kann \textzB eine Menge, Zeichenfolge, Zahl, Formel, \textusw sein.
+Zwei \glsIdxPl{formalesElementV} $A$ und $B$ sind \emph{\glsIdx{vergleichbar}}, wenn beide von derselben Art sind, \textdh wenn \textzB jeweils beide Mengen, Zeichenfolgen, Zahlen oder \glsIdxPl{formalesElementV} -- die vergleichbare Ergebnisse liefern -- sind.
 
 Intuitiv scheint klar zu sein, was damit  gemeint ist.
 Wenn aber entschieden werden muss, ob \textzB (a) \strqt{1+1} gleich \strqt{2} oder (b) \strqt{1+1} gleich \strqt{1 + 1} ist, muss man erst entscheiden, von welcher Art die beiden zu vergleichenden Ausdrücke sind, \textdh \emph{wie} verglichen wird.
@@ -212,7 +222,7 @@ Wenn die Ausdrücke in (b) als Zeichenfolgen verglichen werden, ist (b) dann ric
 Wenn er aber zählt, ist (b) falsch.
 
 Im Zusammenhang mit binären Relationen werden noch einige Verabredungen getroffen.
-Dazu seien \symqt{$\glsSym{relbsp}$}, \symqt{$\glsSym{releqbsp}$}, \symqt{$\glsSym{lrelbsp}$}, \symqt{$\glsSym{rrelbsp}$}, \symqt{$\glsSym{lreleqbsp}$} und \symqt{$\glsSym{rreleqbsp}$} Beispielsymbole für Relationen und \symqt{$\glsSym{eq}$} und \symqt{$\glsSym{ne}$} die in \sectionname~\vref{sub:Gleichheit} definierten Symbole für Gleichheit und Ungleichheit.
+Dazu seien \symqt{$\glsSym{relbsp}$}, \symqt{$\glsSym{releqbsp}$}, \symqt{$\glsSym{lrelbsp}$}, \symqt{$\glsSym{rrelbsp}$}, \symqt{$\glsSym{lreleqbsp}$} und \symqt{$\glsSym{rreleqbsp}$} Beispielsymbole für Relationen und \symqt{$\glsSym{eq}$} und \symqt{$\glsSym{ne}$} die Symbole für Gleichheit und Ungleichheit.
 Wenn dann nichts anderes gesagt wird gelte stets:
 \begin{align}
 	& ((A \relbsp   B) \metaor (A = B)) & \metaequiv &&& (A \releqbsp  B)
@@ -239,6 +249,247 @@ Die Prioritäten der Operatoren \symqt{$\lrelbsp$}, \symqt{$\rrelbsp$}, \symqt{$
 Als Beispielsymbol für binäre Operatoren wird \symqt{$\opbsp$} verwendet.
 Mit \symqt{$\opbsp$} zusammenhängende Verabredungen werden hier nicht getroffen.
 
+\section{Schlussregeln}% =======================================================
+\beginsection{Schlussregeln}
+\label{sec:Schlussregeln}
+\hidden{\glsIdx{Schlussregel}}
+
+Die Regeln zur Formulierung und Prüfung der Beweise müssen fest codiert werden.
+Sie sind quasi die Axiome von \ASBA\ und sollten daher möglichst wenig voraussetzen.
+Dazu wird ein \emph{Genzen-Kalkül} verwendet, so wie er in~\cite{bib:Rautenberg} Kapitel~1.4 beschrieben ist (siehe auch~\cite{bib:NatuerlichesSchliessen,bib:Schlussregel}).
+
+Ein Beweis in \ASBA\ besteht aus einer Menge von \glsIdx{formalesElementV} (die \emph{Voraussetzungen}) und einer Folge von \glsIdxPl{zulaessigeTransformationA}, mit der neue (Mengen von) \glsIdxBg{formalesElementV}{formalen Elementen} generiert werden, bis eine gewünschte Menge von \glsIdxBg{formalesElementV}{formalen Elementen} (die \emph{Folgerungen}) abgeleitet sind.
+
+In diesem \sectionname\ geht es um die \glsIdxPl{zulaessigeTransformationA}, \textdh die \glsIdxBg{gueltigeSchlussregel}{gültigen Schlussregeln}. Dazu gehören zunächst die \glsIdxPl{Basisregel}.
+
+\subsection{Basisregeln}% ------------------------------------------------------
+\label{sub:Basisregeln}
+\hidden{\glsIdxPl{Basisregel}}
+
+Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \glsIdxPl{Basisregel} definiert. Zuvor werden aber noch einige Definition gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch 0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \glsIdxPl{formalesElementV}, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \glsIdxBg{formalesElementV}{formalen Elementen} und
+\begin{align}
+	%
+	&X&&\defeq&&X_1\cup X_2\cup...\cup X_n\cup\{\alpha_1,\alpha_2,...,\alpha_m\}
+	\\
+	&Y&&\defeq&&Y_1\cup Y_2\cup...\cup Y_k\cup\{\beta_1, \beta_2, ...,\beta_l \}
+	\formulatoleft\formulatoleft
+\end{align}
+$X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
+\begin{align}
+	& \alpha \glsSym{abltb} \beta \quad \metadefeq \quad
+	\parbox[t]{10.5cm}{%
+	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessigeTransformationA}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ ableitbar.
+	Sprechweise: Aus $\alpha$ ist $\beta$ \emph{ableitbar} oder \emph{beweisbar};
+	kurz: \strqt{$\alpha$ \emph{\glsIdx{ableitbar}} $\beta$} \textbzw \strqt{$\alpha$ \emph{\glsIdx{beweisbar}} $\beta$}
+	-- Es kann auch \symqt{$\alpha$} durch \symqt{$X$} und/oder \symqt{$\beta$} durch \symqt{$Y$} ersetzt werden.
+	}
+	\label{def:ableitbar}
+	\\
+	&            X_1, X_2, ...,X_n, \alpha_1, \alpha_2, ..., \alpha_m \quad
+	\abltb \quad Y_1, Y_2, ...,Y_n,  \beta_1,  \beta_2,  ..., \beta_m \quad
+	\metadefeq \quad X \abltb Y
+	\label{def:ableitbarKurz} \formulatoleft
+\end{align}
+
+Eine \emph{\glsIdx{zulaessigeTransformationA}} ist die Anwendung einer \emph{\glsIdx{Basisregel}} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB aus \subsectionname~\vref{sub:Schlussregeln}.
+
+Seien $\alpha$ und $\beta$ wieder \glsIdxPl{formalesElementV} und $X$ und $Y$ Mengen von \glsIdxBg{formalesElementV}{formalen Elementen}.
+Für die sechs \glsIdxPl{Basisregel} werden dann nur noch die logischen Operatoren \symqt{$\lnot$} und \symqt{$\land$} benötigt.
+Bei den weiteren \glsIdxPl{Schlussregel} wird noch \symqt{$\limp$} gemäß der Definition~\vref{def:imp} verwendet.
+
+Bei den \glsIdxPl{Schlussregel} und der Substitution\footnote{\seename~\vref{sub:Indentitaetsregeln}} soll das Komma stärker binden als \symqt{$\abltb$} und \symqt{$\subst$}.
+\symqt{$\subst$} steht für \strqt{und} \textbzw \symqt{\glsIdx{metaand}}\footnote{\seename\ \subsectionname~\vref{sub:Metaausdruck}} und bindet schwächer als \symqt{$\abltb$} und \symqt{$\subst$}.%
+\footnote{\seename\ Fußnote~3 von \tablename~\vref{tab:Prioritaeten}}
+
+Bei der Auswahl der \glsIdxPl{Basisregel}, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
+Wie in~\cite{bib:NatuerlichesSchliessen} steht \charqt{E} für \strqt{-Einführung} und \charqt{B} für \strqt{-Beseitigung} (oder \strqt{-Elimination}) von Operatoren.
+
+\begin{align}
+	& \frac{}{\alpha\abltb\alpha}
+	& & (\text{\glsIdx{Anfangsregel}})
+	\tag{\tagAR} \sym{\gls{AR}} \label{def:Anfangsregel}
+	\\\\
+	& \frac{X\abltb\alpha}{Y\abltb\alpha}
+	\quad \text{, für } Y \supseteq X
+	& & (\text{\glsIdx{Monotonieregel}})
+	\tag{\tagMR} \sym{\gls{MR}} \label{def:Monotonieregel}
+	\\\\
+	& \frac{X\abltb\alpha,\lnot\alpha}{X\abltb\beta}
+	& & (\text{Einführung/Beseitigung der Negation Teil 1})
+	\tag{\tagnota} \sym{\gls{nota}} \label{def:nota}
+	\\\\
+	& \frac{X,\alpha\abltb\beta \und X,\lnot\alpha\abltb\beta}{X\abltb\beta}
+	& & (\text{Einführung/Beseitigung der Negation Teil 2})
+	\tag{\tagnotb} \sym{\gls{notb}} \label{def:notb}
+	\\\\
+	& \frac{X\abltb\alpha,\beta}{X\abltb\alpha\land\beta}
+	& & (\text{Einführung der Konjunktion})
+	\tag{\tagandE} \sym{\gls{andE}} \label{def:andE}
+	\\\\
+	& \frac{X\abltb\alpha\land\beta}{X\abltb\alpha,\beta}
+	& & (\text{Beseitigung der Konjunktion})
+	\tag{\tagandB} \sym{\gls{andB}} \label{def:andB}
+	\formulatoleft
+\end{align}
+
+Eine Schlussregel steht für die Aussage, dass mit den \glsIdxBg{formalesElementV}{formalen Elementen}\footnote{hier: Aussagen in einer formalen Form.} über dem Strich auch die unter dem Strich gelten.
+Im Gegensatz zu den weiteren Schlussregeln werden die Basisregeln nicht weiter hinterfragt, \textdh sie gelten als Axiome.
+
+\subsection{Identitätsregeln}% --------------------------------------------------------
+\label{sub:Indentitaetsregeln}
+
+Die zulässigen Transformationen, \textdh die Anwendung der Schlussregeln, erfordern zulässige Substitutionen.
+Dazu wird dem Gleichheits- oder Identitätszeichen \symqt{$\eq$} mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.\footnote{\seename~\cite{bib:NatuerlichesSchliessen}}
+Es seien $\alpha$, $\beta$ und $\gamma$ wieder \glsIdxPl{formalesElementV}. Zunächst wird definiert:
+\[
+\gamma(\alpha \subst \beta) \quad \defeq \quad
+\parbox[t]{10.5cm}{%
+Das \glsIdxBg{formalesElementV}{formale Element}, dass man erhält, wenn in $\gamma$ alle oder nur einige Vorkommen von $\alpha$ durch $\beta$ ersetzt.
+}
+\label{def:Substitution}
+\]
+Gegebenenfalls muss noch die Auswahl der Ersetzungen angegeben werden.
+
+Nun können die beiden \glsIdxPl{Identitaetsregel} definiert werden:
+\begin{align}
+& \frac{}{\alpha\eq\alpha}
+& & (\text{Einführung der Identität})
+\tag{\tageqE} \sym{\gls{eqE}} \label{def:eqE}
+\\\\
+& \frac{\alpha\eq\beta \und \gamma}{\gamma(\alpha\subst\beta)}
+& & (\text{Beseitigung der Identität})
+\tag{\tageqB} \sym{\gls{eqB}} \label{def:eqB}
+\formulatoleft
+\end{align}
+
+Die \glsIdxPl{Identitaetsregel} werden hier eingeführt, um die Substitution zu rechtfertigen.
+Wie die \glsIdxPl{Basisregel} gelten sie als Axiome, würden also eigentlich dazu gehören.
+Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \glsIdxPl{Basisregel} gezählt.
+
+\subsection{Weitere Schlussregeln}% --------------------------------------------
+\label{sub:Schlussregeln}
+
+In~\cite{bib:Rautenberg} werden aus den Basisregeln mittels \glsIdxBg{zulaessigeTransformationA}{zulässiger Transformationen} weitere Schlussregeln abgeleitet.%
+\footnote{%
+In~\cite{bib:Rautenberg} werden die \glsIdxPl{Identitaetsregel} zwar weder aufgeführt noch angewandt, ohne Substitution geht es aber nicht.
+}
+Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
+
+\begin{align}
+	& \frac{X,\lnot\alpha\abltb\alpha}{X\abltb\alpha}
+	& & (\text{Beseitigung der Negation; Indirekter Beweis})
+	\tag{\tagnotc} \sym{\gls{notc}} \label{def:notc}
+	\\\\
+	& \frac{X,\lnot\alpha\abltb\beta,\lnot\beta}{X\abltb\alpha}
+	& & (\text{Reductio ad absurdum})
+	\tag{\tagnotd} \sym{\gls{notd}} \label{def:notd}
+	\\\\
+	& \frac{X,\alpha\abltb\beta}{X\abltb\alpha\limp\beta}
+	& & (\text{Einführung der Implikation})
+	\tag{\tagimpE} \sym{\gls{impE}} \label{def:impE}
+	\\\\
+	& \frac{X\abltb\alpha\limp\beta}{X,\alpha\abltb\beta}
+	& & (\text{Beseitigung der Implikation})
+	\tag{\tagimpB} \sym{\gls{impB}} \label{def:impB}
+	\\\\
+	& \frac{X\abltb\alpha \und X,\alpha\abltb\beta}{X\abltb\beta}
+	& & (\text{\glsIdx{Schnittregel}})
+	\tag{\tagSR} \sym{\gls{SR}} \label{def:SR}
+	\\\\
+	& \frac{X\abltb\alpha \und \alpha\limp\beta}{X\abltb\beta}
+	& & (\text{\glsIdx{Abtrennungsregel} (Modus ponens)})
+	\tag{\tagTR} \sym{\gls{TR}} \label{def:TR}
+	\formulatoleft
+\end{align}
+
+\subsection{Beispiel einer Ableitung}% -----------------------------------------
+\label{sub:BeispielAbleitung}
+
+%TODO Nachweis, dass X, Y, \alpha und \beta durch X', Y', \alpha' und \beta' ersetzt werden könnnen.
+
+Als Beispiel wird hier die Schnittregel aus den Basisregeln abgeleitet.%
+\footnote{%
+Die Form der Tabelle ist angelehnt an~\cite{bib:NatuerlichesSchliessen} Kapitel~2.2.4 \emph{Eine Beispielableitung}.%
+}
+Dazu werden für die Zeile $n$ definiert:
+\begin{align}
+	R_n & \defeq
+	\left\{
+		\begin{array}{l}
+			A_n \quad \text{, wenn in der Spalte \strqt{Regel} \strqt{...Annahme} steht.} \\
+			A_i \quad \text{\textbzw } \overline{R}_i \quad \text{, wenn in der Spalte \strqt{Regel} die Zahl $i$ steht.} \\
+			\text{sonst: die Schlussregel, auf die in der Spalte \strqt{Regel} verwiesen wird}
+		\end{array}
+	\right. \\
+	S_n & \defeq \text{die Menge der Substitutionen in der Spalte \strqt{Substitutionen}.} \\
+	Z_n & \defeq \text{die Menge der Zeilennummern in der Spalte \strqt{angewendet auf}.} \\
+	\overline{R}_n&\defeq \text{das Ergebnis der Substitution auf die Regel \textbzw Aussage $R_n$.} \\
+	A_n & \defeq
+	\left\{
+		\begin{array}{l}
+			\overline{R}_n \quad \text{, wenn in der Spalte \strqt{Aussage} nichts steht.} \\
+			\text{sonst: das \glsIdxBg{formalesElementV}{formale Element} in der Spalte \strqt{Aussage}.}
+		\end{array}
+	\right. \\
+	D_n & \defeq \text{die Menge der Abhängigkeiten in der Spalte \strqt{Abhängigkeiten}.}
+\end{align}
+%%%Ein Element $i \in Z_n$ verweist auf $A_i$.
+%%%Geht einer Substitution ein \strqt{$i:$} voraus, bezieht sie sich nur auf $A_i$ \textbzw $R_n$ für $i = n$, ansonsten auf alle $A_i$ mit $i \in Z_n$ (dann aber nicht auf $R_n$).
+
+\begin{table}[!htb]
+	\setlength\tabcolsep{2pt}
+	\setlength\extrarowheight{9pt}
+%%%	\begin{tabularx}{\linewidth-10.95pt}{|c||l|l|l|l|l|l|}
+	\begin{tabular}{|c||c|c|c|c|c|c|}
+		\hline
+		\parbox{1.0cm}{\textbf{Zeile         }\newline                    ($n$)} &
+		\parbox{1.1cm}{\textbf{Regel         }\newline                  ($R_n$)} &
+		\parbox{2.8cm}{\textbf{Substitutionen}\newline                  ($S_n$)} &
+		\parbox{2.7cm}{\textbf{erzeugte Regel}\newline       ($\overline{R}_n$)} &
+		\parbox{2.3cm}{\textbf{angewendet    }\newline \textbf{auf ...} ($Z_n$)} &
+		\parbox{1.6cm}{\textbf{Aussage       }\newline                  ($A_n$)} &
+		\parbox{2.0cm}{\textbf{Abhängig-     }\newline \textbf{keiten}  ($D_n$)} \\
+		\hline \hline
+		1 & fixe Annahme & & & & $ X \abltb \alpha $ & 1 \\
+		\hline
+		2 & fixe Annahme & & & & $ X,\alpha \abltb \beta $ & 2 \\
+		\hline
+		3 & Annahme & & & & $ X \abltb \beta $ & 3 \\
+		\hline
+		4 & \glsIdx{MR} & $ Y \subst X,\lnot\alpha $ & $ \dfrac{X\abltb\alpha}{X,\lnot\alpha\abltb\alpha} $ & 1 & $ X,\lnot\alpha \abltb \alpha $ & 1 \\
+		\hline
+		%TODO Beispiel vollenden
+		5 & \glsIdx{AR} & $ \alpha \subst \gamma $ & $ \dfrac{}{\gamma \abltb \gamma} $ & & $ \gamma \abltb \gamma $ & \\
+		\hline
+		6 & \glsIdx{MR} & \parbox{2.3cm}{
+			$ \alpha \subst \gamma $ \newline
+			$ X \subst \gamma $      \newline
+			$ Y \subst X,\gamma $
+		} & $ \dfrac{\gamma\abltb\gamma}{X,\gamma\abltb\gamma} $ & 5 & $ X,\gamma\abltb\gamma $ & \\
+		\hline
+		7 & 6 & $ \gamma \subst \lnot\alpha $ & $ X,\lnot\alpha \abltb \lnot\alpha $ & & & \\
+		\hline
+		8 & \glsIdx{nota} & $ X \subst Z $ & $ \dfrac{Z\abltb\alpha,\lnot\alpha}{Z\abltb\beta} $ & & & \\
+		\hline
+		9 & 8 & $ Z \subst X,\lnot\alpha $ & $ \dfrac{X,\lnot\alpha\abltb\alpha,\lnot\alpha}{X,\lnot\alpha\abltb\beta} $ & 4, 7 & $ X,\lnot\alpha \abltb \beta $ & 1 \\
+		\hline
+		10 & \glsIdx{notb} & & $ \dfrac{X,\alpha\abltb\beta \und X,\lnot\alpha\abltb\beta}{X\abltb\beta} $ & 2, 9 & $ X \abltb \beta $ & 1, 2 \\
+		\hline
+	\end{tabular}
+%%%	\end{tabularx}
+	\caption{Ableitung der \glsIdx{Schnittregel} aus den \glsIdxPl{Basisregel}}
+	\label{tab:Beispielableitung}
+\end{table}
+
+Eine Zeile $n$ in der \tablename~\vref{tab:Beispielableitung} hat folgende Bedeutung:
+\begin{itemize}
+	\item Nehme die Regel/Aussage $R_n$ und wende darauf die Substitutionen aus $S_n$ an. Das Ergebnis ist $\overline{R}_n$.
+	\item Wende die Regel/Aussage $\overline{R}_n$ auf die Aussagen $A_i$ mit $i \in Z_n$ an.
+	\item Die Aussage (unter dem Strich von) $\overline{R}_n$ bildet die (erzeugte) Aussage $A_n$.
+	\item Die Menge $D_n$ der Abhängigkeiten ist gleich der Vereinigung der Mengen $D_i$ mit $i \in Z_n$.%
+	\footnote{Wenn $D_n$ leer ist, dann ist $A_n$ allgemeingültig.}
+\end{itemize}
+
 \section{Aussagenlogik}% =======================================================
 \beginsection{Aussagenlogik}
 \label{sec:Aussagenlogik}
@@ -247,12 +498,12 @@ Mit \symqt{$\opbsp$} zusammenhängende Verabredungen werden hier nicht getroffen
 \subsection{Konstante und Operatoren}% -----------------------------------------
 \label{sub:Operatoren}
 
-Die \tablename~\vref{tab:Symbole}
+Die \tablename~\vref{tab:Symbole}%
 \footnote{%
 	Die \tablename{} basiert auf den Wahrheitstafeln in~\cite{bib:Junktor} Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.%
 }
 definiert für die zweiwertige Logik Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung.
-So ergeben sich, abhängig von den Wahrheitswerten der Operanden $A$ und $B$
+So ergeben sich, abhängig von den Wahrheitswerten der Operanden $A$ und $B$%
 \footnote{%
 	Im Gegensatz zu \subsubsectionname~\vref{subsub:Bausteine} können A und B hier beliebige Aussagen -- auch Formeln -- sein.%
 },
@@ -292,8 +543,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 \begin{table}
 	\newcommand*{\tablegroup}{\hdashline[6pt/3pt]}
 	\newcommand*{\tableline}{\hdashline[3pt/3pt]}
-	\newcommand*{\gapline}{%
-		\cdashline{1-1}[1pt/3pt]\cdashline{9-11}[1pt/3pt]}
+	\newcommand*{\gapline}{\cdashline{1-1}[1pt/3pt]\cdashline{9-11}[1pt/3pt]}
 	\setlength\tabcolsep{3pt}
 	\setlength\extrarowheight{1.5pt}
 	\begin{threeparttable}
@@ -583,16 +833,16 @@ Diese werden in der \tablename~\vref{tab:Prioritaeten} mit abnehmender Prioritä
 				\hline
 				& $ \glsSym{metaand}                        $ \\
 				& $ \glsSym{metaor}                         $ \\
-				\GlsIdxPl{MetaoperatorV}
+				\GlsIdxPl{MetaoperatorV}\tnote{2}
 				& $ \glsSym{metarep} \quad \glsSym{metaimp} $ \\
 				& $ \glsSym{metaequiv}                      $ \\
-				& $ \mid                                    $ \\
+				& $ \glsSym{subst}                          $ \\
 				\hline
 				Metadefinition
 				& $ \glsSym{metadefeq}                      $ \\
 				\hline
 				\parbox[][1.1cm][c]{5.9cm}{%
-					Strukturelemente der natürlichen Sprache, \textzB Satzzeichen\tnote{2}
+					Strukturelemente der natürlichen Sprache, \textzB Satzzeichen\tnote{3}
 				}
 				& . \quad , \quad ; \quad \textusw \\
 				\hline
@@ -600,7 +850,8 @@ Diese werden in der \tablename~\vref{tab:Prioritaeten} mit abnehmender Prioritä
 			\begin{tablenotes}
 				\footnotesize
 				\item[1] \seename\ \subsectionname~\vref{sub:Basisregeln}
-				\item[2] Innerhalb von Formeln können Satzzeichen eine andere Priorität haben.
+				\item[2] \seename\ \subsectionname~\vref{sub:Metaausdruck} und für \symqt{$\subst$} \subsectionname~\vref{sub:Basisregeln}
+				\item[3] Innerhalb von \glsIdxBg{formalesElementV}{formalen Elementen} können Satzzeichen eine andere Priorität haben.
 				Siehe \textzB \subsectionname~\vref{sub:Basisregeln}.
 			\end{tablenotes}
 		\end{threeparttable}
@@ -630,24 +881,22 @@ besser umgehen können und Klammern dort überflüssig sind, werden viele Formel
 
 Zur Einteilung der aussagenlogischen Junktoren werden die folgenden Mengen definiert:
 \begin{align}
-	%
-	& \gsNo\hidden{\gls{gsNo}}  & & \defeq & &
-	&     & \text{Menge der \emph{natürlichen Zahlen} einschließlich 0}
-	\idx{natürlichen Zahlen, Menge der} \label{def:N} \\
-	%
-	& \glsSym{asC}  & & \defeq & & \{ \ltrue, \lfalse \}
-	& ,\; & \text{Menge der \emph{aussagenlogischen Konstanten}}
-	\idx{Konstanten, Menge der}         \label{def:C} \\
-	%
-	& \glsSym{asU}  & & \defeq & & \{ \lnot \}
-	& ,\; & \text{Menge der \emph{unären aussagenlogischen Operatoren}}
-	\idx{unären Operatoren, Menge der}  \label{def:U} \\
-	%
-	& \glsSym{asB}  & & \defeq & &
+	& \gsNo\hidden{\gls{gsNo}}  & \defeq\quad &
+	&& \text{~ Menge der \emph{natürlichen Zahlen} einschließlich 0}
+	\idx{natürlichen Zahlen, Menge der} \label{def:N}
+	\\
+	& \glsSym{asC}              & \defeq\quad & \{ \ltrue, \lfalse \}
+	&& \text {, Menge der \emph{aussagenlogischen Konstanten}}
+	\idx{Konstanten, Menge der}         \label{def:C}
+	\\
+	& \glsSym{asU}              & \defeq\quad & \{ \lnot \}
+	&& \text{, Menge der \emph{unären aussagenlogischen Operatoren}}
+	\idx{unären Operatoren, Menge der}  \label{def:U}
+	\\
+	& \glsSym{asB}              & \defeq\quad &
 	\{ \land, \lor, \limp, \lequiv, \lrep, \lnand, \lnor, \lmult, \ladd \}
-	& ,\; & \text{Menge der \emph{binären aussagenlogischen Operatoren}}
+	&& \text{, Menge der \emph{binären aussagenlogischen Operatoren}}
 	\idx{binären Operatoren, Menge der} \label{def:B}
-	%
 \end{align}
 
 Damit sind alle in der \tablename~\vref{tab:Symbole} verwendeten wesentlichen Konstanten und Operatoren%
@@ -657,28 +906,27 @@ Damit sind alle in der \tablename~\vref{tab:Symbole} verwendeten wesentlichen Ko
 erfasst und es können die folgende Mengen definiert werden:
 \begin{align}
 	%
-	& \glsSym{asV}  & & \defeq    & & \{ p_n \mid n \in \gsNo \}
-	& ,\; & \text{Menge der \emph{\glsIdxPl{atomareFormelA}}}
-	\idx{atomare Formeln, Menge der}          \label{def:V}  \\
-	%
-	& \glsSym{asJ}  & & \defeq    & &\asC \cup \asU \cup \asB
-	& ,\; & \text{Menge der \emph{Junktoren} \textbzw \emph{Operatoren};
+	& \glsSym{asV}  & \defeq   \quad & \{ p_n \mid n \in \gsNo \}
+	&& \text{, Menge der \emph{\glsIdxPl{atomareFormelA}}}
+	\idx{atomare Formeln, Menge der}          \label{def:V}
+	\\
+	& \glsSym{asJ}  & \defeq   \quad &\asC \cup \asU \cup \asB
+	&& \text{, Menge der \emph{Junktoren} \textbzw \emph{Operatoren};
 	auch \emph{\glsIdx{logischeSignaturV}}}
-	\idx{Junktoren, Menge der}                \label{def:J}  \\
-	%
-	& \glsSym{asA}  & & \defeq    & & \asV \cup \asJ
-	& ,\; & \text{\emph{Alphabet der aussagenlogischen Sprache (für }} \asJ
+	\idx{Junktoren, Menge der}                \label{def:J}
+	\\
+	& \glsSym{asA}  & \defeq   \quad & \asV \cup \asJ
+	&& \text{, \emph{Alphabet der aussagenlogischen Sprache (für }} \asJ
 	\text{\emph{)}}
-	\idx{Alphabet der logischen Sprache}      \label{def:A}  \\
-	%
-	& \glsSym{asJx} & & \subseteq & & \asJ
-	& ,\; & \text{eine Teilmenge von } \asJ \text{ für eine Indexvariable }
-	x                                         \label{def:Bx} \\
-	%
-	& \glsSym{asAx} & & \defeq    & & \asV \cup \asJx \quad
-	& ,\; & \text{Alphabet der aussagenlogischen Sprache \emph{für} } \asJx
+	\idx{Alphabet der logischen Sprache}      \label{def:A}
+	\\
+	& \glsSym{asJx} & \subseteq\;\quad & \asJ
+	&& \text{, eine Teilmenge von } \asJ \text{ für eine Indexvariable }
+	x                                         \label{def:Bx}
+	\\
+	& \glsSym{asAx} & \defeq   \quad & \asV \cup \asJx \quad
+	&& \text{, Alphabet der aussagenlogischen Sprache \emph{für} } \asJx
 	\idx{Teil-Alphabet der aussagenlogischen Sprache} \label{def:Ax}
-	%
 \end{align}
 Für Elemente aus $\asV$ werden hier normalerweise die großen lateinischen Buchstaben $A$, $B$, $C$, \textusw verwendet.
 Die Elemente aus $\asV$ (\glsIdx{atomareFormelA}n) werden auch \emph{\Idx{Satzbuchstabe}n} oder kurz \emph{\Idx{Atom}e} genannt.
@@ -692,17 +940,15 @@ Damit können nun rekursiv für jede Teilmenge $\asJx$ von $\asJ$ zwei Mengen vo
 $\glsSym{asFx}$ sei die Menge der auf folgende Weise definierten \emph{aussagenlogischen Formeln mit Klammerung}%
 \idx{aussagenlogische Formel mit Klammerung}:
 \begin{align}
-	&                & \asV            \subset \asFx
+	&                               & \asV            \subset \asFx
 	\\
-	&                & \asJx \cap \asC \subset \asFx
+	&                               & \asJx \cap \asC \subset \asFx
 	\\
-	A                                \in \asFx
-	& \quad \metaimp &  (\circ A)    \in \asFx
-	& & , \quad \text{für} \quad \circ \in \asU \cap \asJx
+	A    \in \asFx & \quad \metaimp &  (\circ A)          \in \asFx
+	& & \text{, für} \quad \circ \in \asU \cap \asJx
 	\\
-	A, B                             \in \asFx
-	& \quad \metaimp & (A \circ B)   \in \asFx
-	& & , \quad \text{für} \quad \circ \in \asB \cap \asJx
+	A, B \in \asFx & \quad \metaimp & (A \circ B)         \in \asFx
+	& & \text{, für} \quad \circ \in \asB \cap \asJx
 	\formulatoleft
 \end{align}
 Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFx$.
@@ -711,17 +957,15 @@ Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFx$.
 $\glsSym{asFxp}$ sei die Menge der auf folgende Weise definierten aussagenlogischen Formeln in \emph{Polnischer Notation}%
 \idx{aussagenlogische Formel in Polnischer Notation}:
 \begin{align}
-	&                & \asV            \subset \asFxp
+	&                                & \asV            \subset \asFxp
 	\\
-	&                & \asJx \cap \asC \subset \asFxp
+	&                                & \asJx \cap \asC \subset \asFxp
 	\\
-	A                            \in \asFxp
-	& \quad \metaimp & \circ A   \in \asFxp
-	& & , \quad \text{für} \quad \circ \in \asU \cap \asJx
+	A    \in \asFxp & \quad \metaimp &  (\circ A)          \in \asFxp
+	& & \text{, für}  \quad \circ \in \asU \cap \asJx
 	\\
-	A, B                         \in \asFxp
-	& \quad \metaimp & \circ A B \in \asFxp
-	& & , \quad \text{für} \quad \circ \in \asB \cap \asJx
+	A, B \in \asFxp & \quad \metaimp & (A \circ B)         \in \asFxp
+	& & \text{, für}  \quad \circ \in \asB \cap \asJx
 	\formulatoleft
 \end{align}
 Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFxp$.
@@ -729,11 +973,11 @@ Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFxp$.
 
 Wie man leicht sieht, gilt:
 \begin{equation}
-	\asJx \subset \asJy \subseteq \asJ \metaimp
+	\asJx \: \subset \: \asJy \: \subset \: \asJ \metaimp
 	\begin{cases}
-		\asAx  \subset \asAy  \subseteq \asA \\
-		\asFx  \subset \asFy  \subseteq \asF \\
-		\asFxp \subset \asFyp \subseteq \asFp
+		\asAx \: \subset \: \asAy \: \subseteq \: \asA \\
+		\asFx \; \subset \: \asFy \; \subseteq \: \asF \\
+		\asFxp\, \subset \: \asFyp\, \subseteq \: \asFp
 	\end{cases}
 \end{equation}
 
@@ -743,14 +987,14 @@ Die Namen der Operatoren finden sich in der \tablename~\vref{tab:Symbole}.
 Für aussagenlogische Formeln, \textdh von Elementen aus $\asF$ \textbzw $\asFp$, werden hier normalerweise die kleinen griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw verwendet.
 Sie können dabei auch \glsIdx{atomareFormelA}n bezeichnen (\seename~\eqref{def:V}).
 
-\subsection{Definition aussagenlogische Operatoren durch andere}% ----------
+\subsection{Definition aussagenlogische Operatoren durch andere}% --------------
 \label{sub:ausOperatorDef}
 
 Im folgenden gelte für zwei aussagenlogische Formeln $\alpha$ und $\beta$:
 
 \begin{itemize}
 
-	\item[] $\alpha   =    \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$
+	\item[] $\alpha \eq    \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$
 	stimmen als Zeichenkette überein.
 
 	\item[] $\alpha \equiv \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$
@@ -760,15 +1004,15 @@ Im folgenden gelte für zwei aussagenlogische Formeln $\alpha$ und $\beta$:
 
 Es werden verschiedene Teilmengen von $\asJ$ -- \glsIdxPl{logischeSignaturV} -- eingeführt, die jeweils ausreichen alle anderen Elemente aus $\asJ$ zu definieren:
 \begin{align}
-	& \asJ_\xBool &\defeq & & & \{ \lnot, \land, \lor \} \label{def:Jbool}
-	& \formulaspace       & \text{, \glsIdx{BoolscheSignatur}}            \\
-	& \asJ_\xAnd  &\defeq & & & \{ \lnot, \land       \} \label{def:Jand} \\
-	& \asJ_\xOr   &\defeq & & & \{ \lnot, \lor        \} \label{def:Jor}  \\
-	& \asJ_\xImp  &\defeq & & & \{ \lnot, \limp       \} \label{def:Jimp} \\
-	& \asJ_\xRep  &\defeq & & & \{ \lnot, \lrep       \} \label{def:Jrep} \\
-	& \asJ_\xNand &\defeq & & & \{ \lnand             \} \label{def:Jnand}\\
-	& \asJ_\xNor  &\defeq & & & \{ \lnor              \} \label{def:Jnor}
-	\formulatoleft
+	& \asJ_\xBool & \defeq & \quad\{ \lnot, \land, \lor \} \label{def:Jbool}
+	\qquad (\text{\glsIdx{BoolscheSignatur}})                                \\
+	& \asJ_\xAnd  & \defeq & \quad\{ \lnot, \land       \} \label{def:Jand}  \\
+	& \asJ_\xOr   & \defeq & \quad\{ \lnot, \lor        \} \label{def:Jor}   \\
+	& \asJ_\xImp  & \defeq & \quad\{ \lnot, \limp       \} \label{def:Jimp}  \\
+	& \asJ_\xRep  & \defeq & \quad\{ \lnot, \lrep       \} \label{def:Jrep}  \\
+	& \asJ_\xNand & \defeq & \quad\{ \lnand             \} \label{def:Jnand} \\
+	& \asJ_\xNor  & \defeq & \quad\{ \lnor              \} \label{def:Jnor}
+	\formulatoleft\formulatoleft\formulatoleft
 \end{align}
 
 Im Folgenden stehen jeweils links die Formeln in üblicher Schreibweise vollständig geklammert und rechts in Polnischer Notation (ohne Klammern).
@@ -777,300 +1021,111 @@ Ferner seien $\alpha$ und $\beta$ beliebige, nicht notwendig verschiedene Formel
 Ausgehend von den Operatoren aus der \glsIdxX{BoolscheSignatur} $\asJ_\xBool$ werden die restlichen Operatoren aus $\asJ$ definiert. Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den Operatoren aus $\asJ_\xAnd$:
 \begin{align}
 	% folgt ------------------------
-	& (\alpha \limp \beta) & \defeq & & & (\lnot (\alpha \land  (\lnot \beta)))
-	& \formulaspace
-	&  \limp \alpha \beta  & \defeq & & &  \lnot    \land \alpha \lnot \beta
+	(\alpha \limp \beta) &\;\defeq\; (\lnot (\alpha \land  (\lnot \beta))) &
+	\limp \alpha \beta   &\;\defeq\;  \lnot    \land \alpha \lnot \beta
 	\label{def:imp}
 	\\
 	% sofern -----------------------
-	& (\alpha \lrep \beta) & \defeq & & & (\lnot (\beta \land  (\lnot \alpha)))
-	& \formulaspace
-	&   \lrep \beta \alpha & \defeq & & &  \lnot    \land \beta \lnot \alpha
+	(\alpha \lrep \beta) &\;\defeq\; (\lnot (\beta \land  (\lnot \alpha))) &
+	\lrep \beta  \alpha  &\;\defeq\;  \lnot    \land \beta \lnot \alpha
 	\label{def:rep}
 	\\
 	% genau dann -------------------
-	& (\alpha\lequiv\beta)&\defeq &&&((\alpha\limp\beta)\land(\alpha\lrep\beta))
-	& \formulaspace
-	& \lequiv\alpha \beta &\defeq &&&\land \limp \alpha \beta \lrep \alpha \beta
+	(\alpha\lequiv\beta) &\;\defeq\;((\alpha\limp\beta)\land(\alpha\lrep\beta))&
+	\lequiv\alpha \beta  &\;\defeq\;\land \limp \alpha \beta \lrep \alpha \beta
 	\label{def:equiv}
 	\\
 	%falsch ------------------------
-	&              \lfalse & \defeq & & & (p_0 \land    (\lnot p_0))
-	& \formulaspace
-	&              \lfalse & \defeq & & &      \land p_0 \lnot p_0
-	\label{def:false}
+	\lfalse              &\;\defeq\; (p_0 \land    (\lnot p_0))    &
+	\lfalse              &\;\defeq\;      \land p_0 \lnot p_0   \label{def:false}
 	\\
 	% mal --------------------------
-	& (\alpha \lmult \beta) & \defeq & & & (\alpha \land \beta)
-	& \formulaspace
-	&  \lmult \alpha \beta  & \defeq & & &  \land \alpha \beta
-	\label{def:mult}
+	(\alpha \lmult \beta)&\;\defeq\; (\alpha \land \beta)          &
+	\lmult \alpha  \beta &\;\defeq\;  \land \alpha \beta        \label{def:mult}
 	\\
 	% NAND -------------------------
-	& (\alpha \lnand \beta)  & \defeq & & & (\lnot (\alpha \land \beta ))
-	& \formulaspace
-	&  \lnand \alpha \beta   & \defeq & & &  \lnot  \land \alpha \beta
-	\label{def:nand}
-	\formulatoleft
+	(\alpha \lnand \beta)&\;\defeq\; (\lnot (\alpha \land \beta )) &
+	\lnand \alpha  \beta &\;\defeq\;  \lnot  \land \alpha \beta \label{def:nand}
 \end{align}
 und die mit den Operatoren aus $\asJ_\xOr$:
 \begin{align}
 	% NOR --------------------------
-	& (\alpha \lnor \beta) & \defeq & & & (\lnot (\alpha \lor \beta))
-	& \formulaspace
-	&  \lnor \alpha \beta  & \defeq & & &  \lnot  \lor \alpha \beta
-	\label{def:nor}
+	(\alpha \lnor \beta) &\;\defeq\; (\lnot (\alpha \lor \beta))   &
+	\lnor \alpha  \beta  & \;\defeq\;  \lnot  \lor \alpha \beta \label{def:nor}
 	\\
 	% plus -------------------------
-	&(\alpha\ladd\beta)&\defeq&&&((\alpha\lor\beta)\land(\lnot(\alpha\land\beta)))
-	& \formulaspace
-	& \ladd\alpha\beta &\defeq&&&  \land \lor \alpha\beta \lnot \land \alpha\beta
+	(\alpha\ladd\beta)&\;\defeq\;((\alpha\lor\beta)\land(\lnot(\alpha\land\beta)))&
+	\ladd\alpha \beta &\;\defeq\;  \land \lor\alpha\beta \lnot \land\alpha\beta
 	\label{def:add}
 	\\
 	% wahr -------------------------
-	& \ltrue & \defeq & & & (p_0 \lor    (\lnot p_0))
-	& \formulaspace
-	& \ltrue & \defeq & & &      \lor p_0 \lnot p_0
+	\ltrue & \;\defeq\; (p_0 \lor    (\lnot p_0)) &
+	\ltrue & \;\defeq\;      \lor p_0 \lnot p_0
 	\label{def:true}
-	\formulatoleft
 \end{align}
 
 Ist \symqt{$\lor$} oder \symqt{$\land$} nicht vorgegeben, \textdh wird von den Elementen aus $\asJ_\xAnd$ \textbzw $\asJ_\xOr$ statt von denen aus $\asJ_\xBool$ ausgegangen, so muss man den fehlenden Operator mittels der passenden der beiden folgenden Definitionen einführen:
 \begin{align}
 	% oder aus und -----------------
-	& (\alpha \lor \beta) & \defeq & & & (\lnot((\lnot\alpha)\land(\lnot\beta)))
-	& \formulaspace
-	&  \lor \alpha \beta  & \defeq & & &  \lnot \land \lnot \alpha \lnot \beta
-	\label{def:orand}
-	\\
+	(\alpha \lor \beta)  & \;\defeq\; (\lnot((\lnot\alpha)\land(\lnot\beta))) &
+	\lor \alpha  \beta   & \;\defeq\;  \lnot \land \lnot \alpha \lnot \beta
+	\label{def:orand} \\
 	% und aus oder -----------------
-	& (\alpha \land \beta) & \defeq & & & (\lnot((\lnot\alpha)\lor(\lnot\beta)))
-	& \formulaspace
-	& \land \alpha \beta   & \defeq & & &  \lnot \lor \lnot \alpha \lnot \beta
+	(\alpha \land \beta) & \;\defeq\; (\lnot((\lnot\alpha)\lor(\lnot\beta)))  &
+	\land \alpha  \beta  & \;\defeq\;  \lnot \lor \lnot \alpha \lnot \beta
 	\label{def:andor}
-	\formulatoleft
 \end{align}
 Nun sind wieder alle Operatoren definiert.
 
 Entsprechend wird bei Vorgabe von $\asJ_\xImp$ \textbzw $\asJ_\xRep$ die passende der beiden folgenden Definitionen ausgewählt:
 \begin{align}
 	% oder aus imp -----------------
-	& (\alpha \lor  \beta) & \defeq & & & ((\lnot \alpha) \limp \beta)
-	& \formulaspace
-	&  \lor  \alpha \beta  & \defeq & & &   \limp \lnot \alpha \beta
+	(\alpha \lor  \beta) & \;\defeq\; ((\lnot \alpha) \limp \beta)         &
+	\lor \alpha   \beta  & \;\defeq\;   \limp \lnot \alpha \beta
 	\label{def:orrep}
 	\\
 	% und aus rep ------------------
-	& (\alpha \land \beta) & \defeq & & & (\lnot ((\lnot \beta) \lrep \alpha))
-	& \formulaspace
-	&  \land \alpha \beta  & \defeq & & &  \lnot \lrep \lnot \beta \alpha
+	(\alpha \land \beta) & \;\defeq\; (\lnot ((\lnot \beta) \lrep \alpha)) &
+	\land \alpha  \beta  & \;\defeq\;  \lnot \lrep \lnot \beta \alpha
 	\label{def:andrep}
-	\formulatoleft
 \end{align}
 woraufhin dann \eqref{def:imp} \textbzw \eqref{def:rep} als Gleichung nachzuweisen ist.
 Da aus \eqref{def:rep} durch Vertauschung der Variablen unmittelbar
 \begin{align}
-	& (\alpha \lrep \beta) & \equiv & & & (\beta \limp \alpha)
-	& \formulaspace
-	&  \lrep \alpha \beta  & \equiv & & &  \limp \beta \alpha
-	\label{eq:repimp}
-	\formulatoleft
+	(\alpha \lrep \beta) & \;\equiv\; (\beta \limp \alpha) &
+	\lrep \alpha  \beta  & \;\equiv\;  \limp \beta \alpha  \label{eq:repimp}
 \end{align}
 folgt, vermindert sich der Aufwand dazu erheblich.
 
 Bei Vorgabe von $\asJ_\xNand$ \textbzw $\asJ_\xNor$ schließlich werden die passenden Definition aus
 \begin{align}
 	% nicht aus nor ----------------
-	& (\lnot \alpha) & \defeq & & & (\alpha \lnor \alpha)
-	& \formulaspace
-	&  \lnot \alpha  & \defeq & & &  \lnor \alpha \alpha
-	\label{def:notnor}
-	\\
+	(\lnot \alpha) & \;\defeq\; (\alpha \lnor \alpha)  &
+	\lnot  \alpha  & \;\defeq\;  \lnor \alpha \alpha   \label{def:notnor} \\
 	% nicht aus nand ---------------
-	& (\lnot \alpha) & \defeq & & & (\alpha \lnand \alpha)
-	& \formulaspace
-	&  \lnot \alpha  & \defeq & & &  \lnand \alpha \alpha
-	\label{def:notnand}
-	\formulatoleft
+	(\lnot \alpha) & \;\defeq\; (\alpha \lnand \alpha) &
+	\lnot  \alpha  & \;\defeq\;  \lnand \alpha \alpha  \label{def:notnand}
 \end{align}
 und, da \symqt{$\lnot$} jetzt definiert ist, aus
+\renewcommand{\mathindent}{2cm}
 \begin{align}
 	% oder aus nor -----------------
-	& (\alpha \lor \beta) & \defeq & & & (\lnot(\alpha \lnor \beta))
-	& \formulaspace
-	&  \lor \alpha \beta  & \defeq & & &  \lnot \lnor \alpha \beta
-	\label{def:ornor}
-	\\
+	(\alpha \lor \beta)  & \;\defeq\; (\lnot(\alpha \lnor \beta))  &
+	\lor \alpha  \beta   & \;\defeq\;  \lnot \lnor \alpha \beta
+	\label{def:ornor} \\
 	% und aus nand -----------------
-	& (\alpha \land \beta) & \defeq & & & (\lnot(\alpha \lnand \beta))
-	& \formulaspace
-	&  \land \alpha \beta  & \defeq & & &  \lnot \lnand \alpha \beta
+	(\alpha \land \beta) & \;\defeq\; (\lnot(\alpha \lnand \beta)) &
+	\land \alpha  \beta  & \;\defeq\;  \lnot \lnand \alpha \beta
 	\label{def:andnand}
-	\formulatoleft
 \end{align}
 ausgewählt und es ist \eqref{def:nand} \textbzw \eqref{def:nor} als Gleichung nachzuweisen.
 
 Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der Definitionen \eqref{def:imp} bis \eqref{def:andnand}, ausgehend vom jeweils passenden $\asFx$, genau die gesamte Formelmenge $\asF$ erzeugt werden kann.
 
-\section{Schlussregeln}% =======================================================
-\beginsection{Schlussregeln}
-\label{sec:Schlussregeln}
-\hidden{\glsIdx{Schlussregel}}
+\subsection{Aussagenlogisches Axiomensystem}% ----------------------------------
+\label{sub:ausAxiome}
 
-Die Regeln zur Formulierung und Prüfung der Beweise müssen fest codiert werden.
-Sie sind quasi die Axiome und sollten daher möglichst wenig voraussetzen.
-Für \ASBA\ wird ein \emph{Genzen-Kalkül} verwendet, so wie er in~\cite{bib:Rautenberg} Kapitel~1.4 beschrieben ist (siehe auch~\cite{bib:NatuerlichesSchliessen,bib:Schlussregel}).
-
-Ein Beweis in \ASBA\ besteht aus einer Menge von Zeichenketten (die Voraussetzungen) und einer Folge von erlaubte Transformationen, die sogenannten \emph{\glsIdxPl{Schlussregel}}, mit der neue (Mengen von) Zeichenketten generiert werden, bis eine gewünschte Menge von Zeichenketten (die Folgerungen) abgeleitet sind.
-
-In diesem \sectionname\ geht es um die erlaubten Transformationen. Dazu gehören zunächst die \glsIdxPl{Basisregel}.
-
-\subsection{Basisregeln}%  - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\label{sub:Basisregeln}
-\hidden{\glsIdxPl{Basisregel}}
-
-Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \glsIdxPl{Basisregel} definiert. Zuvor werden aber noch einige Definition gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch 0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ Formeln, $X$, $X_i$, $Y$ und $Y_j$ Mengen von Formeln und
-\begin{align}
-	%
-	&X&&\defeq&&X_1\cup X_2\cup...\cup X_n\cup\{\alpha_1,\alpha_2,...,\alpha_m\}
-	\\
-	&Y&&\defeq&&Y_1\cup Y_2\cup...\cup Y_k\cup\{\beta_1, \beta_2, ...,\beta_l \}
-	\formulatoleft\formulatoleft
-\end{align}
-Damit wird definiert:
-\begin{align}
-	%
-	& \alpha \glsSym{abltb} \beta \quad \metadefeq \quad
-	\parbox[t]{10.5cm}{%
-		$\beta$ ist mittels schrittweiser Anwendung \glsIdxBg{zulaessigeTransformation}{zulässiger Transformationen} (siehe unten) aus $\alpha$ ableitbar.
-		Sprechweise: Aus $\alpha$ ist $\beta$ \emph{ableitbar} oder \emph{beweisbar};
-		kurz: \strqt{$\alpha$ \emph{\glsIdx{ableitbar}} $\beta$} \textbzw \strqt{$\alpha$ \emph{\glsIdx{beweisbar}} $\beta$}
-		-- Es kann auch \symqt{$\alpha$} durch \symqt{$X$} und/oder \symqt{$\beta$} durch \symqt{$Y$} ersetzt werden.
-	}
-	\label{def:ableitbar} \\
-	%
-	&            X_1, X_2, ...,X_n, \alpha_1, \alpha_2, ..., \alpha_m \quad
-	\abltb \quad Y_1, Y_2, ...,Y_n,  \beta_1,  \beta_2,  ..., \beta_m \quad
-	\metadefeq \quad X \abltb Y
-	\label{def:ableitbarKurz} \formulatoleft
-\end{align}
-
-Eine \emph{\glsIdx{zulaessigeTransformation}} ist die Anwendung einer \glsIdx{Basisregel} aus \subsectionname~\vref{sub:Basisregeln} oder einer davon abgeleiteten sonstigen \glsIdx{Schlussregel}, \textzB aus \subsectionname~\vref{sub:Schlussregeln}.
-
-Seien wieder $\alpha$ und $\beta$ Formeln und $X$ und $Y$ Mengen von Formeln.
-Für die sechs Basisregeln werden dann nur noch die logischen Operatoren \symqt{$\lnot$} und \symqt{$\land$} aus der logischen \glsIdx{logischeSignaturV} $\asJ_\xAnd$ benötigt.
-Bei den weiteren \glsIdxPl{Schlussregel} wird noch \symqt{$\limp$} gemäß der Definition~\vref{def:imp} verwendet.
-
-Bei den \glsIdxPl{Schlussregel} und der Substitution soll das Komma stärker binden als \symqt{$\abltb$} und \symqt{$\subst$}.
-Nach \subsectionname~\vref{sub:Metaausdruck} steht \symqt{$\mid$} für \strqt{und} \textbzw \symqt{\glsIdx{metaand}}
-und bindet nach \subsectionname~\vref{sub:Klammerregeln} schwächer als \symqt{$\abltb$} und \symqt{$\subst$}.
-
-Bei der Auswahl der \glsIdxPl{Basisregel}, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
-Wie in~\cite{bib:NatuerlichesSchliessen} steht \charqt{E} für \strqt{-Einführung} und \charqt{B} für \strqt{-Beseitigung} (oder \strqt{-Elimination}) von Operatoren.
-
-\begin{align}
-	& & & \frac{}{\alpha\abltb\alpha}
-	& & (\glsIdxPl{Anfangsregel})
-	\tag{\tagAR} \sym{\gls{AR}} \label{def:Anfangsregel}
-	\\\\
-	& & & \frac{X\abltb\alpha}{Y\abltb\alpha}
-	\quad \text{, für } Y \supseteq X
-	& & (\glsIdxPl{Monotonieregel})
-	\tag{\tagMR} \sym{\gls{MR}} \label{def:Monotonieregel}
-	\\\\
-	& & & \frac{X\abltb\alpha,\lnot\alpha}{X\abltb\beta}
-	& & (\text{Einführung/Beseitigung der Negation Teil 1})
-	\tag{\tagnota} \sym{\gls{nota}} \label{def:nota}
-	\\\\
-	& & & \frac{X,\alpha\abltb\beta \mid X,\lnot\alpha\abltb\beta} {X\abltb\beta}
-	& & (\text{Einführung/Beseitigung der Negation Teil 2})
-	\tag{\tagnotb} \sym{\gls{notb}} \label{def:notb}
-	\\\\
-	& & & \frac{X\abltb\alpha,\beta}{X\abltb\alpha\land\beta}
-	& & (\text{Einführung der Konjunktion})
-	\tag{\tagandE} \sym{\gls{andE}} \label{def:andE}
-	\\\\
-	& & & \frac{X\abltb\alpha\land\beta}{X\abltb\alpha,\beta}
-	& & (\text{Beseitigung der Konjunktion})
-	\tag{\tagandB} \sym{\gls{andB}} \label{def:andB}
-	\formulatoleft
-\end{align}
-
-Eine Schlussregel steht für die Aussage, dass mit den Formeln über dem Strich auch die unter dem Strich gelten.
-Im Gegensatz zu den weiteren Schlussregeln werden die Basisregeln nicht weiter hinterfragt, \textdh sie gelten als Axiome.
-
-\subsection{Weitere Schlussregeln}%  - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\label{sub:Schlussregeln}
-
-In~\cite{bib:Rautenberg} werden aus den Basisregeln mittels \glsIdxBg{zulaessigeTransformation}{zulässiger Transformationen} weitere Schlussregeln abgeleitet. Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
-
-\begin{align}
-	& & & \frac{X,\lnot\alpha\abltb\alpha}{X\abltb\alpha}
-	& & (\text{Indirekter Beweis})
-	\tag{\tagnotc} \sym{\gls{notc}} \label{def:notc}
-	\\\\
-	& & & \frac{X,\lnot\alpha\abltb\beta,\lnot\beta}{X\abltb\alpha}
-	& & (\text{Reductio ad absurdum})
-	\tag{\tagnotd} \sym{\gls{notd}} \label{def:notd}
-	\\\\
-	& & & \frac{X,\alpha\abltb\beta}{X\abltb\alpha\limp\beta}
-	& & (\text{Einführung der Implikation})
-	\tag{\tagimpE} \sym{\gls{impE}} \label{def:impE}
-	\\\\
-	& & & \frac{X\abltb\alpha\limp\beta}{X,\alpha\abltb\beta}
-	& & (\text{Beseitigung der Implikation})
-	\tag{\tagimpB} \sym{\gls{impB}} \label{def:impB}
-	\\\\
-	& & & \frac{X\abltb\alpha \mid X,\alpha\abltb\beta}{X\abltb\beta}
-	& & (\glsIdxPl{Schnittregel}\text{ (Modus ponens)})
-	\tag{\tagSR} \sym{\gls{SR}} \label{def:SR}
-	\\\\
-	& & & \frac{X\abltb\alpha,\alpha\limp\beta}{X\abltb\beta}
-	& & (\glsIdxPl{Abtrennungsregel})
-	\tag{\tagTR} \sym{\gls{TR}} \label{def:TR}
-	\formulatoleft
-\end{align}
-
-\subsection{Beispiel einer Ableitung}%  - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\label{sub:BeispielAbleitung}
-
-Als Beispiel wird hier die Schnittregel aus den Basisregeln abgeleitet.\footnote{%
-	Die Form der Tabelle ist angelehnt an~\cite{bib:NatuerlichesSchliessen} Kapitel~2.2.4 \emph{Eine Beispielableitung}.%
-}
-Dazu müssen Substitutionen verwendet werden.
-Dazu sei $\alpha$ eine Teilformel der Ausgangsformel $\gamma$.
-Wenn nun alle oder einige Vorkommen von $\alpha$ in $\gamma$ durch die Teilformel $\beta$ ersetzt werden, dann wurde $\alpha$ durch $\beta$ \emph{substituiert}; in Formelschreibweise: \forqt{$\alpha\subst\beta$}.
-Eine der beiden Teilformeln sollte dabei eine Variable sein, die man per Definition mit der anderen Seite gleichsetzen muss; zumindest sollte das ohne Widerspruch möglich sein.
-%TODO Erläutern, wann eine Substitution zulässig ist.
-
-\begin{table}[!htb]
-	\begin{tabular}{|c|l|l|l|l|l|}
-		\hline
-		\rule[-1ex]{0pt}{2.5ex} \textbf{Zeile} & \textbf{Abhängigkeit(en)} & \textbf{Aussage} & \textbf{Regel} & \textbf{angewendet auf} & \textbf{Substitutionen} \\
-		\hline
-		\rule[-1ex]{0pt}{2.5ex} 1 & 1 & $ X      \abltb\alpha $ & fixe Annahme && \\
-		\hline
-		\rule[-1ex]{0pt}{2.5ex} 2 & 2 & $ X,\alpha\abltb\beta $ & fixe Annahme && \\
-		\hline
-		\rule[-1ex]{0pt}{2.5ex} 3 & 3 & $ X       \abltb\beta $ & Annahme      && \\
-		\hline
-		\rule[-1ex]{0pt}{2.5ex} 4 & 1 & $ X,\lnot\alpha\abltb\alpha $ & \glsIdxPl{MR} & 1 & $ Y \subst X,\lnot\alpha $ \\
-		\hline
-	%TODO Beispiel vollenden
-		\rule[-1ex]{0pt}{2.5ex} 5 &  &  &  &  &  \\
-		\hline
-		\rule[-1ex]{0pt}{2.5ex} 6 &  &  &  &  &  \\
-		\hline
-		\rule[-1ex]{0pt}{2.5ex} 7 &  &  &  &  &  \\
-		\hline
-	\end{tabular}
-	\caption{Ableitung der \glsIdx{Schnittregel} aus den \glsIdxPl{Basisregel}}
-\end{table}
-
-\subsubsection{Aussagenlogisches Axiomensystem}% - - - - - - - - - - - - - - - -
-\label{subsub:ausAxiome}
-
-Ausgehend von der \glsIdxBg{logischeSignaturV}{logischen Signatur} $\asJ_\xAnd = \{\lnot, \land\}$ und den Definitionen \eqref{def:imp} bis \eqref{def:orand} werden die folgenden vier logischen Axiome definiert:
+Ausgehend von der \glsIdxBg{logischeSignaturV}{logischen Signatur} $\asJ_\xAnd = \{\lnot, \land\}$ und der Definition~\vref{def:imp} von \symqt{$\limp$} werden die folgenden vier logischen Axiome definiert:
 \begin{align}
 	&
 	(\alpha\limp\beta\limp\gamma)\limp(\alpha\limp\beta)\limp(\alpha\limp\gamma)
@@ -1091,9 +1146,6 @@ Ausgehend von der \glsIdxBg{logischeSignaturV}{logischen Signatur} $\asJ_\xAnd =
 	\formulatoleft
 	%
 \end{align}
-
-\subsection{Aussagenlogische Axiome}% ------------------------------------------
-\label{sub:ausAxiome}
 
 \todo{Aussagenlogik weiter bearbeiten.}%%%
 %TODO Aussagenlogik weiter bearbeiten. %%%
