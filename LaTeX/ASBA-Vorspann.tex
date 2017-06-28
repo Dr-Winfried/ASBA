@@ -632,7 +632,7 @@
 	name={$ \subst$},
 	plural={\subst},% im Mathematikmodus
 	description={%
-		Substitution: ... substituiert durch ...
+		\glsIdx{Substitution}: ... substituiert durch ...
 		(siehe die Definition in \subsectionname~\vref{sub:Basisregeln})%
 	}
 }
@@ -780,130 +780,157 @@
 
 % Schlussregeln ----------------------------------------------------------------
 
-\newcommand*{\tagAR}{AR}% Argument für \tag
+\newcommand*{\tagAR}{AR}% Argument für \tag - im Textmodus
+\newcommand*{\AR}{(\text{AR})}% im Mathematikmodus
 \newglossaryentry{AR}{
-	name={(AR)},
-	plural={(\text{AR})},% im Mathematikmodus
+	name={$ \AR$},
+	plural={\AR},% im Mathematikmodus
 	description={%
 		\glsIdx{Anfangsregel}%
 	}
 }
-\newcommand*{\tagMR}{MR}% Argument für \tag
+\newcommand*{\tagFS}{FS}% Argument für \tag - im Textmodus
+\newcommand*{\FS}{(\text{FS})}% im Mathematikmodus
+\newglossaryentry{FS}{
+	name={$ \FS$},
+	plural={\FS},% im Mathematikmodus
+	description={%
+		\glsIdx{formalerSatzV}%
+	}
+}
+\newcommand*{\tagMR}{MR}% Argument für \tag - im Textmodus
+\newcommand*{\MR}{(\text{MR})}% im Mathematikmodus
 \newglossaryentry{MR}{
-	name={(MR)},
-	plural={(\text{MR})},% im Mathematikmodus
+	name={$ \MR$},
+	plural={\MR},% im Mathematikmodus
 	description={%
 		\glsIdx{Monotonieregel}%
 	}
 }
-\newcommand*{\tagSR}{SR}% Argument für \tag
+\newcommand*{\tagSR}{SR}% Argument für \tag - im Textmodus
+\newcommand*{\SR}{(\text{SR})}% im Mathematikmodus
 \newglossaryentry{SR}{
-	name={(SR)},
-	plural={(\text{SR})},% im Mathematikmodus
+	name={$ \SR$},
+	plural={\SR},% im Mathematikmodus
 	description={%
 		\glsIdx{Schnittregel} (Modus ponens)%
 	}
 }
-\newcommand*{\tagTR}{TR}% Argument für \tag
+\newcommand*{\tagTR}{TR}% Argument für \tag - im Textmodus
+\newcommand*{\TR}{(\text{TR})}% im Mathematikmodus
 \newglossaryentry{TR}{
-	name={(TR)},
-	plural={(\text{TR})},% im Mathematikmodus
+	name={$ \TR$},
+	plural={\TR},% im Mathematikmodus
 	description={%
 		\glsIdx{Abtrennungsregel}%
 	}
 }
-\newcommand*{\tageqB}{$\eq$B}% Argument für \tag
+\newcommand*{\tageqB}{$\eq$B}% Argument für \tag - im Textmodus
+\newcommand*{\eqB}{(\eq\text{B})}% im Mathematikmodus
 \newglossaryentry{eqB}{
-	name={($ \eq     $B)},
-	plural={(\eq\text{B})},% im Mathematikmodus
+	name={($\eqB$)},
+	plural={\eqB},% im Mathematikmodus
 	description={%
 		Beseitigung von \symqt{$\eq$}%
 	}
 }
-\newcommand*{\tageqE}{$\eq$E}% Argument für \tag
+\newcommand*{\tageqE}{$\eq$E}% Argument für \tag - im Textmodus
+\newcommand*{\eqE}{(\eq\text{E})}% im Mathematikmodus
 \newglossaryentry{eqE}{
-	name={($ \eq     $E)},
-	plural={(\eq\text{E})},% im Mathematikmodus
+	name={($\eqE$)},
+	plural={\eqE},% im Mathematikmodus
 	description={%
 		Einführung von \symqt{$\eq$}%
 	}
 }
-\newcommand*{\tagandB}{$\land$B}% Argument für \tag
+\newcommand*{\tagandB}{$\land$B}% Argument für \tag - im Textmodus
+\newcommand*{\andB}{(\land\text{B})}% im Mathematikmodus
 \newglossaryentry{andB}{
-	name={($ \land     $B)},
-	plural={(\land\text{B})},% im Mathematikmodus
+	name={($\andB$)},
+	plural={\andB},% im Mathematikmodus
 	description={%
-		Beseitigung von \symqt{$\land$}%
+		Beseitigung von \symqt{$\andB$}%
 	}
 }
-\newcommand*{\tagandE}{$\land$E}% Argument für \tag
+\newcommand*{\tagandE}{$\land$E}% Argument für \tag - im Textmodus
+\newcommand*{\andE}{(\land\text{E})}% im Mathematikmodus
 \newglossaryentry{andE}{
-	name={($ \land     $E)},
-	plural={(\land\text{E})},% im Mathematikmodus
+	name={($\andE$)},
+	plural={\andE},% im Mathematikmodus
 	description={%
-		Einführung von \symqt{$\land$}%
+		Beseitigung von \symqt{$\andE$}%
 	}
 }
-\newcommand*{\tagimpB}{$\limp$B}% Argument für \tag
+\newcommand*{\tagimpB}{$\limp$B}% Argument für \tag - im Textmodus
+\newcommand*{\impB}{(\limp\text{B})}% im Mathematikmodus
 \newglossaryentry{impB}{
-	name={($ \limp     $B)},
-	plural={(\limp\text{B})},% im Mathematikmodus
+	name={($\impB$)},
+	plural={\impB},% im Mathematikmodus
 	description={%
-		Beseitigung von \symqt{$\limp$}%
+		Beseitigung von \symqt{$\impB$}%
 	}
 }
-\newcommand*{\tagimpE}{$\limp$E}% Argument für \tag
+\newcommand*{\tagimpE}{$\limp$E}% Argument für \tag - im Textmodus
+\newcommand*{\impE}{(\limp\text{E})}% im Mathematikmodus
 \newglossaryentry{impE}{
-	name={($ \limp     $E)},
-	plural={(\limp\text{E})},% im Mathematikmodus
+	name={($\impE$)},
+	plural={\impE},% im Mathematikmodus
 	description={%
-		Einführung von \symqt{$\limp$}%
+		Beseitigung von \symqt{$\impE$}%
 	}
 }
-\newcommand*{\tagnota}{$\lnot$1}% Argument für \tag
+\newcommand*{\tagnota}{$\lnot$1}% Argument für \tag - im Textmodus
+\newcommand*{\nota}{(\lnot\text{1})}% im Mathematikmodus
 \newglossaryentry{nota}{
-	name={($ \lnot     $1)},
-	plural={(\lnot\text{1})},% im Mathematikmodus
+	name={($\nota$)},
+	plural={\nota},% im Mathematikmodus
 	description={%
 		Einführung/Beseitigung von \symqt{$\lnot$} Teil 1%
 	}
 }
-\newcommand*{\tagnotb}{$\lnot$2}% Argument für \tag
+\newcommand*{\tagnotb}{$\lnot$2}% Argument für \tag - im Textmodus
+\newcommand*{\notb}{(\lnot\text{2})}% im Mathematikmodus
 \newglossaryentry{notb}{
-	name={($ \lnot     $2)},
-	plural={(\lnot\text{2})},% im Mathematikmodus
+	name={($\notb$)},
+	plural={\notb},% im Mathematikmodus
 	description={%
-		Einführung/Beseitigung von \symqt{$\lnot$} Teil 2%
+		Einführung/Beseitigung von \symqt{$\lnot$} Teil 1%
 	}
 }
-\newcommand*{\tagnotc}{$\lnot$3}% Argument für \tag
+\newcommand*{\tagnotc}{$\lnot$3}% Argument für \tag - im Textmodus
+\newcommand*{\notc}{(\lnot\text{3})}% im Mathematikmodus
 \newglossaryentry{notc}{
-	name={($ \lnot     $3)},
-	plural={(\lnot\text{3})},% im Mathematikmodus
+	name={($\notc$)},
+	plural={\notc},% im Mathematikmodus
 	description={%
 		Beweistechnik \strqt{Indirekter Beweis}%
 	}
 }
-\newcommand*{\tagnotd}{$\lnot$4}% Argument für \tag
+\newcommand*{\tagnotd}{$\lnot$4}% Argument für \tag - im Textmodus
+\newcommand*{\notd}{(\lnot\text{4})}% im Mathematikmodus
 \newglossaryentry{notd}{% statt "notE"
-	name={($ \lnot     $4)},
-	plural={(\lnot\text{4})},% im Mathematikmodus
+	name={($\notd$)},
+	plural={\notd},% im Mathematikmodus
 	description={%
 		Reductio ad absurdum (indirekter Beweis)%
 	}
 }
+%%%\newcommand*{\tagorB}{$\lor$B}% Argument für \tag - im Textmodus
+%%%\newcommand*{\orB}{(\lor\text{B})}% im Mathematikmodus
 %%%\newglossaryentry{orB}{
-%%%	name={($ \lor     $B)},
-%%%	plural={(\lor\text{B})},% im Mathematikmodus
+%%%	name={($\obB$)},
+%%%	plural={\orB},% im Mathematikmodus
 %%%	description={%
 %%%		Beseitigung von \symqt{$\lor$}%
 %%%	}
 %%%}
+%%%\newcommand*{\tagorE}{$\lor$E}% Argument für \tag - im Textmodus
+%%%\newcommand*{\orE}{(\lor\text{E})}% im Mathematikmodus
 %%%\newglossaryentry{orE}{
-%%%	name={($ \lor     $E)},
-%%%	plural={(\lor\text{E})},% im Mathematikmodus
+%%%	name={($\obE$)},
+%%%	plural={\orE},% im Mathematikmodus
 %%%	description={%
-%%%		Einführung von \symqt{$\lor$}%
+%%%		Beseitigung von \symqt{$\lor$}%
 %%%	}
 %%%}
 
@@ -932,6 +959,13 @@
 	plural={Abtrennungsregeln},
 	description={%
 		Eine \emph{\glsIdx{Schlussregel}} - siehe~\glsIdx{TR}%
+	}
+}
+\newglossaryentry{allgemeingueltigeSchlussregel}{
+	name={allgemeingültige Schlussregel},
+	plural={allgemeingültige Schlussregeln},
+	description={%
+		Eine \glsIdx{Schlussregel} die aus den \glsIdxPl{Basisregel} und den schon bekannten allgemeingültigen Schlussregeln abgeleitet werden kann%
 	}
 }
 \newglossaryentry{Anfangsregel}{
@@ -984,7 +1018,7 @@
 	plural={Basisregeln},
 	description={%
 		Eine \emph{\glsIdx{Schlussregel}}, die nicht mehr auf andere zurückgeführt wird.
-		Obwohl das auch auf die \glsIdxPl{Identitaetsregel} zutrifft, werden diese hier aber nicht dazu gezählt.%
+		Obwohl das auch auf die \glsIdxPl{Identitaetsregel} zutrifft, werden diese hier aber nicht dazu gezählt%
 	}
 }
 \newglossaryentry{Beweis}{
@@ -1029,6 +1063,20 @@
 		Ein Teil der Mathematik mit einer zugehörigen Basis aus Axiomen, Sätzen und spezifischen Fachbegriffen und Darstellungen%
 	}
 }
+\newglossaryentry{Folgerung}{
+	name={Folgerung},
+	plural={Folgerungen},
+	description={%
+		Die Folgerungen einer \glsIdx{Schlussregel} sind die \glsIdxPl{Aussage} über ihrem Querstrich.
+	}
+}
+\newglossaryentry{formalerSatzV}{
+	name={formaler Satz},   % ein   ...
+	plural={formale Sätze}, % viele ...
+	description={%
+		Formale Darstellung eines mathematischen Satzes - siehe~\glsIdx{FS}%
+	}
+}
 \newglossaryentry{formalesElementV}{
 	name={formales Element},   % ein   ...
 	plural={formale Elemente}, % viele ...
@@ -1037,26 +1085,26 @@
 		Bis auf wenige Aussagen kommen darin \emph{\glsIdxPl{MetaausdruckV}} nicht mehr vor%
 	}%
 }
-\newglossaryentry{gueltigeSchlussregel}{
-	name={gültige Schlussregel},
-	plural={gültige Schlussregeln},
-	description={%
-		Eine \glsIdx{Schlussregel} die aus den \glsIdxPl{Basisregel} und den schon als gültig abgeleiteten \glsIdxPl{Schlussregel} abgeleitet werden kann%
-	}
-}
 \newglossaryentry{Identitaetsregel}{
 	name={Identitätsregel},
 	plural={Identitätsregeln},
 	description={%
 		Eigentlich eine \glsIdx{Basisregel} zur Identität.
-		Da sie nur zur Rechtfertigung der Substitution verwendet werden, werden sie hier aber nicht dazu gezählt.%
+		Da die Identitätsregeln nur zur Rechtfertigung der \glsIdx{Substitution} verwendet werden, werden sie hier nicht zu den \glsIdxPl{Basisregel} gezählt%
 	}
 }
 \newglossaryentry{intEigenschaftA}{
 	name={interessierende Eigenschaft},      % eine ...
 	plural={interessierenden Eigenschaften}, % alle ...
 	description={%
-		Solche Eigenschaften von Ausdrücken, die im aktuellen Zusammenhang von Interesse sind.%
+		Solche Eigenschaften von Ausdrücken, die im aktuellen Zusammenhang von Interesse sind%
+	}%
+}
+\newglossaryentry{Kontraposition}{
+	name={Kontraposition},
+	plural={Kontraposition},
+	description={%
+		Die allgemeingültige Aussage $(\alpha \limp \beta) \limp (\lnot\beta \limp \lnot\alpha)$%
 	}%
 }
 \newglossaryentry{logischeSignaturV}{
@@ -1133,7 +1181,16 @@
 	name={Schnittregel},
 	plural={Schnittregeln},
 	description={%
-		Eine \emph{\glsIdx{Schlussregel}} - siehe~\glsIdx{SR}%
+		Eine \glsIdx{allgemeingueltigeSchlussregel} - siehe~\glsIdx{SR}%
+	}
+}
+\newglossaryentry{Substitution}{
+	name={Substitution},
+	plural={Substitutionen},
+	description={%
+		Die Ersetzung von einem, mehreren oder allen \glsIdxBg{formalesElementV}{formalen Elementen} ($\alpha$) in einem anderen \glsIdxBg{formalesElementV}{formalen Element} ($\Gamma$) durch ein drittes \glsIdxBg{formalesElementV}{formales Element} ($\beta$), formal: $\Gamma(\alpha\subst\beta)$.
+		Wenn alle $\alpha$ in $\Gamma$ durch $\beta$ ersetzt, ist die Substitution \emph{vollständig}.
+		(siehe die Definition~\eqref{def:Substitution} in \subsectionname~\ref{sub:Indentitaetsregeln})%
 	}
 }
 \newglossaryentry{vergleichbar}{
@@ -1145,6 +1202,13 @@
 		Meistens genügt es zu wissen, was für \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{formalesElementV} es sind.
 		Sie müssen dann nur von derselben Art sein%
 	}%
+}
+\newglossaryentry{Voraussetzung}{
+	name={Voraussetzung},
+	plural={Voraussetzungen},
+	description={%
+		Die Voraussetzungen einer \glsIdx{Schlussregel} sind die \glsIdxPl{Aussage} über ihrem Querstrich.
+	}
 }
 \newglossaryentry{Wahrheitswert}{
 	name={Wahrheitswert},
@@ -1158,6 +1222,6 @@
 	plural={zulässigen Transformationen}, % alle ...
 	description={%
 		Eine zulässige Umformung oder Erzeugung einer Formel aus einer vorgegebenen Menge von Formeln,
-		\textdh die Anwendung einer \glsIdxBg{gueltigeSchlussregel}{gültigen Schlussregel}%
+		\textdh die Anwendung einer \glsIdxBg{allgemeingueltigeSchlussregel}{allgemeingültigen Schlussregel}%
 	}
 }
