@@ -293,7 +293,7 @@ Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogis
 
 $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 \begin{align}
-	& \alpha \glsSym{abltb} \beta \quad \metadefeq \quad
+	& \alpha \glsSym{derive} \beta \quad \metadefeq \quad
 	\parbox[t]{10.5cm}{%
 	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessigeTransformationA}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ ableitbar.
 	Sprechweise: Aus $\alpha$ ist $\beta$ \emph{ableitbar} oder \emph{beweisbar};
@@ -302,19 +302,19 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 	}
 	\label{def:ableitbar}
 	\\
-	& \abltb \beta \quad \metadefeq \quad \emptyset \abltb \beta \qquad \text{(\textdh $\beta$ ist allgemeingültig.)}
+	& \derive \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\textdh $\beta$ ist allgemeingültig.)}
 	\\
-	&            X_1, X_2, ...,X_n, \alpha_1, \alpha_2, ..., \alpha_m \quad
-	\abltb \quad Y_1, Y_2, ...,Y_n,  \beta_1,  \beta_2,  ..., \beta_m \quad
-	\metadefeq \quad X \abltb Y
+	&             X_1, X_2, ...,X_n, \alpha_1, \alpha_2, ..., \alpha_m \quad
+	\derive \quad Y_1, Y_2, ...,Y_n,  \beta_1,  \beta_2,  ..., \beta_m \quad
+	\metadefeq \quad X \derive Y
 	\label{def:ableitbarKurz} \formulatoleft
 \end{align}
 
 Eine \emph{\glsIdx{zulaessigeTransformationA}} ist die Anwendung einer \emph{\glsIdx{Substitution}}\footnote{\seename~\vref{sub:Indentitaetsregeln}} (siehe unten), einer \emph{\glsIdx{Basisregel}} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB aus \subsectionname~\vref{sub:Schlussregeln}.
-Bei den Schlussregeln und der Substitution ($\subst$) soll das Komma stärker binden als \symqt{$\abltb$}, \symqt{$\subst$} und \symqt{$\und$}, wobei
+Bei den Schlussregeln und der Substitution ($\subst$) soll das Komma stärker binden als \symqt{$\derive$}, \symqt{$\subst$} und \symqt{$\und$}, wobei
 \symqt{$\und$} für \strqt{und} \textbzw \symqt{\glsIdx{metaand}}%
 \footnote{\seename\ \subsectionname~\vref{sub:Metaausdruck}}
-steht und schwächer bindet als \symqt{$\abltb$} und \symqt{$\subst$}.%
+steht und schwächer bindet als \symqt{$\derive$} und \symqt{$\subst$}.%
 \footnote{\seename\ Fußnote~3 von \tablename~\vref{tab:Prioritaeten}}
 
 Zur der Auswahl der \glsIdxPl{Basisregel}, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
@@ -329,27 +329,27 @@ Für die sechs \glsIdxPl{Basisregel} werden dann nur noch die logischen Operator
 Bei den weiteren \glsIdxPl{Schlussregel} wird noch \symqt{$\limp$} gemäß der Definition~\vref{def:imp} verwendet.
 
 \begin{align}
-	& \frac{}{\alpha\abltb\alpha}
+	& \frac{}{\alpha\derive\alpha}
 	& & (\text{\glsIdx{Anfangsregel}})
 	\tag{\tagAR} \sym{\gls{AR}} \label{def:Anfangsregel}
 	\\\\
-	& \frac{X\abltb\alpha}{X,Y\abltb\alpha}
+	& \frac{X\derive\alpha}{X,Y\derive\alpha}
 	& & (\text{\glsIdx{Monotonieregel}})
 	\tag{\tagMR} \sym{\gls{MR}} \label{def:Monotonieregel}
 	\\\\
-	& \frac{X\abltb\alpha,\lnot\alpha}{X\abltb\beta}
+	& \frac{X\derive\alpha,\lnot\alpha}{X\derive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 1})
 	\tag{\tagnota} \sym{\gls{nota}} \label{def:nota}
 	\\\\
-	& \frac{X,\alpha\abltb\beta \und X,\lnot\alpha\abltb\beta}{X\abltb\beta}
+	& \frac{X,\alpha\derive\beta \und X,\lnot\alpha\derive\beta}{X\derive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 2})
 	\tag{\tagnotb} \sym{\gls{notb}} \label{def:notb}
 	\\\\
-	& \frac{X\abltb\alpha,\beta}{X\abltb\alpha\land\beta}
+	& \frac{X\derive\alpha,\beta}{X\derive\alpha\land\beta}
 	& & (\text{Einführung der Konjunktion})
 	\tag{\tagandE} \sym{\gls{andE}} \label{def:andE}
 	\\\\
-	& \frac{X\abltb\alpha\land\beta}{X\abltb\alpha,\beta}
+	& \frac{X\derive\alpha\land\beta}{X\derive\alpha,\beta}
 	& & (\text{Beseitigung der Konjunktion})
 	\tag{\tagandB} \sym{\gls{andB}} \label{def:andB}
 	\formulatoleft
@@ -408,27 +408,27 @@ In~\cite{bib:Rautenberg} werden die \glsIdxPl{Identitaetsregel} zwar weder aufge
 Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 
 \begin{align}
-	& \frac{X,\lnot\alpha\abltb\alpha}{X\abltb\alpha}
+	& \frac{X,\lnot\alpha\derive\alpha}{X\derive\alpha}
 	& & (\text{Beseitigung der Negation; Indirekter Beweis})
 	\tag{\tagnotc} \sym{\gls{notc}} \label{def:notc}
 	\\\\
-	& \frac{X,\lnot\alpha\abltb\beta,\lnot\beta}{X\abltb\alpha}
+	& \frac{X,\lnot\alpha\derive\beta,\lnot\beta}{X\derive\alpha}
 	& & (\text{Reductio ad absurdum})
 	\tag{\tagnotd} \sym{\gls{notd}} \label{def:notd}
 	\\\\
-	& \frac{X,\alpha\abltb\beta}{X\abltb\alpha\limp\beta}
+	& \frac{X,\alpha\derive\beta}{X\derive\alpha\limp\beta}
 	& & (\text{Einführung der Implikation})
 	\tag{\tagimpE} \sym{\gls{impE}} \label{def:impE}
 	\\\\
-	& \frac{X\abltb\alpha\limp\beta}{X,\alpha\abltb\beta}
+	& \frac{X\derive\alpha\limp\beta}{X,\alpha\derive\beta}
 	& & (\text{Beseitigung der Implikation})
 	\tag{\tagimpB} \sym{\gls{impB}} \label{def:impB}
 	\\\\
-	& \frac{X\abltb\alpha \und X,\alpha\abltb\beta}{X\abltb\beta}
+	& \frac{X\derive\alpha \und X,\alpha\derive\beta}{X\derive\beta}
 	& & (\text{\glsIdx{Schnittregel}})
 	\tag{\tagSR} \sym{\gls{SR}} \label{def:SR}
 	\\\\
-	& \frac{X\abltb\alpha \und \alpha\limp\beta}{X\abltb\beta}
+	& \frac{X\derive\alpha \und \alpha\limp\beta}{X\derive\beta}
 	& & (\text{\glsIdx{Abtrennungsregel} - \emph{Modus ponens}})
 	\tag{\tagTR} \sym{\gls{TR}} \label{def:TR}
 	\formulatoleft
@@ -460,13 +460,15 @@ Dazu wird in der \tablename~\vref{tab:AbleitungSchnittregel} für die ausgefüll
 	R_n & \defeq
 	\left\{
 		\begin{array}{l}
-			\text{\strqt{Annahme}: Der Aussage $A_i$ wird als zutreffend angenommen,}\\
-			\text{\forqt{$\overline{R}_i$}: Die Regel $\overline{R}_i$ für ein $i < n$,}\\
-			\text{Verweis auf eine \glsIdx{Schlussregel}: Die Regel, auf die verwiesen wird.}
+			\text{\strqt{Voraussetzung}: Die Aussage $A_i$ ist eine Voraussetzung.}\\
+			\text{\strqt{Folgerung}: Die Aussage $A_i$ ist eine Folgerung.}\\
+			\text{\strqt{Annahme}: Die Aussage $A_i$ wird vorübergehend als zutreffend angenommen.}\\
+			\text{\forqt{$\overline{R}_i$}: Die Regel $\overline{R}_i$ für ein $i < n$.}\\
+			\text{Verweis auf eine \glsIdx{allgemeingueltigeSchlussregel}: Die Regel, auf die verwiesen wird.}
 		\end{array}
 	\right.
 	\\
-	S_n & \defeq \text{Die angegebene Substitution.}
+	S_n & \defeq \text{Die anzuwendende Substitution.}
 	\\
 	\overline{R}_n & \defeq \text{Das Ergebnis der Substitution $S_i$ auf die Regel $R_i$}
 	\\
@@ -482,38 +484,44 @@ Dazu wird in der \tablename~\vref{tab:AbleitungSchnittregel} für die ausgefüll
 	\setlength\extrarowheight{7pt}
 	\begin{tabular}{|c||c|c|c|c|c|c|}
 		\hline
-		\parbox{0.95cm}{\centering\textbf{Zeile}     \newline                   ($n$)} &
-		\parbox{1.05cm}{\centering\textbf{Regel}     \newline                 ($R_n$)} &
-		\parbox{1.85cm}{\centering\textbf{Substitu-} \newline\textbf{tionen}  ($S_n$)} &
-		\parbox{1.80cm}{\centering\textbf{erzeugte}  \newline\textbf{Regel} ($\overline{R}_n$)} &
-		\parbox{2.15cm}{\centering\textbf{angewendet}\newline\textbf{auf ...} ($Z_n$)} &
-		\parbox{1.65cm}{\centering\textbf{Aussage}   \newline                 ($A_n$)} &
-		\parbox{1.95cm}{\centering\textbf{Abhängig-} \newline\textbf{keiten}  ($D_n$)}
+		\parbox{0.95cm}{\centering\textbf{Zeile}                       ($n$)} &
+		\parbox{1.05cm}{\centering\textbf{Regel}                     ($R_n$)} &
+		\parbox{1.85cm}{\centering\textbf{Substitu"=tionen}          ($S_n$)} &
+		\parbox{1.80cm}{\centering\textbf{erzeugte Regel} ($\overline{R}_n$)} &
+		\parbox{2.15cm}{\centering\textbf{angewendet auf ...}        ($Z_n$)} &
+		\parbox{1.65cm}{\centering\textbf{Aussage}                   ($A_n$)} &
+		\parbox{1.95cm}{\centering\textbf{Abhängig"=keiten}          ($D_n$)}
 		\\\hline\hline
-		1 & Annahme & & & & $ X \abltb \alpha $ & $A_1$
+		1 & \parbox{1.35cm}{\centering Voraus"=setzung} & & & & $X \derive \alpha$ & $A_1$
 		\\\hline
-		2 & Annahme & & & & $ X,\alpha \abltb \beta $ & $A_2$
+		2 & \parbox{1.35cm}{\centering Voraus"=setzung} & & & & $X,\alpha \derive \beta$ & $A_2$
 		\\\hline
-		3 & Annahme     & & & & $ X \abltb \beta $ & $A_3$
+		3 & \parbox{1.00cm}{\centering Folge"=rung} & & & & $X \derive \beta$ & $A_3$
 		\\\hline
-		4 & \MR & $ Y \subst X,\lnot\alpha $ & $ \dfrac{X\abltb\alpha}{X, \lnot\alpha \abltb \alpha} $ & $A_1$ & $ X, \lnot\alpha \abltb \alpha $ & $A_1, \MR $
+		4 & $\MR$ & & $\dfrac{X \derive \alpha}{X, Y \derive \alpha}$ & & & $\MR$
 		\\\hline
-		5 & \AR & $ \alpha \subst \lnot\alpha $ & $ \dfrac{}{\lnot\alpha \abltb \lnot\alpha} $ & & $ \lnot\alpha \abltb \lnot\alpha $ & \AR
+		5 & $\overline{R}_4$ & $Y \subst \lnot\alpha$ & $\dfrac{X \derive \alpha}{X, \lnot\alpha \derive \alpha}$ & $A_1$ & $X, \lnot\alpha \derive \alpha$ & $A_1$, $\MR$
 		\\\hline
-		6 & \MR & $ \alpha \subst \lnot\alpha $ & $ \dfrac{X \abltb \lnot\alpha}{Y \abltb \lnot\alpha} (Y \supseteq X) $ & & &  \MR
+		6 & $\AR$ & & $ \dfrac{}{\alpha \derive \alpha} $ & & & $\AR$
 		\\\hline
-		7 & $\overline{R}_6$ & $ X \subst \lnot\alpha $ & $ \dfrac{\lnot\alpha \abltb \lnot\alpha}{Y \abltb \lnot\alpha} (Y \supseteq \{\lnot\alpha\}) $ & & & \MR
+		7 & $\overline{R}_6$ & $\alpha \subst \lnot\alpha$ & $\dfrac{}{\lnot\alpha \derive \lnot\alpha}$ & & $\lnot\alpha \derive \lnot\alpha$ & $\AR$
 		\\\hline
-		8 & $\overline{R}_7$ & $ Y \subst X,\lnot\alpha $ & $ \dfrac{\lnot\alpha \abltb \lnot\alpha}{ X,\lnot\alpha \abltb \lnot\alpha} $ & $A_5$ & $ X,\lnot\alpha \abltb \lnot\alpha $ & \AR, \MR
+		8 & $\overline{R}_4$ & $\alpha \subst \lnot\alpha$ & $\dfrac{X \derive \lnot\alpha}{X, Y \derive \lnot\alpha}$ & & &  $\MR$
 		\\\hline
-		9 & $\nota$ & $ X \subst X, \lnot\alpha $ & $ \dfrac{X,\lnot\alpha \abltb \alpha, \lnot\alpha}{X,\lnot\alpha \abltb \beta} $ & $A_4$, $A_8$ & $ X,\lnot\alpha \abltb \beta $ &
-		\parbox{3.0cm}{\centering $A_1$, \AR, \MR, $\nota$}
+		9 & $\overline{R}_8$ & $X \subst \lnot\alpha$ & $\dfrac{\lnot\alpha \derive \lnot\alpha}{Y, \lnot\alpha \derive \lnot\alpha}$ & & & $\MR$
 		\\\hline
-		10 & $\notb$ & & $ \dfrac{X,\alpha \abltb \beta \und X,\lnot\alpha \abltb \beta}{X \abltb \beta} $ & $A_2$, $A_9$ & $ X \abltb \beta $ &
-		\parbox{3.0cm}{\centering $A_1$, $A_2$, \AR, \MR, $\nota$, $\notb$}
+		10 & $\overline{R}_9$ & $Y \subst X$ & $\dfrac{\lnot\alpha \derive \lnot\alpha}{X,\lnot\alpha \derive \lnot\alpha}$ & $A_7$ & $X,\lnot\alpha \derive \lnot\alpha$ & $\AR$, $\MR$
+		\\\hline
+		11 & $\nota$ & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & & $\nota$
+		\\\hline
+		12 & $\overline{R}_{11}$ & $X \subst X, \lnot\alpha$ & $\dfrac{X,\lnot\alpha \derive \alpha, \lnot\alpha}{X,\lnot\alpha \derive \beta}$ & $A_5$, $A_{10}$ & $X,\lnot\alpha \derive \beta$ &
+		\parbox{3.0cm}{\centering $A_1$, $\AR$, $\MR$, $\nota$}
+		\\\hline
+		13 & $\notb$ & & $\dfrac{X,\alpha \derive \beta \und X,\lnot\alpha \derive \beta}{X \derive \beta}$ & $A_2$, $A_{12}$ & $X \derive \beta$ &
+		\parbox{3.0cm}{\centering $A_1$, $A_2$, $\AR$, $\MR$, $\nota$, $\notb$}
 		\\\hline\hline
-		11 & & & $\dfrac{A_1 \und A_2}{A_3} $ & & $ \dfrac{X\abltb\alpha \und X,\alpha\abltb\beta}{X\abltb\beta} $ &
-		\parbox{2.0cm}{\centering \AR, \MR, $\nota$, $\notb$}
+		14 & & & $\dfrac{A_1 \und A_2}{A_3}$ & & $\dfrac{X \derive \alpha \und X, \alpha \derive \beta}{X \derive \beta}$ &
+		\parbox{2.5cm}{\centering $\AR$, $\MR$, $\nota$, $\notb$}
 		\\\hline
 	\end{tabular}
 	\caption{Ableitung der \glsIdx{Schnittregel} aus den \glsIdxPl{Basisregel}}
@@ -530,13 +538,12 @@ Rückwärts-Referenzen auf schon ausgefüllte Zellinhalte sind jederzeit möglic
 	\footnote{%
 		Die Angabe der Folgerungen ist optional, sofern nicht darauf verwiesen wird.
 		Durch ihre Auflistung hat man aber einen vollständigen Überblick darüber, was zu beweisen ist.
-		Sollte die bewiesene Behauptung in der letzten Zeile noch aufgeführt werden, wird auf die Folgerungen verwiesen, so dass ihre Angabe nötig ist.
+		Sollte die bewiesene Behauptung in einer letzten Zeile angegeben werden, wird auf die Folgerungen verwiesen, so dass ihre Angabe nötig ist.
 	}
 	aufgeführt, für jede Voraussetzung \textbzw Folgerung eine Zeile.
 	\begin{enumerate}
 		\item $(n)   =$ Die aktuelle Zeilennummer $i$.
-		\item $(R_n) =$ \strqt{Annahme}%
-		\footnote{Zur Unterscheidung von Voraussetzung und Folgerung kann bei einer Voraussetzung hier auch  \strqt{feste Annahme} stehen.}.
+		\item $(R_n) =$ \strqt{Voraussetzung} \textbzw \strqt{Folgerung}.
 		\item $(A_n) =$ Die aktuelle Voraussetzung \textbzw Folgerung.
 		\item $(D_n) =$ \strqt{$A_i$}
 	\end{enumerate}
@@ -549,7 +556,7 @@ Rückwärts-Referenzen auf schon ausgefüllte Zellinhalte sind jederzeit möglic
 		\item $(R_n) =
 		\left\{
 			\begin{array}{l}
-				\text{Annahme: Die Aussage $A_i$ soll (probeweise) zutreffen.}\\
+				\text{Annahme: Die Aussage $A_i$ vorübergehend als zutreffend angenommen.}\\
 				\qquad \text{In dieser Zeile wird nur noch $(A_n) = A_i$ und $(D_n) =$ \strqt{$A_i$} gesetzt.}\\
 				\text{$\overline{R}_j$: Die Regel $\overline{R}_j$ für ein $j < i$ soll angewendet werden.}\\
 				\text{Verweis auf eine Schlussregel, die angewendet werden soll.}
@@ -559,6 +566,8 @@ Rückwärts-Referenzen auf schon ausgefüllte Zellinhalte sind jederzeit möglic
 		\item $(S_n) =$ Die auf die Regel $R_i$ anzuwendende Substitution.
 		%
 		\item $(\overline{R}_n) =$ Das Ergebnis der Substitution $S_i$ auf die Regel $R_i$.
+		Man beachte, dass die Regel $(\overline{R}_i)$, falls angegeben, stets allgemeingültig ist, da sie aus allgemeingültigen Regeln ausschließlich mittels Substitutionen abgeleitet ist.
+		Daher gibt es keine Beschränkung von weiteren Substitutionen durch irgendwelche Abhängigkeiten.
 		%
 		\item $(Z_n) =$ Alle Aussagen $A_j$ mit $j < i$, die Voraussetzungen der Regel $\overline{R}_i$ sind.
 		%
@@ -569,23 +578,25 @@ Rückwärts-Referenzen auf schon ausgefüllte Zellinhalte sind jederzeit möglic
 		\footnote{Wenn $D_n$ leer ist, dann ist $A_n$ allgemeingültig.}
 		%
 	\end{enumerate}
+	Der Beweis muss so lange fortgeführt werden, bis alle Folgerungen als Aussagen $A_i$ (für ausgewählte $i$) unter $(A_n)$ abgeleitet worden sind.
+	%
 	\item In der letzten Zeile kann noch die bewiesene Behauptung in der Form eines \glsIdxBg{formalerSatzV}{formalen Satzes}, \seename~\eqref{def:formalerSatz} \sectionname~\vref{sec:Schlussregeln}, formuliert werden.
-	Dabei werden die Voraussetzungen wieder aus den Abhängigkeiten herausgenommen.
 	\begin{enumerate}
 		%
 		\item $(n) =$ Die aktuelle Zeilennummer $i$.
 		%
-		\item $(\overline{R}_n) =$ Die bewiesene Behauptung (mathematischer Satz) in der Form eines \emph{\glsIdxBg{formalerSatzV}{formalen Satzes}}\footnote{\seename~\eqref{def:formalerSatz} \sectionname~\vref{sec:Schlussregeln}} mit Voraussetzungen und Folgerungen.
+		\item $(\overline{R}_n) =$ Die bewiesene Behauptung (mathematischer Satz) in der Form eines \emph{\glsIdxBg{formalerSatzV}{formalen Satzes}}\footnote{\seename~\eqref{def:formalerSatz} \sectionname~\vref{sec:Schlussregeln}}, wobei alle $A_i$, die Voraussetzungen sind, in dem formalen Satz als Voraussetzung und alle $A_i$, die Folgerungen sind, als Folgerung eingesetzt werden.
 		%
 		\item $(A_n) =$ $\overline{R}_i$, wobei die Voraussetzungen und Folgerungen aufgelöst werden.
 		%
-		\item $(D_n) =$ Die Abhängigkeiten der Folgerungen vermindert um die Voraussetzungen.
+		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der Folgerungen, vermindert um die Voraussetzungen.
 		%
 	\end{enumerate}
 	%
 \end{enumerate}
 
 Ein weiteres Beispiel in der \tablename~\vref{tab:AbleitungKontraposition} soll verdeutlichen, wie Abhängigkeiten von Zwischenannahmen wieder beseitigt werden können.\footnote{\seename~\cite{bib:NatuerlichesSchliessen}, Kapitel 2.2.4 \emph{Eine Beispielableitung}}
+%%%Zur leichteren Lesbarkeit sind einige redundante Klammern eingefügt.
 
 \todo{Beispiel mit Reduzierung von Abhängigkeiten}%%%
 %TODO Beispiel mit Reduzierung von Abhängigkeiten %%%
@@ -594,38 +605,70 @@ Ein weiteres Beispiel in der \tablename~\vref{tab:AbleitungKontraposition} soll 
 	\setlength\extrarowheight{7pt}
 	\begin{tabular}{|c||c|c|c|c|c|c|}
 		\hline
-		\parbox{0.95cm}{\centering\textbf{Zeile}     \newline                   ($n$)} &
-		\parbox{1.05cm}{\centering\textbf{Regel}     \newline                 ($R_n$)} &
-		\parbox{1.85cm}{\centering\textbf{Substitu-} \newline\textbf{tionen}  ($S_n$)} &
-		\parbox{1.80cm}{\centering\textbf{erzeugte}  \newline\textbf{Regel} ($\overline{R}_n$)} &
-		\parbox{2.15cm}{\centering\textbf{angewendet}\newline\textbf{auf ...} ($Z_n$)} &
-		\parbox{1.65cm}{\centering\textbf{Aussage}   \newline                 ($A_n$)} &
-		\parbox{1.95cm}{\centering\textbf{Abhängig-} \newline\textbf{keiten}  ($D_n$)}
+		\parbox{0.95cm}{\centering\textbf{Zeile}                       ($n$)} &
+		\parbox{1.05cm}{\centering\textbf{Regel}                     ($R_n$)} &
+		\parbox{1.85cm}{\centering\textbf{Substitu"=tionen}          ($S_n$)} &
+		\parbox{1.80cm}{\centering\textbf{erzeugte Regel} ($\overline{R}_n$)} &
+		\parbox{2.15cm}{\centering\textbf{angewendet auf ...}        ($Z_n$)} &
+		\parbox{1.65cm}{\centering\textbf{Aussage}                   ($A_n$)} &
+		\parbox{1.95cm}{\centering\textbf{Abhängig"=keiten}          ($D_n$)}
 		\\\hline \hline
-		1 & Annahme & & & & $(\alpha \limp \beta)$ & $A_1$
+		1 & \parbox{1.00cm}{\centering Folge"=rung} & & & & $\derive (\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & $A_1$
 		\\\hline
-		2 & Annahme & & & & $ \lnot\beta $         & $A_2$
+		2 & \parbox{1.20cm}{\centering An"=nahme} & & & & $\derive \alpha\limp\beta$ & $A_2$
 		\\\hline
-		3 & Annahme & & & & $ \alpha $             & $A_3$
+		3 & \parbox{1.20cm}{\centering An"=nahme} & & & & $\derive  \lnot\beta$        & $A_3$
 		\\\hline
-		4 & $R_n$ & $S_n$ & $\overline{R}_n$ & $A_1$, $A_3$ & $\beta$ & $A_1$, $A_3$
+		4 & \parbox{1.20cm}{\centering An"=nahme} & & & & $\derive  \alpha$            & $A_4$
 		\\\hline
-		4 & $\impB$ & $S_n$ & $ \dfrac{X\abltb\alpha\limp\beta}{X,\alpha\abltb\beta} $ & $A_1$, $A_3$ & $\beta$ & $A_1$, $A_3$
+		5 & $\impB$ & & $\dfrac{X \derive \alpha\limp\beta}{X,\alpha \derive \beta}$ & & & $\impB$
 		\\\hline
-		$n$ & $\andE$ & $S_n$ & $\dfrac{X\abltb\alpha,\beta}{X\abltb\alpha\land\beta}$ & $Z_n$ & $A_n$ & $D_n$
+		6 & $\overline{R}_{-1}$ & $X \subst \emptyset$ & $\dfrac{\derive \alpha\limp\beta}
+		{\alpha \derive \beta}$ & $A_2$ &
+		$\alpha \derive \beta $ & $A_2$, $\impB$
 		\\\hline
-		$n$ & $\nota$ & $S_n$ & $\dfrac{X\abltb\alpha,\lnot\alpha}{X\abltb\beta}$ & $Z_n$ & $A_n$ & $D_n$
+		7 & $\TR$ ? & & $\dfrac{X \derive \alpha\limp\beta \und X \derive \alpha}
+		{X \derive \beta}$ & & & $\TR$
 		\\\hline
-		$n$ & $\impE$ & $S_n$ & $\dfrac{X,\alpha\abltb\beta}{X\abltb\alpha\limp\beta}$ & $Z_n$ & $A_n$ & $D_n$
+		8 & $\overline{R}_{-1}$ & $X \subst \emptyset$ & $\dfrac{\derive \alpha\limp\beta \und \derive \alpha}
+		{\derive \beta}$ & $A_2$, $A_6$ &
+		$\derive \beta $ & \parbox{2cm}{\centering $A_2$, $A_6$, $\TR$}
 		\\\hline
-		$n$ & $\impE$ & $S_n$ & $\dfrac{X,\alpha\abltb\beta}{X\abltb\alpha\limp\beta}$ & $Z_n$ & $A_n$ & $D_n$
+		9 & $\nota$ & & $\dfrac{X \derive \alpha, \lnot\alpha} {X \derive \beta}$ & & & $\nota$
 		\\\hline
-		$n$ & $R_n$ & $S_n$ & $\overline{R}_n$ & $Z_n$ & $A_n$ & $D_n$
+		10 & $\overline{R}_{-1}$ & $X \subst \emptyset$ & $\dfrac{\derive \beta, \lnot\beta} {\derive \alpha}$ & & & $\nota$
 		\\\hline
-		$n$ & $R_n$ & $S_n$ & $\overline{R}_n$ & $Z_n$ & $(\alpha \limp \beta) \limp (\lnot\beta \limp \lnot\alpha)$ & $D_n$
+		11 & $\overline{R}_{-1}$ & $\alpha \change \beta$ & $\dfrac{\derive \beta, \lnot\beta} {\derive \alpha}$ & & & $\nota$
+		\\\hline
+		12 & $\overline{R}_{-1}$ & $\alpha \subst \lnot\alpha$ & $\dfrac{\derive \beta, \lnot\beta} {\derive \lnot\alpha}$ & $A_8$, $A_3$ & $\derive \lnot\alpha$ &
+		\parbox{2cm}{\centering $A_2$, $A_3$, $\nota$, $\impB$}
+		\\\hline
+		13 & $\impE$ & & $\dfrac{X, \alpha \derive \beta}{X \derive \alpha\limp\beta}$ & & & $\impE$
+		\\\hline
+		14 & $\overline{R}_{-1}$ & $X \subst \emptyset$ & $\dfrac{\alpha \derive \beta}{\derive \alpha\limp\beta}$ & & & $\impE$
+		\\\hline
+		15 & $\overline{R}_{-1}$ & $\alpha \change \beta$ & $\dfrac{\beta \derive \alpha} {\derive \beta\limp\alpha}$ & & & $\impE$
+		\\\hline
+		16 & $\overline{R}_{-1}$ & $\alpha \subst \lnot\alpha$ & $\dfrac{\beta \derive \lnot\alpha} {\derive \beta\limp\lnot\alpha}$ & & & $\impE$
+		\\\hline
+		17 & $\overline{R}_{-1}$ & $\beta \subst \lnot\beta$ & $\dfrac{\lnot\beta \derive \lnot\alpha} {\derive \lnot\beta\limp\lnot\alpha}$ & ??? & $\derive \lnot\beta\limp\lnot\alpha$ & ???, $\impE$
+		\\\hline
+		18 & $\overline{R}_{\impE+1}$ & $\alpha \subst \gamma$ & $\dfrac{\gamma \derive \beta} {\derive \gamma\limp\beta}$ & & & $\impE$
+		\\\hline
+		19 & $\overline{R}_{-1}$ & $\beta \subst \delta$ & $\dfrac{\gamma \derive \delta} {\derive \gamma\limp\delta}$ & & & $\impE$
+		\\\hline
+		20 & $\overline{R}_{-1}$ & $\gamma \subst \alpha\limp\beta$ & $\dfrac{\alpha\limp\beta \derive \delta} {\derive (\alpha\limp\beta)\limp\delta}$ & & & $\impE$
+		\\\hline
+		21 & $\overline{R}_{-1}$ & $\scriptstyle \delta \subst \lnot\beta\limp\lnot\alpha$
+		& $\frac{\alpha\limp\beta \derive \lnot\beta\limp\lnot\alpha}
+		{\derive (\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ & $A_2$, $A_{17}$&
+		$\derive (\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & \parbox{2.2cm}{\centering $A_2$, $???$, $\impB$, $\impE$}
+		\\\hline\hline
+		22 & & & $\dfrac{}{\derive A_1}$ &
+		& $\derive (\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ &
 		\\\hline
 	\end{tabular}
-	\caption{Ableitung der \glsIdx{Kontraposition} aus ???}
+	\caption{Ableitung der \glsIdx{Kontraposition} aus \glsIdxBg{allgemeingueltigeSchlussregel}{allgemeingültigen Schlussregeln}}
 	\label{tab:AbleitungKontraposition}
 \end{table}
 
@@ -964,7 +1007,7 @@ Diese werden in der \tablename~\vref{tab:Prioritaeten} mit abnehmender Prioritä
 				\glsSym{equiv}  \quad \glsSym{notequiv}     $ \\
 				\hline
 				\glsIdx{Ableitungsrelation}\tnote{1}
-				& $ \glsSym{abltb}                          $ \\
+				& $ \glsSym{derive}                         $ \\
 				Substitution\tnote{1}
 				& $ \glsSym{subst}                          $ \\
 				Definition

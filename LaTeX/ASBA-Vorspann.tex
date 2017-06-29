@@ -430,8 +430,9 @@
 
 % sonstige mathematische Zeichen ===============================================
 
-\DeclareMathOperator{\abltb}{\vdash}%           ... ableitbar ...
-\DeclareMathOperator{\subst}{\leftarrowtail}%   ... substituiert durch ...
+\DeclareMathOperator{\derive}{\;\vdash\;}%         ... ableitbar ...
+\DeclareMathOperator{\subst}{\leftarrowtail}%      ... substituiert durch ...
+\DeclareMathOperator{\change}{\leftrightarrows}%   ... vertauscht mit ...
 %%%\DeclareMathOperator{\subst}{\curvearrowright}% ... substituiert durch ...
 
 % sonstige Kommandos für den Mathematiksatz ####################################
@@ -647,9 +648,9 @@
 
 % sonstige mathematische Symbole -----------------------------------------------
 
-\newglossaryentry{abltb}{
-	name={$ \abltb$},
-	plural={\abltb},% im Mathematikmodus
+\newglossaryentry{derive}{
+	name={$ \derive$},
+	plural={\derive},% im Mathematikmodus
 	description={%
 		Ableitungsrelation: ... ableitbar ...
 		(\seename\ \emph{\glsIdx{ableitbar}})%
@@ -943,7 +944,7 @@
 		Wenn sich eine Formel $\beta$ aus einer Formel $\alpha$ mittels zulässiger Transaktionen ableiten lässt, heißt $\beta$ ableitbar aus $\alpha$.
 		Sprechweise: \forqt{$\alpha$ ableitbar $\beta$}.
 		Eine oder beide Formeln $\alpha$ \textbzw $\beta$ dürfen dabei durch Formelmengen ersetzt werden.
-		(\seealso\ \symqt{\glsIdx{abltb}} und \glsIdx{Ableitungsrelation})
+		(\seealso\ \symqt{\glsIdx{derive}} und \glsIdx{Ableitungsrelation})
 		-- Synonym: \glsIdx{beweisbar}%
 	}
 }
@@ -951,7 +952,7 @@
 	name={Ableitungsrelation},
 	plural={Ableitungsrelationen},
 	description={%
-		Die Relation \symqt{\glsIdx{abltb}}%
+		Die Relation \symqt{\glsIdx{derive}}%
 	}
 }
 \newglossaryentry{Abtrennungsregel}{
