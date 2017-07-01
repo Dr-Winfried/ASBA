@@ -206,7 +206,9 @@
 \setcounter{totalnumber}{15}%                                               3
 
 % Neue Elemente ----------------------------------------------------------------
-\newcounter{Enumi}% für unterbrochene Listennummerierung
+\newcounter{Enumi}% für unterbrochene Listennummerierung 
+\newcounter{Enumii}% für unterbrochene Listennummerierung
+\newcounter{Enumiii}% für unterbrochene Listennummerierung
 
 % Bildelemente #################################################################
 
@@ -430,6 +432,7 @@
 
 % sonstige mathematische Zeichen ===============================================
 
+\newcommand*{\textderive}{$\vdash$}%               im Textmodus
 \DeclareMathOperator{\derive}{\;\vdash\;}%         ... ableitbar ...
 \DeclareMathOperator{\subst}{\leftarrowtail}%      ... substituiert durch ...
 \DeclareMathOperator{\change}{\leftrightarrows}%   ... vertauscht mit ...
@@ -464,6 +467,7 @@
 \newcommand*{\textbzw}{bzw.\@ }
 \newcommand*{\textdh}{d.\@\,h.\@ }
 \newcommand*{\textggf}{ggf.\@ }
+\newcommand*{\textGgf}{Ggf.\@ }
 \newcommand*{\textiAlg}{i.\@\,Alg.\@ }
 \newcommand*{\textua}{u.\@\,a.\@ }
 \newcommand*{\textusw}{usw.\@ }
