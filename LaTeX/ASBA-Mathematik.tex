@@ -302,7 +302,7 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 	}
 	\label{def:ableitbar}
 	\\
-	& \derive \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\charqt{\textderive} kann dann auch ganz entfallen)}
+	& \derive \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\textdh $\beta$ ist allgemeingültig.)}
 	\\
 	&             X_1, X_2, ...,X_n, \alpha_1, \alpha_2, ..., \alpha_m \quad
 	\derive \quad Y_1, Y_2, ...,Y_n,  \beta_1,  \beta_2,  ..., \beta_m \quad
@@ -429,7 +429,7 @@ Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 	\tag{\tagSR} \sym{\gls{SR}} \label{def:SR}
 	\\\\
 	& \frac{X\derive\alpha \und \alpha\limp\beta}{X\derive\beta}
-	& & (\text{\glsIdx{Abtrennungsregel}--\emph{Modus ponens}})
+	& & (\text{\glsIdx{Abtrennungsregel} - \emph{Modus ponens}})
 	\tag{\tagTR} \sym{\gls{TR}} \label{def:TR}
 	\formulatoleft
 \end{align}
@@ -472,41 +472,15 @@ Für die ausgefüllten Felder wird nun definiert:
 	\\
 	\overline{R}_i & \defeq \text{Das Ergebnis der Substitution $S_i$ auf die Schlussregel $R_i$}
 	\\
-	Z_i & \defeq \text{Die Indizes $j$ (mit $j < i$) als Verweise auf eine oder mehrere Aussagen $A_j$,}\\
-	& \quad\;\; \text{welche zusammen genau die Voraussetzungen der Schnittregel } \overline{R}_i \text{erfüllen.}
+	Z_i & \defeq \text{Die Indizes $j$ (mit $j < i$) als Verweise auf eine oder mehrere Aussagen $A_j$.}
 	\\
-	A_i & \defeq \text{\glsIdx{Folgerung}(en) der Schlussregel $\overline{R}_i$ --}\\
-	& \quad\;\; \text{auch in Form der Angabe von einem oder mehreren \strqt{$Aj$} (mit $j < i$).}\\
+	A_i & \defeq \text{\glsIdx{Folgerung}(en) der Schlussregel $\overline{R}_i$,}\\
+	& \quad\;\; \text{auch in Form von einem oder mehreren $Aj$ (mit $j < i$).}\\
 	& \quad\;\; \text{In der Ergebniszeile kann hier auch die bewiesene Aussage als Schlussregel stehen.}
 	\\
-	D_i & \defeq \text{die Indizes der $A_j$, von denen $A_i$ abhängig ist.}
+	D_i & \defeq \text{Die Verweise auf die Regeln, von denen $\overline{R}_i$ und}\\
+	& \quad \;\; \text{die Indizes der $A_j$, von denen $A_i$, abhängig sind.}
 \end{align}
-Bis zur Zeile $i$ hat man die folgende Schlussregel bewiesen:
-\[ \frac{A_{i_1} \und A_{i_2} ...}{A_i} \quad \text{, für alle } i_j \in D_i \]
-Sei nun
-\[
-	\Gamma_i \defeq
-	\left\{
-		\begin{array}{ll}
-			\text{leer}    & \text{ für } R_i = \text{\strqt{Voraussetzung}} \\
-			\text{leer}    & \text{ für } R_i = \text{\strqt{Folgerung}}     \\
-			\text{leer}    & \text{ für } R_i = \text{\strqt{Annahme}}       \\
-			\overline{R_j} & \text{ für } R_i = j                            \\
-			\text{die Schlussregel} & \text{ für } R_i = \text{Verweis auf eine Schlussregel}
-		\end{array}
-	\right.
-\]
-Damit gilt für die Einträge in einer Zeile $i$:
-\begin{itemize}
-	\item Wenn $\Gamma_i$ nicht leer ist, ist $R_i$ eine \glsIdx{allgemeingueltigeSchlussregelV} und es gilt:
-	\begin{itemize}
-		\item Wenn$S_i$ nicht leer ist, ist $R_i = \Gamma_i(S_i)$\footnote{\seename Definition~\vref{def:Substitution}}.
-		\item Sonst ist $R_i = \Gamma_i$.
-	\end{itemize}
-	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \und A_{z_2} \und ...}{A_i}$ (alle $z_j \in Z_i$).
-	\item Wenn $A_i$ nicht leer ist, ist die Schlussregel $\dfrac{A_{d_1} \und A_{d_2} \und ...}{A_i}$ (alle $d_j \in D_i$) bewiesen.
-\end{itemize}
-$Z_i$ und $D_i$ dürfen dabei auch leer sein.
 
 \begin{table}[!htb]
 	\setlength\tabcolsep{1pt}
@@ -529,27 +503,27 @@ $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 		\\\hline
 		3 & \centerParbox[1.00cm]{Folge"=rung} & & & & $X \derive \beta$ & 3
 		\\\hline
-		4 & \tagMR & & $\dfrac{X \derive \alpha}{X, Y \derive \alpha}$ & & &
+		4 & \tagMR & & $\dfrac{X \derive \alpha}{X, Y \derive \alpha}$ & & & \tagMR
 		\\\hline
-		5 & 4 & $Y \subst \lnot\alpha$ & $\dfrac{X \derive \alpha}{X, \lnot\alpha \derive \alpha}$ & 1 & $X, \lnot\alpha \derive \alpha$ & 1
+		5 & 4 & $Y \subst \lnot\alpha$ & $\dfrac{X \derive \alpha}{X, \lnot\alpha \derive \alpha}$ & 1 & $X, \lnot\alpha \derive \alpha$ & \centerParbox{1, \tagMR}
 		\\\hline
-		6 & \tagAR & & $ \dfrac{}{\alpha \derive \alpha} $ & & &
+		6 & \tagAR & & $ \dfrac{}{\alpha \derive \alpha} $ & & & \tagAR
 		\\\hline
-		7 & 6 & $\alpha \subst \lnot\alpha$ & $\dfrac{}{\lnot\alpha \derive \lnot\alpha}$ & & $\lnot\alpha \derive \lnot\alpha$ &
+		7 & 6 & $\alpha \subst \lnot\alpha$ & $\dfrac{}{\lnot\alpha \derive \lnot\alpha}$ & & $\lnot\alpha \derive \lnot\alpha$ & \tagAR
 		\\\hline
-		8 & 4 & $\alpha \subst \lnot\alpha$ & $\dfrac{X \derive \lnot\alpha}{X, Y \derive \lnot\alpha}$ & & &
+		8 & 4 & $\alpha \subst \lnot\alpha$ & $\dfrac{X \derive \lnot\alpha}{X, Y \derive \lnot\alpha}$ & & & \tagMR
 		\\\hline
-		9 & 8 & $X \subst \lnot\alpha$ & $\dfrac{\lnot\alpha \derive \lnot\alpha}{Y, \lnot\alpha \derive \lnot\alpha}$ & & &
+		9 & 8 & $X \subst \lnot\alpha$ & $\dfrac{\lnot\alpha \derive \lnot\alpha}{Y, \lnot\alpha \derive \lnot\alpha}$ & & & \tagMR
 		\\\hline
-		10 & 9 & $Y \subst X$ & $\dfrac{\lnot\alpha \derive \lnot\alpha}{X,\lnot\alpha \derive \lnot\alpha}$ & 7 & $X,\lnot\alpha \derive \lnot\alpha$ &
+		10 & 9 & $Y \subst X$ & $\dfrac{\lnot\alpha \derive \lnot\alpha}{X,\lnot\alpha \derive \lnot\alpha}$ & 7 & $X,\lnot\alpha \derive \lnot\alpha$ & \centerParbox{\tagAR, \tagMR}
 		\\\hline
-		11 & \tagnota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
+		11 & \tagnota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & & \tagnota
 		\\\hline
-		12 & 11 & $X \subst X, \lnot\alpha$ & $\dfrac{X,\lnot\alpha \derive \alpha, \lnot\alpha}{X,\lnot\alpha \derive \beta}$ & 5, 10 & $X,\lnot\alpha \derive \beta$ & 1
+		12 & 11 & $X \subst X, \lnot\alpha$ & $\dfrac{X,\lnot\alpha \derive \alpha, \lnot\alpha}{X,\lnot\alpha \derive \beta}$ & 5, 10 & $X,\lnot\alpha \derive \beta$ & \centerParbox{1, \tagAR, \tagMR, \tagnota}
 		\\\hline
-		13 & \tagnotb & & $\dfrac{X,\alpha \derive \beta \und X,\lnot\alpha \derive \beta}{X \derive \beta}$ & 2, 12 & $X \derive \beta$ & 1, 2
+		13 & \tagnotb & & $\dfrac{X,\alpha \derive \beta \und X,\lnot\alpha \derive \beta}{X \derive \beta}$ & 2, 12 & $X \derive \beta$ & \centerParbox{1, 2, \tagAR, \tagMR, \tagnota, \tagnotb}
 		\\\hline\hline
-		14 & \centerParbox[1.4cm]{\tagAR, \tagMR, \tagnota, \tagnotb} & & $\dfrac{A_1 \und A_2}{A_3}$ & & $\dfrac{X \derive \alpha \und X, \alpha \derive \beta}{X \derive \beta}$ &
+		14 & & & $\dfrac{A_1 \und A_2}{A_3}$ & & $\dfrac{X \derive \alpha \und X, \alpha \derive \beta}{X \derive \beta}$ & \centerParbox{\tagAR, \tagMR, \tagnota, \tagnotb}
 		\\\hline
 	\end{tabular}
 	\caption{Ableitung der \glsIdx{Schnittregel} aus den \glsIdxPl{Basisregel}}
@@ -560,90 +534,74 @@ Die Erzeugung einer Tabelle analog zu~\vref{tab:AbleitungSchnittregel} wird im f
 Zellen, für die kein Inhalt angegeben wird, bleiben leer.
 Rückwärts-Referenzen auf schon ausgefüllte Zellinhalte sind jederzeit möglich.
 Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
--- Die Tabelle und die Beschreibung sind so ausführlich, damit man daraus leicht ein Computerprogramm erstellen kann.
 
 \begin{enumerate}
 	%
-	\item In den ersten Zeilen werden zuerst Voraussetzungen, dann zu beweisende Folgerungen und schließlich Annahmen aufgeführt.%
+	\item In den ersten Zeilen werden zuerst die Voraussetzungen und dann die Folgerungen%
 	\footnote{%
-		Die Angabe ist dann erforderlich, wenn darauf verwiesen wird.
-		Durch die Auflistung hat man aber einen vollständigen Überblick über die Voraussetzungen und Folgerungen eines Beweises und die Zwischenannahmen.
-		Auf jede nötige Voraussetzung und jede verwendete Zwischenannahme wird in der Spalte $(Z_n$) mindestens einmal verwiesen, so dass sie auch aufgeführt werden müssen.
-		Die Angabe der Folgerungen erleichtert die Erstellung einer \emph{Ergebniszeile} (\seename Punkt~\ref{item:Ergebniszeile}).
+		Die Angabe der Folgerungen ist optional, sofern nicht darauf verwiesen wird.
+		Durch ihre Auflistung hat man aber einen vollständigen Überblick darüber, was zu beweisen ist.
+		Sollte die bewiesene Behauptung in einer letzten Zeile angegeben werden, wird auf die Folgerungen verwiesen, so dass ihre Angabe nötig ist.
 	}
-	Jede der drei Gruppen kann auch leer sein und es ist auch möglich, die Zeilen an anderen Stellen der Tabelle anzugeben, spätestens aber, wenn darauf verwiesen wird.
-	Für jede Voraussetzung, Folgerung und Annahme gibt es eine Zeile:
+	aufgeführt, für jede Voraussetzung \textbzw Folgerung eine Zeile.
 	\begin{enumerate}
-		\item $R_i =$ \strqt{Voraussetzung}, \strqt{Folgerung} oder \strqt{Annahme}.
-		\item $A_i =$ Die aktuelle Voraussetzung, Folgerung oder Annahme.
+		\item $R_i =$ \strqt{Voraussetzung} \textbzw \strqt{Folgerung}.
+		\item $A_i =$ Die aktuelle Voraussetzung \textbzw Folgerung.
 		\item $D_i =$ $i$ \quad (ein Verweis auf $A_i$).
 	\end{enumerate}
 	%
 	\item In den nächsten Zeilen werden die Beweisschritte aufgeführt, für jeden Schritt eine Zeile.
+	\begin{enumerate}
+		%
+		\item \label{item:setDvonR} $R_i =
+		\left\{
+			\begin{array}{l}
+				\text{- \strqt{Annahme} = Die Aussage $A_i$ wird vorübergehend angenommen.}\\
+				\qquad \text{In dieser Zeile wird nur noch $A_i$ und $D_i$ = $i$ ausgefüllt.}\\
+				\text{- $j$ = Die Schlussregel $\overline{R}_j$ für ein $j < i$ soll angewendet werden.}\\
+				\qquad \text{Die Abhängigkeiten $D_j$ werden den Abhängigkeiten $D_i$ hinzugefügt.}\\
+				\qquad \text{(\GlsIdxPl{Schlussregel} können nur von Schlussregeln abhängig sein.)}\\
+				\text{- Verweis (ohne Klammern) auf eine \glsIdx{allgemeingueltigeSchlussregelV}.}\\
+				\qquad \text{Der Verweis auf diese Schlussregel wird nach $D_i$ übernommen.}
+			\end{array}
+		\right.$
+		%
+		\item $S_i =$ Die auf die Schlussregel $R_i$ anzuwendende Substitution.
+		%
+		\item $\overline{R}_i =$ Das Ergebnis der Substitution $S_i$ auf die Schlussregel $R_i$.
 
-	Zunächst kann $R_i$ kann auf zwei Arten erzeugt werden:
-	\begin{enumerate}
-		\item
-		\begin{enumerate}
-			\item $R_i = j$, wenn die schon bewiesene Schlussregel $\overline{R}_j$ (mit $j < i$) angewendet werden soll.
-			\item $S_i =$ Die auf die Schlussregel $R_i$ anzuwendende Substitution.
-			\item $\overline{R}_i =$ Das Ergebnis der Substitution $S_i$ auf die Schlussregel $R_i$.
-			-- Sie wird hier als \emph{interne} Schlussregel bezeichnet.
-		\end{enumerate}
-		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
-	\end{enumerate}
-	oder
-	\begin{enumerate}
-		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
-		\item
-		\begin{enumerate}
-			\item $R_i =$ Verweis auf eine \glsIdx{allgemeingueltigeSchlussregelV}.
-			\item $\overline{R}_i =$ Die Schlussregel, auf die verwiesen wird.
-			-- Sie wird hier als \emph{externe} Schlussregel bezeichnet.
-		\end{enumerate}
-		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
-	\end{enumerate}
-	Man beachte, dass die Schlussregel $\overline{R}_i$, stets allgemeingültig ist, da sie ausschließlich aus \glsIdxBg{allgemeingueltigeSchlussregelV}{allgemeingültigen Schlussregeln} mittels Substitutionen abgeleitet worden ist.
-	Daher gibt es auch keine Beschränkung weiterer Substitutionen durch irgendwelche Abhängigkeiten.
-
-	Nun kann die Zeile beendet werden, oder es geht weiter mit:
-	\begin{enumerate}
-		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
-		\item \label{item:Anwendung} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine Voraussetzung der Schlussregel $\overline{R}_i$ sind, möglichst in der verwendeten Reihenfolge.
-		-- Für jedes angegebene $j$ werden noch die Abhängigkeiten $D_j$ den Abhängigkeiten $D_i$ hinzugefügt.
+		Man beachte, dass die Schlussregel $\overline{R}_i$, falls angegeben, stets allgemeingültig ist, da sie ausschließlich aus \glsIdxBg{allgemeingueltigeSchlussregelV}{allgemeingültigen Schlussregeln} mittels Substitutionen abgeleitet ist.
+		Daher gibt es auch keine Beschränkung weiterer Substitutionen durch irgendwelche Abhängigkeiten.
+		%
+		\item \label{item:setDvonZ} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine Voraussetzung der Schlussregel $\overline{R}_i$ sind.\newline
+		Für jedes angegebene $j$ werden die Abhängigkeiten $D_j$ den Abhängigkeiten $D_i$ hinzugefügt.
 		%
 		\item $A_i =$ Folgerung(en) der Schlussregel $\overline{R}_i$.
-		-- Wenn diese Folgerungen schon als Aussagen $A_j$ (mit $j < i$) vorhanden sind, können diese auch einfach mit \strqt{$A_j$} eingetragen werden.
-		Damit werden die Zusammenhänge und der Abschluss des Beweises besser ersichtlich.
 		%
-		\item $D_i =$ Die Verweise wurden schon in (\ref{item:Anwendung}) eingetragen.%
+		\item $D_i =$ Die Verweise wurden schon in (\ref{item:setDvonR}) und (\ref{item:setDvonZ}) eingetragen.%
 		\footnote{Wenn $D_n$ leer ist, dann ist $A_n$ allgemeingültig.}
 		%
 	\end{enumerate}
-	Der Beweis muss so lange fortgeführt werden, bis alle Folgerungen als Aussagen in der Spalte $(A_n)$ erschienen und dort jeweils nur von Voraussetzungen abhängig sind.
+	Der Beweis muss so lange fortgeführt werden, bis alle Folgerungen abgeleitet worden sind.
 	%
-	\item \label{item:Ergebniszeile} In einer \emph{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer Schlussregel formuliert und in einer passenden Spalte notiert werden.
-	Zusätzlich können dort auch noch alle verwendeten Schlussregeln gesammelt werden.
-	Dies kann \textzB folgendermaßen geschehen:
+	\item In der letzten Zeile kann noch die bewiesene Behauptung in der Form eines \glsIdxBg{formalerSatzV}{formalen Satzes}, \seename~\eqref{def:formalerSatz} \sectionname~\vref{sec:Schlussregeln}, formuliert werden.
 	\begin{enumerate}
 		%
-		\item $(R_n) =$ Verweise auf alle verwendeten externen Schlussregeln.
-		%
-		\item $(\overline{R}_n) =$ Die bewiesene Behauptung als Schlussregeln, wobei alle $A_i$, die Voraussetzungen sind, als Voraussetzung und alle $A_j$, die Folgerungen sind, als Folgerung eingesetzt werden, jeweils in der Form \strqt{$A_i$} \textbzw \strqt{$A_j$}.
-		Das ergibt dann:
-		\[ \frac{A_{i_1} \und A_{i_2} \und ...}{A_{j_1} \und A_{j_2} \und ...} \]
+		\item $(\overline{R}_n) =$ Die bewiesene Behauptung (mathematischer Satz) in der Form eines \emph{\glsIdxBg{formalerSatzV}{formalen Satzes}}\footnote{\seename~\eqref{def:formalerSatz} \sectionname~\vref{sec:Schlussregeln}}, wobei alle $A_i$, die Voraussetzungen sind, in dem formalen Satz als Voraussetzung und alle $A_i$, die Folgerungen sind, als Folgerung eingesetzt werden.
 		%
 		\item $(A_n) =$ $\overline{R}_i$, wobei die Voraussetzungen und Folgerungen aufgelöst werden.
 		%
 		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der Folgerungen, vermindert um die Voraussetzungen.
-		-- Wenn das Feld dabei nicht leer bleibt, ist der Beweis missglückt!
 		%
 	\end{enumerate}
 	%
 \end{enumerate}
 
 Ein weiteres Beispiel in der \tablename~\vref{tab:AbleitungKontraposition} soll verdeutlichen, wie Abhängigkeiten von Zwischenannahmen wieder beseitigt werden können.\footnote{\seename~\cite{bib:NatuerlichesSchliessen}, Kapitel 2.2.4 \emph{Eine Beispielableitung}}
+%%%Zur leichteren Lesbarkeit sind einige redundante Klammern eingefügt.
 
+\todo{Beispiel mit Reduzierung von Abhängigkeiten}%%%
+%TODO Beispiel mit Reduzierung von Abhängigkeiten %%%
 \begin{table}[!htb]
 	\setlength\tabcolsep{1pt}
 	\setlength\extrarowheight{7pt}
@@ -659,59 +617,56 @@ Ein weiteres Beispiel in der \tablename~\vref{tab:AbleitungKontraposition} soll 
 		\titleCell{1.65cm}{Aussage}                   {$A_n$} &
 		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
 		\\\hline \hline
-		1 & \centerParbox[1.00cm]{Folge"=rung} & & & & $(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & 1
+		1 & \centerParbox[1.00cm]{Folge"=rung} & & & & $\derive (\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & 1
 		\\\hline
-		2 & \centerParbox[1.20cm]{An"=nahme} & & & & $\alpha\limp\beta$ & 2
+		2 & \centerParbox[1.20cm]{An"=nahme} & & & & $\derive \alpha\limp\beta$ & 2
 		\\\hline
-		3 & \centerParbox[1.20cm]{An"=nahme} & & & & $\lnot\beta$ & 3
+		3 & \centerParbox[1.20cm]{An"=nahme} & & & & $\derive  \lnot\beta$ & 3
 		\\\hline
-		4 & \centerParbox[1.20cm]{An"=nahme} & & & & $\alpha$ & 4
+		4 & \centerParbox[1.20cm]{An"=nahme} & & & & $\derive  \alpha$ & 4
 		\\\hline
-		5 & \tagimpB & & $\dfrac{X \derive \alpha\limp\beta}{X,\alpha \derive \beta}$ & & &
+		5 & \tagimpB & & $\dfrac{X \derive \alpha\limp\beta}{X,\alpha \derive \beta}$ & & & \tagimpB
 		\\\hline
-		6 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha\limp\beta}{\alpha \derive \beta}$ & 2 & $\alpha \derive \beta $ & 2
+		6 & -1 & $X \subst \emptyset$ & $\dfrac{\derive \alpha\limp\beta}{\alpha \derive \beta}$ & 2 & $\alpha \derive \beta $ & \centerParbox{2, \tagimpB}
 		\\\hline
-		7 & \tagSR & & $\dfrac{X \derive \alpha \und X,\alpha \derive \beta}{X \derive \beta}$ & & &
+		7 & \tagSR & & $\dfrac{X \derive \alpha \und X,\alpha \derive \beta}{X \derive \beta}$ & & & \tagSR
 		\\\hline
-		8 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \und \alpha \derive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
+		8 & -1 & $X \subst \emptyset$ & $\dfrac{\derive \alpha \und \alpha \derive \beta}{\derive \beta}$ & 2, 6 & $\derive \beta $ & \centerParbox{2, 6, \tagSR}
 		\\\hline
-		9 & \tagnota & & $\dfrac{X \derive \alpha, \lnot\alpha} {X \derive \beta}$ & & &
+		9 & \tagnota & & $\dfrac{X \derive \alpha, \lnot\alpha} {X \derive \beta}$ & & & \tagnota
 		\\\hline
-		10 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha, \lnot\alpha} {\beta}$ & & &
+		10 & -1 & $X \subst \emptyset$ & $\dfrac{\derive \beta, \lnot\beta} {\derive \alpha}$ & & & \tagnota
 		\\\hline
-		11 & -1 & $\alpha \change \beta$ & $\dfrac{\beta, \lnot\beta} {\alpha}$ & & &
+		11 & -1 & $\alpha \change \beta$ & $\dfrac{\derive \beta, \lnot\beta} {\derive \alpha}$ & & & \tagnota
 		\\\hline
-		12 & -1 & $\alpha \subst \lnot\alpha$ & $\dfrac{\beta, \lnot\beta} {\lnot\alpha}$ & 8, 3 & $\lnot\alpha$ & 2, 3, 4
+		12 & -1 & $\alpha \subst \lnot\alpha$ & $\dfrac{\derive \beta, \lnot\beta} {\derive \lnot\alpha}$ & 8, 3 & $\derive \lnot\alpha$ & \centerParbox{2, 3, \tagnota, \tagimpB}
 		\\\hline
-		13 & \tagimpE & & $\dfrac{X, \alpha \derive \beta}{X \derive \alpha\limp\beta}$ & & &
+		13 & \tagimpE & & $\dfrac{X, \alpha \derive \beta}{X \derive \alpha\limp\beta}$ & & & \tagimpE
 		\\\hline
-		14 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \derive \beta}{\alpha\limp\beta}$ & & &
+		14 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \derive \beta}{\derive \alpha\limp\beta}$ & & & \tagimpE
 		\\\hline
-		15 & -1 & $\alpha \change \beta$ & $\dfrac{\beta \derive \alpha} {\beta\limp\alpha}$ & & &
+		15 & -1 & $\alpha \change \beta$ & $\dfrac{\beta \derive \alpha} {\derive \beta\limp\alpha}$ & & & \tagimpE
 		\\\hline
-		16 & -1 & $\alpha \subst \lnot\alpha$ & $\dfrac{\beta \derive \lnot\alpha} {\beta\limp\lnot\alpha}$ & & & \tagimpE
+		16 & -1 & $\alpha \subst \lnot\alpha$ & $\dfrac{\beta \derive \lnot\alpha} {\derive \beta\limp\lnot\alpha}$ & & & \tagimpE
 		\\\hline
-		17 & -1 & $\beta \subst \lnot\beta$ & $\dfrac{\lnot\beta \derive \lnot\alpha}{\lnot\beta\limp\lnot\alpha}$ & 3, 12, ??? & $\lnot\beta\limp\lnot\alpha$ & 2, 3, 4, ???
+		17 & -1 & $\beta \subst \lnot\beta$ & $\dfrac{\lnot\beta \derive \lnot\alpha}{\derive \lnot\beta\limp\lnot\alpha}$ & ??? & $\derive \lnot\beta\limp\lnot\alpha$ & \centerParbox{???, \tagimpE}
 		\\\hline
-		18 & \tagimpE+1 & $\alpha \subst \gamma$ & $\dfrac{\gamma \derive \beta} {\gamma\limp\beta}$ & & & \tagimpE
+		18 & \tagimpE+1 & $\alpha \subst \gamma$ & $\dfrac{\gamma \derive \beta} {\derive \gamma\limp\beta}$ & & & \tagimpE
 		\\\hline
-		19 & -1 & $\beta \subst \delta$ & $\dfrac{\gamma \derive \delta} {\gamma\limp\delta}$ & & & \tagimpE
+		19 & -1 & $\beta \subst \delta$ & $\dfrac{\gamma \derive \delta} {\derive \gamma\limp\delta}$ & & & \tagimpE
 		\\\hline
-		20 & -1 & $\gamma \subst \alpha\limp\beta$ & $\dfrac{\alpha\limp\beta \derive \delta} {(\alpha\limp\beta)\limp\delta}$ & & & \tagimpE
+		20 & -1 & $\gamma \subst \alpha\limp\beta$ & $\dfrac{\alpha\limp\beta \derive \delta} {\derive (\alpha\limp\beta)\limp\delta}$ & & & \tagimpE
 		\\\hline
-		21 & -1 & $\scriptstyle\delta \subst \lnot\beta\limp\lnot\alpha$ & $\dfrac{\alpha\limp\beta \derive \lnot\beta\limp\lnot\alpha}
-		{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ & 2, 17 &
-		$(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & 2, 3, 4, ???
+		21 & -1 & $\scriptstyle \delta \subst \lnot\beta\limp\lnot\alpha$ & $\frac{\alpha\limp\beta \derive \lnot\beta\limp\lnot\alpha}
+		{\derive (\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ & 2, 17 &
+		$\derive (\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & \centerParbox{2, ???, \tagimpB, \tagimpE}
 		\\\hline\hline
-		22 & \centerParbox[1.5cm]{\tagimpE, \tagimpB, \tagSR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ &
+		22 & & & $\dfrac{}{\derive A_1}$ & & $\derive (\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & \centerParbox{\tagimpB, \tagimpE}
 		\\\hline
 	\end{tabular}
 	\caption{Ableitung der \glsIdx{Kontraposition} aus \glsIdxBg{allgemeingueltigeSchlussregelV}{allgemeingültigen Schlussregeln}}
 	\label{tab:AbleitungKontraposition}
 \end{table}
-
-\todo{Beispiel mit Reduzierung von Abhängigkeiten vervollständigen}%%%
-%TODO Beispiel mit Reduzierung von Abhängigkeiten vervollständigen %%%
 
 \section{Aussagenlogik}% =======================================================
 \beginsection{Aussagenlogik}
