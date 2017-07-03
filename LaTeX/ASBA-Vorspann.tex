@@ -206,7 +206,7 @@
 \setcounter{totalnumber}{15}%                                               3
 
 % Neue Elemente ----------------------------------------------------------------
-\newcounter{Enumi}% für unterbrochene Listennummerierung 
+\newcounter{Enumi}% für unterbrochene Listennummerierung
 \newcounter{Enumii}% für unterbrochene Listennummerierung
 \newcounter{Enumiii}% für unterbrochene Listennummerierung
 
@@ -435,7 +435,7 @@
 \newcommand*{\textderive}{$\vdash$}%               im Textmodus
 \DeclareMathOperator{\derive}{\;\vdash\;}%         ... ableitbar ...
 \DeclareMathOperator{\subst}{\leftarrowtail}%      ... substituiert durch ...
-\DeclareMathOperator{\change}{\leftrightarrows}%   ... vertauscht mit ...
+\DeclareMathOperator{\swap}{\leftrightarrows}%     ... vertauscht mit ...
 %%%\DeclareMathOperator{\subst}{\curvearrowright}% ... substituiert durch ...
 
 % sonstige Kommandos für den Mathematiksatz ####################################
@@ -638,7 +638,15 @@
 	plural={\subst},% im Mathematikmodus
 	description={%
 		\glsIdx{Substitution}: ... substituiert durch ...
-		(siehe die Definition in \subsectionname~\vref{sub:Basisregeln})%
+		(siehe die Definition in \subsectionname~\vref{sub:Indentitaetsregeln})%
+	}
+}
+\newglossaryentry{swap}{
+	name={$ \swap$},
+	plural={\swap},% im Mathematikmodus
+	description={%
+		\glsIdx{Vertauschung}: ... vertauscht mit ...
+		(siehe die Definition in \subsectionname~\vref{sub:Indentitaetsregeln})%
 	}
 }
 \newglossaryentry{und}{
@@ -1193,9 +1201,10 @@
 	name={Substitution},
 	plural={Substitutionen},
 	description={%
-		Die Ersetzung von einem, mehreren oder allen \glsIdxBg{formalesElementV}{formalen Elementen} ($\alpha$) in einem anderen \glsIdxBg{formalesElementV}{formalen Element} ($\Gamma$) durch ein drittes \glsIdxBg{formalesElementV}{formales Element} ($\beta$), formal: $\Gamma(\alpha\subst\beta)$.
-		Wenn alle $\alpha$ in $\Gamma$ durch $\beta$ ersetzt, ist die Substitution \emph{vollständig}.
-		(siehe die Definition~\eqref{def:Substitution} in \subsectionname~\ref{sub:Indentitaetsregeln})%
+		Die Ersetzung von einem, mehreren oder allen \glsIdxBg{formalesElementV}{formalen Elementen} ($\alpha$) in einem anderen \glsIdxBg{formalesElementV}{formalen Element} ($\gamma$) durch ein drittes \glsIdxBg{formalesElementV}{formales Element} ($\beta$)
+		-- formal: $\gamma(\alpha\subst\beta)$.
+		Wenn alle $\alpha$ in $\gamma$ durch $\beta$ werden, ist die Substitution \emph{vollständig}.
+		(siehe die Definition~\eqref{def:Substitution} in \subsectionname~\vref{sub:Indentitaetsregeln})%
 	}
 }
 \newglossaryentry{vergleichbar}{
@@ -1207,6 +1216,16 @@
 		Meistens genügt es zu wissen, was für \glsIdxPl{MetaausdruckV} \textbzw \glsIdxPl{formalesElementV} es sind.
 		Sie müssen dann nur von derselben Art sein%
 	}%
+}
+\newglossaryentry{Vertauschung}{
+	name={Vertauschung},
+	plural={Vertauschungen},
+	description={%
+		Die Vertauschung von zwei unabhängigen \glsIdxBg{formalesElementV}{formalen Elementen} ($\alpha$ und $\beta$) in einem anderen \glsIdxBg{formalesElementV}{formalen Element} ($\gamma$)
+		-- formal: $\Gamma(\alpha\swap\beta)$.
+		Die Vertauschung ist eine spezielle Form der \glsIdx{Substitution}.
+		(siehe die Definition~\eqref{def:Vertauschung} in \subsectionname~\vref{sub:Indentitaetsregeln})%
+	}
 }
 \newglossaryentry{Voraussetzung}{
 	name={Voraussetzung},
