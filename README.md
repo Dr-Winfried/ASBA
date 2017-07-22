@@ -1,5 +1,7 @@
 # ASBA ######
 
+*Die mathematischen Voraussetzungen sind umfangreicher als erwartet. Daher muss zum Studium dieser Voraussetzungen - sprich der mathematischen Logik - noch viel Zeit in Literaturstudium investiert werden. Bis dahin wird nur das Kapitel **Mathematische Grundlagen** weiter bearbeitet*
+
 **Axiome, Sätze, Beweise und Auswertungen**
 
 Projekt zur maschinellen Überprüfung von mathematischen Beweisen, deren Ausgabe in lesbarer Form und Auswertungen, wie zum Beispiel Statistiken und vorausgesetzte Axiome und Prämissen.
