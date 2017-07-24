@@ -37,15 +37,18 @@
 
 In der Mathematik gibt es eine unüberschaubare Menge an \glsIdxPl{Axiom}n, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n, \emph{\glsIdxPl{Fachbegriff}n}%
 \footnote{%
-	\emph{\glsIdxPl{Fachbegriff}} sind Namen für mathematische Elemente und Konstruktionen, \textzB \glsIdxPl{Axiom}, \glsIdxPl{Satz},  \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet}.
+	\emph{\glsIdxPl{Fachbegriff}} sind Namen für mathematische Elemente und Konstruktionen, \textzB\ \glsIdxPl{Axiom}, \glsIdxPl{Satz},  \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet}.
 	Symbole können als spezielle \glsIdxPl{Fachbegriff} aufgefasst werden.%
 }
 und \emph{\glsIdxPl{Fachgebiet}n}%
 \footnote{%
-	Ein \emph{\glsIdx{Fachgebiet}} ist ein Teil der Mathematik mit einer zugehörigen Basis an Axiomen, \glsIdxPl{Satz}n und spezifischen \glsIdxPl{Fachbegriff}n und Darstellungen.
-	\textZB \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}.
+	Ein \emph{\glsIdx{Fachgebiet}} ist ein Teil der Mathematik mit einer zugehörigen Basis an Axiomen, \glsIdxPl{Satz}n, \glsIdxPl{Fachbegriff}n und Darstellungen, \textzB\ \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}.
 	Ein \glsIdx{Fachgebiet} kann sehr klein sein und im Extremfall kein einziges Element enthalten.
-	\emph{Umgebung} wäre eine bessere Bezeichnung, ist aber schon ein verbreiteter \glsIdx{Fachbegriff}, so dass hier die Bezeichnung \glsIdx{Fachgebiet} verwendet wird.%
+	\emph{Umgebung} wäre eine bessere Bezeichnung, ist aber schon ein verbreiteter \glsIdx{Fachbegriff}, so dass hier die Bezeichnung \glsIdx{Fachgebiet} verwendet wird.
+
+	Statt \emph{Fachgebieten} könnte man auch \emph{Theorien} nehmen.
+	An diese werden aber bestimmte Anforderungen gestellt, die nicht notwendigerweise überprüft werden sollen.
+	Theorien sind allerdings \textiAlg\ auch Fachgebiete.
 }.
 Zu den meisten \glsIdxPl{Fachgebiet}n gibt es noch ungelöste Probleme.
 
@@ -53,7 +56,7 @@ Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, \glsIdxPl
 Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
 In diesem Dokument werden die Grundlagen für das zu entwickelnde \ASBA\ behandelt.
 
-Ein Programmsystem mit ähnlicher Aufgabenstellung findet sich im GitHub Projekt Hilbert~II (\seename~\cite{bib:HilbertII, bib:qedeq}).
+Ein Programmsystem mit ähnlicher Aufgabenstellung findet sich im GitHub Projekt \emph{Hilbert~II} (\seename~\cite{bib:HilbertII, bib:qedeq}).
 Einige Ideen sind von dort übernommen worden.
 
 \section{Fragen}% ==============================================================
@@ -66,7 +69,7 @@ werden hier formuliert:
 	%
 	\item \label{Frage:Grundlagen} \emph{Grundlagen}:
 	Was sind die Grundlagen?
-	\textZB welche Logik und Mengenlehre.
+	\textZB\ welche Logik und Mengenlehre.
 	%
 	\item \label{Frage:Basis} \emph{Basis}:
 	Welche wichtigen \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} gibt es?
@@ -74,7 +77,7 @@ werden hier formuliert:
 	%
 	\item \label{Frage:Axiome} \emph{\glsIdxPl{Axiom}}:
 	Welche \glsIdxPl{Axiom} werden bei einem \glsIdx{Satz} oder \glsIdx{Beweis} vorausgesetzt?
-	Allgemein anerkannte oder auch strittige, wie \textzB den \emph{Satz vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
+	Allgemein anerkannte oder auch strittige, wie \textzB\ den \emph{Satz vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
 	%
 	\item \label{Frage:Beweis} \emph{\glsIdx{Beweis}}:
 	Ist ein \glsIdx{Beweis} fehlerfrei?
@@ -85,12 +88,12 @@ werden hier formuliert:
 	\item \label{Frage:Vergleiche} \emph{Vergleiche}:
 	Welcher \glsIdx{Beweis} ist besser?
 	Nach welchem Kriterium?
-	\textZB elegant, kurz, einsichtig oder wenige \glsIdxPl{Axiom}.
+	\textZB\ elegant, kurz, einsichtig oder wenige \glsIdxPl{Axiom}.
 	Was heißt eigentlich \emph{elegant}?
 	%
 	\item \label{Frage:Definitionen} \emph{Definitionen}:
 	Was ist mit einem \glsIdx{Fachbegriff} jeweils genau gemeint?
-	\textZB \emph{Stetigkeit}, \emph{Integral} und \emph{Analysis}.
+	\textZB\ \emph{Stetigkeit}, \emph{Integral} und \emph{Analysis}.
 	%
 	\item \label{Frage:Abhängigkeiten} \emph{Abhängigkeiten}:
 	Wie heißt ein \glsIdx{Fachbegriff} in einer anderen Sprache?
@@ -98,10 +101,10 @@ werden hier formuliert:
 	Was ist mit \glsIdxPl{Fachbegriff}n in verschiedenen \glsIdxPl{Fachgebiet}n?
 	%
 	\item \label{Frage:Überblick} \emph{Überblick}:
-	Ist ein \glsIdx{Axiom}, \glsIdx{Satz}, \glsIdx{Beweis} oder Fachbegriff schon einmal -- \textggf abweichend -- definiert, formuliert oder bewiesen worden?
+	Ist ein \glsIdx{Axiom}, \glsIdx{Satz}, \glsIdx{Beweis} oder Fachbegriff schon einmal -- \textggf\ abweichend -- definiert, formuliert oder bewiesen worden?
 	%
 	\item \label{Frage:Darstellung} \emph{Darstellung}:
-	Wie kann man einen \glsIdx{Satz} und den zugehörigen \glsIdx{Beweis} -- \textggf auch spezifisch für ein \glsIdx{Fachgebiet} -- darstellen?
+	Wie kann man einen \glsIdx{Satz} und den zugehörigen \glsIdx{Beweis} -- \textggf\ auch spezifisch für ein \glsIdx{Fachgebiet} -- darstellen?
 	%
 	\item \label{Frage:Forschung} \emph{Forschung}:
 	Welche Probleme gibt es noch zu erforschen.
@@ -112,8 +115,7 @@ werden hier formuliert:
 \beginsection{Eigenschaften}
 \label{sec:Eigenschaften}
 
-Ausgehend von den Fragen in \sectionname~\vref{sec:Fragen}
-soll \ASBA\ entwickelt werden, das die folgenden Eigenschaften hat:
+\ASBA\ soll ausgehend von den Fragen in \vrefsec{sec:Fragen} entwickelt werden, und die folgenden Eigenschaften haben:
 \begin{enumerate}
 	%
 	\item \label{Eigenschaft:Daten} \emph{Daten}:
@@ -131,11 +133,11 @@ soll \ASBA\ entwickelt werden, das die folgenden Eigenschaften hat:
 	Die \glsIdxPl{Axiom}, \glsIdxPl{Satz} und \glsIdxPl{Beweis} können in üblicher Schreibweise -- abhängig von Sprache und \glsIdx{Fachgebiet} -- ausgegeben werden.
 	%
 	\item \label{Eigenschaft:Auswertungen} \emph{Auswertungen}:
-	Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \sectionname~\vref{sec:Fragen} behandelten Fragen.
+	Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \vrefsec{sec:Fragen} behandelten Fragen.
 	%
 	\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 \end{enumerate}
-
+%
 Damit \ASBA\ nicht umsonst erstellt wird und möglichst breite Verwendung findet, werden noch zwei Punkte angefügt:
 \begin{enumerate}
 	\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
@@ -146,16 +148,16 @@ Damit \ASBA\ nicht umsonst erstellt wird und möglichst breite Verwendung findet
 	\item \label{Eigenschaft:Akzeptanz} \emph{Akzeptanz}:
 	\ASBA\ wird von Mathematikern akzeptiert und verwendet.
 \end{enumerate}
-
-\tablename~\vref{tab:Fragen->Eigenschaften} zeigt, wie sich die Eigenschaften zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
+%
+\vreftab{tab:Fragen->Eigenschaften} zeigt, wie sich die Eigenschaften zu den Fragen \vrefinsec{sec:Fragen} verhalten.
 Mit einem X werden die Spalten einer Zeile markiert, deren zugehörige Eigenschaften zur Beantwortung der entsprechenden Frage beitragen sollen.
 Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellten Fragen beantworten, was allerdings illusorisch ist.
-
+%
 % Abstände für die nächsten drei Tabellen
 \newcommand*{\vsL}{\hspace{-1.0cm}}%   für 1-stellige Zahlen
 \newcommand*{\vsl}{\hspace{-6pt}\vsL}% für 2-stellige Zahlen
 \newcommand*{\vsc}{\hspace{6pt}}%      für die gedrehten Überschriften
-
+%
 \begin{table}[!htb]
 	\begin{tabularx}{\linewidth-10.95pt}
 		{@{\hspace{.5cm}}rl@{\extracolsep{\fill}}|*{7}{c}@{\hspace{1cm}}|}
@@ -212,10 +214,10 @@ Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellt
 \beginsection{Ziele}
 \label{sec:Ziele}
 
-Um die Eigenschaften von \sectionname~\vref{sec:Eigenschaften} zu erreichen, werden für \ASBA\ die folgenden Ziele%
+Um die Eigenschaften von \vrefsec{sec:Eigenschaften} zu erreichen, werden für \ASBA\ die folgenden Ziele%
 \footnote{%
 	Es sind eigentlich Anforderungen.
-	Da dieser Begriff auch im \chaptername~\vref{cha:Design} verwendet wird, werden die Anforderungen hier \emph{\Idx{Ziel}}\emph{e} genannt.%
+	Da dieser Begriff auch \vrefincha{cha:Design} verwendet wird, werden die Anforderungen hier \emph{\Idx{Ziel}}\emph{e} genannt.%
 }
 gesetzt:
 \begin{enumerate}
@@ -223,7 +225,7 @@ gesetzt:
 	\item \label{Ziel:Daten} \emph{Daten}:
 	Es enthält möglichst viele wichtige \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff}, \glsIdxPl{Fachgebiet} und \glsIdxPl{Ausgabeschema}%
 	\footnote{%
-		Um den Punkt~\ref{Eigenschaft:Ausgaben} von \sectionname~\vref{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \glsIdxPl{Ausgabeschema} benötigt, 	welche die Art der Ausgaben beschreiben.%
+		Um den Punkt~\ref{Eigenschaft:Ausgaben} \vrefvonsec{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \glsIdxPl{Ausgabeschema} benötigt, welche die Art der Ausgaben beschreiben.%
 	}.
 	%
 	\item \label{Ziel:Form} \emph{Form}:
@@ -240,14 +242,14 @@ gesetzt:
 	%
 	\item \label{Ziel:Auswertungen} \emph{Auswertungen}:
 	Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
-	Insbesondere kann zu jedem \glsIdx{Beweis} angegeben werden, wie viele Beweisschritte und welche \glsIdxPl{Axiom} und \glsIdxPl{Satz}%
+	Insbesondere kann zu jedem \glsIdx{Beweis} angegeben werden, wie lang er ist und welche \glsIdxPl{Axiom} und \glsIdxPl{Satz}%
 	\footnote{
 		\glsIdxPl{Satz}, die quasi als \glsIdxPl{Axiom} verwendet werden.%
 	}
-	er verwendet.
+	er benötigt.
 	%
 	\item \label{Ziel:Anpassbarkeit} \emph{Anpassbarkeit}:
-	\glsIdxPl{Fachbegriff} und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten \glsIdxPl{Fachgebiet}n angepasst werden.
+	\glsIdxPl{Fachbegriff} und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten \glsIdx{Fachgebiet}en angepasst werden.
 	%
 	\item \label{Ziel:Individualität} \emph{Individualität}:
 	\glsIdxPl{Axiom} und \glsIdxPl{Satz} können für jeden \glsIdx{Beweis} individuell vorausgesetzt werden.
@@ -277,7 +279,7 @@ gesetzt:
 	%
 	\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 \end{enumerate}
-
+%
 Der Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit \ASBA\ effizient arbeiten kann und um die Akzeptanz zu erhöhen:
 \begin{enumerate}
 	\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
@@ -286,11 +288,11 @@ Der Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit \ASBA\ effizi
 	Wichtige Auswertungen können an vorhandenen Dateien angehängt oder separat in eigenen Dateien gespeichert werden.
 	%
 \end{enumerate}
-
-Die \tablename~\vref{tab:Eigenschaften->Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften in \sectionname~\vref{sec:Eigenschaften} verhalten.
+%
+\vrefDtab{tab:Eigenschaften->Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften \vrefinsec{sec:Eigenschaften} verhalten.
 Mit einem X werden wieder die Spalten einer Zeile markiert, deren zugehörige Ziele zur Sicherstellung der entsprechenden Eigenschaft beitragen sollen.
 Idealerweise sollte durch Erreichen aller aufgestellten Ziele \gls{ASBA} alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
-
+%
 \begin{table}[!htb]
 	\begin{tabularx}{\linewidth-10.95pt}
 		{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{16}{c}@{\hspace{0.4cm}}|}
@@ -419,7 +421,7 @@ Idealerweise sollte durch Erreichen aller aufgestellten Ziele \gls{ASBA} alle an
 		& X & X & X & - & - & X & x & - & - & - & - & - & - & - & - \\
 		\hline
 		\multicolumn{17}{l|}{Die nächsten beiden Punkte
-			sind Eigenschaften aus \sectionname~\vref{sec:Eigenschaften}:}\\
+			sind Eigenschaften aus \vrefsec{sec:Eigenschaften}:}\\
 		\hline
 		\ref{Eigenschaft:Lizenz}    & Lizenz%
 		& - & - & - & - & - & - & - & - & - & - & - & - & - & - & X \\
@@ -430,20 +432,20 @@ Idealerweise sollte durch Erreichen aller aufgestellten Ziele \gls{ASBA} alle an
 	\caption{\ref{sec:Fragen} Fragen $\to$ \ref{sec:Ziele} Ziele}
 	\label{tab:Fragen->Ziele}% Erst nach '\caption'!
 \end{table}
-
-Die \tablename~\vref{tab:Fragen->Ziele} ist eine Kombination aus den \tablename n~\vref{tab:Fragen->Eigenschaften} und~\vref{tab:Eigenschaften->Ziele} und zeigt, wie sich die Ziele in \sectionname~\vref{sec:Ziele} zu den Fragen in \sectionname~\vref{sec:Fragen} verhalten.
+%
+\vrefDtab{tab:Fragen->Ziele} ist eine Kombination der Tabellen~ \ref{tab:Fragen->Eigenschaften} und~\ref{tab:Eigenschaften->Ziele} und zeigt, wie sich die Ziele \vrefinsec{sec:Ziele} zu den Fragen \vrefinsec{sec:Fragen} verhalten.
 Auch hier werden mit einem X die Spalten einer Zeile markiert, deren zugehörige Ziele für die Beantwortung der entsprechenden Frage nötig sind.
 Mit einem kleinen x werden sie markiert, wenn sie zur Beantwortung der Fragen nicht nötig, aber von Interesse sind.
 Idealerweise sollte das Erreichen aller aufgestellten Ziele alle gestellten Fragen beantworten, was natürlich auch illusorisch ist.
 
 \clearpage
 
-\section{Umgebung von \textsf{ASBA}}% ======================================
+\section{Die Umgebung von \textsf{ASBA}}% ======================================
 \beginsection{Die Umgebung von \textsf{ASBA}}
 \label{sec:Umgebung}
 
-In der \figurename~\vref{fig:Umgebung} wird beschrieben, welche Interaktionen \ASBA\ mit der Umgebung hat, \textdh welche Ein- und Ausgaben existieren und woher sie kommen \textbzw wohin sie gehen.
-
+\vrefInfig{fig:Umgebung} wird beschrieben, welche Interaktionen \ASBA\ mit der Umgebung hat, \textdh\ welche Ein- und Ausgaben existieren und woher sie kommen \textbzw\ wohin sie gehen.
+%
 \begin{figure}[!htb]
 	\setlength\unitlength{1cm}
 	\begin{picture}(17.0,7.0)(-8.4,-3.5)
@@ -514,9 +516,8 @@ In der \figurename~\vref{fig:Umgebung} wird beschrieben, welche Interaktionen \A
 	\caption{Die Umgebung von \ASBA}
 	\label{fig:Umgebung}% Erst nach '\caption'!
 \end{figure}
-
-In den in \figurename~\vref{fig:Umgebung} abgebildeten Datenflüssen (1) bis
-(6) und (a) bis (e) werden die folgenden Daten übertragen:
+%
+In den \vrefinfig{fig:Umgebung} abgebildeten Datenflüssen (1) bis (6) und (a) bis (e) werden die folgenden Daten übertragen:
 \begin{itemize}
 	\newcommand*{\vonnach}[2]{#1 $\rightarrow$ #2}
 	\newcommand*{\nachvon}[2]{\vonnach{#2}{#1}}
@@ -543,7 +544,7 @@ In den in \figurename~\vref{fig:Umgebung} abgebildeten Datenflüssen (1) bis
 		\item[\vonnach{Datei}{\ASBA}]\label{dat:ausDatei}
 		Inhalte der Datei.
 		\item[\nachvon{Datei}{\ASBA}]\label{dat:inDatei}
-		Die Datei wird um zusätzliche Auswertungen ergänzt, \textzB ob die \glsIdxPl{Beweis} korrekt sind, welche \glsIdxPl{Axiom} und \glsIdxPl{Satz} -- auch externe aus dem Internet -- verwendet wurden, Anzahl der Beweisschritte \textusw
+		Die Datei wird um zusätzliche Auswertungen ergänzt, \textzB\ ob die \glsIdxPl{Beweis} korrekt sind, welche \glsIdxPl{Axiom} und \glsIdxPl{Satz} -- auch externe aus dem Internet -- verwendet wurden, Länge des Beweises \textusw
 	\end{description}
 	%
 	\item[(4)]\label{dat:Terminal}
@@ -559,15 +560,15 @@ In den in \figurename~\vref{fig:Umgebung} abgebildeten Datenflüssen (1) bis
 	\begin{description}
 		\item[\hinundher{Anwender}{\ASBA}]\label{dat:mitAnwender}
 		Interaktive Ein- und Ausgaben durch einen Anwender mit Komponenten von (3), (4) und (6).
-		-- Die Kommunikation läuft \textiAlg über ein Terminal.
+		-- Die Kommunikation läuft \textiAlg\ über ein Terminal.
 	\end{description}
 	%
 	\item[(6)]\label{dat:Ausgabe}
 	\begin{description}
 		\item[\nachvon{Ausgabe}{\ASBA}]\label{dat:inAusgabe}
-		Inhalte von Datei und Datenbank in lesbarer Form, \textua mit Hilfe von \glsIdxPl{Ausgabeschema} auch in Formelschreibweise.
+		Inhalte von Datei und Datenbank in lesbarer Form, \textua\ mit Hilfe von \glsIdxPl{Ausgabeschema} auch in Formelschreibweise.
 		Die Ausgabe kann auch in eine Datei erfolgen,
-		\textzB im \LaTeX-Format.
+		\textzB\ im \LaTeX-Format.
 	\end{description}
 	%
 	\item[(a)]\label{dat:extInternet}
@@ -612,7 +613,7 @@ Die Datenflüsse (a) bis (e) erfolgen außerhalb von \ASBA
 und werden nicht weiter behandelt.
 
 Die Datenbank und die Datei enthalten im Prinzip die gleichen Daten, wobei sie in der Datei im Textformat in lesbarer Form und in der Datenbank in einem internen Format vorliegen.
-Zudem enthält die Datenbank \textiAlg sehr viel mehr Daten. Es handelt sich dabei jeweils um die folgenden Daten:
+Zudem enthält die Datenbank \textiAlg\ sehr viel mehr Daten. Es handelt sich dabei jeweils um die folgenden Daten:
 \begin{description}
 	%
 	\item[\glsIdxPl{Axiom}]         \label{Daten:Axiom}
@@ -624,21 +625,21 @@ Zudem enthält die Datenbank \textiAlg sehr viel mehr Daten. Es handelt sich dab
 	Letztere können \glsIdxPl{Axiom} und andere Sätze sein, auf die dann verwiesen wird.
 	%
 	\item[\glsIdxPl{Beweis}]        \label{Daten:Beweis}
-	Ein \glsIdx{Beweis} besteht aus einer Folge von \glsIdxBg{Beweisschritt}{Beweisschritten}, die aus gegebenen Voraussetzungen eine Behauptung ableitet.
+	Ein \glsIdx{Beweis} besteht aus einer Folge von Beweisschritten, die aus gegebenen Voraussetzungen eine Behauptung ableitet.
 	%
 	\item[\glsIdxPl{Fachbegriff}]   \label{Daten:Fachbegriff}
-	Ein \glsIdx{Fachbegriff} ist ein Name für ein \glsIdx{Praedikat} in einem bestimmten \glsIdx{Fachgebiet}.
+	Ein \glsIdx{Fachbegriff} ist ein Name für ein Objekt \textbzw\ eine Eigenschaft in einem bestimmten \glsIdx{Fachgebiet}.
 	%
 	\item[\glsIdxPl{Fachgebiet}]    \label{Daten:Fachgebiet}
 	Ein Fachgebiet ist ein Teil der Mathematik mit einer zugehörigen Basis von \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Ausgabeschema}, quasi eine untergeordnete Datenbank.
 	%
 	\item[\glsIdxPl{Ausgabeschema}] \label{Daten:Ausgabeschema}
 	Eine Beschreibung, wie ein bestimmtes mathematisches Objekt ausgegeben werden soll.
-	Dies kann \textzB ein Stück \LaTeX-Code mit entsprechenden Parametern sein.
+	Dies kann \textzB\ ein Stück \LaTeX-Code mit entsprechenden Parametern sein.
 	%
 	\item[Auswertungen]             \label{Daten:Auswertung}
-	Statistische und andere Auswertungen, die bestimmten Elementen der Datei \textbzw Datenbank zugeordnet sind.
-	\textZB können zu einem \glsIdx{Satz} alle für einen Beweis notwendigen \glsIdxPl{Axiom} angegeben werden -- als Verweise.
+	Statistische und andere Auswertungen, die bestimmten Elementen der Datei \textbzw\ Datenbank zugeordnet sind.
+	\textZB\ können zu einem \glsIdx{Satz} alle für einen Beweis notwendigen \glsIdxPl{Axiom} angegeben werden -- als Verweise.
 	%
 \end{description}
 Die Daten können interne und externe Verweise enthalten.
@@ -652,7 +653,7 @@ Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehe
 \paragraph{Die logischen Darstellung von mathematischen Aussagen,} wozu auch Axiome und Sätze gehören, erfolgt, da es sich immer um Formeln handelt, an besten mit Zeichenketten.\footnote{%
 	Die interne Darstellung der Zeichenketten kann zur Optimierung des Programms von der logischen abweichen.%
 }
-Mehrdimensionale Formeln, wie \textzB Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenketten dargestellt werden.
+Mehrdimensionale Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenketten dargestellt werden.
 Beweise sind letztendlich nichts anderes, als erlaubte Transformationen dieser Zeichenketten.
 
 \paragraph{Zeichen oder Buchstaben,} aus denen diese Zeichenketten bestehen dürfen, müssen definiert werden.
