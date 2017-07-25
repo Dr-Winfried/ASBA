@@ -316,8 +316,11 @@
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
 \newcommand*{\sectionname}{Abschnitt}
+\newcommand*{\sectionnames}{Abschnitte}
 \newcommand*{\subsectionname}{Unterabschnitt}
+\newcommand*{\subsectionnames}{Unterabschnitte}
 \newcommand*{\subsubsectionname}{Paragraph}
+\newcommand*{\subsubsectionnames}{Paragraphen}
 
 \newcommand*{\vreffig}       [1]{\figurename~\vref       {#1}}
 \newcommand*{\vreftab}       [1]{\tablename~\vref        {#1}}
@@ -411,7 +414,7 @@
 \newcommand*{\Sym}[1]{#1\sym{$#1$}}% Symbol - Nur im Mathematikmodus verwenden!
 
 % Glossareinträge ==============================================================
-\GlsSetQuote{+}% wegen Gebrauch von ngerman; see glossaries guide for beginners
+%%%\GlsSetQuote{+}% wegen von ngerman; see glossaries guide for beginners
 \makeglossaries
 \setacronymstyle{long-sc-short}
 

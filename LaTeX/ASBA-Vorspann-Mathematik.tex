@@ -36,17 +36,15 @@
 % Metasprachliche Symbole ######################################################
 
 \newcommand*{\und}{\mid}%                           Und-Symbol für Schlussregeln
-\newcommand*{\metaund}{\&}%                         Und-Symbol für Texte
-\newcommand*{\metaoder}{||}%                       Oder-Symbol für Texte
 % Nur im Mathematikmodus!
-\DeclareMathOperator{\metaand}{\;\metaund\;}%      Und-Symbol  für Formeln
-\DeclareMathOperator{\metaor}{\;\metaoder\;}%      Oder-Symbol für Formeln
+\DeclareMathOperator{\metaand}{\&}%                Und-Symbol  für Formeln
+\DeclareMathOperator{\metaor}{||}%                 Oder-Symbol für Formeln
 \DeclareMathOperator{\metaimp}{\Rightarrow}%       aus ... folgt ...
 \DeclareMathOperator{\metarep}{\Leftarrow}%        ... folgt aus ...
 \DeclareMathOperator{\metaequiv}{\Leftrightarrow}% ... genau dann wenn ...
-\DeclareMathOperator{\metadefeq}{:\Leftrightarrow}%... definitionsgemäß -"- ...
+\DeclareMathOperator{\metadefeq}{:\!\Leftrightarrow}%... definitionsgemäß -"- ...
 \DeclareMathOperator{\eq}{=}%                      ... gleich ...
-\DeclareMathOperator{\defeq}{:=}%                  ... definitionsgemäß -"- ...
+\DeclareMathOperator{\defeq}{:\!=}%                  ... definitionsgemäß -"- ...
 
 % Mathematische Symbole ########################################################
 
@@ -247,7 +245,7 @@
 	}
 }
 \newglossaryentry{metaand}{
-	name={$ \metaund$},
+	name={$ \metaand$},
 	plural={\metaand},% im Mathematikmodus
 	description={%
 		Ein \glsIdx{MetaoperatorV}: ... und ...
@@ -276,7 +274,7 @@
 	}
 }
 \newglossaryentry{metaor}{
-	name={$ \metaoder$},
+	name={$ \metaor$},
 	plural={\metaor},% im Mathematikmodus
 	description={%
 		Ein \glsIdx{MetaoperatorV}: ... oder ..%
