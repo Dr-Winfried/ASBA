@@ -105,39 +105,43 @@ Dies wird mit den folgenden Definitionen erreicht:
 	& A \glsSym{metaor}    B & \text{steht für }
 	& \text{\strqt{$A$ \emph{oder} $B$}.}
 	\\
-	& A \Sym{\und}         B & \text{steht für }
+	& A \glsSym{srand}     B & \text{steht für }
 	& \text{\strqt{$A$ \emph{und}  $B$}.}
 	\formulatoleft
 \end{align}
 %
-Insbesondere bei den Schlussregeln\vrefnotesec{sec:Schlussregeln} ist es üblich, \symqt{$\und$} statt \symqt{$\metaand$} (bei schwächerer Priorität\vrefnotetab{tab:Prio-Aussagenlogik}) zu verwenden.
+Insbesondere bei den Schlussregeln\vrefnotesec{sec:Schlussregeln} ist es üblich, \symqt{$\srand$} statt \symqt{$\metaand$} (bei niedrigerer Priorität\vrefnotetab{tab:Prio-Aussagenlogik}) zu verwenden.
 %
 Offensichtlich sind das alles ebenfalls \glsIdxPl{MetaausdruckV}, jetzt aber teilweise formalisiert.
 (c) lässt sich dann ausdrücken als \strqt{\strqt{Ich habe ein rotes Auto} $\metaand$ \strqt{das kann 200\,km/h schnell fahren.}}.
 
-Um Verwechslungen mit den logischen Symbolen zu vermeiden, werden für \strqt{und} und \strqt{oder} die Symbole \symqt{$\metaand$} und \symqt{$\metaor$} verwendet.
-$A$ und $B$ können als Operanden von \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$} und \symqt{$\und$} ohne Bedeutungsveränderung vertauscht werden.
-Wird in einer Formel nur einer der Operatoren \symqt{$\metaand$}, \symqt{$\metaor$} oder \symqt{$\und$} verwendet, können die Operanden beliebig permutiert werden, so dass dann auch eine Klammerung überflüssig ist.
+Um Verwechslungen mit den logischen Symbolen%
+\footnote{%
+	Symbole und die dadurch repräsentierten Objekte werden hier normalerweise nicht unterschieden, sofern aus dem Zusammenhang ersichtlich ist, was gemeint ist.%
+}
+zu vermeiden, werden für \strqt{und} und \strqt{oder} die Symbole \symqt{$\metaand$} und \symqt{$\metaor$} verwendet.
+$A$ und $B$ können als Operanden von \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$} und \symqt{$\srand$} ohne Bedeutungsveränderung vertauscht werden.
+Wird in einer Formel nur einer der Operatoren \symqt{$\metaand$}, \symqt{$\metaor$} oder \symqt{$\srand$} verwendet, können die Operanden beliebig permutiert werden, so dass dann auch eine Klammerung überflüssig ist.
 \forqt{$A \metarep B$} ist nur eine andere Schreibweise für \forqt{$B \metaimp A$}.
 -- Ein Symbol für \strqt{nicht} wird hier nicht gebraucht.
 
 \GlsIdxPl{MetaausdruckV} können auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
-\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$} und \symqt{$\und$} heißen \emph{\glsIdxPl{MetaoperatorV}}.
+\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$} und \symqt{$\srand$} heißen \emph{\glsIdxPl{MetaoperatorV}}.
 Ihre Prioritäten werden \vrefinsub{sub:Klammerregeln} zusammen mit anderen Operatoren definiert.
 
 Sollen zwei \glsIdxPl{MetaausdruckV} miteinander verglichen werden, muss klar sein auf welche Art; ob \textzB\ als Zeichenfolgen -- mit oder ohne Wertung der Zwischenräume --, als \glsIdxPl{Wahrheitswert} oder auf sonstige Art.
 Wenn die Art des Vergleichs implizit oder explizit klar ist und sich die beiden Ausdrücke auf diese Art vergleichen lassen, heißen sie \emph{\glsIdx{vergleichbar}}.
 
-\subsection{Mit Gleichheit verwandte Operatoren}% ------------------------------
+\subsection{Mit Gleichheit verwandte Relationen}% ------------------------------
 \label{sub:Gleichheit}
 
 \subsubsection{Allgemeine Voraussetzungen}
 \label{subsub:Voraussetzungen}
 
-In diesem und allen weiteren \sectionnames wird vorausgesetzt:
+In diesem und allen weiteren \sectionnames\ wird vorausgesetzt:
 \begin{itemize}
 	%
-	\item Wenn mehrere der im Folgenden definierten Operatoren \symqt{$\metadefeq$}, \symqt{$\defeq$}, \symqt{$=$}, \symqt{$\ne$} und \symqt{$\equiv$} verwendet werden, dann im selben Zusammenhang%
+	\item Wenn mehrere der im Folgenden definierten Symbole \symqt{$\metadefeq$}, \symqt{$\defeq$}, \symqt{$=$}, \symqt{$\ne$} und \symqt{$\equiv$} verwendet werden, dann im selben Zusammenhang%
 	\footnote{%
 		Statt von einem \emph{Zusammenhang} könnte man auch von einer \emph{Umgebung} sprechen.
 		Diese Bezeichnung ist aber auch ein verbreiteter Fachbegriff, so dass auf seine Verwendung verzichtet wird.
@@ -146,15 +150,20 @@ In diesem und allen weiteren \sectionnames wird vorausgesetzt:
 	%
 	\item Wenn \symqt{$=$} und \symqt{$\equiv$} beide verwendet werden, müssen ihre jeweiligen \emph{\glsIdxPl{intEigenschaftA}} für \symqt{$=$} und \symqt{$\equiv$} bekannt sein.
 	Dies wird immer vorausgesetzt und außerdem, dass jede \glsIdx{intEigenschaftA} für \symqt{$\equiv$} auch eine für \symqt{$=$} ist.
+	Daraus folgt insbesondere, dass mit $(A \eq B)$ auch $(A \equiv B) $ gilt.
 	%
 	\item Bei Verwendung von \symqt{$=$} und \symqt{$\equiv$} müssen die jeweiligen Operanden \glsIdx{vergleichbar} sein. Dies wird immer vorausgesetzt.
 	%
 \end{itemize}
 
-\subsubsection{Definition von mit Gleichheit verwandten Operatoren}% - - - - - -
+\subsubsection{Definition von mit Gleichheit verwandten Relationen}% - - - - - -
 \label{subsub:DefinitionGleichheit}
 
-Unter den Voraussetzungen \vrefvonsubsub{subsub:Voraussetzungen} werden die folgenden (metasprachlichen) Operatoren definiert:
+Unter den Voraussetzungen \vrefvonsubsub{subsub:Voraussetzungen} werden die folgenden (metasprachlichen) Symbole%
+\footnote{%
+	Die Bezeichnung \strqt{Operator} passt nicht mehr, da die Symbole \symqt{$\eq$}, \symqt{$\neq$}, \symqt{$\equiv$} und \symqt{$\nequiv$} \emph{Relationen} repräsentieren. \sym{$\metadefeq$} und \sym{$\defeq$} hingegen repräsentieren (zusammen mit den Operanden) Definitionen.
+}
+definiert:
 \begin{description}
 	%
 	\item[$\glsSym{eq}$~~\emph{\Idx{Gleichheit}}]\label{def:Gleichheit}
@@ -172,8 +181,8 @@ Unter den Voraussetzungen \vrefvonsubsub{subsub:Voraussetzungen} werden die folg
 	\forqt{$A \equiv B$} heißt, dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA} für \symqt{$\equiv$} nicht unterscheiden.
 	-- \strqt{$A$ ist \emph{das gleiche} wie $B$} oder \strqt{$A$ ist \emph{so wie} $B$}.
 	%
-	\item[$\glsSym{notequiv}$~~\emph{\Idx{Kontravalenz}}]\label{def:Kontravalenz}
-	\forqt{$A \notequiv B$} heißt, dass $A$ und $B$ sich in mindestens einer der \glsIdxPl{intEigenschaftA} für \symqt{$\notequiv$} unterscheiden.
+	\item[$\glsSym{nequiv}$~~\emph{\Idx{Kontravalenz}}]\label{def:Kontravalenz}
+	\forqt{$A \nequiv B$} heißt, dass $A$ und $B$ sich in mindestens einer der \glsIdxPl{intEigenschaftA} für \symqt{$\nequiv$} unterscheiden.
 	-- \strqt{$A$ ist \emph{nicht das gleiche} wie $B$} oder \strqt{$A$ ist \emph{nicht so wie} $B$}.
 	%
 	\item[$\glsSym{metadefeq}$~\emph{\Idx{Metadefinition}}]\label{def:Metadefinition}
@@ -200,25 +209,37 @@ Unter den Voraussetzungen \vrefvonsubsub{subsub:Voraussetzungen} werden die folg
 %
 Es sei noch
 \[
-	\label{eq:asM} \glsSym{asM} \quad \defeq \quad \{\; \metaimp \,,\; \metarep \,,\; \metaequiv \,,\; \metaand \,,\; \metaor \,,\; \und \,,\; \eq \,,\; \ne \,,\; \equiv \,,\; \notequiv \,,\; \metadefeq \,,\; \defeq \; \}
+	\label{eq:asM} \glsSym{asM} \quad \defeq \quad \{ \text{\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$}, \symqt{$\srand$}, \symqt{$\eq$}, \symqt{$\ne$}, \symqt{$\equiv$}, \symqt{$\nequiv$}, \symqt{$\metadefeq$}, \symqt{$\defeq$}} \}
 \]
-die Menge der \glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren} und der mit Gleichheit verwandten Symbole.
+die Menge der metasprachlichen Symbole.
 Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab:Prio-Metasprache} angegeben.
-%
+
 \begin{table}[!htb]
 	\setlength\extrarowheight{1.5pt}
 	\begin{center}
 		\begin{threeparttable}
-			\begin{tabularx}{11.4cm}{|@{~~}l|@{\extracolsep{\fill}}l|}
+			\begin{tabularx}{12cm}{|@{~~}l|@{\extracolsep{\fill}}l|}
 				\hline
 				Klammern
 				& $ ( \quad ) $ \\
 				\hline
-				\parbox[][1.5cm][c]{8.0cm}{%
-					Mit Gleichheit verwandte Symbole;\newline
-					\small ihre Prioritäten untereinander sind nicht eindeutig und bleiben daher undefiniert.%
+				Üblicherweise Binäre Operatoren, \textzB
+				& $ \opbsp $ \\
+				\hline
+				\parbox[][1.9cm][c]{8.0cm}{%
+					Mit Gleichheit verwandte Relationen\newline
+					und üblicherweise auch binäre Relationen;\newline
+					\small ihre Prioritäten untereinander sind nicht immer eindeutig und bleiben daher undefiniert.%
 				}
-				& $ \eq \quad \ne \quad \equiv  \quad \notequiv $ \\
+				&
+				\parbox[][1.8cm][c]{3.0cm}{
+					\begin{center}
+						$ \lrelbsp \quad \rrelbsp \quad \lreleqbsp \quad \rreleqbsp $ \\
+						$ \relbsp \quad \releqbsp \quad \relnbsp $ \\
+						$ \eq \quad \ne \quad \equiv \quad \nequiv $
+					\end{center}
+				}
+				\\
 				\hline
 				Definition
 				& $ \defeq $ \\
@@ -228,7 +249,7 @@ Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab:Prio-Metas
 				\GlsIdxPl{MetaoperatorV}\tnote{2}
 				& $ \metarep \quad \metaimp      $ \\
 				& $ \metaequiv                   $ \\
-				& $ \und                         $ \\
+				& $ \srand                       $ \\
 				\hline
 				Metadefinition & $ \metadefeq $ \\
 				\hline
@@ -264,29 +285,53 @@ Wenn die Ausdrücke in (b) als Zeichenfolgen verglichen werden, ist (b) dann ric
 Wenn er aber zählt, ist (b) falsch.
 
 Im Zusammenhang mit binären Relationen werden noch einige Verabredungen getroffen.
-Dazu seien \symqt{$\glsSym{relbsp}$}, \symqt{$\glsSym{releqbsp}$}, \symqt{$\glsSym{lrelbsp}$}, \symqt{$\glsSym{rrelbsp}$}, \symqt{$\glsSym{lreleqbsp}$} und \symqt{$\glsSym{rreleqbsp}$} Beispielsymbole für Relationen und \symqt{$\glsSym{eq}$} und \symqt{$\glsSym{ne}$} die Symbole für Gleichheit und Ungleichheit.
-Wenn dann nichts anderes gesagt wird gelte stets:
+Dazu seien \symqt{$\glsSym{lrelbsp}$}, \symqt{$\glsSym{rrelbsp}$}, \symqt{$\glsSym{lreleqbsp}$},\symqt{$\glsSym{rreleqbsp}$}, \symqt{$\glsSym{relbsp}$}, \symqt{$\glsSym{releqbsp}$} und \symqt{$\glsSym{relnbsp}$} Beispielsymbole für Relationen.
+Wenn dann nichts anderes gesagt wird, gelte stets:
 \begin{align}
-	& ((A \relbsp   B) \metaor (A = B)) & \metaequiv &&& (A \releqbsp  B)
-	\label{eq:coreleq}   \\
-	& (A \lrelbsp   B)                  & \metaequiv &&& (B \rrelbsp   A)
-	\label{eq:colrrel}   \\
-	& (A \lreleqbsp B)                  & \metaequiv &&& (B \rreleqbsp A)
-	\label{eq:colrreleq} \formulatoleft
+	& (A \lrelbsp   B)                   & \metaequiv & \quad (B \rrelbsp   A)
+	\label{eq:lrrelbsp}   \\
+	& (A \lreleqbsp B)                   & \metaequiv & \quad (B \rreleqbsp A)
+	\label{eq:lrreleqbsp} \\
+	&  (A \relnbsp  B)                   & \metaequiv & \quad (A \relbsp    B)
+	\text{ gilt nicht}
+	\label{eq:relnbsp}    \\
+	& ((A \relbsp   B) \metaorr (A = B)) & \metaimp   & \quad (A \releqbsp  B)
+	\label{eq:releqbsp}   \formulatoleft\formulatoleft\formulatoleft
 \end{align}
+%TODO Beispiel erweitern. Gilt wirklich (2.3) => (2.2)?
 %
-Mit der Definition einer Relation der einen Seite ist damit automatisch auch die der anderen Seite erfolgt, mit der Ausnahme, dass man \forqt{$A \relbsp B$} so nicht mit Hilfe von \forqt{$A \releqbsp B$} definieren kann.
+Mit der Definition einer Relation der einen Seite ist damit automatisch auch die der anderen Seite erfolgt, mit der Ausnahme, dass man in \eqref{eq:releqbsp} zwar die rechte durch die linke Seite definieren kann, aber nicht umgekehrt.
+Insbesondere kann man \symqt{$\relbsp$} nicht mit \symqt{$\releqbsp$} definieren.
 Dies könnte man zwar mit Hilfe des Ansatzes
 \begin{align}
-	& (A \relbsp B) &\formulaspace \metaequiv &&&
-	(A \releqbsp B) \metaand (A \ne B) \label{eq:corel} \formulatoleft
+	& (A \relbsp' B) && \metadefeq & (A \releqbsp B) \metaand (A \ne B)
+	\label{eq:relbsp} \formulatoleft\formulatoleft\formulatoleft
 \end{align}
-versuchen, aber die so definierte Relation \symqt{$\relbsp$} kann, muss aber nicht, mit der in \eqref{eq:coreleq} übereinstimmen.
-Allerdings lässt sich \eqref{eq:coreleq} aus \eqref{eq:corel} ableiten und wenn \forqt{$(A = B) \metaimp (A \releqbsp B)$} gilt, auch \eqref{eq:corel} aus \eqref{eq:coreleq}.
+versuchen, aber die so definierte Relation \symqt{$\relbsp'$} kann, muss aber nicht, mit \symqt{$\relbsp$} in \eqref{eq:releqbsp} übereinstimmen, wie das Beispiel \vrefintab{tab:Gegenbeispiel} zeigt.
+Allerdings lässt sich \eqref{eq:releqbsp} aus \eqref{eq:relbsp} ableiten.
 -- Auf einen Beweis wird hier verzichtet.
 
-Es sei noch angemerkt, dass wegen \eqref{eq:corel} die Definition von \symqt{$\metarep$} \vrefinsub{sub:Metaausdruck} überflüssig ist und wegen der Klammerregeln (\vrefseesub{sub:Klammerregeln}) auch alle Klammern in diesem \sectionname.
-Die Prioritäten der Operatoren \symqt{$\lrelbsp$}, \symqt{$\rrelbsp$}, \symqt{$\lreleqbsp$} und \symqt{$\rreleqbsp$} unterscheiden sich normalerweise nicht; ebenso wenig die der Operatoren \symqt{$\relbsp$} und \symqt{$\releqbsp$}, die aber durchaus verschieden von den Prioritäten von \symqt{$=$} und \symqt{$\ne$} sein können.
+\begin{table}[!htb]
+	\setlength\extrarowheight{1.5pt}
+	\begin{center}
+		\begin{tabularx}{8.4cm}{|c|cccccc|}
+			\hline                $   \releqbsp   $
+			& $ a \releqbsp a $ & $ a \releqbsp b $ & $ a \releqbsp c $
+			& $ b \releqbsp b $ & $ b \releqbsp c $ & $ c \releqbsp c $
+			\\                    $   \relbsp     $
+			&                   & $ a \relbsp   b $ &
+			& $ b \relbsp   b $ & $ b \relbsp   c $ &
+			\\                    $   \relbsp'    $
+			&                   & $ a \relbsp'  b $ & $ a \relbsp'  c $
+			&                   & $ b \relbsp'  c $ &
+			\\ \hline
+		\end{tabularx}
+		\caption{Unterschiedliche Relationen \symqt{$\relbsp$} und  \symqt{$\relbsp'$}}
+		\label{tab:Gegenbeispiel}% Erst nach '\caption'!
+	\end{center}
+\end{table}
+
+Es sei noch angemerkt, dass wegen \eqref{eq:lrrelbsp} die Definition von \symqt{$\metarep$} \vrefinsub{sub:Metaausdruck} überflüssig ist und wegen der \vrefintab{tab:Prio-Metasprache} auch alle Klammern in diesem \sectionname.
 
 Als Beispielsymbol für binäre Operatoren wird \symqt{$\opbsp$} verwendet.
 Mit \symqt{$\opbsp$} zusammenhängende Verabredungen werden hier nicht getroffen.
@@ -301,10 +346,10 @@ Ein Beweis in \ASBA\ besteht aus $n$ \glsIdxBg{formalesElementV}{formalen Elemen
 
 Die zu beweisende Aussage (\textzB\ ein mathematischer Satz) kann dann auch folgendermaßen formuliert werden:%
 \footnote{%
-	\symqt{$\und$} steht für \strqt{und}, bindet aber wesentlich schwächer als \symqt{\glsIdx{metaand}}. (\vrefseesub{sub:Metaausdruck})
+	\symqt{$\srand$} steht für \strqt{und}, bindet aber wesentlich schwächer als \symqt{\glsIdx{metaand}}. (\vrefseesub{sub:Metaausdruck})
 }
 \[
-\frac{V_1 \und V_2 \und ... \und V_n}{F_1 \und F_2 \und ... \und F_m}
+\frac{V_1 \srand V_2 \srand ... \srand V_n}{F_1 \srand F_2 \srand ... \srand F_m}
 \qquad \text{(\glsIdx{formalerSatzV})}
 \tag{\tagFS} \sym{\gls{FS}} \label{def:formalerSatz}
 \]
@@ -357,8 +402,8 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%\end{align}
 %%%%
 %%%Eine \emph{\glsIdx{zulaessigeTransformationA}} ist die Anwendung einer \emph{\glsIdx{Substitution}}{\vrefnotesub{sub:Indentitaetsregeln} (siehe unten), einer \emph{\glsIdx{Basisregel}} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
-%%%Bei den Schlussregeln und der Substitution ($\subst$) soll das Komma stärker binden als \symqt{$\derive$}, \symqt{$\subst$} und \symqt{$\und$}, wobei
-%%%\symqt{$\und$} für \strqt{und} \textbzgl\ \symqt{\glsIdx{metaand}}\vrefnotesub{sub:Metaausdruck} steht und schwächer bindet als \symqt{$\derive$} und \symqt{$\subst$}.%
+%%%Bei den Schlussregeln und der Substitution ($\subst$) soll das Komma stärker binden als \symqt{$\derive$}, \symqt{$\subst$} und \symqt{$\srand$}, wobei
+%%%\symqt{$\srand$} für \strqt{und} \textbzgl\ \symqt{\glsIdx{metaand}}\vrefnotesub{sub:Metaausdruck} steht und schwächer bindet als \symqt{$\derive$} und \symqt{$\subst$}.%
 %%%\footnote{siehe Fußnote~3 \vrefvontab{tab:Prio-Aussagenlogik}}
 %%%
 %%%Zur der Auswahl der \glsIdxPl{Basisregel}, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
@@ -385,7 +430,7 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%	& & (\text{Einführung/Beseitigung der Negation Teil 1})
 %%%	\tag{\tagnota} \sym{\gls{nota}} \label{def:nota}
 %%%	\\\\
-%%%	& \frac{X,\alpha\derive\beta \und X,\lnot\alpha\derive\beta}{X\derive\beta}
+%%%	& \frac{X,\alpha\derive\beta \srand X,\lnot\alpha\derive\beta}{X\derive\beta}
 %%%	& & (\text{Einführung/Beseitigung der Negation Teil 2})
 %%%	\tag{\tagnotb} \sym{\gls{notb}} \label{def:notb}
 %%%	\\\\
@@ -464,7 +509,7 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%	& & (\text{Einführung der Identität})
 %%%	\tag{\tageqE} \sym{\gls{eqE}} \label{def:eqE}
 %%%	\\\\
-%%%	& \frac{\alpha\eq\beta \und \gamma}{\gamma(\alpha\subst\beta)}
+%%%	& \frac{\alpha\eq\beta \srand \gamma}{\gamma(\alpha\subst\beta)}
 %%%	& & (\text{Beseitigung der Identität})
 %%%	\tag{\tageqB} \sym{\gls{eqB}} \label{def:eqB}
 %%%	\formulatoleft
@@ -501,11 +546,11 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%	& & (\text{Beseitigung der Implikation})
 %%%	\tag{\tagimpB} \sym{\gls{impB}} \label{def:impB}
 %%%	\\\\
-%%%	& \frac{X\derive\alpha \und X,\alpha\derive\beta}{X\derive\beta}
+%%%	& \frac{X\derive\alpha \srand X,\alpha\derive\beta}{X\derive\beta}
 %%%	& & (\text{\glsIdx{Schnittregel}})
 %%%	\tag{\tagSR} \sym{\gls{SR}} \label{def:SR}
 %%%	\\\\
-%%%	& \frac{X\derive\alpha \und \alpha\limp\beta}{X\derive\beta}
+%%%	& \frac{X\derive\alpha \srand \alpha\limp\beta}{X\derive\beta}
 %%%	& & (\text{\glsIdx{Abtrennungsregel}--\emph{Modus ponens}})
 %%%	\tag{\tagTR} \sym{\gls{TR}} \label{def:TR}
 %%%	\formulatoleft
@@ -564,7 +609,7 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%	D_i & \defeq \text{die Indizes der $A_j$, von denen $A_i$ abhängig ist.}
 %%%\end{align}
 %%%Bis zur Zeile $i$ hat man die folgende Schlussregel bewiesen:
-%%%\[ \frac{A_{i_1} \und A_{i_2} ...}{A_i} \quad \text{, für alle } i_j \in D_i \]
+%%%\[ \frac{A_{i_1} \srand A_{i_2} ...}{A_i} \quad \text{, für alle } i_j \in D_i \]
 %%%Sei nun
 %%%\[
 %%%	\Gamma_i \defeq
@@ -584,8 +629,8 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%	\footnote{%
 %%%		siehe Definition~\eqref{def:Substitutionen} \vrefvonsub{sub:Indentitaetsregeln}%
 %%%	}.
-%%%	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \und A_{z_2} \und ...}{A_i}$ (alle $z_j \in Z_i$).
-%%%	\item Wenn $A_i$ nicht leer ist, ist bis jetzt die Schlussregel $\dfrac{A_{d_1} \und A_{d_2} \und ...}{A_i}$ (alle $d_j \in D_i$) schon bewiesen.
+%%%	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \srand A_{z_2} \srand ...}{A_i}$ (alle $z_j \in Z_i$).
+%%%	\item Wenn $A_i$ nicht leer ist, ist bis jetzt die Schlussregel $\dfrac{A_{d_1} \srand A_{d_2} \srand ...}{A_i}$ (alle $d_j \in D_i$) schon bewiesen.
 %%%\end{itemize}
 %%%$S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 %%%
@@ -630,15 +675,15 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%		\\\hline
 %%%		10 & 9 & $X \subst X, \lnot\alpha$ & $\dfrac{X,\lnot\alpha \derive \alpha, \lnot\alpha}{X,\lnot\alpha \derive \beta}$ & 5, 8 & $X,\lnot\alpha \derive \beta$ & 1
 %%%		\\\hline
-%%%		11 & \tagnotb & & $\dfrac{X,\alpha \derive \beta \und X,\lnot\alpha \derive \beta}{X \derive \beta}$ & 2, 10 & 3 & 1, 2
+%%%		11 & \tagnotb & & $\dfrac{X,\alpha \derive \beta \srand X,\lnot\alpha \derive \beta}{X \derive \beta}$ & 2, 10 & 3 & 1, 2
 %%%		\\\hline\hline
-%%%		12 & \centerParbox{1.4cm}{\tagAR, \tagMR, \tagnota, \tagnotb} & & $\dfrac{A_1 \und A_2}{A_3}$ & & $\dfrac{X \derive \alpha \und X, \alpha \derive \beta}{X \derive \beta}$ &
+%%%		12 & \centerParbox{1.4cm}{\tagAR, \tagMR, \tagnota, \tagnotb} & & $\dfrac{A_1 \srand A_2}{A_3}$ & & $\dfrac{X \derive \alpha \srand X, \alpha \derive \beta}{X \derive \beta}$ &
 %%%		\\\hline
 %%%	\end{tabular}
 %%%	\caption{Ableitung der \glsIdx{Schnittregel} aus den \glsIdxPl{Basisregel}}
 %%%	\label{tab:AbleitungSchnittregel}
 %%%\end{table}
-%%%%
+%%%
 %%%Die Erzeugung einer Tabelle analog zu~\vref{tab:AbleitungSchnittregel} wird im folgenden beschrieben.
 %%%Zellen, für die kein Inhalt angegeben wird, bleiben leer.
 %%%Rückwärts-Referenzen auf schon ausgefüllte Zellinhalte sind jederzeit möglich.
@@ -712,7 +757,7 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%		%
 %%%		\item $(\overline{R}_n) =$ Die bewiesene Behauptung als Schlussregeln, wobei alle $A_i$, die Voraussetzungen sind, als Voraussetzung und alle $A_j$, die Folgerungen sind, als Folgerung eingesetzt werden, jeweils in der Form \strqt{$A_i$} \textbzgl\ \strqt{$A_j$}.
 %%%		Das ergibt dann:
-%%%		\[ \frac{A_{i_1} \und A_{i_2} \und ...}{A_{j_1} \und A_{j_2} \und ...} \]
+%%%		\[ \frac{A_{i_1} \srand A_{i_2} \srand ...}{A_{j_1} \srand A_{j_2} \srand ...} \]
 %%%		%
 %%%		\item $(A_n) =$ $\overline{R}_i$, wobei die Voraussetzungen und Folgerungen aufgelöst werden.
 %%%		%
@@ -754,27 +799,27 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%		\\\hline
 %%%		6 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha\limp\beta}{\alpha \derive \beta}$ & 2 & $\alpha \derive \beta $ & 2
 %%%		\\\hline
-%%%		7 & \tagSR & & $\dfrac{X \derive \alpha \und X,\alpha \derive \beta}{X \derive \beta}$ & & &
+%%%		7 & \tagSR & & $\dfrac{X \derive \alpha \srand X,\alpha \derive \beta}{X \derive \beta}$ & & &
 %%%		\\\hline
-%%%		8 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \und \alpha \derive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
+%%%		8 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \alpha \derive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
 %%%		\\\hline
 %%%		9' & \tagandE & & $\dfrac{X \derive \alpha, \beta}{X \derive \alpha \land \beta}$ & & &
 %%%		\\\hline
-%%%		10' & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \und \beta}{\alpha \land \beta}$ & & &
+%%%		10' & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \beta}{\alpha \land \beta}$ & & &
 %%%		\\\hline
 %%%		11' & -1 &\SnCell{
 %%%			$\alpha \swap \beta$\\
 %%%			$\alpha \subst \lnot\beta$
-%%%		}  & $\dfrac{\beta \und \lnot\beta}{\beta \land \lnot\beta}$ & 8, 3 & $\beta \land \lnot\beta$ &
+%%%		}  & $\dfrac{\beta \srand \lnot\beta}{\beta \land \lnot\beta}$ & 8, 3 & $\beta \land \lnot\beta$ &
 %%%		\\\hline
 %%%		9 & \tagnota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
 %%%		\\\hline
-%%%		10 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \und \lnot\alpha}{\beta}$ & & &
+%%%		10 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \lnot\alpha}{\beta}$ & & &
 %%%		\\\hline
 %%%		11 & -1 & \SnCell{
 %%%			$\alpha \swap \beta$\\
 %%%			$\alpha \subst \lnot\alpha$
-%%%		} & $\dfrac{\beta \und \lnot\beta}{\lnot\alpha}$ & 8, 3 & $\lnot\alpha$ & 2, 3, 4
+%%%		} & $\dfrac{\beta \srand \lnot\beta}{\lnot\alpha}$ & 8, 3 & $\lnot\alpha$ & 2, 3, 4
 %%%		\\\hline
 %%%		12 & \tagimpE & & $\dfrac{X, \alpha \derive \beta}{X \derive \alpha\limp\beta}$ & & &
 %%%		\\\hline
@@ -801,7 +846,7 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 %%%	\caption{Ableitung der \glsIdx{Kontraposition} aus \glsIdxBg{allgemeingueltigeSchlussregelV}{allgemeingültigen Schlussregeln}}
 %%%	\label{tab:AbleitungKontraposition}
 %%%\end{table}
-%%%%
+%%%
 %%%\todo{Beispielableitung der Kontraposition vervollständigen}%%%
 %%%%TODO Beispielableitung der Kontraposition vervollständigen %%%
 
@@ -820,7 +865,7 @@ Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx
 definiert für die zweiwertige Logik Konstanten- und Operatorsymbole über die Wahrheitswerte ihrer Anwendung.
 So ergeben sich, abhängig von den Wahrheitswerten der Operanden $A$ und $B$%
 \footnote{%
-	Im Gegensatz zu \vrefsubsub{subsub:Bausteine} können A und B hier beliebige Aussagen -- auch Formeln -- sein.%
+	Im Gegensatz zu \vrefsubsub{subsub:Bausteine} können A und B hier beliebige Aussagen sein -- auch Formeln -- die jeweils genau einen von zwei möglichen Werten repräsentieren, \textzB\ \strqt{wahr} oder \strqt{falsch}.%
 },
 die in der \tablename\ angegebenen Wahrheitswerte für die Operationen.
 Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh\ für die Konstanten, die unären und die binären Operatoren ausgefüllt.
@@ -829,27 +874,32 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 %
 % ==============================================================================
 % Definitionen für die folgende Tabelle; siehe auch die Symbole im Vorspann
-% Prioritäten - jeweils Prio p* für Symbol \l* ---------------------------------
-\newcounter{prio}                                        \stepcounter{prio}
-\newcounter{pnequiv} \setcounter{pnequiv} {\value{prio}}
-\newcounter{pequiv}  \setcounter{pequiv}  {\value{prio}} \stepcounter{prio}
-\newcounter{pnrep}   \setcounter{pnrep}   {\value{prio}}
-\newcounter{prep}    \setcounter{prep}    {\value{prio}}
-\newcounter{pnimp}   \setcounter{pnimp}   {\value{prio}}
-\newcounter{pimp}    \setcounter{pimp}    {\value{prio}} \stepcounter{prio}
-%\newcounter{pnleft}  \setcounter{pnleft}  {\value{prio}}
-%\newcounter{pleft}   \setcounter{pleft}   {\value{prio}}
-%\newcounter{pnright} \setcounter{pnright} {\value{prio}}
-%\newcounter{pright}  \setcounter{pright}  {\value{prio}} \stepcounter{prio}
-\newcounter{padd}    \setcounter{padd}    {\value{prio}}
-%\newcounter{pnxor}   \setcounter{pnxor}   {\value{prio}}
-\newcounter{pxor}    \setcounter{pxor}    {\value{prio}}
-\newcounter{pnor}    \setcounter{pnor}    {\value{prio}}
-\newcounter{por}     \setcounter{por}     {\value{prio}} \stepcounter{prio}
-\newcounter{pmult}   \setcounter{pmult}   {\value{prio}}
-\newcounter{pnand}   \setcounter{pnand}   {\value{prio}}
-\newcounter{pand}    \setcounter{pand}    {\value{prio}} \stepcounter{prio}
+% Prioritäten - jeweils Zähler p* für das Symbol \l* und \thep* für den Wert.
+\newcounter{prio}    \setcounter{prio}    {1}
 \newcounter{pnot}    \setcounter{pnot}    {\value{prio}}
+\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
+\newcounter{pand}    \setcounter{pand}    {\value{prio}}
+\newcounter{pnand}   \setcounter{pnand}   {\value{prio}}
+\newcounter{pmult}   \setcounter{pmult}   {\value{prio}}
+\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
+\newcounter{por}     \setcounter{por}     {\value{prio}}
+\newcounter{pnor}    \setcounter{pnor}    {\value{prio}}
+\newcounter{pxor}    \setcounter{pxor}    {\value{prio}}
+%\newcounter{pnxor}   \setcounter{pnxor}   {\value{prio}}
+\newcounter{padd}    \setcounter{padd}    {\value{prio}}
+\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
+%\newcounter{pright}  \setcounter{pright}  {\value{prio}}
+%\newcounter{pnright} \setcounter{pnright} {\value{prio}}
+%\newcounter{pleft}   \setcounter{pleft}   {\value{prio}}
+%\newcounter{pnleft}  \setcounter{pnleft}  {\value{prio}}
+%\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
+\newcounter{pimp}    \setcounter{pimp}    {\value{prio}}
+\newcounter{pnimp}   \setcounter{pnimp}   {\value{prio}}
+\newcounter{prep}    \setcounter{prep}    {\value{prio}}
+\newcounter{pnrep}   \setcounter{pnrep}   {\value{prio}}
+\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
+\newcounter{pequiv}  \setcounter{pequiv}  {\value{prio}}
+\newcounter{pnequiv} \setcounter{pnequiv} {\value{prio}}
 % Farben
 \definecolor{cNormalUse}{rgb}{.80,.80,.80}
 \definecolor{cRareUse}{rgb}{.90,.90,.99}
@@ -877,8 +927,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 
 			\textbf{Junktor}\tnote{1}&\textbf{0}&\multicolumn{2}{c:}{%
 				\textbf{1}}&\multicolumn{4}{c|}{\textbf{2}}& \textbf{%
-				Name}&\textbf{Sprechweise}\tnote{2}&\textbf{Prio}\\%Kein Fehler!
-
+				Name}&\textbf{Sprechweise}\tnote{2}&\textbf{Prio}\tnote{3} \\%Kein Fehler!
 			\hline\hline% == Konstante =====================================
 
 			\rowcolor{cRareUse}
@@ -903,7 +952,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 
 			$\Sym{(\dots)}$
 			& - & \texttrue  & \textfalse & - & - & - & -
-			& Klammerung\tnote{3} & A ist geklammert & 6\tnote{4}        \\
+			& Klammerung          & A ist geklammert & -\tnote{4} \\
 
 			\tableline%.................................................
 
@@ -1068,17 +1117,17 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 
 			\item[1] \emph{Operatorsymbole}.
 			Sie stehen meistens für die Operatoren selbst.
-			Der Einfachheit halber werden auch die beiden Konstanten $\ltrue$ und $\lfalse$ als Junktoren \textbzgl\ Operatoren bezeichnet.
+			Der Einfachheit halber werden auch die beiden Konstanten \symqt{$\ltrue$} und \symqt{$\lfalse$} als Junktoren \textbzw\ Operatoren bezeichnet.
 
 			Die Operatoren \symqt{$\subset$}, \symqt{$\supset$}, \symqt{$\nsubset$} und \symqt{$\nsupset$} haben hier nicht die Bedeutung der entsprechenden Operatoren der Mengenlehre und dürfen nicht damit verwechselt werden; entsprechendes gilt für \symqt{$+$} und \symqt{$\cdot$} mit Addition und Multiplikation.
 
 			\item[2] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle binären Operationen aufzuführen.
 
-			\item[3] Klammerung ist genau genommen kein Operator und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet.
+			\item[3] Je kleiner die Zahl, je höher die Priorität.
 
-			\item[4] Die Priorität der Klammern ist größer als die aller Operatoren.
+			\item[4] Klammerung ist genau genommen kein Operator und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet. Ihre Priorität kann nur höher als die aller (anderen) Operatoren sein.
 
-			\item[5] Die Priorität der unären Operatoren muss größer sein als die aller mehrwertigen, also auch der binären Operatoren.
+			\item[5] Die Priorität der unären Operatoren muss höher sein als die aller mehrwertigen, also auch der binären Operatoren.
 			Wenn alle unären Operatoren auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
 			Nur wenn es sowohl links-, als auch rechtsseitige unäre Operatoren gibt, muss man für diese Prioritäten definieren.
 
@@ -1112,7 +1161,7 @@ Für die Operatoren derselben Priorität gilt Rechtsklammerung%
 }.
 Im Folgenden wird nur noch ein Teil der logischen Operatoren \vrefaustab{tab:Symbole} und der \glsIdxBg{MetaoperatorV}{metasprachlichen Operatoren} \vrefaussub{sub:Metaausdruck} berücksichtigt.
 Diese werden \vrefintab{tab:Prio-Aussagenlogik} mit abnehmender Priorität aufgelistet.
-%
+
 \begin{table}[!htb]
 	\setlength\extrarowheight{1.5pt}
 	\begin{center}
@@ -1132,10 +1181,10 @@ Diese werden \vrefintab{tab:Prio-Aussagenlogik} mit abnehmender Priorität aufge
 				& $ \lequiv                         $ \\
 				\hline
 				\parbox[][1.5cm][c]{8.0cm}{%
-					Mit Gleichheit verwandte Symbole;\newline
+					Mit Gleichheit verwandte Operatoren;\newline
 					\small ihre Prioritäten untereinander sind nicht eindeutig und bleiben daher undefiniert.%
 				}
-				& $ \eq \quad \ne \quad \equiv  \quad \notequiv $ \\
+				& $ \eq \quad \ne \quad \equiv  \quad \nequiv $ \\
 				\hline
 				\glsIdx{Ableitungsrelation}\tnote{1}
 				& $ \derive          $ \\
@@ -1149,7 +1198,7 @@ Diese werden \vrefintab{tab:Prio-Aussagenlogik} mit abnehmender Priorität aufge
 				\GlsIdxPl{MetaoperatorV}\tnote{2}
 				& $ \metarep \quad \metaimp      $ \\
 				& $ \metaequiv                   $ \\
-				& $ \und                         $ \\
+				& $ \srand                       $ \\
 				\hline
 				Metadefinition & $ \metadefeq $ \\
 				\hline
@@ -1178,7 +1227,7 @@ Wie üblich bindet ein Operator \emph{stärker} als jeder andere mit einer niedr
 \subsection{Formalisierung}% ---------------------------------------------------
 \label{sub:Formalisierung}
 
-Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \ASBA\ sind, müssen die \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \textusw\ der Aussagenlogik in streng formaler Form vorliegen.
+Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \ASBA\ sind, müssen die \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \textusw\ der Aussagenlogik (und später der Prädikatenlogik) in streng formaler Form vorliegen.
 Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
 Da Computerprogramme mit der \emph{Polnischen Notation}\idx{Polnische Notation}%
 \footnote{%

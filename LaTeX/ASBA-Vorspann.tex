@@ -1,4 +1,4 @@
-%%############################################################################%%
+%%############################################################################%% 
 %%                                                                            %%
 %% Datei:  ASBA-Vorspann.tex                                                  %%
 %% Inhalt: Vorspann für die Datei ASBA.txt                                    %%
@@ -405,7 +405,7 @@
 \newcommand*{\hidden}[1]{}
 
 % Glossareinträge ##############################################################
-
+	
 % Indices und Symbole ==========================================================
 \makeindex
 \newindex[Symbolverzeichnis]{sym}
@@ -422,15 +422,15 @@
 
 \newcommand*{\idx}[1]{\sindex[idx]{#1}}
 \newcommand*{\sym}[1]{\sindex[sym]{#1}}
-\newcommand*{\glsSym}[1]{\glspl{#1}\sym{\gls{#1}}}% Symbol - Im Mathematikmodus!
-\newcommand*{\glsIdx}[1]{\gls{#1}\idx{\gls{#1}}}%        normal
-\newcommand*{\GlsIdx}[1]{\Gls{#1}\idx{\gls{#1}}}%        groß
-\newcommand*{\glsIdxBg}[2]{#2\idx{\gls{#1}}}%                     Beugung
-\newcommand*{\GlsIdxBg}[2]{#2\idx{\gls{#1}}}%            groß und Beugung
-\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%             Plural
-\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}%    groß und Plural
-\newcommand*{\glsIdxX}[1]{\glsIdxPl{#1}}% Sonderfall
-\newcommand*{\GlsIdxX}[1]{\GlsIdxPl{#1}}% Sonderfall und groß
+\newcommand*{\glsSym}  [1]{\glspl   {#1}\sym{\gls{#1}}}% Symbol - Im Mathematikmodus!
+\newcommand*{\glsIdx}  [1]{\gls     {#1}\idx{\gls{#1}}}% normal
+\newcommand*{\GlsIdx}  [1]{\Gls     {#1}\idx{\gls{#1}}}% groß
+\newcommand*{\glsIdxBg}[2]          {#2\idx {\gls{#1}}}%          Beugung
+\newcommand*{\GlsIdxBg}[2]          {#2\idx {\gls{#1}}}% groß und Beugung
+\newcommand*{\glsIdxPl}[1]{\glspl   {#1}\idx{\gls{#1}}}%          Plural
+\newcommand*{\GlsIdxPl}[1]{\Glspl   {#1}\idx{\gls{#1}}}% groß und Plural
+\newcommand*{\glsIdxX} [1]{\glsIdxPl{#1}}%                        Sonderfall
+\newcommand*{\GlsIdxX} [1]{\GlsIdxPl{#1}}%               groß und Sonderfall
 \newcommand*{\Tag}[1]{\tag{\glsPl{#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag in Formel
 
 % ==============================================================================

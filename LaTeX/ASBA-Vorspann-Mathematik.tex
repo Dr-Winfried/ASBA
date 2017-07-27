@@ -1,4 +1,4 @@
-%%############################################################################%%
+%%############################################################################%% 
 %%                                                                            %%
 %% Datei:  ASBA-Vorspann.tex                                                  %%
 %% Inhalt: Vorspann für die Datei ASBA.txt                                    %%
@@ -35,16 +35,17 @@
 
 % Metasprachliche Symbole ######################################################
 
-\newcommand*{\und}{\mid}%                           Und-Symbol für Schlussregeln
+\newcommand*{\srand}{\mid}% in formalen Sätzen und Schlussregeln:   ... und ...
 % Nur im Mathematikmodus!
-\DeclareMathOperator{\metaand}{\&}%                Und-Symbol  für Formeln
-\DeclareMathOperator{\metaor}{||}%                 Oder-Symbol für Formeln
-\DeclareMathOperator{\metaimp}{\Rightarrow}%       aus ... folgt ...
-\DeclareMathOperator{\metarep}{\Leftarrow}%        ... folgt aus ...
-\DeclareMathOperator{\metaequiv}{\Leftrightarrow}% ... genau dann wenn ...
-\DeclareMathOperator{\metadefeq}{:\!\Leftrightarrow}%... definitionsgemäß -"- ...
-\DeclareMathOperator{\eq}{=}%                      ... gleich ...
-\DeclareMathOperator{\defeq}{:\!=}%                  ... definitionsgemäß -"- ...
+\DeclareMathOperator{\metaand}{\&}%   ... und  ...
+\DeclareMathOperator{\metaor}{||}%    ... oder ...
+\DeclareMathOperator{\metaorr}{||\,}% ... oder ... (besserer Abstand)
+\DeclareMathOperator{\metaimp}{\Rightarrow}%     aus ... folgt              ...
+\DeclareMathOperator{\metarep}{\Leftarrow}%          ... folgt aus          ...
+\DeclareMathOperator{\metaequiv}{\Leftrightarrow}%   ... genau dann wenn    ...
+\DeclareMathOperator{\metadefeq}{:\!\Leftrightarrow}%... definitionsgemäß " ...
+\DeclareMathOperator{\eq}{=}%                        ... gleich             ...
+\DeclareMathOperator{\defeq}{:\!=}%                  ... definitionsgemäß " ...
 
 % Mathematische Symbole ########################################################
 
@@ -52,6 +53,7 @@
 % \*bsp
 \DeclareMathOperator{\opbsp}{\circ}
 \DeclareMathOperator{\relbsp}{\sim}
+\DeclareMathOperator{\relnbsp}{\nsim}
 \DeclareMathOperator{\releqbsp}{\simeq}
 \DeclareMathOperator{\lrelbsp}{\lhd}
 \DeclareMathOperator{\rrelbsp}{\rhd}
@@ -113,7 +115,7 @@
 \DeclareMathOperator{\lxorC}{\oplus}%
 \DeclareMathOperator{\lnequiv}{\nleftrightarrow}%        " " " " - nicht
 \DeclareMathOperator{\lnequivA}{\nLeftrightarrow}%        (A genau dann, wenn B)
-\DeclareMathOperator{\lnequivB}{\notequiv}%
+\DeclareMathOperator{\lnequivB}{\nequiv}%
 \DeclareMathOperator{\lnright}{\lceil}%                  F W F W - nicht B
 \DeclareMathOperator{\lnimp}{\nrightarrow}%              F W F F - nicht
 \DeclareMathOperator{\lnimpA}{\nRightarrow}%                     (aus A folgt B)
@@ -206,6 +208,13 @@
 		Ein Beispielsymbol für eine Relation mit Gleichheit%
 	}
 }
+\newglossaryentry{relnbsp}{
+	name={$ \relnbsp$},
+	plural={\relnbsp},% im Mathematikmodus
+	description={%
+		Verneinung von $\symqt{\relbsp}%
+	}
+}
 \newglossaryentry{rrelbsp}{
 	name={$ \rrelbsp$},
 	plural={\rrelbsp},% im Mathematikmodus
@@ -227,14 +236,14 @@
 	name={$ \defeq$},
 	plural={\defeq},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... definitionsgemäß gleich ..%
+		Ein \emph{Metaoperator}: ... definitionsgemäß gleich ..%
 	}
 }
 \newglossaryentry{eq}{
 	name={$ \eq$},
 	plural={\eq},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... gleich (ist dasselbe wie, ist identisch zu) ..%
+		Ein \emph{Metaoperator}: ... gleich (ist dasselbe wie, ist identisch zu) ..%
 	}
 }
 \newglossaryentry{equiv}{
@@ -248,55 +257,55 @@
 	name={$ \metaand$},
 	plural={\metaand},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... und ...
-		Die Priorität ist höher als die von \symqt{\glsIdx{und}}%
+		Ein \emph{Metaoperator}: ... und ...
+		Die Priorität ist höher als die von \symqt{$\srand$}%
 	}
 }
 \newglossaryentry{metadefeq}{
 	name={$ \metadefeq$},
 	plural={\metadefeq},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... definitionsgemäß gleich (definitionsgemäß genau dann, wenn) ..%
+		Ein \emph{Metaoperator}: ... definitionsgemäß gleich (definitionsgemäß genau dann, wenn) ..%
 	}
 }
 \newglossaryentry{metaequiv}{
 	name={$ \metaequiv$},
 	plural={\metaequiv},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... genau dann wenn ..%
+		Ein \emph{Metaoperator}: ... genau dann wenn ..%
 	}
 }
 \newglossaryentry{metaimp}{
 	name={$ \metaimp$},
 	plural={\metaimp},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... dann auch ..%
+		Ein \emph{Metaoperator}: ... dann auch ..%
 	}
 }
 \newglossaryentry{metaor}{
 	name={$ \metaor$},
 	plural={\metaor},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... oder ..%
+		Ein \emph{Metaoperator}: ... oder ..%
 	}
 }
 \newglossaryentry{metarep}{
 	name={$ \metarep$},
 	plural={\metarep},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... sofern ..%
+		Ein \emph{Metaoperator}: ... sofern ..%
 	}
 }
 \newglossaryentry{ne}{
 	name={$ \ne$},
 	plural={\ne},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... ungleich (nicht dasselbe wie, nicht identisch zu) ..%
+		Ein \emph{Metaoperator}: ... ungleich (nicht dasselbe wie, nicht identisch zu) ..%
 	}
 }
-\newglossaryentry{notequiv}{
-	name={$ \notequiv$},
-	plural={\notequiv},% im Mathematikmodus
+\newglossaryentry{nequiv}{
+	name={$ \nequiv$},
+	plural={\nequiv},% im Mathematikmodus
 	description={%
 		Ein (Meta-)Operator: ... nicht äquivalent (ist nicht das gleiche wie, ist nicht so wie) ..%
 	}
@@ -305,24 +314,24 @@
 	name={$ \subst$},
 	plural={\subst},% im Mathematikmodus
 	description={%
-		\glsIdx{Substitution}: ... substituiert durch ...
-		(siehe die Definition \vrefinsub{sub:Indentitaetsregeln})%
+		\emph{Substitution}: ... substituiert durch ...
+		-- siehe die Definition \vrefinsub{sub:Indentitaetsregeln}%
 	}
 }
 \newglossaryentry{swap}{
 	name={$ \swap$},
 	plural={\swap},% im Mathematikmodus
 	description={%
-		\glsIdx{Vertauschung}: ... vertauscht mit ...
-		(siehe die Definition \vrefinsub{sub:Indentitaetsregeln})%
+		\emph{Vertauschung}: ... vertauscht mit ...
+		-- siehe die Definition \vrefinsub{sub:Indentitaetsregeln}%
 	}
 }
-\newglossaryentry{und}{
-	name={$ \und$},
-	plural={\und},% im Mathematikmodus
+\newglossaryentry{srand}{
+	name={$ \srand$},
+	plural={\srand},% im Mathematikmodus
 	description={%
-		Ein \glsIdx{MetaoperatorV}: ... und ...
-		Die Priorität ist niedriger als die von \symqt{\glsIdx{metaand}}%
+		Ein \emph{Metaoperator}: ... und ...
+		Die Priorität ist niedriger als die von \symqt{$\metaand$}%
 	}
 }
 
@@ -333,7 +342,7 @@
 	plural={\derive},% im Mathematikmodus
 	description={%
 		Ableitungsrelation: ... ableitbar ...
-		(siehe \emph{\glsIdx{ableitbar}})%
+		-- siehe \emph{ableitbar}%
 	}
 }
 \newglossaryentry{lfalse}{
@@ -362,7 +371,7 @@
 }
 \newglossaryentry{gsNo}{
 	name={$ \gsNo$},
-	plural={\gsNo},% im Mathematikmodus - erfolgt im falschen Zeichensatz!
+	plural={\gsNo},% im Mathematikmodus - erfolgt im falschen Zeichensatz! ???
 	description={%
 		Die Menge der natürlichen Zahlen einschließlich 0%
 	}
@@ -441,7 +450,7 @@
 	name={$ \asM$},
 	plural={\asM},% im Mathematikmodus
 	description={%
-		Die Menge der \glsIdxPl{MetaoperatorV} und der mit Gleichheit verwandten Symbole%
+		Die Menge der \emph{Metaoperatoren} und der mit Gleichheit verwandten Symbole%
 	}
 }
 \newglossaryentry{asU}{
@@ -455,7 +464,7 @@
 	name={$ \asV$},
 	plural={\asV},% im Mathematikmodus
 	description={%
-		Die Menge der aussagenlogischen \glsIdxPl{atomareFormelA}%
+		Die Menge der aussagenlogischen \emph{atomaren Formeln}%
 	}
 }
 
@@ -467,7 +476,7 @@
 	name={$ \AR$},
 	plural={\AR},% im Mathematikmodus
 	description={%
-		\glsIdx{Anfangsregel}%
+		\emph{Anfangsregel}%
 	}
 }
 \newcommand*{\tagFS}{FS}% Argument für \tag - im Textmodus
@@ -476,7 +485,7 @@
 	name={$ \FS$},
 	plural={\FS},% im Mathematikmodus
 	description={%
-		\glsIdx{formalerSatzV}%
+		\emph{formaler Satz}%
 	}
 }
 \newcommand*{\tagMR}{MR}% Argument für \tag - im Textmodus
@@ -485,7 +494,7 @@
 	name={$ \MR$},
 	plural={\MR},% im Mathematikmodus
 	description={%
-		\glsIdx{Monotonieregel}%
+		\emph{Monotonieregel}%
 	}
 }
 \newcommand*{\tagSR}{SR}% Argument für \tag - im Textmodus
@@ -494,7 +503,7 @@
 	name={$ \SR$},
 	plural={\SR},% im Mathematikmodus
 	description={%
-		\glsIdx{Schnittregel} (Modus ponens)%
+		\emph{Schnittregel} (Modus ponens)%
 	}
 }
 \newcommand*{\tagTR}{TR}% Argument für \tag - im Textmodus
@@ -503,7 +512,7 @@
 	name={$ \TR$},
 	plural={\TR},% im Mathematikmodus
 	description={%
-		\glsIdx{Abtrennungsregel}%
+		\emph{Abtrennungsregel}%
 	}
 }
 \newcommand*{\tageqB}{$\eq$B}% Argument für \tag - im Textmodus
@@ -624,36 +633,37 @@
 		Wenn sich eine Formel $\beta$ aus einer Formel $\alpha$ mittels zulässiger Transaktionen ableiten lässt, heißt $\beta$ ableitbar aus $\alpha$.
 		Sprechweise: \forqt{$\alpha$ ableitbar $\beta$}.
 		Eine oder beide Formeln $\alpha$ \textbzw\ $\beta$ dürfen dabei durch Formelmengen ersetzt werden.
-		(\seealso\ \symqt{\glsIdx{derive}} und \glsIdx{Ableitungsrelation})
-		-- Synonym: \glsIdx{beweisbar}%
+		-- siehe \emph{Ableitungsrelation} und \symqt{$\derive$}
+		\newline
+		Synonym: \emph{beweisbar}%
 	}
 }
 \newglossaryentry{Ableitungsrelation}{
 	name={Ableitungsrelation},
 	plural={Ableitungsrelationen},
 	description={%
-		Die Relation \symqt{\glsIdx{derive}}%
+		Die Relation \symqt{$\derive$}%
 	}
 }
 \newglossaryentry{Abtrennungsregel}{
 	name={Abtrennungsregel},
 	plural={Abtrennungsregeln},
 	description={%
-		Eine \emph{\glsIdx{Schlussregel}} - siehe~\glsIdx{TR}%
+		Eine \emph{Schlussregel} -- siehe~\emph{TR}%
 	}
 }
 \newglossaryentry{allgemeingueltigeSchlussregelV}{
 	name={allgemeingültige Schlussregel},    % eine  ...
 	plural={allgemeingültige Schlussregeln}, % viele ..
 	description={%
-		Eine \glsIdx{Schlussregel} die aus den \glsIdxPl{Basisregel} und den schon bekannten allgemeingültigen Schlussregeln abgeleitet werden kann%
+		Eine \emph{Schlussregel} die aus den \emph{Basisregeln} und den schon bekannten allgemeingültigen Schlussregeln abgeleitet werden kann%
 	}
 }
 \newglossaryentry{Anfangsregel}{
 	name={Anfangsregel},
 	plural={Anfangsregeln},
 	description={%
-		Eine \emph{\glsIdx{Schlussregel}} um beginnen zu können - siehe~\glsIdx{AR}%
+		Eine \emph{Schlussregel} um beginnen zu können -- siehe~\emph{AR}%
 	}
 }
 \newglossaryentry{atomareFormelA}{
@@ -667,7 +677,7 @@
 	name={Aussage},
 	plural={Aussagen},
 	description={%
-		Eine Aussage in natürlicher Sprache oder als Formel, die einen Wahrheitswert liefert%
+		Eine Aussage in natürlicher Sprache oder als Formel, die einen \emph{Wahrheitswert} liefert%
 	}
 }
 \newglossaryentry{Aussagenlogik}{
@@ -680,8 +690,8 @@
 	name={Basisregel},
 	plural={Basisregeln},
 	description={%
-		Eine \emph{\glsIdx{Schlussregel}}, die nicht mehr auf andere zurückgeführt wird.
-		Obwohl das auch auf die \glsIdxPl{Identitaetsregel} zutrifft, werden diese hier aber nicht dazu gezählt%
+		Eine \emph{Schlussregel}, die nicht mehr auf andere zurückgeführt wird.
+		Obwohl das auch auf die \emph{Identitätsregeln} zutrifft, werden diese hier aber nicht dazu gezählt%
 	}
 }
 \newglossaryentry{beweisbar}{
@@ -702,21 +712,21 @@
 	name={Boolsche Signatur},
 	plural={Boolschen Signatur},% Dativ
 	description={%
-		Die \glsIdx{logischeSignaturV} $\{\lnot, \land, \lor\}$%
+		Die \emph{logische Signatur} $\{\lnot, \land, \lor\}$%
 	}
 }
 \newglossaryentry{Folgerung}{
 	name={Folgerung},
 	plural={Folgerungen},
 	description={%
-		Die Folgerungen einer \glsIdx{Schlussregel} sind die \glsIdxPl{Aussage} über ihrem Querstrich.
+		Die Folgerungen einer \emph{Schlussregel} sind die \emph{Aussagen} über ihrem Querstrich.
 	}
 }
 \newglossaryentry{formalerSatzV}{
 	name={formaler Satz},   % ein   ...
 	plural={formale Sätze}, % viele ...
 	description={%
-		Formale Darstellung eines mathematischen Satzes - siehe~\glsIdx{FS}%
+		Formale Darstellung eines mathematischen Satzes -- siehe~\emph{FS}%
 	}
 }
 \newglossaryentry{formalesElementV}{
@@ -724,15 +734,15 @@
 	plural={formale Elemente}, % viele ...
 	description={%
 		Ein mathematisches Element in formaler Schreibweise.
-		Bis auf wenige Aussagen kommen darin \emph{\glsIdxPl{MetaausdruckV}} nicht mehr vor%
+		Bis auf wenige Aussagen kommen darin \emph{Metaausdrücke} nicht mehr vor%
 	}%
 }
 \newglossaryentry{Identitaetsregel}{
 	name={Identitätsregel},
 	plural={Identitätsregeln},
 	description={%
-		Eigentlich eine \glsIdx{Basisregel} zur Identität.
-		Da die Identitätsregeln nur zur Rechtfertigung der \glsIdx{Substitution} verwendet werden, werden sie hier nicht zu den \glsIdxPl{Basisregel} gezählt%
+		Eigentlich eine \emph{Basisregel} zur Identität.
+		Da die Identitätsregeln nur zur Rechtfertigung der \emph{Substitution} verwendet werden, werden sie hier nicht zu den \emph{Basisregeln} gezählt%
 	}
 }
 \newglossaryentry{intEigenschaftA}{
@@ -753,7 +763,7 @@
 	name={logische Signatur},     % eine  ...
 	plural={logische Signaturen}, % viele ...
 	description={%
-		Eine in \emph{\glsIdx{Metasprache}} verfasste Aussage, die auch zusammengesetzt sein kann%
+		Eine in \emph{Metasprache} verfasste Aussage, die auch zusammengesetzt sein kann%
 	}%
 }
 \newglossaryentry{MetaausdruckV}{
@@ -767,14 +777,14 @@
 	name={metasprachliche Aussage},    % eine   ...
 	plural={metasprachliche Aussagen}, % viele ...
 	description={%
-		Eine in \emph{\glsIdx{Metasprache}} verfasste Aussage, die auch zusammengesetzt sein kann%
+		Eine in \emph{Metasprache} verfasste Aussage, die auch zusammengesetzt sein kann%
 	}%
 }
 \newglossaryentry{MetaoperatorV}{
 	name={metasprachlicher Operator},    % ein   ...
 	plural={metasprachliche Operatoren}, % viele ...
 	description={%
-		Ein Operator, dessen Operanden \emph{\glsIdxPl{MetaausdruckV}} sind%
+		Ein Operator, dessen Operanden \emph{Metaausdrücke} sind%
 	}%
 }
 \newglossaryentry{Metasprache}{
@@ -788,14 +798,14 @@
 	name={Monotonieregel},
 	plural={Monotonieregeln},
 	description={%
-		Eine \emph{\glsIdx{Schlussregel}} - siehe~\glsIdx{MR}%
+		Eine \emph{Schlussregel} -- siehe~\emph{MR}%
 	}
 }
 \newglossaryentry{Praedikat}{
 	name={Prädikat},
 	plural={Prädikate},
 	description={%
-		Ein Element der \emph{\glsIdx{Praedikatenlogik}} (\vrefseesec{sec:Praedikatenlogik}).
+		Ein Element der \emph{Prädikatenlogik} (\vrefseesec{sec:Praedikatenlogik}).
 		\textZB\ kann man eine \forqt{$Gruppe$} als ein zweistelliges Prädikat \forqt{$Gruppe(G,+)$} definieren, in dem $G$ eine Menge und \symqt{$+$} eine Operation, \textdh\ eine (zweistellige) Funktion \forqt{$+: G \times G \rightarrow G$} ist, so dass die Gruppenaxiome erfüllt sind%
 	}
 }
@@ -816,16 +826,16 @@
 	name={Schnittregel},
 	plural={Schnittregeln},
 	description={%
-		Eine \glsIdx{allgemeingueltigeSchlussregelV} - siehe~\glsIdx{SR}%
+		Eine \emph{allgemeingültige Schlussregel} -- siehe~\emph{SR}%
 	}
 }
 \newglossaryentry{Substitution}{
 	name={Substitution},
 	plural={Substitutionen},
 	description={%
-		Die Ersetzung von einem, mehreren oder allen \glsIdxBg{formalesElementV}{formalen Elementen} ($\alpha$) in einem anderen \glsIdxBg{formalesElementV}{formalen Element} ($\gamma$) durch ein drittes \glsIdxBg{formalesElementV}{formales Element} ($\beta$)
+		Die Ersetzung von einem, mehreren oder allen \emph{formalen Elementen} ($\alpha$) in einem anderen \emph{formalen Element} ($\gamma$) durch ein drittes \emph{formales Element} ($\beta$)
 		-- formal: $\gamma(\alpha\subst\beta)$.
-		Wenn alle $\alpha$ in $\gamma$ durch $\beta$ werden, ist die Substitution \emph{vollständig}.
+		Wenn alle $\alpha$ in $\gamma$ durch $\beta$ ersetzt werden, ist die Substitution \emph{vollständig}.
 		(\vrefseesub{sub:Indentitaetsregeln})%
 	}
 }
@@ -833,27 +843,27 @@
 	name={vergleichbar},
 	plural={vergleichbare},
 	description={
-		Zwei \emph{\glsIdxPl{MetaausdruckV}} \textbzw\ \emph{\glsIdxPl{formalesElementV}} heißen -- auf eine bestimmte Art -- vergleichbar, wenn sie auf diese Art (\textzB\ als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
+		Zwei \emph{Metaausdrücke} \textbzw\ \emph{formale Elemente} heißen -- auf eine bestimmte Art -- \emph{vergleichbar}, wenn sie auf diese Art (\textzB\ als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
 		Die Art muss implizit bekannt oder explizit angegeben sein.
-		Meistens genügt es zu wissen, was für \glsIdxPl{MetaausdruckV} \textbzw\ \glsIdxPl{formalesElementV} es sind.
+		Meistens genügt es zu wissen, was für \emph{Metaausdrücke} \textbzw\ \emph{formale Elemente} es sind.
 		Sie müssen dann nur von derselben Art sein%
-	}%
+	}
 }
 \newglossaryentry{Vertauschung}{
 	name={Vertauschung},
 	plural={Vertauschungen},
 	description={%
-		Die Vertauschung von zwei unabhängigen \glsIdxBg{formalesElementV}{formalen Elementen} ($\alpha$ und $\beta$) in einem anderen \glsIdxBg{formalesElementV}{formalen Element} ($\gamma$)
-		-- formal: $\Gamma(\alpha\swap\beta)$.
-		Die Vertauschung ist eine spezielle Form der \glsIdx{Substitution}.
-		(siehe die Definition~\eqref{def:Vertauschung} \vrefinsub{sub:Indentitaetsregeln})%
+		Die Vertauschung von zwei unabhängigen \emph{formalen Elementen} ($\alpha$ und $\beta$) in einem anderen \emph{formalen Element} ($\gamma$)
+		-- formal: $\gamma(\alpha\swap\beta)$.
+		Die Vertauschung ist eine spezielle Form der \emph{Substitution}.
+		-- siehe die Definition~\eqref{def:Vertauschung} \vrefinsub{sub:Indentitaetsregeln}%
 	}
 }
 \newglossaryentry{Voraussetzung}{
 	name={Voraussetzung},
 	plural={Voraussetzungen},
 	description={%
-		Die Voraussetzungen einer \glsIdx{Schlussregel} sind die \glsIdxPl{Aussage} über ihrem Querstrich.
+		Die Voraussetzungen einer \emph{Schlussregel} sind die \emph{Aussagen} über ihrem Querstrich.
 	}
 }
 \newglossaryentry{Wahrheitswert}{
@@ -868,6 +878,6 @@
 	plural={zulässigen Transformationen}, % alle ...
 	description={%
 		Eine zulässige Umformung oder Erzeugung einer Formel aus einer vorgegebenen Menge von Formeln,
-		\textdh\ die Anwendung einer \glsIdxBg{allgemeingueltigeSchlussregelV}{allgemeingültigen Schlussregel}%
+		\textdh\ die Anwendung einer \emph{allgemeingültigen Schlussregel}%
 	}
 }
