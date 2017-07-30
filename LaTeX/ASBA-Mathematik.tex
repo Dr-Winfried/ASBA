@@ -298,53 +298,69 @@ Wenn dann nichts anderes gesagt wird, gelte stets:
 	& ((A \relbsp   B) \metaorr (A = B)) & \metaimp   & \quad (A \releqbsp  B)
 	\label{eq:releqbsp}   \formulatoleft\formulatoleft\formulatoleft
 \end{align}
-%TODO Beispiel erweitern. Gilt wirklich (2.3) => (2.2)?
 %
 Mit der Definition einer Relation der einen Seite ist damit automatisch auch die der anderen Seite erfolgt, mit der Ausnahme, dass man in \eqref{eq:releqbsp} zwar die rechte durch die linke Seite definieren kann, aber nicht umgekehrt.
 Insbesondere kann man \symqt{$\relbsp$} nicht mit \symqt{$\releqbsp$} definieren.
 Dies könnte man zwar mit Hilfe des Ansatzes
 \begin{align}
-	& (A \relbsp' B) && \metadefeq & (A \releqbsp B) \metaand (A \ne B)
+	& (A \relBsp B) && \metadefeq & (A \releqbsp B) \metaand (A \ne B)
 	\label{eq:relbsp} \formulatoleft\formulatoleft\formulatoleft
 \end{align}
-versuchen, aber die so definierte Relation \symqt{$\relbsp'$} kann, muss aber nicht, mit \symqt{$\relbsp$} in \eqref{eq:releqbsp} übereinstimmen, wie das Beispiel \vrefintab{tab:Gegenbeispiel} zeigt.
-Allerdings lässt sich \eqref{eq:releqbsp} aus \eqref{eq:relbsp} ableiten.
--- Auf einen Beweis wird hier verzichtet.
+versuchen, aber die so definierte Relation \symqt{$\relBsp$} kann, muss aber nicht, mit \symqt{$\relbsp$} in \eqref{eq:releqbsp} übereinstimmen, wie das Beispiel \vrefintab{tab:Gegenbeispiel} zeigt.
 
 \begin{table}[!htb]
 	\setlength\extrarowheight{1.5pt}
 	\begin{center}
-		\begin{tabularx}{8.4cm}{|c|cccccc|}
-			\hline                $   \releqbsp   $
+		\begin{tabularx}{12cm}{|@{\extracolsep{\fill}}c|ccc|ccc|ccc|}
+			\hline
+			& $      a, a     $ & $     a, b      $ & $     a, c      $
+			& $      b, a     $ & $     b, b      $ & $     b, c      $
+			& $      c, a     $ & $     c, b      $ & $     c, c      $ \\
+			\hline
+			~ $    \eq        $
+			& $     a = a     $ &                   &
+			&                   & $     b = b     $ &
+			&                   &                   & $     c = c     $ \\
+			~ $   \releqbsp   $
 			& $ a \releqbsp a $ & $ a \releqbsp b $ & $ a \releqbsp c $
-			& $ b \releqbsp b $ & $ b \releqbsp c $ & $ c \releqbsp c $
-			\\                    $   \relbsp     $
+			&                   & $ b \releqbsp b $ & $ c \releqbsp c $
+			&                   &                   & $ c \releqbsp c $ \\
+			~ $   \relbsp     $
 			&                   & $ a \relbsp   b $ &
-			& $ b \relbsp   b $ & $ b \relbsp   c $ &
-			\\                    $   \relbsp'    $
-			&                   & $ a \relbsp'  b $ & $ a \relbsp'  c $
-			&                   & $ b \relbsp'  c $ &
-			\\ \hline
+			&                   & $ b \relbsp   b $ & $ b \relbsp   c $
+			&                   &                   &                   \\
+			~ $   \relBsp     $
+			&                   & $ a \relBsp   b $ & $ a \relBsp   c $
+			&                   &                   & $ b \relBsp   c $
+			&                   &                   &                   \\
+			\hline
 		\end{tabularx}
-		\caption{Unterschiedliche Relationen \symqt{$\relbsp$} und  \symqt{$\relbsp'$}}
+		\caption{Unterschiedliche Relationen \symqt{$\relbsp$} und  \symqt{$\relBsp $}}
 		\label{tab:Gegenbeispiel}% Erst nach '\caption'!
 	\end{center}
 \end{table}
 
-Es sei noch angemerkt, dass wegen \eqref{eq:lrrelbsp} die Definition von \symqt{$\metarep$} \vrefinsub{sub:Metaausdruck} überflüssig ist und wegen der \vrefintab{tab:Prio-Metasprache} auch alle Klammern in diesem \sectionname.
+Es sei noch angemerkt, dass wegen \eqref{eq:lrrelbsp} die Definition von \symqt{$\metarep$} \vrefinsub{sub:Metaausdruck} überflüssig ist und wegen der angegebenen Prioritäten \vrefintab{tab:Prio-Metasprache} auch alle Klammern in diesem \sectionname.
 
 Als Beispielsymbol für binäre Operatoren wird \symqt{$\opbsp$} verwendet.
 Mit \symqt{$\opbsp$} zusammenhängende Verabredungen werden hier nicht getroffen.
 
-Die Regeln zur Formulierung und Prüfung der Beweise müssen fest codiert werden.
+\section{Beweise in \ASBA}% ====================================================
+\beginsection{Beweise in \ASBA}
+\label{sec:BeweiseASBA}
+
+Die Regeln zur Formulierung und Prüfung der Beweise müssen in \ASBA\ fest codiert werden.
 Sie sind quasi die Axiome von \ASBA\ und sollten daher möglichst wenig voraussetzen.
 Dazu wird ein \emph{Genzen-Kalkül}\footnote{%
 	siehe~\cite{bib:Rautenberg} Kapitel~1.4 und vergleiche~\cite{bib:Schlussregel,bib:NatuerlichesSchliessen}%
 } verwendet.
 
-Ein Beweis in \ASBA\ besteht aus $n$ \glsIdxBg{formalesElementV}{formalen Elementen} $V_i$, für $1 \leq i \leq n$ (den \emph{Voraussetzungen}), einer Folge von \glsIdxPl{zulaessigeTransformationA}, mit der neue \glsIdxPl{formalesElementV} generiert werden, bis alle $m$ \glsIdxBg{formalesElementV}{formalen Elemente} $F_j$ für $1 \leq j \leq m$ (die \emph{Folgerungen}) abgeleitet sind. $n$ kann auch gleich $0$ sein, für $m$ ist dass nicht sinnvoll.
+Ein Beweis in \ASBA\ besteht aus einer Menge % $n$ \glsIdxBg{formalesElementV}{formalen Elementen} $V_i$, für $1 \leq i \leq n$ (den \emph{Voraussetzungen}), einer Folge von \glsIdxPl{zulaessigeTransformationA}, mit der neue \glsIdxPl{formalesElementV} generiert werden, bis alle $m$ \glsIdxBg{formalesElementV}{formalen Elemente} $F_j$ für $1 \leq j \leq m$ (die \emph{Folgerungen}) abgeleitet sind. $n$ kann auch gleich $0$ sein, für $m$ ist dass nicht sinnvoll.
 
-Die zu beweisende Aussage (\textzB\ ein mathematischer Satz) kann dann auch folgendermaßen formuliert werden:%
+%TODO Beweis genauer definieren
+Ein Beweis ist dann eine Folge von $\Folgerung_k$, für $0 \le l$
+
+Die zu beweisende Aussage (\textzB\ ein mathematischer Satz) kann dann folgendermaßen formuliert werden:%
 \footnote{%
 	\symqt{$\srand$} steht für \strqt{und}, bindet aber wesentlich schwächer als \symqt{\glsIdx{metaand}}. (\vrefseesub{sub:Metaausdruck})
 }
@@ -353,8 +369,13 @@ Die zu beweisende Aussage (\textzB\ ein mathematischer Satz) kann dann auch folg
 \qquad \text{(\glsIdx{formalerSatzV})}
 \tag{\tagFS} \sym{\gls{FS}} \label{def:formalerSatz}
 \]
-Zur Durchführung eines Beweises müssen aus den $V_i$ durch zulässige Transformationen die $F_i$ abgeleitet werden. Diese Transformationen werden in ASBA die sogenannten \emph{\Idx{Schlussregel}n} sein, die später behandelt werden.
-Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx{Prädikatenlogik}} angegeben.
+Zur Durchführung eines Beweises müssen aus den $V_i$ durch zulässige Transformationen die $F_j$ abgeleitet werden.
+
+
+Diese Transformationen werden in ASBA die sogenannten \emph{\Idx{Schlussregel}n} sein, die später behandelt werden.
+Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx{Prädikatenlogik}} behandelt.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%Zunächst wird dazu eine Kurzfassung der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx{Prädikatenlogik}} - weitgehend nach~\cite{bib:Rautenberg} - angegeben.
 %%%Dabei werden Bezeichnungen und Sätze teilweise wörtlich aus~\cite{bib:Rautenberg} \textiAlg\ übernommen.
 %%%Die beiden folgenden \sectionnames\ sind \emph{kein} Ersatz für das Studium von~\cite{bib:Rautenberg}!
@@ -1184,7 +1205,7 @@ Diese werden \vrefintab{tab:Prio-Aussagenlogik} mit abnehmender Priorität aufge
 					Mit Gleichheit verwandte Operatoren;\newline
 					\small ihre Prioritäten untereinander sind nicht eindeutig und bleiben daher undefiniert.%
 				}
-				& $ \eq \quad \ne \quad \equiv  \quad \nequiv $ \\
+				& $ \eq \quad \ne \quad \equiv \quad \nequiv $ \\
 				\hline
 				\glsIdx{Ableitungsrelation}\tnote{1}
 				& $ \derive          $ \\

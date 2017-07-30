@@ -1,4 +1,4 @@
-%%############################################################################%% 
+%%############################################################################%%
 %%                                                                            %%
 %% Datei:  ASBA-Vorspann.tex                                                  %%
 %% Inhalt: Vorspann für die Datei ASBA.txt                                    %%
@@ -40,19 +40,20 @@
 \DeclareMathOperator{\metaand}{\&}%   ... und  ...
 \DeclareMathOperator{\metaor}{||}%    ... oder ...
 \DeclareMathOperator{\metaorr}{||\,}% ... oder ... (besserer Abstand)
-\DeclareMathOperator{\metaimp}{\Rightarrow}%     aus ... folgt              ...
-\DeclareMathOperator{\metarep}{\Leftarrow}%          ... folgt aus          ...
-\DeclareMathOperator{\metaequiv}{\Leftrightarrow}%   ... genau dann wenn    ...
-\DeclareMathOperator{\metadefeq}{:\!\Leftrightarrow}%... definitionsgemäß " ...
-\DeclareMathOperator{\eq}{=}%                        ... gleich             ...
-\DeclareMathOperator{\defeq}{:\!=}%                  ... definitionsgemäß " ...
+\DeclareMathOperator{\metaimp}{\Rightarrow}%   aus ... folgt              ...
+\DeclareMathOperator{\metarep}{\Leftarrow}%        ... folgt aus          ...
+\DeclareMathOperator{\metaequiv}{\Leftrightarrow}% ... genau dann wenn    ...
+\DeclareMathOperator{\metadefeq}{:\!\metaequiv}%   ... definitionsgemäß " ...
+\DeclareMathOperator{\eq}{=}%                      ... gleich             ...
+\DeclareMathOperator{\defeq}{:\!\eq}%              ... definitionsgemäß " ...
 
 % Mathematische Symbole ########################################################
 
 % Beispieloperatoren ===========================================================
 % \*bsp
-\DeclareMathOperator{\opbsp}{\circ}
+\DeclareMathOperator{\opbsp}{\bullet}
 \DeclareMathOperator{\relbsp}{\sim}
+\DeclareMathOperator{\relBsp}{\relbsp_1}
 \DeclareMathOperator{\relnbsp}{\nsim}
 \DeclareMathOperator{\releqbsp}{\simeq}
 \DeclareMathOperator{\lrelbsp}{\lhd}
@@ -136,6 +137,14 @@
 \newcommand*{\gsN}{\mathbb{N}}%    Menge der natürlichen Zahlen ohne 0
 \newcommand*{\gsNo}{\mathbb{N}_0}% Menge der natürlichen Zahlen einschließlich 0
 
+% Elemente und Mengen für Beweise
+\newcommand*{\Voraussetzung}{R}
+\newcommand*{\Beweisschritt}{S}
+\newcommand*{\Folgerung}    {T}
+\newcommand*{\Voraussetzungen}{\mathcal{\Voraussetzung}}
+\newcommand*{\Beweisschritte} {\mathcal{\Beweisschritt}}
+\newcommand*{\Folgerungen}    {\mathcal{\Folgerung}}
+
 % \as* = aussagenlogisches Symbol
 \newcommand*{\asA}{\mathcal{A}}%       Alphabet der Sprache
 \newcommand*{\asAx}{\mathcal{A}_x}%    ... davon eine Teilmenge bzgl. \asJx
@@ -168,6 +177,7 @@
 
 \newcommand*{\textderive}{$\vdash$}%               im Textmodus
 \DeclareMathOperator{\derive}{\;\vdash\;}%         ... ableitbar ...
+\DeclareMathOperator{\derivegls}{\vdash}%          -"- für Glossar
 \DeclareMathOperator{\subst}{\leftarrowtail}%      ... substituiert durch ...
 \DeclareMathOperator{\swap}{\leftrightarrows}%     ... vertauscht mit ...
 %%%\DeclareMathOperator{\subst}{\curvearrowright}% ... substituiert durch ...
@@ -212,7 +222,7 @@
 	name={$ \relnbsp$},
 	plural={\relnbsp},% im Mathematikmodus
 	description={%
-		Verneinung von $\symqt{\relbsp}%
+		Verneinung von $\relbsp$%
 	}
 }
 \newglossaryentry{rrelbsp}{
@@ -338,8 +348,8 @@
 % sonstige mathematische Symbole -----------------------------------------------
 
 \newglossaryentry{derive}{
-	name={$ \derive$},
-	plural={\derive},% im Mathematikmodus
+	name={$ \derivegls$},
+	plural={\derivegls},% im Mathematikmodus
 	description={%
 		Ableitungsrelation: ... ableitbar ...
 		-- siehe \emph{ableitbar}%
