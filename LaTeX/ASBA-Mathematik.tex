@@ -209,7 +209,7 @@ definiert:
 %
 Es sei noch
 \[
-	\label{eq:asM} \glsSym{asM} \quad \defeq \quad \{ \text{\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$}, \symqt{$\srand$}, \symqt{$\eq$}, \symqt{$\ne$}, \symqt{$\equiv$}, \symqt{$\nequiv$}, \symqt{$\metadefeq$}, \symqt{$\defeq$}} \}
+	\label{eq:asM} \glsSym{alMet} \quad \defeq \quad \{ \text{\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$}, \symqt{$\srand$}, \symqt{$\eq$}, \symqt{$\ne$}, \symqt{$\equiv$}, \symqt{$\nequiv$}, \symqt{$\metadefeq$}, \symqt{$\defeq$}} \}
 \]
 die Menge der metasprachlichen Symbole.
 Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab:Prio-Metasprache} angegeben.
@@ -355,25 +355,66 @@ Dazu wird ein \emph{Genzen-Kalkül}\footnote{%
 	siehe~\cite{bib:Rautenberg} Kapitel~1.4 und vergleiche~\cite{bib:Schlussregel,bib:NatuerlichesSchliessen}%
 } verwendet.
 
-Ein Beweis in \ASBA\ besteht aus einer Menge % $n$ \glsIdxBg{formalesElementV}{formalen Elementen} $V_i$, für $1 \leq i \leq n$ (den \emph{Voraussetzungen}), einer Folge von \glsIdxPl{zulaessigeTransformationA}, mit der neue \glsIdxPl{formalesElementV} generiert werden, bis alle $m$ \glsIdxBg{formalesElementV}{formalen Elemente} $F_j$ für $1 \leq j \leq m$ (die \emph{Folgerungen}) abgeleitet sind. $n$ kann auch gleich $0$ sein, für $m$ ist dass nicht sinnvoll.
+Ein Beweis\footnote{%
+	siehe~\cite{bib:Rautenberg} Kapitel~1.6 und~3.6%
+} in \ASBA\ besteht aus
+\begin{align}
+	& \text{Menge } \Voraussetzungen
+	& \text{von Voraussetzungen } \Voraussetzung
+	& \quad (\text{endlich: } \Voraussetzungen = \{\Voraussetzung_1, \Voraussetzung_2, ..., \Voraussetzung_n\})
+	\label{def:Voraussetzungen}
+	\\
+	& \text{Menge } \Folgerungen
+	& \text{von Folgerungen } \Folgerung
+	& \quad (\text{endlich: } \Folgerungen = \{\Folgerung_1, \Folgerung_2, ..., \Folgerung_m\})
+	\label{def:Folgerungen}
+	\\
+	& \text{Folge } (\Beweisschritt_0, \Beweisschritt_1, ..., \Beweisschritt_k)
+	& \text{von Beweisschritten } \Beweisschritt
+	\label{def:Beweisfolge}
+	\formulatoleft
+\end{align}
+wobei die Voraussetzungen, Folgerungen und Beweisschritte formale Elemente sind.
+Mit
+\begin{align}
+	& \Beweisschritte_i & \defeq \quad & \{\Beweisschritt_0, \Beweisschritt_1, ..., \Beweisschritt_i\}
+	\label{def:Beweisschrittebis}
+	\\
+	& \Beweisschritte   & \defeq \quad & \Beweisschritte_k
+	\label{def:Beweisschritte}
+	\formulatoleft\formulatoleft\formulatoleft
+\end{align}
+muss jeder Beweisschritt $\Beweisschritt_i \subseteq \Beweisschritte $ für $0 \le i \le n$ entweder
 
-%TODO Beweis genauer definieren
-Ein Beweis ist dann eine Folge von $\Folgerung_k$, für $0 \le l$
+%TODO Elimination von Voraussetzungen behandeln!
+\todo{Elimination von Voraussetzungen behandeln!}
+\begin{itemize}
+	\item[] eine Voraussetzung $\Voraussetzung \in \Voraussetzungen$ oder
+	\item[] ein Ergebnis der Anwendung einer \emph{zulässigen \glsIdx{Schlussregel}}\footnote{%
+		Schlussregeln werden später behandelt.%
+	} auf eine Teilmenge $\Beweisschritte' \subseteq \Beweisschritte_{i-1}$
+\end{itemize}
+sein.
+Schließlich muss noch
+\[
+	\Folgerungen \subseteq \Beweisschritte
+\]
+sein.\footnote{Offensichtlich muss sogar $\Folgerungen \subset \Beweisschritte$ sein.}
+$\Voraussetzungen$ kann noch auf $\Voraussetzungen \cap \Beweisschritte$ beschränkt werden.
 
-Die zu beweisende Aussage (\textzB\ ein mathematischer Satz) kann dann folgendermaßen formuliert werden:%
+Die damit bewiesene Aussage (\textzB\ ein mathematischer Satz) kann dann folgendermaßen formuliert werden:%
 \footnote{%
 	\symqt{$\srand$} steht für \strqt{und}, bindet aber wesentlich schwächer als \symqt{\glsIdx{metaand}}. (\vrefseesub{sub:Metaausdruck})
 }
 \[
-\frac{V_1 \srand V_2 \srand ... \srand V_n}{F_1 \srand F_2 \srand ... \srand F_m}
-\qquad \text{(\glsIdx{formalerSatzV})}
-\tag{\tagFS} \sym{\gls{FS}} \label{def:formalerSatz}
+	\frac{\Voraussetzungen}{\Folgerungen} \quad \text{\textbzw} \quad
+	\frac{\Voraussetzungen \cap \Beweisschritte}{\Folgerungen} \quad \text{\textbzw} \quad
+	\frac{\Voraussetzung_1 \srand \Voraussetzung_2 \srand ... \srand \Voraussetzung_n}{\Folgerung_1 \srand \Folgerung_2 \srand ... \srand \Folgerung_m}
+	\qquad \text{(\glsIdx{formalerSatzV})}
+	\tag{\tagFS} \sym{\gls{FS}}
+	\label{def:formalerSatz}
 \]
-Zur Durchführung eines Beweises müssen aus den $V_i$ durch zulässige Transformationen die $F_j$ abgeleitet werden.
-
-
-Diese Transformationen werden in ASBA die sogenannten \emph{\Idx{Schlussregel}n} sein, die später behandelt werden.
-Zunächst werden dazu Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx{Prädikatenlogik}} behandelt.
+Bevor die Schlussregeln behandelt werden, werden noch Elemente der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx{Prädikatenlogik}} behandelt.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%Zunächst wird dazu eine Kurzfassung der \emph{\Idx{Aussagenlogik}} und der \emph{\Idx{Prädikatenlogik}} - weitgehend nach~\cite{bib:Rautenberg} - angegeben.
@@ -1138,15 +1179,15 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 
 			\item[1] \emph{Operatorsymbole}.
 			Sie stehen meistens für die Operatoren selbst.
-			Der Einfachheit halber werden auch die beiden Konstanten \symqt{$\ltrue$} und \symqt{$\lfalse$} als Junktoren \textbzw\ Operatoren bezeichnet.
+			Der Einfachheit halber werden auch die beiden Konstanten \textbzw\ ihre Symbole \symqt{$\ltrue$} und \symqt{$\lfalse$} als Operatoren \textbzw\ \emph{Junktoren} bezeichnet.
 
 			Die Operatoren \symqt{$\subset$}, \symqt{$\supset$}, \symqt{$\nsubset$} und \symqt{$\nsupset$} haben hier nicht die Bedeutung der entsprechenden Operatoren der Mengenlehre und dürfen nicht damit verwechselt werden; entsprechendes gilt für \symqt{$+$} und \symqt{$\cdot$} mit Addition und Multiplikation.
 
-			\item[2] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle binären Operationen aufzuführen.
+			\item[2] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle binären Operatoren aufzuführen.
 
 			\item[3] Je kleiner die Zahl, je höher die Priorität.
 
-			\item[4] Klammerung ist genau genommen kein Operator und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet. Ihre Priorität kann nur höher als die aller (anderen) Operatoren sein.
+			\item[4] Klammerung ist genau genommen keine Operation und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet. Ihre Priorität - sofern man überhaupt davon sprechen kann - kann nur höher als die aller (anderen) Operatoren sein.
 
 			\item[5] Die Priorität der unären Operatoren muss höher sein als die aller mehrwertigen, also auch der binären Operatoren.
 			Wenn alle unären Operatoren auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
@@ -1158,22 +1199,22 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 	\label{tab:Symbole}% Erst nach '\caption'!
 \end{table}
 
-Für einige Junktoren, Namen und Sprechweisen sind auch Alternativen angegeben.
+Für einige \emph{Junktoren}\footnote{Ein \emph{Junktor} oder \emph{Operatorsymbol} ist ein Symbol, dass für einen bestimmten Operator verwendet wird.}, Namen und Sprechweisen sind auch Alternativen angegeben.
 Die durchgestrichenen (\textdh\ negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt.
 Wenn für eine bestimmte Kombination von Wahrheitswerten mehr als eine Zeile angegeben ist, so sind die zugehörigen Operationen in der zweiwertigen Aussagenlogik alle gleich.
 Bei der formalen Definition wird aber keine Zweiwertigkeit vorausgesetzt, so dass je nach Definition die Operationen verschiedene Ergebnisse liefern können.
 
 Um vollständig zu sein, \textdh\ alle 22 möglichen Kombinationen von Wahrheitswerten für höchstens zwei Variable zu berücksichtigen, enthält die \tablename\ auch viele ungebräuchliche Junktoren und Operationen.
-Die Zeilen mit den Klammern und den gebräuchlichsten Junktoren sind in der \tablename\ grau hinterlegt.
-Hellgrau hinterlegt sind Zeilen mit weniger gebräuchlichen Junktoren.
-Die restlichen Operationen sind uninteressant und brauchen daher keine Priorität.
+Die Zeilen mit den Klammern und den gebräuchlichsten Operatoren sind in der \tablename\ grau hinterlegt.
+Hellgrau hinterlegt sind Zeilen mit weniger gebräuchlichen Operatoren.
+Die restlichen Operatoren sind uninteressant und brauchen daher keine Priorität.
 
 \subsection{Klammerregeln}% ----------------------------------------------------
 \label{sub:Klammerregeln}
 
 Zur Klammerersparnis werden die üblichen Regeln verwendet, \textdh\ dass Operatoren mit höherer Priorität stärker binden, als solche mit niedrigerer Priorität.
 
-Für die Operatoren derselben Priorität gilt Rechtsklammerung%
+Für Operatoren derselben Priorität gilt Rechtsklammerung%
 \footnote{%
 	Unäre Operatoren stehen hier stets links \emph{vor} dem Operanden, so dass es nur Rechtsklammerung geben kann.
 	Zur Rechtsklammerung bei binären Operationen ein Zitat aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5:
@@ -1252,11 +1293,11 @@ Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \A
 Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
 Da Computerprogramme mit der \emph{Polnischen Notation}\idx{Polnische Notation}%
 \footnote{%
-	Bei der \emph{Polnischen Notation} wird eine zweistellige Operation $(A\circ B)$ dargestellt als $\circ A B$.
-	Eine Zwischenstufe ist $\circ(A,B)$, bei der noch die redundanten Gliederungszeichen Komma und Klammern -- auch andere als die runden -- hinzukommen, so dass die Operationen optisch besser getrennt und dadurch für Menschen besser lesbar werden.
+	Bei der \emph{Polnischen Notation} wird eine zweistellige Operation $(A\opbsp B)$ dargestellt als $\opbsp A B$.
+	Eine Zwischenstufe ist $\opbsp(A,B)$, bei der noch die redundanten Gliederungszeichen Komma und Klammern -- auch andere als die runden -- hinzukommen, so dass die Operationen optisch besser getrennt und dadurch für Menschen besser lesbar werden.
 	Durch einfaches Weglassen der Gliederungszeichen ergibt sich dann die Polnische Notation.%
 }
-besser umgehen können und Klammern dort überflüssig sind, werden viele Formeln auch in die Polnische Notation überführt.
+besser umgehen können und Klammern dort überflüssig sind, werden viele Formeln auch in die Polnische Notation überführt. Dies wird auch in \ASBA\ so gehandhabt.
 
 \subsubsection{Bausteine der aussagenlogischen Sprache}% - - - - - - - - - - - -
 \label{subsub:Bausteine}
@@ -1267,110 +1308,117 @@ Zur Einteilung der aussagenlogischen Junktoren werden die folgenden Mengen defin
 	&& \text{~ Menge der \emph{natürlichen Zahlen} einschließlich 0}
 	\idx{natürlichen Zahlen, Menge der} \label{def:N}
 	\\
-	& \glsSym{asC}              & \defeq\quad & \{ \ltrue, \lfalse \}
+	& \glsSym{alCon}              & \defeq\quad & \{ \ltrue, \lfalse \}
 	&& \text {, Menge der \emph{aussagenlogischen Konstanten}}
 	\idx{Konstanten, Menge der}         \label{def:C}
 	\\
-	& \glsSym{asU}              & \defeq\quad & \{ \lnot \}
+	& \glsSym{alUna}              & \defeq\quad & \{ \lnot \}
 	&& \text{, Menge der \emph{unären aussagenlogischen Operatoren}}
 	\idx{unären Operatoren, Menge der}  \label{def:U}
 	\\
-	& \glsSym{asB}              & \defeq\quad &
+	& \glsSym{alBin}              & \defeq\quad &
 	\{ \land, \lor, \limp, \lequiv, \lrep, \lnand, \lnor, \lmult, \ladd \}
 	&& \text{, Menge der \emph{binären aussagenlogischen Operatoren}}
 	\idx{binären Operatoren, Menge der} \label{def:B}
 \end{align}
 %
+Um damit Formeln zu bilden, werden noch Variable gebraucht:
+\begin{align}
+	& \glsSym{alVar}  & \defeq     \quad & \{ \alvar_n \mid n \in \gsNo \}
+	&&&&
+	&& \text{, Menge der aussagenlogischen \emph{Variablen}} \label{def:alVar}
+	&&
+\end{align}
+%
+Die Mengen $\alCon$, $\alUna$, $\alBin$ und $\alVar$ müssen paarweise disjunkt sein. --
 Damit sind alle \vrefintab{tab:Symbole} verwendeten wesentlichen Konstanten und Operatoren%
 \footnote{%
 	Jeweils nur die ersten der grau hinterlegten Zeilen sowie \symqt{$\lmult$}.%
 }
-erfasst und es können die folgende Mengen definiert werden:
+und die Variablen erfasst und es können die folgende Mengen definiert werden:
 \begin{align}
-	%
-	& \glsSym{asV}  & \defeq   \quad & \{ p_n \mid n \in \gsNo \}
-	&& \text{, Menge der \emph{\glsIdxPl{atomareFormelA}}}
-	\idx{atomare Formeln, Menge der}          \label{def:V}
-	\\
-	& \glsSym{asJ}  & \defeq   \quad &\asC \cup \asU \cup \asB
-	&& \text{, Menge der \emph{Junktoren} \textbzgl\ \emph{Operatoren};
+	& \glsSym{alJun}  & \defeq     \quad & \alCon \cup \alUna \cup \alBin
+	&& \text{, Menge der aussagenlogischen \emph{Junktoren};
 	auch \emph{\glsIdx{logischeSignaturV}}}
-	\idx{Junktoren, Menge der}                \label{def:J}
+	\idx{Junktoren, Menge der}                              \label{def:alJun}
 	\\
-	& \glsSym{asA}  & \defeq   \quad & \asV \cup \asJ
-	&& \text{, \emph{Alphabet der aussagenlogischen Sprache (für }} \asJ
+	& \glsSym{alABC}  & \defeq     \quad & \alVar \cup \alJun
+	&& \text{, \emph{Alphabet der aussagenlogischen Sprache (für }} \alJun
 	\text{\emph{)}}
-	\idx{Alphabet der logischen Sprache}      \label{def:A}
+	\idx{Alphabet der logischen Sprache}                    \label{def:alABC}
 	\\
-	& \glsSym{asJx} & \subseteq\;\quad & \asJ
-	&& \text{, eine Teilmenge von } \asJ \text{ für eine Indexvariable }
-	x                                         \label{def:Bx}
+	& \glsSym{alJunx} & \subseteq\;\quad & \alJun
+	&& \text{, eine Teilmenge der Junktoren für eine Indexvariable }
+	x                                                       \label{def:alJunx}
 	\\
-	& \glsSym{asAx} & \defeq   \quad & \asV \cup \asJx \quad
-	&& \text{, Alphabet der aussagenlogischen Sprache \emph{für} } \asJx
-	\idx{Teil-Alphabet der aussagenlogischen Sprache} \label{def:Ax}
+	& \glsSym{alABCx} & \defeq     \quad & \alVar \cup \alJunx \quad
+	&& \text{, Alphabet der aussagenlogischen Sprache \emph{für} } \alJunx
+	\idx{Teil-Alphabet der aussagenlogischen Sprache}       \label{def:alABCx}
 \end{align}
 %
-Für Elemente aus $\asV$ werden hier normalerweise die großen lateinischen Buchstaben $A$, $B$, $C$, \textusw\ verwendet.
-Die Elemente aus $\asV$ (\glsIdx{atomareFormelA}n) werden auch \emph{\Idx{Satzbuchstabe}n} oder kurz \emph{\Idx{Atom}e} genannt.
+Für Elemente aus $\alVar$ werden hier normalerweise die großen lateinischen Buchstaben $A$, $B$, $C$, \textusw\ verwendet.
+Sie werden auch \emph{\Idx{Satzbuchstabe}n} oder kurz \emph{\Idx{Atom}e} genannt.
 
 \subsubsection{Aussagenlogische Formeln}%  - - - - - - - - - - - - - - - - -
 \label{subsub:Formeln}
 
-Neben dem Alphabet $\asA$ \textbzw\ $\asAx$ werden noch Klammern als Gliederungszeichen verwendet.
-Damit können nun rekursiv für jede Teilmenge $\asJx$ von $\asJ$ zwei Mengen von Formeln definiert werden:
+Neben dem Alphabet $\alABC$ \textbzw\ $\alABCx$ werden noch Klammern als Gliederungszeichen verwendet.
+Damit können nun rekursiv für jede Teilmenge $\alJunx$ von $\alJun$ zwei Mengen von Formeln definiert werden:
 
-$\glsSym{asFx}$ sei die Menge der auf folgende Weise definierten \emph{aussagenlogischen Formeln mit Klammerung}%
+$\glsSym{alForx}$ sei die Menge der auf folgende Weise definierten \emph{aussagenlogischen Formeln mit Klammerung}%
 \idx{aussagenlogische Formel mit Klammerung}:
 \begin{align}
-	&                               & \asV            \subset \asFx
+	&                                 & \alVar              \subset \alForx
 	\\
-	&                               & \asJx \cap \asC \subset \asFx
+	&                                 & \alJunx \cap \alCon \subset \alForx
 	\\
-	A    \in \asFx & \quad \metaimp &  (\circ A)          \in \asFx
-	& & \text{, für} \quad \circ \in \asU \cap \asJx
+	A    \in \alForx & \quad \metaimp &  (\opbsp A)         \in     \alForx
+	& & \text{, für} \quad \opbsp \in \alUna \cap \alJunx
 	\\
-	A, B \in \asFx & \quad \metaimp & (A \circ B)         \in \asFx
-	& & \text{, für} \quad \circ \in \asB \cap \asJx
+	A, B \in \alForx & \quad \metaimp & (A \opbsp B)        \in     \alForx
+	& & \text{, für} \quad \opbsp \in \alBin \cap \alJunx
 	\formulatoleft
 \end{align}
-Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFx$.
-\\Für $\asJ = \asJx$ sei noch $\asF \defeq \glsSym{asFx}$.
+Nur die auf diese Weise konstruierten Formeln sind Elemente von $\alForx$.
+\\Für $\alJun = \alJunx$ sei noch $\alFor \defeq \glsSym{alForx}$.
 
-$\glsSym{asFxp}$ sei die Menge der auf folgende Weise definierten aussagenlogischen Formeln in \emph{Polnischer Notation}%
+$\glsSym{alForxp}$ sei die Menge der auf folgende Weise definierten aussagenlogischen Formeln in \emph{Polnischer Notation}%
 \idx{aussagenlogische Formel in Polnischer Notation}:
 \begin{align}
-	&                                & \asV            \subset \asFxp
+	&                                  & \alVar              \subset \alForxp
 	\\
-	&                                & \asJx \cap \asC \subset \asFxp
+	&                                  & \alJunx \cap \alCon \subset \alForxp
 	\\
-	A    \in \asFxp & \quad \metaimp &  (\circ A)          \in \asFxp
-	& & \text{, für}  \quad \circ \in \asU \cap \asJx
+	A    \in \alForxp & \quad \metaimp &  (\opbsp A)         \in     \alForxp
+	& & \text{, für}  \quad \opbsp \in \alUna \cap \alJunx
 	\\
-	A, B \in \asFxp & \quad \metaimp & (A \circ B)         \in \asFxp
-	& & \text{, für}  \quad \circ \in \asB \cap \asJx
+	A, B \in \alForxp & \quad \metaimp & (A \opbsp B)        \in     \alForxp
+	& & \text{, für}  \quad \opbsp \in \alBin \cap \alJunx
 	\formulatoleft
 \end{align}
-Nur die auf diese Weise konstruierten Formeln sind Elemente von $\asFxp$.
-\\Für $\asJ = \asJx$ sei noch $\asFp \defeq \glsSym{asFxp}$.
+Nur die auf diese Weise konstruierten Formeln sind Elemente von $\alForxp$.
+Schließlich sei noch $\alForp \defeq \glsSym{alForxp}$ falls $\alJunx = \alJun$.
 
-Wie man leicht sieht, gilt:
+Wie man leicht sieht, gilt
 \begin{equation}
-	\asJx \: \subset \: \asJy \: \subset \: \asJ \metaimp
+	\alJunx     \: \subset \: \alJuny \: \subseteq \: \alJun \metaimp
 	\begin{cases}
-		\asAx \: \subset \: \asAy \: \subseteq \: \asA \\
-		\asFx \; \subset \: \asFy \; \subseteq \: \asF \\
-		\asFxp\, \subset \: \asFyp\, \subseteq \: \asFp
+		\alABCx \: \subset \: \alABCy \: \subseteq \: \alABC \\
+		\alForx \; \subset \: \alFory \; \subseteq \: \alFor \\
+		\alForxp\, \subset \: \alForyp\, \subseteq \: \alForp
 	\end{cases}
 \end{equation}
+und weiterhin gibt es eine bijektive Abbildung von $\alFor$ nach $\alForp$. Auf einen Beweis verzichten wir.
 %
-Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der Formeln aus $\asFx$ einsparen.
-Die Formeln aus $\asFxp$ sind frei von Klammern.
+Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der Formeln aus $\alForx$ einsparen.
+Die Formeln aus $\alForxp$ sind frei von Klammern.
 Die Namen der Operatoren finden sich \vrefintab{tab:Symbole}.
-Für aussagenlogische Formeln, \textdh\ von Elementen aus $\asF$ \textbzgl\ $\asFp$, werden hier normalerweise die kleinen griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwendet.
-Sie können dabei auch \glsIdx{atomareFormelA}n bezeichnen (siehe~\eqref{def:V}).
+Für aussagenlogische Formeln, \textdh\ von Elementen aus $\alFor$ \textbzgl\ $\alForp$, werden hier normalerweise die kleinen griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwendet.
+Sie können dabei auch \emph{\glsIdx{atomareFormelA}n} bezeichnen, \textdh\ Formeln, die sich nicht weiter zerlegen lassen.\footnote{%
+	Nur die Elemente von $\alVar$ und $\alCon$ sind unzerlegbar, sofern letztere nicht durch andere Formeln definiert werden.%
+}
 
-\subsection{Definition aussagenlogische Operatoren durch andere}% --------------
+\subsection{Definition aussagenlogischer Operatoren durch andere}% -------------
 \label{sub:ausOperatorDef}
 
 Im folgenden gelte für zwei aussagenlogische Formeln $\alpha$ und $\beta$:
@@ -1382,23 +1430,29 @@ Im folgenden gelte für zwei aussagenlogische Formeln $\alpha$ und $\beta$:
 	\parbox[t]{11cm}{können mit Hilfe erlaubter Substitutionen und geltender Axiome -- \vrefseesub{sub:ausAxiome} -- ineinander überführt werden.}
 \end{itemize}
 %
-Es werden verschiedene Teilmengen von $\asJ$ -- \glsIdxPl{logischeSignaturV} -- eingeführt, die jeweils ausreichen alle anderen Elemente aus $\asJ$ zu definieren:
+Es werden verschiedene Teilmengen von $\alJun$ -- \glsIdxPl{logischeSignaturV} -- eingeführt, die jeweils ausreichen alle anderen Elemente aus $\alJun$ zu definieren:
 \begin{align}
-	& \asJ_\xBool & \defeq & \quad\{ \lnot, \land, \lor \} \label{def:Jbool}
-	\qquad (\text{\glsIdx{BoolscheSignatur}})                                \\
-	& \asJ_\xAnd  & \defeq & \quad\{ \lnot, \land       \} \label{def:Jand}  \\
-	& \asJ_\xOr   & \defeq & \quad\{ \lnot, \lor        \} \label{def:Jor}   \\
-	& \asJ_\xImp  & \defeq & \quad\{ \lnot, \limp       \} \label{def:Jimp}  \\
-	& \asJ_\xRep  & \defeq & \quad\{ \lnot, \lrep       \} \label{def:Jrep}  \\
-	& \asJ_\xNand & \defeq & \quad\{ \lnand             \} \label{def:Jnand} \\
-	& \asJ_\xNor  & \defeq & \quad\{ \lnor              \} \label{def:Jnor}
+	& \alJun_\xBool & \defeq & \quad\{ \lnot, \land, \lor \} \label{def:Jbool}
+	\qquad (\text{\glsIdx{BoolscheSignatur}})
+	\\
+	& \alJun_\xAnd  & \defeq & \quad\{ \lnot, \land       \} \label{def:Jand}
+	\\
+	& \alJun_\xOr   & \defeq & \quad\{ \lnot, \lor        \} \label{def:Jor}
+	\\
+	& \alJun_\xImp  & \defeq & \quad\{ \lnot, \limp       \} \label{def:Jimp}
+	\\
+	& \alJun_\xRep  & \defeq & \quad\{ \lnot, \lrep       \} \label{def:Jrep}
+	\\
+	& \alJun_\xNand & \defeq & \quad\{ \lnand             \} \label{def:Jnand}
+	\\
+	& \alJun_\xNor  & \defeq & \quad\{ \lnor              \} \label{def:Jnor}
 	\formulatoleft\formulatoleft\formulatoleft
 \end{align}
 %
 Im Folgenden stehen jeweils links die Formeln in üblicher Schreibweise vollständig geklammert und rechts in Polnischer Notation (ohne Klammern).
-Ferner seien $\alpha$ und $\beta$ beliebige, nicht notwendig verschiedene Formeln aus der passenden Menge $\asFx$ \textbzgl\ der um die mit Hilfe der Definitionen erweiterten Formelmenge.
+Ferner seien $\alpha$ und $\beta$ beliebige, nicht notwendig verschiedene Formeln aus der passenden Menge $\alForx$ \textbzgl\ der um die mit Hilfe der Definitionen erweiterten Formelmenge.
 
-Ausgehend von den Operatoren aus der \glsIdxX{BoolscheSignatur} $\asJ_\xBool$ werden die restlichen Operatoren aus $\asJ$ definiert. Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den Operatoren aus $\asJ_\xAnd$:
+Ausgehend von den Operatoren aus der \glsIdxX{BoolscheSignatur} $\alJun_\xBool$ werden die restlichen Operatoren aus $\alJun$ definiert. Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den Operatoren aus $\alJun_\xAnd$:
 \begin{align}
 	% folgt ------------------------
 	(\alpha \limp \beta) &\;\defeq\; (\lnot (\alpha \land  (\lnot \beta))) &
@@ -1416,8 +1470,8 @@ Ausgehend von den Operatoren aus der \glsIdxX{BoolscheSignatur} $\asJ_\xBool$ we
 	\label{def:equiv}
 	\\
 	%falsch ------------------------
-	\lfalse              &\;\defeq\; (p_0 \land    (\lnot p_0))    &
-	\lfalse              &\;\defeq\;      \land p_0 \lnot p_0   \label{def:false}
+	\lfalse              &\;\defeq\; (\alvar_0 \land (\lnot \alvar_0)) &
+	\lfalse              &\;\defeq\;  \land \alvar_0  \lnot \alvar_0   \label{def:false}
 	\\
 	% mal --------------------------
 	(\alpha \lmult \beta)&\;\defeq\; (\alpha \land \beta)          &
@@ -1427,7 +1481,7 @@ Ausgehend von den Operatoren aus der \glsIdxX{BoolscheSignatur} $\asJ_\xBool$ we
 	(\alpha \lnand \beta)&\;\defeq\; (\lnot (\alpha \land \beta )) &
 	\lnand \alpha  \beta &\;\defeq\;  \lnot  \land \alpha \beta \label{def:nand}
 \end{align}
-und die mit den Operatoren aus $\asJ_\xOr$:
+und die mit den Operatoren aus $\alJun_\xOr$:
 \begin{align}
 	% NOR --------------------------
 	(\alpha \lnor \beta) &\;\defeq\; (\lnot (\alpha \lor \beta))   &
@@ -1439,12 +1493,12 @@ und die mit den Operatoren aus $\asJ_\xOr$:
 	\label{def:add}
 	\\
 	% wahr -------------------------
-	\ltrue & \;\defeq\; (p_0 \lor    (\lnot p_0)) &
-	\ltrue & \;\defeq\;      \lor p_0 \lnot p_0
+	\ltrue & \;\defeq\; (\alvar_0 \lor (\lnot \alvar_0)) &
+	\ltrue & \;\defeq\;  \lor \alvar_0  \lnot \alvar_0
 	\label{def:true}
 \end{align}
 %
-Ist \symqt{$\lor$} oder \symqt{$\land$} nicht vorgegeben, \textdh\ wird von den Elementen aus $\asJ_\xAnd$ \textbzgl\ $\asJ_\xOr$ statt von denen aus $\asJ_\xBool$ ausgegangen, so muss man den fehlenden Operator mittels der passenden der beiden folgenden Definitionen einführen:
+Ist \symqt{$\lor$} oder \symqt{$\land$} nicht vorgegeben, \textdh\ wird von den Elementen aus $\alJun_\xAnd$ \textbzgl\ $\alJun_\xOr$ statt von denen aus $\alJun_\xBool$ ausgegangen, so muss man den fehlenden Operator mittels der passenden der beiden folgenden Definitionen einführen:
 \begin{align}
 	% oder aus und -----------------
 	(\alpha \lor \beta)  & \;\defeq\; (\lnot((\lnot\alpha)\land(\lnot\beta))) &
@@ -1457,7 +1511,7 @@ Ist \symqt{$\lor$} oder \symqt{$\land$} nicht vorgegeben, \textdh\ wird von den 
 \end{align}
 Nun sind wieder alle Operatoren definiert.
 
-Entsprechend wird bei Vorgabe von $\asJ_\xImp$ \textbzgl\ $\asJ_\xRep$ die passende der beiden folgenden Definitionen ausgewählt:
+Entsprechend wird bei Vorgabe von $\alJun_\xImp$ \textbzgl\ $\alJun_\xRep$ die passende der beiden folgenden Definitionen ausgewählt:
 \begin{align}
 	% oder aus imp -----------------
 	(\alpha \lor  \beta) & \;\defeq\; ((\lnot \alpha) \limp \beta)         &
@@ -1477,7 +1531,7 @@ Da aus \eqref{def:rep} durch Vertauschung der Variablen unmittelbar
 \end{align}
 folgt, vermindert sich der Aufwand dazu erheblich.
 
-Bei Vorgabe von $\asJ_\xNand$ \textbzgl\ $\asJ_\xNor$ schließlich werden die passenden Definition aus
+Bei Vorgabe von $\alJun_\xNand$ \textbzgl\ $\alJun_\xNor$ schließlich werden die passenden Definition aus
 \begin{align}
 	% nicht aus nor ----------------
 	(\lnot \alpha) & \;\defeq\; (\alpha \lnor \alpha)  &
@@ -1499,12 +1553,12 @@ und, da \symqt{$\lnot$} jetzt definiert ist, aus
 \end{align}
 ausgewählt und es ist \eqref{def:nand} \textbzgl\ \eqref{def:nor} als Gleichung nachzuweisen.
 
-Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der Definitionen \eqref{def:imp} bis \eqref{def:andnand}, ausgehend vom jeweils passenden $\asFx$, genau die gesamte Formelmenge $\asF$ erzeugt werden kann.
+Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der Definitionen \eqref{def:imp} bis \eqref{def:andnand}, ausgehend vom jeweils passenden $\alForx$, genau die gesamte Formelmenge $\alFor$ erzeugt werden kann.
 
 \subsection{Aussagenlogisches Axiomensystem}% ----------------------------------
 \label{sub:ausAxiome}
 
-Ausgehend von der \glsIdxBg{logischeSignaturV}{logischen Signatur} $\asJ_\xAnd = \{\lnot, \land\}$ und der \vrefdef{def:imp} von \symqt{$\limp$} werden die folgenden vier logischen Axiome definiert:
+Ausgehend von der \glsIdxBg{logischeSignaturV}{logischen Signatur} $\alJun_\xAnd = \{\lnot, \land\}$ und der \vrefdef{def:imp} von \symqt{$\limp$} werden die folgenden vier logischen Axiome definiert:
 \begin{align}
 	&
 	(\alpha\limp\beta\limp\gamma)\limp(\alpha\limp\beta)\limp(\alpha\limp\gamma)
