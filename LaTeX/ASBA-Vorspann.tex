@@ -1,4 +1,4 @@
-%%############################################################################%% 
+%%############################################################################%%
 %%                                                                            %%
 %% Datei:  ASBA-Vorspann.tex                                                  %%
 %% Inhalt: Vorspann für die Datei ASBA.txt                                    %%
@@ -301,18 +301,23 @@
 
 % sonstige nützliche Kommandos #################################################
 
-% Im Parameter von '\turl' muss '\' vor jedem Zeichen aus '{}#&%$' ein '\'
-% stehen und '\' / '~' durch '\textbackslash' / '\textasctilde' ersetzt werden.
+% Im Parameter von '\turl' muss vor jedem Zeichen aus "{}#&%$" ein '\' stehen
+% und '\' und '~' durch '\textbackslash' bzw. '\textasctilde' ersetzt werden.
 \newcommand*{\tourl}[1]{$\rightarrow$~\url{#1}}
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
 \newcommand*{\formulaspace}{&&&&}%         Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
-\newcommand*{\charqt}[1]{'#1'}%          Quotierung von Zeichen    (character) %\newcommand*{\charqt}[1]{\guilsinglleft#1\guilsinglright}%  ... Alternative
-\newcommand*{\strqt}[1]{\enquote{#1}}%   Quotierung von Zeichenketten (string)
-%\newcommand*{\strqt}[1]{\guillemotleft#1\guillemotright}%     ... Alternative
-% Nur mit Parameter im Mathematikmodus!
-\newcommand*{\symqt}[1]{\charqt{#1}}%    Quotierung einzelner Symbole (symbol)
-\newcommand*{\forqt}[1]{\strqt{#1}}%     Quotierung von Formeln      (formula)
+% Spezielle Quotierung von
+% Objekten                          [ob], Zeichen [char] und Zeichenketten [str]
+% Relationen, Operatoren, Operanden [op], Symbolen [sym] und Formeln       [for]
+% Erstere werden im Text-, letztere im Mathematikmodus ausgegeben.
+\newcommand*{\objqt} [1]              {#1}%                Objekte
+\newcommand*{\charqt}[1]{\guilsinglleft#1\guilsinglright}% Zeichen
+\newcommand*{\strqt} [1]{\guillemotleft#1\guillemotright}% Zeichenketten
+% Parameter wird mit $...$ umgeben
+\newcommand*{\opqt} [1]{\objqt {$#1$}}%        Relationen, Operatoren, Operanden
+\newcommand*{\symqt}[1]{\charqt{$#1$}}%                    Symbole
+\newcommand*{\forqt}[1]{\strqt {$#1$}}%                    Formeln
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
 \newcommand*{\sectionname}{Abschnitt}
@@ -325,8 +330,8 @@
 \newcommand*{\vreffig}       [1]{\figurename~\vref       {#1}}
 \newcommand*{\vreftab}       [1]{\tablename~\vref        {#1}}
 \newcommand*{\vrefcha}       [1]{\chaptername~\vref      {#1}}
-\newcommand*{\vrefsec}       [1]{\subsectionname~\vref   {#1}}
-\newcommand*{\vrefsub}       [1]{\sectionname~\vref      {#1}}
+\newcommand*{\vrefsec}       [1]{\sectionname~\vref      {#1}}
+\newcommand*{\vrefsub}       [1]{\subsectionname~\vref   {#1}}
 \newcommand*{\vrefsubsub}    [1]{\subsubsectionname~\vref{#1}}
 \newcommand*{\vrefdef}       [1]{Definition~\vref        {#1}}
 \newcommand*{\vrefziel}      [1]{Ziel~\vref              {#1}}
@@ -400,25 +405,26 @@
 \newcommand*{\textusw}{usw.\@}
 \newcommand*{\textzB}{z.\@\,B.\@}
 \newcommand*{\textZB}{Z.\@\,B.\@}
+\newcommand*{\textdots}{…}
 
 % Ergebnis von Makros verschwinden lassen
 \newcommand*{\hidden}[1]{}
 
 % Glossareinträge ##############################################################
-	
+
 % Indices und Symbole ==========================================================
 \makeindex
 \newindex[Symbolverzeichnis]{sym}
 \newindex[Index]{idx}
 \newcommand*{\Idx}[1]{#1\idx{#1}}%   normaler Index
-\newcommand*{\Sym}[1]{#1\sym{$#1$}}% Symbol - Nur im Mathematikmodus verwenden!
+\newcommand*{\Sym}[1]{#1\sym{$#1$}}% Index für ein Symbol - Mathematikmodus!
 
 % Glossareinträge ==============================================================
 %%%\GlsSetQuote{+}% wegen von ngerman; see glossaries guide for beginners
 \makeglossaries
 \setacronymstyle{long-sc-short}
 
-% Symbol/Index und Glossareintrag ==============================================
+% Symbol/Index/Glossar =========================================================
 
 \newcommand*{\idx}[1]{\sindex[idx]{#1}}
 \newcommand*{\sym}[1]{\sindex[sym]{#1}}
@@ -433,7 +439,8 @@
 \newcommand*{\GlsIdxX} [1]{\GlsIdxPl{#1}}%               groß und Sonderfall
 \newcommand*{\Tag}[1]{\tag{\glsPl{#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag in Formel
 
-% ==============================================================================
+% Glossareinträge ==============================================================
+
 \newcommand*{\ASBA}{\glsIdx{ASBA}}
 \newacronym{ASBA}{ASBA}{
 	Programmsystem, das \textbf{A}xiome, \textbf{S}ätze, \textbf{B}eweise und \textbf{A}uswertungen behandeln kann%

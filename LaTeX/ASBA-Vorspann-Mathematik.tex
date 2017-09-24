@@ -37,9 +37,10 @@
 
 \newcommand*{\srand}{\mid}% in formalen Sätzen und Schlussregeln:   ... und ...
 % Nur im Mathematikmodus!
-\DeclareMathOperator{\metaand}{\&}%   ... und  ...
-\DeclareMathOperator{\metaor}{||}%    ... oder ...
-\DeclareMathOperator{\metaorr}{||\,}% ... oder ... (besserer Abstand)
+\DeclareMathOperator{\metaandsym}{\&}%         ... und  ...
+\DeclareMathOperator{\metaand}{\metaandsym\,}% ... und  ... (besserer Abstand)
+\DeclareMathOperator{\metaorsym}{||}%          ... oder ...
+\DeclareMathOperator{\metaor}{\metaorsym\,}%   ... oder ... (besserer Abstand)
 \DeclareMathOperator{\metaimp}{\Rightarrow}%   aus ... folgt              ...
 \DeclareMathOperator{\metarep}{\Leftarrow}%        ... folgt aus          ...
 \DeclareMathOperator{\metaequiv}{\Leftrightarrow}% ... genau dann wenn    ...
@@ -160,7 +161,7 @@
 \newcommand*{\alJun}  {\mathcal{J}}%    Menge der Junktoren
 \newcommand*{\alJunx} {\alJun_x}%       Teilmenge der Junktoren
 \newcommand*{\alJuny} {\alJun_y}%       entsprechend \alJunx
-\newcommand*{\alMet}  {\mathcal{M}}%    Metaoperatoren und "Gleichheiten"
+%%%\newcommand*{\alMet}  {\mathcal{M}}%    Metaoperatoren und "Gleichheiten"
 \newcommand*{\alUna}  {\mathcal{U}}%    Menge der unären Operatoren
 \newcommand*{\alVar}  {\mathcal{Q}}%    Menge der Variablen
 \newcommand*{\alvar}  {q}%              Name einer Variablen
@@ -264,11 +265,11 @@
 	}
 }
 \newglossaryentry{metaand}{
-	name={$ \metaand$},
-	plural={\metaand},% im Mathematikmodus
+	name={$ \metaandsym$},
+	plural={\metaandsym},% im Mathematikmodus
 	description={%
 		Ein \emph{Metaoperator}: ... und ...
-		Die Priorität ist höher als die von \symqt{$\srand$}%
+		Die Priorität ist höher als die von \symqt{\srand}%
 	}
 }
 \newglossaryentry{metadefeq}{
@@ -293,8 +294,8 @@
 	}
 }
 \newglossaryentry{metaor}{
-	name={$ \metaor$},
-	plural={\metaor},% im Mathematikmodus
+	name={$ \metaorsym$},
+	plural={\metaorsym},% im Mathematikmodus
 	description={%
 		Ein \emph{Metaoperator}: ... oder ..%
 	}
@@ -341,7 +342,7 @@
 	plural={\srand},% im Mathematikmodus
 	description={%
 		Ein \emph{Metaoperator}: ... und ...
-		Die Priorität ist niedriger als die von \symqt{$\metaand$}%
+		Die Priorität ist niedriger als die von \symqt{\metaandsym}%
 	}
 }
 
@@ -456,13 +457,13 @@
 		Eine Teilmenge der Menge $\alJun$ der aussagenlogischen Operatoren
 	}
 }
-\newglossaryentry{alMet}{
-	name={$ \alMet$},
-	plural={\alMet},% im Mathematikmodus
-	description={%
-		Die Menge der \emph{Metaoperatoren} und der mit Gleichheit verwandten Symbole%
-	}
-}
+%%%\newglossaryentry{alMet}{
+%%%	name={$ \alMet$},
+%%%	plural={\alMet},% im Mathematikmodus
+%%%	description={%
+%%%		Die Menge der \emph{Metaoperatoren} und der mit Gleichheit verwandten Symbole%
+%%%	}
+%%%}
 \newglossaryentry{alUna}{
 	name={$ \alUna$},
 	plural={\alUna},% im Mathematikmodus
@@ -531,7 +532,7 @@
 	name={($\eqB$)},
 	plural={\eqB},% im Mathematikmodus
 	description={%
-		Beseitigung von \symqt{$\eq$}%
+		Beseitigung von \symqt{\eq}%
 	}
 }
 \newcommand*{\tageqE}{$\eq$E}% Argument für \tag - im Textmodus
@@ -540,7 +541,7 @@
 	name={($\eqE$)},
 	plural={\eqE},% im Mathematikmodus
 	description={%
-		Einführung von \symqt{$\eq$}%
+		Einführung von \symqt{\eq}%
 	}
 }
 \newcommand*{\tagandB}{$\land$B}% Argument für \tag - im Textmodus
@@ -549,7 +550,7 @@
 	name={($\andB$)},
 	plural={\andB},% im Mathematikmodus
 	description={%
-		Beseitigung von \symqt{$\andB$}%
+		Beseitigung von \symqt{\andB}%
 	}
 }
 \newcommand*{\tagandE}{$\land$E}% Argument für \tag - im Textmodus
@@ -558,7 +559,7 @@
 	name={($\andE$)},
 	plural={\andE},% im Mathematikmodus
 	description={%
-		Beseitigung von \symqt{$\andE$}%
+		Beseitigung von \symqt{\andE}%
 	}
 }
 \newcommand*{\tagimpB}{$\limp$B}% Argument für \tag - im Textmodus
@@ -567,7 +568,7 @@
 	name={($\impB$)},
 	plural={\impB},% im Mathematikmodus
 	description={%
-		Beseitigung von \symqt{$\impB$}%
+		Beseitigung von \symqt{\impB}%
 	}
 }
 \newcommand*{\tagimpE}{$\limp$E}% Argument für \tag - im Textmodus
@@ -576,7 +577,7 @@
 	name={($\impE$)},
 	plural={\impE},% im Mathematikmodus
 	description={%
-		Beseitigung von \symqt{$\impE$}%
+		Beseitigung von \symqt{\impE}%
 	}
 }
 \newcommand*{\tagnota}{$\lnot$1}% Argument für \tag - im Textmodus
@@ -585,7 +586,7 @@
 	name={($\nota$)},
 	plural={\nota},% im Mathematikmodus
 	description={%
-		Einführung/Beseitigung von \symqt{$\lnot$} Teil 1%
+		Einführung/Beseitigung von \symqt{\lnot} Teil 1%
 	}
 }
 \newcommand*{\tagnotb}{$\lnot$2}% Argument für \tag - im Textmodus
@@ -594,7 +595,7 @@
 	name={($\notb$)},
 	plural={\notb},% im Mathematikmodus
 	description={%
-		Einführung/Beseitigung von \symqt{$\lnot$} Teil 1%
+		Einführung/Beseitigung von \symqt{\lnot} Teil 1%
 	}
 }
 \newcommand*{\tagnotc}{$\lnot$3}% Argument für \tag - im Textmodus
@@ -621,7 +622,7 @@
 %%%	name={($\obB$)},
 %%%	plural={\orB},% im Mathematikmodus
 %%%	description={%
-%%%		Beseitigung von \symqt{$\lor$}%
+%%%		Beseitigung von \symqt{\lor}%
 %%%	}
 %%%}
 %%%\newcommand*{\tagorE}{$\lor$E}% Argument für \tag - im Textmodus
@@ -630,7 +631,7 @@
 %%%	name={($\obE$)},
 %%%	plural={\orE},% im Mathematikmodus
 %%%	description={%
-%%%		Beseitigung von \symqt{$\lor$}%
+%%%		Beseitigung von \symqt{\lor}%
 %%%	}
 %%%}
 
@@ -643,7 +644,7 @@
 		Wenn sich eine Formel $\beta$ aus einer Formel $\alpha$ mittels zulässiger Transaktionen ableiten lässt, heißt $\beta$ ableitbar aus $\alpha$.
 		Sprechweise: \forqt{$\alpha$ ableitbar $\beta$}.
 		Eine oder beide Formeln $\alpha$ \textbzw\ $\beta$ dürfen dabei durch Formelmengen ersetzt werden.
-		-- siehe \emph{Ableitungsrelation} und \symqt{$\derive$}
+		-- siehe \emph{Ableitungsrelation} und \symqt{\derive}
 		\newline
 		Synonym: \emph{beweisbar}%
 	}
@@ -652,7 +653,7 @@
 	name={Ableitungsrelation},
 	plural={Ableitungsrelationen},
 	description={%
-		Die Relation \symqt{$\derive$}%
+		Die Relation \symqt{\derive}%
 	}
 }
 \newglossaryentry{Abtrennungsregel}{
@@ -816,7 +817,7 @@
 	plural={Prädikate},
 	description={%
 		Ein Element der \emph{Prädikatenlogik} (\vrefseesec{sec:Praedikatenlogik}).
-		\textZB\ kann man eine \forqt{$Gruppe$} als ein zweistelliges Prädikat \forqt{$Gruppe(G,+)$} definieren, in dem $G$ eine Menge und \symqt{$+$} eine Operation, \textdh\ eine (zweistellige) Funktion \forqt{$+: G \times G \rightarrow G$} ist, so dass die Gruppenaxiome erfüllt sind%
+		\textZB\ kann man eine \forqt{$Gruppe$} als ein zweistelliges Prädikat \forqt{$Gruppe(G,+)$} definieren, in dem $G$ eine Menge und \symqt{+} eine Operation, \textdh\ eine (zweistellige) Funktion \forqt{$+: G \times G \rightarrow G$} ist, so dass die Gruppenaxiome erfüllt sind%
 	}
 }
 \newglossaryentry{Praedikatenlogik}{

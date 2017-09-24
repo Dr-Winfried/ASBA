@@ -43,24 +43,34 @@ Alle hier aufgeführten Axiome, Sätze und Beweise sollen dazu kodiert und die B
 \beginsection{Metasprache}
 \label{sec:Metasprache}
 
+%TODO ab hier testweise keine einfache Quotierung - Effekt prüfen
+
+\begingroup% Ab hier einfache Quotierung von Objekten, Zeichen und Zeichenketten
+% Vorübergehende Neudefinition der Quotierung von
+% Objekten                          [ob], Zeichen [char] und Zeichenketten [str]
+% Relationen, Operatoren, Operanden [op], Symbolen [sym] und Formeln       [for]
+\renewcommand*{\objqt }[1]          {#1}%                  Objekte
+\renewcommand*{\charqt}[1]{\enquote*{#1}}%                 Zeichen
+\renewcommand*{\strqt }[1]{\enquote {#1}}%                 Zeichenketten
+
 Wenn man über eine Sprache spricht, braucht man auch eine Sprache, in der Aussagen über die erstere getroffen werden können.
 Wenn die zuerst genannte Sprache die der Mathematik ist, nimmt man üblicherweise die natürliche Sprache als \glsIdx{Metasprache}.
 Leider ist diese oft ungenau, nicht immer eindeutig und abhängig vom Zusammenhang, in dem sie gesprochen wird%
 \footnote{%
-	Man betrachte die beiden Aussagen \enquote{Studenten und Rentner zahlen die Hälfte.} und \enquote{Studenten oder Rentner zahlen die Hälfte.}, die beide das gleiche meinen.
+	Man betrachte die beiden Aussagen \strqt{Studenten und Rentner zahlen die Hälfte.} und \strqt{Studenten oder Rentner zahlen die Hälfte.}, die beide das gleiche meinen.
 	-- Entnommen aus \cite{bib:Rautenberg} \sectionname~1.2 Bemerkung 1.
 
-	Ein weiteres Problem ist, dass man unauflösbare Widersprüche formulieren kann, \textzB\ \enquote{%
+	Ein weiteres Problem ist, dass man unauflösbare Widersprüche formulieren kann, \textzB\ \strqt{%
 		Der Barbier ist der Mann im Ort, der genau die Männer im Ort rasiert, die sich nicht selbst rasieren.%
 	}.
 	Und der Barbier?
 	Wenn er sich selbst rasiert, dann rasiert er sich nicht selbst, und wenn er sich nicht selbst rasiert, dann rasiert er sich selbst.
 	Was denn nun?
 	-- Quelle unbekannt) --
-	Das Problem ist verwandt mit dem Problem der \enquote{Menge aller Mengen, die sich nicht selbst enthalten}.%
+	Das Problem ist verwandt mit dem Problem der \strqt{Menge aller Mengen, die sich nicht selbst enthalten}.%
 }.
 Um diese Probleme in den Griff zu bekommen, wird die \glsIdx{Metasprache} zum Teil formalisiert.
-Durch diese Formalisierung erinnert sie dann teilweise schon an mathematische Formeln.
+Durch diese Formalisierung erinnert sie dann schon ein wenig an mathematische Formeln.
 Die Sprachebenen sollten aber sorgfältig unterschieden werden.
 
 \subsection{Metasprachliche Ausdrücke}% ----------------------------------------
@@ -74,15 +84,15 @@ Ein \emph{\glsIdx{MetaausdruckV}} ist eine in normaler Sprache verfasste Aussage
 In einem erweiterten Sinne gehören auch Relationen einschließlich ihrer Operanden dazu%
 \footnote{%
 	Wird statt des Symbols der Name der zugehörigen Relation verwendet, ist dies unmittelbar einleuchtend.
-	So wird \textzB\ aus der Formel \forqt{$A<B$} die \glsIdx{MetaaussageV} \strqt{$A$ ist kleiner als $B$}.%
+	So wird \textzB\ aus der Formel \forqt{A<B} die \glsIdx{MetaaussageV} \strqt{$A$ ist kleiner als $B$}.%
 },
-wie \textzB\ \forqt{$A=A$}, \forqt{$A \equiv B$}, \forqt{$A<B$}, \textusw
+wie \textzB\ \forqt{A=A}, \forqt{A \equiv B}, \forqt{A<B}, \textusw
 
 Während die Beispiele (a) und (b) einfache, nicht mehr zerlegbare \glsIdxPl{MetaausdruckV} sind, ist Beispiel (c) zusammengesetzt.
 Für alle drei Aussagen lässt sich feststellen, ob sie richtig sind oder nicht.
-Für (a) allerdings nur im Nachhinein und für den zweiten Teil von (c) nur, weil klar ist, worauf sich \strqt{das} bezieht.
-Natürlich muss auch der Zusammenhang, in dem ein \glsIdx{MetaausdruckV} formuliert wird, bekannt sein, denn \textzB\ ist die Bedeutung von \strqt{Ich} nur dann bekannt, wenn man weiss von wem die Aussage ist.
-Auf eine exakte Definition von \strqt{\glsIdx{MetaausdruckV}} wird verzichtet, weil das intuitive Verständnis hier ausreicht.
+Für (a) allerdings nur im Nachhinein und für den zweiten Teil von (c) nur, weil klar ist, worauf sich \enquote{das} bezieht.
+Natürlich muss auch der Zusammenhang, in dem ein \glsIdx{MetaausdruckV} formuliert wird, bekannt sein, denn \textzB\ ist die Bedeutung von \enquote{Ich} nur dann bekannt, wenn man weiss von wem die Aussage ist.
+Auf eine exakte Definition von \enquote{\glsIdx{MetaausdruckV}} wird verzichtet, weil das intuitive Verständnis hier ausreicht.
 In erster Näherung können aber alle sprachlichen Ausdrücke, die im Prinzip überprüft werden können, als \glsIdxPl{MetaausdruckV} betrachtet werden.
 
 Zusammengesetzte \glsIdxPl{MetaausdruckV} wie (c) können zum Teil formalisiert werden.
@@ -91,46 +101,39 @@ Dies wird mit den folgenden Definitionen erreicht:
 \begin{align}
 	%
 	& A \glsSym{metaimp}   B & \text{steht für }
-	& \text{\strqt{\emph{Wenn} $A$ [gilt] \emph{dann} [gilt] [auch] $B$}.}
+	& \text{\enquote{\emph{Wenn} $A$ [gilt] \emph{dann} [gilt] [auch] $B$}.}
 	\\
 	& A \glsSym{metarep}   B & \text{steht für }
-	& \text{\strqt{$A$ [gilt] \emph{sofern}          $B$ [gilt]}.}
+	& \text{\enquote{$A$ [gilt] \emph{sofern}          $B$ [gilt]}.}
 	\\
 	& A \glsSym{metaequiv} B & \text{steht für }
-	& \text{\strqt{$A$ [gilt] \emph{genau dann wenn} $B$ [gilt]}.}
+	& \text{\enquote{$A$ [gilt] \emph{genau dann wenn} $B$ [gilt]}.}
 	\\
 	& A \glsSym{metaand}   B & \text{steht für }
-	& \text{\strqt{$A$ \emph{und}  $B$}.}
+	& \text{\enquote{$A$ \emph{und}  $B$}.}
 	\\
 	& A \glsSym{metaor}    B & \text{steht für }
-	& \text{\strqt{$A$ \emph{oder} $B$}.}
+	& \text{\enquote{$A$ \emph{oder} $B$}.}
 	\\
 	& A \glsSym{srand}     B & \text{steht für }
-	& \text{\strqt{$A$ \emph{und}  $B$}.}
+	& \text{\enquote{$A$ \emph{und}  $B$}.}
 	\formulatoleft
 \end{align}
-%
-Insbesondere bei den Schlussregeln\vrefnotesec{sec:Schlussregeln} ist es üblich, \symqt{$\srand$} statt \symqt{$\metaand$} (bei niedrigerer Priorität\vrefnotetab{tab:Prio-Aussagenlogik}) zu verwenden.
-%
-Offensichtlich sind das alles ebenfalls \glsIdxPl{MetaausdruckV}, jetzt aber teilweise formalisiert.
-(c) lässt sich dann ausdrücken als \strqt{\strqt{Ich habe ein rotes Auto} $\metaand$ \strqt{das kann 200\,km/h schnell fahren.}}.
-
-Um Verwechslungen mit den logischen Symbolen%
 \footnote{%
-	Symbole und die dadurch repräsentierten Objekte werden hier normalerweise nicht unterschieden, sofern aus dem Zusammenhang ersichtlich ist, was gemeint ist.%
+	Insbesondere bei den Schlussregeln (\vrefseesec{sec:Schlussregeln}) ist es üblich, das Symbol \symqt{\srand} statt \symqt{\metaandsym} (bei niedrigerer Priorität (\vrefseetab{tab:Prio-Aussagenlogik})) zu verwenden.%
 }
-zu vermeiden, werden für \strqt{und} und \strqt{oder} die Symbole \symqt{$\metaand$} und \symqt{$\metaor$} verwendet.
-$A$ und $B$ können als Operanden von \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$} und \symqt{$\srand$} ohne Bedeutungsveränderung vertauscht werden.
-Wird in einer Formel nur einer der Operatoren \symqt{$\metaand$}, \symqt{$\metaor$} oder \symqt{$\srand$} verwendet, können die Operanden beliebig permutiert werden, so dass dann auch eine Klammerung überflüssig ist.
-\forqt{$A \metarep B$} ist nur eine andere Schreibweise für \forqt{$B \metaimp A$}.
--- Ein Symbol für \strqt{nicht} wird hier nicht gebraucht.
+Offensichtlich sind das alles ebenfalls \glsIdxPl{MetaausdruckV}, jetzt aber teilweise formalisiert.
+(c) lässt sich dann ausdrücken als \enquote{\strqt{Ich habe ein rotes Auto} $\metaandsym$ \strqt{das kann 200\,km/h schnell fahren.}}.
+
+Um Verwechslungen mit den logischen Operatoren zu vermeiden, werden für \enquote{und} und \enquote{oder} die Symbole \symqt{\metaandsym} und \symqt{\metaorsym} verwendet.
+\opqt{A} und \opqt{B} können als Operanden von \opqt{\metaequiv}, \opqt{\metaandsym}, \opqt{\metaorsym} und \opqt{\srand} ohne Bedeutungsveränderung vertauscht werden.
+Wird in einer Formel nur einer der Operatoren \opqt{\metaandsym}, \opqt{\metaorsym} oder \opqt{\srand} verwendet, können die Operanden beliebig permutiert werden, so dass dann auch eine Klammerung überflüssig ist.
+\enquote{$A \metarep B$} ist nur eine andere Schreibweise für \enquote{$B \metaimp A$}.
+-- Ein Symbol für \enquote{nicht} wird hier nicht gebraucht.
 
 \GlsIdxPl{MetaausdruckV} können auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
-\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$} und \symqt{$\srand$} heißen \emph{\glsIdxPl{MetaoperatorV}}.
+\opqt{\metaimp}, \opqt{\metarep}, \opqt{\metaequiv}, \opqt{\metaandsym}, \opqt{\metaorsym} und \opqt{\srand} heißen \emph{\glsIdxPl{MetaoperatorV}}.
 Ihre Prioritäten werden \vrefinsub{sub:Klammerregeln} zusammen mit anderen Operatoren definiert.
-
-Sollen zwei \glsIdxPl{MetaausdruckV} miteinander verglichen werden, muss klar sein auf welche Art; ob \textzB\ als Zeichenfolgen -- mit oder ohne Wertung der Zwischenräume --, als \glsIdxPl{Wahrheitswert} oder auf sonstige Art.
-Wenn die Art des Vergleichs implizit oder explizit klar ist und sich die beiden Ausdrücke auf diese Art vergleichen lassen, heißen sie \emph{\glsIdx{vergleichbar}}.
 
 \subsection{Mit Gleichheit verwandte Relationen}% ------------------------------
 \label{sub:Gleichheit}
@@ -141,18 +144,18 @@ Wenn die Art des Vergleichs implizit oder explizit klar ist und sich die beiden 
 In diesem und allen weiteren \sectionnames\ wird vorausgesetzt:
 \begin{itemize}
 	%
-	\item Wenn mehrere der im Folgenden definierten Symbole \symqt{$\metadefeq$}, \symqt{$\defeq$}, \symqt{$=$}, \symqt{$\ne$} und \symqt{$\equiv$} verwendet werden, dann im selben Zusammenhang%
+	\item Wenn mehrere der im Folgenden definierten Symbole \symqt{\metadefeq}, \symqt{\defeq}, \symqt{=}, \symqt{\ne} und \symqt{\equiv} verwendet werden, dann im selben Zusammenhang%
 	\footnote{%
 		Statt von einem \emph{Zusammenhang} könnte man auch von einer \emph{Umgebung} sprechen.
 		Diese Bezeichnung ist aber auch ein verbreiteter Fachbegriff, so dass auf seine Verwendung verzichtet wird.
 		Die Exaktheit der Begriffe in diesem Dokument soll für Erstellung von \ASBA\ ausreichen; was darüber hinausgeht, ist nicht Inhalt dieses Dokuments.%
 	}.
 	%
-	\item Wenn \symqt{$=$} und \symqt{$\equiv$} beide verwendet werden, müssen ihre jeweiligen \emph{\glsIdxPl{intEigenschaftA}} für \symqt{$=$} und \symqt{$\equiv$} bekannt sein.
-	Dies wird immer vorausgesetzt und außerdem, dass jede \glsIdx{intEigenschaftA} für \symqt{$\equiv$} auch eine für \symqt{$=$} ist.
-	Daraus folgt insbesondere, dass mit $(A \eq B)$ auch $(A \equiv B) $ gilt.
+	\item Wenn die Relationen \opqt{=} und \opqt{\equiv} beide verwendet werden, müssen ihre jeweiligen \emph{\glsIdxPl{intEigenschaftA}} bekannt sein.
+	Dies wird immer vorausgesetzt und außerdem, dass jede \glsIdx{intEigenschaftA} für \opqt{\equiv} auch eine für \opqt{=} ist.
+	Daraus folgt insbesondere, dass mit \forqt{(A \eq B)} auch \forqt{(A \equiv B)} gilt.
 	%
-	\item Bei Verwendung von \symqt{$=$} und \symqt{$\equiv$} müssen die jeweiligen Operanden \glsIdx{vergleichbar} sein. Dies wird immer vorausgesetzt.
+	\item Bei Verwendung der Relationen \opqt{=}, \opqt{\ne}, \opqt{\equiv} und \opqt{\nequiv} müssen die jeweiligen Operanden \glsIdx{vergleichbar} sein. Dies wird immer vorausgesetzt.
 	%
 \end{itemize}
 
@@ -161,103 +164,195 @@ In diesem und allen weiteren \sectionnames\ wird vorausgesetzt:
 
 Unter den Voraussetzungen \vrefvonsubsub{subsub:Voraussetzungen} werden die folgenden (metasprachlichen) Symbole%
 \footnote{%
-	Die Bezeichnung \strqt{Operator} passt nicht mehr, da die Symbole \symqt{$\eq$}, \symqt{$\neq$}, \symqt{$\equiv$} und \symqt{$\nequiv$} \emph{Relationen} repräsentieren. \sym{$\metadefeq$} und \sym{$\defeq$} hingegen repräsentieren (zusammen mit den Operanden) Definitionen.
+	Die Bezeichnung \strqt{Operator} passt nicht mehr, da die Symbole \symqt{\eq}, \symqt{\neq}, \symqt{\equiv} und \symqt{\nequiv} \emph{Relationen} repräsentieren. \symqt{\metadefeq} und \symqt{\defeq} hingegen repräsentieren (zusammen mit den Operanden) Definitionen.
 }
 definiert:
 \begin{description}
 	%
-	\item[$\glsSym{eq}$~~\emph{\Idx{Gleichheit}}]\label{def:Gleichheit}
-	\forqt{$A = B$} heißt, dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA} für \symqt{$=$} nicht unterscheiden.%
+	\item[\opqt{\glsSym{eq}}~~\emph{\Idx{Gleichheit}}]\label{def:Gleichheit}
+	\forqt{A = B} heißt, dass \opqt{A} und \opqt{B} sich in den \glsIdxPl{intEigenschaftA} für \opqt{=} nicht unterscheiden.%
 	\footnote{%
-		\textZB\ sind zwei logische Operatoren gleich, wenn sie stets denselben \emph{\gls{Wahrheitswert}} liefern.
+		\textZB\ sind zwei logische Operatoren üblicherweise dann gleich, wenn sie stets denselben \emph{\gls{Wahrheitswert}} liefern.
+		Ihre Bezeichnungen oder Symbole können dabei durchaus verschieden sein, interessieren bei der Feststellung der Gleichheit aber nicht.
+		Andernfalls wären sie nicht gleich.
 	}
 	-- \strqt{$A$ ist \emph{dasselbe} wie $B$} oder \strqt{$A$ ist \emph{identisch} zu $B$}
 	-- Inwieweit die Begriffe \emph{Gleichheit} und \emph{Identität} korrelieren, wird hier nicht erörtert. (siehe~\cite{bib:Identitaet})
 	%
-	\item[$\glsSym{ne}$~~\emph{\Idx{Ungleichheit}}]\label{def:Ungleichheit}
-	\forqt{$A \ne B$} heißt, dass $A$ und $B$ sich in mindestens einer der \glsIdxPl{intEigenschaftA} für \symqt{$=$} unterscheiden. \strqt{$A$ ist \emph{nicht dasselbe} wie $B$} (aber vielleicht das gleiche) oder \strqt{$A$ ist \emph{nicht identisch} zu $B$}.
+	\item[\opqt{\glsSym{ne}}~~\emph{\Idx{Ungleichheit}}]\label{def:Ungleichheit}
+	\forqt{A \ne B} heißt, dass $A$ und $B$ sich in mindestens einer der \glsIdxPl{intEigenschaftA} für \opqt{=} unterscheiden. \strqt{$A$ ist \emph{nicht dasselbe} wie $B$} (aber vielleicht das gleiche) oder \strqt{$A$ ist \emph{nicht identisch} zu $B$}.
 	%
-	\item[$\glsSym{equiv}$~~\emph{\Idx{Äquivalenz}}]\label{def:Äquivalenz}
-	\forqt{$A \equiv B$} heißt, dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA} für \symqt{$\equiv$} nicht unterscheiden.
-	-- \strqt{$A$ ist \emph{das gleiche} wie $B$} oder \strqt{$A$ ist \emph{so wie} $B$}.
+	\item[\opqt{\glsSym{equiv}}~~\emph{\Idx{Äquivalenz}}]\label{def:Äquivalenz}
+	\forqt{A \equiv B} heißt, dass $A$ und $B$ sich in den \glsIdxPl{intEigenschaftA} für \symqt{\equiv} nicht unterscheiden.
+	-- \strqt{$A$ ist \emph{das gleiche} wie $B$} (aber vielleicht nicht dasselbe) oder \strqt{$A$ ist \emph{so wie} $B$}.
 	%
-	\item[$\glsSym{nequiv}$~~\emph{\Idx{Kontravalenz}}]\label{def:Kontravalenz}
-	\forqt{$A \nequiv B$} heißt, dass $A$ und $B$ sich in mindestens einer der \glsIdxPl{intEigenschaftA} für \symqt{$\nequiv$} unterscheiden.
+	\item[\opqt{\glsSym{nequiv}}~~\emph{\Idx{Kontravalenz}}]\label{def:Kontravalenz}
+	\forqt{A \nequiv B} heißt, dass $A$ und $B$ sich in mindestens einer der \glsIdxPl{intEigenschaftA} für \opqt{\nequiv} unterscheiden.
 	-- \strqt{$A$ ist \emph{nicht das gleiche} wie $B$} oder \strqt{$A$ ist \emph{nicht so wie} $B$}.
 	%
-	\item[$\glsSym{metadefeq}$~\emph{\Idx{Metadefinition}}]\label{def:Metadefinition}
-	\forqt{$A \metadefeq B$} heißt, dass der Metaausdruck $A$ \emph{definitionsgemäß gleich} dem Metaausdruck $B$ ist, wobei $B$ auch eine Definition in natürlicher Sprache sein kann.
+	\item[\opqt{\glsSym{metadefeq}}~\emph{\Idx{Metadefinition}}]\label{def:Metadefinition}
+	\forqt{A \metadefeq B} heißt, dass der Metaausdruck $A$ \emph{definitionsgemäß gleich} dem Metaausdruck $B$ ist, wobei $B$ auch eine Definition in natürlicher Sprache sein kann.
 	$A$ und $B$ können sich gegenseitig ersetzten.
 	$B$ darf dabei von $A$ weder direkt noch indirekt abhängen, \textdh\ $A$ darf in $B$ und zugehörigen Definitionen noch nicht vorkommen.
 
-	Üblicherweise ist $A$ hier eine Bezeichnung und $B$ eine Aussage, so dass man \forqt{$A \metadefeq B$} auch als \strqt{$A$ \emph{steht für} $B$} lesen kann.
-	Oft wird damit Gleichheit (\symqt{$=$}), Äquivalenz (\symqt{$\equiv$}) oder eine andere Relation definiert.
+	Üblicherweise ist $A$ hier eine Bezeichnung und $B$ eine Aussage, so dass man \forqt{A \metadefeq B} auch als \strqt{$A$ \emph{steht für} $B$} lesen kann.
+	Oft wird damit Gleichheit (\opqt{=}), Äquivalenz (\opqt{\equiv}) oder eine andere Relation definiert.
 	%
-	\item[$\glsSym{defeq}$~\emph{\Idx{Definition}}]
-	\forqt{$A \defeq B$} heißt, dass der Ausdruck $A$ \emph{definitionsgemäß gleich} dem Ausdruck $B$ ist.
+	\item[\opqt{\glsSym{defeq}}~\emph{\Idx{Definition}}]
+	\forqt{A \defeq B} heißt, dass der Ausdruck $A$ \emph{definitionsgemäß gleich} dem Ausdruck $B$ ist.
 	Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
 	$A$ und $B$ können sich gegenseitig ersetzten.%
 	\footnote{%
-		Nach den Definitionen von \symqt{$\metadefeq$} und \symqt{$\defeq$} sind zwei Ausdrücke $P$ und $Q$ schon dann gleich, wenn nach der Ersetzung aller Vorkommen von $A$ durch $B$ sowohl in $P$ als auch in $Q$ die resultierenden Ausdrücke $\overline{P}$ und $\overline{Q}$ gleich sind.%
+		Nach den Definitionen von \opqt{\metadefeq} und \opqt{\defeq} sind zwei Ausdrücke $P$ und $Q$ schon dann gleich, wenn nach der Ersetzung aller Vorkommen von $A$ durch $B$ sowohl in $P$ als auch in $Q$ die resultierenden Ausdrücke $\overline{P}$ und $\overline{Q}$ gleich sind.%
 	}
 	$B$ darf dabei von $A$ weder direkt noch indirekt abhängen, \textdh\ $A$ darf in $B$ und zugehörigen Definitionen noch nicht vorkommen.
-	-- Man beachte, dass \symqt{$\metadefeq$} und \symqt{$\defeq$} verschiedene Sprachebenen sind.
+	-- Man beachte, dass \opqt{\metadefeq} und \opqt{\defeq} verschiedene Sprachebenen sind.
 
-	Üblicherweise ist $A$ hier eine Variable und $B$ eine Formel, so dass man \forqt{$A \defeq B$} auch als \strqt{$A$ \emph{steht für} $B$} lesen kann.
+	Üblicherweise ist $A$ hier eine Variable und $B$ eine Formel, so dass man \forqt{A \defeq B} auch als \strqt{$A$ \emph{steht für} $B$} lesen kann.
 	%
 \end{description}
 %
-Es sei noch
-\[
-	\label{eq:asM} \glsSym{alMet} \quad \defeq \quad \{ \text{\symqt{$\metaimp$}, \symqt{$\metarep$}, \symqt{$\metaequiv$}, \symqt{$\metaand$}, \symqt{$\metaor$}, \symqt{$\srand$}, \symqt{$\eq$}, \symqt{$\ne$}, \symqt{$\equiv$}, \symqt{$\nequiv$}, \symqt{$\metadefeq$}, \symqt{$\defeq$}} \}
-\]
-die Menge der metasprachlichen Symbole.
-Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab:Prio-Metasprache} angegeben.
+%%%Es sei noch
+%%%\[
+%%%	\label{eq:asM} \glsSym{alMet} \quad \defeq \quad \{ \text{\symqt{\metaimp}, \symqt{\metarep}, \symqt{\metaequiv}, \symqt{\metaandsym}, \symqt{\metaorsym}, \symqt{\srand}, \symqt{\eq}, \symqt{\ne}, \symqt{\equiv}, \symqt{\nequiv}, \symqt{\metadefeq}, \symqt{\defeq}} \}
+%%%\]
+%%%die Menge der metasprachlichen Symbole.
+
+Sollen zwei \glsIdxPl{MetaausdruckV} mittels der Relationen \opqt{=}, \opqt{\ne}, \opqt{\equiv} oder \opqt{\nequiv} miteinander verglichen werden, muss klar sein auf welche Art; \textzB\ als Zeichenfolgen -- mit oder ohne Wertung der Zwischenräume --, als \glsIdxPl{Wahrheitswert} oder auf sonstige Art.
+Entsprechendes gilt für Definitionen mittels \opqt{\metadefeq} oder \opqt{\defeq}.
+
+Wenn die Art des Vergleichs implizit oder explizit klar ist und sich zwei Ausdrücke auf diese Art vergleichen lassen, heißen sie \emph{\glsIdx{vergleichbar}}\vrefnotesec{sec:Formalelement}.
+
+\endgroup%  Bis hier einfache Quotierung von Objekten, Zeichen und Zeichenketten
+
+\section{Formale Elemente}% ====================================================
+\beginsection{Formale Elemente}
+\label{sec:Formalelement}
+
+\subsection{Vergleiche}% -------------------------------------------------------
+\label{sub:Vergleiche}
+
+Ein \emph{\glsIdx{formalesElementV}} kann \textzB\ eine Menge, Zeichenfolge, Zahl, Formel, \textusw\ sein.
+Zwei \glsIdxPl{formalesElementV} $A$ und $B$ sind \emph{\glsIdx{vergleichbar}}, wenn beide von derselben Art sind, \textdh\ wenn \textzB\ jeweils beide Mengen, Zeichenfolgen, Zahlen oder \glsIdxPl{formalesElementV} -- die vergleichbare Ergebnisse liefern -- sind.
+
+Intuitiv scheint klar zu sein, was damit  gemeint ist.
+Wenn aber entschieden werden muss, ob \textzB\ (a) \enquote{1+1} gleich \enquote{2} oder (b) \enquote{1+1} gleich \enquote{1 + 1} ist, muss man erst entscheiden, von welcher Art die beiden zu vergleichenden Ausdrücke sind, \textdh\ \emph{wie} verglichen wird.
+Wenn sie als jeweiliges Ergebnis der beiden Formeln verglichen werden, dann ist (a) richtig.
+Wenn sie als Formeln, \textdh\ als Zeichenfolgen, verglichen werden ist (a) falsch.
+Wenn die Ausdrücke in (b) als Zeichenfolgen verglichen werden, ist (b) nur dann richtig, wenn der Zwischenraum zwischen den einzelnen Zeichen nicht zählt.
+
+\subsection{Quotierung}% -------------------------------------------------------
+\label{sub:Quotierung}
+
+%TODO hier weitermachen
+
+\subsection{Binäre Relationen und Operatoren}% ---------------------------------
+\label{sub:binaer}
+
+Im Zusammenhang mit binären Relationen werden noch einige Verabredungen getroffen.
+Dazu seien \symqt{\glsSym{lrelbsp}}, \symqt{\glsSym{rrelbsp}}, \symqt{\glsSym{lreleqbsp}},\symqt{\glsSym{rreleqbsp}}, \symqt{\glsSym{relbsp}}, \symqt{\glsSym{releqbsp}} und \symqt{\glsSym{relnbsp}} Beispielsymbole für Relationen.
+Wenn dann nichts anderes gesagt wird, gelte stets:
+\begin{align}
+	& (A \lrelbsp   B)                  & \metaequiv & \quad (B \rrelbsp   A)
+	\label{eq:lrrelbsp}   \\
+	& (A \lreleqbsp B)                  & \metaequiv & \quad (B \rreleqbsp A)
+	\label{eq:lrreleqbsp} \\
+	&  (A \relnbsp  B)                  & \metaequiv & \quad (A \relbsp    B)
+	\text{ gilt nicht}
+	\label{eq:relnbsp}    \\
+	& ((A \relbsp   B) \metaor (A = B)) & \metaequiv & \quad (A \releqbsp  B)
+	\label{eq:releqbsp}   \formulatoleft\formulatoleft\formulatoleft
+\end{align}
+%
+Mit der Definition einer Relation auf der einen Seite ist damit automatisch auch die auf der anderen Seite erfolgt, mit der Ausnahme, dass man in \eqref{eq:releqbsp} zwar die rechte durch die linke Seite definieren kann, aber nicht umgekehrt.
+Insbesondere kann man \symqt{\relbsp} nicht mit \symqt{\releqbsp} definieren.
+Dies könnte man zwar mit Hilfe des Ansatzes
+\begin{align}
+	& (A \relBsp B) && \metadefeq & (A \releqbsp B) \metaand (A \ne B)
+	\label{eq:relbsp} \formulatoleft\formulatoleft\formulatoleft
+\end{align}
+versuchen, aber die so definierte Relation \opqt{\relBsp} kann, muss aber nicht, mit \opqt{\relbsp} übereinstimmen, wie das Beispiel \vrefintab{tab:Gegenbeispiel} bei gegebenen Relationen \opqt{\releqbsp} und \opqt{\relbsp} zeigt.
+
+\begin{table}[!htb]
+	\setlength\extrarowheight{1.5pt}
+	\begin{center}
+		\begin{tabularx}{6cm}{|@{\extracolsep{\fill}}c|cc|cc|}
+			\hline
+			~           &$a,\;       a$&$a,\;       b$&$b,\;a$&$b,\;       b$\\
+			\hline
+			~$\eq      $&$a=         a$&              &       &$b=         b$\\
+			~$\releqbsp$&$a\releqbsp a$&$a\releqbsp b$&       &$b\releqbsp b$\\
+			~$\relbsp  $&              &$a\relbsp   b$&       &$b\relbsp   b$\\
+			~$\relBsp  $&              &$a\relBsp   b$&       &              \\
+			\hline
+		\end{tabularx}
+		\caption{Unterschiedliche Relationen \opqt{\relbsp} und \opqt{\relBsp}}
+		\label{tab:Gegenbeispiel}% Erst nach '\caption'!
+	\end{center}
+\end{table}
+
+Aus \eqref{eq:releqbsp} und \eqref{eq:relbsp} folgt allerdings
+\begin{align}
+	& (A \relBsp B) && \metaimp & (A \relbsp B) \metaand (A \ne B)
+	\label{eq:relBsp} \formulatoleft\formulatoleft\formulatoleft
+\end{align}
+wie man leicht zeigen kann.
+
+Es sei noch angemerkt, dass wegen \eqref{eq:lrrelbsp} die Definition von \symqt{\metarep} \vrefinsub{sub:Metaausdruck} überflüssig ist und wegen der angegebenen Prioritäten \vrefintab{tab:Prio-Metasprache} auch alle Klammern in diesem \sectionname.
+
+Als Beispielsymbol für binäre Operatoren wird \symqt{\opbsp} verwendet.
+Mit \symqt{\opbsp} zusammenhängende Verabredungen werden hier nicht getroffen.
+
+Für den Fall fehlender Klammern in (metasprachlichen) Ausdrücken und Formeln sind die Prioritäten \vrefintab{tab:Prio-Metasprache} angegeben.
 
 \begin{table}[!htb]
 	\setlength\extrarowheight{1.5pt}
 	\begin{center}
 		\begin{threeparttable}
-			\begin{tabularx}{12cm}{|@{~~}l|@{\extracolsep{\fill}}l|}
+			\begin{tabularx}{10.5cm}{|@{~~}l|@{\extracolsep{\fill}}l|}
 				\hline
 				Klammern
-				& $ ( \quad ) $ \\
-				\hline
-				Üblicherweise Binäre Operatoren, \textzB
-				& $ \opbsp $ \\
-				\hline
-				\parbox[][1.9cm][c]{8.0cm}{%
-					Mit Gleichheit verwandte Relationen\newline
-					und üblicherweise auch binäre Relationen;\newline
-					\small ihre Prioritäten untereinander sind nicht immer eindeutig und bleiben daher undefiniert.%
+				& $ ( \quad ) $
+				\\\hline
+				Üblicherweise binäre Operatoren, \textzB
+				& $ \opbsp $
+				\\\hline
+				\parbox[][1.0cm][c]{6.5cm}{%
+					Üblicherweise binäre Relationen, \textzB\newline
+					\footnotesize (Ihre Prioritäten können auch abweichen.)%
 				}
 				&
-				\parbox[][1.8cm][c]{3.0cm}{
-					\begin{center}
-						$ \lrelbsp \quad \rrelbsp \quad \lreleqbsp \quad \rreleqbsp $ \\
-						$ \relbsp \quad \releqbsp \quad \relnbsp $ \\
-						$ \eq \quad \ne \quad \equiv \quad \nequiv $
-					\end{center}
+				\parbox[][1.0cm][c]{3cm}{
+					$ \lrelbsp \quad \rrelbsp \quad \lreleqbsp \quad \rreleqbsp $ \\
+					$ \relbsp \quad \releqbsp \quad \relnbsp $
 				}
-				\\
-				\hline
+				\\\hline
+				\parbox[][1.0cm][c]{6.5cm}{%
+					Mit Gleichheit verwandte Relationen\newline
+					\footnotesize (Ihre Prioritäten können auch abweichen.)%
+				}
+				&
+				\parbox[][1.0cm][c]{3cm}{
+					$ \eq \quad \ne \quad \equiv \quad \nequiv $
+				}
+				\\\hline
 				Definition
-				& $ \defeq $ \\
-				\hline
-				& $ \metaand                     $ \\
-				& $ \metaor                      $ \\
-				\GlsIdxPl{MetaoperatorV}\tnote{2}
+				& $ \defeq $
+				\\\hline
+				& $ \metaandsym                  $ \\
+				& $ \metaorsym                   $ \\
+				\GlsIdxPl{MetaoperatorV}\tnote{1}
 				& $ \metarep \quad \metaimp      $ \\
 				& $ \metaequiv                   $ \\
 				& $ \srand                       $ \\
 				\hline
-				Metadefinition & $ \metadefeq $ \\
-				\hline
-				\parbox[][1.1cm][c]{8.0cm}{%
+				Metadefinition & $ \metadefeq $
+				\\\hline
+				\parbox[][1.1cm][c]{6.5cm}{%
 					Innerhalb natürlicher Sprache deren Strukturelemente, \textzB\ Satzzeichen\tnote{2}%
 				}
-				& . \quad , \quad ; \quad \textusw \\
-				\hline
+				& . \quad , \quad ; \quad \textusw
+				\\\hline
 			\end{tabularx}
 			\begin{tablenotes}
 				\footnotesize
@@ -270,82 +365,7 @@ Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab:Prio-Metas
 	\end{center}
 \end{table}
 
-\section{Formale Elemente}% ====================================================
-\beginsection{Formale Elemente}
-\label{sec:Formalelement}
-
-Ein \emph{\glsIdx{formalesElementV}} kann \textzB\ eine Menge, Zeichenfolge, Zahl, Formel, \textusw\ sein.
-Zwei \glsIdxPl{formalesElementV} $A$ und $B$ sind \emph{\glsIdx{vergleichbar}}, wenn beide von derselben Art sind, \textdh\ wenn \textzB\ jeweils beide Mengen, Zeichenfolgen, Zahlen oder \glsIdxPl{formalesElementV} -- die vergleichbare Ergebnisse liefern -- sind.
-
-Intuitiv scheint klar zu sein, was damit  gemeint ist.
-Wenn aber entschieden werden muss, ob \textzB\ (a) \strqt{1+1} gleich \strqt{2} oder (b) \strqt{1+1} gleich \strqt{1 + 1} ist, muss man erst entscheiden, von welcher Art die beiden zu vergleichenden Ausdrücke sind, \textdh\ \emph{wie} verglichen wird.
-Wenn sie als jeweiliges Ergebnis der beiden Formeln verglichen werden, dann ist (a) richtig.
-Wenn sie als Formeln, \textdh\ als Zeichenfolgen, verglichen werden ist (a) falsch.
-Wenn die Ausdrücke in (b) als Zeichenfolgen verglichen werden, ist (b) dann richtig, wenn der Zwischenraum zwischen den einzelnen Zeichen nicht zählt.
-Wenn er aber zählt, ist (b) falsch.
-
-Im Zusammenhang mit binären Relationen werden noch einige Verabredungen getroffen.
-Dazu seien \symqt{$\glsSym{lrelbsp}$}, \symqt{$\glsSym{rrelbsp}$}, \symqt{$\glsSym{lreleqbsp}$},\symqt{$\glsSym{rreleqbsp}$}, \symqt{$\glsSym{relbsp}$}, \symqt{$\glsSym{releqbsp}$} und \symqt{$\glsSym{relnbsp}$} Beispielsymbole für Relationen.
-Wenn dann nichts anderes gesagt wird, gelte stets:
-\begin{align}
-	& (A \lrelbsp   B)                   & \metaequiv & \quad (B \rrelbsp   A)
-	\label{eq:lrrelbsp}   \\
-	& (A \lreleqbsp B)                   & \metaequiv & \quad (B \rreleqbsp A)
-	\label{eq:lrreleqbsp} \\
-	&  (A \relnbsp  B)                   & \metaequiv & \quad (A \relbsp    B)
-	\text{ gilt nicht}
-	\label{eq:relnbsp}    \\
-	& ((A \relbsp   B) \metaorr (A = B)) & \metaimp   & \quad (A \releqbsp  B)
-	\label{eq:releqbsp}   \formulatoleft\formulatoleft\formulatoleft
-\end{align}
-%
-Mit der Definition einer Relation der einen Seite ist damit automatisch auch die der anderen Seite erfolgt, mit der Ausnahme, dass man in \eqref{eq:releqbsp} zwar die rechte durch die linke Seite definieren kann, aber nicht umgekehrt.
-Insbesondere kann man \symqt{$\relbsp$} nicht mit \symqt{$\releqbsp$} definieren.
-Dies könnte man zwar mit Hilfe des Ansatzes
-\begin{align}
-	& (A \relBsp B) && \metadefeq & (A \releqbsp B) \metaand (A \ne B)
-	\label{eq:relbsp} \formulatoleft\formulatoleft\formulatoleft
-\end{align}
-versuchen, aber die so definierte Relation \symqt{$\relBsp$} kann, muss aber nicht, mit \symqt{$\relbsp$} in \eqref{eq:releqbsp} übereinstimmen, wie das Beispiel \vrefintab{tab:Gegenbeispiel} zeigt.
-
-\begin{table}[!htb]
-	\setlength\extrarowheight{1.5pt}
-	\begin{center}
-		\begin{tabularx}{12cm}{|@{\extracolsep{\fill}}c|ccc|ccc|ccc|}
-			\hline
-			& $      a, a     $ & $     a, b      $ & $     a, c      $
-			& $      b, a     $ & $     b, b      $ & $     b, c      $
-			& $      c, a     $ & $     c, b      $ & $     c, c      $ \\
-			\hline
-			~ $    \eq        $
-			& $     a = a     $ &                   &
-			&                   & $     b = b     $ &
-			&                   &                   & $     c = c     $ \\
-			~ $   \releqbsp   $
-			& $ a \releqbsp a $ & $ a \releqbsp b $ & $ a \releqbsp c $
-			&                   & $ b \releqbsp b $ & $ c \releqbsp c $
-			&                   &                   & $ c \releqbsp c $ \\
-			~ $   \relbsp     $
-			&                   & $ a \relbsp   b $ &
-			&                   & $ b \relbsp   b $ & $ b \relbsp   c $
-			&                   &                   &                   \\
-			~ $   \relBsp     $
-			&                   & $ a \relBsp   b $ & $ a \relBsp   c $
-			&                   &                   & $ b \relBsp   c $
-			&                   &                   &                   \\
-			\hline
-		\end{tabularx}
-		\caption{Unterschiedliche Relationen \symqt{$\relbsp$} und  \symqt{$\relBsp $}}
-		\label{tab:Gegenbeispiel}% Erst nach '\caption'!
-	\end{center}
-\end{table}
-
-Es sei noch angemerkt, dass wegen \eqref{eq:lrrelbsp} die Definition von \symqt{$\metarep$} \vrefinsub{sub:Metaausdruck} überflüssig ist und wegen der angegebenen Prioritäten \vrefintab{tab:Prio-Metasprache} auch alle Klammern in diesem \sectionname.
-
-Als Beispielsymbol für binäre Operatoren wird \symqt{$\opbsp$} verwendet.
-Mit \symqt{$\opbsp$} zusammenhängende Verabredungen werden hier nicht getroffen.
-
-\section{Beweise in \ASBA}% ====================================================
+\section{Beweise in ASBA}% =====================================================
 \beginsection{Beweise in \ASBA}
 \label{sec:BeweiseASBA}
 
@@ -404,7 +424,7 @@ $\Voraussetzungen$ kann noch auf $\Voraussetzungen \cap \Beweisschritte$ beschr�
 
 Die damit bewiesene Aussage (\textzB\ ein mathematischer Satz) kann dann folgendermaßen formuliert werden:%
 \footnote{%
-	\symqt{$\srand$} steht für \strqt{und}, bindet aber wesentlich schwächer als \symqt{\glsIdx{metaand}}. (\vrefseesub{sub:Metaausdruck})
+	$\srand$ steht für "`und"', bindet aber wesentlich schwächer als $\metaand$. (\vrefseesub{sub:Metaausdruck})
 }
 \[
 	\frac{\Voraussetzungen}{\Folgerungen} \quad \text{\textbzw} \quad
@@ -451,7 +471,7 @@ Bevor die Schlussregeln behandelt werden, werden noch Elemente der \emph{\Idx{Au
 %%%	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessigeTransformationA}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ ableitbar.
 %%%	Sprechweise: Aus $\alpha$ ist $\beta$ \emph{ableitbar} oder \emph{beweisbar};
 %%%	kurz: \strqt{$\alpha$ \emph{\glsIdx{ableitbar}} $\beta$} \textbzgl\ \strqt{$\alpha$ \emph{\glsIdx{beweisbar}} $\beta$}
-%%%	-- Es kann auch \symqt{$\alpha$} durch \symqt{$X$} und/oder \symqt{$\beta$} durch \symqt{$Y$} ersetzt werden.
+%%%	-- Es kann auch \symqt{\alpha} durch \symqt{X} und/oder \symqt{\beta} durch \symqt{Y} ersetzt werden.
 %%%	}
 %%%	\label{def:ableitbar}
 %%%	\\
@@ -464,20 +484,20 @@ Bevor die Schlussregeln behandelt werden, werden noch Elemente der \emph{\Idx{Au
 %%%\end{align}
 %%%%
 %%%Eine \emph{\glsIdx{zulaessigeTransformationA}} ist die Anwendung einer \emph{\glsIdx{Substitution}}{\vrefnotesub{sub:Indentitaetsregeln} (siehe unten), einer \emph{\glsIdx{Basisregel}} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
-%%%Bei den Schlussregeln und der Substitution ($\subst$) soll das Komma stärker binden als \symqt{$\derive$}, \symqt{$\subst$} und \symqt{$\srand$}, wobei
-%%%\symqt{$\srand$} für \strqt{und} \textbzgl\ \symqt{\glsIdx{metaand}}\vrefnotesub{sub:Metaausdruck} steht und schwächer bindet als \symqt{$\derive$} und \symqt{$\subst$}.%
+%%%Bei den Schlussregeln und der Substitution ($\subst$) soll das Komma stärker binden als \symqt{\derive}, \symqt{\subst} und \symqt{\srand}, wobei
+%%%\symqt{\srand} für \strqt{und} \textbzgl\ \symqt{\glsIdx{metaand}}\vrefnotesub{sub:Metaausdruck} steht und schwächer bindet als \symqt{\derive} und \symqt{\subst}.%
 %%%\footnote{siehe Fußnote~3 \vrefvontab{tab:Prio-Aussagenlogik}}
 %%%
 %%%Zur der Auswahl der \glsIdxPl{Basisregel}, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
 %%%Wie in~\cite{bib:NatuerlichesSchliessen} steht \charqt{E} für \strqt{-Einführung} und \charqt{B} für \strqt{-Beseitigung} (oder \strqt{-Elimination}) von Operatoren.%
 %%%\footnote{%
-%%%	In der \glsIdx{Monotonieregel} wird hier, anders als in~\cite{bib:Rautenberg}, \forqt{$X,Y$} statt \forqt{$Y \text{ , für } Y \supseteq X$} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \forqt{$\text{ , für } Y \supseteq X$}.
-%%%	Außerdem werden bei den Bezeichnungen \forqt{($\land$1)} und \forqt{($\land$2)} gemäß~\cite{bib:NatuerlichesSchliessen} durch \forqt{$\andE$} \textbzgl\ \forqt{$\andB$} ersetzt.
+%%%	In der \glsIdx{Monotonieregel} wird hier, anders als in~\cite{bib:Rautenberg}, \forqt{X,Y} statt \forqt{Y \text{ , für } Y \supseteq X} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \forqt{\text{ , für } Y \supseteq X}.
+%%%	Außerdem werden bei den Bezeichnungen \forqt{($\land$1)} und \forqt{($\land$2)} gemäß~\cite{bib:NatuerlichesSchliessen} durch \forqt{\andE} \textbzgl\ \forqt{\andB} ersetzt.
 %%%}
 %%%
 %%%Im Folgenden seien $\alpha$ und $\beta$ wieder stets \glsIdxPl{formalesElementV} und $X$ und $Y$ Mengen von \glsIdxBg{formalesElementV}{formalen Elementen}.
-%%%Für die sechs \glsIdxPl{Basisregel} werden dann nur noch die logischen Operatoren \symqt{$\lnot$} und \symqt{$\land$} benötigt.
-%%%Bei den weiteren \glsIdxPl{Schlussregel} wird noch \symqt{$\limp$} gemäß der Definition~\vref{def:imp} verwendet.
+%%%Für die sechs \glsIdxPl{Basisregel} werden dann nur noch die logischen Operatoren \symqt{\lnot} und \symqt{\land} benötigt.
+%%%Bei den weiteren \glsIdxPl{Schlussregel} wird noch \symqt{\limp} gemäß der Definition~\vref{def:imp} verwendet.
 %%%%
 %%%\begin{align}
 %%%	& \frac{}{\alpha\derive\alpha}
@@ -516,7 +536,7 @@ Bevor die Schlussregeln behandelt werden, werden noch Elemente der \emph{\Idx{Au
 %%%\label{sub:Indentitaetsregeln}
 %%%
 %%%Die zulässigen Transformationen, \textdh\ die Anwendung der Schlussregeln, erfordern zulässige Substitutionen.
-%%%Damit wird dem Gleichheits- oder Identitätszeichen \symqt{$\eq$} dann mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.\footnote{siehe~\cite{bib:NatuerlichesSchliessen}}
+%%%Damit wird dem Gleichheits- oder Identitätszeichen \symqt{\eq} dann mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.\footnote{siehe~\cite{bib:NatuerlichesSchliessen}}
 %%%Dazu seien $\alpha$, $\beta$ und $\gamma$ \glsIdxPl{vergleichbar}%
 %%%\footnote{siehe Ende \vrefvonsub{sub:Metaausdruck}}
 %%%\glsIdxPl{formalesElementV}.
@@ -534,7 +554,7 @@ Bevor die Schlussregeln behandelt werden, werden noch Elemente der \emph{\Idx{Au
 %%%		Dazu ist es nötig, das $\alpha$ und $\beta$ voneinander unabhängig sind, vorzugsweise zwei verschiedene Variable.
 %%%	} \label{def:Vertauschung}
 %%%\end{align}
-%%%\forqt{$\alpha \subst \beta$} heißt \emph{\glsIdx{Substitution}} und \forqt{$\alpha \swap \beta$} \emph{\glsIdx{Vertauschung}} oder kurz \emph{Tausch}.
+%%%\forqt{\alpha \subst \beta} heißt \emph{\glsIdx{Substitution}} und \forqt{\alpha \swap \beta} \emph{\glsIdx{Vertauschung}} oder kurz \emph{Tausch}.
 %%%-- Sei noch $S = (s_1, s_2, ...)$ eine endliche Folge von Substitutionen, die auch Vertauschungen enthalten und auch leer sein kann. Dann wird definiert:
 %%%\begin{align}
 %%%	\gamma(S) & \quad \defeq \quad \gamma(s_1)(s_2)... \label{def:Substitutionen}\\
@@ -1179,9 +1199,9 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 
 			\item[1] \emph{Operatorsymbole}.
 			Sie stehen meistens für die Operatoren selbst.
-			Der Einfachheit halber werden auch die beiden Konstanten \textbzw\ ihre Symbole \symqt{$\ltrue$} und \symqt{$\lfalse$} als Operatoren \textbzw\ \emph{Junktoren} bezeichnet.
+			Der Einfachheit halber werden auch die beiden Konstanten \textbzw\ ihre Symbole \symqt{\ltrue} und \symqt{\lfalse} als Operatoren \textbzw\ \emph{Junktoren} bezeichnet.
 
-			Die Operatoren \symqt{$\subset$}, \symqt{$\supset$}, \symqt{$\nsubset$} und \symqt{$\nsupset$} haben hier nicht die Bedeutung der entsprechenden Operatoren der Mengenlehre und dürfen nicht damit verwechselt werden; entsprechendes gilt für \symqt{$+$} und \symqt{$\cdot$} mit Addition und Multiplikation.
+			Die Operatoren \symqt{\subset}, \symqt{\supset}, \symqt{\nsubset} und \symqt{\nsupset} haben hier nicht die Bedeutung der entsprechenden Operatoren der Mengenlehre und dürfen nicht damit verwechselt werden; entsprechendes gilt für \symqt{+} und \symqt{\cdot} mit Addition und Multiplikation.
 
 			\item[2] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle binären Operatoren aufzuführen.
 
@@ -1255,8 +1275,8 @@ Diese werden \vrefintab{tab:Prio-Aussagenlogik} mit abnehmender Priorität aufge
 				Definition
 				& $ \defeq           $ \\
 				\hline
-				& $ \metaand                     $ \\
-				& $ \metaor                      $ \\
+				& $ \metaandsym                  $ \\
+				& $ \metaorsym                   $ \\
 				\GlsIdxPl{MetaoperatorV}\tnote{2}
 				& $ \metarep \quad \metaimp      $ \\
 				& $ \metaequiv                   $ \\
@@ -1333,7 +1353,7 @@ Um damit Formeln zu bilden, werden noch Variable gebraucht:
 Die Mengen $\alCon$, $\alUna$, $\alBin$ und $\alVar$ müssen paarweise disjunkt sein. --
 Damit sind alle \vrefintab{tab:Symbole} verwendeten wesentlichen Konstanten und Operatoren%
 \footnote{%
-	Jeweils nur die ersten der grau hinterlegten Zeilen sowie \symqt{$\lmult$}.%
+	Jeweils nur die ersten der grau hinterlegten Zeilen sowie \symqt{\lmult}.%
 }
 und die Variablen erfasst und es können die folgende Mengen definiert werden:
 \begin{align}
@@ -1498,7 +1518,7 @@ und die mit den Operatoren aus $\alJun_\xOr$:
 	\label{def:true}
 \end{align}
 %
-Ist \symqt{$\lor$} oder \symqt{$\land$} nicht vorgegeben, \textdh\ wird von den Elementen aus $\alJun_\xAnd$ \textbzgl\ $\alJun_\xOr$ statt von denen aus $\alJun_\xBool$ ausgegangen, so muss man den fehlenden Operator mittels der passenden der beiden folgenden Definitionen einführen:
+Ist \symqt{\lor} oder \symqt{\land} nicht vorgegeben, \textdh\ wird von den Elementen aus $\alJun_\xAnd$ \textbzgl\ $\alJun_\xOr$ statt von denen aus $\alJun_\xBool$ ausgegangen, so muss man den fehlenden Operator mittels der passenden der beiden folgenden Definitionen einführen:
 \begin{align}
 	% oder aus und -----------------
 	(\alpha \lor \beta)  & \;\defeq\; (\lnot((\lnot\alpha)\land(\lnot\beta))) &
@@ -1540,7 +1560,7 @@ Bei Vorgabe von $\alJun_\xNand$ \textbzgl\ $\alJun_\xNor$ schließlich werden di
 	(\lnot \alpha) & \;\defeq\; (\alpha \lnand \alpha) &
 	\lnot  \alpha  & \;\defeq\;  \lnand \alpha \alpha  \label{def:notnand}
 \end{align}
-und, da \symqt{$\lnot$} jetzt definiert ist, aus
+und, da \symqt{\lnot} jetzt definiert ist, aus
 \begin{align}
 	% oder aus nor -----------------
 	(\alpha \lor \beta)  & \;\defeq\; (\lnot(\alpha \lnor \beta))  &
@@ -1558,7 +1578,7 @@ Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der De
 \subsection{Aussagenlogisches Axiomensystem}% ----------------------------------
 \label{sub:ausAxiome}
 
-Ausgehend von der \glsIdxBg{logischeSignaturV}{logischen Signatur} $\alJun_\xAnd = \{\lnot, \land\}$ und der \vrefdef{def:imp} von \symqt{$\limp$} werden die folgenden vier logischen Axiome definiert:
+Ausgehend von der \glsIdxBg{logischeSignaturV}{logischen Signatur} $\alJun_\xAnd = \{\lnot, \land\}$ und der \vrefdef{def:imp} von \symqt{\limp} werden die folgenden vier logischen Axiome definiert:
 \begin{align}
 	&
 	(\alpha\limp\beta\limp\gamma)\limp(\alpha\limp\beta)\limp(\alpha\limp\gamma)
