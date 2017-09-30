@@ -54,7 +54,6 @@
 % \*bsp
 \DeclareMathOperator{\opbsp}{\bullet}
 \DeclareMathOperator{\relbsp}{\sim}
-\DeclareMathOperator{\relBsp}{\relbsp_1}
 \DeclareMathOperator{\relnbsp}{\nsim}
 \DeclareMathOperator{\releqbsp}{\simeq}
 \DeclareMathOperator{\lrelbsp}{\lhd}
@@ -139,12 +138,13 @@
 \newcommand*{\gsNo}{\mathbb{N}_0}% Menge der natürlichen Zahlen einschließlich 0
 
 % Elemente und Mengen für Beweise
-\newcommand*{\Voraussetzung}  {V}
-\newcommand*{\Beweisschritt}  {S}
-\newcommand*{\Folgerung}      {F}
-\newcommand*{\Voraussetzungen}{\mathcal{\Voraussetzung}}
-\newcommand*{\Beweisschritte} {\mathcal{\Beweisschritt}}
-\newcommand*{\Folgerungen}    {\mathcal{\Folgerung}}
+\newcommand*{\Voraussetzung}     {V}
+\newcommand*{\Beweisschritt}     {S}
+\newcommand*{\Folgerung}         {F}
+\newcommand*{\Voraussetzungen}   {\mathcal{\Voraussetzung}}
+\newcommand*{\Beweisschritte}    {\mathcal{\Beweisschritt}}
+\newcommand*{\Folgerungen}       {\mathcal{\Folgerung}}
+\newcommand*{\Beweisschrittmenge}{\mathcal{T}}
 
 % \al* = aussagenlogische
 \newcommand*{\alABC}  {\mathcal{A}}%    Alphabet der Sprache
@@ -173,6 +173,11 @@
 \newcommand*{\xNor} {\mathrm{nor}}%
 \newcommand*{\xOr}  {\mathrm{or}}%
 \newcommand*{\xRep} {\mathrm{rep}}%
+% Mathematische Konstanten und Symbole
+\newcommand{\wahr}  {\mathrm{wahr}}
+\newcommand{\falsch}{\mathrm{falsch}}
+\newcommand{\true}  {\mathrm{true}}
+\newcommand{\false} {\mathrm{false}}
 
 % sonstige mathematische Zeichen ===============================================
 
@@ -475,7 +480,7 @@
 	name={$ \alVar$},
 	plural={\alVar},% im Mathematikmodus
 	description={%
-		Die Menge der aussagenlogischen \emph{Variablen}%
+		Die Menge der aussagenlogischen Variablen%
 	}
 }
 
@@ -604,7 +609,7 @@
 	name={($\notc$)},
 	plural={\notc},% im Mathematikmodus
 	description={%
-		Beweistechnik \strqt{Indirekter Beweis}%
+		Beweistechnik \enquote{Indirekter \glsIdx{Beweis}}%
 	}
 }
 \newcommand*{\tagnotd}{$\lnot$4}% Argument für \tag - im Textmodus
@@ -613,7 +618,7 @@
 	name={($\notd$)},
 	plural={\notd},% im Mathematikmodus
 	description={%
-		Reductio ad absurdum (indirekter Beweis)%
+		Reductio ad absurdum (indirekter \glsIdx{Beweis})%
 	}
 }
 %%%\newcommand*{\tagorB}{$\lor$B}% Argument für \tag - im Textmodus
@@ -677,9 +682,9 @@
 		Eine \emph{Schlussregel} um beginnen zu können -- siehe~\emph{AR}%
 	}
 }
-\newglossaryentry{atomareFormelA}{
-	name={atomare Formel},     % eine ...
-	plural={atomaren Formeln}, % alle ...
+\newglossaryentry{atomareFormelV}{
+	name={atomare Formel},    % eine  ...
+	plural={atomare Formeln}, % viele ...
 	description={%
 		Eine Formel, die sich nicht weiter zerlegen lässt%
 	}%
@@ -716,7 +721,7 @@
 	name={Beweisschritt},
 	plural={Beweisschritte},
 	description={%
-		Eine Vorschrift, wie aus vorgegebenen Aussagen eine weitere folgt%
+		Eine Vorschrift, wie aus vorgegebenen \emph{Aussagen} (den \emph{Voraussetzungen}) eine weitere (die \emph{Folgerung}) folgt%
 	}
 }
 \newglossaryentry{BoolscheSignatur}{
@@ -740,12 +745,12 @@
 		Formale Darstellung eines mathematischen Satzes -- siehe~\emph{FS}%
 	}
 }
-\newglossaryentry{formalesElementV}{
-	name={formales Element},   % ein   ...
-	plural={formale Elemente}, % viele ...
+\newglossaryentry{Formel}{
+	name={Formel},
+	plural={Formeln},
 	description={%
-		Ein mathematisches Element in formaler Schreibweise.
-		Bis auf wenige Aussagen kommen darin \emph{Metaausdrücke} nicht mehr vor%
+		Unter einer \emph{Formel} verstehen wir in diesem Dokument stets eine mathematische Formel.
+		Diese kann auch mehrdimensional sein, lässt sich aber mittels geeigneter Definitionen immer eindeutig als eine Zeichenfolge schreiben%
 	}%
 }
 \newglossaryentry{Identitaetsregel}{
@@ -760,49 +765,43 @@
 	name={interessierende Eigenschaft},      % eine ...
 	plural={interessierenden Eigenschaften}, % alle ...
 	description={%
-		Solche Eigenschaften von Ausdrücken, die im aktuellen Zusammenhang von Interesse sind%
+		Solche Eigenschaften von \emph{Objekten}, die im aktuellen Zusammenhang von Interesse sind%
 	}%
 }
 \newglossaryentry{Kontraposition}{
 	name={Kontraposition},
 	plural={Kontraposition},
 	description={%
-		Die allgemeingültige Aussage $(\alpha \limp \beta) \limp (\lnot\beta \limp \lnot\alpha)$%
+		Die allgemeingültige Aussage \forqt{(\alpha \limp \beta) \limp (\lnot\beta \limp \lnot\alpha)}%
 	}%
 }
 \newglossaryentry{logischeSignaturV}{
 	name={logische Signatur},     % eine  ...
 	plural={logische Signaturen}, % viele ...
 	description={%
-		Eine in \emph{Metasprache} verfasste Aussage, die auch zusammengesetzt sein kann%
+		Eine Teilmengen von $\alJun$, die ausreicht, alle anderen Elemente aus $\alJun$ zu definieren
 	}%
 }
-\newglossaryentry{MetaausdruckV}{
-	name={metasprachlicher Ausdruck},   % ein   ...
-	plural={metasprachliche Ausdrücke}, % viele ...
+\newglossaryentry{Menenlehre}{
+	name={Menenlehre},
 	description={%
-		Eine in normaler Sprache verfasste Aussage, die auch zusammengesetzt sein kann%
-	}%
+		\vrefseesec{sec:Menenlehre}%
+	}
 }
-\newglossaryentry{MetaaussageV}{
-	name={metasprachliche Aussage},    % eine   ...
-	plural={metasprachliche Aussagen}, % viele ...
+\newglossaryentry{Metaoperator}{
+	name={Metaoperator},
+	plural={Metaoperatoren},
 	description={%
-		Eine in \emph{Metasprache} verfasste Aussage, die auch zusammengesetzt sein kann%
-	}%
-}
-\newglossaryentry{MetaoperatorV}{
-	name={metasprachlicher Operator},    % ein   ...
-	plural={metasprachliche Operatoren}, % viele ...
-	description={%
-		Ein Operator, dessen Operanden \emph{Metaausdrücke} sind%
+		Ein Operator der Metasprache, dargestellt duch ein Symbol: \objqt{\metaimp}, \objqt{\metarep}, \objqt{\metaequiv}, \objqt{\metaandsym}, \objqt{\metaorsym} und \objqt{\srand}%
 	}%
 }
 \newglossaryentry{Metasprache}{
 	name={Metasprache},
 	plural={Metasprachen},
 	description={%
-		Eine Sprache, in der Aussagen über Elemente einer anderen Sprache getroffen werden können%
+		Eine Sprache, in der Aussagen über Elemente einer anderen Sprache getroffen werden können.
+		In diesem Dokument ist dies immer die normale Sprache.
+		\vrefseesec{sec:Metasprache}%
 	}%
 }
 \newglossaryentry{Monotonieregel}{
@@ -811,6 +810,13 @@
 	description={%
 		Eine \emph{Schlussregel} -- siehe~\emph{MR}%
 	}
+}
+\newglossaryentry{Objekt}{
+	name={Objekt},
+	plural={Objekte},
+	description={%
+		Symbole, Formeln und Aussagen sowie Mengen, Zeichenfolgen, Zahlen, ganz allgemein reale oder Gedachte Dinge an sich
+	}%
 }
 \newglossaryentry{Praedikat}{
 	name={Prädikat},
@@ -840,27 +846,33 @@
 		Eine \emph{allgemeingültige Schlussregel} -- siehe~\emph{SR}%
 	}
 }
-\newglossaryentry{Substitution}{
+\newglossaryentry{Substitution}{ %TODO muss überarbeitet werden
 	name={Substitution},
 	plural={Substitutionen},
 	description={%
 		Die Ersetzung von einem, mehreren oder allen \emph{formalen Elementen} ($\alpha$) in einem anderen \emph{formalen Element} ($\gamma$) durch ein drittes \emph{formales Element} ($\beta$)
 		-- formal: $\gamma(\alpha\subst\beta)$.
-		Wenn alle $\alpha$ in $\gamma$ durch $\beta$ ersetzt werden, ist die Substitution \emph{vollständig}.
+		Wenn alle $\alpha$ in $\gamma$ durch $\beta$ ersetzt werden, ist die \emph{Substitution vollständig}.
 		(\vrefseesub{sub:Indentitaetsregeln})%
 	}
 }
-\newglossaryentry{vergleichbar}{
+\newglossaryentry{vergleichbar}{ %TODO muss überarbeitet werden
 	name={vergleichbar},
 	plural={vergleichbare},
 	description={
-		Zwei \emph{Metaausdrücke} \textbzw\ \emph{formale Elemente} heißen -- auf eine bestimmte Art -- \emph{vergleichbar}, wenn sie auf diese Art (\textzB\ als Zeichenketten oder als vergleichbare Ergebnisse von Formeln) verglichen werden können.
-		Die Art muss implizit bekannt oder explizit angegeben sein.
-		Meistens genügt es zu wissen, was für \emph{Metaausdrücke} \textbzw\ \emph{formale Elemente} es sind.
-		Sie müssen dann nur von derselben Art sein%
+		Zwei \glsIdxPl{Objekt} \objqt{A} und \objqt{B} sind \emph{\glsIdx{vergleichbar}}, wenn beide von derselben Art sind, \textdh\ wenn \textzB\ jeweils beide Mengen, Zeichenfolgen, Zahlen, \textusw\ sind.
+		Dabei muss bei Formeln zwischen der Formel an sich und dem Ergebnis der Formel unterschieden werden.
+		-- \vrefseesec{sec:vergleichbar}
 	}
 }
-\newglossaryentry{Vertauschung}{
+\newglossaryentry{Vergleichsoperator}{ %%% veraltet %%%
+	name={Vergleichsoperator},
+	plural={Vergleichsoperatoren},
+	description={%
+		Eine mit der Gleichheit verwandte Relation: \objqt{=}, \objqt{\ne}, \objqt{\equiv} und \objqt{\nequiv}%
+	}%
+}
+\newglossaryentry{Vertauschung}{ %TODO muss überarbeitet werden
 	name={Vertauschung},
 	plural={Vertauschungen},
 	description={%
@@ -881,7 +893,24 @@
 	name={Wahrheitswert},
 	plural={Wahrheitswerte},
 	description={%
-		Wahrheitswerte sind die Werte \strqt{wahr} und \strqt{falsch}, oft auch als \strqt{true} und \strqt{false} oder einfach \charqt{1} und \charqt{0} bezeichnet%
+		Wahrheitswerte sind die Werte \symqt{\wahr} und \symqt{\falsch}, oft auch als \symqt{\true} und \symqt{\false} oder einfach \symqt{1} und \symqt{0} bezeichnet%
+	}
+}
+\newglossaryentry{Zeichenfolge}{
+	name={Zeichenfolge},
+	plural={Zeichenfolgen},
+	description={%
+		Folgen von unzerlegbaren Zeichen und Symbolen, wobei Leerstellen und sonstiger Zwischenraum nicht zählen und nur zur besseren Darstellung dient.
+		Dabei sind als spezielle Symbole auch \emph{Zeichenketten} erlaubt, solange die Zerlegung eindeutig bleibt.
+		\textZB\ kann \symqt{sin} als ein einzelnes Symbol -- für die Sinusfunktion -- aufgefasst werden.
+		Formeln werden immer als Zeichenfolgen aufgefasst.
+	}
+}
+\newglossaryentry{Zeichenkette}{
+	name={Zeichenkette},
+	plural={Zeichenketten},
+	description={%
+		Folgen von unzerlegbaren Zeichen, auch Leerstellen und sonstigem Zwischenraum%
 	}
 }
 \newglossaryentry{zulaessigeTransformationA}{

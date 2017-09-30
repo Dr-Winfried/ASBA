@@ -307,17 +307,13 @@
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
 \newcommand*{\formulaspace}{&&&&}%         Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
-% Spezielle Quotierung von
-% Objekten                          [ob], Zeichen [char] und Zeichenketten [str]
-% Relationen, Operatoren, Operanden [op], Symbolen [sym] und Formeln       [for]
-% Erstere werden im Text-, letztere im Mathematikmodus ausgegeben.
-\newcommand*{\objqt} [1]              {#1}%                Objekte
-\newcommand*{\charqt}[1]{\guilsinglleft#1\guilsinglright}% Zeichen
-\newcommand*{\strqt} [1]{\guillemotleft#1\guillemotright}% Zeichenketten
-% Parameter wird mit $...$ umgeben
-\newcommand*{\opqt} [1]{\objqt {$#1$}}%        Relationen, Operatoren, Operanden
-\newcommand*{\symqt}[1]{\charqt{$#1$}}%                    Symbole
-\newcommand*{\forqt}[1]{\strqt {$#1$}}%                    Formeln
+% Spezielle Quotierung von Zeichenketten [str],
+% Objekten [obj], Symbolen (Zeichen) [sym] und Formeln (Zeichenfolgen) [for]
+\newcommand*{\strqt}[1]{\enquote{\textbf{\texttt{#1}}}}% Zeichenkette/Textmode
+% Parameter wird in den Mathematikmodus versetzt, d.h. mit $...$ umgeben.
+\newcommand*{\objqt}[1]              {$#1$}%                Objekt
+\newcommand*{\symqt}[1]{\guilsinglleft$#1$\guilsinglright}% Symbol
+\newcommand*{\forqt}[1]{\guillemotleft$#1$\guillemotright}% Formel
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
 \newcommand*{\sectionname}{Abschnitt}
@@ -327,84 +323,98 @@
 \newcommand*{\subsubsectionname}{Paragraph}
 \newcommand*{\subsubsectionnames}{Paragraphen}
 
-\newcommand*{\vreffig}       [1]{\figurename~\vref       {#1}}
-\newcommand*{\vreftab}       [1]{\tablename~\vref        {#1}}
-\newcommand*{\vrefcha}       [1]{\chaptername~\vref      {#1}}
-\newcommand*{\vrefsec}       [1]{\sectionname~\vref      {#1}}
-\newcommand*{\vrefsub}       [1]{\subsectionname~\vref   {#1}}
-\newcommand*{\vrefsubsub}    [1]{\subsubsectionname~\vref{#1}}
-\newcommand*{\vrefdef}       [1]{Definition~\vref        {#1}}
-\newcommand*{\vrefziel}      [1]{Ziel~\vref              {#1}}
+\newcommand*{\indcha}        [1]{in diesem \chaptername    ~\ref{#1}}
+\newcommand*{\indsec}        [1]{in diesem \sectionname    ~\ref{#1}}
+\newcommand*{\indsub}        [1]{in diesem \subsectionname ~\ref{#1}}
+\newcommand*{\indsubsub}     [1]{in diesem Paragraphen     ~\ref{#1}}
 
-\newcommand*{\vrefausfig}    [1]{aus der   \vreffig      {#1}}
-\newcommand*{\vrefaustab}    [1]{aus der   \vreftab      {#1}}
-\newcommand*{\vrefauscha}    [1]{aus       \vrefcha      {#1}}
-\newcommand*{\vrefaussec}    [1]{aus       \vrefsec      {#1}}
-\newcommand*{\vrefaussub}    [1]{aus       \vrefsub      {#1}}
-\newcommand*{\vrefaussubsub} [1]{aus       \vrefsubsub   {#1}}
+\newcommand*{\Indcha}        [1]{In diesem \chaptername    ~\ref{#1}}
+\newcommand*{\Indsec}        [1]{In diesem \sectionname    ~\ref{#1}}
+\newcommand*{\Indsub}        [1]{In diesem \subsectionname ~\ref{#1}}
+\newcommand*{\Indsubsub}     [1]{In diesem Paragraphen     ~\ref{#1}}
 
-\newcommand*{\vrefinfig}     [1]{in  der   \vreffig      {#1}}
-\newcommand*{\vrefintab}     [1]{in  der   \vreftab      {#1}}
-\newcommand*{\vrefincha}     [1]{im        \vrefcha      {#1}}
-\newcommand*{\vrefinsec}     [1]{im        \vrefsec      {#1}}
-\newcommand*{\vrefinsub}     [1]{im        \vrefsub      {#1}}
-\newcommand*{\vrefinsubsub}  [1]{im        \vrefsubsub   {#1}}
+\newcommand*{\vreffig}       [1]{\figurename~\vref         {#1}}
+\newcommand*{\vreftab}       [1]{\tablename~\vref          {#1}}
+\newcommand*{\vrefcha}       [1]{\chaptername~\vref        {#1}}
+\newcommand*{\vrefsec}       [1]{\sectionname~\vref        {#1}}
+\newcommand*{\vrefsub}       [1]{\subsectionname~\vref     {#1}}
+\newcommand*{\vrefsubsub}    [1]{\subsubsectionname~\vref  {#1}}
+\newcommand*{\vrefdef}       [1]{Definition~\vref          {#1}}
+\newcommand*{\vrefziel}      [1]{Ziel~\vref                {#1}}
 
-\newcommand*{\vrefInfig}     [1]{In  der   \vreffig      {#1}}
-\newcommand*{\vrefIntab}     [1]{In  der   \vreftab      {#1}}
-\newcommand*{\vrefIncha}     [1]{Im        \vrefcha      {#1}}
-\newcommand*{\vrefInsec}     [1]{Im        \vrefsec      {#1}}
-\newcommand*{\vrefInsub}     [1]{Im        \vrefsub      {#1}}
-\newcommand*{\vrefInsubsub}  [1]{Im        \vrefsubsub   {#1}}
+\newcommand*{\vrefausfig}    [1]{aus der   \vreffig        {#1}}
+\newcommand*{\vrefaustab}    [1]{aus der   \vreftab        {#1}}
+\newcommand*{\vrefauscha}    [1]{aus       \vrefcha        {#1}}
+\newcommand*{\vrefaussec}    [1]{aus       \vrefsec        {#1}}
+\newcommand*{\vrefaussub}    [1]{aus       \vrefsub        {#1}}
+\newcommand*{\vrefaussubsub} [1]{aus       \vrefsubsub     {#1}}
 
-\newcommand*{\vrefvonfig}    [1]{von       \vreffig      {#1}}
-\newcommand*{\vrefvontab}    [1]{von       \vreftab      {#1}}
-\newcommand*{\vrefvoncha}    [1]{von       \vrefcha      {#1}}
-\newcommand*{\vrefvonsec}    [1]{von       \vrefsec      {#1}}
-\newcommand*{\vrefvonsub}    [1]{von       \vrefsub      {#1}}
-\newcommand*{\vrefvonsubsub} [1]{von       \vrefsubsub   {#1}}
+\newcommand*{\vrefinfig}     [1]{in  der   \vreffig        {#1}}
+\newcommand*{\vrefintab}     [1]{in  der   \vreftab        {#1}}
+\newcommand*{\vrefincha}     [1]{im        \vrefcha        {#1}}
+\newcommand*{\vrefinsec}     [1]{im        \vrefsec        {#1}}
+\newcommand*{\vrefinsub}     [1]{im        \vrefsub        {#1}}
+\newcommand*{\vrefinsubsub}  [1]{im        \vrefsubsub     {#1}}
 
-%%%\newcommand*{\vrefdfig}      [1]{die       \vreffig      {#1}}
-%%%\newcommand*{\vrefdtab}      [1]{die       \vreftab      {#1}}
-%%%\newcommand*{\vrefdcha}      [1]{das       \vrefcha      {#1}}
-%%%\newcommand*{\vrefdsec}      [1]{der       \vrefsec      {#1}}
-%%%\newcommand*{\vrefdsub}      [1]{der       \vrefsub      {#1}}
-%%%\newcommand*{\vrefdsubsub}   [1]{der       \vrefsubsub   {#1}}
+\newcommand*{\vrefInfig}     [1]{In  der   \vreffig        {#1}}
+\newcommand*{\vrefIntab}     [1]{In  der   \vreftab        {#1}}
+\newcommand*{\vrefIncha}     [1]{Im        \vrefcha        {#1}}
+\newcommand*{\vrefInsec}     [1]{Im        \vrefsec        {#1}}
+\newcommand*{\vrefInsub}     [1]{Im        \vrefsub        {#1}}
+\newcommand*{\vrefInsubsub}  [1]{Im        \vrefsubsub     {#1}}
 
-\newcommand*{\vrefDfig}      [1]{Die       \vreffig      {#1}}
-\newcommand*{\vrefDtab}      [1]{Die       \vreftab      {#1}}
-\newcommand*{\vrefDcha}      [1]{Das       \vrefcha      {#1}}
-\newcommand*{\vrefDsec}      [1]{Der       \vrefsec      {#1}}
-\newcommand*{\vrefDsub}      [1]{Der       \vrefsub      {#1}}
-\newcommand*{\vrefDsubsub}   [1]{Der       \vrefsubsub   {#1}}
+\newcommand*{\vrefvonfig}    [1]{von       \vreffig        {#1}}
+\newcommand*{\vrefvontab}    [1]{von       \vreftab        {#1}}
+\newcommand*{\vrefvoncha}    [1]{von       \vrefcha        {#1}}
+\newcommand*{\vrefvonsec}    [1]{von       \vrefsec        {#1}}
+\newcommand*{\vrefvonsub}    [1]{von       \vrefsub        {#1}}
+\newcommand*{\vrefvonsubsub} [1]{von       \vrefsubsub     {#1}}
 
-\newcommand*{\vrefseefig}    [1]{siehe     \vreffig      {#1}}
-\newcommand*{\vrefseetab}    [1]{siehe     \vreftab      {#1}}
-\newcommand*{\vrefseecha}    [1]{siehe     \vrefcha      {#1}}
-\newcommand*{\vrefseesec}    [1]{siehe     \vrefsec      {#1}}
-\newcommand*{\vrefseesub}    [1]{siehe     \vrefsub      {#1}}
-\newcommand*{\vrefseesubsub} [1]{siehe     \vrefsubsub   {#1}}
-\newcommand*{\vrefseeziel}   [1]{siehe     \vrefziel     {#1}}
+%%%\newcommand*{\vrefdfig}      [1]{die       \vreffig        {#1}}
+%%%\newcommand*{\vrefdtab}      [1]{die       \vreftab        {#1}}
+%%%\newcommand*{\vrefdcha}      [1]{das       \vrefcha        {#1}}
+%%%\newcommand*{\vrefdsec}      [1]{der       \vrefsec        {#1}}
+%%%\newcommand*{\vrefdsub}      [1]{der       \vrefsub        {#1}}
+%%%\newcommand*{\vrefdsubsub}   [1]{der       \vrefsubsub     {#1}}
 
-\newcommand*{\vrefnotefig}   [1]{\footnote{\vrefseefig   {#1}}}
-\newcommand*{\vrefnotetab}   [1]{\footnote{\vrefseetab   {#1}}}
-\newcommand*{\vrefnotecha}   [1]{\footnote{\vrefseecha   {#1}}}
-\newcommand*{\vrefnotesec}   [1]{\footnote{\vrefseesec   {#1}}}
-\newcommand*{\vrefnotesub}   [1]{\footnote{\vrefseesub   {#1}}}
-\newcommand*{\vrefnotesubsub}[1]{\footnote{\vrefseesubsub{#1}}}
-\newcommand*{\vrefnoteziel}  [1]{\footnote{\vrefseeziel  {#1}}}
+\newcommand*{\vrefDfig}      [1]{Die       \vreffig        {#1}}
+\newcommand*{\vrefDtab}      [1]{Die       \vreftab        {#1}}
+\newcommand*{\vrefDcha}      [1]{Das       \vrefcha        {#1}}
+\newcommand*{\vrefDsec}      [1]{Der       \vrefsec        {#1}}
+\newcommand*{\vrefDsub}      [1]{Der       \vrefsub        {#1}}
+\newcommand*{\vrefDsubsub}   [1]{Der       \vrefsubsub     {#1}}
+
+\newcommand*{\vrefseefig}    [1]{siehe     \vreffig        {#1}}
+\newcommand*{\vrefseetab}    [1]{siehe     \vreftab        {#1}}
+\newcommand*{\vrefseecha}    [1]{siehe     \vrefcha        {#1}}
+\newcommand*{\vrefseesec}    [1]{siehe     \vrefsec        {#1}}
+\newcommand*{\vrefseesub}    [1]{siehe     \vrefsub        {#1}}
+\newcommand*{\vrefseesubsub} [1]{siehe     \vrefsubsub     {#1}}
+\newcommand*{\vrefseeziel}   [1]{siehe     \vrefziel       {#1}}
+
+\newcommand*{\vrefnotefig}   [1]{\footnote{\vrefseefig     {#1}}}
+\newcommand*{\vrefnotetab}   [1]{\footnote{\vrefseetab     {#1}}}
+\newcommand*{\vrefnotecha}   [1]{\footnote{\vrefseecha     {#1}}}
+\newcommand*{\vrefnotesec}   [1]{\footnote{\vrefseesec     {#1}}}
+\newcommand*{\vrefnotesub}   [1]{\footnote{\vrefseesub     {#1}}}
+\newcommand*{\vrefnotesubsub}[1]{\footnote{\vrefseesubsub  {#1}}}
+\newcommand*{\vrefnoteziel}  [1]{\footnote{\vrefseeziel    {#1}}}
 
 % Abkürzungen mit Punkten; zur Unterscheidung vom Satzende
 \newcommand*{\textbzgl}{bzgl.\@}
 \newcommand*{\textbzw}{bzw.\@}
 \newcommand*{\textdh}{d.\@\,h.\@}
+\newcommand*{\textDh}{D.\@\,h.\@}
 \newcommand*{\textggf}{ggf.\@}
 \newcommand*{\textGgf}{Ggf.\@}
 \newcommand*{\textiAlg}{i.\@\,Alg.\@}
+\newcommand*{\textIAlg}{I.\@\,Alg.\@}
 \newcommand*{\textua}{u.\@\,a.\@}
+\newcommand*{\textUa}{U.\@\,a.\@}
 \newcommand*{\textusw}{usw.\@}
 \newcommand*{\textzB}{z.\@\,B.\@}
 \newcommand*{\textZB}{Z.\@\,B.\@}
+% Weitere Abkürzungen
 \newcommand*{\textdots}{…}
 
 % Ergebnis von Makros verschwinden lassen
@@ -449,7 +459,7 @@
 	name={Ausgabeschema},
 	plural={Ausgabeschemata},
 	description={%
-		Ein Schema, mit dem bestimmte mathematische Objekte ausgegeben werden sollen%
+		Ein Schema, mit dem bestimmte mathematische \emph{Objekte} ausgegeben werden sollen%
 	}
 }
 \newglossaryentry{Axiom}{
