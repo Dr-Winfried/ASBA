@@ -229,7 +229,7 @@ gesetzt:
 	}.
 	%
 	\item \label{Ziel:Form} \emph{Form}:
-	Die Daten liegt in formaler, geprüfter Form vor.
+	Die Datenn liegt in formaler, geprüfter Form vor.
 	%
 	\item \label{Ziel:Eingaben} \emph{Eingaben}:
 	Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise.
@@ -652,17 +652,18 @@ Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehe
 
 \begin{description}
 	%
-	\item[Die logischen Darstellung von mathematischen Aussagen,] wozu auch \glsIdxPl{Axiom} und \glsIdxPl{Satz} gehören, erfolgt, da es sich immer um Formeln handelt, an besten mit \emph{Zeichenketten}.\footnote{%
-		Die interne Darstellung der Zeichenketten kann zur Optimierung des Programms von der logischen abweichen.%
-	}
-	Mehrdimensionale Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenketten dargestellt werden.
-	\glsIdxPl{Beweis} sind letztendlich nichts anderes, als erlaubte Transformationen dieser Zeichenketten.
+	\item[Die logischen Darstellung von mathematischen Aussagen,] wozu auch \glsIdxPl{Axiom} und \glsIdxPl{Satz} gehören, erfolgt, da es sich immer um Formeln handelt, an besten mit \emph{Zeichenfolgen}\footnote{%
+		Die interne Darstellung der Zeichenfolgen kann zur Optimierung des Programms von der logischen abweichen.%
+	},
+	\textdh\ von Folgen von Zeichen und Symbolen, in denen Zwischenraum -- insbesondere Leerstellen -- nicht zählen.
+	Mehrdimensionale Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenfolgen dargestellt werden.
+	\glsIdxPl{Beweis} sind letztendlich nichts anderes, als erlaubte Transformationen dieser Zeichenfolgen.
 	%
-	\item[Bausteine, also Grundelemente,] auch \emph{Zeichen} oder \emph{(Satz-)Buchstaben} genannt, aus denen die Zeichenketten bestehen dürfen, müssen definiert werden.
+	\item[Bausteine, also Grundelemente,] auch \emph{Zeichen} oder \emph{(Satz-)Buchstaben} genannt, aus denen die Zeichenfolgen bestehen dürfen, müssen definiert werden.
 	%
 	\item[Formationsregeln,] mit denen festgelegt wird, wie man aus den Bausteinen Ausdrücke erzeugen kann, müssen ebenfalls definiert werden.
 	%
-	\item[\glsIdxPl{Satz}] lassen sich als eine Menge von Formeln, den Voraussetzungen, wozu auch \glsIdxPl{Axiom} gehören können, einer weiteren Menge von Formeln (Zeichenketten), den Folgerungen, und der Angabe eines \glsIdx{Beweis}es darstellen.
+	\item[\glsIdxPl{Satz}] lassen sich als eine Menge von Formeln, den Voraussetzungen, wozu auch \glsIdxPl{Axiom} gehören können, einer weiteren Menge von Formeln (Zeichenfolgen), den Folgerungen, und der Angabe eines \glsIdx{Beweis}es darstellen.
 	%
 	\item[\glsIdxPl{Beweis}] zu gegebenen Voraussetzungen und Folgerungen lassen sich als Folge von zulässigen Transformationen, beginnend mit den Voraussetzungen und endend mit den Folgerungen, darstellen.
 	%

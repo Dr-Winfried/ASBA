@@ -190,6 +190,7 @@
 {0pt}% Absatzeinzug für Folgeabsätze
 {\makebox[9pt][r]{\textsuperscript{\thefootnotemark)} }}% Zeichen; < Markenbreite
 \deffootnotemark {\textsuperscript{\thefootnotemark)}}
+\newcommand*{\Tnote}[1]{\tnote{#1)}}
 
 % Vordefinierte Werte ändern ===================================================
 \setcounter{tocdepth}{3}%    Tiefe des Inhaltsverzeichnisses: 2 => subsection
@@ -309,11 +310,14 @@
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
 % Spezielle Quotierung von Zeichenketten [str],
 % Objekten [obj], Symbolen (Zeichen) [sym] und Formeln (Zeichenfolgen) [for]
-\newcommand*{\strqt}[1]{\enquote{\textbf{\texttt{#1}}}}% Zeichenkette/Textmode
-% Parameter wird in den Mathematikmodus versetzt, d.h. mit $...$ umgeben.
-\newcommand*{\objqt}[1]              {$#1$}%                Objekt
-\newcommand*{\symqt}[1]{\guilsinglleft$#1$\guilsinglright}% Symbol
-\newcommand*{\forqt}[1]{\guillemotleft$#1$\guillemotright}% Formel
+% Parameter bleibt im Textmodus
+\newcommand*{\chrqt}[1]   {\guilsinglleft{#1}\guilsinglright}% Symbol
+\newcommand*{\secqt}[1]   {\guillemotleft{#1}\guillemotright}% Zeichenfolge
+\newcommand*{\strqt}[1]{''\textbf{\texttt{#1}}''}%             Zeichenkette
+% Parameter wird in den Mathematikmodus versetzt
+\newcommand*{\objqt}[1]       {$#1$}%  Objekt
+\newcommand*{\symqt}[1]{\chrqt{$#1$}}% Symbol
+\newcommand*{\forqt}[1]{\secqt{$#1$}}% Formel
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
 \newcommand*{\sectionname}{Abschnitt}
@@ -399,6 +403,7 @@
 \newcommand*{\vrefnotesub}   [1]{\footnote{\vrefseesub     {#1}}}
 \newcommand*{\vrefnotesubsub}[1]{\footnote{\vrefseesubsub  {#1}}}
 \newcommand*{\vrefnoteziel}  [1]{\footnote{\vrefseeziel    {#1}}}
+\newcommand*{\citenote}      [1]{\footnote{siehe~\cite     {#1}}}
 
 % Abkürzungen mit Punkten; zur Unterscheidung vom Satzende
 \newcommand*{\textbzgl}{bzgl.\@}
@@ -449,7 +454,8 @@
 \newcommand*{\GlsIdxX} [1]{\GlsIdxPl{#1}}%               groß und Sonderfall
 \newcommand*{\Tag}[1]{\tag{\glsPl{#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag in Formel
 
-% Glossareinträge ==============================================================
+% Glossareinträge ##############################################################
+%TODO Alle Schlüsselworte in Glossar und Index eintragen
 
 \newcommand*{\ASBA}{\glsIdx{ASBA}}
 \newacronym{ASBA}{ASBA}{

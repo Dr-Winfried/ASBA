@@ -37,99 +37,54 @@
 
 \newcommand*{\srand}{\mid}% in formalen Sätzen und Schlussregeln:   ... und ...
 % Nur im Mathematikmodus!
-\DeclareMathOperator{\metaandsym}{\&}%         ... und  ...
-\DeclareMathOperator{\metaand}{\metaandsym\,}% ... und  ... (besserer Abstand)
-\DeclareMathOperator{\metaorsym}{||}%          ... oder ...
-\DeclareMathOperator{\metaor}{\metaorsym\,}%   ... oder ... (besserer Abstand)
-\DeclareMathOperator{\metaimp}{\Rightarrow}%   aus ... folgt              ...
-\DeclareMathOperator{\metarep}{\Leftarrow}%        ... folgt aus          ...
-\DeclareMathOperator{\metaequiv}{\Leftrightarrow}% ... genau dann wenn    ...
-\DeclareMathOperator{\metadefeq}{:\!\metaequiv}%   ... definitionsgemäß " ...
-\DeclareMathOperator{\eq}{=}%                      ... gleich             ...
-\DeclareMathOperator{\defeq}{:\!\eq}%              ... definitionsgemäß " ...
+\newcommand*{\metaandsym}{\&}%             ... und  ...
+\newcommand*{\metaand}{\;\metaandsym\;}%   ... und  ... (besserer Abstand)
+\newcommand*{\metaorsym}{||}%              ... oder ...
+\newcommand*{\metaor}{\;\metaorsym\;}%     ... oder ... (besserer Abstand)
+\newcommand*{\metaimp}{\Rightarrow}%   aus ... folgt              ...
+\newcommand*{\metarep}{\Leftarrow}%        ... folgt aus          ...
+\newcommand*{\metaequiv}{\Leftrightarrow}% ... genau dann wenn    ...
+\newcommand*{\metadefeq}{:\metaequiv}%     ... definitionsgemäß " ...
+\newcommand*{\eq}{=}%                      ... gleich             ...
+\newcommand*{\defeq}{\coloneqq}%           ... definitionsgemäß " ...
 
 % Mathematische Symbole ########################################################
 
 % Beispieloperatoren ===========================================================
 % \*bsp
-\DeclareMathOperator{\opbsp}{\bullet}
-\DeclareMathOperator{\relbsp}{\sim}
-\DeclareMathOperator{\relnbsp}{\nsim}
-\DeclareMathOperator{\releqbsp}{\simeq}
-\DeclareMathOperator{\lrelbsp}{\lhd}
-\DeclareMathOperator{\rrelbsp}{\rhd}
-\DeclareMathOperator{\lreleqbsp}{\unlhd}
-\DeclareMathOperator{\rreleqbsp}{\unrhd}
+\newcommand*{\opbsp}{\circledast}
+\newcommand*{\opubsp}{\circleddash}
+\newcommand*{\relbsp}{\sim}
+\newcommand*{\relnbsp}{\nsim}
+\newcommand*{\releqbsp}{\simeq}
+\newcommand*{\lrelbsp}{\lhd}
+\newcommand*{\rrelbsp}{\rhd}
+\newcommand*{\lreleqbsp}{\unlhd}
+\newcommand*{\rreleqbsp}{\unrhd}
 
 % Definitionen für die Tabelle der Junktoren ===================================
 % \l*  -           logischer Operator
 % \ln* - negierter logischer Operator
-% Logische Operatoren als Addition und Multiplikation
-\DeclareMathOperator{\ladd}{+}
-\DeclareMathOperator{\lmult}{\cdot}
+%%%% Logische Operatoren als Addition und Multiplikation
+%%%\newcommand*{\ladd}{+}
+%%%\newcommand*{\lmult}{\cdot}
 % Wahrheitswerte ---------------------------------------------------------------
 \newcommand*{\texttrue}{W}%  in einem Kommentar stets 'W'
 \newcommand*{\textfalse}{F}% in einem Kommentar stets 'F'
 % Konstante --------------------------------------------------------------------
-\newcommand*{\ltrue}{\top}%      W - wahr
-%\newcommand*{\lnfalse}{\notbot}% " - nicht falsch
-\newcommand*{\lfalse}{\bot}%     F - falsch
-%\newcommand*{\lntrue}{\nottop}%  " - nicht wahr
+\newcommand*{\ltrue}{\top}%  W - wahr
+\newcommand*{\lfalse}{\bot}% F - falsch
 % unäre Operatoren -------------------------------------------------------------
-%                                                        W F - Aussage A
-%\DeclareMathOperator{\lutrue}{\operatorname{\top}}%     W W - wahr
-%\DeclareMathOperator{\lnufalse}{\operatorname{\notbot}}%" " - nicht falsch
-%                                                        W F - A
-%             \lnot                                      F W - nicht
-%\DeclareMathOperator{\lufalse}{\operatorname{\bot}}%    F F - falsch
-%\DeclareMathOperator{\lnutrue}{\operatorname{\nottop}}% " " - nicht wahr
+%            \lnot                      F W     - nicht A
 % binäre Operatoren ------------------------------------------------------------
-%                                                        W W F F - Aussage A
-%                                                        W F W F - Aussage B
-%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%\DeclareMathOperator{\lbtrue}{\operatorname{\top}}%     W W W W - wahr [binär]
-%\DeclareMathOperator{\lnbfalse}{\operatorname{\notbot}}%" " " " - nicht falsch
-%            \lor                                        W W W F - A oder B
-\DeclareMathOperator{\lrep}{\leftarrow}%                 W W F W - A folgt aus B
-\DeclareMathOperator{\lrepA}{\Leftarrow}%
-\DeclareMathOperator{\lrepB}{\subset}%
-\DeclareMathOperator{\lleft}{\operatorname{\rfloor}}%    W W F F - A
-%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\DeclareMathOperator{\limp}{\rightarrow}%                W F W W - aus A folgt B
-\DeclareMathOperator{\limpA}{\Rightarrow}%
-\DeclareMathOperator{\limpB}{\supset}%
-\DeclareMathOperator{\lright}{\operatorname{\lfloor}}%   W F W F - B
-\DeclareMathOperator{\lequiv}{\leftrightarrow}%          W F F W - A genau dann,
-\DeclareMathOperator{\lequivA}{\Leftrightarrow}%                    wenn B
-%            \lnxor                                      " " " " - nicht
-%                                                            (entweder A oder B)
-%            \land                                       W F F F - A und B
-\DeclareMathOperator{\landA}{\&}
-\DeclareMathOperator{\landB}{\lmult}
-%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\DeclareMathOperator{\lnand}{\uparrow}%                  F W W W - nicht
-\DeclareMathOperator{\lnandA}{\barwedge}%                          (A und B)
-\DeclareMathOperator{\lnandB}{\mid}%
-\DeclareMathOperator{\lxor}{\ladd}%                      F W W F - entweder A
-\DeclareMathOperator{\lxorA}{\operatorname{\dot\lor}}%                 oder B
-\DeclareMathOperator{\lxorB}{\veebar}%
-\DeclareMathOperator{\lxorC}{\oplus}%
-\DeclareMathOperator{\lnequiv}{\nleftrightarrow}%        " " " " - nicht
-\DeclareMathOperator{\lnequivA}{\nLeftrightarrow}%        (A genau dann, wenn B)
-\DeclareMathOperator{\lnequivB}{\nequiv}%
-\DeclareMathOperator{\lnright}{\lceil}%                  F W F W - nicht B
-\DeclareMathOperator{\lnimp}{\nrightarrow}%              F W F F - nicht
-\DeclareMathOperator{\lnimpA}{\nRightarrow}%                     (aus A folgt B)
-\DeclareMathOperator{\lnimpB}{\nsupset}%
-%  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\DeclareMathOperator{\lnleft}{\rceil}%                   F F W W - nicht A
-\DeclareMathOperator{\lnrep}{\nleftarrow}%               F F W F - nicht
-\DeclareMathOperator{\lnrepA}{\nLeftarrow}%                      (A folgt aus B)
-\DeclareMathOperator{\lnrepB}{\nsubset}%
-\DeclareMathOperator{\lnor}{\downarrow}%                 F F F W - nicht
-\DeclareMathOperator{\lnorA}{\operatorname{\overline\vee}}%        (A oder B)
-%\DeclareMathOperator{\lbfalse}{\operatorname{\bot}}%    F F F F - falsch[binär]
-%\DeclareMathOperator{\lnbtrue}{\operatorname{\nottop}}% " " " " - nicht wahr
+%            \lor                       W W W F - A oder B
+\newcommand*{\lrep}{\leftarrow}%        W W F W - A folgt aus B
+\newcommand*{\limp}{\rightarrow}%       W F W W - aus A folgt B
+\newcommand*{\lequiv}{\leftrightarrow}% W F F W - A genau dann wenn B
+%            \land                      W F F F - A und B
+\newcommand*{\lnand}{\uparrow}%         F W W W - nicht   (A und  B)
+\newcommand*{\lxor}{+}%                 F W W F - entweder A oder B
+\newcommand*{\lnor}{\downarrow}%        F F F W - weder    A noch B
 
 % Verwendete Mengenbezeichnungen ===============================================
 
@@ -174,25 +129,26 @@
 \newcommand*{\xOr}  {\mathrm{or}}%
 \newcommand*{\xRep} {\mathrm{rep}}%
 % Mathematische Konstanten und Symbole
-\newcommand{\wahr}  {\mathrm{wahr}}
-\newcommand{\falsch}{\mathrm{falsch}}
-\newcommand{\true}  {\mathrm{true}}
-\newcommand{\false} {\mathrm{false}}
+\newcommand*{\wahr}  {\mathrm{wahr}}
+\newcommand*{\falsch}{\mathrm{falsch}}
+\newcommand*{\true}  {\mathrm{true}}
+\newcommand*{\false} {\mathrm{false}}
 
 % sonstige mathematische Zeichen ===============================================
 
 \newcommand*{\textderive}{$\vdash$}%               im Textmodus
-\DeclareMathOperator{\derive}   {\;\vdash\;}%      ... ableitbar ...
-\DeclareMathOperator{\derivegls}{\vdash}%          -"- für Glossar
-\DeclareMathOperator{\swap}     {\leftrightarrows}%... vertauscht mit ...
-\DeclareMathOperator{\subst}    {\leftarrowtail}%  ... substituiert durch ...
-%%%\DeclareMathOperator{\subst}    {\curvearrowright}%... substituiert durch ...
+\newcommand*{\derive}   {\;\vdash\;}%      ... ableitbar ...
+\newcommand*{\derivegls}{\vdash}%          -"- für Glossar
+\newcommand*{\swap}     {\leftrightarrows}%... vertauscht mit ...
+\newcommand*{\subst}    {\leftarrowtail}%  ... substituiert durch ...
+%%%\newcommand*{\subst}    {\curvearrowright}%... substituiert durch ...
 
 % sonstige Kommandos für den Mathematiksatz ####################################
 
 \mathtoolsset{showonlyrefs,showmanualtags}% Nur mit \ref referenzierte Gleichungen, aber alle manuellen Tags
 
 % Glossareinträge ##############################################################
+%TODO Symbole in  Glossar und Index eintragen
 
 % Symbole für Beispieloperatoren -----------------------------------------------
 
@@ -246,61 +202,60 @@
 	}
 }
 
-% Symbole für Metaoperatoren ---------------------------------------------------
+% Meta-Symbole -----------------------------------------------------------------
 
 \newglossaryentry{defeq}{
-	name={$ \defeq$},
-	plural={\defeq},% im Mathematikmodus
+	name={$ :=$},
+	plural={:=},% im Mathematikmodus
 	description={%
-		Ein \emph{Metaoperator}: ... definitionsgemäß gleich ..%
+		Eine Definition: ... definitionsgemäß gleich ..%
 	}
 }
 \newglossaryentry{eq}{
 	name={$ \eq$},
 	plural={\eq},% im Mathematikmodus
 	description={%
-		Ein \emph{Metaoperator}: ... gleich (ist dasselbe wie, ist identisch zu) ..%
+		Eine (Meta-)Relation: ... gleich (ist dasselbe wie, ist identisch zu) ..%
 	}
 }
 \newglossaryentry{equiv}{
 	name={$ \equiv$},
 	plural={\equiv},% im Mathematikmodus
 	description={%
-		Ein (Meta-)Operator: ... äquivalent (ist das gleiche wie, ist so wie) zu ..%
+		Eine(Meta-)Relation: ... äquivalent zu (ist das gleiche wie, ist so wie) ..%
 	}
 }
 \newglossaryentry{metaand}{
 	name={$ \metaandsym$},
-	plural={\metaandsym},% im Mathematikmodus
+	plural={\metaand},% im Mathematikmodus
 	description={%
-		Ein \emph{Metaoperator}: ... und ...
-		Die Priorität ist höher als die von \symqt{\srand}%
+		Ein \emph{Metaoperator}: ... und ...%
 	}
 }
 \newglossaryentry{metadefeq}{
 	name={$ \metadefeq$},
 	plural={\metadefeq},% im Mathematikmodus
 	description={%
-		Ein \emph{Metaoperator}: ... definitionsgemäß gleich (definitionsgemäß genau dann, wenn) ..%
+		Eine Meta-Definition: ... definitionsgemäß gleich (definitionsgemäß genau dann, wenn) ..%
 	}
 }
 \newglossaryentry{metaequiv}{
 	name={$ \metaequiv$},
 	plural={\metaequiv},% im Mathematikmodus
 	description={%
-		Ein \emph{Metaoperator}: ... genau dann wenn ..%
+		Eine \emph{Metarelation}: ... genau dann wenn ..%
 	}
 }
 \newglossaryentry{metaimp}{
 	name={$ \metaimp$},
 	plural={\metaimp},% im Mathematikmodus
 	description={%
-		Ein \emph{Metaoperator}: ... dann auch ..%
+		Eine \emph{Metarelation}: ... dann auch ..%
 	}
 }
 \newglossaryentry{metaor}{
 	name={$ \metaorsym$},
-	plural={\metaorsym},% im Mathematikmodus
+	plural={\metaor},% im Mathematikmodus
 	description={%
 		Ein \emph{Metaoperator}: ... oder ..%
 	}
@@ -309,21 +264,21 @@
 	name={$ \metarep$},
 	plural={\metarep},% im Mathematikmodus
 	description={%
-		Ein \emph{Metaoperator}: ... sofern ..%
+		Eine \emph{Metarelation}: ... sofern ..%
 	}
 }
 \newglossaryentry{ne}{
 	name={$ \ne$},
 	plural={\ne},% im Mathematikmodus
 	description={%
-		Ein \emph{Metaoperator}: ... ungleich (nicht dasselbe wie, nicht identisch zu) ..%
+		Eine (Meta-)Operator: ... ungleich (nicht dasselbe wie, nicht identisch zu) ..%
 	}
 }
 \newglossaryentry{nequiv}{
 	name={$ \nequiv$},
 	plural={\nequiv},% im Mathematikmodus
 	description={%
-		Ein (Meta-)Operator: ... nicht äquivalent (ist nicht das gleiche wie, ist nicht so wie) ..%
+		Eine (Meta-)Relation: ... nicht äquivalent (ist nicht das gleiche wie, ist nicht so wie) ..%
 	}
 }
 \newglossaryentry{subst}{
@@ -347,7 +302,7 @@
 	plural={\srand},% im Mathematikmodus
 	description={%
 		Ein \emph{Metaoperator}: ... und ...
-		Die Priorität ist niedriger als die von \symqt{\metaandsym}%
+		-- wird nur bei den \emph{Schlussregeln} verwendet%
 	}
 }
 
@@ -462,13 +417,6 @@
 		Eine Teilmenge der Menge $\alJun$ der aussagenlogischen Operatoren
 	}
 }
-%%%\newglossaryentry{alMet}{
-%%%	name={$ \alMet$},
-%%%	plural={\alMet},% im Mathematikmodus
-%%%	description={%
-%%%		Die Menge der \emph{Metaoperatoren} und der mit Gleichheit verwandten Symbole%
-%%%	}
-%%%}
 \newglossaryentry{alUna}{
 	name={$ \alUna$},
 	plural={\alUna},% im Mathematikmodus
@@ -641,6 +589,7 @@
 %%%}
 
 % Fachbegriffe -----------------------------------------------------------------
+%TODO Alle Fachbegriffe in Glossar und Index eintragen
 
 \newglossaryentry{ableitbar}{
 	name={ableitbar},
@@ -753,6 +702,13 @@
 		Diese kann auch mehrdimensional sein, lässt sich aber mittels geeigneter Definitionen immer eindeutig als eine Zeichenfolge schreiben%
 	}%
 }
+\newglossaryentry{Gleichheitsrelation}{
+	name={Gleichheitsrelation},
+	plural={Gleichheitsrelationen},
+	description={%
+		Eine mit der Gleichheit verwandte Relation: \objqt{=}, \objqt{\ne}, \objqt{\equiv} und \objqt{\nequiv}%
+	}%
+}
 \newglossaryentry{Identitaetsregel}{
 	name={Identitätsregel},
 	plural={Identitätsregeln},
@@ -782,17 +738,24 @@
 		Eine Teilmengen von $\alJun$, die ausreicht, alle anderen Elemente aus $\alJun$ zu definieren
 	}%
 }
-\newglossaryentry{Menenlehre}{
-	name={Menenlehre},
+\newglossaryentry{Mengenlehre}{
+	name={Mengenlehre},
 	description={%
-		\vrefseesec{sec:Menenlehre}%
+		\vrefseesec{sec:Mengenlehre}%
 	}
 }
 \newglossaryentry{Metaoperator}{
 	name={Metaoperator},
 	plural={Metaoperatoren},
 	description={%
-		Ein Operator der Metasprache, dargestellt duch ein Symbol: \objqt{\metaimp}, \objqt{\metarep}, \objqt{\metaequiv}, \objqt{\metaandsym}, \objqt{\metaorsym} und \objqt{\srand}%
+		Ein Operator der \emph{Metasprache}: \objqt{\metaandsym}, \objqt{\metaorsym} und \objqt{\srand}%
+	}%
+}
+\newglossaryentry{Metarelation}{
+	name={Metarelation},
+	plural={Metarelationen},
+	description={%
+		Eine Relation der \emph{Metasprache}: \objqt{\metaimp}, \objqt{\metarep} und \objqt{\metaequiv}%
 	}%
 }
 \newglossaryentry{Metasprache}{
@@ -864,13 +827,6 @@
 		Dabei muss bei Formeln zwischen der Formel an sich und dem Ergebnis der Formel unterschieden werden.
 		-- \vrefseesec{sec:vergleichbar}
 	}
-}
-\newglossaryentry{Vergleichsoperator}{ %%% veraltet %%%
-	name={Vergleichsoperator},
-	plural={Vergleichsoperatoren},
-	description={%
-		Eine mit der Gleichheit verwandte Relation: \objqt{=}, \objqt{\ne}, \objqt{\equiv} und \objqt{\nequiv}%
-	}%
 }
 \newglossaryentry{Vertauschung}{ %TODO muss überarbeitet werden
 	name={Vertauschung},
