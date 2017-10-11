@@ -35,14 +35,496 @@
 \beginchapter{Ideen}
 \label{cha:Ideen}
 
-\section{Test der Referenzen}
-\beginsection{Test der Referenzen}
-\label{sec:Referenzen}
+\section{Schlussregeln}% =======================================================
+\beginsection{Schlussregeln}
+\label{sec:Schlussregeln}
+\hidden{\glsIdx{Schlussregel}}
 
-dic:Tabellenverzeichnis:   \vref{dic:Tabellenverzeichnis}   ok
+In diesem \sectionname\ geht es um \glsIdxPl{zulaessige_Transformation}, \textdh\ \glsIdx{allgemeingueltige_Schlussregel}.
+Dazu gehören zunächst die \glsIdxPl{Basisregel}.
+Dann aber auch alle aus den \glsIdxPl{Basisregel} und den bis dahin \glsIdxBg{allgemeingueltige_Schlussregel}{allgemeingültigen Schlussregeln} korrekt abgeleiteten neuen \glsIdxPl{Schlussregel}.
+Die \glsIdxPl{Schlussregel} haben die Form eines Formalen \glsIdx{Satz}es.
 
-dic:Abbildungsverzeichnis: \vref{dic:Abbildungsverzeichnis} ok
+\subsection{Basisregeln}% ------------------------------------------------------
+\label{sub:Basisregeln}
+\hidden{\glsIdxPl{Basisregel}}
 
-dic:Literaturverzeichnis:  \vref{dic:Literaturverzeichnis}  ok
+Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \glsIdxPl{Basisregel} definiert. Zuvor werden aber noch einige Definition gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \glsIdxPl{Formel}, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \glsIdxBg{Formel}{formalen Elementen} und
+\begin{align}
+	%
+	&X&&\defeq&&X_1\cup X_2\cup...\cup X_n\cup\{\alpha_1,\alpha_2,...,\alpha_m\}
+	\\
+	&Y&&\defeq&&Y_1\cup Y_2\cup...\cup Y_k\cup\{\beta_1, \beta_2, ...,\beta_l \}
+	\formulatoleft\formulatoleft
+\end{align}
+%
+$X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
+\begin{align}
+	& \alpha \derive \beta \quad \metadefeq \quad
+	\parbox[t]{10.5cm}{%
+	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessige_Transformation}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ ableitbar.
+	Sprechweise: Aus $\alpha$ ist $\beta$ \emph{ableitbar} oder \emph{beweisbar};
+	kurz: \enquote{$\alpha$ \emph{\glsIdx{ableitbar}} $\beta$} \textbzgl\ \enquote{$\alpha$ \emph{\glsIdx{beweisbar}} $\beta$}
+	-- Es kann auch \symqt{\alpha} durch \symqt{X} und/oder \symqt{\beta} durch \symqt{Y} ersetzt werden.
+	}
+	\label{def:ableitbar}
+	\\
+	& \derive \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\symqt{\derivesym} kann dann auch ganz entfallen)}
+	\\
+	&             X_1, X_2, ...,X_n, \alpha_1, \alpha_2, ..., \alpha_m \quad
+	\derive \quad Y_1, Y_2, ...,Y_n,  \beta_1,  \beta_2,  ..., \beta_m \quad
+	\metadefeq \quad X \derive Y
+	\label{def:ableitbarKurz}
+	\formulatoleft
+\end{align}
+%
+Eine \emph{\glsIdx{zulaessige_Transformation}} ist die Anwendung einer \emph{\glsIdx{Substitution}}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\glsIdx{Basisregel}} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
+Bei den \glsIdxPl{Schlussregel} und der \glsIdx{Substitution} ($\subst$) soll das Komma stärker binden als \symqt{\derivesym}, \symqt{\subst} und \symqt{\srand},
+ wobei \symqt{\srand} für \enquote{und} \textbzgl\ \symqt{\glsIdx{metaand}}\vrefnotesub{sub:Aussagen} steht und schwächer bindet als \symqt{\derivesym} und \symqt{\subst}.%
+\footnote{siehe Fußnote~3 \vrefvontab{tab:Prio-Aussagenlogik}} %TODO Kommentar zu \srand prüfen
+
+Zur der Auswahl der \glsIdxPl{Basisregel}, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
+Wie in~\cite{bib:NatuerlichesSchliessen} steht \symqt{E} für \enquote{-Einführung} und \symqt{B} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von Operatoren.%
+\footnote{%
+	In der \glsIdx{Monotonieregel} wird hier, anders als in~\cite{bib:Rautenberg}, \forqt{X,Y} statt \forqt{Y \text{ , für } Y \supseteq X} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \forqt{\text{ , für } Y \supseteq X}.
+	Außerdem werden bei den Bezeichnungen \forqt{(\land 1)} und \forqt{(\land 2)} gemäß~\cite{bib:NatuerlichesSchliessen} durch \forqt{\andE} \textbzw\ \forqt{\andB} ersetzt.
+}
+
+Im Folgenden seien $\alpha$ und $\beta$ wieder stets \glsIdxPl{Formel} und $X$ und $Y$ Mengen von \glsIdxBg{Formel}{formalen Elementen}.
+Für die sechs \glsIdxPl{Basisregel} werden dann nur noch die logischen Operatoren \symqt{\lnot} und \symqt{\land} benötigt.
+Bei den weiteren \glsIdxPl{Schlussregel} wird noch \symqt{\limp} gemäß der Definition~\vref{def:imp} verwendet.
+%
+\begin{align}
+	& \frac{}{\alpha\derive\alpha}
+	& & (\text{\glsIdx{Anfangsregel}})
+	\tag{\tagAR} \sym{\gls{AR}} \label{def:Anfangsregel}
+	\\\\
+	& \frac{X\derive\alpha}{X,Y\derive\alpha}
+	& & (\text{\glsIdx{Monotonieregel}})
+	\tag{\tagMR} \sym{\gls{MR}} \label{def:Monotonieregel}
+	\\\\
+	& \frac{X\derive\alpha,\lnot\alpha}{X\derive\beta}
+	& & (\text{Einführung/Beseitigung der Negation Teil 1})
+	\tag{\tagnota} \sym{\gls{nota}} \label{def:nota}
+	\\\\
+	& \frac{X,\alpha\derive\beta \srand X,\lnot\alpha\derive\beta}{X\derive\beta}
+	& & (\text{Einführung/Beseitigung der Negation Teil 2})
+	\tag{\tagnotb} \sym{\gls{notb}} \label{def:notb}
+	\\\\
+	& \frac{X\derive\alpha,\beta}{X\derive\alpha\land\beta}
+	& & (\text{Einführung der Konjunktion})
+	\tag{\tagandE} \sym{\gls{andE}} \label{def:andE}
+	\\\\
+	& \frac{X\derive\alpha\land\beta}{X\derive\alpha,\beta}
+	& & (\text{Beseitigung der Konjunktion})
+	\tag{\tagandB} \sym{\gls{andB}} \label{def:andB}
+	\formulatoleft
+\end{align}
+%
+In einer \glsIdx{Schlussregel} werden die \glsIdxBg{Formel}{formalen Elemente}%
+\footnote{hier: \glsIdxPl{Aussage} in einer formalen Form.}
+über dem Querstrich als \emph{\glsIdxPl{Voraussetzung}} und die unter dem Querstrich als \emph{\glsIdx{Folgerung}} der Regel bezeichnet.
+Eine \glsIdx{Schlussregel} steht für die \glsIdx{Aussage}, dass mit ihren \glsIdxPl{Voraussetzung} auch auch ihre \glsIdxPl{Folgerung} gelten.
+-- Im Gegensatz zu den weiteren \glsIdxPl{Schlussregel} werden die oben aufgelisteten Basisregeln nicht weiter hinterfragt, \textdh\ sie gelten quasi als \glsIdxPl{Axiom}.
+
+\subsection{Identitätsregeln}% --------------------------------------------------------
+\label{sub:Identitätsregeln}
+
+Die zulässigen Transformationen, \textdh\ die Anwendung der \glsIdxPl{Schlussregel}, erfordern zulässige \glsIdxPl{Substitution}.
+Damit wird dem Gleichheits- oder Identitätszeichen \symqt{\eq} dann mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.\footnote{siehe~\cite{bib:NatuerlichesSchliessen}}
+Dazu seien $\alpha$, $\beta$ und $\gamma$ \glsIdxPl{vergleichbar}%
+\footnote{siehe Ende \vrefvonsub{sub:Aussagen}}
+\glsIdxPl{Formel}.
+Zunächst wird definiert:
+\begin{align}
+	\gamma(\alpha \subst \beta) \quad \defeq \quad
+	\parbox[t]{11cm}{%
+		Das \glsIdxBg{Formel}{formale Element}, dass man erhält, wenn in $\gamma$ alle oder nur einige Vorkommen von $\alpha$ durch $\beta$ ersetzt werden.
+		-- Gegebenenfalls muss noch die Auswahl der Ersetzungen angegeben werden, andernfalls werden alle Vorkommen ersetzt.
+		Letzteres heißt dann \emph{vollständige} \glsIdx{Substitution}.
+	} \label{def:Substitution}\\
+	\gamma(\alpha \swap \beta) \quad \defeq \quad
+	\parbox[t]{11cm}{%
+		Das \glsIdxBg{Formel}{formale Element}, dass man erhält, wenn in $\gamma$ alle $\alpha$ und $\beta$ miteinander vertauscht werden.
+		Dazu ist es nötig, das $\alpha$ und $\beta$ voneinander unabhängig sind, vorzugsweise zwei verschiedene Variable.
+	} \label{def:Vertauschung}
+\end{align}
+\forqt{\alpha \subst \beta} heißt \emph{\glsIdx{Substitution}} und \forqt{\alpha \swap \beta} \emph{\glsIdx{Vertauschung}} oder kurz \emph{Tausch}.
+-- Sei noch $S = (s_1, s_2, ...)$ eine endliche Folge von \glsIdxPl{Substitution}, die auch \glsIdxPl{Vertauschung} enthalten und auch leer sein kann. Dann wird definiert:
+\begin{align}
+	\gamma(S) & \quad \defeq \quad \gamma(s_1)(s_2)... \label{def:Substitutionen}\\
+	\gamma(\emptyset) & \quad \; = \quad \gamma & \text{(nur zur Verdeutlichung)}\\
+	\gamma(s_1,s_2,...) & \quad \defeq \quad \gamma(S)
+\end{align}
+%
+Die \glsIdx{Vertauschung} ist eine spezielle Form der \glsIdx{Substitution}.
+Wenn $x$ und $y$ zwei verschiedene Variable, die in $\alpha$, $\beta$ und $\gamma$ nicht vorkommen, gilt:
+\[
+	\gamma(\alpha \swap \beta) = \gamma(\alpha\subst x, \beta\subst y,  y\subst\alpha, x \subst\beta)
+\]
+
+Sei zusätzlich noch $s$ eine \glsIdx{Substitution}.
+Folgende Sprechweisen werden verwendet:
+\begin{itemize}
+	\renewcommand*{\itemindent}{1,5cm}
+	\renewcommand*{\labelsep}{5pt}
+	\item [$\gamma(\alpha \subst \beta)$ :] In $\gamma$ wird $\alpha$ (vollständig) \emph{durch $\beta$ substituiert}.
+	\item [$\gamma(\alpha \swap \beta)$ :] In $\gamma$ werden $\alpha$ und $\beta$ \emph{vertauscht}.
+	\item [$\gamma(s)$ :] $s$ wird auf $\gamma$ \emph{angewendet}.
+	\item [$\gamma(S)$ :] Die \glsIdxPl{Substitution} aus S werden in der angegebenen Reihenfolge auf $\gamma$ angewendet.
+	\item [$\gamma(S)$ :] $S$ wird auf $\gamma$ angewendet.
+\end{itemize}
+%
+Bei obiger Definition der \glsIdx{Substitution} bleibt noch offen, unter welchen \glsIdxPl{Voraussetzung} sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \glsIdx{Vertauschung} und vollständige \glsIdx{Substitution} verwendet werden.
+In diesen Fällen sind beliebige \glsIdxPl{Substitution} von Variablen durch \glsIdxPl{Formel} erlaubt.
+
+Ist $\gamma$ wie oben und $S$ eine Menge von \glsIdxPl{Substitution}.
+
+Nun können die beiden \glsIdxPl{Identitaetsregel} definiert werden:
+\begin{align}
+	& \frac{}{\alpha\eq\alpha}
+	& & (\text{Einführung der Identität})
+	\tag{\tageqE} \sym{\gls{eqE}} \label{def:eqE}
+	\\\\
+	& \frac{\alpha\eq\beta \srand \gamma}{\gamma(\alpha\subst\beta)}
+	& & (\text{Beseitigung der Identität})
+	\tag{\tageqB} \sym{\gls{eqB}} \label{def:eqB}
+	\formulatoleft
+\end{align}
+%
+Die \glsIdxPl{Identitaetsregel} werden hier eingeführt, um die \glsIdx{Substitution} zu rechtfertigen.
+Wie die \glsIdxPl{Basisregel} gelten sie als \glsIdxPl{Axiom}, würden also eigentlich dazu gehören.
+Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \glsIdxPl{Basisregel} gezählt.
+
+\subsection{Weitere Schlussregeln}% --------------------------------------------
+\label{sub:weitereSchlussregeln}
+
+In~\cite{bib:Rautenberg} werden aus den Basisregeln mittels \glsIdxBg{zulaessige_Transformation}{zulässiger Transformationen} weitere \glsIdxPl{Schlussregel} abgeleitet.%
+%TODO Identitätsregeln kommen bei Rautenberg später vor. ???
+\footnote{%
+	In~\cite{bib:Rautenberg} werden die \glsIdxPl{Identitaetsregel} zwar weder aufgeführt noch angewandt, ohne \glsIdx{Substitution} geht es aber nicht.
+}
+Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
+%
+\begin{align}
+	& \frac{X,\lnot\alpha\derive\alpha}{X\derive\alpha}
+	& & (\text{Beseitigung der Negation; Indirekter \glsIdx{Beweis}})
+	\tag{\tagnotc} \sym{\gls{notc}} \label{def:notc}
+	\\\\
+	& \frac{X,\lnot\alpha\derive\beta,\lnot\beta}{X\derive\alpha}
+	& & (\text{Reductio ad absurdum})
+	\tag{\tagnotd} \sym{\gls{notd}} \label{def:notd}
+	\\\\
+	& \frac{X,\alpha\derive\beta}{X\derive\alpha\limp\beta}
+	& & (\text{Einführung der Implikation})
+	\tag{\tagimpE} \sym{\gls{impE}} \label{def:impE}
+	\\\\
+	& \frac{X\derive\alpha\limp\beta}{X,\alpha\derive\beta}
+	& & (\text{Beseitigung der Implikation})
+	\tag{\tagimpB} \sym{\gls{impB}} \label{def:impB}
+	\\\\
+	& \frac{X\derive\alpha \srand X,\alpha\derive\beta}{X\derive\beta}
+	& & (\text{\glsIdx{Schnittregel}})
+	\tag{\tagSR} \sym{\gls{SR}} \label{def:SR}
+	\\\\
+	& \frac{X\derive\alpha \srand \alpha\limp\beta}{X\derive\beta}
+	& & (\text{\glsIdx{Abtrennungsregel}--\emph{Modus ponens}})
+	\tag{\tagTR} \sym{\gls{TR}} \label{def:TR}
+	\formulatoleft
+\end{align}
+%
+Dabei werden zum \glsIdx{Beweis} der \glsIdxPl{Schlussregel} in~\cite{bib:Rautenberg} folgende Basisregeln verwendet:
+\begin{itemize}
+	\renewcommand*{\itemindent}{1cm}
+	\renewcommand*{\labelsep}{5pt}
+	\item[\tagnotc~:] \tagAR, \tagMR,           \tagnotb
+	\item[\tagnotd~:] \tagAR, \tagMR, \tagnota, \tagnotb
+	\item[\tagimpE~:] \tagAR, \tagMR, \tagnota, \tagnotb, \tagandE
+	\item[\tagimpB~:] \tagAR, \tagMR, \tagnota, \tagnotb          , \tagandB
+	\item[\tagSR  ~:] \tagAR, \tagMR, \tagnota, \tagnotb
+	\item[\tagTR  ~:] \tagAR, \tagMR, \tagnota, \tagnotb, \tagandE
+\end{itemize}
+%
+\subsection{Beispiel einer Ableitung}% -----------------------------------------
+\label{sub:BeispielAbleitung}
+
+Als Beispiel wird hier die \glsIdx{Schnittregel} aus den Basisregeln abgeleitet.%
+\footnote{%
+	Die Form der Tabelle ist angelehnt an~\cite{bib:NatuerlichesSchliessen} Kapitel~2.2.4 \emph{Eine Beispielableitung}.%
+}
+Dazu wird verabredet, dass \vrefintab{tab:AbleitungSchnittregel} der Inhalt der Zelle in der Zeile $i$ und der Spalte $(X_n)$ mit $X_i$ bezeichnet wird.
+Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschriften nur auf die dort notierten $(X_n)$ verwiesen. Dass in der Spalte $(n)$ stets die Zeilennummer steht, wird im folgenden nicht mehr extra erwähnt.
+-- Für die ausgefüllten Felder wird nun definiert:%
+\footnote{%
+	Eigentlich müsste man für jede \glsIdx{Substitution} aus $S_i$ eine eigene Zeile vorsehen.
+	Um die Tabellen für die \glsIdxPl{Beweis} kürzer zu halten, werden aufeinanderfolgende \glsIdxPl{Substitution} zusammengefasst.%
+}
+\begin{align}
+	R_i & \defeq
+	\left\{
+		\begin{array}{l}
+			\text{- \enquote{\glsIdx{Voraussetzung}} = Die \glsIdx{Aussage} $A_i$ ist eine \glsIdx{Voraussetzung}.}\\
+			\text{- \enquote{\glsIdx{Folgerung}} = Die \glsIdx{Aussage} $A_i$ ist eine \glsIdx{Folgerung}.}\\
+			\text{- \enquote{Annahme} = Die \glsIdx{Aussage} $A_i$ wird vorübergehend als zutreffend angenommen.}\\
+			\text{- $j$ = Verweis auf die \glsIdx{Schlussregel} $\overline{R}_j$ für ein $j < i$.}\\
+			\text{- Verweis (ohne Klammern) auf eine \glsIdx{allgemeingueltige_Schlussregel}.}
+		\end{array}
+	\right.
+	\\
+	S_i & \defeq \text{Die Reihe der anzuwendenden \glsIdxPl{Substitution}.}
+	\\
+	\overline{R}_i & \defeq \text{Das Ergebnis der in der angegebenen Reihenfolge angewendeten}\\
+	& \quad\;\; \text{\glsIdxPl{Substitution} aus $S_i$ auf die \glsIdx{Schlussregel} $R_i$}
+	\\
+	Z_i & \defeq \text{Die Indizes $j$ (mit $j < i$) als Verweise auf eine oder mehrere \glsIdxPl{Aussage} $A_j$,}\\
+	& \quad\;\; \text{welche zusammen genau die \glsIdxPl{Voraussetzung} der \glsIdx{Schnittregel} } \overline{R}_i \text{ erfüllen.}
+	\\
+	A_i & \defeq \text{\glsIdx{Folgerung}(en) der \glsIdx{Schlussregel} $\overline{R}_i$ --}\\
+	& \quad\;\; \text{auch in Form der Indizes von einem oder mehreren von $Aj$ (mit $j < i$).}\\
+	& \quad\;\; \text{In der Ergebniszeile kann hier auch die bewiesene \glsIdx{Aussage} als Schlussregel stehen.}
+	\\
+	D_i & \defeq \text{die Indizes der $A_j$, von denen $A_i$ abhängig ist.}
+\end{align}
+Bis zur Zeile $i$ hat man die folgende \glsIdx{Schlussregel} bewiesen:
+\[ \frac{A_{i_1} \srand A_{i_2} ...}{A_i} \quad \text{, für alle } i_j \in D_i \]
+Sei nun
+\[
+	\Gamma_i \defeq
+	\left\{
+		\begin{array}{ll}
+			\text{leer}    & \text{ für } R_i = \text{\enquote{\glsIdx{Voraussetzung}}} \\
+			\text{leer}    & \text{ für } R_i = \text{\enquote{\glsIdx{Folgerung}}}     \\
+			\text{leer}    & \text{ für } R_i = \text{\enquote{Annahme}}       \\
+			\overline{R_j} & \text{ für } R_i = j \quad \text{(eine \emph{interne} \glsIdx{Schlussregel})} \\
+			\text{die \glsIdx{Schlussregel}} & \text{ für } R_i = \text{Verweis auf eine \emph{externe} \glsIdx{Schlussregel}}
+		\end{array}
+	\right.
+\]
+Damit gilt für die Einträge in einer Zeile $i$:
+\begin{itemize}
+	\item Wenn $\Gamma_i$ nicht leer ist, ist $R_i$ eine \glsIdx{Schlussregel} mit $R_i = \Gamma_i(S_i)$%
+	\footnote{%
+		siehe Definition~\eqref{def:Substitutionen} \vrefvonsub{sub:Identitätsregeln}%
+	}.
+	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \srand A_{z_2} \srand ...}{A_i}$ (alle $z_j \in Z_i$).
+	\item Wenn $A_i$ nicht leer ist, ist bis jetzt die \glsIdx{Schlussregel} $\dfrac{A_{d_1} \srand A_{d_2} \srand ...}{A_i}$ (alle $d_j \in D_i$) schon bewiesen.
+\end{itemize}
+$S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
+
+\begin{table}[!htb]
+	\setlength\tabcolsep{1pt}
+	\setlength\extrarowheight{7pt}
+	\newcommand*{\centerParbox}[2]{\parbox{#1}{\centering #2}}
+	\newcommand*{\titleCell}[3]{\centerParbox{#1}{\textbf{#2} (#3)}}
+	\newcommand*{\SnCell}[1]{\centerParbox{1.85cm}{#1}}
+	\newcommand*{\DnCell}[1]{\centerParbox{1.95cm}{#1}}
+	\begin{tabular}{|c||c|c|c|c|c|c|}
+		\hline
+		\titleCell{0.95cm}{Zeile}                       {$n$} &
+		\titleCell{1.05cm}{Regel}                     {$R_n$} &
+		\titleCell{1.85cm}{Substitu"=tionen}          {$S_n$} &
+		\titleCell{1.80cm}{erzeugte Regel} {$\overline{R}_n$} &
+		\titleCell{2.15cm}{angewendet auf ...}        {$Z_n$} &
+		\titleCell{1.65cm}{\glsIdx{Aussage}}          {$A_n$} &
+		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
+		\\\hline\hline
+		1 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X \derive \alpha$ & 1
+		\\\hline
+		2 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X,\alpha \derive \beta$ & 2
+		\\\hline
+		3 & \centerParbox{1.00cm}{Folge"=rung} & & & & $X \derive \beta$ & 3
+		\\\hline
+		4 & \tagMR & & $\dfrac{X \derive \alpha}{X, Y \derive \alpha}$ & & &
+		\\\hline
+		5 & 4 & $Y \subst \lnot\alpha$ & $\dfrac{X \derive \alpha}{X, \lnot\alpha \derive \alpha}$ & 1 & $X, \lnot\alpha \derive \alpha$ & 1
+		\\\hline
+		6 & \tagAR & & $ \dfrac{}{\alpha \derive \alpha} $ & & &
+		\\\hline
+		7 & 6 & $\alpha \subst \lnot\alpha$ & $\dfrac{}{\lnot\alpha \derive \lnot\alpha}$ & & $\lnot\alpha \derive \lnot\alpha$ &
+		\\\hline
+		8 & 4 & \SnCell{%
+			$\alpha \subst \lnot\alpha$\\
+			$X \subst \lnot\alpha$\\
+			$Y \subst X$
+		} & $\dfrac{\lnot\alpha \derive \lnot\alpha}{X,\lnot\alpha \derive \lnot\alpha}$ & 7 & $X,\lnot\alpha \derive \lnot\alpha$ &
+		\\\hline
+		9 & \tagnota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
+		\\\hline
+		10 & 9 & $X \subst X, \lnot\alpha$ & $\dfrac{X,\lnot\alpha \derive \alpha, \lnot\alpha}{X,\lnot\alpha \derive \beta}$ & 5, 8 & $X,\lnot\alpha \derive \beta$ & 1
+		\\\hline
+		11 & \tagnotb & & $\dfrac{X,\alpha \derive \beta \srand X,\lnot\alpha \derive \beta}{X \derive \beta}$ & 2, 10 & 3 & 1, 2
+		\\\hline\hline
+		12 & \centerParbox{1.4cm}{\tagAR, \tagMR, \tagnota, \tagnotb} & & $\dfrac{A_1 \srand A_2}{A_3}$ & & $\dfrac{X \derive \alpha \srand X, \alpha \derive \beta}{X \derive \beta}$ &
+		\\\hline
+	\end{tabular}
+	\caption{Ableitung der \glsIdx{Schnittregel} aus den \glsIdxPl{Basisregel}}
+	\label{tab:AbleitungSchnittregel}
+\end{table}
+
+Die Erzeugung einer Tabelle analog zu~\vref{tab:AbleitungSchnittregel} wird im folgenden beschrieben.
+Zellen, für die kein Inhalt angegeben wird, bleiben leer.
+Rückwärts-Referenzen auf schon ausgefüllte Zellinhalte sind jederzeit möglich.
+Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
+-- Die Tabelle und die Beschreibung sind so ausführlich, damit man daraus leicht ein Computerprogramm erstellen kann.
+%
+\begin{enumerate}
+	%
+	\item Am Anfang der Tabelle werden zuerst \glsIdxPl{Voraussetzung}, dann zu beweisende \glsIdxPl{Folgerung} und schließlich Annahmen aufgeführt.%
+	\footnote{%
+		Die Angabe ist dann erforderlich, wenn darauf verwiesen wird.
+		Durch die Auflistung hat man aber einen vollständigen Überblick über die \glsIdxPl{Voraussetzung} und \glsIdxPl{Folgerung} eines \glsIdx{Beweis}es und die Zwischenannahmen.
+		Auf jede nötige \glsIdx{Voraussetzung} und jede verwendete Zwischenannahme wird in der Spalte $(Z_n$) mindestens einmal verwiesen, so dass sie auch aufgeführt werden müssen.
+		Die Angabe der \glsIdxPl{Folgerung} erleichtert die Erstellung einer \emph{Ergebniszeile} (siehe Punkt~\ref{item:Ergebniszeile}).
+	}
+	Jede der drei Gruppen kann auch leer sein und es ist auch möglich, die Zeilen an anderen Stellen der Tabelle anzugeben, spätestens aber, wenn darauf verwiesen wird.
+	Für jede \glsIdx{Voraussetzung}, \glsIdx{Folgerung} und Annahme gibt es eine Zeile:
+	\begin{enumerate}
+		\item $R_i =$ \enquote{\glsIdx{Voraussetzung}}, \enquote{\glsIdx{Folgerung}} oder \enquote{Annahme}.
+		\item $A_i =$ Die aktuelle \glsIdx{Voraussetzung}, \glsIdx{Folgerung} oder Annahme.
+		\item $D_i =$ $i$ \quad (ein Verweis auf $A_i$).
+	\end{enumerate}
+	%
+	\item In den nächsten Zeilen werden die \glsIdxPl{Beweisschritt} aufgeführt, für jeden Schritt eine Zeile.
+
+	Zunächst kann $R_i$ kann auf zwei Arten erzeugt werden:
+	\begin{enumerate}
+		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
+		\item
+		\begin{enumerate}
+			\item $R_i =$ Verweis auf eine \glsIdx{allgemeingueltige_Schlussregel}.
+			\item $\overline{R}_i =$ Die \glsIdx{Schlussregel}, auf die verwiesen wird.
+		\end{enumerate}
+		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
+	\end{enumerate}
+	oder
+	\begin{enumerate}
+		\item
+		\begin{enumerate}
+			\item $R_i = j$, wenn die schon bewiesene \glsIdx{Schlussregel} $\overline{R}_j$ (mit $j < i$) angewendet werden soll.
+			\item $S_i =$ Die auf die \glsIdx{Schlussregel} $R_i$ anzuwendende \glsIdx{Substitution}.
+			\item $\overline{R}_i =$ Das Ergebnis der \glsIdx{Substitution} $S_i$ auf die \glsIdx{Schlussregel} $R_i$.
+		\end{enumerate}
+		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
+	\end{enumerate}
+	Man beachte, dass die \glsIdx{Schlussregel} $\overline{R}_i$, stets allgemeingültig ist, da sie ausschließlich aus \glsIdxBg{allgemeingueltige_Schlussregel}{allgemeingültigen Schlussregeln} mittels \glsIdxPl{Substitution} abgeleitet worden ist.
+	Daher gibt es auch keine Beschränkung weiterer \glsIdxPl{Substitution} durch irgendwelche Abhängigkeiten.
+
+	Nun kann die Zeile beendet werden, oder es geht weiter mit:
+	\begin{enumerate}
+		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
+		\item \label{item:Anwendung} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine \glsIdx{Voraussetzung} der \glsIdx{Schlussregel} $\overline{R}_i$ sind, möglichst in der verwendeten Reihenfolge.
+		-- Für jedes angegebene $j$ werden noch die Abhängigkeiten $D_j$ den Abhängigkeiten $D_i$ hinzugefügt.
+		%
+		\item $A_i =$ \glsIdx{Folgerung}(en) der \glsIdx{Schlussregel} $\overline{R}_i$.
+		-- Wenn diese \glsIdxPl{Folgerung} schon als \glsIdxPl{Aussage} $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
+		Damit werden die Zusammenhänge und der Abschluss des \glsIdx{Beweis}es besser ersichtlich.
+		%
+		\item $D_i =$ Die Verweise wurden schon in (\ref{item:Anwendung}) eingetragen.%
+		\footnote{Wenn $D_n$ leer ist, dann ist $A_n$ allgemeingültig.}
+		%
+	\end{enumerate}
+	Der \glsIdx{Beweis} muss so lange fortgeführt werden, bis alle \glsIdxPl{Folgerung} als \glsIdxPl{Aussage} in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \glsIdxPl{Voraussetzung} abhängig sind.
+	%
+	\item \label{item:Ergebniszeile} In einer \emph{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \glsIdx{Schlussregel} formuliert und in einer passenden Spalte notiert werden.
+	Zusätzlich können dort auch noch alle verwendeten \glsIdxPl{Schlussregel} gesammelt werden.
+	Dies kann \textzB\ folgendermaßen geschehen:
+	\begin{enumerate}
+		%
+		\item $(R_n) =$ Verweise auf alle verwendeten externen \glsIdxPl{Schlussregel}.
+		%
+		\item $(\overline{R}_n) =$ Die bewiesene Behauptung als \glsIdxPl{Schlussregel}, wobei alle $A_i$, die \glsIdxPl{Voraussetzung} sind, als \glsIdx{Voraussetzung} und alle $A_j$, die \glsIdxPl{Folgerung} sind, als \glsIdx{Folgerung} eingesetzt werden, jeweils in der Form \enquote{$A_i$} \textbzgl\ \enquote{$A_j$}.
+		Das ergibt dann:
+		\[ \frac{A_{i_1} \srand A_{i_2} \srand ...}{A_{j_1} \srand A_{j_2} \srand ...} \]
+		%
+		\item $(A_n) =$ $\overline{R}_i$, wobei die \glsIdxPl{Voraussetzung} und \glsIdxPl{Folgerung} aufgelöst werden.
+		%
+		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der \glsIdxPl{Folgerung}, vermindert um die \glsIdxPl{Voraussetzung}.
+		-- Wenn das Feld dabei nicht leer bleibt, ist der \glsIdx{Beweis} missglückt!
+		%
+	\end{enumerate}
+	%
+\end{enumerate}
+%
+Ein weiteres Beispiel \vrefintab{tab:AbleitungKontraposition} soll verdeutlichen, wie Abhängigkeiten von Zwischenannahmen wieder beseitigt werden können.\footnote{siehe~\cite{bib:NatuerlichesSchliessen}, Kapitel 2.2.4 \emph{Eine Beispielableitung}}
+
+\begin{table}[!htb]
+	\setlength\tabcolsep{1pt}
+	\setlength\extrarowheight{7pt}
+	\newcommand*{\centerParbox}[2]{\parbox{#1}{\centering #2}}
+	\newcommand*{\titleCell}[3]{\centerParbox{#1}{\textbf{#2} (#3)}}
+	\newcommand*{\SnCell}[1]{\centerParbox{2.30cm}{#1}}
+	\newcommand*{\DnCell}[1]{\centerParbox{1.95cm}{#1}}
+	\begin{tabular}{|c||c|c|c|c|c|c|}
+		\hline
+		\titleCell{0.95cm}{Zeile}                       {$n$} &
+		\titleCell{1.05cm}{Regel}                     {$R_n$} &
+		\titleCell{1.85cm}{Substitu"=tionen}          {$S_n$} &
+		\titleCell{1.80cm}{erzeugte Regel} {$\overline{R}_n$} &
+		\titleCell{2.15cm}{angewendet auf ...}        {$Z_n$} &
+		\titleCell{1.65cm}{\glsIdx{Aussage}}          {$A_n$} &
+		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
+		\\\hline \hline
+		1 & \centerParbox{1.00cm}{Folge"=rung} & & & & $(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & 1
+		\\\hline
+		2 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha\limp\beta$ & 2
+		\\\hline
+		3 & \centerParbox{1.20cm}{An"=nahme} & & & & $\lnot\beta$ & 3
+		\\\hline
+		4 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha$ & 4
+		\\\hline
+		5 & \tagimpB & & $\dfrac{X \derive \alpha\limp\beta}{X,\alpha \derive \beta}$ & & &
+		\\\hline
+		6 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha\limp\beta}{\alpha \derive \beta}$ & 2 & $\alpha \derive \beta $ & 2
+		\\\hline
+		7 & \tagSR & & $\dfrac{X \derive \alpha \srand X,\alpha \derive \beta}{X \derive \beta}$ & & &
+		\\\hline
+		8 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \alpha \derive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
+		\\\hline
+		9' & \tagandE & & $\dfrac{X \derive \alpha, \beta}{X \derive \alpha \land \beta}$ & & &
+		\\\hline
+		10' & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \beta}{\alpha \land \beta}$ & & &
+		\\\hline
+		11' & -1 &\SnCell{
+			$\alpha \swap \beta$\\
+			$\alpha \subst \lnot\beta$
+		}  & $\dfrac{\beta \srand \lnot\beta}{\beta \land \lnot\beta}$ & 8, 3 & $\beta \land \lnot\beta$ &
+		\\\hline
+		9 & \tagnota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
+		\\\hline
+		10 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \lnot\alpha}{\beta}$ & & &
+		\\\hline
+		11 & -1 & \SnCell{
+			$\alpha \swap \beta$\\
+			$\alpha \subst \lnot\alpha$
+		} & $\dfrac{\beta \srand \lnot\beta}{\lnot\alpha}$ & 8, 3 & $\lnot\alpha$ & 2, 3, 4
+		\\\hline
+		12 & \tagimpE & & $\dfrac{X, \alpha \derive \beta}{X \derive \alpha\limp\beta}$ & & &
+		\\\hline
+		13 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \derive \beta}{\alpha\limp\beta}$ & & &
+		\\\hline
+		14 & -1 & \SnCell{
+			$\alpha \swap \beta$\\
+			$\alpha \subst \lnot\alpha$\\
+			$\beta \subst \lnot\beta$
+		} & $\dfrac{\lnot\beta \derive \lnot\alpha}{\lnot\beta\limp\lnot\alpha}$ & 3, 11, ??? & $\lnot\beta\limp\lnot\alpha$ & 2, 3, 4, ???
+		\\\hline
+		15 & \tagimpE+1 & \SnCell{
+			$\alpha \subst \gamma$\\
+			$\beta \subst \delta$\\
+			$\gamma \subst \alpha\limp\beta$\\
+			$\delta \subst \lnot\beta\limp\lnot\alpha$
+		} & $\dfrac{\alpha\limp\beta \derive \lnot\beta\limp\lnot\alpha}
+		{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ & 2, 14 &
+		$(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & 2, 3, 4, ???
+		\\\hline\hline
+		16 & \centerParbox{1.5cm}{\tagimpE, \tagimpB, \tagSR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ &
+		\\\hline
+	\end{tabular}
+	\caption{Ableitung der \glsIdx{Kontraposition} aus \glsIdxBg{allgemeingueltige_Schlussregel}{allgemeingültigen Schlussregeln}}
+	\label{tab:AbleitungKontraposition}
+\end{table}
+
+\todo{Beispielableitung der Kontraposition vervollständigen}%%%
+%TODO Beispielableitung der Kontraposition vervollständigen %%%
 
 \Endchapter
