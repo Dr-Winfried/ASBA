@@ -83,7 +83,7 @@
 %\usepackage{hvindex}% Support for indexing - after 'babel
 %\usepackage{showidx}% Index auf Seitenrand anzeigen - Zum Testen der Indizes
 %TODO Fehler: 'showindex' gibt direkt und nicht auf Rand aus
-\usepackage{glossaries}% Create glossaries and lists of acronyms
+\usepackage[nopostdot]{glossaries}% Create glossaries and lists of acronyms
 %TODO Fehler: 'hyperfirst' hat keine Wirkung'.
 %\usepackage{glossaries-german}% German language module for glossaries package
 
@@ -101,18 +101,18 @@
 
 % Kopfzeilen ===================================================================
 \newcommand*{\texthead}[1]{\textnormal{\textsf{\textbf{#1}}}}% Schriftart
-\newcommand*{\Lehead}[1]{\lehead{\texthead{#1}}}
-\newcommand*{\Cehead}[1]{\cehead{\texthead{#1}}}
-\newcommand*{\Rehead}[1]{\rehead{\texthead{#1}}}
-\newcommand*{\Lohead}[1]{\lohead{\texthead{#1}}}
-\newcommand*{\Cohead}[1]{\cohead{\texthead{#1}}}
-\newcommand*{\Rohead}[1]{\rohead{\texthead{#1}}}
-\newcommand*{\Ohead}[1]{\ohead{\texthead{#1}}}
-\newcommand*{\Chead}[1]{\chead{\texthead{#1}}}
-\newcommand*{\Ihead}[1]{\ihead{\texthead{#1}}}
-\newcommand*{\Ofoot}[1]{\ofoot{\textnormal{\textbf{#1}}}}
-\newcommand*{\Cfoot}[1]{\cfoot{\textnormal{#1}}}
-\newcommand*{\Ifoot}[1]{\ifoot{\textnormal{#1}}}
+\newcommand*{\Lehead}  [1]{\lehead{\texthead{#1}}}
+\newcommand*{\Cehead}  [1]{\cehead{\texthead{#1}}}
+\newcommand*{\Rehead}  [1]{\rehead{\texthead{#1}}}
+\newcommand*{\Lohead}  [1]{\lohead{\texthead{#1}}}
+\newcommand*{\Cohead}  [1]{\cohead{\texthead{#1}}}
+\newcommand*{\Rohead}  [1]{\rohead{\texthead{#1}}}
+\newcommand*{\Ohead}   [1]{\ohead {\texthead{#1}}}
+\newcommand*{\Chead}   [1]{\chead {\texthead{#1}}}
+\newcommand*{\Ihead}   [1]{\ihead {\texthead{#1}}}
+\newcommand*{\Ofoot}   [1]{\ofoot {\textnormal{\textbf{#1}}}}
+\newcommand*{\Cfoot}   [1]{\cfoot {\textnormal{#1}}}
+\newcommand*{\Ifoot}   [1]{\ifoot {\textnormal{#1}}}
 \newcommand*{\Pagestyle}{\pagestyle{scrheadings}}
 \newcommand*{\Thispagestyle}{\thispagestyle{scrheadings}}
 
@@ -306,25 +306,25 @@
 % und '\' und '~' durch '\textbackslash' bzw. '\textasctilde' ersetzt werden.
 \newcommand*{\tourl}[1]{$\rightarrow$~\url{#1}}
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
-\newcommand*{\formulaspace}{&&&&}%         Für Platz zwischen den Formeln
+\newcommand*{\formulaspace} {&&&&}      %  Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
 % Spezielle Quotierung von Zeichenketten [str],
 % Objekten [obj], Symbolen (Zeichen) [sym] und Formeln (Zeichenfolgen) [for]
 % Parameter bleibt im Textmodus
 \newcommand*{\chrqt}[1]   {\guilsinglleft{#1}\guilsinglright}% Symbol
-\newcommand*{\secqt}[1]   {\guillemotleft{#1}\guillemotright}% Zeichenfolge
-\newcommand*{\strqt}[1]{''\textbf{\texttt{#1}}''}%             Zeichenkette
+\newcommand*{\seqqt}[1]   {\guillemotleft{#1}\guillemotright}% Zeichenfolge
+\newcommand*{\strqt}[1]{``\textbf{\texttt{#1}}''}%             Zeichenkette
 % Parameter wird in den Mathematikmodus versetzt
 \newcommand*{\objqt}[1]       {$#1$}%  Objekt
 \newcommand*{\symqt}[1]{\chrqt{$#1$}}% Symbol
-\newcommand*{\forqt}[1]{\secqt{$#1$}}% Formel
+\newcommand*{\forqt}[1]{\seqqt{$#1$}}% Formel
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
-\newcommand*{\sectionname}{Abschnitt}
-\newcommand*{\sectionnames}{Abschnitte}
-\newcommand*{\subsectionname}{Unterabschnitt}
-\newcommand*{\subsectionnames}{Unterabschnitte}
-\newcommand*{\subsubsectionname}{Paragraph}
+\newcommand*{\sectionname}       {Abschnitt}
+\newcommand*{\sectionnames}      {Abschnitte}
+\newcommand*{\subsectionname}    {Unterabschnitt}
+\newcommand*{\subsectionnames}   {Unterabschnitte}
+\newcommand*{\subsubsectionname} {Paragraph}
 \newcommand*{\subsubsectionnames}{Paragraphen}
 
 \newcommand*{\indcha}        [1]{in diesem \chaptername    ~\ref{#1}}
@@ -431,7 +431,7 @@
 \makeindex
 \newindex[Symbolverzeichnis]{sym}
 \newindex[Index]{idx}
-\newcommand*{\Idx}[1]{#1\idx{#1}}%   normaler Index
+\newcommand*{\Idx}[1]{#1\idx {#1} }% normaler Index
 \newcommand*{\Sym}[1]{#1\sym{$#1$}}% Index für ein Symbol - Mathematikmodus!
 
 % Glossareinträge ==============================================================
@@ -441,9 +441,9 @@
 
 % Symbol/Index/Glossar =========================================================
 
-\newcommand*{\idx}[1]{\sindex[idx]{#1}}
-\newcommand*{\sym}[1]{\sindex[sym]{#1}}
-\newcommand*{\glsSym}  [1]{\glspl   {#1}\sym{\gls{#1}}}% Symbol - Im Mathematikmodus!
+\newcommand*{\idx}     [1]{\sindex[idx]{#1}}
+\newcommand*{\sym}     [1]{\sindex[sym]{#1}}
+\newcommand*{\glsSym}  [1]{\glspl   {#1}\sym{\gls{#1}}}% Symbol Mathematikmodus!
 \newcommand*{\glsIdx}  [1]{\gls     {#1}\idx{\gls{#1}}}% normal
 \newcommand*{\GlsIdx}  [1]{\Gls     {#1}\idx{\gls{#1}}}% groß
 \newcommand*{\glsIdxBg}[2]          {#2\idx {\gls{#1}}}%          Beugung
@@ -452,56 +452,52 @@
 \newcommand*{\GlsIdxPl}[1]{\Glspl   {#1}\idx{\gls{#1}}}% groß und Plural
 \newcommand*{\glsIdxX} [1]{\glsIdxPl{#1}}%                        Sonderfall
 \newcommand*{\GlsIdxX} [1]{\GlsIdxPl{#1}}%               groß und Sonderfall
-\newcommand*{\Tag}[1]{\tag{\glsPl{#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag in Formel
+\newcommand*{\Tag}[1]{\tag{\glsPl   {#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag
 
 % Glossareinträge ##############################################################
 %TODO Alle Schlüsselworte mit \glsIdx in Glossar und Index eintragen
 
 \newcommand*{\ASBA}{\glsIdx{ASBA}}
 \newacronym{ASBA}{ASBA}{
-	Programmsystem, das \textbf{A}xiome, \textbf{S}ätze, \textbf{B}eweise und \textbf{A}uswertungen behandeln kann%
+	Programmsystem, das \textbf{A}xiome, \textbf{S}ätze, \textbf{B}eweise und \textbf{A}uswertungen behandeln kann.
 }
 \newglossaryentry{Ausgabeschema}{
 	name  ={Ausgabeschema},
 	plural={Ausgabeschemata},
-	description={%
-		Ein Schema, mit dem bestimmte mathematische \emph{Objekte} ausgegeben werden sollen%
+	description={
+		Ein Schema, mit dem bestimmte mathematische \emph{Objekte} ausgegeben werden sollen.
 	}
 }
 \newglossaryentry{Axiom}{
 	name  ={Axiom},
 	plural={Axiome},
-	description={%
-		Eine Formel, die unbewiesen als wahr angesehen wird%
-	}
+	description={Eine Formel, die unbewiesen als wahr angesehen wird.}
 }
 \newglossaryentry{Beweis}{
 	name  ={Beweis},
 	plural={Beweise},
-	description={%
+	description={
 		Eine zulässige Ableitung von Folgerungen aus gegebenen Voraussetzungen.
-		\vrefseesec{Beweise}%
+		\vrefseesec{sec:BeweiseASBA}
 	}
 }
 \newglossaryentry{Fachbegriff}{
 	name  ={Fachbegriff},
 	plural={Fachbegriffe},
-	description={%
-		Ein Name für einen mathematischen Begriff%
-	}
+	description={Ein Name für einen mathematischen Begriff.}
 }
 \newglossaryentry{Fachgebiet}{
 	name  ={Fachgebiet},
 	plural={Fachgebiete},
-	description={%
-		Ein Teil der Mathematik mit einer zugehörigen Basis aus Axiomen, Sätzen und spezifischen Fachbegriffen und Darstellungen%
+	description={
+		Ein Teil der Mathematik mit einer zugehörigen Basis aus Axiomen, Sätzen und spezifischen Fachbegriffen und Darstellungen.
 	}
 }
 \newglossaryentry{Satz}{
 	name  ={Satz},
 	plural={Sätze},
-	description={%
-		Eine mathematische Aussage, dass eine bestimmte Folgerung aus gegebenen Voraussetzungen abgeleitet werden kann%
+	description={
+		Eine mathematische Aussage, dass eine bestimmte Folgerung aus gegebenen Voraussetzungen abgeleitet werden kann.
 	}
 }
 

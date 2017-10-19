@@ -40,9 +40,9 @@
 \label{sec:Schlussregeln}
 \hidden{\glsIdx{Schlussregel}}
 
-In diesem \sectionname\ geht es um \glsIdxPl{zulaessige_Transformation}, \textdh\ \glsIdx{allgemeingueltige_Schlussregel}.
+In diesem \sectionname\ geht es um \glsIdxPl{zulaessige-Transformation}, \textdh\ \glsIdx{allgemeingueltige-Schlussregel}.
 Dazu gehören zunächst die \glsIdxPl{Basisregel}.
-Dann aber auch alle aus den \glsIdxPl{Basisregel} und den bis dahin \glsIdxBg{allgemeingueltige_Schlussregel}{allgemeingültigen Schlussregeln} korrekt abgeleiteten neuen \glsIdxPl{Schlussregel}.
+Dann aber auch alle aus den \glsIdxPl{Basisregel} und den bis dahin \glsIdxBg{allgemeingueltige-Schlussregel}{allgemeingültigen Schlussregeln} korrekt abgeleiteten neuen \glsIdxPl{Schlussregel}.
 Die \glsIdxPl{Schlussregel} haben die Form eines Formalen \glsIdx{Satz}es.
 
 \subsection{Basisregeln}% ------------------------------------------------------
@@ -62,7 +62,7 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 \begin{align}
 	& \alpha \derive \beta \quad \metadefeq \quad
 	\parbox[t]{10.5cm}{%
-	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessige_Transformation}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ ableitbar.
+	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessige-Transformation}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ ableitbar.
 	Sprechweise: Aus $\alpha$ ist $\beta$ \emph{ableitbar} oder \emph{beweisbar};
 	kurz: \enquote{$\alpha$ \emph{\glsIdx{ableitbar}} $\beta$} \textbzgl\ \enquote{$\alpha$ \emph{\glsIdx{beweisbar}} $\beta$}
 	-- Es kann auch \symqt{\alpha} durch \symqt{X} und/oder \symqt{\beta} durch \symqt{Y} ersetzt werden.
@@ -78,7 +78,7 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 	\formulatoleft
 \end{align}
 %
-Eine \emph{\glsIdx{zulaessige_Transformation}} ist die Anwendung einer \emph{\glsIdx{Substitution}}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\glsIdx{Basisregel}} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
+Eine \emph{\glsIdx{zulaessige-Transformation}} ist die Anwendung einer \emph{\glsIdx{Substitution}}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\glsIdx{Basisregel}} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
 Bei den \glsIdxPl{Schlussregel} und der \glsIdx{Substitution} ($\subst$) soll das Komma stärker binden als \symqt{\derivesym}, \symqt{\subst} und \symqt{\srand},
  wobei \symqt{\srand} für \enquote{und} \textbzgl\ \symqt{\glsIdx{metaand}}\vrefnotesub{sub:Aussagen} steht und schwächer bindet als \symqt{\derivesym} und \symqt{\subst}.%
 \footnote{siehe Fußnote~3 \vrefvontab{tab:Prio-Aussagenlogik}} %TODO Kommentar zu \srand prüfen
@@ -86,8 +86,8 @@ Bei den \glsIdxPl{Schlussregel} und der \glsIdx{Substitution} ($\subst$) soll da
 Zur der Auswahl der \glsIdxPl{Basisregel}, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
 Wie in~\cite{bib:NatuerlichesSchliessen} steht \symqt{E} für \enquote{-Einführung} und \symqt{B} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von Operatoren.%
 \footnote{%
-	In der \glsIdx{Monotonieregel} wird hier, anders als in~\cite{bib:Rautenberg}, \forqt{X,Y} statt \forqt{Y \text{ , für } Y \supseteq X} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \forqt{\text{ , für } Y \supseteq X}.
-	Außerdem werden bei den Bezeichnungen \forqt{(\land 1)} und \forqt{(\land 2)} gemäß~\cite{bib:NatuerlichesSchliessen} durch \forqt{\andE} \textbzw\ \forqt{\andB} ersetzt.
+	In der \glsIdx{Monotonieregel} wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \supseteq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \supseteq X $}.
+	Außerdem werden bei den Bezeichnungen \seqqt{$(\land 1)$} und \seqqt{$(\land 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$\andE$} \textbzw\ \seqqt{$\andB$} ersetzt.
 }
 
 Im Folgenden seien $\alpha$ und $\beta$ wieder stets \glsIdxPl{Formel} und $X$ und $Y$ Mengen von \glsIdxBg{Formel}{formalen Elementen}.
@@ -149,7 +149,7 @@ Zunächst wird definiert:
 		Dazu ist es nötig, das $\alpha$ und $\beta$ voneinander unabhängig sind, vorzugsweise zwei verschiedene Variable.
 	} \label{def:Vertauschung}
 \end{align}
-\forqt{\alpha \subst \beta} heißt \emph{\glsIdx{Substitution}} und \forqt{\alpha \swap \beta} \emph{\glsIdx{Vertauschung}} oder kurz \emph{Tausch}.
+\seqqt{$ \alpha \subst \beta $} heißt \emph{\glsIdx{Substitution}} und \seqqt{$ \alpha \swap \beta $} \emph{\glsIdx{Vertauschung}} oder kurz \emph{Tausch}.
 -- Sei noch $S = (s_1, s_2, ...)$ eine endliche Folge von \glsIdxPl{Substitution}, die auch \glsIdxPl{Vertauschung} enthalten und auch leer sein kann. Dann wird definiert:
 \begin{align}
 	\gamma(S) & \quad \defeq \quad \gamma(s_1)(s_2)... \label{def:Substitutionen}\\
@@ -199,7 +199,7 @@ Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \glsIdxP
 \subsection{Weitere Schlussregeln}% --------------------------------------------
 \label{sub:weitereSchlussregeln}
 
-In~\cite{bib:Rautenberg} werden aus den Basisregeln mittels \glsIdxBg{zulaessige_Transformation}{zulässiger Transformationen} weitere \glsIdxPl{Schlussregel} abgeleitet.%
+In~\cite{bib:Rautenberg} werden aus den Basisregeln mittels \glsIdxBg{zulaessige-Transformation}{zulässiger Transformationen} weitere \glsIdxPl{Schlussregel} abgeleitet.%
 %TODO Identitätsregeln kommen bei Rautenberg später vor. ???
 \footnote{%
 	In~\cite{bib:Rautenberg} werden die \glsIdxPl{Identitaetsregel} zwar weder aufgeführt noch angewandt, ohne \glsIdx{Substitution} geht es aber nicht.
@@ -267,7 +267,7 @@ Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschrifte
 			\text{- \enquote{\glsIdx{Folgerung}} = Die \glsIdx{Aussage} $A_i$ ist eine \glsIdx{Folgerung}.}\\
 			\text{- \enquote{Annahme} = Die \glsIdx{Aussage} $A_i$ wird vorübergehend als zutreffend angenommen.}\\
 			\text{- $j$ = Verweis auf die \glsIdx{Schlussregel} $\overline{R}_j$ für ein $j < i$.}\\
-			\text{- Verweis (ohne Klammern) auf eine \glsIdx{allgemeingueltige_Schlussregel}.}
+			\text{- Verweis (ohne Klammern) auf eine \glsIdx{allgemeingueltige-Schlussregel}.}
 		\end{array}
 	\right.
 	\\
@@ -391,7 +391,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
 		\item
 		\begin{enumerate}
-			\item $R_i =$ Verweis auf eine \glsIdx{allgemeingueltige_Schlussregel}.
+			\item $R_i =$ Verweis auf eine \glsIdx{allgemeingueltige-Schlussregel}.
 			\item $\overline{R}_i =$ Die \glsIdx{Schlussregel}, auf die verwiesen wird.
 		\end{enumerate}
 		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
@@ -406,7 +406,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\end{enumerate}
 		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
 	\end{enumerate}
-	Man beachte, dass die \glsIdx{Schlussregel} $\overline{R}_i$, stets allgemeingültig ist, da sie ausschließlich aus \glsIdxBg{allgemeingueltige_Schlussregel}{allgemeingültigen Schlussregeln} mittels \glsIdxPl{Substitution} abgeleitet worden ist.
+	Man beachte, dass die \glsIdx{Schlussregel} $\overline{R}_i$, stets allgemeingültig ist, da sie ausschließlich aus \glsIdxBg{allgemeingueltige-Schlussregel}{allgemeingültigen Schlussregeln} mittels \glsIdxPl{Substitution} abgeleitet worden ist.
 	Daher gibt es auch keine Beschränkung weiterer \glsIdxPl{Substitution} durch irgendwelche Abhängigkeiten.
 
 	Nun kann die Zeile beendet werden, oder es geht weiter mit:
@@ -520,7 +520,7 @@ Ein weiteres Beispiel \vrefintab{tab:AbleitungKontraposition} soll verdeutlichen
 		16 & \centerParbox{1.5cm}{\tagimpE, \tagimpB, \tagSR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ &
 		\\\hline
 	\end{tabular}
-	\caption{Ableitung der \glsIdx{Kontraposition} aus \glsIdxBg{allgemeingueltige_Schlussregel}{allgemeingültigen Schlussregeln}}
+	\caption{Ableitung der \glsIdx{Kontraposition} aus \glsIdxBg{allgemeingueltige-Schlussregel}{allgemeingültigen Schlussregeln}}
 	\label{tab:AbleitungKontraposition}
 \end{table}
 

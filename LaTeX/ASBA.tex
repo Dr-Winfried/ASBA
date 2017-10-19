@@ -112,22 +112,17 @@
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
 	\idxdictionary{Index}% Index ===============================================
-	\newcommand*{\insertidx}{%
-		\label{idx:Index}
-	}
+	\newcommand*{\insertidx}{\label{idx:Index}}
 	\printindex[idx]
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
 	\idxdictionary{Symbolverzeichnis}% =========================================
-	\newcommand*{\insertsym}{%
-		\label{idx:Symbolverzeichnis}
-	}
+	\newcommand*{\insertsym}{\label{idx:Symbolverzeichnis}}
 	\printindex[sym]
 
 	\beforechapter% Kopfzeile aktivieren und neue Seite
 	\glodictionary{\glossaryname}% Index =======================================
-	\newcommand*{\insertglo}{%
-		\label{glo:Glossar}
+	\newcommand*{\insertglo}{\label{glo:Glossar}
 		\Thispagestyle
 		\addcontentsline{toc}{section}{\glossaryname}% Eintrag ins Inhaltsverzeichnis
 	}
