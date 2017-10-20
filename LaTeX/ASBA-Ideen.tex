@@ -65,11 +65,11 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessige-Transformation}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ ableitbar.
 	Sprechweise: Aus $\alpha$ ist $\beta$ \emph{ableitbar} oder \emph{beweisbar};
 	kurz: \enquote{$\alpha$ \emph{\glsIdx{ableitbar}} $\beta$} \textbzgl\ \enquote{$\alpha$ \emph{\glsIdx{beweisbar}} $\beta$}
-	-- Es kann auch \symqt{\alpha} durch \symqt{X} und/oder \symqt{\beta} durch \symqt{Y} ersetzt werden.
+	-- Es kann auch \chrqt{$\alpha$} durch \chrqt{$X$} und/oder \chrqt{$\beta$} durch \chrqt{$Y$} ersetzt werden.
 	}
 	\label{def:ableitbar}
 	\\
-	& \derive \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\symqt{\derivesym} kann dann auch ganz entfallen)}
+	& \derive \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\chrqt{$\derivesym$} kann dann auch ganz entfallen)}
 	\\
 	&             X_1, X_2, ...,X_n, \alpha_1, \alpha_2, ..., \alpha_m \quad
 	\derive \quad Y_1, Y_2, ...,Y_n,  \beta_1,  \beta_2,  ..., \beta_m \quad
@@ -79,20 +79,20 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 \end{align}
 %
 Eine \emph{\glsIdx{zulaessige-Transformation}} ist die Anwendung einer \emph{\glsIdx{Substitution}}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\glsIdx{Basisregel}} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
-Bei den \glsIdxPl{Schlussregel} und der \glsIdx{Substitution} ($\subst$) soll das Komma stärker binden als \symqt{\derivesym}, \symqt{\subst} und \symqt{\srand},
- wobei \symqt{\srand} für \enquote{und} \textbzgl\ \symqt{\glsIdx{metaand}}\vrefnotesub{sub:Aussagen} steht und schwächer bindet als \symqt{\derivesym} und \symqt{\subst}.%
+Bei den \glsIdxPl{Schlussregel} und der \glsIdx{Substitution} ($\subst$) soll das Komma stärker binden als \chrqt{$\derivesym$}, \chrqt{$\subst$} und \chrqt{$\srand$},
+ wobei \chrqt{$\srand$} für \enquote{und} \textbzgl\ \chrqt{\glsIdx{metaand}}\vrefnotesub{sub:Aussagen} steht und schwächer bindet als \chrqt{$\derivesym$} und \chrqt{$\subst$}.%
 \footnote{siehe Fußnote~3 \vrefvontab{tab:Prio-Aussagenlogik}} %TODO Kommentar zu \srand prüfen
 
 Zur der Auswahl der \glsIdxPl{Basisregel}, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
-Wie in~\cite{bib:NatuerlichesSchliessen} steht \symqt{E} für \enquote{-Einführung} und \symqt{B} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von Operatoren.%
+Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$E$} für \enquote{-Einführung} und \chrqt{$B$} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von Operatoren.%
 \footnote{%
 	In der \glsIdx{Monotonieregel} wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \supseteq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \supseteq X $}.
 	Außerdem werden bei den Bezeichnungen \seqqt{$(\land 1)$} und \seqqt{$(\land 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$\andE$} \textbzw\ \seqqt{$\andB$} ersetzt.
 }
 
 Im Folgenden seien $\alpha$ und $\beta$ wieder stets \glsIdxPl{Formel} und $X$ und $Y$ Mengen von \glsIdxBg{Formel}{formalen Elementen}.
-Für die sechs \glsIdxPl{Basisregel} werden dann nur noch die logischen Operatoren \symqt{\lnot} und \symqt{\land} benötigt.
-Bei den weiteren \glsIdxPl{Schlussregel} wird noch \symqt{\limp} gemäß der Definition~\vref{def:imp} verwendet.
+Für die sechs \glsIdxPl{Basisregel} werden dann nur noch die logischen Operatoren \chrqt{$\lnot$} und \chrqt{$\land$} benötigt.
+Bei den weiteren \glsIdxPl{Schlussregel} wird noch \chrqt{$\limp$} gemäß der Definition~\vref{def:imp} verwendet.
 %
 \begin{align}
 	& \frac{}{\alpha\derive\alpha}
@@ -131,7 +131,8 @@ Eine \glsIdx{Schlussregel} steht für die \glsIdx{Aussage}, dass mit ihren \glsI
 \label{sub:Identitätsregeln}
 
 Die zulässigen Transformationen, \textdh\ die Anwendung der \glsIdxPl{Schlussregel}, erfordern zulässige \glsIdxPl{Substitution}.
-Damit wird dem Gleichheits- oder Identitätszeichen \symqt{\eq} dann mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.\footnote{siehe~\cite{bib:NatuerlichesSchliessen}}
+Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{$\eq$} dann mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
+\footnote{siehe~\cite{bib:NatuerlichesSchliessen}}
 Dazu seien $\alpha$, $\beta$ und $\gamma$ \glsIdxPl{vergleichbar}%
 \footnote{siehe Ende \vrefvonsub{sub:Aussagen}}
 \glsIdxPl{Formel}.
@@ -250,14 +251,14 @@ Dabei werden zum \glsIdx{Beweis} der \glsIdxPl{Schlussregel} in~\cite{bib:Rauten
 
 Als Beispiel wird hier die \glsIdx{Schnittregel} aus den Basisregeln abgeleitet.%
 \footnote{%
-	Die Form der Tabelle ist angelehnt an~\cite{bib:NatuerlichesSchliessen} Kapitel~2.2.4 \emph{Eine Beispielableitung}.%
+	Die Form der Tabelle ist angelehnt an~\cite{bib:NatuerlichesSchliessen} Kapitel~2.2.4 \emph{Eine Beispielableitung}.
 }
 Dazu wird verabredet, dass \vrefintab{tab:AbleitungSchnittregel} der Inhalt der Zelle in der Zeile $i$ und der Spalte $(X_n)$ mit $X_i$ bezeichnet wird.
 Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschriften nur auf die dort notierten $(X_n)$ verwiesen. Dass in der Spalte $(n)$ stets die Zeilennummer steht, wird im folgenden nicht mehr extra erwähnt.
 -- Für die ausgefüllten Felder wird nun definiert:%
 \footnote{%
 	Eigentlich müsste man für jede \glsIdx{Substitution} aus $S_i$ eine eigene Zeile vorsehen.
-	Um die Tabellen für die \glsIdxPl{Beweis} kürzer zu halten, werden aufeinanderfolgende \glsIdxPl{Substitution} zusammengefasst.%
+	Um die Tabellen für die \glsIdxPl{Beweis} kürzer zu halten, werden aufeinanderfolgende \glsIdxPl{Substitution} zusammengefasst.
 }
 \begin{align}
 	R_i & \defeq
@@ -304,7 +305,7 @@ Damit gilt für die Einträge in einer Zeile $i$:
 \begin{itemize}
 	\item Wenn $\Gamma_i$ nicht leer ist, ist $R_i$ eine \glsIdx{Schlussregel} mit $R_i = \Gamma_i(S_i)$%
 	\footnote{%
-		siehe Definition~\eqref{def:Substitutionen} \vrefvonsub{sub:Identitätsregeln}%
+		siehe Definition~\eqref{def:Substitutionen} \vrefvonsub{sub:Identitätsregeln}
 	}.
 	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \srand A_{z_2} \srand ...}{A_i}$ (alle $z_j \in Z_i$).
 	\item Wenn $A_i$ nicht leer ist, ist bis jetzt die \glsIdx{Schlussregel} $\dfrac{A_{d_1} \srand A_{d_2} \srand ...}{A_i}$ (alle $d_j \in D_i$) schon bewiesen.
@@ -445,7 +446,9 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	%
 \end{enumerate}
 %
-Ein weiteres Beispiel \vrefintab{tab:AbleitungKontraposition} soll verdeutlichen, wie Abhängigkeiten von Zwischenannahmen wieder beseitigt werden können.\footnote{siehe~\cite{bib:NatuerlichesSchliessen}, Kapitel 2.2.4 \emph{Eine Beispielableitung}}
+Ein weiteres Beispiel \vrefintab{tab:AbleitungKontraposition} soll verdeutlichen, wie Abhängigkeiten von Zwischenannahmen wieder beseitigt werden können.%
+\footnote{siehe~\cite{bib:NatuerlichesSchliessen},
+Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 
 \begin{table}[!htb]
 	\setlength\tabcolsep{1pt}

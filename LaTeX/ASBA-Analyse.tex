@@ -38,7 +38,7 @@
 In der Mathematik gibt es eine unüberschaubare Menge an \glsIdxPl{Axiom}n, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n, \emph{\glsIdxPl{Fachbegriff}n}%
 \footnote{%
 	\emph{Fachbegriffe} sind Namen für mathematische Elemente und Konstruktionen, \textzB\ \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet}.
-	\emph{Symbole} können als spezielle \glsIdxPl{Fachbegriff} aufgefasst werden.%
+	\emph{Symbole} können als spezielle \glsIdxPl{Fachbegriff} aufgefasst werden.
 }
 und \emph{\glsIdxPl{Fachgebiet}n}%
 \footnote{%
@@ -217,7 +217,7 @@ Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellt
 Um die Eigenschaften von \vrefsec{sec:Eigenschaften} zu erreichen, werden für \ASBA\ die folgenden Ziele%
 \footnote{%
 	Es sind eigentlich Anforderungen.
-	Da dieser Begriff auch \vrefincha{cha:Design} verwendet wird, werden die Anforderungen hier \emph{\Idx{Ziel}}\emph{e} genannt.%
+	Da dieser Begriff auch \vrefincha{cha:Design} verwendet wird, werden die Anforderungen hier \emph{\Idx{Ziel}}\emph{e} genannt.
 }
 gesetzt:
 \begin{enumerate}
@@ -225,7 +225,7 @@ gesetzt:
 	\item \label{Ziel:Daten} \emph{Daten}:
 	Es enthält möglichst viele wichtige \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff}, \glsIdxPl{Fachgebiet} und \glsIdxPl{Ausgabeschema}%
 	\footnote{%
-		Um den Punkt~\ref{Eigenschaft:Ausgaben} \vrefvonsec{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \glsIdxPl{Ausgabeschema} benötigt, welche die Art der Ausgaben beschreiben.%
+		Um den Punkt~\ref{Eigenschaft:Ausgaben} \vrefvonsec{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \glsIdxPl{Ausgabeschema} benötigt, welche die Art der Ausgaben beschreiben.
 	}.
 	%
 	\item \label{Ziel:Form} \emph{Form}:
@@ -244,7 +244,7 @@ gesetzt:
 	Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
 	Insbesondere kann zu jedem \glsIdx{Beweis} angegeben werden, wie lang er ist und welche \glsIdxPl{Axiom} und \glsIdxPl{Satz}%
 	\footnote{
-		\glsIdxPl{Satz}, die quasi als \glsIdxPl{Axiom} verwendet werden.%
+		\glsIdxPl{Satz}, die quasi als \glsIdxPl{Axiom} verwendet werden.
 	}
 	er benötigt.
 	%
@@ -648,12 +648,14 @@ Die Daten können interne und externe Verweise enthalten.
 \beginsection{Basis von Beweisen}
 \label{sec:BeweisBasis}
 
-Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehens bei \glsIdxPl{Beweis}n definiert werden.\footnote{\seename~\cite{bib:Kalkuel}}
+Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehens bei \glsIdxPl{Beweis}n definiert werden.%
+\footnote{\seename~\cite{bib:Kalkuel}}
 
 \begin{description}
 	%
-	\item[Die logischen Darstellung von mathematischen Aussagen,] wozu auch \glsIdxPl{Axiom} und \glsIdxPl{Satz} gehören, erfolgt, da es sich immer um Formeln handelt, an besten mit \emph{Zeichenfolgen}\footnote{%
-		Die interne Darstellung der Zeichenfolgen kann zur Optimierung des Programms von der logischen abweichen.%
+	\item[Die logischen Darstellung von mathematischen Aussagen,] wozu auch \glsIdxPl{Axiom} und \glsIdxPl{Satz} gehören, erfolgt, da es sich immer um Formeln handelt, an besten mit \emph{Zeichenfolgen}%
+	\footnote{%
+		Die interne Darstellung der Zeichenfolgen kann zur Optimierung des Programms von der logischen abweichen.
 	},
 	\textdh\ von Folgen von Zeichen und Symbolen, in denen Zwischenraum -- insbesondere Leerstellen -- nicht zählen.
 	Mehrdimensionale Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenfolgen dargestellt werden.
@@ -667,7 +669,8 @@ Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehe
 	%
 	\item[\glsIdxPl{Beweis}] zu gegebenen Voraussetzungen und Folgerungen lassen sich als Folge von zulässigen Transformationen, beginnend mit den Voraussetzungen und endend mit den Folgerungen, darstellen.
 	%
-	\item[Transformationsregeln] definieren, welche Transformationen mit gegebenen Formelmengen zulässig sind.\footnote{\seename~\cite{bib:Rautenberg,bib:Schlussregel,bib:NatuerlichesSchliessen}}
+	\item[Transformationsregeln] definieren, welche Transformationen mit gegebenen Formelmengen zulässig sind.%
+	\footnote{\seename~\cite{bib:Rautenberg,bib:Schlussregel,bib:NatuerlichesSchliessen}}
 	%
 \end{description}
 

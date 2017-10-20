@@ -310,14 +310,10 @@
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
 % Spezielle Quotierung von Zeichenketten [str],
 % Objekten [obj], Symbolen (Zeichen) [sym] und Formeln (Zeichenfolgen) [for]
-% Parameter bleibt im Textmodus
-\newcommand*{\chrqt}[1]   {\guilsinglleft{#1}\guilsinglright}% Symbol
-\newcommand*{\seqqt}[1]   {\guillemotleft{#1}\guillemotright}% Zeichenfolge
-\newcommand*{\strqt}[1]{``\textbf{\texttt{#1}}''}%             Zeichenkette
-% Parameter wird in den Mathematikmodus versetzt
-\newcommand*{\objqt}[1]       {$#1$}%  Objekt
-\newcommand*{\symqt}[1]{\chrqt{$#1$}}% Symbol
-\newcommand*{\forqt}[1]{\seqqt{$#1$}}% Formel
+% Parameter im Textmodus/Mathematikmodus
+\newcommand*{\chrqt}[1]{\guilsinglleft{#1}\guilsinglright}% Symbol      /Symbol
+\newcommand*{\seqqt}[1]{\guillemotleft{#1}\guillemotright}% Zeichenfolge/Formel
+\newcommand*{\strqt}[1]{``\textbf{\texttt{#1}}''}%          Zeichenkette
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
 \newcommand*{\sectionname}       {Abschnitt}
@@ -450,8 +446,6 @@
 \newcommand*{\GlsIdxBg}[2]          {#2\idx {\gls{#1}}}% groß und Beugung
 \newcommand*{\glsIdxPl}[1]{\glspl   {#1}\idx{\gls{#1}}}%          Plural
 \newcommand*{\GlsIdxPl}[1]{\Glspl   {#1}\idx{\gls{#1}}}% groß und Plural
-\newcommand*{\glsIdxX} [1]{\glsIdxPl{#1}}%                        Sonderfall
-\newcommand*{\GlsIdxX} [1]{\GlsIdxPl{#1}}%               groß und Sonderfall
 \newcommand*{\Tag}[1]{\tag{\glsPl   {#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag
 
 % Glossareinträge ##############################################################
