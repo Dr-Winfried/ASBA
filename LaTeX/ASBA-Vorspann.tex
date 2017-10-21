@@ -308,12 +308,14 @@
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
 \newcommand*{\formulaspace} {&&&&}      %  Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
-% Spezielle Quotierung von Zeichenketten [str],
-% Objekten [obj], Symbolen (Zeichen) [sym] und Formeln (Zeichenfolgen) [for]
+% Quotierung von Zeichen [chr], Zeichenfolgen [seq] und Zeichenketten [str]
 % Parameter im Textmodus/Mathematikmodus
-\newcommand*{\chrqt}[1]{\guilsinglleft{#1}\guilsinglright}% Symbol      /Symbol
-\newcommand*{\seqqt}[1]{\guillemotleft{#1}\guillemotright}% Zeichenfolge/Formel
-\newcommand*{\strqt}[1]{``\textbf{\texttt{#1}}''}%          Zeichenkette
+\newcommand*{\chrqt}[1] {\guilsinglleft{#1}\guilsinglright}% Symbol      /Symbol
+\newcommand*{\seqqt}[1] {\guillemotleft{#1}\guillemotright}% Zeichenfolge/Formel
+\newcommand*{\charf}[1]{\textbf{\texttt{#1}}}%Schriftart für Zeichen
+\newcommand*{\strqt}[1]       {``\charf{#1}''}%              Zeichenkette
+% Hervorhebung von neu definierten Begriffen
+\newcommand*{\defn}[1]{\textbf{#1}}
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
 \newcommand*{\sectionname}       {Abschnitt}
@@ -403,18 +405,19 @@
 
 % Abkürzungen mit Punkten; zur Unterscheidung vom Satzende
 \newcommand*{\textbzgl}{bzgl.\@}
-\newcommand*{\textbzw}{bzw.\@}
-\newcommand*{\textdh}{d.\@\,h.\@}
-\newcommand*{\textDh}{D.\@\,h.\@}
-\newcommand*{\textggf}{ggf.\@}
-\newcommand*{\textGgf}{Ggf.\@}
+\newcommand*{\textbzw} {bzw.\@}
+\newcommand*{\textdh}  {d.\@\,h.\@}
+\newcommand*{\textDh}  {D.\@\,h.\@}
+\newcommand*{\textevtl}{evtl.\@}
+\newcommand*{\textggf} {ggf.\@}
+\newcommand*{\textGgf} {Ggf.\@}
 \newcommand*{\textiAlg}{i.\@\,Alg.\@}
 \newcommand*{\textIAlg}{I.\@\,Alg.\@}
-\newcommand*{\textua}{u.\@\,a.\@}
-\newcommand*{\textUa}{U.\@\,a.\@}
-\newcommand*{\textusw}{usw.\@}
-\newcommand*{\textzB}{z.\@\,B.\@}
-\newcommand*{\textZB}{Z.\@\,B.\@}
+\newcommand*{\textua}  {u.\@\,a.\@}
+\newcommand*{\textUa}  {U.\@\,a.\@}
+\newcommand*{\textusw} {usw.\@}
+\newcommand*{\textzB}  {z.\@\,B.\@}
+\newcommand*{\textZB}  {Z.\@\,B.\@}
 % Weitere Abkürzungen
 \newcommand*{\textdots}{…}
 
@@ -427,7 +430,7 @@
 \makeindex
 \newindex[Symbolverzeichnis]{sym}
 \newindex[Index]{idx}
-\newcommand*{\Idx}[1]{#1\idx {#1} }% normaler Index
+\newcommand*{\Idx}[1]{#1\idx {#1}}%  normaler Index
 \newcommand*{\Sym}[1]{#1\sym{$#1$}}% Index für ein Symbol - Mathematikmodus!
 
 % Glossareinträge ==============================================================
@@ -472,7 +475,7 @@
 	plural={Beweise},
 	description={
 		Eine zulässige Ableitung von Folgerungen aus gegebenen Voraussetzungen.
-		\vrefseesec{sec:BeweiseASBA}
+		-- 	\newline\vrefseesec{sec:BeweiseASBA}.
 	}
 }
 \newglossaryentry{Fachbegriff}{

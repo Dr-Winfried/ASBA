@@ -105,10 +105,13 @@
 \newcommand*{\Substitution}        {E}                       % [E]rsetzung
 \newcommand*{\Substitutionsmenge}  {\mathcal{\Substitution}}
 
-% verwendete Mengensymbole: AB C EF JKL O Q STUV
+% Potenzmenge:                       P
+% neue Mengensymbole: ABC EF   JKL  O Q  TUV
+% frei:                  D  GHI   MN   R    WXYZ
+
 % \al\textdots\ = aussagenlogisch
 \newcommand*{\alvar} {q}%               Name einer Variablen
-% Mengen
+% Mengen der Aussagenlogik
 \newcommand*{\alVar} {\mathcal{Q}}%     Menge der Variablen
 \newcommand*{\alCon} {\mathcal{K}}%     Menge der [K]onstantensymbole
 \newcommand*{\alUna} {\mathcal{U}}%     Menge der [u]nären Operatorsymbole
@@ -294,7 +297,7 @@
 	plural={\derive},% im Mathematikmodus
 	description={
 		\emph{Ableitungsrelation}: \textdots\ ableitbar \textdots
-		-- siehe \emph{ableitbar}%
+		-- siehe \emph{ableitbar}.
 	}
 }
 \newglossaryentry{eq}{
@@ -362,7 +365,7 @@
 	plural={\subst},% im Mathematikmodus
 	description={
 		\emph{Substitution}: \textdots\ substituiert durch \textdots\
-		-- siehe die Definition \vrefinsub{sub:Identitätsregeln}
+		-- siehe die Definition \vrefinsub{sub:Identitätsregeln}.
 	}
 }
 \newglossaryentry{swap}{
@@ -370,7 +373,7 @@
 	plural={\swap},% im Mathematikmodus
 	description={
 		\emph{Vertauschung}: \textdots\ vertauscht mit \textdots\
-		-- siehe die Definition \vrefinsub{sub:Identitätsregeln}
+		-- siehe die Definition \vrefinsub{sub:Identitätsregeln}.
 	}
 }
 \newglossaryentry{srand}{
@@ -378,7 +381,7 @@
 	plural={\srand},% im Mathematikmodus
 	description={
 		Ein \emph{Metaoperator}: \textdots\ und \textdots\
-		-- wird nur bei den \emph{Schlussregeln} verwendet
+		-- wird nur bei den \emph{Schlussregeln} verwendet.
 	}
 }
 
@@ -387,12 +390,12 @@
 \newglossaryentry{lfalse}{
 	name ={$\lfalse$},
 	plural={\lfalse},% im Mathematikmodus
-	description={Eine aussagenlogische Konstante (\emph{Wahrheitswert}): Falsch}
+	description={Eine aussagenlogische Konstante (\emph{Wahrheitswert}): Falsch.}
 }
 \newglossaryentry{ltrue}{
 	name ={$\ltrue$},
 	plural={\ltrue},% im Mathematikmodus
-	description={Eine aussagenlogische Konstante (\emph{Wahrheitswert}): Wahr}
+	description={Eine aussagenlogische Konstante (\emph{Wahrheitswert}): Wahr.}
 }
 
 % Schlussregeln ----------------------------------------------------------------
@@ -527,15 +530,15 @@
 		Wenn sich eine \emph{Formel} $\beta$ aus einer anderen \emph{Formel} $\alpha$ mittels zulässiger Transaktionen ableiten lässt, heißt $\beta$ \emph{ableitbar} aus $\alpha$.
 		Sprechweise: \seqqt{$ \alpha \text{ableitbar} \beta $}.
 		Eine oder beide \emph{Formeln} $\alpha$ \textbzw\ $\beta$ dürfen dabei durch \emph{Formelmengen} ersetzt werden.
-		-- siehe \emph{Ableitungsrelation} und \chrqt{$\derive$}.
+		-- siehe \emph{Ableitungsrelation} und \chrqt{$\derivesym$}.
 		\newline
-		Synonym: \emph{beweisbar}%
+		Synonym: \emph{beweisbar}.%
 	}
 }
 \newglossaryentry{Ableitungsrelation}{
 	name  ={Ableitungsrelation},
 	plural={Ableitungsrelationen},
-	description={Die Relation \chrqt{$\derive$}}
+	description={Die Relation \chrqt{$\derivesym$}.}
 }
 \newglossaryentry{Abtrennungsregel}{
 	name  ={Abtrennungsregel},
@@ -553,7 +556,7 @@
 	name  ={Anfangsregel},
 	plural={Anfangsregeln},
 	description={
-		Eine \emph{Schlussregel} um beginnen zu können -- siehe~\emph{AR}}
+		Eine \emph{Schlussregel} um beginnen zu können -- siehe~\emph{AR}.}
 }
 \newglossaryentry{atomare-Formel}{
 	name  ={atomare Formel},
@@ -569,12 +572,12 @@
 }
 \newglossaryentry{Aussagenlogik}{
 	name  ={Aussagenlogik},
-	description={\vrefseesec{sec:Aussagenlogik}}
+	description={-- \vrefseesec{sec:Aussagenlogik}.}
 }
 \newglossaryentry{Axiomensystem}{
 	name  ={Axiomensystem},
 	plural={Axiomensysteme},
-	description={Eine Menge von \emph{Axiomen}}
+	description={Eine Menge von \emph{Axiomen}.}
 }
 \newglossaryentry{Basisregel}{
 	name  ={Basisregel},
@@ -617,14 +620,14 @@
 	name  ={Folgerung},
 	plural={Folgerungen},
 	description={
-		Die \emph{Folgerungen} einer \emph{Schlussregel} sind die \emph{Aussagen} über ihrem Querstrich.
+		Die Folgerungen einer \emph{Schlussregel} $\frac{\Voraussetzungsmenge}{\Folgerungsmenge}$ sind die Elemente von $\Folgerungsmenge$.
 	}
 }
 \newglossaryentry{formaler-Satz}{
 	name  ={formaler Satz},
 	plural={formale  Sätze},
 	description={
-		Formale Darstellung eines mathematischen Satzes -- siehe~\emph{FS}
+		Formale Darstellung eines mathematischen Satzes. -- siehe~\emph{FS}.
 	}
 }
 \newglossaryentry{Formel}{
@@ -634,14 +637,14 @@
 		Unter einer \emph{Formel} verstehen wir in diesem Dokument stets eine mathematische \emph{Formel}.
 		Diese kann auch mehrdimensional sein, lässt sich aber mittels geeigneter Definitionen immer eindeutig als eine \emph{Zeichenfolge} schreiben.
 		\emph{Schlussregeln} betrachten wir \emph{nicht} als \emph{Formeln}.
-	}%
+	}
 }
 \newglossaryentry{Gleichheitsrelation}{
 	name  ={Gleichheitsrelation},
 	plural={Gleichheitsrelationen},
 	description={
-		Eine mit der Gleichheit verwandte Relation: $\eq$, $\ne$, $\equiv$ und $\nequiv$
-	}%
+		Eine mit der Gleichheit verwandte Relation: $\eq$, $\ne$, $\equiv$ und $\nequiv$.
+	}
 }
 %TODO Identitätsregel nötig?
 \newglossaryentry{Identitaetsregel}{
@@ -668,19 +671,19 @@
 	name  ={Kontraposition},
 	plural={Kontraposition},
 	description={
-		Die allgemeingültige \emph{Aussage}: $ (\alpha \limp \beta) \limp (\lnot\beta \limp \lnot\alpha) $
+		Die allgemeingültige \emph{Aussage}: $ (\alpha \limp \beta) \limp (\lnot\beta \limp \lnot\alpha) $.
 	}
 }
 \newglossaryentry{logische-Signatur}{
 	name  ={logische Signatur},
 	plural={logische Signaturen},
 	description={
-		Eine Teilmenge von $\alJun$, die ausreicht, alle anderen Elemente aus $\alJun$ zu definieren.
+		Eine Teilmenge von $\alJun$, die ausreicht, alle anderen Elemente von $\alJun$ zu definieren.
 	}
 }
 \newglossaryentry{Mengenlehre}{
 	name={Mengenlehre},
-	description={\vrefseesec{sec:Mengenlehre}.}
+	description={-- \vrefseesec{sec:Mengenlehre}.}
 }
 \newglossaryentry{Metaoperator}{
 	name  ={Metaoperator},
@@ -693,7 +696,7 @@
 	name  ={Metarelation},
 	plural={Metarelationen},
 	description={
-		Eine Relation der \emph{Metasprache}: $\metaimp$, $\metarep$ und $\metaequiv$
+		Eine Relation der \emph{Metasprache}: $\metaimp$, $\metarep$ und $\metaequiv$.
 	}
 }
 \newglossaryentry{Metasprache}{
@@ -702,34 +705,34 @@
 	description={
 		Eine Sprache, in der \emph{Aussagen} über Elemente einer anderen Sprache getroffen werden können.
 		In diesem Dokument ist dies immer die normale Sprache.
-		\vrefseesec{sec:Metasprache}
+		-- \vrefseesec{sec:Metasprache}.
 	}
 }
 \newglossaryentry{Monotonieregel}{
 	name  ={Monotonieregel},
 	plural={Monotonieregeln},
 	description={
-		Eine \emph{Schlussregel} -- siehe~\emph{MR}
+		Eine \emph{Schlussregel}. -- siehe~\emph{MR}.
 	}
 }
 \newglossaryentry{Objekt}{
 	name  ={Objekt},
 	plural={Objekte},
 	description={
-		Symbole, \emph{Formeln} und \emph{Aussagen} sowie Mengen, \emph{Zeichenfolgen}, Zahlen, ganz allgemein reale oder gedachte Dinge an sich.
+		Symbole, \emph{Formeln} und \emph{Aussagen} sowie Mengen, \emph{Zeichenfolgen}, Zahlen; ganz allgemein reale oder gedachte Dinge an sich.
 	}
 }
 \newglossaryentry{Praedikat}{
 	name  ={Prädikat},
 	plural={Prädikate},
 	description={
-		Ein Element der \emph{Prädikatenlogik} (\vrefseesec{sec:Prädikatenlogik}).
+		Ein Element der \emph{Prädikatenlogik} -- \vrefseesec{sec:Prädikatenlogik}.\\
 		\textZB\ kann man eine Gruppe als ein zweistelliges Prädikat $\mathrm{Gruppe}(G,+)$ definieren, in dem $G$ eine Menge und $+$ eine Operation, \textdh\ eine (zweistellige) Funktion $ +: G \times G \rightarrow G $ ist, so dass die Gruppenaxiome erfüllt sind.
 	}
 }
 \newglossaryentry{Praedikatenlogik}{
 	name={Prädikatenlogik},
-	description={\vrefseesec{sec:Prädikatenlogik}}
+	description={-- \vrefseesec{sec:Prädikatenlogik}.}
 }
 \newglossaryentry{Schlussregel}{
 	name  ={Schlussregel},
@@ -750,12 +753,12 @@
 \newglossaryentry{Schnittregel}{
 	name  ={Schnittregel},
 	plural={Schnittregeln},
-	description={Eine \emph{allgemeingültige Schlussregel} -- siehe~\emph{SR}}
+	description={Eine \emph{allgemeingültige Schlussregel}. -- siehe~\emph{SR}}.
 }
 \newglossaryentry{Sprache}{
 	name  ={Sprache},
 	plural={Sprachen},
-	description={siehe \emph{Formelmenge}}
+	description={-- siehe \emph{Formelmenge}.}
 }
 \newglossaryentry{Substitution}{ %TODO ggf. überarbeiten
 	name  ={Substitution},
@@ -764,7 +767,15 @@
 		Die Ersetzung von einem, mehreren oder allen \emph{formalen Elementen} ($\alpha$) in einem anderen \emph{formalen Element} ($\gamma$) durch ein drittes \emph{formales Element} ($\beta$)
 		-- formal: $\gamma(\alpha\subst\beta)$.
 		Wenn alle $\alpha$ in $\gamma$ durch $\beta$ ersetzt werden, ist die \emph{Substitution vollständig}.
-		-- \vrefseesub{sub:Identitätsregeln}
+		-- \vrefseesub{sub:Identitätsregeln}.
+	}
+}
+\newglossaryentry{Symbol}{
+	name  ={Symbol},
+	plural={Symbole},
+	description={
+		Ein Symbol entspricht genau einem Zeichen, kann aber aus mehreren Buchstaben zusammengesetz sein.
+		\vrefseesec{sec:Notationen}.
 	}
 }
 \newglossaryentry{Transformation}{
@@ -788,7 +799,7 @@
 	description={
 		Zwei \emph{Objekte} $A$ und $B$ sind vergleichbar, wenn beide von derselben Art sind, \textdh\ wenn \textzB\ jeweils beide Mengen, \emph{Zeichenfolgen}, Zahlen, \textusw\ sind.
 		Dabei muss bei \emph{Formeln} zwischen der Formel an sich und dem Ergebnis der Formel unterschieden werden.
-		-- \vrefseesec{subsub:vergleichbar}%
+		-- \vrefseesec{subsub:Vergleichbar}.
 	}
 }
 \newglossaryentry{Vertauschung}{ %TODO ggf. überarbeiten
@@ -798,14 +809,14 @@
 		Die \emph{Vertauschung} von zwei unabhängigen \emph{formalen Elementen} ($\alpha$ und $\beta$) in einem anderen formalen Element ($\gamma$)
 		-- formal: $\gamma(\alpha\swap\beta)$.
 		Die Vertauschung ist eine spezielle Form der \emph{Substitution}.
-		-- siehe die Definition~\eqref{def:Vertauschung} \vrefinsub{sub:Identitätsregeln}
+		-- siehe die Definition~\eqref{def:Vertauschung} \vrefinsub{sub:Identitätsregeln}.
 	}
 }
 \newglossaryentry{Voraussetzung}{
 	name  ={Voraussetzung},
 	plural={Voraussetzungen},
 	description={
-		Die Voraussetzungen einer \emph{Schlussregel} $\frac{\Voraussetzungsmenge}{Nenner\Folgerungsmenge}$ sind die \emph{Aussagen} aus $\Voraussetzungsmenge$.
+		Die Voraussetzungen einer \emph{Schlussregel} $\frac{\Voraussetzungsmenge}{\Folgerungsmenge}$ sind die Elemente von $\Voraussetzungsmenge$.
 	}
 }
 \newglossaryentry{Wahrheitswert}{
@@ -830,7 +841,7 @@
 	plural={Zeichenketten},
 	description={
 		Folgen von unzerlegbaren Zeichen, auch Leerstellen und sonstigem Zwischenraum.
-		-- siehe auch \emph{Zeichenfolge}
+		-- siehe auch \emph{Zeichenfolge}.
 	}
 }
 \newglossaryentry{zulaessige-Transformation}{%TODO ggf. überarbeiten
