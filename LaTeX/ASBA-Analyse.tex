@@ -35,24 +35,24 @@
 \beginchapter{Analyse}
 \label{cha:Analyse}
 
-In der Mathematik gibt es eine unüberschaubare Menge an \glsIdxPl{Axiom}n, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n, \emph{\glsIdxPl{Fachbegriff}n}%
+In der Mathematik gibt es eine unüberschaubare Menge an \Axiomen, \Saetzen, \Beweisen, \emph{\Fachbegriffen}%
 \footnote{%
-	\emph{Fachbegriffe} sind Namen für mathematische Elemente und Konstruktionen, \textzB\ \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet}.
-	\emph{Symbole} können als spezielle \glsIdxPl{Fachbegriff} aufgefasst werden.
+	\defn{\Fachbegriffe} sind Namen für mathematische Elemente und Konstruktionen, \textzB\ \Axiomen, \Saetze, \Beweise\ und \Fachgebiete.
+	\emph{Symbole} können als spezielle \Fachbegriffe\ aufgefasst werden.
 }
-und \emph{\glsIdxPl{Fachgebiet}n}%
+und \emph{\Fachgebieten}%
 \footnote{%
-	Ein \emph{\glsIdx{Fachgebiet}} ist ein Teil der Mathematik mit einer zugehörigen Basis an \glsIdxPl{Axiom}n, \glsIdxPl{Satz}n, \glsIdxPl{Fachbegriff}n und Darstellungen, \textzB\ \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}.
-	Ein \glsIdx{Fachgebiet} kann sehr klein sein und im Extremfall kein einziges Element enthalten.
-	\emph{Umgebung} wäre eine bessere Bezeichnung, ist aber schon ein verbreiteter \glsIdx{Fachbegriff}, so dass hier die Bezeichnung \glsIdx{Fachgebiet} verwendet wird.
+	Ein \defn{\Fachgebiet} ist ein Teil der Mathematik mit einer zugehörigen Basis an \Axiomen, \Saetzen, \Fachbegriffen\ und Darstellungen, \textzB\ \emph{Logik}, \emph{Mengenlehre} und \emph{Gruppentheorie}.
+	Ein \Fachgebiet\ kann sehr klein sein und im Extremfall kein einziges Element enthalten.
+	\emph{Umgebung} wäre eine bessere Bezeichnung, ist aber schon ein verbreiteter \Fachbegriff, so dass hier die Bezeichnung \Fachgebiet\ verwendet wird.
 
-	Statt \enquote{\glsIdx{Fachgebiet}} könnte man auch \enquote{Theorie} nehmen.
-	An Theorien werden aber bestimmte Anforderungen gestellt, die aber nicht notwendigerweise überprüft werden sollen.
-	Theorien sind allerdings \textiAlg\ auch \glsIdxPl{Fachgebiet}.
+	Statt \enquote{\Fachgebiet} könnte man auch \enquote{Theorie} nehmen.
+	An \emph{Theorien} (siehe \cite{bib:Rautenberg} Kapitel~2.5, Seite~64) werden aber bestimmte Anforderungen gestellt, die vom hier behandelten Programmsystem aber nicht notwendigerweise überprüft werden sollen.
+	Theorien sind allerdings \textiAlg\ auch \Fachgebiete.
 }.
-Zu den meisten \glsIdxPl{Fachgebiet}n gibt es noch ungelöste Probleme.
+Zu den meisten \Fachgebieten\ gibt es noch ungelöste Probleme.
 
-Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, \glsIdxPl{Beweis} automatisch zu überprüfen.
+Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, \Beweise\ automatisch zu überprüfen.
 Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
 In diesem Dokument werden die Grundlagen für das zu entwickelnde \ASBA\ behandelt.
 
@@ -72,39 +72,39 @@ werden nun formuliert:
 	\textZB\ welche Logik und Mengenlehre.
 	%
 	\item \label{Frage:Basis} \emph{Basis}:
-	Welche wichtigen \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} gibt es?
+	Welche wichtigen \Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Fachgebiete\ gibt es?
 	Welche davon sind Standard?
 	%
-	\item \label{Frage:Axiome} \emph{\glsIdxPl{Axiom}}:
-	Welche \glsIdxPl{Axiom} werden bei einem \glsIdx{Satz} oder \glsIdx{Beweis} vorausgesetzt?
-	Allgemein anerkannte oder auch strittige, wie \textzB\ den \emph{\glsIdx{Satz} vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
+	\item \label{Frage:Axiome} \emph{\Axiome}:
+	Welche \Axiome\ werden bei einem \Satz\ oder \Beweis\ vorausgesetzt?
+	Allgemein anerkannte oder auch strittige, wie \textzB\ den \emph{\Satz\ vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
 	%
-	\item \label{Frage:Beweis} \emph{\glsIdx{Beweis}}:
-	Ist ein \glsIdx{Beweis} fehlerfrei?
+	\item \label{Frage:Beweis} \emph{\Beweis}:
+	Ist ein \Beweis\ fehlerfrei?
 	%
 	\item \label{Frage:Konstruktion} \emph{Konstruktion}:
-	Gibt es einen konstruktiven \glsIdx{Beweis}?
+	Gibt es einen konstruktiven \Beweis?
 	%
 	\item \label{Frage:Vergleiche} \emph{Vergleiche}:
-	Welcher \glsIdx{Beweis} ist besser?
+	Welcher \Beweis\ ist besser?
 	Nach welchem Kriterium?
-	\textZB\ elegant, kurz, einsichtig oder wenige \glsIdxPl{Axiom}.
+	\textZB\ elegant, kurz, einsichtig oder wenige \Axiome.
 	Was heißt eigentlich \emph{elegant}?
 	%
 	\item \label{Frage:Definitionen} \emph{Definitionen}:
-	Was ist mit einem \glsIdx{Fachbegriff} jeweils genau gemeint?
+	Was ist mit einem \Fachbegriff\ jeweils genau gemeint?
 	\textZB\ \emph{Stetigkeit}, \emph{Integral} und \emph{Analysis}.
 	%
 	\item \label{Frage:Abhängigkeiten} \emph{Abhängigkeiten}:
-	Wie heißt ein \glsIdx{Fachbegriff} in einer anderen Sprache?
+	Wie heißt ein \Fachbegriff\ in einer anderen Sprache?
 	Ist wirklich dasselbe gemeint?
-	Was ist mit \glsIdxPl{Fachbegriff}n in verschiedenen \glsIdxPl{Fachgebiet}n?
+	Was ist mit \Fachbegriffen\ in verschiedenen \Fachgebieten?
 	%
 	\item \label{Frage:Überblick} \emph{Überblick}:
-	Ist ein \glsIdx{Axiom}, \glsIdx{Satz}, \glsIdx{Beweis} oder \glsIdx{Fachbegriff} schon einmal -- \textggf\ abweichend -- definiert, formuliert oder bewiesen worden?
+	Ist ein \Axiom, \Satz, \Beweis\ oder \Fachbegriff\ schon einmal -- \textggf\ abweichend -- definiert, formuliert oder bewiesen worden?
 	%
 	\item \label{Frage:Darstellung} \emph{Darstellung}:
-	Wie kann man einen \glsIdx{Satz} und den zugehörigen \glsIdx{Beweis} -- \textggf\ auch spezifisch für ein \glsIdx{Fachgebiet} -- darstellen?
+	Wie kann man einen \Satz\ und den zugehörigen \Beweis\ -- \textggf\ auch spezifisch für ein \Fachgebiet\ -- darstellen?
 	%
 	\item \label{Frage:Forschung} \emph{Forschung}:
 	Welche Probleme gibt es noch zu erforschen.
@@ -119,18 +119,18 @@ werden nun formuliert:
 \begin{enumerate}
 	%
 	\item \label{Eigenschaft:Daten} \emph{Daten}:
-	\glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} können in formaler Form gespeichert werden -- auch nicht oder unvollständig bewiesene \glsIdxPl{Satz}.
+	\Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Fachgebiete\ können in formaler Form gespeichert werden -- auch (noch) nicht oder unvollständig bewiesene \Saetze.
 	Dabei soll die übliche mathematische Schreibweise verwendet werden können.
 	%
 	\item \label{Eigenschaft:Definitionen} \emph{Definitionen}:
-	Es können \glsIdxPl{Fachbegriff} für \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis} und \glsIdxPl{Fachgebiet} -- letztere mit eigenen \glsIdxPl{Axiom}n, \glsIdxPl{Satz}n, \glsIdxPl{Beweis}n, \glsIdxPl{Fachbegriff}n und über- oder untergeordneten \glsIdxPl{Fachgebiet}n -- definiert werden.
-	Die Definitionen dürfen wiederum an dieser Stelle schon bekannte \glsIdxPl{Fachbegriff} und \glsIdxPl{Fachgebiet} verwenden.
+	Es können \Fachbegriffe\ für \Axiome, \Saetze, \Beweise\ und \Fachgebiete\ -- letztere mit eigenen \Axiomen, \Saetzen, \Beweisen, \Fachbegriffen\ und über- oder untergeordneten \Fachgebieten\ -- definiert werden.
+	Die Definitionen dürfen wiederum an dieser Stelle schon bekannte \Fachbegriffe\ und \Fachgebiete\ verwenden.
 	%
 	\item \label{Eigenschaft:Prüfung} \emph{Prüfung}:
-	Vorhandene \glsIdxPl{Beweis} können automatisch geprüft werden.
+	Vorhandene \Beweise\ können automatisch geprüft werden.
 	%
 	\item \label{Eigenschaft:Ausgaben} \emph{Ausgaben}:
-	Die \glsIdxPl{Axiom}, \glsIdxPl{Satz} und \glsIdxPl{Beweis} können in üblicher Schreibweise -- abhängig von Sprache und \glsIdx{Fachgebiet} -- ausgegeben werden.
+	Die \Axiome, \Saetze\ und \Beweise\ können in üblicher Schreibweise -- abhängig von Sprache und \Fachgebiet\ -- ausgegeben werden.
 	%
 	\item \label{Eigenschaft:Auswertungen} \emph{Auswertungen}:
 	Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \vrefsec{sec:Fragen} behandelten Fragen.
@@ -182,10 +182,10 @@ Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellt
 		& X & X & - & X & X & - & - \\
 		\ref{Frage:Basis}           & Basis
 		& X & X & - & X & X & - & - \\
-		\ref{Frage:Axiome}          & \glsIdxPl{Axiom}
+		\ref{Frage:Axiome}          & \Axiome
 		& X & X & - & X & X & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage:Beweis}          & \glsIdx{Beweis}
+		\ref{Frage:Beweis}          & \Beweis
 		& X & - & X & X & - & - & - \\
 		\ref{Frage:Konstruktion}    & Konstruktion
 		& X & - & - & X & - & - & - \\
@@ -223,44 +223,44 @@ gesetzt:
 \begin{enumerate}
 	%
 	\item \label{Ziel:Daten} \emph{Daten}:
-	Es enthält möglichst viele wichtige \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \glsIdxPl{Fachbegriff}, \glsIdxPl{Fachgebiet} und \glsIdxPl{Ausgabeschema}%
+	Es enthält möglichst viele wichtige \Axiome, \Saetze, \Beweise, \Fachbegriffe, \Fachgebiete\ und \Ausgabeschemata%
 	\footnote{%
-		Um den Punkt~\ref{Eigenschaft:Ausgaben} \vrefvonsec{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \glsIdxPl{Ausgabeschema} benötigt, welche die Art der Ausgaben beschreiben.
+		Um den Punkt~\ref{Eigenschaft:Ausgaben} \vrefvonsec{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \Ausgabeschemata\ benötigt, welche die Art der Ausgaben beschreiben.
 	}.
 	%
 	\item \label{Ziel:Form} \emph{Form}:
-	Die Datenn liegt in formaler, geprüfter Form vor.
+	Die Daten liegen in formaler, geprüfter Form vor.
 	%
 	\item \label{Ziel:Eingaben} \emph{Eingaben}:
 	Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise.
 	%
 	\item \label{Ziel:Prüfung} \emph{Prüfung}:
-	Vorhandene \glsIdxPl{Beweis} können automatisch geprüft werden.
+	Vorhandene \Beweise\ können automatisch geprüft werden.
 	%
 	\item \label{Ziel:Ausgaben} \emph{Ausgaben}:
-	Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener \glsIdxPl{Ausgabeschema} erfolgen.
+	Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener \Ausgabeschemata\ erfolgen.
 	%
 	\item \label{Ziel:Auswertungen} \emph{Auswertungen}:
 	Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
-	Insbesondere kann zu jedem \glsIdx{Beweis} angegeben werden, wie lang er ist und welche \glsIdxPl{Axiom} und \glsIdxPl{Satz}%
+	Insbesondere kann zu jedem \Beweis\ angegeben werden, wie lang er ist und welche \Axiome\ und \Saetze%
 	\footnote{
-		\glsIdxPl{Satz}, die quasi als \glsIdxPl{Axiom} verwendet werden.
+		\Saetze, die quasi als \Axiome\ verwendet werden.
 	}
 	er benötigt.
 	%
 	\item \label{Ziel:Anpassbarkeit} \emph{Anpassbarkeit}:
-	\glsIdxPl{Fachbegriff} und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten \glsIdx{Fachgebiet}en angepasst werden.
+	\Fachbegriffe\ und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten \Fachgebieten\ angepasst werden.
 	%
 	\item \label{Ziel:Individualität} \emph{Individualität}:
-	\glsIdxPl{Axiom} und \glsIdxPl{Satz} können für jeden \glsIdx{Beweis} individuell vorausgesetzt werden.
-	Dabei sind fachgebietsspezifische \glsIdxPl{Fachbegriff} erlaubt.
+	\Axiome\ und \Saetze\ können für jeden \Beweis\ individuell vorausgesetzt werden.
+	Dabei sind fachgebietsspezifische \Fachbegriffe\ erlaubt.
 	%
 	\item \label{Ziel:Internet} \emph{Internet}:
 	Die Daten können auf mehrere Dateien verteilt sein.
 	Ein Teil davon -- oder sogar alle -- können im Internet liegen.
 	%
 	\item \label{Ziel:Kommunikation} \emph{Kommunikation}:
-	Die Kommunikation mit \ASBA\ kann mit den \glsIdxPl{Fachbegriff}n der einzelnen \glsIdxPl{Fachgebiet} erfolgen.
+	Die Kommunikation mit \ASBA\ kann mit den \Fachbegriffen\ der einzelnen \Fachgebiete\ erfolgen.
 	%
 	\item \label{Ziel:Zugriff} \emph{Zugriff}:
 	Der Zugriff auf \ASBA\ kann lokal und über das Internet erfolgen.
@@ -277,21 +277,22 @@ gesetzt:
 	\item \label{Ziel:Lizenz} \emph{Lizenz}:
 	Die Software ist \emph{Open Source}.
 	%
-	\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
-\end{enumerate}
-%
-Der Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit \ASBA\ effizient arbeiten kann und um die Akzeptanz zu erhöhen:
-\begin{enumerate}
-	\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
-	%
 	\item \label{Ziel:Zwischenspeicher} \emph{Zwischenspeicher}:
 	Wichtige Auswertungen können an vorhandenen Dateien angehängt oder separat in eigenen Dateien gespeichert werden.
 	%
+%%%	\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 \end{enumerate}
 %
+Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit \ASBA\ effizient arbeiten kann und um die Akzeptanz zu erhöhen.
+%%%\begin{enumerate}
+%%%	\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
+%%%	%
+%%%\end{enumerate}
+%%%
+
 \vrefDtab{tab:Eigenschaften->Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften \vrefinsec{sec:Eigenschaften} verhalten.
 Mit einem X werden wieder die Spalten einer Zeile markiert, deren zugehörige Ziele zur Sicherstellung der entsprechenden Eigenschaft beitragen sollen.
-Idealerweise sollte durch Erreichen aller aufgestellten Ziele \gls{ASBA} alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
+Idealerweise sollte durch Erreichen aller aufgestellten Ziele \ASBA\ alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
 %
 \begin{table}[!htb]
 	\begin{tabularx}{\linewidth-10.95pt}
@@ -398,10 +399,10 @@ Idealerweise sollte durch Erreichen aller aufgestellten Ziele \gls{ASBA} alle an
 		& X & X & X & - & X & X & x & - & - & - & - & - & - & - & - \\
 		\ref{Frage:Basis}           & Basis%
 		& X & X & X & - & X & X & x & x & - & - & - & - & - & - & - \\
-		\ref{Frage:Axiome}          & \glsIdxPl{Axiom}%
+		\ref{Frage:Axiome}          & \Axiome%
 		& X & X & X & - & X & X & x & - & - & - & - & - & - & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage:Beweis}          & \glsIdx{Beweis}%
+		\ref{Frage:Beweis}          & \Beweis%
 		& X & X & X & X & X & - & - & x & - & - & - & - & - & - & - \\
 		\ref{Frage:Konstruktion}    & Konstruktion%
 		& X & X & X & - & X & - & - & x & - & - & - & - & - & - & - \\
@@ -441,7 +442,7 @@ Idealerweise sollte das Erreichen aller aufgestellten Ziele alle gestellten Frag
 \clearpage
 
 \section{Die Umgebung von \textsf{ASBA}}% ======================================
-\beginsection{Die Umgebung von \textsf{ASBA}}
+\beginsection{Die Umgebung von \textsf{\ASBA}}
 \label{sec:Umgebung}
 
 \vrefInfig{fig:Umgebung} wird beschrieben, welche Interaktionen \ASBA\ mit der Umgebung hat, \textdh\ welche Ein- und Ausgaben existieren und woher sie kommen \textbzw\ wohin sie gehen.
@@ -544,7 +545,7 @@ In den \vrefinfig{fig:Umgebung} abgebildeten Datenflüssen (1) bis (6) und (a) b
 		\item[\vonnach{Datei}{\ASBA}]\label{dat:ausDatei}
 		Inhalte der Datei.
 		\item[\nachvon{Datei}{\ASBA}]\label{dat:inDatei}
-		Die Datei wird um zusätzliche Auswertungen ergänzt, \textzB\ ob die \glsIdxPl{Beweis} korrekt sind, welche \glsIdxPl{Axiom} und \glsIdxPl{Satz} -- auch externe aus dem Internet -- verwendet wurden, Länge des \glsIdx{Beweis}es usw.
+		Die Datei wird um zusätzliche Auswertungen ergänzt, \textzB\ ob die \Beweise\ korrekt sind, welche \Axiome\ und \Saetze\ -- auch externe aus dem Internet -- verwendet wurden, Länge des \Beweises\ usw.
 	\end{description}
 	%
 	\item[(4)]\label{dat:Terminal}
@@ -566,7 +567,7 @@ In den \vrefinfig{fig:Umgebung} abgebildeten Datenflüssen (1) bis (6) und (a) b
 	\item[(6)]\label{dat:Ausgabe}
 	\begin{description}
 		\item[\nachvon{Ausgabe}{\ASBA}]\label{dat:inAusgabe}
-		Inhalte von Datei und Datenbank in lesbarer Form, \textua\ mit Hilfe von \glsIdxPl{Ausgabeschema} auch in Formelschreibweise.
+		Inhalte von Datei und Datenbank in lesbarer Form, \textua\ mit Hilfe von \Ausgabeschemata\ auch in Formelschreibweise.
 		Die Ausgabe kann auch in eine Datei erfolgen,
 		\textzB\ im \LaTeX-Format.
 	\end{description}
@@ -616,58 +617,62 @@ Die Datenbank und die Datei enthalten im Prinzip die gleichen Daten, wobei sie i
 Zudem enthält die Datenbank \textiAlg\ sehr viel mehr Daten. Es handelt sich dabei jeweils um die folgenden Daten:
 \begin{description}
 	%
-	\item[\glsIdxPl{Axiom}]         \label{Daten:Axiom}
-	Ein \glsIdx{Axiom} ist eine Aussage oder Behauptung, die nicht aus anderen Aussagen abgeleitet werden kann.
-	Es können wie bei \glsIdxPl{Satz}n Voraussetzungen vorhanden sein, aber keine \glsIdx{Beweis}.
+	\item[\Axiome]         \label{Daten:Axiom}
+	Ein \Axiom\ ist eine Aussage oder Behauptung, die nicht aus anderen Aussagen abgeleitet werden kann.
+	Es können wie bei \Saetzen\ Voraussetzungen vorhanden sein, aber keine \Beweise.
 	%
-	\item[\glsIdxPl{Satz}]          \label{Daten:Satz}
-	Ein \glsIdx{Satz} besteht aus einer Anzahl von Voraussetzungen, einer Behauptung und einem \glsIdx{Beweis}, der die Behauptung aus den Voraussetzungen ableitet.
-	Letztere können \glsIdxPl{Axiom} und andere \glsIdxPl{Satz} sein, auf die dann verwiesen wird.
+	\item[\Saetze]          \label{Daten:Satz}
+	Ein \Satz\ besteht aus einer Anzahl von Voraussetzungen, einer Behauptung und einem \Beweis, der die Behauptung aus den Voraussetzungen ableitet.
+	Letztere können \Axiome\ und andere \Saetze\ sein, auf die dann verwiesen wird.
 	%
-	\item[\glsIdxPl{Beweis}]        \label{Daten:Beweis}
-	Ein \glsIdx{Beweis} besteht aus einer Folge von Beweisschritten, die aus gegebenen Voraussetzungen eine Behauptung ableitet.
+	\item[\Beweise]        \label{Daten:Beweis}
+	Ein \Beweis\ besteht aus einer Folge von Beweisschritten, die aus gegebenen Voraussetzungen eine Behauptung ableiten.
 	%
-	\item[\glsIdxPl{Fachbegriff}]   \label{Daten:Fachbegriff}
-	Ein \glsIdx{Fachbegriff} ist ein Name für ein Objekt \textbzw\ eine Eigenschaft in einem bestimmten \glsIdx{Fachgebiet}.
+	\item[\Fachbegriffe]   \label{Daten:Fachbegriff}
+	Ein \Fachbegriff\ ist ein Name für ein Objekt \textbzw\ eine Eigenschaft in einem bestimmten \Fachgebiet.
 	%
-	\item[\glsIdxPl{Fachgebiet}]    \label{Daten:Fachgebiet}
-	Ein \glsIdx{Fachgebiet} ist ein Teil der Mathematik mit einer zugehörigen Basis von \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Fachbegriff} und \glsIdxPl{Ausgabeschema}, quasi eine untergeordnete Datenbank.
+	\item[\Fachgebiete]    \label{Daten:Fachgebiet}
+	Ein \Fachgebiet\ ist ein Teil der Mathematik mit einer zugehörigen Basis von \Axiomen, \Saetzen, \Fachbegriffen\ und \Ausgabeschemata, quasi eine untergeordnete Datenbank.
 	%
-	\item[\glsIdxPl{Ausgabeschema}] \label{Daten:Ausgabeschema}
+	\item[\Ausgabeschemata] \label{Daten:Ausgabeschema}
 	Eine Beschreibung, wie ein bestimmtes mathematisches Objekt ausgegeben werden soll.
 	Dies kann \textzB\ ein Stück \LaTeX-Code mit entsprechenden Parametern sein.
 	%
 	\item[Auswertungen]             \label{Daten:Auswertung}
 	Statistische und andere Auswertungen, die bestimmten Elementen der Datei \textbzw\ Datenbank zugeordnet sind.
-	\textZB\ können zu einem \glsIdx{Satz} alle für einen \glsIdx{Beweis} notwendigen \glsIdxPl{Axiom} angegeben werden -- als Verweise.
+	\textZB\ können zu einem \Satz\ alle für einen \Beweis\ notwendigen \Axiome\ angegeben werden -- als Verweise.
 	%
 \end{description}
 Die Daten können interne und externe Verweise enthalten.
 
-\section{Basis von Beweisen}
-\beginsection{Basis von Beweisen}
+\section{Basis von \Beweisen}
+\beginsection{Basis von \Beweisen}
 \label{sec:BeweisBasis}
 
-Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehens bei \glsIdxPl{Beweis}n definiert werden.%
+Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehens bei \Beweisen\ definiert werden.%
 \footnote{\seename~\cite{bib:Kalkuel}}
 
 \begin{description}
 	%
-	\item[Die logische Darstellung] von mathematischen Aussagen, wozu auch \glsIdxPl{Axiom} und \glsIdxPl{Satz} gehören, erfolgt, da es sich immer um Formeln handelt, an besten mit \emph{Zeichenfolgen}%
+	\item[Die logische Darstellung] von mathematischen Aussagen, wozu auch \Axiome\ und \Saetze\ gehören, erfolgt, da es sich immer um Formeln handelt, an besten mit \emph{Zeichenfolgen}%
 	\footnote{%
 		Die interne Darstellung der Zeichenfolgen kann zur Optimierung des Programms von der logischen abweichen.
 	},
-	\textdh\ von Folgen von Zeichen und Symbolen, in denen Zwischenraum -- insbesondere Leerstellen -- nicht zählen.
-	Mehrdimensionale Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenfolgen dargestellt werden.
-	\glsIdxPl{Beweis} sind letztendlich nichts anderes, als erlaubte Transformationen dieser Zeichenfolgen.
+	\textdh\ Folgen von Zeichen und Symbolen, in denen Zwischenraum -- insbesondere Leerstellen -- nicht zählen.
+	Mehrdimensionale Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenfolgen dargestellt werden.%
+	\footnote{%
+		\textZB\ könnte man eine 2$\times$2--Matrix $\begin{bmatrix}
+			a & b \\ c & d \end{bmatrix}$ auch darstellen als Folge von Zeilen: \seqqt{$[(a,b),(c,d)]$}, oder noch einfacher: \seqqt{$[a,b;c,d]$}.
+	}
+	\Beweise\ sind letztendlich nichts anderes, als erlaubte Transformationen dieser Zeichenfolgen.
 	%
 	\item[Bausteine] sind Grundelemente, auch \defn{Zeichen} oder \defn{(Satz-)Buchstaben} genannt, aus denen die Zeichenfolgen bestehen dürfen, und müssen definiert werden.
 	%
 	\item[Formationsregeln] dienen zur Festlegung, wie man aus den Bausteinen Ausdrücke erzeugen kann, und müssen ebenfalls definiert werden.
 	%
-	\item[\glsIdxPl{Satz}] lassen sich als eine Menge von Formeln, den Voraussetzungen, wozu auch \glsIdxPl{Axiom} gehören können, einer weiteren Menge von Formeln (Zeichenfolgen), den Folgerungen, und der Angabe eines \glsIdx{Beweis}es darstellen.
+	\item[\Saetze] lassen sich als eine Menge von Formeln, den Voraussetzungen, wozu auch \Axiome\ und andere \Saetze\ gehören können, einer weiteren Menge von Formeln (Zeichenfolgen), den Folgerungen, und der Angabe eines \Beweises\ darstellen.
 	%
-	\item[\glsIdxPl{Beweis}] zu gegebenen Voraussetzungen und Folgerungen lassen sich als Folge von zulässigen Transformationen, beginnend mit den Voraussetzungen und endend mit den Folgerungen, darstellen.
+	\item[\Beweise] zu gegebenen Voraussetzungen und Folgerungen lassen sich als Folge von zulässigen Transformationen, beginnend mit den Voraussetzungen und endend mit den Folgerungen, darstellen.
 	%
 	\item[Transformationsregeln] definieren, welche Transformationen mit gegebenen Formelmengen zulässig sind.%
 	\footnote{\seename~\cite{bib:Rautenberg,bib:Schlussregel,bib:NatuerlichesSchliessen}}

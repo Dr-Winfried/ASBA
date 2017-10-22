@@ -37,7 +37,7 @@
 
 Die mathematischen Grundlagen werden einerseits gebraucht, um die erlaubten \glsIdxPl{Beweisschritt}\vrefnotesec{sub:Beweisschritte} zu definieren, andererseits dienen sie auch zum Testen von \ASBA.
 Daher werden sie in diesem Kapitel ausführlicher behandelt, als für die Erstellung von \ASBA\ erforderlich ist.
-Alle hier aufgeführten \glsIdxPl{Axiom}, \glsIdxPl{Satz} und \glsIdxPl{Beweis} sollen dazu kodiert und die \glsIdxPl{Beweis} dann von \ASBA\ verifiziert werden.
+Alle hier aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und die \Beweise\ dann von \ASBA\ verifiziert werden.
 %TODO -- Axiome, Sätze und Beweise kodieren
 
 \section{Notationen}% ==========================================================
@@ -82,8 +82,8 @@ Alle hier aufgeführten \glsIdxPl{Axiom}, \glsIdxPl{Satz} und \glsIdxPl{Beweis} 
 	\item [\glsIdxPl{Formel}] sind in diesem Dokument immer nach vorgegebenen Regeln aufgebaute \glsIdxPl{Zeichenfolge}%
 	\footnote{%
 		Es kann verschiedene Arten von \glsIdxPl{Formel} geben, \textzB\ aussagenlogische, prädikatenlogische und solche, die ein Taschenrechner auswerten kann.
-		Eine \glsIdx{Formel} kann auch mehrdimensional dargestellt werden, lässt sich aber mittels geeigneter Definitionen immer eindeutig als eine Zeichenfolge schreiben.
-		\textZB\ könnte man eine 2$\times$2--Matrix auch schreiben als Folge von Zeilen: \seqqt{$[(a,b),(c,d)]$}, oder noch einfacher: \seqqt{$[a,b;c,d]$}.
+%%%		Eine \glsIdx{Formel} kann auch mehrdimensional dargestellt werden, lässt sich aber mittels geeigneter Definitionen immer eindeutig als eine Zeichenfolge schreiben.
+%%%		\textZB\ könnte man eine 2$\times$2--Matrix auch schreiben als Folge von Zeilen: \seqqt{$[(a,b),(c,d)]$}, oder noch einfacher: \seqqt{$[a,b;c,d]$}.
 	}.
 	Daher werden sie wie \glsIdxPl{Zeichenfolge} quotiert.
 	-- Die Quotierung ist kein Bestandteil der \glsIdx{Zeichenfolge}!
@@ -247,8 +247,8 @@ Das Weglassen redundanter Klammern wird \indcha{cha:Grundlagen} nicht weiter the
 	Gesetzt den Fall, dass \ASBA\ die Voraussetzungen und Folgerungen eines mathematischen Satzes richtig und die Beweisschritte, \textzB\ durch fehlerhafte Interpretation einer Formel, falsch einliest, ansonsten aber richtig arbeitet.
 	Dann kann man folgende Fälle unterscheiden:\\
 	-- Ein falscher Satz kann dadurch nicht als richtig bewertet werden.\\
-	-- Ein richtiger Satz wird wahrscheinlich auch bei eigentlich richtigem Beweis als nicht bewiesen gelten, was natürlich unbefriedigend ist.\\
-	-- In äußerst unwahrscheinlichen Fällen kann dabei auch ein eigentlich falscher Beweis in einen richtigen verwandelt werden, was zwar schön ist, aber leider steht in der Dokumentation dann ein falscher Beweis.\\
+	-- Ein richtiger Satz wird wahrscheinlich auch bei eigentlich richtigem \Beweis\ als nicht bewiesen gelten, was natürlich unbefriedigend ist.\\
+	-- In äußerst unwahrscheinlichen Fällen kann dabei auch ein eigentlich falscher \Beweis\ in einen richtigen verwandelt werden, was zwar schön ist, aber leider steht in der Dokumentation dann ein falscher Beweis.\\
 	In keinem Fall wird durch diesen Fehler die Menge der richtigen Sätze durch einen falschen Satz \enquote{verunreinigt}.
 }
 Zur besseren Verständlichkeit werden aber gelegentlich auch redundante Klammern verwendet, insbesondere wenn Prioritäten unklar oder in der Literatur auch anders definiert sind.
@@ -454,7 +454,7 @@ $A$ und $B$ können als Operanden von $\metaequiv$, $\metaandsym$ und $\metaorsy
 Wird in einer (Teil"~)\glsIdx{Aussage} nur einer der Operatoren $\metaandsym$ oder $\metaorsym$ verwendet, können die Klammern dort weggelassen und die Operationen in beliebiger Reihenfolge ausgewertet werden, wiederum ohne das Ergebnis zu ändern.%
 \footnote{%
 	\textDh\ die Operatoren $\metaandsym$ und $\metaorsym$ sind auch \emph{assoziativ}.
-	Bei den den logischen Operatoren $\land$ und $\lor$ müssen Kommutativität und Assoziativität durch \glsIdxPl{Axiom} gefordert werden.
+	Bei den den logischen Operatoren $\land$ und $\lor$ müssen Kommutativität und Assoziativität durch \Axiome\ gefordert werden.
 	Die Kommutativität von $\metaequiv$ kann abgeleitet werden.
 }
 Zusammengefasst ist die Reihenfolge der Operatoren und der Auswertung dort beliebig.
@@ -566,16 +566,16 @@ Daraus folgt insbesondere, dass mit \seqqt{$(A \eq B)$} auch \seqqt{$(A \equiv B
 }
 
 \section{Beweise in ASBA}% =====================================================
-\beginsection{Beweise in \ASBA}
+\beginsection{\Beweise\ in \ASBA}
 \label{sec:BeweiseASBA}
 
-Die Regeln zur Formulierung und Prüfung der \glsIdxPl{Beweis} müssen in \ASBA\ fest codiert werden.
-Sie sind quasi die \glsIdxPl{Axiom} von \ASBA\ und sollten daher möglichst wenig voraussetzen.
+Die Regeln zur Formulierung und Prüfung der \Beweise\ müssen in \ASBA\ fest codiert werden.
+Sie sind quasi die \Axiome\ von \ASBA\ und sollten daher möglichst wenig voraussetzen.
 In \ASBA\ wird dazu ein \emph{Genzen-Kalkül}%
 \footnote{%
 	siehe~\cite{bib:Rautenberg} Kapitel~1.4 und vergleiche~\cite{bib:Schlussregel,bib:NatuerlichesSchliessen}
 } verwendet.
-Die Definition von \emph{\glsIdxPl{Schlussregel}} und \emph{\glsIdxPl{Beweis}} ist in diesem Dokument \ASBA-spezifisch, um später eine leichtere Umsetzung in ein Programm zu erreichen.
+Die Definition von \emph{\glsIdxPl{Schlussregel}} und \emph{\Beweise} ist in diesem Dokument \ASBA-spezifisch, um später eine leichtere Umsetzung in ein Programm zu erreichen.
 
 \subsection{Schlussregeln}% ----------------------------------------------------
 \label{sub:Schlussregeln}
@@ -610,7 +610,7 @@ Ferner gilt:
 	%
 	%TODO Ist die Definition von Axiom/ensystem haltbar?
 	\item Eine \glsIdx{Schlussregel} $\frac{\emptyset}{\Folgerungsmenge}$ (oder kürzer $\Folgerungsmenge$), die keine Voraussetzungen hat, nennen wir ein \defn{\glsIdx{Axiomensystem}}.
-	Ist $\Folgerungsmenge = \{\alpha\}$, so nennen wir die \glsIdx{Schlussregel} (oder kürzer $\alpha$) auch \defn{\glsIdx{Axiom}}.
+	Ist $\Folgerungsmenge = \{\alpha\}$, so nennen wir die \glsIdx{Schlussregel} (oder kürzer $\alpha$) auch \defn{\Axiom}.
 \end{itemize}
 
 Wenn $\Voraussetzungsmenge$ und $\Folgerungsmenge$ endlich sind, \textdh\ wenn es Elemente $N$ und $M$ von $\gsNo$ und \glsIdxPl{Aussage} $\Voraussetzung_n$ und $\Folgerung_m$ gibt mit
@@ -642,7 +642,7 @@ Die $\Voraussetzung_n$ \textbzw\ $\Folgerung_m$ können dabei beliebig permutier
 \label{sub:Beweisschritte}
 
 %TODO Elimination von Voraussetzungen behandeln!
-Ein \glsIdx{Beweis}%
+Ein \Beweis%
 \footnote{siehe~\cite{bib:Rautenberg} Kapitel~1.6 und~3.6}
 in \ASBA\ besteht aus
 \begin{align}
@@ -905,7 +905,7 @@ Die zur Einsparung von Klammern definierten Prioritäten sind \vrefintab{tab:Pri
 \subsection{Formalisierung}% ---------------------------------------------------
 \label{sub:Formalisierung}
 
-Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \ASBA\ sind, müssen die \glsIdxPl{Axiom}, \glsIdxPl{Satz}, \glsIdxPl{Beweis}, \textusw\ der \glsIdx{Aussagenlogik} (und später der \glsIdx{Praedikatenlogik}) in streng formaler Form vorliegen.%
+Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \ASBA\ sind, müssen die \Axiome, \Saetze, \Beweise, \textusw\ der \glsIdx{Aussagenlogik} (und später der \glsIdx{Praedikatenlogik}) in streng formaler Form vorliegen.%
 \footnote{%
 	Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
 }
@@ -1021,7 +1021,7 @@ Wie man leicht sieht, gilt
 		\alForp_x \, \subset \: \alForp_y \, \subseteq \: \alForp
 	\end{cases}
 \end{equation}
-und weiterhin gibt es eine bijektive Abbildung von $\alFor$ nach $\alForp$. Auf einen \glsIdx{Beweis} verzichten wir.
+und weiterhin gibt es eine bijektive Abbildung von $\alFor$ nach $\alForp$. Auf einen \Beweis\ verzichten wir.
 %
 Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der \glsIdxPl{Formel} aus $\alFor_x$ einsparen.
 Die \glsIdxPl{Formel} aus $\alForp_x$ sind frei von Klammern.
@@ -1041,7 +1041,7 @@ Im folgenden gelte für zwei aussagenlogische \glsIdxPl{Formel} $\alpha$ und $\b
 	stimmen als Zeichenkette überein.
 	%
 	\item[] $\alpha \equiv \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$
-	\parbox[t]{11cm}{können mit Hilfe erlaubter \glsIdxPl{Substitution} und geltender \glsIdxPl{Axiom} -- \vrefseesub{sub:ausAxiome} -- ineinander überführt werden.}
+	\parbox[t]{11cm}{können mit Hilfe erlaubter \glsIdxPl{Substitution} und geltender \Axiome\ -- \vrefseesub{sub:ausAxiome} -- ineinander überführt werden.}
 \end{itemize}
 %
 Es werden verschiedene Teilmengen von $\alJun$ eingeführt, die jeweils ausreichen alle anderen Elemente von $\alJun$ zu definieren:
@@ -1169,7 +1169,7 @@ Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der De
 \subsection{Aussagenlogisches Axiomensystem}% ----------------------------------
 \label{sub:ausAxiome}
 
-Ausgehend von der \glsIdxBg{logische-Signatur}{logischen Signatur} $\alJun_\iAnd = \{\lnot, \land\}$ und der \vrefdef{def:imp} von \chrqt{$\limp$} werden die folgenden vier logischen \glsIdxPl{Axiom} definiert:
+Ausgehend von der \glsIdxBg{logische-Signatur}{logischen Signatur} $\alJun_\iAnd = \{\lnot, \land\}$ und der \vrefdef{def:imp} von \chrqt{$\limp$} werden die folgenden vier logischen \Axiome\ definiert:
 \begin{align}
 	&
 	(\alpha\limp\beta\limp\gamma)\limp(\alpha\limp\beta)\limp(\alpha\limp\gamma)

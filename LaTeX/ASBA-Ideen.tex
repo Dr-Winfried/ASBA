@@ -43,7 +43,7 @@
 In diesem \sectionname\ geht es um \glsIdxPl{zulaessige-Transformation}, \textdh\ \glsIdx{allgemeingueltige-Schlussregel}.
 Dazu gehören zunächst die \glsIdxPl{Basisregel}.
 Dann aber auch alle aus den \glsIdxPl{Basisregel} und den bis dahin \glsIdxBg{allgemeingueltige-Schlussregel}{allgemeingültigen Schlussregeln} korrekt abgeleiteten neuen \glsIdxPl{Schlussregel}.
-Die \glsIdxPl{Schlussregel} haben die Form eines Formalen \glsIdx{Satz}es.
+Die \glsIdxPl{Schlussregel} haben die Form eines Formalen \Satzes.
 
 \subsection{Basisregeln}% ------------------------------------------------------
 \label{sub:Basisregeln}
@@ -125,7 +125,7 @@ In einer \glsIdx{Schlussregel} werden die \glsIdxBg{Formel}{formalen Elemente}%
 \footnote{hier: \glsIdxPl{Aussage} in einer formalen Form.}
 über dem Querstrich als \defn{\glsIdxPl{Voraussetzung}} und die unter dem Querstrich als \defn{\glsIdx{Folgerung}} der Regel bezeichnet.
 Eine \glsIdx{Schlussregel} steht für die \glsIdx{Aussage}, dass mit ihren \glsIdxPl{Voraussetzung} auch auch ihre \glsIdxPl{Folgerung} gelten.
--- Im Gegensatz zu den weiteren \glsIdxPl{Schlussregel} werden die oben aufgelisteten Basisregeln nicht weiter hinterfragt, \textdh\ sie gelten quasi als \glsIdxPl{Axiom}.
+-- Im Gegensatz zu den weiteren \glsIdxPl{Schlussregel} werden die oben aufgelisteten Basisregeln nicht weiter hinterfragt, \textdh\ sie gelten quasi als \Axiome.
 
 \subsection{Identitätsregeln}% --------------------------------------------------------
 \label{sub:Identitätsregeln}
@@ -194,7 +194,7 @@ Nun können die beiden \glsIdxPl{Identitaetsregel} definiert werden:
 \end{align}
 %
 Die \glsIdxPl{Identitaetsregel} werden hier eingeführt, um die \glsIdx{Substitution} zu rechtfertigen.
-Wie die \glsIdxPl{Basisregel} gelten sie als \glsIdxPl{Axiom}, würden also eigentlich dazu gehören.
+Wie die \glsIdxPl{Basisregel} gelten sie als \Axiome, würden also eigentlich dazu gehören.
 Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \glsIdxPl{Basisregel} gezählt.
 
 \subsection{Weitere Schlussregeln}% --------------------------------------------
@@ -209,7 +209,7 @@ Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 %
 \begin{align}
 	& \frac{X,\lnot\alpha\derive\alpha}{X\derive\alpha}
-	& & (\text{Beseitigung der Negation; Indirekter \glsIdx{Beweis}})
+	& & (\text{Beseitigung der Negation; Indirekter \Beweis})
 	\tag{\tagnotc} \sym{\gls{notc}} \label{def:notc}
 	\\\\
 	& \frac{X,\lnot\alpha\derive\beta,\lnot\beta}{X\derive\alpha}
@@ -234,7 +234,7 @@ Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 	\formulatoleft
 \end{align}
 %
-Dabei werden zum \glsIdx{Beweis} der \glsIdxPl{Schlussregel} in~\cite{bib:Rautenberg} folgende Basisregeln verwendet:
+Dabei werden zum \Beweis\ der \glsIdxPl{Schlussregel} in~\cite{bib:Rautenberg} folgende Basisregeln verwendet:
 \begin{itemize}
 	\renewcommand*{\itemindent}{1cm}
 	\renewcommand*{\labelsep}{5pt}
@@ -258,7 +258,7 @@ Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschrifte
 -- Für die ausgefüllten Felder wird nun definiert:%
 \footnote{%
 	Eigentlich müsste man für jede \glsIdx{Substitution} aus $S_i$ eine eigene Zeile vorsehen.
-	Um die Tabellen für die \glsIdxPl{Beweis} kürzer zu halten, werden aufeinanderfolgende \glsIdxPl{Substitution} zusammengefasst.
+	Um die Tabellen für die \Beweise\ kürzer zu halten, werden aufeinanderfolgende \glsIdxPl{Substitution} zusammengefasst.
 }
 \begin{align}
 	R_i & \defeq
@@ -373,7 +373,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	\item Am Anfang der Tabelle werden zuerst \glsIdxPl{Voraussetzung}, dann zu beweisende \glsIdxPl{Folgerung} und schließlich Annahmen aufgeführt.%
 	\footnote{%
 		Die Angabe ist dann erforderlich, wenn darauf verwiesen wird.
-		Durch die Auflistung hat man aber einen vollständigen Überblick über die \glsIdxPl{Voraussetzung} und \glsIdxPl{Folgerung} eines \glsIdx{Beweis}es und die Zwischenannahmen.
+		Durch die Auflistung hat man aber einen vollständigen Überblick über die \glsIdxPl{Voraussetzung} und \glsIdxPl{Folgerung} eines \Beweises\ und die Zwischenannahmen.
 		Auf jede nötige \glsIdx{Voraussetzung} und jede verwendete Zwischenannahme wird in der Spalte $(Z_n$) mindestens einmal verwiesen, so dass sie auch aufgeführt werden müssen.
 		Die Angabe der \glsIdxPl{Folgerung} erleichtert die Erstellung einer \emph{Ergebniszeile} (siehe Punkt~\ref{item:Ergebniszeile}).
 	}
@@ -418,13 +418,13 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		%
 		\item $A_i =$ \glsIdx{Folgerung}(en) der \glsIdx{Schlussregel} $\overline{R}_i$.
 		-- Wenn diese \glsIdxPl{Folgerung} schon als \glsIdxPl{Aussage} $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
-		Damit werden die Zusammenhänge und der Abschluss des \glsIdx{Beweis}es besser ersichtlich.
+		Damit werden die Zusammenhänge und der Abschluss des \Beweises\ besser ersichtlich.
 		%
 		\item $D_i =$ Die Verweise wurden schon in (\ref{item:Anwendung}) eingetragen.%
 		\footnote{Wenn $D_n$ leer ist, dann ist $A_n$ allgemeingültig.}
 		%
 	\end{enumerate}
-	Der \glsIdx{Beweis} muss so lange fortgeführt werden, bis alle \glsIdxPl{Folgerung} als \glsIdxPl{Aussage} in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \glsIdxPl{Voraussetzung} abhängig sind.
+	Der \Beweis\ muss so lange fortgeführt werden, bis alle \glsIdxPl{Folgerung} als \glsIdxPl{Aussage} in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \glsIdxPl{Voraussetzung} abhängig sind.
 	%
 	\item \label{item:Ergebniszeile} In einer \defn{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \glsIdx{Schlussregel} formuliert und in einer passenden Spalte notiert werden.
 	Zusätzlich können dort auch noch alle verwendeten \glsIdxPl{Schlussregel} gesammelt werden.
@@ -440,7 +440,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\item $(A_n) =$ $\overline{R}_i$, wobei die \glsIdxPl{Voraussetzung} und \glsIdxPl{Folgerung} aufgelöst werden.
 		%
 		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der \glsIdxPl{Folgerung}, vermindert um die \glsIdxPl{Voraussetzung}.
-		-- Wenn das Feld dabei nicht leer bleibt, ist der \glsIdx{Beweis} missglückt!
+		-- Wenn das Feld dabei nicht leer bleibt, ist der \Beweis\ missglückt!
 		%
 	\end{enumerate}
 	%
