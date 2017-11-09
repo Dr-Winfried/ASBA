@@ -35,7 +35,7 @@
 \beginchapter{Mathematische Grundlagen}
 \label{cha:Grundlagen}
 
-Die mathematischen Grundlagen werden einerseits gebraucht, um die erlaubten \glsIdxPl{Beweisschritt}\vrefnotesec{sub:Beweisschritte} zu definieren, andererseits dienen sie auch zum Testen von \ASBA.
+Die mathematischen Grundlagen werden einerseits gebraucht, um die erlaubten \Beweisschritte\vrefnotesec{sub:Beweisschritte} zu definieren, andererseits dienen sie auch zum Testen von \ASBA.
 Daher werden sie in diesem Kapitel ausführlicher behandelt, als für die Erstellung von \ASBA\ erforderlich ist.
 Alle hier aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und die \Beweise\ dann von \ASBA\ verifiziert werden.
 %TODO -- Axiome, Sätze und Beweise kodieren
@@ -88,13 +88,13 @@ Alle hier aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und 
 	Daher werden sie wie \glsIdxPl{Zeichenfolge} quotiert.
 	-- Die Quotierung ist kein Bestandteil der \glsIdx{Zeichenfolge}!
 
-	Man kann eine \glsIdx{Formel} $\alpha$ auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen Menge $\Formelmenge$ von \glsIdxPl{Zeichenfolge} ist.%
+	Man kann eine \glsIdx{Formel} $\alpha$ auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen Menge $\formulaset$ von \glsIdxPl{Zeichenfolge} ist.%
 	\footnote{%
-		$\alpha$ wird dann auch \defn{Wort} der \defn{Sprache} $\Formelmenge$ genannt - besonders, wenn die Elemente von $\Formelmenge$ \glsIdxPl{Zeichenkette} statt \glsIdxPl{Zeichenfolge} sind.
+		$\alpha$ wird dann auch \defn{Wort} der \defn{Sprache} $\formulaset$ genannt - besonders, wenn die Elemente von $\formulaset$ \glsIdxPl{Zeichenkette} statt \glsIdxPl{Zeichenfolge} sind.
 		Wir bleiben der Klarheit willen bei \enquote{Formel}.
 	}
 	%
-	\item[\glsIdxPl{Objekt}] sind \textzB\ \glsIdxPl{Symbol}, \glsIdxPl{Zeichenkette}, \glsIdxPl{Zeichenfolge} und \glsIdxPl{Formel}, oder auch \glsIdxPl{Aussage}, Mengen, Zahlen, \textusw\ -- ganz allgemein reale oder gedachte Dinge an sich.
+	\item[\glsIdxPl{Objekt}] sind \textzB\ \glsIdxPl{Symbol}, \glsIdxPl{Zeichenkette}, \glsIdxPl{Zeichenfolge} und \glsIdxPl{Formel}, oder auch \Aussagen, Mengen, Zahlen, \textusw\ -- ganz allgemein reale oder gedachte Dinge an sich.
 	Eine \glsIdx{Formel}, die nicht quotiert ist, steht für den Wert dieser \glsIdx{Formel}, der dann wieder ein \glsIdx{Objekt} ist.
 	Entsprechend steht ein \glsIdx{Symbol}, das nicht quotiert ist, für das dadurch bezeichnete \glsIdxPl{Objekt}.
 	\textZB bezeichnet das \glsIdx{Symbol} \chrqt{$\gsN$} die Menge $\gsN$ der natürlichen Zahlen ohne 0.
@@ -231,7 +231,7 @@ zusammen mit einer binären Operation $\opbsp$ oder einer weiteren binären Rela
 	&&& A \relbsp B \quad \metaand \quad B \approx C \formulatoleft
 \end{align}
 %
-Es sei noch angemerkt, dass wegen \eqref{eq:lrrelbsp} die Definition von \chrqt{$\metarep$} \vrefinsub{sub:Aussagen} überflüssig ist.
+Es sei noch angemerkt, dass wegen \eqref{eq:lrrelbsp} die Definition von \chrqt{$\metarep$} \vrefinsub{sub:AussagenUndMetaoperatoren} überflüssig ist.
 Wegen der angegebenen Sprechweise ist sie dennoch angegeben.
 Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab:Prioritäten} angegeben.
 Damit sind auch alle Klammern \indsub{sub:binär} überflüssig.
@@ -244,11 +244,11 @@ Damit sind auch alle Klammern \indsub{sub:binär} überflüssig.
 \footnote{Priorität 1 ist höher und bindet damit stärker als Priorität 2, usw.}
 Das Weglassen redundanter Klammern wird \indcha{cha:Grundlagen} nicht weiter thematisiert.%
 \footnote{%
-	Gesetzt den Fall, dass \ASBA\ die Voraussetzungen und Folgerungen eines mathematischen Satzes richtig und die Beweisschritte, \textzB\ durch fehlerhafte Interpretation einer Formel, falsch einliest, ansonsten aber richtig arbeitet.
+	Gesetzt den Fall, dass \ASBA\ die Voraussetzungen und Folgerungen eines mathematischen Satzes richtig und die \Beweisschritte, \textzB\ durch fehlerhafte Interpretation einer Formel, falsch einliest, ansonsten aber richtig arbeitet.
 	Dann kann man folgende Fälle unterscheiden:\\
 	-- Ein falscher Satz kann dadurch nicht als richtig bewertet werden.\\
 	-- Ein richtiger Satz wird wahrscheinlich auch bei eigentlich richtigem \Beweis\ als nicht bewiesen gelten, was natürlich unbefriedigend ist.\\
-	-- In äußerst unwahrscheinlichen Fällen kann dabei auch ein eigentlich falscher \Beweis\ in einen richtigen verwandelt werden, was zwar schön ist, aber leider steht in der Dokumentation dann ein falscher Beweis.\\
+	-- In äußerst unwahrscheinlichen Fällen kann dabei auch ein eigentlich falscher \Beweis\ in einen richtigen verwandelt werden, was zwar schön ist, aber leider steht in der Dokumentation dann ein falscher \Beweis.\\
 	In keinem Fall wird durch diesen Fehler die Menge der richtigen Sätze durch einen falschen Satz \enquote{verunreinigt}.
 }
 Zur besseren Verständlichkeit werden aber gelegentlich auch redundante Klammern verwendet, insbesondere wenn Prioritäten unklar oder in der Literatur auch anders definiert sind.
@@ -303,7 +303,7 @@ Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapit
 				\glsIdxPl{Gleichheitsrelation} \Tnote{5}
 				& $ \eq \quad \ne \quad \equiv \quad \nequiv $ \\
 				\hdashline
-				\glsIdx{Ableitungsrelation} \Tnote{6}
+				\Ableitungsrelation\ \Tnote{6}
 				& $ \derive          $ \\
 				\hdashline
 				\glsIdx{Substitution}       \Tnote{6}
@@ -371,14 +371,14 @@ Für Operatoren derselben Priorität wählen wir in diesem Dokument Rechtsklamme
 \beginsection{Metasprache}
 \label{sec:Metasprache}
 
-Wenn man über eine Sprache spricht, braucht man eine zweite Sprache, die \defn{\glsIdx{Metasprache}}, in der \glsIdxPl{Aussage} über die erstere getroffen werden können.%
+Wenn man über eine Sprache spricht, braucht man eine zweite Sprache, die \defn{\glsIdx{Metasprache}}, in der \Aussagen\ über die erstere getroffen werden können.%
 \footnote{%
 	Die beiden Sprachen können auch übereinstimmen, \textzB\ wenn man über die natürliche Sprache spricht.
 }
 Wenn die zuerst genannte Sprache die der Mathematik ist, wählt man üblicherweise die natürliche Sprache als Metasprache.
 Leider ist diese oft ungenau, nicht immer eindeutig und abhängig vom Zusammenhang, in dem sie gesprochen wird.%
 \footnote{%
-	Man betrachte die beiden \glsIdxPl{Aussage} \enquote{Studenten und Rentner zahlen die Hälfte.} und \enquote{Studenten oder Rentner zahlen die Hälfte.}, die beide das gleiche meinen.
+	Man betrachte die beiden \Aussagen\ \enquote{Studenten und Rentner zahlen die Hälfte.} und \enquote{Studenten oder Rentner zahlen die Hälfte.}, die beide das gleiche meinen.
 	-- Entnommen aus \cite{bib:Rautenberg} \sectionname~1.2 Bemerkung 1.
 
 	Ein weiteres Problem ist, dass man unauflösbare Widersprüche formulieren kann, \textzB\ \enquote{Der Barbier ist der Mann im Ort, der genau die Männer im Ort rasiert, die sich nicht selbst rasieren.}.
@@ -393,29 +393,28 @@ Durch diese Formalisierung erinnert sie dann schon an mathematische \glsIdxPl{Fo
 Die Sprachebenen sollten aber sorgfältig unterschieden werden.
 
 \subsection{Aussagen und Metaoperatoren}% --------------------------------------
-\beginsection{Aussagen}
-\label{sub:Aussagen}
+\label{sub:AussagenUndMetaoperatoren}
 
-Beispiele für \glsIdxPl{Aussage} in Metasprache sind
+Beispiele für \Aussagen\ in Metasprache sind
 (a) \enquote{Morgen scheint die Sonne.},
 (b) \enquote{Ich bin 1,83\,m groß.},
 (c) \enquote{Ich habe ein rotes Auto und das kann 200\,km/h schnell fahren.}, usw.
-Wie Beispiel (c) zeigt, kann eine \glsIdx{Aussage} auch aus anderen \glsIdxPl{Aussage} zusammengesetzt sein.
+Wie Beispiel (c) zeigt, kann eine \Aussage\ auch aus anderen \Aussagen\ zusammengesetzt sein.
 In diesem Fall bezeichnen wir sie als \defn{\Idx{zerlegbar}}, ansonsten als \defn{\Idx{unzerlegbar}}.
--- Wir betrachten auch Relationen einschließlich ihrer Operanden als \glsIdxPl{Aussage}.%
+-- Wir betrachten auch Relationen einschließlich ihrer Operanden als \Aussagen.%
 \footnote{%
 	Wird statt des Symbols der Name der zugehörigen Relation verwendet, ist dies unmittelbar einleuchtend.
-	So wird \textzB\ aus der \glsIdx{Formel} \seqqt{$A<B$} die \glsIdx{Aussage} \enquote{$A$ ist kleiner als $B$}.
+	So wird \textzB\ aus der \glsIdx{Formel} \seqqt{$A<B$} die \Aussage\ \enquote{$A$ ist kleiner als $B$}.
 }
 
-Während die Beispiele (a) und (b) unzerlegbare \glsIdxPl{Aussage} sind, ist Beispiel (c) zerlegbar.
-Für alle drei \glsIdxPl{Aussage} lässt sich feststellen, ob sie richtig sind oder nicht;
+Während die Beispiele (a) und (b) unzerlegbare \Aussagen\ sind, ist Beispiel (c) zerlegbar.
+Für alle drei \Aussagen\ lässt sich feststellen, ob sie richtig sind oder nicht;
 für (a) allerdings nur im Nachhinein und für den zweiten Teil von (c) nur weil klar ist, worauf sich \enquote{das} bezieht.
-Natürlich muss auch der Zusammenhang, in dem eine \glsIdx{Aussage} formuliert wird, bekannt sein.
-\textZB\ ist die Bedeutung von \enquote{Ich} nur dann bekannt, wenn man weiss, von wem die \glsIdx{Aussage} ist.
-Auf eine exakte Definition von \glsIdx{Aussage} wird verzichtet, weil das intuitive Verständnis hier ausreicht.
+Natürlich muss auch der Zusammenhang, in dem eine \Aussage\ formuliert wird, bekannt sein.
+\textZB\ ist die Bedeutung von \enquote{Ich} nur dann bekannt, wenn man weiss, von wem die \Aussage\ ist.
+Auf eine exakte Definition von \Aussage\ wird verzichtet, weil das intuitive Verständnis hier ausreicht.
 
-Zerlegbare \glsIdxPl{Aussage} wie (c) können zum Teil formalisiert werden.
+Zerlegbare \Aussagen\ wie (c) können zum Teil formalisiert werden.
 Dies wird mit den folgenden Definitionen erreicht:
 %
 \begin{align}
@@ -437,13 +436,13 @@ Dies wird mit den folgenden Definitionen erreicht:
 	\formulatoleft
 \end{align}
 %
-Offensichtlich sind das alles ebenfalls \glsIdxPl{Aussage}, jetzt aber teilweise formalisiert.
+Offensichtlich sind das alles ebenfalls \Aussagen, jetzt aber teilweise formalisiert.
 (c) lässt sich dann ausdrücken als \enquote{\enquote{Ich habe ein rotes Auto} $\metaandsym$ \enquote{das kann 200\,km/h schnell fahren.}}.
 \enquote{$A \metarep B$} ist nur eine andere Schreibweise für \enquote{$B \metaimp A$}.
 -- Ein Symbol für \enquote{nicht} wird hier nicht gebraucht.
 
 $\metaandsym$\hidden{\glsIdxPl{\metaand}} und $\metaorsym$\hidden{\glsIdxPl{\metaor}} heißen \defn{\glsIdxPl{Metaoperator}} und \glsIdx{metaimp}, \glsIdx{metarep} und \glsIdx{metaequiv} \defn{\glsIdxPl{Metarelation}}.
-Die damit gebildeten \glsIdxPl{Aussage} können natürlich auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
+Die damit gebildeten \Aussagen\ können natürlich auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
 Für den Fall fehlender Klammern sind ihre Prioritäten \vrefintab{tab:Prioritäten} angegeben.
 
 Um Verwechslungen mit den logischen Operatoren zu vermeiden, verwenden wir für die metasprachlichen Operatoren \enquote{und} und \enquote{oder} die Symbole \chrqt{$\metaandsym$} und \chrqt{$\metaorsym$}.
@@ -451,7 +450,7 @@ $A$ und $B$ können als Operanden von $\metaequiv$, $\metaandsym$ und $\metaorsy
 \footnote{%
 	\textDh\ die Operatoren $\metaequiv$, $\metaandsym$ und $\metaorsym$ sind \emph{kommutativ}.
 }
-Wird in einer (Teil"~)\glsIdx{Aussage} nur einer der Operatoren $\metaandsym$ oder $\metaorsym$ verwendet, können die Klammern dort weggelassen und die Operationen in beliebiger Reihenfolge ausgewertet werden, wiederum ohne das Ergebnis zu ändern.%
+Wird in einer (Teil"~)\Aussage\ nur einer der Operatoren $\metaandsym$ oder $\metaorsym$ verwendet, können die Klammern dort weggelassen und die Operationen in beliebiger Reihenfolge ausgewertet werden, wiederum ohne das Ergebnis zu ändern.%
 \footnote{%
 	\textDh\ die Operatoren $\metaandsym$ und $\metaorsym$ sind auch \emph{assoziativ}.
 	Bei den den logischen Operatoren $\land$ und $\lor$ müssen Kommutativität und Assoziativität durch \Axiome\ gefordert werden.
@@ -539,15 +538,15 @@ Daraus folgt insbesondere, dass mit \seqqt{$(A \eq B)$} auch \seqqt{$(A \equiv B
 {
 	\newcommand*{\A}{\overline{A}}
 	\newcommand*{\B}{\overline{B}}
-	Seien $\A$ und $\B$ \glsIdxPl{Aussage} und $A$ und $B$ \glsIdxPl{Objekt}%
+	Seien $\A$ und $\B$ \Aussagen\ und $A$ und $B$ \glsIdxPl{Objekt}%
 	\footnote{%
-		Die Anforderungen an die \glsIdx{Aussage} $\A$ und das \glsIdx{Objekt} $A$ sind intuitiv klar.
+		Die Anforderungen an die \Aussage\ $\A$ und das \glsIdx{Objekt} $A$ sind intuitiv klar.
 		Insbesondere darf $\B$ \textbzw\ $B$ nicht von dem bisher undefinierten Teil von $\A$ \textbzw\ $A$ abhängig sein.
 	}.
 	\begin{description}
 		%
 		\item[$\glsSym{metadefeq}$~\emph{\Idx{Metadefinition}}]\label{def:Metadefinition}
-		\seqqt{$\A \metadefeq \B$} heißt, dass die \glsIdx{Aussage} $\A$ \emph{definitionsgemäß gleich} der \glsIdx{Aussage} $\B$ ist.
+		\seqqt{$\A \metadefeq \B$} heißt, dass die \Aussage\ $\A$ \emph{definitionsgemäß gleich} der \Aussage\ $\B$ ist.
 		Gewissermaßen ist $\A$ nur eine andere Schreibweise für $\B$.
 		\enquote{$\A$ \emph{steht für} $\B$}.
 		$\A$ und $\B$ können sich gegenseitig ersetzten.
@@ -580,7 +579,7 @@ Die Definition von \emph{\glsIdxPl{Schlussregel}} und \emph{\Beweise} ist in die
 \subsection{Schlussregeln}% ----------------------------------------------------
 \label{sub:Schlussregeln}
 
-Es sei $\Formelmenge$ eine Menge von \glsIdxPl{Formel}.%
+Es sei $\formulaset$ eine Menge von \glsIdxPl{Formel}.%
 	\footnote{%
 	Die Menge der \glsIdxPl{Formel} wird auch als \defn{Sprache} (language) bezeichnet und die \glsIdxPl{Formel} sind dann die Worte dieser Sprache.
 	Wir bleiben der Klarheit willen bei \glsIdx{Formel}.
@@ -588,44 +587,44 @@ Es sei $\Formelmenge$ eine Menge von \glsIdxPl{Formel}.%
 }
 Dann definieren wir:
 \begin{itemize}
-	\item[] Eine \defn{\glsIdx{Schlussregel}} $\frac{\Voraussetzungsmenge}{\Folgerungsmenge}$ \emph{für} $\Formelmenge$ besteht aus einer Menge $\Voraussetzungsmenge\subseteq\Formelmenge$, den \defn{\glsIdxPl{Voraussetzung}}, und einer Menge $\Folgerungsmenge\subseteq\Formelmenge$, den \defn{\glsIdxPl{Folgerung}}.
+	\item[] Eine \defn{\glsIdx{Schlussregel}} $\frac{\prerequisiteset}{\conclusionset}$ \emph{für} $\formulaset$ besteht aus einer Menge $\prerequisiteset\subseteq\formulaset$, den \defn{\glsIdxPl{Voraussetzung}}, und einer Menge $\conclusionset\subseteq\formulaset$, den \defn{\glsIdxPl{Folgerung}}.
 \end{itemize}
-Eine Schlussregel $\frac{\Voraussetzungsmenge}{\Folgerungsmenge}$ entspricht der \glsIdx{Aussage}:
+Eine Schlussregel $\frac{\prerequisiteset}{\conclusionset}$ entspricht der \Aussage:
 %
 %TODO Verweis auf zulässige Transformationen
 \begin{itemize}
-	\item[] Mit den \glsIdxPl{Voraussetzung} aus $\Voraussetzungsmenge$ lassen sich alle \glsIdxPl{Folgerung} aus $\Folgerungsmenge$ ableiten%
+	\item[] Mit den \glsIdxPl{Voraussetzung} aus $\prerequisiteset$ lassen sich alle \glsIdxPl{Folgerung} aus $\conclusionset$ ableiten%
 	\footnote{durch noch zu definierende \emph{\glsIdxPl{zulaessige-Transformation}}}.
 \end{itemize}
 %
-$\Voraussetzungsmenge$ und $\Folgerungsmenge$ dürfen auch leer sein.
-Eine \glsIdx{Schlussregel} darf kein Element von $\Formelmenge$, also auch kein Element von $\Voraussetzungsmenge$ oder $\Folgerungsmenge$ sein.
+$\prerequisiteset$ und $\conclusionset$ dürfen auch leer sein.
+Eine \glsIdx{Schlussregel} darf kein Element von $\formulaset$, also auch kein Element von $\prerequisiteset$ oder $\conclusionset$ sein.
 Wir nennen eine \glsIdx{Schlussregel} auch einen \emph{\glsIdxBg{formaler-Satz}{formalen Satz}}.
-Eine \glsIdxBg{allgemeingueltige-Schlussregel}{Schlussregel} \textbzw\ ein \glsIdx{formaler-Satz} heißt \defn{allgemeingültig}, wenn die zugehörige \glsIdx{Aussage} immer zutrifft.
+Eine \glsIdxBg{allgemeingueltige-Schlussregel}{Schlussregel} \textbzw\ ein \glsIdx{formaler-Satz} heißt \defn{allgemeingültig}, wenn die zugehörige \Aussage\ immer zutrifft.
 In diesem Fall kann sie zur zulässigen Umwandlung von Formeln dienen.
 Ferner gilt:
 %
 \begin{itemize}
-	\item Eine \glsIdx{Schlussregel} $\frac{\Voraussetzungsmenge}{\emptyset}$ ist allgemeingültig, \textdh\ sie ist immer wahr.
+	\item Eine \glsIdx{Schlussregel} $\frac{\prerequisiteset}{\emptyset}$ ist allgemeingültig, \textdh\ sie ist immer wahr.
 	%
 	%TODO Ist die Definition von Axiom/ensystem haltbar?
-	\item Eine \glsIdx{Schlussregel} $\frac{\emptyset}{\Folgerungsmenge}$ (oder kürzer $\Folgerungsmenge$), die keine Voraussetzungen hat, nennen wir ein \defn{\glsIdx{Axiomensystem}}.
-	Ist $\Folgerungsmenge = \{\alpha\}$, so nennen wir die \glsIdx{Schlussregel} (oder kürzer $\alpha$) auch \defn{\Axiom}.
+	\item Eine \glsIdx{Schlussregel} $\frac{\emptyset}{\conclusionset}$ (oder kürzer $\conclusionset$), die keine Voraussetzungen hat, nennen wir ein \defn{\Axiomensystem}.
+	Ist $\conclusionset = \{\alpha\}$, so nennen wir die \glsIdx{Schlussregel} (oder kürzer $\alpha$) auch \defn{\Axiom}.
 \end{itemize}
 
-Wenn $\Voraussetzungsmenge$ und $\Folgerungsmenge$ endlich sind, \textdh\ wenn es Elemente $N$ und $M$ von $\gsNo$ und \glsIdxPl{Aussage} $\Voraussetzung_n$ und $\Folgerung_m$ gibt mit
+Wenn $\prerequisiteset$ und $\conclusionset$ endlich sind, \textdh\ wenn es Elemente $N$ und $M$ von $\gsNo$ und \Aussagen\ $\prerequisite_n$ und $\conclusion_m$ gibt mit
 \begin{align}
-	\Voraussetzungsmenge & \quad = \quad \{\Voraussetzung_n | 0 < n \le N \}
+	\prerequisiteset & \quad = \quad \{\prerequisite_n | 0 < n \le N \}
 	\label{def:Voraussetzungen} \\
-	\Folgerungsmenge     & \quad = \quad \{\Folgerung_m     | 0 < m \le M \}
+	\conclusionset     & \quad = \quad \{\conclusion_m     | 0 < m \le M \}
 	\label{def:Folgerungen} \formulatoleft
 \end{align}
-dann können wir \seqqt{$\Voraussetzungsmenge$} durch \seqqt{$\Voraussetzung_1 \srand \Voraussetzung_2 \srand ...\srand \Voraussetzung_N$} und \seqqt{$\Folgerungsmenge$} durch \seqqt{$\Folgerung_1 \srand \Folgerung_2 \srand ...\srand \Folgerung_M$} ersetzen, also \textzB\
+dann können wir \seqqt{$\prerequisiteset$} durch \seqqt{$\prerequisite_1 \srand \prerequisite_2 \srand ...\srand \prerequisite_N$} und \seqqt{$\conclusionset$} durch \seqqt{$\conclusion_1 \srand \conclusion_2 \srand ...\srand \conclusion_M$} ersetzen, also \textzB\
 \[
-	\frac{\Voraussetzungsmenge}{\Folgerungsmenge} =
+	\frac{\prerequisiteset}{\conclusionset} =
 	\frac
-		{\Voraussetzung_1 \srand \Voraussetzung_2 \srand ...\srand \Voraussetzung_N}
-		{\Folgerung_1     \srand \Folgerung_2     \srand ...\srand \Folgerung_M    }
+		{\prerequisite_1 \srand \prerequisite_2 \srand ...\srand \prerequisite_N}
+		{\conclusion_1     \srand \conclusion_2     \srand ...\srand \conclusion_M    }
 	\qquad \qquad \text{(\emph{\glsIdx{Schlussregel}} oder \emph{\glsIdx{formaler-Satz}})}
 	\tag{\tagFS} \sym{\gls{FS}} \label{def:formalerSatz}
 \]
@@ -633,7 +632,7 @@ wobei \chrqt{$\srand$} und Bruchstrich für den \glsIdx{Metaoperator} $\metaands
 \footnote{%
 	der Bruchstrich hat die übliche Priorität, $\srand$ die schwächste.
 }
-Die $\Voraussetzung_n$ \textbzw\ $\Folgerung_m$ können dabei beliebig permutiert werden.%
+Die $\prerequisite_n$ \textbzw\ $\conclusion_m$ können dabei beliebig permutiert werden.%
 \footnote{%
 	Man beachte, dass Zähler ($M=0$) und Nenner $N=0$ auch leer sein können.
 }
@@ -646,45 +645,45 @@ Ein \Beweis%
 \footnote{siehe~\cite{bib:Rautenberg} Kapitel~1.6 und~3.6}
 in \ASBA\ besteht aus
 \begin{align}
-	& \text{einer \glsIdx{Schlussregel}} && \frac{\Voraussetzungsmenge}{\Folgerungsmenge}
+	& \text{einer \glsIdx{Schlussregel}} && \frac{\prerequisiteset}{\conclusionset}
 	\\
-	& \text{einer Folge} && \Beweisschrittfolge = (\Beweisschritt_1, \Beweisschritt_2, ..., \Beweisschritt_K)
-	&& \text{von \emph{\glsIdxPl{Beweisschritt}n} } \Beweisschritt_k
+	& \text{einer Folge} && \proofstepsequenz = (\Beweisschritt_1, \Beweisschritt_2, ..., \Beweisschritt_K)
+	&& \text{von \emph{\Beweisschritten} } \Beweisschritt_k
 	&& \text{, die \defn{\glsIdx{Beweisschrittfolge}}}
 	\label{def:Beweisschrittfolge}
 	\\
-	& \text{einer Menge} && \Transformationsmenge
-	&& \text{von \emph{\glsIdxPl{Transformation}} } \Transformation
+	& \text{einer Menge} && \transformationset
+	&& \text{von \emph{\glsIdxPl{Transformation}} } \transformation
 	&& \text{, die \defn{\glsIdx{Transformationsmenge}}}
 	\label{def:Transformationsmenge}
 \end{align}
 %TODO zulässige Transformationen
-wobei $K$ ein Element von $\gsNo$ ist, die \defn{\glsIdxPl{Beweisschritt}} $\Beweisschritt_k$ \glsIdxPl{Schlussregel} und die Transformationen später definiert werden.
+wobei $K$ ein Element von $\gsNo$ ist, die \defn{\Beweisschritte} $\Beweisschritt_k$ \glsIdxPl{Schlussregel} und die Transformationen später definiert werden.
 Wir definieren noch:
 \begin{align}
-	& \Beweisschrittmenge_k & \defeq & \quad \{\Beweisschritt_1, \Beweisschritt_2, ..., \Beweisschritt_k\} & \quad \text{, für~~} 0 \le k \le K
+	& \proofstepset_k & \defeq & \quad \{\Beweisschritt_1, \Beweisschritt_2, ..., \Beweisschritt_k\} & \quad \text{, für~~} 0 \le k \le K
 	\label{def:Beweisschrittebis} \\
-	& \Beweisschrittmenge   & \defeq & \quad \Beweisschrittmenge_K \label{def:Beweisschrittmenge}
+	& \proofstepset   & \defeq & \quad \proofstepset_K \label{def:Beweisschrittmenge}
 	\formulatoleft\formulatoleft\formulatoleft
 \end{align}
-und nennen $\Beweisschrittmenge$ die \defn{\glsIdx{Beweisschrittmenge}} der \glsIdx{Beweisschrittfolge} $\Beweisschrittfolge$.
-Dann ist $\Beweisschrittmenge_0=\emptyset$ und $\Beweisschrittmenge_i\subseteq\Beweisschrittmenge_j\subseteq\Beweisschrittmenge$ für $0\le i\le j\le K$.
+und nennen $\proofstepset$ die \defn{\glsIdx{Beweisschrittmenge}} der \glsIdx{Beweisschrittfolge} $\proofstepsequenz$.
+Dann ist $\proofstepset_0=\emptyset$ und $\proofstepset_i\subseteq\proofstepset_j\subseteq\proofstepset$ für $0\le i\le j\le K$.
 
 ========================================================================
 %TODO===================================================================
 
-Jeder \glsIdx{Beweisschritt} $ \Beweisschritt_k \text{ für } 1 \le k \le K $ muss entweder eine \glsIdx{Voraussetzung} aus $\Voraussetzungsmenge$ oder durch Anwendung einer \glsIdxBg{allgemeingueltige-Schlussregel}{allgemeingültigen Schlussregel} auf eine Teilmenge von $\Beweisschrittmenge_{k-1}$ eine wahre Formel oder eine weitere \glsIdx{allgemeingueltige-Schlussregel} sein.
+Jeder \Beweisschritt\ $ \Beweisschritt_k \text{ für } 1 \le k \le K $ muss entweder eine \glsIdx{Voraussetzung} aus $\prerequisiteset$ oder durch Anwendung einer \allgemeingueltigenSchlussregel\ auf eine Teilmenge von $\proofstepset_{k-1}$ eine wahre Formel oder eine weitere \emph{allgemeingueltige Schlussregel} sein.
 Schließlich muss noch
-\[ \Folgerungsmenge \subseteq \Beweisschrittmenge \]
-sein, da jede Folgerung aus $\Folgerungsmenge$ in der Folge $\Beweisschrittfolge$ vorkommen und somit Element der Menge $\Beweisschrittmenge$ sein muss.
+\[ \conclusionset \subseteq \proofstepset \]
+sein, da jede Folgerung aus $\conclusionset$ in der Folge $\proofstepsequenz$ vorkommen und somit Element der Menge $\proofstepset$ sein muss.
 %
-Bevor die \glsIdxPl{Schlussregel} weiter behandelt werden, werden noch Elemente der \emph{\glsIdx{Aussagenlogik}} und der \emph{\glsIdx{Praedikatenlogik}} behandelt.
+Bevor die \glsIdxPl{Schlussregel} weiter behandelt werden, werden noch Elemente der \emph{\Aussagenlogik} und der \emph{\Praedikatenlogik} behandelt.
 Wir stützen uns dabei weitgehend auf~\cite{bib:Rautenberg}, ohne das jedes Mal anzugeben.
 
 \section{Aussagenlogik}% =======================================================
 \beginsection{Aussagenlogik}
 \label{sec:Aussagenlogik}
-\hidden{\glsIdx{Aussagenlogik}}
+\hidden{\Aussagenlogik}
 
 \subsection{Konstante und Operatoren}% -----------------------------------------
 \label{sub:Operatoren}
@@ -696,7 +695,7 @@ Wir stützen uns dabei weitgehend auf~\cite{bib:Rautenberg}, ohne das jedes Mal 
 definiert für die zweiwertige Logik Konstante und Operatoren über die \glsIdxPl{Wahrheitswert} ihrer Anwendung.
 So ergeben sich, abhängig von den \glsIdxPl{Wahrheitswert}n der Operanden $A$ und $B$,%
 \footnote{%
-	$A$ und $B$ können hier beliebige \glsIdxPl{Aussage} sein -- auch \glsIdxPl{Formel} --, die jeweils genau einen \glsIdx{Wahrheitswert} repräsentieren.
+	$A$ und $B$ können hier beliebige \Aussagen\ sein -- auch \glsIdxPl{Formel} --, die jeweils genau einen \glsIdx{Wahrheitswert} repräsentieren.
 }
 die in der \tablename\ angegebenen \glsIdxPl{Wahrheitswert} für die Operationen.
 Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh\ für die Konstanten, die unären und die binären Operatoren ausgefüllt.
@@ -742,11 +741,11 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			\hline% -- Tabellenanfang --------------------------------------
 			A & - & \texttrue & \textfalse &%
 			\texttrue  & \texttrue  & \textfalse & \textfalse &
-			- & \glsIdx{Aussage} A & - \\
+			- & \Aussage\ A & - \\
 			\tableline%.................................................
 			B & - & -       & -        &%
 			\texttrue  & \textfalse & \texttrue  & \textfalse &
-			- & \glsIdx{Aussage} B & - \\
+			- & \Aussage\ B & - \\
 			\hline% -- Überschrift -----------------------------------------
 			\textbf{Operator}\Tnote{1} &
 			\textbf{0}\Tnote{2} &
@@ -897,7 +896,7 @@ Für einige Operatorsymbole%
 \footnote{Symbole, die für Operatoren verwendet werden.}
 -- auch \defn{Junktoren} genannt --, Namen und Sprechweisen sind auch Alternativen angegeben.
 Die durchgestrichenen (\textdh\ negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt.
-Wenn für eine bestimmte Kombination von \glsIdxPl{Wahrheitswert}n mehr als eine Zeile angegeben ist, so können die zugehörigen Operatoren zwar formal verschieden sein, liefern in der zweiwertigen \glsIdx{Aussagenlogik} jedoch dieselben Ergebnisse.
+Wenn für eine bestimmte Kombination von \glsIdxPl{Wahrheitswert}n mehr als eine Zeile angegeben ist, so können die zugehörigen Operatoren zwar formal verschieden sein, liefern in der zweiwertigen \Aussagenlogik\ jedoch dieselben Ergebnisse.
 
 Die zur Einsparung von Klammern definierten Prioritäten sind \vrefintab{tab:Prioritäten} angegeben.%
 \footnote{Zur Erinnerung: Es gilt Rechtsklammerung. \vrefseesub{sub:Prioritäten}}
@@ -905,7 +904,7 @@ Die zur Einsparung von Klammern definierten Prioritäten sind \vrefintab{tab:Pri
 \subsection{Formalisierung}% ---------------------------------------------------
 \label{sub:Formalisierung}
 
-Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \ASBA\ sind, müssen die \Axiome, \Saetze, \Beweise, \textusw\ der \glsIdx{Aussagenlogik} (und später der \glsIdx{Praedikatenlogik}) in streng formaler Form vorliegen.%
+Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \ASBA\ sind, müssen die \Axiome, \Saetze, \Beweise, \textusw\ der \Aussagenlogik\ (und später der \Praedikatenlogik) in streng formaler Form vorliegen.%
 \footnote{%
 	Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
 }
@@ -1027,7 +1026,7 @@ Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich i
 Die \glsIdxPl{Formel} aus $\alForp_x$ sind frei von Klammern.
 Die Namen der Operatoren finden sich \vrefintab{tab:Symbole}.
 Für aussagenlogische \glsIdxPl{Formel}, \textdh\ von Elementen aus $\alFor$ \textbzgl\ $\alForp$, werden hier normalerweise die kleinen griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwendet.
-Sie können dabei auch als \defn{\glsIdx{atomare-Formel}} bezeichnet werden, \textdh\ \glsIdxPl{Formel}, die sich nicht weiter zerlegen lassen.%
+Sie können dabei auch als \defn{\atomareFormel} bezeichnet werden, \textdh\ \glsIdxPl{Formel}, die sich nicht weiter zerlegen lassen.%
 \footnote{%
 	Nur die Elemente von $\alVar$ und $\alCon$ sind unzerlegbare Elemente von $\alFor$.
 }
@@ -1168,6 +1167,7 @@ Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der De
 
 \subsection{Aussagenlogisches Axiomensystem}% ----------------------------------
 \label{sub:ausAxiome}
+\hidden{\Axiomensystem}
 
 Ausgehend von der \glsIdxBg{logische-Signatur}{logischen Signatur} $\alJun_\iAnd = \{\lnot, \land\}$ und der \vrefdef{def:imp} von \chrqt{$\limp$} werden die folgenden vier logischen \Axiome\ definiert:
 \begin{align}
@@ -1195,10 +1195,9 @@ Ausgehend von der \glsIdxBg{logische-Signatur}{logischen Signatur} $\alJun_\iAnd
 %TODO Aussagenlogik weiter bearbeiten. %%%
 
 \section{Prädikatenlogik}% =====================================================
-\beginsection{Prädikatenlogik}
+\beginsection{\Praedikatenlogik}
 \label{sec:Prädikatenlogik}
-\hidden{\glsIdx{Praedikatenlogik}}
-%TODO Fehler: Bei Prädikatenlogik im Glossar fehlt Verweis auf diese Stelle
+\hidden{\Praedikatenlogik}
 
 \todo{Prädikatenlogik bearbeiten.}%%%
 %TODO Prädikatenlogik bearbeiten. %%%

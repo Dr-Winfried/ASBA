@@ -41,15 +41,15 @@
 \hidden{\glsIdx{Schlussregel}}
 
 In diesem \sectionname\ geht es um \glsIdxPl{zulaessige-Transformation}, \textdh\ \glsIdx{allgemeingueltige-Schlussregel}.
-Dazu gehören zunächst die \glsIdxPl{Basisregel}.
-Dann aber auch alle aus den \glsIdxPl{Basisregel} und den bis dahin \glsIdxBg{allgemeingueltige-Schlussregel}{allgemeingültigen Schlussregeln} korrekt abgeleiteten neuen \glsIdxPl{Schlussregel}.
+Dazu gehören zunächst die \Basisregeln.
+Dann aber auch alle aus den \Basisregeln\ und den bis dahin \allgemeingueltigenSchlussregeln\ korrekt abgeleiteten neuen \glsIdxPl{Schlussregel}.
 Die \glsIdxPl{Schlussregel} haben die Form eines Formalen \Satzes.
 
 \subsection{Basisregeln}% ------------------------------------------------------
 \label{sub:Basisregeln}
-\hidden{\glsIdxPl{Basisregel}}
+\hidden{\Basisregeln}
 
-Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \glsIdxPl{Basisregel} definiert. Zuvor werden aber noch einige Definition gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \glsIdxPl{Formel}, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \glsIdxBg{Formel}{formalen Elementen} und
+Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \Basisregeln\ definiert. Zuvor werden aber noch einige Definition gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \glsIdxPl{Formel}, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \glsIdxBg{Formel}{formalen Elementen} und
 \begin{align}
 	%
 	&X&&\defeq&&X_1\cup X_2\cup...\cup X_n\cup\{\alpha_1,\alpha_2,...,\alpha_m\}
@@ -62,9 +62,9 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 \begin{align}
 	& \alpha \derive \beta \quad \metadefeq \quad
 	\parbox[t]{10.5cm}{%
-	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessige-Transformation}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ ableitbar.
-	Sprechweise: Aus $\alpha$ ist $\beta$ \defn{ableitbar} oder \defn{beweisbar};
-	kurz: \enquote{$\alpha$ \emph{\glsIdx{ableitbar}} $\beta$} \textbzw\ \enquote{$\alpha$ \emph{\glsIdx{beweisbar}} $\beta$}
+	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessige-Transformation}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ \ableitbar.
+	Sprechweise: Aus $\alpha$ ist $\beta$ \defn{\ableitbar} oder \defn{beweisbar};
+	kurz: \enquote{$\alpha$ \emph{\ableitbar\ } $\beta$} \textbzw\ \enquote{$\alpha$ \emph{\glsIdx{beweisbar}} $\beta$}
 	-- Es kann auch \chrqt{$\alpha$} durch \chrqt{$X$} und/oder \chrqt{$\beta$} durch \chrqt{$Y$} ersetzt werden.
 	}
 	\label{def:ableitbar}
@@ -78,12 +78,12 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 	\formulatoleft
 \end{align}
 %
-Eine \defn{\glsIdx{zulaessige-Transformation}} ist die Anwendung einer \emph{\glsIdx{Substitution}}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\glsIdx{Basisregel}} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
+Eine \defn{\glsIdx{zulaessige-Transformation}} ist die Anwendung einer \emph{\glsIdx{Substitution}}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\glsIdx{Schlussregel}}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
 Bei den \glsIdxPl{Schlussregel} und der \glsIdx{Substitution} ($\subst$) soll das Komma stärker binden als \chrqt{$\derivesym$}, \chrqt{$\subst$} und \chrqt{$\srand$},
  wobei \chrqt{$\srand$} für \enquote{und} \textbzgl\ \chrqt{\glsIdx{metaand}}\vrefnotesub{sub:Aussagen} steht und schwächer bindet als \chrqt{$\derivesym$} und \chrqt{$\subst$}.%
 \footnote{siehe Fußnote~3 \vrefvontab{tab:Prioritäten}} %TODO Kommentar zu \srand prüfen
 
-Zur der Auswahl der \glsIdxPl{Basisregel}, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
+Zur der Auswahl der \Basisregeln, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
 Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$E$} für \enquote{-Einführung} und \chrqt{$B$} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von Operatoren.%
 \footnote{%
 	In der \glsIdx{Monotonieregel} wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \supseteq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \supseteq X $}.
@@ -91,12 +91,12 @@ Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$E$} für \enquote{-Einfü
 }
 
 Im Folgenden seien $\alpha$ und $\beta$ wieder stets \glsIdxPl{Formel} und $X$ und $Y$ Mengen von \glsIdxBg{Formel}{formalen Elementen}.
-Für die sechs \glsIdxPl{Basisregel} werden dann nur noch die logischen Operatoren \chrqt{$\lnot$} und \chrqt{$\land$} benötigt.
+Für die sechs \Basisregeln\ werden dann nur noch die logischen Operatoren \chrqt{$\lnot$} und \chrqt{$\land$} benötigt.
 Bei den weiteren \glsIdxPl{Schlussregel} wird noch \chrqt{$\limp$} gemäß der Definition~\vref{def:imp} verwendet.
 %
 \begin{align}
 	& \frac{}{\alpha\derive\alpha}
-	& & (\text{\defn{\glsIdx{Anfangsregel}}})
+	& & (\text{\defn{\Anfangsregel}})
 	\tag{\tagAR} \sym{\gls{AR}} \label{def:Anfangsregel}
 	\\\\
 	& \frac{X\derive\alpha}{X,Y\derive\alpha}
@@ -122,10 +122,10 @@ Bei den weiteren \glsIdxPl{Schlussregel} wird noch \chrqt{$\limp$} gemäß der D
 \end{align}
 %
 In einer \glsIdx{Schlussregel} werden die \glsIdxBg{Formel}{formalen Elemente}%
-\footnote{hier: \glsIdxPl{Aussage} in einer formalen Form.}
+\footnote{hier: \Aussagen\ in einer formalen Form.}
 über dem Querstrich als \defn{\glsIdxPl{Voraussetzung}} und die unter dem Querstrich als \defn{\glsIdx{Folgerung}} der Regel bezeichnet.
-Eine \glsIdx{Schlussregel} steht für die \glsIdx{Aussage}, dass mit ihren \glsIdxPl{Voraussetzung} auch auch ihre \glsIdxPl{Folgerung} gelten.
--- Im Gegensatz zu den weiteren \glsIdxPl{Schlussregel} werden die oben aufgelisteten Basisregeln nicht weiter hinterfragt, \textdh\ sie gelten quasi als \Axiome.
+Eine \glsIdx{Schlussregel} steht für die \Aussage, dass mit ihren \glsIdxPl{Voraussetzung} auch auch ihre \glsIdxPl{Folgerung} gelten.
+-- Im Gegensatz zu den weiteren \glsIdxPl{Schlussregel} werden die oben aufgelisteten \Basisregeln\ nicht weiter hinterfragt, \textdh\ sie gelten quasi als \Axiome.
 
 \subsection{Identitätsregeln}% --------------------------------------------------------
 \label{sub:Identitätsregeln}
@@ -194,13 +194,13 @@ Nun können die beiden \glsIdxPl{Identitaetsregel} definiert werden:
 \end{align}
 %
 Die \glsIdxPl{Identitaetsregel} werden hier eingeführt, um die \glsIdx{Substitution} zu rechtfertigen.
-Wie die \glsIdxPl{Basisregel} gelten sie als \Axiome, würden also eigentlich dazu gehören.
-Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \glsIdxPl{Basisregel} gezählt.
+Wie die \Basisregeln\ gelten sie als \Axiome, würden also eigentlich dazu gehören.
+Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \Basisregeln\ gezählt.
 
 \subsection{Weitere Schlussregeln}% --------------------------------------------
 \label{sub:weitereSchlussregeln}
 
-In~\cite{bib:Rautenberg} werden aus den Basisregeln mittels \glsIdxBg{zulaessige-Transformation}{zulässiger Transformationen} weitere \glsIdxPl{Schlussregel} abgeleitet.%
+In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \glsIdxBg{zulaessige-Transformation}{zulässiger Transformationen} weitere \glsIdxPl{Schlussregel} abgeleitet.%
 %TODO Identitätsregeln kommen bei Rautenberg später vor. ???
 \footnote{%
 	In~\cite{bib:Rautenberg} werden die \glsIdxPl{Identitaetsregel} zwar weder aufgeführt noch angewandt, ohne \glsIdx{Substitution} geht es aber nicht.
@@ -229,12 +229,12 @@ Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 	\tag{\tagSR} \sym{\gls{SR}} \label{def:SR}
 	\\\\
 	& \frac{X\derive\alpha \srand \alpha\limp\beta}{X\derive\beta}
-	& & (\text{\defn{\glsIdx{Abtrennungsregel}} -- \emph{Modus ponens}})
+	& & (\text{\defn{\Abtrennungsregel} -- \emph{Modus ponens}})
 	\tag{\tagTR} \sym{\gls{TR}} \label{def:TR}
 	\formulatoleft
 \end{align}
 %
-Dabei werden zum \Beweis\ der \glsIdxPl{Schlussregel} in~\cite{bib:Rautenberg} folgende Basisregeln verwendet:
+Dabei werden zum \Beweis\ der \glsIdxPl{Schlussregel} in~\cite{bib:Rautenberg} folgende \Basisregeln\ verwendet:
 \begin{itemize}
 	\renewcommand*{\itemindent}{1cm}
 	\renewcommand*{\labelsep}{5pt}
@@ -249,7 +249,7 @@ Dabei werden zum \Beweis\ der \glsIdxPl{Schlussregel} in~\cite{bib:Rautenberg} f
 \subsection{Beispiel einer Ableitung}% -----------------------------------------
 \label{sub:BeispielAbleitung}
 
-Als Beispiel wird hier die \glsIdx{Schnittregel} aus den Basisregeln abgeleitet.%
+Als Beispiel wird hier die \glsIdx{Schnittregel} aus den \Basisregeln\ abgeleitet.%
 \footnote{%
 	Die Form der Tabelle ist angelehnt an~\cite{bib:NatuerlichesSchliessen} Kapitel~2.2.4 \emph{Eine Beispielableitung}.
 }
@@ -264,9 +264,9 @@ Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschrifte
 	R_i & \defeq
 	\left\{
 		\begin{array}{l}
-			\text{- \enquote{\glsIdx{Voraussetzung}} = Die \glsIdx{Aussage} $A_i$ ist eine \glsIdx{Voraussetzung}.}\\
-			\text{- \enquote{\glsIdx{Folgerung}} = Die \glsIdx{Aussage} $A_i$ ist eine \glsIdx{Folgerung}.}\\
-			\text{- \enquote{Annahme} = Die \glsIdx{Aussage} $A_i$ wird vorübergehend als zutreffend angenommen.}\\
+			\text{- \enquote{\glsIdx{Voraussetzung}} = Die \Aussage\ $A_i$ ist eine \glsIdx{Voraussetzung}.}\\
+			\text{- \enquote{\glsIdx{Folgerung}} = Die \Aussage\ $A_i$ ist eine \glsIdx{Folgerung}.}\\
+			\text{- \enquote{Annahme} = Die \Aussage\ $A_i$ wird vorübergehend als zutreffend angenommen.}\\
 			\text{- $j$ = Verweis auf die \glsIdx{Schlussregel} $\overline{R}_j$ für ein $j < i$.}\\
 			\text{- Verweis (ohne Klammern) auf eine \glsIdx{allgemeingueltige-Schlussregel}.}
 		\end{array}
@@ -277,12 +277,12 @@ Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschrifte
 	\overline{R}_i & \defeq \text{Das Ergebnis der in der angegebenen Reihenfolge angewendeten}\\
 	& \quad\;\; \text{\glsIdxPl{Substitution} aus $S_i$ auf die \glsIdx{Schlussregel} $R_i$}
 	\\
-	Z_i & \defeq \text{Die Indizes $j$ (mit $j < i$) als Verweise auf eine oder mehrere \glsIdxPl{Aussage} $A_j$,}\\
+	Z_i & \defeq \text{Die Indizes $j$ (mit $j < i$) als Verweise auf eine oder mehrere \Aussagen\ $A_j$,}\\
 	& \quad\;\; \text{welche zusammen genau die \glsIdxPl{Voraussetzung} der \glsIdx{Schnittregel} } \overline{R}_i \text{ erfüllen.}
 	\\
 	A_i & \defeq \text{\glsIdx{Folgerung}(en) der \glsIdx{Schlussregel} $\overline{R}_i$ --}\\
 	& \quad\;\; \text{auch in Form der Indizes von einem oder mehreren von $Aj$ (mit $j < i$).}\\
-	& \quad\;\; \text{In der Ergebniszeile kann hier auch die bewiesene \glsIdx{Aussage} als Schlussregel stehen.}
+	& \quad\;\; \text{In der Ergebniszeile kann hier auch die bewiesene \Aussage\ als Schlussregel stehen.}
 	\\
 	D_i & \defeq \text{die Indizes der $A_j$, von denen $A_i$ abhängig ist.}
 \end{align}
@@ -326,7 +326,7 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 		\titleCell{1.85cm}{Substitu"=tionen}          {$S_n$} &
 		\titleCell{1.80cm}{erzeugte Regel} {$\overline{R}_n$} &
 		\titleCell{2.15cm}{angewendet auf ...}        {$Z_n$} &
-		\titleCell{1.65cm}{\glsIdx{Aussage}}          {$A_n$} &
+		\titleCell{1.65cm}{\Aussage}          {$A_n$} &
 		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
 		\\\hline\hline
 		1 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X \derive \alpha$ & 1
@@ -358,7 +358,7 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 		12 & \centerParbox{1.4cm}{\tagAR, \tagMR, \tagnota, \tagnotb} & & $\dfrac{A_1 \srand A_2}{A_3}$ & & $\dfrac{X \derive \alpha \srand X, \alpha \derive \beta}{X \derive \beta}$ &
 		\\\hline
 	\end{tabular}
-	\caption{Ableitung der \glsIdx{Schnittregel} aus den \glsIdxPl{Basisregel}}
+	\caption{Ableitung der \glsIdx{Schnittregel} aus den \Basisregeln}
 	\label{tab:AbleitungSchnittregel}
 \end{table}
 
@@ -385,7 +385,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\item $D_i =$ $i$ \quad (ein Verweis auf $A_i$).
 	\end{enumerate}
 	%
-	\item In den nächsten Zeilen werden die \glsIdxPl{Beweisschritt} aufgeführt, für jeden Schritt eine Zeile.
+	\item In den nächsten Zeilen werden die \Beweisschritte\ aufgeführt, für jeden Schritt eine Zeile.
 
 	Zunächst kann $R_i$ kann auf zwei Arten erzeugt werden:
 	\begin{enumerate}
@@ -407,7 +407,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\end{enumerate}
 		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
 	\end{enumerate}
-	Man beachte, dass die \glsIdx{Schlussregel} $\overline{R}_i$, stets allgemeingültig ist, da sie ausschließlich aus \glsIdxBg{allgemeingueltige-Schlussregel}{allgemeingültigen Schlussregeln} mittels \glsIdxPl{Substitution} abgeleitet worden ist.
+	Man beachte, dass die \glsIdx{Schlussregel} $\overline{R}_i$, stets allgemeingültig ist, da sie ausschließlich aus \allgemeingueltigenSchlussregeln\ mittels \glsIdxPl{Substitution} abgeleitet worden ist.
 	Daher gibt es auch keine Beschränkung weiterer \glsIdxPl{Substitution} durch irgendwelche Abhängigkeiten.
 
 	Nun kann die Zeile beendet werden, oder es geht weiter mit:
@@ -417,14 +417,14 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		-- Für jedes angegebene $j$ werden noch die Abhängigkeiten $D_j$ den Abhängigkeiten $D_i$ hinzugefügt.
 		%
 		\item $A_i =$ \glsIdx{Folgerung}(en) der \glsIdx{Schlussregel} $\overline{R}_i$.
-		-- Wenn diese \glsIdxPl{Folgerung} schon als \glsIdxPl{Aussage} $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
+		-- Wenn diese \glsIdxPl{Folgerung} schon als \Aussagen\ $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
 		Damit werden die Zusammenhänge und der Abschluss des \Beweises\ besser ersichtlich.
 		%
 		\item $D_i =$ Die Verweise wurden schon in (\ref{item:Anwendung}) eingetragen.%
 		\footnote{Wenn $D_n$ leer ist, dann ist $A_n$ allgemeingültig.}
 		%
 	\end{enumerate}
-	Der \Beweis\ muss so lange fortgeführt werden, bis alle \glsIdxPl{Folgerung} als \glsIdxPl{Aussage} in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \glsIdxPl{Voraussetzung} abhängig sind.
+	Der \Beweis\ muss so lange fortgeführt werden, bis alle \glsIdxPl{Folgerung} als \Aussagen\ in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \glsIdxPl{Voraussetzung} abhängig sind.
 	%
 	\item \label{item:Ergebniszeile} In einer \defn{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \glsIdx{Schlussregel} formuliert und in einer passenden Spalte notiert werden.
 	Zusätzlich können dort auch noch alle verwendeten \glsIdxPl{Schlussregel} gesammelt werden.
@@ -464,7 +464,7 @@ Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 		\titleCell{1.85cm}{Substitu"=tionen}          {$S_n$} &
 		\titleCell{1.80cm}{erzeugte Regel} {$\overline{R}_n$} &
 		\titleCell{2.15cm}{angewendet auf ...}        {$Z_n$} &
-		\titleCell{1.65cm}{\glsIdx{Aussage}}          {$A_n$} &
+		\titleCell{1.65cm}{\Aussage}          {$A_n$} &
 		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
 		\\\hline \hline
 		1 & \centerParbox{1.00cm}{Folge"=rung} & & & & $(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & 1
@@ -523,7 +523,7 @@ Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 		16 & \centerParbox{1.5cm}{\tagimpE, \tagimpB, \tagSR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ &
 		\\\hline
 	\end{tabular}
-	\caption{Ableitung der \glsIdx{Kontraposition} aus \glsIdxBg{allgemeingueltige-Schlussregel}{allgemeingültigen Schlussregeln}}
+	\caption{Ableitung der \glsIdx{Kontraposition} aus \allgemeingueltigenSchlussregeln}
 	\label{tab:AbleitungKontraposition}
 \end{table}
 

@@ -1,7 +1,7 @@
 %%############################################################################%%
 %%                                                                            %%
 %% Datei:  ASBA-Vorspann.tex                                                  %%
-%% Inhalt: Vorspann für die Datei ASBA.txt                                    %%
+%% Inhalt: Vorspann für ASBA                                                  %%
 %%                                                                            %%
 %% Copyright (C) 2017  Winfried Teschers                                      %%
 %%                                                                            %%
@@ -30,6 +30,9 @@
 % !TeX root = ASBA.tex
 % !TeX encoding = UTF-8
 % !TeX spellcheck = de_DE
+
+% Glossareinträge werden in "ASBA-Vorspann-Glossar" definiert.
+% Elemente, die nur in "ASBA-Mathematik.tex" verwendet werden, werden in "ASBA-Vorspann-Mathematik.tex" definiert.
 
 \documentclass[english, ngerman, parskip=half, headsepline, footsepline, fleqn, notitlepage]{scrreprt}
 
@@ -450,70 +453,3 @@
 \newcommand*{\glsIdxBg}[2]          {#2\idx {\gls{#1}}}%          Beugung
 \newcommand*{\GlsIdxBg}[2]          {#2\idx {\gls{#1}}}% groß und Beugung
 \newcommand*{\Tag}[1]{\tag{\glsPl   {#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag
-
-% Glossareinträge ##############################################################
-
-\newcommand*{\ASBA}{\glsIdx{ASBA}}
-\newacronym{ASBA}{ASBA}{
-	Programmsystem, das \textbf{A}xiome, \textbf{S}ätze, \textbf{B}eweise und \textbf{A}uswertungen behandeln kann.
-}
-\newcommand*    {\Ausgabeschema}  {\glsIdx  {Ausgabeschema}}
-\newcommand*    {\Ausgabeschemata}{\glsIdxPl{Ausgabeschema}}
-\newglossaryentry{Ausgabeschema}{
-	name        ={Ausgabeschema},
-	plural      ={Ausgabeschemata},
-	description ={
-		Ein Schema, mit dem bestimmte mathematische \emph{Objekte} ausgegeben werden sollen.
-	}
-}
-\newcommand*    {\Axiom}  {\glsIdx  {Axiom}}
-\newcommand*    {\Axiome} {\glsIdxPl{Axiom}}
-\newcommand*    {\Axiomen}{\glsIdxBg{Axiom}{Axiomen}}
-\newglossaryentry{Axiom}{
-	name        ={Axiom},
-	plural      ={Axiome},
-	description ={Eine Formel, die unbewiesen als wahr angesehen wird.}
-}
-\newcommand*    {\Beweis}  {\glsIdx  {Beweis}}
-\newcommand*    {\Beweises}{\glsIdxBg{Beweis}{Beweises}}
-\newcommand*    {\Beweise} {\glsIdxPl{Beweis}}
-\newcommand*    {\Beweisen}{\glsIdxBg{Beweis}{Beweisen}}
-\newglossaryentry{Beweis}{
-	name        ={Beweis},
-	plural      ={Beweise},
-	description ={
-		Eine zulässige Ableitung von Folgerungen aus gegebenen Voraussetzungen.
-		-- 	\newline\vrefseesec{sec:BeweiseASBA}.
-	}
-}
-\newcommand*    {\Fachbegriff}  {\glsIdx  {Fachbegriff}}
-\newcommand*    {\Fachbegriffe} {\glsIdxPl{Fachbegriff}}
-\newcommand*    {\Fachbegriffen}{\glsIdxBg{Fachbegriff}{Fachbegriffen}}
-\newglossaryentry{Fachbegriff}{
-	name        ={Fachbegriff},
-	plural      ={Fachbegriffe},
-	description ={Ein Name für einen mathematischen Begriff.}
-}
-\newcommand*    {\Fachgebiet}  {\glsIdx  {Fachgebiet}}
-\newcommand*    {\Fachgebiete} {\glsIdxPl{Fachgebiet}}
-\newcommand*    {\Fachgebieten}{\glsIdxBg{Fachgebiet}{Fachgebieten}}
-\newglossaryentry{Fachgebiet}{
-	name        ={Fachgebiet},
-	plural      ={Fachgebiete},
-	description ={
-		Ein Teil der Mathematik mit einer zugehörigen Basis aus \Axiomen, Sätzen und spezifischen \Fachbegriffen\ und Darstellungen.
-	}
-}
-\newcommand*    {\Satz}   {\glsIdx  {Satz}}
-\newcommand*    {\Satzes} {\glsIdxBg{Satz}{Satzes}}
-\newcommand*    {\Saetze} {\glsIdxPl{Satz}}
-\newcommand*    {\Saetzen}{\glsIdxBg{Satz}{Sätzen}}
-\newglossaryentry{Satz}{
-	name        ={Satz},
-	plural      ={Sätze},
-	description ={
-		Eine mathematische Aussage, dass eine bestimmte Folgerung aus gegebenen Voraussetzungen abgeleitet werden kann.
-	}
-}
-
-\input{ASBA-Vorspann-Mathematik.tex}
