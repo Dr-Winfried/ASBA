@@ -47,35 +47,39 @@ Alle hier aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und 
 \begin{itemize}
 	\item Die \indsec{sec:Notationen} aufgeführten Notationen werden \indcha{cha:Grundlagen} verwendet, ohne nochmals erläutert zu werden. Abweichungen davon werden jeweils gesondert angegeben.
 	%
-	\item Sätze mit \enquote{wir} bestimmen Elemente, die nur für dieses Dokument gelten.
-	Bei allgemein bekannten Elementen wird \enquote{wir} nicht verwendet.
-	Die Verwendung von \enquote{wir} ist allerdings nicht konsistent und soll nur als Hinweis dienen.
+	\item Sätze mit \enquote{wir} bestimmen Notationen, die \textevtl\ nur für dieses Dokument gelten.
+	Bei allgemein bekannten Notationen wird \enquote{wir} nicht verwendet.
+	Die Verwendung von \enquote{wir} ist allerdings möglicherweise nicht konsistent und soll nur als Hinweis dienen.
 	%
-	\item Allgemein bekannte Bezeichnungen und Symbole werden hier nicht aufgeführt.
-	Nur solche, für die es in der Literatur unterschiedliche Bedeutungen gibt.
+	\item Allgemein bekannte Notationen werden hier nicht angeführt.
+	Nur solche, für die in der Literatur unterschiedlich verwendet werden.
 	%
 	\item Werden Begriffe definiert, so werden sie \defn{in dieser} Schriftart hervorgehoben.
 \end{itemize}
 \begin{description}
 	%
 	\item[\glsIdxPl{Symbol}] umfassen neben speziellen Symbolen auch Buchstaben, Ziffern und Sonderzeichen.
-	Mehrere lateinische Buchstaben direkt hintereinander (Worte), \textdh\ ohne zusätzlichen Zwischenraum und in $\text{normaler}$ Schriftart, werden als ein einzelnes Symbol behandelt.
-	In der $dieser$ Schriftart zählt jeder Buchstabe als ein eigenes Symbol.
-	Einzelne Symbole werden \chrqt{so} quotiert.
+	Symbole, für die es kein eigenes typographisches Zeichen gibt, können auch durch Aufeinanderfolge mehrerer typographischer Zeichen, \textiAlg\ lateinische Buchstaben, dargestellt werden.
+	Wir nennen sie dann \defn{zusammengesetzte Symbole}, im Gegensatz zu den \defn{einfachen Symbolen}.
+	Charakteristisch für ein Symbol ist, dass es ohne Bedeutungsverlust nicht zerlegt werden kann.
+	Einzelne Symbole werden \chrqt{so} quotiert, \textzB\ \chrqt{$\gsNo$}%
+	\footnote{%
+		Man kann \chrqt{$\gsNo$} auch als als Aufeinanderfolge der beiden Symbole \chrqt{$\gsN$} und \chrqt{${}_0$} betrachten.
+		Welche Interpretation richtig ist, ist nicht immer wichtig und ergibt sich bei Bedarf aus dem Zusammenhang.
+	}
+	für die Menge der natürlichen Zahlen einschließlich 0 und \chrqt{$\sin$} für die Sinusfunktion.
 	-- Die Quotierung ist kein Bestandteil des \glsIdx{Symbol}s!
 	%
-	\item [\glsIdxPl{Zeichenkette}] sind Folgen von \glsIdxPl{Symbol}, in denen auch Leerstellen erlaubt sind.
-	Der Einfachheit halber werden andere Zwischenraumzeichen -- wie \textzB\ Tabulatoren, Zeilen- und Seitenumbruch -- als je ein Leerzeichen aufgefasst, sollten aber vermieden werden.%
+	\item [\glsIdxPl{Zeichenkette}] sind Folgen von einfachen \glsIdx{Symbol}en, in denen im Prinzip auch Leerstellen und andere nicht druckbare Zeichen zulässig sind.%
 	\footnote{%
-		Da beim Ausdruck optisch nicht entschieden werden kann, ob ein Zwischenraum (white space) aus einem Tabulator oder \textevtl\ mehreren Leerzeichen besteht, verwenden wir hier nur Leerzeichen als Zwischenraumzeichen.
-		Und da bei Zeilen- und Seitenumbruch die Leerstellen am Zeilenende vom Textprogramm abgeschnitten werden, werden in diesem Dokument Zeichenketten nicht umgebrochen.
+		Da beim Ausdruck optisch nicht entschieden werden kann, ob ein Zwischenraum (white space) aus einem Tabulator oder \textevtl\ mehreren Leerzeichen besteht, verwenden wir nur einzelne Leerzeichen als Zwischenraumzeichen und vermeiden Zeilenumbrüche.
 	}
 	Damit Leerstellen in Zeichenketten leicht bestimmt und sogar gezählt werden können,
-	werden Zeichenketten stets \strqt{in dieser} Schriftart und \strqt{dieser} Quotierung dargestellt.
+	werden Zeichenketten stets \strqt{in dieser} Schriftart und Quotierung dargestellt.
 	-- Die Quotierung ist kein Bestandteil der \glsIdx{Zeichenkette}!
 	%
-	\item [\glsIdxPl{Zeichenfolge}] sind ähnlich wie \glsIdxPl{Zeichenkette}, außer das Leerzeichen und andere Zwischenraumzeichen nicht zählen.
-	Zwischenraum dient nur der optischen Trennung der Zeichen und Symbole und der besseren Lesbarkeit.
+	\item [\glsIdxPl{Zeichenfolge}] sind ähnlich wie \glsIdxPl{Zeichenkette}, außer das sie neben einfachen auch zusammengesetzte Symbolen enthalten können und Leerzeichen und andere Zwischenraumzeichen nicht zählen.
+	Letztere dienen nur der optischen Trennung der Symbole und der besseren Lesbarkeit.
 	Zeichenfolgen werden stets \seqqt{in dieser} Quotierung dargestellt.
 	-- Die Quotierung ist kein Bestandteil der \glsIdx{Zeichenfolge}!
 	%
@@ -88,33 +92,26 @@ Alle hier aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und 
 	Daher werden sie wie \glsIdxPl{Zeichenfolge} quotiert.
 	-- Die Quotierung ist kein Bestandteil der \glsIdx{Zeichenfolge}!
 
-	Man kann eine \glsIdx{Formel} $\alpha$ auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen Menge $\formulaset$ von \glsIdxPl{Zeichenfolge} ist.%
+	Man kann eine \glsIdx{Formel} auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen Menge $\formulaset$ von \glsIdxPl{Zeichenfolge} ist.%
 	\footnote{%
-		$\alpha$ wird dann auch \defn{Wort} der \defn{Sprache} $\formulaset$ genannt - besonders, wenn die Elemente von $\formulaset$ \glsIdxPl{Zeichenkette} statt \glsIdxPl{Zeichenfolge} sind.
+		Die Formel wird dann auch \defn{Wort} der \defn{Sprache} $\formulaset$ genannt - besonders, wenn die Elemente von $\formulaset$ \glsIdxPl{Zeichenkette} statt \glsIdxPl{Zeichenfolge} sind.
 		Wir bleiben der Klarheit willen bei \enquote{Formel}.
 	}
+	Das ist dann so ziemlich die einfachste Regel.
 	%
 	\item[\glsIdxPl{Objekt}] sind \textzB\ \glsIdxPl{Symbol}, \glsIdxPl{Zeichenkette}, \glsIdxPl{Zeichenfolge} und \glsIdxPl{Formel}, oder auch \Aussagen, Mengen, Zahlen, \textusw\ -- ganz allgemein reale oder gedachte Dinge an sich.
 	Eine \glsIdx{Formel}, die nicht quotiert ist, steht für den Wert dieser \glsIdx{Formel}, der dann wieder ein \glsIdx{Objekt} ist.
-	Entsprechend steht ein \glsIdx{Symbol}, das nicht quotiert ist, für das dadurch bezeichnete \glsIdxPl{Objekt}.
+	Entsprechend steht ein \glsIdx{Symbol}, das nicht quotiert ist, für das dadurch bezeichnete \glsIdx{Objekt}.
 	\textZB bezeichnet das \glsIdx{Symbol} \chrqt{$\gsN$} die Menge $\gsN$ der natürlichen Zahlen ohne 0.
 	%
 \end{description}
 
-Die Fußnoten dienen nur zu vertieften Erläuterungen und Verweisen in dieses Dokument und in die Literatur.
-Für das Verständnis des Textes sind sie nicht nötig\footnote{Hoffentlich!}, es reichen
-Grundkenntnisse in Mathematik.
+Fußnoten dienen nur zu weiteren Erläuterungen sowie Verweisen in dieses Dokument und in die Literatur.
+Für das Verständnis des Textes sollten sie nicht nötig sein, es reichen
+Grundkenntnisse der Mathematik.
 
 \subsection{Quotierung}% -------------------------------------------------------
 \label{sub:Quotierung}
-
-%%%Ein Zeichen oder Wort der natürlichen Sprache kann verschiedene Bedeutungen haben.
-%%%\textZB\ steht das Wort \enquote{sin}
-%%%für das \emph{\glsIdx{Objekt}} Sinusfunktion,
-%%%für das \emph{Symbol} (\emph{Zeichen}, auch \emph{Buchstabe} oder \emph{Name}), mit dem die Sinusfunktion bezeichnet wird,
-%%%für eine \emph{Formel} (\emph{Zeichenfolge}) oder
-%%%für eine \emph{Zeichenkette}.
-%%%Zur Unterscheidung verwenden wir verschiedene Quotierungen und Schriftarten:
 
 Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:
 
@@ -122,22 +119,20 @@ Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:
 	&        $\sin$  & Ein \glsIdx{Objekt}
 	& die Sinusfunktion
 	\\
-	& \chrqt{$\sin$} & Ein \glsIdx{Symbol} (Name, Bezeichnung)
+	& \chrqt{$\sin$} & Ein \glsIdx{Symbol} (Bezeichnung)
 	& für das \glsIdx{Objekt}
 	\\
-	& \seqqt{$\sin$} & Eine \glsIdx{Formel} \textbzw\ \glsIdx{Zeichenfolge}
-	& bestehend aus dem einem \glsIdx{Symbol} \chrqt{$\sin$}
+	& \seqqt{$\sin$} & Eine \glsIdx{Zeichenfolge} (\glsIdx{Formel})
+	& bestehend aus dem zusammengesetzten \glsIdx{Symbol} \chrqt{$\sin$}
 	\\
-	& \seqqt {$sin$} & Eine \glsIdx{Formel} \textbzw\ \glsIdx{Zeichenfolge}
-	& bestehend aus den drei \glsIdxPl{Symbol}n \chrqt{$s$}, \chrqt{$i$} und \chrqt{$n$}
+	& \seqqt {$sin$} & Eine \glsIdx{Zeichenfolge} (\glsIdx{Formel})
+	& bestehend aus den einfachen \glsIdxPl{Symbol}n \chrqt{$s$}, \chrqt{$i$} und \chrqt{$n$}
 	\\
 	& \strqt  {sin}  & Eine Zeichenkette
-	& bestehend aus den drei \glsIdxPl{Symbol}n \chrqt{\charf{s}}, \chrqt{\charf{i}} und \chrqt{\charf{n}}
+	& bestehend aus den einfachen \glsIdxPl{Symbol}n \chrqt{\charf{s}}, \chrqt{\charf{i}} und \chrqt{\charf{n}}
 \end{tabular}
 
 Die Bezeichnung eines \glsIdx{Objekt}s kann auch aus mehreren Symbolen bestehen, \textdh\ einer Zeichenfolge oder sogar einer ganzen \glsIdx{Formel}; \textzB\ ist die Bezeichnung für das indizierte \glsIdx{Objekt} $a_i$ gleich \seqqt{$a_i$}.
-Man beachte noch, dass in \glsIdxPl{Formel} Worte in normaler (lateinischer) Schrift jeweils genau ein Symbol repräsentieren sollen.
-Die kursive Schrift ist Variablen vorbehalten und ein kursiv geschriebener Buchstabe ist immer ein einzelnes Symbol.
 
 \subsection{Bezeichnungen}% ----------------------------------------------------
 \label{sub:Bezeichnungen}
@@ -163,7 +158,6 @@ Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Eleme
 \label{sub:binär}
 
 Als Beispielsymbol für unäre Operatoren wird \chrqt{$\opubsp$} und für binäre Operatoren \chrqt{$\opbsp$} verwendet.
-Weitere Vereinbarungen für \chrqt{$\opubsp$} treffen wir nicht.
 Seien weiterhin \chrqt{\glsIdx{lrelbsp}}, \chrqt{\glsIdx{rrelbsp}}, \chrqt{\glsIdx{relbsp}}, \chrqt{\glsIdx{releqbsp}} und \chrqt{\glsIdx{relnbsp}} Beispielsymbole für Relationen.%
 \footnote{%
 	Die Relationen brauchen weder Ordnungen noch Äquivalenzrelationen sein, auch wenn die angegebenen Symbole dies nahe legen.
@@ -174,7 +168,10 @@ Wenn nichts anderes gesagt wird, gelte stets:
 	& (A \lrelbsp   B) & \metadefeq & \quad  (B \rrelbsp   A)
 	\label{eq:lrrelbsp}   \\
 	& (A \relnbsp  B)  & \metadefeq & \quad [(A \relbsp   B) \text{ gilt nicht}]
-	\label{eq:relnbsp}    \\
+	\label{eq:relnbsp}    \formulatoleft\formulatoleft\formulatoleft
+\end{align}
+und je nachdem ob $\relbsp$ oder $\releqbsp$ definiert ist:
+\begin{align}
 	& (A \releqbsp  B) & \metadefeq & \quad ((A \relbsp   B) \metaor  (A \eq B))
 	\label{eq:releqbsp}   \\
 	& (A \relbsp B)    & \metadefeq & \quad ((A \releqbsp B) \metaand (A \ne B))
@@ -231,10 +228,12 @@ zusammen mit einer binären Operation $\opbsp$ oder einer weiteren binären Rela
 	&&& A \relbsp B \quad \metaand \quad B \approx C \formulatoleft
 \end{align}
 %
+Weitere Vereinbarungen für \chrqt{$\opubsp$} treffen wir nicht.
+
 Es sei noch angemerkt, dass wegen \eqref{eq:lrrelbsp} die Definition von \chrqt{$\metarep$} \vrefinsub{sub:AussagenUndMetaoperatoren} überflüssig ist.
 Wegen der angegebenen Sprechweise ist sie dennoch angegeben.
 Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab:Prioritäten} angegeben.
-Damit sind auch alle Klammern \indsub{sub:binär} überflüssig.
+Damit wären dann alle Klammern \indsub{sub:binär} überflüssig.
 
 \subsection{Prioritäten}% --------------------------------------
 \beginsection{Prioritäten}
@@ -647,8 +646,8 @@ in \ASBA\ besteht aus
 \begin{align}
 	& \text{einer \glsIdx{Schlussregel}} && \frac{\prerequisiteset}{\conclusionset}
 	\\
-	& \text{einer Folge} && \proofstepsequenz = (\Beweisschritt_1, \Beweisschritt_2, ..., \Beweisschritt_K)
-	&& \text{von \emph{\Beweisschritten} } \Beweisschritt_k
+	& \text{einer Folge} && \proofstepsequenz = (\proofstep_1, \proofstep_2, ..., \proofstep_K)
+	&& \text{von \emph{\Beweisschritten} } \proofstep_k
 	&& \text{, die \defn{\glsIdx{Beweisschrittfolge}}}
 	\label{def:Beweisschrittfolge}
 	\\
@@ -658,10 +657,10 @@ in \ASBA\ besteht aus
 	\label{def:Transformationsmenge}
 \end{align}
 %TODO zulässige Transformationen
-wobei $K$ ein Element von $\gsNo$ ist, die \defn{\Beweisschritte} $\Beweisschritt_k$ \glsIdxPl{Schlussregel} und die Transformationen später definiert werden.
+wobei $K$ ein Element von $\gsNo$ ist, die \defn{\Beweisschritte} $\proofstep_k$ \glsIdxPl{Schlussregel} und die Transformationen später definiert werden.
 Wir definieren noch:
 \begin{align}
-	& \proofstepset_k & \defeq & \quad \{\Beweisschritt_1, \Beweisschritt_2, ..., \Beweisschritt_k\} & \quad \text{, für~~} 0 \le k \le K
+	& \proofstepset_k & \defeq & \quad \{\proofstep_1, \proofstep_2, ..., \proofstep_k\} & \quad \text{, für~~} 0 \le k \le K
 	\label{def:Beweisschrittebis} \\
 	& \proofstepset   & \defeq & \quad \proofstepset_K \label{def:Beweisschrittmenge}
 	\formulatoleft\formulatoleft\formulatoleft
@@ -672,7 +671,7 @@ Dann ist $\proofstepset_0=\emptyset$ und $\proofstepset_i\subseteq\proofstepset_
 ========================================================================
 %TODO===================================================================
 
-Jeder \Beweisschritt\ $ \Beweisschritt_k \text{ für } 1 \le k \le K $ muss entweder eine \glsIdx{Voraussetzung} aus $\prerequisiteset$ oder durch Anwendung einer \allgemeingueltigenSchlussregel\ auf eine Teilmenge von $\proofstepset_{k-1}$ eine wahre Formel oder eine weitere \emph{allgemeingueltige Schlussregel} sein.
+Jeder \Beweisschritt\ $ \proofstep_k \text{ für } 1 \le k \le K $ muss entweder eine \glsIdx{Voraussetzung} aus $\prerequisiteset$ oder durch Anwendung einer \allgemeingueltigenSchlussregel\ auf eine Teilmenge von $\proofstepset_{k-1}$ eine wahre Formel oder eine weitere \emph{allgemeingueltige Schlussregel} sein.
 Schließlich muss noch
 \[ \conclusionset \subseteq \proofstepset \]
 sein, da jede Folgerung aus $\conclusionset$ in der Folge $\proofstepsequenz$ vorkommen und somit Element der Menge $\proofstepset$ sein muss.
