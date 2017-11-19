@@ -49,7 +49,7 @@ Die \glsIdxPl{Schlussregel} haben die Form eines Formalen \Satzes.
 \label{sub:Basisregeln}
 \hidden{\Basisregeln}
 
-Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \Basisregeln\ definiert. Zuvor werden aber noch einige Definition gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \glsIdxPl{Formel}, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \glsIdxBg{Formel}{formalen Elementen} und
+Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \Basisregeln\ definiert. Zuvor werden aber noch einige Definition gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \Formeln\, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \Formeln\ und
 \begin{align}
 	%
 	&X&&\defeq&&X_1\cup X_2\cup...\cup X_n\cup\{\alpha_1,\alpha_2,...,\alpha_m\}
@@ -63,8 +63,8 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 	& \alpha \derive \beta \quad \metadefeq \quad
 	\parbox[t]{10.5cm}{%
 	$\beta$ ist mittels schrittweiser Anwendung \emph{\glsIdxBg{zulaessige-Transformation}{zulässiger Transformationen}} (siehe weiter unten) aus $\alpha$ \ableitbar.
-	Sprechweise: Aus $\alpha$ ist $\beta$ \defn{\ableitbar} oder \defn{beweisbar};
-	kurz: \enquote{$\alpha$ \emph{\ableitbar\ } $\beta$} \textbzw\ \enquote{$\alpha$ \emph{\glsIdx{beweisbar}} $\beta$}
+	Sprechweise: Aus $\alpha$ ist $\beta$ \defn{\ableitbar} oder \defn{\beweisbar};
+	kurz: \enquote{$\alpha$ \emph{\ableitbar} $\beta$} \textbzw\ \enquote{$\alpha$ \emph{\beweisbar} $\beta$}
 	-- Es kann auch \chrqt{$\alpha$} durch \chrqt{$X$} und/oder \chrqt{$\beta$} durch \chrqt{$Y$} ersetzt werden.
 	}
 	\label{def:ableitbar}
@@ -84,14 +84,14 @@ Bei den \glsIdxPl{Schlussregel} und der \glsIdx{Substitution} ($\subst$) soll da
 \footnote{siehe Fußnote~3 \vrefvontab{tab:Prioritäten}} %TODO Kommentar zu \srand prüfen
 
 Zur der Auswahl der \Basisregeln, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
-Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$E$} für \enquote{-Einführung} und \chrqt{$B$} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von Operatoren.%
+Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$E$} für \enquote{-Einführung} und \chrqt{$B$} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von \Junktoren.%
 \footnote{%
 	In der \glsIdx{Monotonieregel} wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \supseteq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \supseteq X $}.
 	Außerdem werden bei den Bezeichnungen \seqqt{$(\land 1)$} und \seqqt{$(\land 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$\andE$} \textbzw\ \seqqt{$\andB$} ersetzt.
 }
 
-Im Folgenden seien $\alpha$ und $\beta$ wieder stets \glsIdxPl{Formel} und $X$ und $Y$ Mengen von \glsIdxBg{Formel}{formalen Elementen}.
-Für die sechs \Basisregeln\ werden dann nur noch die logischen Operatoren \chrqt{$\lnot$} und \chrqt{$\land$} benötigt.
+Im Folgenden seien $\alpha$ und $\beta$ wieder stets \Formeln\ und $X$ und $Y$ Mengen von \Formeln.
+Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{$\lnot$} und \chrqt{$\land$} benötigt.
 Bei den weiteren \glsIdxPl{Schlussregel} wird noch \chrqt{$\limp$} gemäß der Definition~\vref{def:imp} verwendet.
 %
 \begin{align}
@@ -121,32 +121,33 @@ Bei den weiteren \glsIdxPl{Schlussregel} wird noch \chrqt{$\limp$} gemäß der D
 	\formulatoleft
 \end{align}
 %
-In einer \glsIdx{Schlussregel} werden die \glsIdxBg{Formel}{formalen Elemente}%
+In einer \glsIdx{Schlussregel} werden die \Formeln%
 \footnote{hier: \Aussagen\ in einer formalen Form.}
-über dem Querstrich als \defn{\glsIdxPl{Voraussetzung}} und die unter dem Querstrich als \defn{\glsIdx{Folgerung}} der Regel bezeichnet.
-Eine \glsIdx{Schlussregel} steht für die \Aussage, dass mit ihren \glsIdxPl{Voraussetzung} auch auch ihre \glsIdxPl{Folgerung} gelten.
+über dem Querstrich als \defn{\Voraussetzungen} und die unter dem Querstrich als \defn{\Folgerungen} der Regel bezeichnet.
+Eine \glsIdx{Schlussregel} steht für die \Aussage, dass mit ihren \Voraussetzungen\ auch auch ihre \Folgerungen\ gelten.
 -- Im Gegensatz zu den weiteren \glsIdxPl{Schlussregel} werden die oben aufgelisteten \Basisregeln\ nicht weiter hinterfragt, \textdh\ sie gelten quasi als \Axiome.
 
 \subsection{Identitätsregeln}% --------------------------------------------------------
 \label{sub:Identitätsregeln}
+%%%\hidden{\Identitaetsregel}
 
 Die \defn{\glsIdxBg{zulaessige-Transformation}{zulässigen Transformationen}}, \textdh\ die Anwendung der \glsIdxPl{Schlussregel}, erfordern zulässige \glsIdxPl{Substitution}.
 Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{$\eq$} dann mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
 \footnote{siehe~\cite{bib:NatuerlichesSchliessen}}
 Dazu seien $\alpha$, $\beta$ und $\gamma$ \glsIdxPl{vergleichbar}%
 \footnote{siehe Ende \vrefvonsub{sub:Aussagen}}
-\glsIdxPl{Formel}.
+\Formeln.
 Zunächst wird definiert:
 \begin{align}
 	\gamma(\alpha \subst \beta) \quad \defeq \quad
 	\parbox[t]{11cm}{%
-		Das \glsIdxBg{Formel}{formale Element}, dass man erhält, wenn in $\gamma$ alle oder nur einige Vorkommen von $\alpha$ durch $\beta$ ersetzt werden.
+		Die \Formel, die man erhält, wenn in $\gamma$ alle oder nur einige Vorkommen von $\alpha$ durch $\beta$ ersetzt werden.
 		-- Gegebenenfalls muss noch die Auswahl der Ersetzungen angegeben werden, andernfalls werden alle Vorkommen ersetzt.
 		Letzteres heißt dann \defn{vollständige} \glsIdx{Substitution}.
 	} \label{def:Substitution}\\
 	\gamma(\alpha \swap \beta) \quad \defeq \quad
 	\parbox[t]{11cm}{%
-		Das \glsIdxBg{Formel}{formale Element}, dass man erhält, wenn in $\gamma$ alle $\alpha$ und $\beta$ miteinander vertauscht werden.
+		Die \Formel, die man erhält, die man erhält, wenn in $\gamma$ alle $\alpha$ und $\beta$ miteinander vertauscht werden.
 		Dazu ist es nötig, das $\alpha$ und $\beta$ voneinander unabhängig sind, vorzugsweise zwei verschiedene Variable.
 	} \label{def:Vertauschung}
 \end{align}
@@ -176,12 +177,12 @@ Folgende Sprechweisen werden verwendet:
 	\item [$\gamma(S)$ :] $S$ wird auf $\gamma$ angewendet.
 \end{itemize}
 %
-Bei obiger Definition der \glsIdx{Substitution} bleibt noch offen, unter welchen \glsIdxPl{Voraussetzung} sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \glsIdx{Vertauschung} und vollständige \glsIdx{Substitution} verwendet werden.
-In diesen Fällen sind beliebige \glsIdxPl{Substitution} von Variablen durch \glsIdxPl{Formel} erlaubt.
+Bei obiger Definition der \glsIdx{Substitution} bleibt noch offen, unter welchen \Voraussetzungen\ sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \glsIdx{Vertauschung} und vollständige \glsIdx{Substitution} verwendet werden.
+In diesen Fällen sind beliebige \glsIdxPl{Substitution} von Variablen durch \Formeln\ erlaubt.
 
 Ist $\gamma$ wie oben und $S$ eine Menge von \glsIdxPl{Substitution}.
 
-Nun können die beiden \glsIdxPl{Identitaetsregel} definiert werden:
+Nun können die beiden \Identitaetsregeln\ definiert werden:
 \begin{align}
 	& \frac{}{\alpha\eq\alpha}
 	& & (\text{Einführung der Identität})
@@ -193,17 +194,18 @@ Nun können die beiden \glsIdxPl{Identitaetsregel} definiert werden:
 	\formulatoleft
 \end{align}
 %
-Die \glsIdxPl{Identitaetsregel} werden hier eingeführt, um die \glsIdx{Substitution} zu rechtfertigen.
+Die \Identitaetsregeln\ werden hier eingeführt, um die \glsIdx{Substitution} zu rechtfertigen.
 Wie die \Basisregeln\ gelten sie als \Axiome, würden also eigentlich dazu gehören.
 Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \Basisregeln\ gezählt.
 
 \subsection{Weitere Schlussregeln}% --------------------------------------------
 \label{sub:weitereSchlussregeln}
+%%%\hidden{\Schlussregel}
 
 In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \glsIdxBg{zulaessige-Transformation}{zulässiger Transformationen} weitere \glsIdxPl{Schlussregel} abgeleitet.%
 %TODO Identitätsregeln kommen bei Rautenberg später vor. ???
 \footnote{%
-	In~\cite{bib:Rautenberg} werden die \glsIdxPl{Identitaetsregel} zwar weder aufgeführt noch angewandt, ohne \glsIdx{Substitution} geht es aber nicht.
+	In~\cite{bib:Rautenberg} werden die \Identitaetsregeln\ zwar weder aufgeführt noch angewandt, ohne \glsIdx{Substitution} geht es aber nicht.
 }
 Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 %
@@ -248,6 +250,7 @@ Dabei werden zum \Beweis\ der \glsIdxPl{Schlussregel} in~\cite{bib:Rautenberg} f
 %
 \subsection{Beispiel einer Ableitung}% -----------------------------------------
 \label{sub:BeispielAbleitung}
+%%%\hidden{\Ableitung}
 
 Als Beispiel wird hier die \glsIdx{Schnittregel} aus den \Basisregeln\ abgeleitet.%
 \footnote{%
@@ -264,8 +267,8 @@ Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschrifte
 	R_i & \defeq
 	\left\{
 		\begin{array}{l}
-			\text{- \enquote{\glsIdx{Voraussetzung}} = Die \Aussage\ $A_i$ ist eine \glsIdx{Voraussetzung}.}\\
-			\text{- \enquote{\glsIdx{Folgerung}} = Die \Aussage\ $A_i$ ist eine \glsIdx{Folgerung}.}\\
+			\text{- \enquote{\Voraussetzung} = Die \Aussage\ $A_i$ ist eine \Voraussetzung.}\\
+			\text{- \enquote{\Folgerung} = Die \Aussage\ $A_i$ ist eine \Folgerung.}\\
 			\text{- \enquote{Annahme} = Die \Aussage\ $A_i$ wird vorübergehend als zutreffend angenommen.}\\
 			\text{- $j$ = Verweis auf die \glsIdx{Schlussregel} $\overline{R}_j$ für ein $j < i$.}\\
 			\text{- Verweis (ohne Klammern) auf eine \glsIdx{allgemeingueltige-Schlussregel}.}
@@ -278,9 +281,9 @@ Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschrifte
 	& \quad\;\; \text{\glsIdxPl{Substitution} aus $S_i$ auf die \glsIdx{Schlussregel} $R_i$}
 	\\
 	Z_i & \defeq \text{Die Indizes $j$ (mit $j < i$) als Verweise auf eine oder mehrere \Aussagen\ $A_j$,}\\
-	& \quad\;\; \text{welche zusammen genau die \glsIdxPl{Voraussetzung} der \glsIdx{Schnittregel} } \overline{R}_i \text{ erfüllen.}
+	& \quad\;\; \text{welche zusammen genau die \Voraussetzungen\ der \glsIdx{Schnittregel} } \overline{R}_i \text{ erfüllen.}
 	\\
-	A_i & \defeq \text{\glsIdx{Folgerung}(en) der \glsIdx{Schlussregel} $\overline{R}_i$ --}\\
+	A_i & \defeq \text{\Folgerung(en) der \glsIdx{Schlussregel} $\overline{R}_i$ --}\\
 	& \quad\;\; \text{auch in Form der Indizes von einem oder mehreren von $Aj$ (mit $j < i$).}\\
 	& \quad\;\; \text{In der Ergebniszeile kann hier auch die bewiesene \Aussage\ als Schlussregel stehen.}
 	\\
@@ -293,9 +296,9 @@ Sei nun
 	\Gamma_i \defeq
 	\left\{
 		\begin{array}{ll}
-			\text{leer}    & \text{ für } R_i = \text{\enquote{\glsIdx{Voraussetzung}}} \\
-			\text{leer}    & \text{ für } R_i = \text{\enquote{\glsIdx{Folgerung}}}     \\
-			\text{leer}    & \text{ für } R_i = \text{\enquote{Annahme}}       \\
+			\text{leer}    & \text{ für } R_i = \text{\enquote{\Voraussetzung}} \\
+			\text{leer}    & \text{ für } R_i = \text{\enquote{\Folgerung}}     \\
+			\text{leer}    & \text{ für } R_i = \text{\enquote{Annahme}}        \\
 			\overline{R_j} & \text{ für } R_i = j \quad \text{(eine \defn{interne} \glsIdx{Schlussregel})} \\
 			\text{die \glsIdx{Schlussregel}} & \text{ für } R_i = \text{Verweis auf eine \defn{externe} \glsIdx{Schlussregel}}
 		\end{array}
@@ -370,18 +373,18 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 %
 \begin{enumerate}
 	%
-	\item Am Anfang der Tabelle werden zuerst \glsIdxPl{Voraussetzung}, dann zu beweisende \glsIdxPl{Folgerung} und schließlich Annahmen aufgeführt.%
+	\item Am Anfang der Tabelle werden zuerst \Voraussetzungen, dann zu beweisende \Folgerungen\ und schließlich Annahmen aufgeführt.%
 	\footnote{%
 		Die Angabe ist dann erforderlich, wenn darauf verwiesen wird.
-		Durch die Auflistung hat man aber einen vollständigen Überblick über die \glsIdxPl{Voraussetzung} und \glsIdxPl{Folgerung} eines \Beweises\ und die Zwischenannahmen.
-		Auf jede nötige \glsIdx{Voraussetzung} und jede verwendete Zwischenannahme wird in der Spalte $(Z_n$) mindestens einmal verwiesen, so dass sie auch aufgeführt werden müssen.
-		Die Angabe der \glsIdxPl{Folgerung} erleichtert die Erstellung einer \emph{Ergebniszeile} (siehe Punkt~\ref{item:Ergebniszeile}).
+		Durch die Auflistung hat man aber einen vollständigen Überblick über die \Voraussetzungen\ und \Folgerungen\ eines \Beweises\ und die Zwischenannahmen.
+		Auf jede nötige \Voraussetzung\ und jede verwendete Zwischenannahme wird in der Spalte $(Z_n$) mindestens einmal verwiesen, so dass sie auch aufgeführt werden müssen.
+		Die Angabe der \Folgerungen\ erleichtert die Erstellung einer \emph{Ergebniszeile} (siehe Punkt~\ref{item:Ergebniszeile}).
 	}
 	Jede der drei Gruppen kann auch leer sein und es ist auch möglich, die Zeilen an anderen Stellen der Tabelle anzugeben, spätestens aber, wenn darauf verwiesen wird.
-	Für jede \glsIdx{Voraussetzung}, \glsIdx{Folgerung} und Annahme gibt es eine Zeile:
+	Für jede \Voraussetzung, \Folgerung\ und Annahme gibt es eine Zeile:
 	\begin{enumerate}
-		\item $R_i =$ \enquote{\glsIdx{Voraussetzung}}, \enquote{\glsIdx{Folgerung}} oder \enquote{Annahme}.
-		\item $A_i =$ Die aktuelle \glsIdx{Voraussetzung}, \glsIdx{Folgerung} oder Annahme.
+		\item $R_i =$ \enquote{\Voraussetzung}, \enquote{\Folgerung} oder \enquote{Annahme}.
+		\item $A_i =$ Die aktuelle \Voraussetzung, \Folgerung\ oder Annahme.
 		\item $D_i =$ $i$ \quad (ein Verweis auf $A_i$).
 	\end{enumerate}
 	%
@@ -413,18 +416,18 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	Nun kann die Zeile beendet werden, oder es geht weiter mit:
 	\begin{enumerate}
 		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
-		\item \label{item:Anwendung} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine \glsIdx{Voraussetzung} der \glsIdx{Schlussregel} $\overline{R}_i$ sind, möglichst in der verwendeten Reihenfolge.
+		\item \label{item:Anwendung} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine \Voraussetzung\ der \glsIdx{Schlussregel} $\overline{R}_i$ sind, möglichst in der verwendeten Reihenfolge.
 		-- Für jedes angegebene $j$ werden noch die Abhängigkeiten $D_j$ den Abhängigkeiten $D_i$ hinzugefügt.
 		%
-		\item $A_i =$ \glsIdx{Folgerung}(en) der \glsIdx{Schlussregel} $\overline{R}_i$.
-		-- Wenn diese \glsIdxPl{Folgerung} schon als \Aussagen\ $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
+		\item $A_i =$ \Folgerung(en) der \glsIdx{Schlussregel} $\overline{R}_i$.
+		-- Wenn diese \Folgerungen\ schon als \Aussagen\ $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
 		Damit werden die Zusammenhänge und der Abschluss des \Beweises\ besser ersichtlich.
 		%
 		\item $D_i =$ Die Verweise wurden schon in (\ref{item:Anwendung}) eingetragen.%
 		\footnote{Wenn $D_n$ leer ist, dann ist $A_n$ allgemeingültig.}
 		%
 	\end{enumerate}
-	Der \Beweis\ muss so lange fortgeführt werden, bis alle \glsIdxPl{Folgerung} als \Aussagen\ in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \glsIdxPl{Voraussetzung} abhängig sind.
+	Der \Beweis\ muss so lange fortgeführt werden, bis alle \Folgerungen\ als \Aussagen\ in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \Voraussetzungen\ abhängig sind.
 	%
 	\item \label{item:Ergebniszeile} In einer \defn{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \glsIdx{Schlussregel} formuliert und in einer passenden Spalte notiert werden.
 	Zusätzlich können dort auch noch alle verwendeten \glsIdxPl{Schlussregel} gesammelt werden.
@@ -433,13 +436,13 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		%
 		\item $(R_n) =$ Verweise auf alle verwendeten externen \glsIdxPl{Schlussregel}.
 		%
-		\item $(\overline{R}_n) =$ Die bewiesene Behauptung als \glsIdxPl{Schlussregel}, wobei alle $A_i$, die \glsIdxPl{Voraussetzung} sind, als \glsIdx{Voraussetzung} und alle $A_j$, die \glsIdxPl{Folgerung} sind, als \glsIdx{Folgerung} eingesetzt werden, jeweils in der Form \enquote{$A_i$} \textbzgl\ \enquote{$A_j$}.
+		\item $(\overline{R}_n) =$ Die bewiesene Behauptung als \glsIdxPl{Schlussregel}, wobei alle $A_i$, die \Voraussetzungen\ sind, als \Voraussetzung\ und alle $A_j$, die \Folgerungen\ sind, als \Folgerung\ eingesetzt werden, jeweils in der Form \enquote{$A_i$} \textbzgl\ \enquote{$A_j$}.
 		Das ergibt dann:
 		\[ \frac{A_{i_1} \srand A_{i_2} \srand ...}{A_{j_1} \srand A_{j_2} \srand ...} \]
 		%
-		\item $(A_n) =$ $\overline{R}_i$, wobei die \glsIdxPl{Voraussetzung} und \glsIdxPl{Folgerung} aufgelöst werden.
+		\item $(A_n) =$ $\overline{R}_i$, wobei die \Voraussetzungen\ und \Folgerungen\ aufgelöst werden.
 		%
-		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der \glsIdxPl{Folgerung}, vermindert um die \glsIdxPl{Voraussetzung}.
+		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der \Folgerungen\, vermindert um die \Voraussetzungen.
 		-- Wenn das Feld dabei nicht leer bleibt, ist der \Beweis\ missglückt!
 		%
 	\end{enumerate}

@@ -83,26 +83,32 @@ Alle hier aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und 
 	Zeichenfolgen werden stets \seqqt{in dieser} Quotierung dargestellt.
 	-- Die Quotierung ist kein Bestandteil der \glsIdx{Zeichenfolge}!
 	%
-	\item [\glsIdxPl{Formel}] sind in diesem Dokument immer nach vorgegebenen Regeln aufgebaute \glsIdxPl{Zeichenfolge}%
+	\item [\Formeln] sind in diesem Dokument immer nach vorgegebenen Regeln aufgebaute \glsIdxPl{Zeichenfolge}%
 	\footnote{%
-		Es kann verschiedene Arten von \glsIdxPl{Formel} geben, \textzB\ aussagenlogische, prädikatenlogische und solche, die ein Taschenrechner auswerten kann.
-%%%		Eine \glsIdx{Formel} kann auch mehrdimensional dargestellt werden, lässt sich aber mittels geeigneter Definitionen immer eindeutig als eine Zeichenfolge schreiben.
+		Es kann verschiedene Arten von \Formeln\ geben, \textzB\ aussagenlogische, prädikatenlogische und solche, die ein Taschenrechner auswerten kann.
+%%%		Eine \Formel\ kann auch mehrdimensional dargestellt werden, lässt sich aber mittels geeigneter Definitionen immer eindeutig als eine Zeichenfolge schreiben.
 %%%		\textZB\ könnte man eine 2$\times$2--Matrix auch schreiben als Folge von Zeilen: \seqqt{$[(a,b),(c,d)]$}, oder noch einfacher: \seqqt{$[a,b;c,d]$}.
 	}.
 	Daher werden sie wie \glsIdxPl{Zeichenfolge} quotiert.
 	-- Die Quotierung ist kein Bestandteil der \glsIdx{Zeichenfolge}!
 
-	Man kann eine \glsIdx{Formel} auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen Menge $\formulaset$ von \glsIdxPl{Zeichenfolge} ist.%
+	Man kann eine \Formel\ auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen Menge $\formulaset$ von \glsIdxPl{Zeichenfolge} ist.%
 	\footnote{%
-		Die Formel wird dann auch \defn{Wort} der \defn{Sprache} $\formulaset$ genannt - besonders, wenn die Elemente von $\formulaset$ \glsIdxPl{Zeichenkette} statt \glsIdxPl{Zeichenfolge} sind.
-		Wir bleiben der Klarheit willen bei \enquote{Formel}.
+		Die \Formel\ wird dann auch \defn{Wort} der \defn{Sprache} $\formulaset$ genannt - besonders, wenn die Elemente von $\formulaset$ \glsIdxPl{Zeichenkette} statt \glsIdxPl{Zeichenfolge} sind.
+		Wir bleiben der Klarheit willen bei \enquote{\Formel}.
 	}
 	Das ist dann so ziemlich die einfachste Regel.
 	%
-	\item[\glsIdxPl{Objekt}] sind \textzB\ \glsIdxPl{Symbol}, \glsIdxPl{Zeichenkette}, \glsIdxPl{Zeichenfolge} und \glsIdxPl{Formel}, oder auch \Aussagen, Mengen, Zahlen, \textusw\ -- ganz allgemein reale oder gedachte Dinge an sich.
-	Eine \glsIdx{Formel}, die nicht quotiert ist, steht für den Wert dieser \glsIdx{Formel}, der dann wieder ein \glsIdx{Objekt} ist.
+	\item[\glsIdxPl{Objekt}] sind \textzB\ \glsIdxPl{Symbol}, \glsIdxPl{Zeichenkette}, \glsIdxPl{Zeichenfolge} und \Formeln, oder auch \Aussagen, Mengen, Zahlen, \textusw\ -- ganz allgemein reale oder gedachte Dinge an sich.
+	Eine \Formel, die nicht quotiert ist, steht für den Wert dieser \Formel, der dann wieder ein \glsIdx{Objekt} ist.
 	Entsprechend steht ein \glsIdx{Symbol}, das nicht quotiert ist, für das dadurch bezeichnete \glsIdx{Objekt}.
 	\textZB bezeichnet das \glsIdx{Symbol} \chrqt{$\gsN$} die Menge $\gsN$ der natürlichen Zahlen ohne 0.
+	%
+	\item[\Operator] ... %TODO Operator(symbol) definieren
+	%
+	\item[\Relation] ... %TODO Relation(ssymbol) definieren
+	%
+	\item[\Junktor] ... %TODO Junktor(symbol) definieren
 	%
 \end{description}
 
@@ -122,17 +128,17 @@ Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:
 	& \chrqt{$\sin$} & Ein \glsIdx{Symbol} (Bezeichnung)
 	& für das \glsIdx{Objekt}
 	\\
-	& \seqqt{$\sin$} & Eine \glsIdx{Zeichenfolge} (\glsIdx{Formel})
+	& \seqqt{$\sin$} & Eine \glsIdx{Zeichenfolge} (\Formel)
 	& bestehend aus dem zusammengesetzten \glsIdx{Symbol} \chrqt{$\sin$}
 	\\
-	& \seqqt {$sin$} & Eine \glsIdx{Zeichenfolge} (\glsIdx{Formel})
+	& \seqqt {$sin$} & Eine \glsIdx{Zeichenfolge} (\Formel)
 	& bestehend aus den einfachen \glsIdxPl{Symbol}n \chrqt{$s$}, \chrqt{$i$} und \chrqt{$n$}
 	\\
 	& \strqt  {sin}  & Eine Zeichenkette
 	& bestehend aus den einfachen \glsIdxPl{Symbol}n \chrqt{\charf{s}}, \chrqt{\charf{i}} und \chrqt{\charf{n}}
 \end{tabular}
 
-Die Bezeichnung eines \glsIdx{Objekt}s kann auch aus mehreren Symbolen bestehen, \textdh\ einer Zeichenfolge oder sogar einer ganzen \glsIdx{Formel}; \textzB\ ist die Bezeichnung für das indizierte \glsIdx{Objekt} $a_i$ gleich \seqqt{$a_i$}.
+Die Bezeichnung eines \glsIdx{Objekt}s kann auch aus mehreren Symbolen bestehen, \textdh\ einer Zeichenfolge oder sogar einer ganzen \Formel; \textzB\ ist die Bezeichnung für das indizierte \glsIdx{Objekt} $a_i$ gleich \seqqt{$a_i$}.
 
 \subsection{Bezeichnungen}% ----------------------------------------------------
 \label{sub:Bezeichnungen}
@@ -156,8 +162,9 @@ Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Eleme
 
 \subsection{Binäre Relationen und Operatoren}% ---------------------------------
 \label{sub:binär}
+\hidden{\Relation\Operator}
 
-Als Beispielsymbol für unäre Operatoren wird \chrqt{$\opubsp$} und für binäre Operatoren \chrqt{$\opbsp$} verwendet.
+Als Beispielsymbol für unäre \Operatoren\ wird \chrqt{$\opubsp$} und für binäre \Operatoren\ \chrqt{$\opbsp$} verwendet.
 Seien weiterhin \chrqt{\glsIdx{lrelbsp}}, \chrqt{\glsIdx{rrelbsp}}, \chrqt{\glsIdx{relbsp}}, \chrqt{\glsIdx{releqbsp}} und \chrqt{\glsIdx{relnbsp}} Beispielsymbole für Relationen.%
 \footnote{%
 	Die Relationen brauchen weder Ordnungen noch Äquivalenzrelationen sein, auch wenn die angegebenen Symbole dies nahe legen.
@@ -179,7 +186,7 @@ und je nachdem ob $\relbsp$ oder $\releqbsp$ definiert ist:
 \end{align}
 %
 In \eqref{eq:lrrelbsp} lassen sich \chrqt{$\lrelbsp$} und \chrqt{$\rrelbsp$} auch vertauschen.
-Man beachte, dass weder \eqref{eq:releqbsp} aus \eqref{eq:relbsp} folgt noch umgekehrt.
+Man beachte, dass - wenn man \chrqt{$\metadefeq$} durch \chrqt{$\metaequiv$} ersetzt - weder \eqref{eq:releqbsp} aus \eqref{eq:relbsp} folgt noch umgekehrt.
 Beispiele dazu sind \vrefintab{tab:Gegenbeispiel} angegeben.
 
 \begin{table}[!htb]
@@ -239,11 +246,11 @@ Damit wären dann alle Klammern \indsub{sub:binär} überflüssig.
 \beginsection{Prioritäten}
 \label{sub:Prioritäten}
 
-\vrefDtab{tab:Prioritäten} listet zur Vermeidung von Klammern die Prioritäten der in diesem Dokument verwendeten Operatoren, Relationen und Definitionen in absteigender Folge von höherer zu niedrigerer Priorität, \textdh\ von starker zu schwacher Bindung auf.%
+\vrefDtab{tab:Prioritäten} listet zur Vermeidung von Klammern die Prioritäten der in diesem Dokument verwendeten \Operatoren, \Relationen, \Junktoren\ und Definitionen in absteigender Folge von höherer zu niedrigerer Priorität, \textdh\ von starker zu schwacher Bindung auf.%
 \footnote{Priorität 1 ist höher und bindet damit stärker als Priorität 2, usw.}
 Das Weglassen redundanter Klammern wird \indcha{cha:Grundlagen} nicht weiter thematisiert.%
 \footnote{%
-	Gesetzt den Fall, dass \ASBA\ die Voraussetzungen und Folgerungen eines mathematischen Satzes richtig und die \Beweisschritte, \textzB\ durch fehlerhafte Interpretation einer Formel, falsch einliest, ansonsten aber richtig arbeitet.
+	Gesetzt den Fall, dass \ASBA\ die Voraussetzungen und \Folgerungen\ eines mathematischen Satzes richtig und die \Beweisschritte, \textzB\ durch fehlerhafte Interpretation einer \Formel, falsch einliest, ansonsten aber richtig arbeitet.
 	Dann kann man folgende Fälle unterscheiden:\\
 	-- Ein falscher Satz kann dadurch nicht als richtig bewertet werden.\\
 	-- Ein richtiger Satz wird wahrscheinlich auch bei eigentlich richtigem \Beweis\ als nicht bewiesen gelten, was natürlich unbefriedigend ist.\\
@@ -251,7 +258,7 @@ Das Weglassen redundanter Klammern wird \indcha{cha:Grundlagen} nicht weiter the
 	In keinem Fall wird durch diesen Fehler die Menge der richtigen Sätze durch einen falschen Satz \enquote{verunreinigt}.
 }
 Zur besseren Verständlichkeit werden aber gelegentlich auch redundante Klammern verwendet, insbesondere wenn Prioritäten unklar oder in der Literatur auch anders definiert sind.
-Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5 entnommen und ergänzt und die der \glsIdxPl{Metaoperator} daran angeglichen.
+Die Prioritäten der \Junktoren wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5 entnommen und ergänzt und die der \glsIdxPl{Metaoperator} daran angeglichen.
 
 \begin{table}[p]
 	\begin{center}
@@ -261,20 +268,20 @@ Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapit
 				\hline
 				Klammern & $ ( \quad ) $ \quad $\quad$ \quad \chrqt{$\quad$} \quad \seqqt{$\quad$} \\
 				\hline\hline
-				\multicolumn{2}{|c|}{Operatoren haben unterschiedliche Priorität.} \\
+				\multicolumn{2}{|c|}{\Operatoren\ haben unterschiedliche Priorität.} \\
 				\hline
-				Unäre Operatoren \Tnote{1} \Tnote{2} & $\opubsp \quad \lnot$ \\
+				Unäre \Operatoren\ \Tnote{1} \Tnote{2} & $\opubsp \quad \lnot$ \\
 				\hline
-				Operatoren für Mengen &
+				\Operatoren\ für Mengen &
 				\begin{tabular}{@{\extracolsep{\fill}}l}
 					$ \cup $  \\
 					\hline
 					$ \cap $  \\
 				\end{tabular} \\
 				\hline
-				Binäre Operatoren \Tnote{1} & $ \opbsp $ \\
+				Binäre \Operatoren\ \Tnote{1} & $ \opbsp $ \\
 				\hline
-				Binäre logische Operatoren \Tnote{2} \Tnote{3} &
+				Junktoren \Tnote{2} &
 				\begin{tabular}{@{\extracolsep{\fill}}l}
 					$ \land \quad \lnand             $ \\
 					\hline
@@ -287,34 +294,34 @@ Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapit
 				\hline\hline
 				\multicolumn{2}{|c|}{Relationen haben gleiche Priorität.} \\
 				\hline
-				Relationen mit Mengen \Tnote{4} &
+				Relationen für Mengen \Tnote{3} &
 				\begin{tabular}{@{\extracolsep{\fill}}l}
 					$ \subset \quad \subseteq \quad \in \quad \notin $ \\
 					$ \supset \quad \supseteq \quad \ni              $ \\
 				\end{tabular}                                          \\
 				\hdashline
-				Binäre Relationen \Tnote{1} &
+				Relationen \Tnote{1} &
 				\begin{tabular}{@{\extracolsep{\fill}}l}
 					$ \lrelbsp\quad \rrelbsp\quad \lreleqbsp\quad \rreleqbsp$ \\
 					$  \relbsp\quad \relnbsp\quad  \releqbsp                $ \\
 				\end{tabular}                                                 \\
 				\hdashline
-				\glsIdxPl{Gleichheitsrelation} \Tnote{5}
+				\Gleichheitsrelation\ \Tnote{4}
 				& $ \eq \quad \ne \quad \equiv \quad \nequiv $ \\
 				\hdashline
-				\Ableitungsrelation\ \Tnote{6}
+				\Ableitungsrelation\ \Tnote{5}
 				& $ \derive          $ \\
 				\hdashline
-				\glsIdx{Substitution}       \Tnote{6}
+				\glsIdx{Substitution}       \Tnote{5}
 				& $ \subst           $ \\
 				\hline
 				\multicolumn{2}{|c|}{Definition} \\
 				\hline
-				Definition \Tnote{7} & $ \defeq $ \\
+				Definition \Tnote{6} & $ \defeq $ \\
 				\hline
 				\multicolumn{2}{|c|}{Meta...} \\
 				\hline
-				\GlsIdxPl{Metaoperator} \Tnote{8} \Tnote{9} &
+				\GlsIdxPl{Metaoperator} \Tnote{7} \Tnote{8} &
 				\begin{tabular}{@{\extracolsep{\fill}}l}
 					\glsIdx{metaand} \\
 					\hline
@@ -323,15 +330,15 @@ Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapit
 					\glsIdx{srand}   \\
 				\end{tabular}                   \\
 				\hline
-				\GlsIdxPl{Metarelation} \Tnote{8} \Tnote{10} &
+				\GlsIdxPl{Metarelation} \Tnote{7} &
 				$ \metarep \quad \metaequiv \quad \metaimp $ \\
 				\hline
-				Metadefinition \Tnote{7} & $ \metadefeq $ \\
+				Metadefinition \Tnote{6} & $ \metadefeq $ \\
 				\hline\hline
 				\multicolumn{2}{|c|}{Natürliche Sprache} \\
 				\hline
 				\parbox[][1.1cm][c]{6.3cm}{%
-					Innerhalb natürlicher Sprache deren Strukturelemente, \textzB\ Satzzeichen \Tnote{11}%
+					Innerhalb natürlicher Sprache deren Strukturelemente, \textzB\ Satzzeichen \Tnote{9}%
 				}
 				& . \quad , \quad ; \quad usw. \\
 				\hline
@@ -340,16 +347,14 @@ Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapit
 				\footnotesize
 				\item[1] \vrefseesub{sub:binär}
 				\item[2] \vrefseetab{tab:Symbole}
-				\item[3] Im Gegensatz zu $\metarep$, $\metaimp$ und $\metaequiv$ sehen wir $\lrep$, $\limp$ und $\lequiv$ als Operatoren und nicht als Relationen an.
-				\item[4] \vrefseesub{sub:Bezeichnungen}
-				\item[5] \vrefseesubsub{subsub:Vergleiche}
-				\item[6] \vrefseesub{sub:Basisregeln}
-				\item[7] \vrefseesubsub{subsub:Definitionen}
-				\item[8] \vrefseesub{sub:Aussagen}
-				\item[9] \chrqt{$\srand$} wird nur bei den \emph{Schlussregeln} (\vrefseesub{sub:Schlussregeln}) verwendet.
-				Zwar bezeichnen \chrqt{$\metaandsym$} und \chrqt{$\srand$} denselben Operator, aber je nach verwendetem Symbol hat er eine unterschiedliche Priorität.
-				\item[10] Im Gegensatz zu $\lrep$, $\limp$ und $\lequiv$ sehen wir $\metarep$, $\metaimp$ und $\metaequiv$ als Relationen und nicht als Operatoren an.
-				\item[11] Innerhalb von \glsIdxPl{Formel} können Satzzeichen eine andere Bedeutung und Priorität haben.
+				\item[3] \vrefseesub{sub:Bezeichnungen}
+				\item[4] \vrefseesubsub{subsub:Vergleiche}
+				\item[5] \vrefseesub{sub:Basisregeln}
+				\item[6] \vrefseesubsub{subsub:Definitionen}
+				\item[7] \vrefseesub{sub:Aussagen}
+				\item[8] \chrqt{$\srand$} wird nur bei den \emph{Schlussregeln} (\vrefseesub{sub:Schlussregeln}) verwendet.
+				Zwar bezeichnen \chrqt{$\metaandsym$} und \chrqt{$\srand$} denselben \Operator, aber je nach verwendetem Symbol hat er eine unterschiedliche Priorität.
+				\item[9] Innerhalb von \Formeln\ können Satzzeichen eine andere Bedeutung und Priorität haben.
 			\end{tablenotes}
 		\end{threeparttable}
 		\caption{Prioritäten in abnehmender Reihenfolge}
@@ -357,9 +362,9 @@ Die Prioritäten der logischen Operatoren wurden aus~\cite{bib:Rautenberg} Kapit
 	\end{center}
 \end{table}
 
-Für Operatoren derselben Priorität wählen wir in diesem Dokument Rechtsklammerung%
+Für \Operatoren\ derselben Priorität wählen wir in diesem Dokument Rechtsklammerung%
 \footnote{%
-	Unäre Operatoren stehen in diesem Dokument stets links \emph{vor} dem Operanden, so dass es für sie nur Rechtsklammerung geben kann.
+	Unäre \Operatoren\ stehen in diesem Dokument stets links \emph{vor} dem Operanden, so dass es für sie nur Rechtsklammerung geben kann.
 	Zur Rechtsklammerung bei binären Operationen ein Zitat aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5:
 	\enquote{Diese hat gegenüber Linksklammerung Vorteile bei der Niederschrift von Tautologien in $\limp$, [...]}.
 	Die meisten Autoren bevorzugen Linksklammerung, was natürlicher erscheint.
@@ -367,10 +372,10 @@ Für Operatoren derselben Priorität wählen wir in diesem Dokument Rechtsklamme
 }.
 
 \section{Metasprache}% =========================================================
-\beginsection{Metasprache}
+\beginsection{Metasprache}%%%\Metasprache
 \label{sec:Metasprache}
 
-Wenn man über eine Sprache spricht, braucht man eine zweite Sprache, die \defn{\glsIdx{Metasprache}}, in der \Aussagen\ über die erstere getroffen werden können.%
+Wenn man über eine Sprache spricht, braucht man eine zweite Sprache, die \defn{\glsIdx{Metasprache}}, in der \Aussagen\ über erstere getroffen werden können.%
 \footnote{%
 	Die beiden Sprachen können auch übereinstimmen, \textzB\ wenn man über die natürliche Sprache spricht.
 }
@@ -388,22 +393,23 @@ Leider ist diese oft ungenau, nicht immer eindeutig und abhängig vom Zusammenha
 	Das Problem ist verwandt mit dem Problem der \enquote{Menge aller Mengen, die sich nicht selbst enthalten}.
 }
 Um diese Probleme in den Griff zu bekommen, kann die Metasprache teilweise formalisiert werden.
-Durch diese Formalisierung erinnert sie dann schon an mathematische \glsIdxPl{Formel}.
+Durch diese Formalisierung erinnert sie dann schon an mathematische \Formeln.
 Die Sprachebenen sollten aber sorgfältig unterschieden werden.
 
 \subsection{Aussagen und Metaoperatoren}% --------------------------------------
 \label{sub:AussagenUndMetaoperatoren}
+\hidden{\Aussage}%%%\Metaoperator
 
 Beispiele für \Aussagen\ in Metasprache sind
 (a) \enquote{Morgen scheint die Sonne.},
 (b) \enquote{Ich bin 1,83\,m groß.},
 (c) \enquote{Ich habe ein rotes Auto und das kann 200\,km/h schnell fahren.}, usw.
 Wie Beispiel (c) zeigt, kann eine \Aussage\ auch aus anderen \Aussagen\ zusammengesetzt sein.
-In diesem Fall bezeichnen wir sie als \defn{\Idx{zerlegbar}}, ansonsten als \defn{\Idx{unzerlegbar}}.
+In diesem Fall bezeichnen wir sie als \defn{\Idx{zerlegbar}}, ansonsten als \defn{\Idx{unzerlegbar}} oder auch \defn{\Idx{atomar}}.
 -- Wir betrachten auch Relationen einschließlich ihrer Operanden als \Aussagen.%
 \footnote{%
 	Wird statt des Symbols der Name der zugehörigen Relation verwendet, ist dies unmittelbar einleuchtend.
-	So wird \textzB\ aus der \glsIdx{Formel} \seqqt{$A<B$} die \Aussage\ \enquote{$A$ ist kleiner als $B$}.
+	So wird \textzB\ aus der \Formel\ \seqqt{$A<B$} die \Aussage\ \enquote{$A$ ist kleiner als $B$}.
 }
 
 Während die Beispiele (a) und (b) unzerlegbare \Aussagen\ sind, ist Beispiel (c) zerlegbar.
@@ -444,32 +450,34 @@ $\metaandsym$\hidden{\glsIdxPl{\metaand}} und $\metaorsym$\hidden{\glsIdxPl{\met
 Die damit gebildeten \Aussagen\ können natürlich auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
 Für den Fall fehlender Klammern sind ihre Prioritäten \vrefintab{tab:Prioritäten} angegeben.
 
-Um Verwechslungen mit den logischen Operatoren zu vermeiden, verwenden wir für die metasprachlichen Operatoren \enquote{und} und \enquote{oder} die Symbole \chrqt{$\metaandsym$} und \chrqt{$\metaorsym$}.
+Um Verwechslungen mit den \Junktoren zu vermeiden, verwenden wir für die metasprachlichen \Operatoren\ \enquote{und} und \enquote{oder} die Symbole \chrqt{$\metaandsym$} und \chrqt{$\metaorsym$}.
 $A$ und $B$ können als Operanden von $\metaequiv$, $\metaandsym$ und $\metaorsym$ vertauscht werden, ohne das Ergebnis zu ändern.%
 \footnote{%
-	\textDh\ die Operatoren $\metaequiv$, $\metaandsym$ und $\metaorsym$ sind \emph{kommutativ}.
+	\textDh\ die \Operatoren\ $\metaequiv$, $\metaandsym$ und $\metaorsym$ sind \emph{kommutativ}.
 }
-Wird in einer (Teil"~)\Aussage\ nur einer der Operatoren $\metaandsym$ oder $\metaorsym$ verwendet, können die Klammern dort weggelassen und die Operationen in beliebiger Reihenfolge ausgewertet werden, wiederum ohne das Ergebnis zu ändern.%
+Wird in einer (Teil"~)\Aussage\ nur einer der \Operatoren\ $\metaandsym$ oder $\metaorsym$ verwendet, können die Klammern dort weggelassen und die Operationen in beliebiger Reihenfolge ausgewertet werden, wiederum ohne das Ergebnis zu ändern.%
 \footnote{%
-	\textDh\ die Operatoren $\metaandsym$ und $\metaorsym$ sind auch \emph{assoziativ}.
-	Bei den den logischen Operatoren $\land$ und $\lor$ müssen Kommutativität und Assoziativität durch \Axiome\ gefordert werden.
+	\textDh\ die \Operatoren\ $\metaandsym$ und $\metaorsym$ sind auch \emph{assoziativ}.
+	Bei den den logischen \Operatoren\ $\land$ und $\lor$ müssen Kommutativität und Assoziativität durch \Axiome\ gefordert werden.
 	Die Kommutativität von $\metaequiv$ kann abgeleitet werden.
 }
-Zusammengefasst ist die Reihenfolge der Operatoren und der Auswertung dort beliebig.
+Zusammengefasst ist die Reihenfolge der \Operatoren\ und der Auswertung dort beliebig.
 
 \subsection{Mit Gleichheit verwandte Relationen}% ------------------------------
 \label{sub:Gleichheit}
+\hidden{\Relation}%%%\Gleichheit
 
 \subsubsection{Vergleichbar}%- - - - - - - - - - - - - - - - - - - - - - - - - -
 \label{subsub:Vergleichbar}
+%%%\hidden{\vergleichbar}
 
 Zwei \glsIdxPl{Objekt} $A$ und $B$ sind \defn{\glsIdx{vergleichbar}}, wenn beide von derselben Art sind, \textdh\ wenn \textzB\ jeweils beide Mengen, Zeichenfolgen, Zahlen, \textusw\ sind.
-Dabei muss bei \glsIdxPl{Formel} zwischen der \glsIdx{Formel} an sich und dem Ergebnis der \glsIdx{Formel} unterschieden werden. Siehe Beispiel (a).
+Dabei muss bei \Formeln\ zwischen der \Formel\ an sich und dem Ergebnis der \Formel\ unterschieden werden. Siehe Beispiel (a).
 
 Intuitiv scheint klar zu sein, was damit  gemeint ist.
 Wenn aber entschieden werden muss, ob \textzB\ (a) \enquote{1+1} gleich \enquote{2} oder (b) \enquote{1+1} gleich \enquote{1 + 1} ist, muss man erst entscheiden, von welcher Art die beiden zu vergleichenden Ausdrücke sind, \textdh\ \emph{wie} verglichen wird.
-Wenn sie als jeweiliges Ergebnis der beiden \glsIdxPl{Formel}, \textdh\ als \glsIdx{Objekt}, verglichen werden, dann ist (a) richtig.
-Wenn sie als \glsIdxPl{Formel}, \textdh\ als \glsIdxPl{Zeichenfolge}, verglichen werden, ist (a) falsch.
+Wenn sie als jeweiliges Ergebnis der beiden \Formeln, \textdh\ als \glsIdx{Objekt}, verglichen werden, dann ist (a) richtig.
+Wenn sie als \Formeln, \textdh\ als \glsIdxPl{Zeichenfolge}, verglichen werden, ist (a) falsch.
 Wenn die Ausdrücke in (b) als Zeichenfolgen verglichen werden, dann ist (b) richtig.
 Wenn sie als Zeichenketten verglichen werden, ist (b) falsch.
 
@@ -478,12 +486,12 @@ Die folgende Tabelle fasst dass zusammen:
 \begin{center}
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		$        A $  &        $B$        & Art          & $A$ gleich $B$ \\
+		$        A $  &        $B$        & Art    & $A$ gleich $B$ \\
 		\hline
-		$       1+1$  &        $2$        & Objekt       & richtig        \\
-		\seqqt{$1+1$} & \seqqt{$2$}       & Formel       & falsch         \\
-		\seqqt{$1+1$} & \seqqt{$1\;+\;1$} & Zeichenfolge & richtig        \\
-		\strqt{1+1}   & \strqt{1 + 1}     & Zeichenkette & falsch         \\
+		$       1+1$  &        $2$        & Objekt       & richtig \\
+		\seqqt{$1+1$} & \seqqt{$2$}       & \Formel       & falsch  \\
+		\seqqt{$1+1$} & \seqqt{$1\;+\;1$} & Zeichenfolge & richtig \\
+		\strqt{1+1}   & \strqt{1 + 1}     & Zeichenkette & falsch  \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -497,11 +505,11 @@ Dann definieren wir:
 \begin{description}
 	%
 	\item[$\glsSym{eq}$~~\emph{\Idx{Gleichheit}}]\label{def:Gleichheit}
-	\seqqt{$A = B$} heißt, dass $A$ und $B$ sich in den \glsIdxBg{interessierende-Eigenschaft}{interessierenden Eigenschaften} für $=$ nicht unterscheiden.%
+	\seqqt{$A = B$} heißt, dass $A$ und $B$ sich in den \interessierendenEigenschaften\ für $=$ nicht unterscheiden.%
 	\footnote{%
-		\textZB\ sind zwei logische Operatoren üblicherweise dann gleich, wenn sie stets denselben \emph{\glsIdx{Wahrheitswert}} liefern.
+		\textZB\ sind zwei \Junktoren\ üblicherweise dann gleich, wenn sie stets denselben \emph{\glsIdx{Wahrheitswert}} liefern.
 		Ihre Bezeichnungen oder Symbole können dabei durchaus verschieden sein, interessieren bei der Feststellung der Gleichheit aber nicht.
-		\textZB\ bezeichnen \chrqt{$\metaandsym$} und \chrqt{$\srand$} (siehe \vrefsec{sec:Beweise}) denselben Operator, haben aber verschiedene Priorität. -- siehe~\vreftab{tab:Prioritäten}
+		\textZB\ bezeichnen \chrqt{$\metaandsym$} und \chrqt{$\srand$} (siehe \vrefsec{sec:Beweise}) denselben \Operator, haben aber verschiedene Priorität. -- siehe~\vreftab{tab:Prioritäten}
 	}
 	-- \enquote{$A$ ist \emph{dasselbe} wie $B$} oder \enquote{$A$ ist \emph{identisch} zu $B$}
 	-- Inwieweit die Begriffe \emph{Gleichheit} und \emph{Identität} korrelieren, wird hier nicht erörtert.\citenote{bib:Identitaet}
@@ -512,27 +520,28 @@ Dann definieren wir:
 	}
 	%
 	\item[$\glsSym{ne}$~~\emph{\Idx{Ungleichheit}}]\label{def:Ungleichheit}
-	\seqqt{$A \ne B$} heißt, dass $A$ und $B$ sich in mindestens einer \glsIdx{interessierende-Eigenschaft} für $=$ unterscheiden. \enquote{$A$ ist \emph{nicht dasselbe} wie $B$} (aber vielleicht das gleiche; siehe $\equiv$) oder \enquote{$A$ ist \emph{nicht identisch} zu $B$}.
+	\seqqt{$A \ne B$} heißt, dass $A$ und $B$ sich in mindestens einer \interessierendenEigenschaft\ für $=$ unterscheiden. \enquote{$A$ ist \emph{nicht dasselbe} wie $B$} (aber vielleicht das gleiche; siehe $\equiv$) oder \enquote{$A$ ist \emph{nicht identisch} zu $B$}.
 	%
 	\item[$\glsSym{equiv}$~~\emph{\Idx{Äquivalenz}}(relation)]\label{def:Äquivalenz}
-	\seqqt{$A \equiv B$} heißt, dass $A$ und $B$ sich in den \glsIdxBg{interessierende-Eigenschaft}{interessierenden Eigenschaften} für $\equiv$ nicht unterscheiden.
+	\seqqt{$A \equiv B$} heißt, dass $A$ und $B$ sich in den \interessierendenEigenschaften\ für $\equiv$ nicht unterscheiden.
 	-- \enquote{$A$ ist \emph{das gleiche} wie $B$} (aber nicht unbedingt dasselbe; siehe $\eq$) oder \enquote{$A$ ist \emph{so wie} $B$}.
 
 	Es kann auch weitere Äquivalenzrelationen geben, für die dann verschiedene Bezeichnungen verwendet werden.
 	%
 	\item[$\glsSym{nequiv}$~~\emph{\Idx{Kontravalenz}}]\label{def:Kontravalenz}
-	\seqqt{$A \nequiv B$} heißt, dass $A$ und $B$ sich in mindestens einer \glsIdx{interessierende-Eigenschaft} für $\nequiv$ unterscheiden.
+	\seqqt{$A \nequiv B$} heißt, dass $A$ und $B$ sich in mindestens einer \interessierendenEigenschaft\ für $\nequiv$ unterscheiden.
 	-- \enquote{$A$ ist \emph{nicht das gleiche} wie $B$} oder \enquote{$A$ ist \emph{nicht so wie} $B$}.
 	%
 \end{description}
 
-$\eq$, $\ne$, $\equiv$ und $\nequiv$ bezeichnen wir als  \defn{\glsIdxPl{Gleichheitsrelation}}.
+$\eq$, $\ne$, $\equiv$ und $\nequiv$ bezeichnen wir als  \defn{\Gleichheitsrelation}.
 
-Jede \glsIdx{interessierende-Eigenschaft} für $\equiv$ oder eine andere Äquivalenzrelation muss auch eine für $\eq$ sein.
+Jede \interessierendeEigenschaft\ für $\equiv$ oder eine andere Äquivalenzrelation muss auch eine für $\eq$ sein.
 Daraus folgt insbesondere, dass mit \seqqt{$(A \eq B)$} auch \seqqt{$(A \equiv B)$} und mit \seqqt{$(A \nequiv B)$} auch \seqqt{$(A \ne B)$} gilt.
 
 \subsubsection{Definitionen}%- - - - - - - - - - - - - - - - - - - - - - - - - -
 \label{subsub:Definitionen}
+%%%\hidden{\Definition\Metadefinition}
 
 {
 	\newcommand*{\A}{\overline{A}}
@@ -577,30 +586,31 @@ Die Definition von \emph{\glsIdxPl{Schlussregel}} und \emph{\Beweise} ist in die
 
 \subsection{Schlussregeln}% ----------------------------------------------------
 \label{sub:Schlussregeln}
+%%%\hidden{\Schlussregel}
 
-Es sei $\formulaset$ eine Menge von \glsIdxPl{Formel}.%
+Es sei $\formulaset$ eine Menge von \Formeln.%
 	\footnote{%
-	Die Menge der \glsIdxPl{Formel} wird auch als \defn{Sprache} (language) bezeichnet und die \glsIdxPl{Formel} sind dann die Worte dieser Sprache.
-	Wir bleiben der Klarheit willen bei \glsIdx{Formel}.
-	Dabei gibt es verschiedene Arten von \glsIdxPl{Formel}, \textzB\ aussagenlogische, prädikatenlogische, solche, die ein Taschenrechner auswerten kann, oder auch nach bestimmten Regeln gebildete Zeichenketten.
+	Die Menge der \Formeln\ wird auch als \defn{Sprache} (language) bezeichnet und die \Formeln\ sind dann die Worte dieser Sprache.
+	Wir bleiben der Klarheit willen bei \Formel.
+	Dabei gibt es verschiedene Arten von \Formeln, \textzB\ aussagenlogische, prädikatenlogische, solche, die ein Taschenrechner auswerten kann, oder auch nach bestimmten Regeln gebildete Zeichenketten.
 }
 Dann definieren wir:
 \begin{itemize}
-	\item[] Eine \defn{\glsIdx{Schlussregel}} $\frac{\prerequisiteset}{\conclusionset}$ \emph{für} $\formulaset$ besteht aus einer Menge $\prerequisiteset\subseteq\formulaset$, den \defn{\glsIdxPl{Voraussetzung}}, und einer Menge $\conclusionset\subseteq\formulaset$, den \defn{\glsIdxPl{Folgerung}}.
+	\item[] Eine \defn{\glsIdx{Schlussregel}} $\frac{\prerequisiteset}{\conclusionset}$ \emph{für} $\formulaset$ besteht aus einer Menge $\prerequisiteset\subseteq\formulaset$, den \defn{\Voraussetzungen}, und einer Menge $\conclusionset\subseteq\formulaset$, den \defn{\Folgerungen}.
 \end{itemize}
 Eine Schlussregel $\frac{\prerequisiteset}{\conclusionset}$ entspricht der \Aussage:
 %
 %TODO Verweis auf zulässige Transformationen
 \begin{itemize}
-	\item[] Mit den \glsIdxPl{Voraussetzung} aus $\prerequisiteset$ lassen sich alle \glsIdxPl{Folgerung} aus $\conclusionset$ ableiten%
+	\item[] Mit den \Voraussetzungen\ aus $\prerequisiteset$ lassen sich alle \Folgerungen\ aus $\conclusionset$ ableiten%
 	\footnote{durch noch zu definierende \emph{\glsIdxPl{zulaessige-Transformation}}}.
 \end{itemize}
 %
 $\prerequisiteset$ und $\conclusionset$ dürfen auch leer sein.
 Eine \glsIdx{Schlussregel} darf kein Element von $\formulaset$, also auch kein Element von $\prerequisiteset$ oder $\conclusionset$ sein.
 Wir nennen eine \glsIdx{Schlussregel} auch einen \emph{\glsIdxBg{formaler-Satz}{formalen Satz}}.
-Eine \glsIdxBg{allgemeingueltige-Schlussregel}{Schlussregel} \textbzw\ ein \glsIdx{formaler-Satz} heißt \defn{allgemeingültig}, wenn die zugehörige \Aussage\ immer zutrifft.
-In diesem Fall kann sie zur zulässigen Umwandlung von Formeln dienen.
+Eine \glsIdxBg{allgemeingueltige-Schlussregel}{Schlussregel} \textbzw\ ein \formalerSatz\ heißt \defn{allgemeingültig}, wenn die zugehörige \Aussage\ immer zutrifft.
+In diesem Fall kann sie zur zulässigen Umwandlung von \Formeln\ dienen.
 Ferner gilt:
 %
 \begin{itemize}
@@ -624,7 +634,7 @@ dann können wir \seqqt{$\prerequisiteset$} durch \seqqt{$\prerequisite_1 \srand
 	\frac
 		{\prerequisite_1 \srand \prerequisite_2 \srand ...\srand \prerequisite_N}
 		{\conclusion_1     \srand \conclusion_2     \srand ...\srand \conclusion_M    }
-	\qquad \qquad \text{(\emph{\glsIdx{Schlussregel}} oder \emph{\glsIdx{formaler-Satz}})}
+	\qquad \qquad \text{(\emph{\glsIdx{Schlussregel}} oder \emph{\formalerSatz})}
 	\tag{\tagFS} \sym{\gls{FS}} \label{def:formalerSatz}
 \]
 wobei \chrqt{$\srand$} und Bruchstrich für den \glsIdx{Metaoperator} $\metaandsym$ \textbzw\ $\metaimp$ steht.%
@@ -638,6 +648,7 @@ Die $\prerequisite_n$ \textbzw\ $\conclusion_m$ können dabei beliebig permutier
 
 \subsection{Beweisschritte}% ---------------------------------------------------
 \label{sub:Beweisschritte}
+\hidden{\Beweisschritt}
 
 %TODO Elimination von Voraussetzungen behandeln!
 Ein \Beweis%
@@ -648,7 +659,7 @@ in \ASBA\ besteht aus
 	\\
 	& \text{einer Folge} && \proofstepsequenz = (\proofstep_1, \proofstep_2, ..., \proofstep_K)
 	&& \text{von \emph{\Beweisschritten} } \proofstep_k
-	&& \text{, die \defn{\glsIdx{Beweisschrittfolge}}}
+	&& \text{, die \defn{\Beweisschrittfolge}}
 	\label{def:Beweisschrittfolge}
 	\\
 	& \text{einer Menge} && \transformationset
@@ -665,16 +676,16 @@ Wir definieren noch:
 	& \proofstepset   & \defeq & \quad \proofstepset_K \label{def:Beweisschrittmenge}
 	\formulatoleft\formulatoleft\formulatoleft
 \end{align}
-und nennen $\proofstepset$ die \defn{\glsIdx{Beweisschrittmenge}} der \glsIdx{Beweisschrittfolge} $\proofstepsequenz$.
+und nennen $\proofstepset$ die \defn{\Beweisschrittmenge} der \Beweisschrittfolge\ $\proofstepsequenz$.
 Dann ist $\proofstepset_0=\emptyset$ und $\proofstepset_i\subseteq\proofstepset_j\subseteq\proofstepset$ für $0\le i\le j\le K$.
 
 ========================================================================
 %TODO===================================================================
 
-Jeder \Beweisschritt\ $ \proofstep_k \text{ für } 1 \le k \le K $ muss entweder eine \glsIdx{Voraussetzung} aus $\prerequisiteset$ oder durch Anwendung einer \allgemeingueltigenSchlussregel\ auf eine Teilmenge von $\proofstepset_{k-1}$ eine wahre Formel oder eine weitere \emph{allgemeingueltige Schlussregel} sein.
+Jeder \Beweisschritt\ $ \proofstep_k \text{ für } 1 \le k \le K $ muss entweder eine \Voraussetzung\ aus $\prerequisiteset$ oder durch Anwendung einer \allgemeingueltigenSchlussregel\ auf eine Teilmenge von $\proofstepset_{k-1}$ eine wahre \Formel\ oder eine weitere \emph{allgemeingueltige Schlussregel} sein.
 Schließlich muss noch
 \[ \conclusionset \subseteq \proofstepset \]
-sein, da jede Folgerung aus $\conclusionset$ in der Folge $\proofstepsequenz$ vorkommen und somit Element der Menge $\proofstepset$ sein muss.
+sein, da jede \Folgerung\ aus $\conclusionset$ in der Folge $\proofstepsequenz$ vorkommen und somit Element der Menge $\proofstepset$ sein muss.
 %
 Bevor die \glsIdxPl{Schlussregel} weiter behandelt werden, werden noch Elemente der \emph{\Aussagenlogik} und der \emph{\Praedikatenlogik} behandelt.
 Wir stützen uns dabei weitgehend auf~\cite{bib:Rautenberg}, ohne das jedes Mal anzugeben.
@@ -686,19 +697,20 @@ Wir stützen uns dabei weitgehend auf~\cite{bib:Rautenberg}, ohne das jedes Mal 
 
 \subsection{Konstante und Operatoren}% -----------------------------------------
 \label{sub:Operatoren}
+\hidden{\Operator}
 
 \vrefDtab{tab:Symbole}%
 \footnote{%
 	Die \tablename\ basiert auf den Wahrheitstafeln in~\cite{bib:Junktor} Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.
 }
-definiert für die zweiwertige Logik Konstante und Operatoren über die \glsIdxPl{Wahrheitswert} ihrer Anwendung.
+definiert für die zweiwertige Logik Konstante und \Junktoren\ über die \glsIdxPl{Wahrheitswert} ihrer Anwendung.
 So ergeben sich, abhängig von den \glsIdxPl{Wahrheitswert}n der Operanden $A$ und $B$,%
 \footnote{%
-	$A$ und $B$ können hier beliebige \Aussagen\ sein -- auch \glsIdxPl{Formel} --, die jeweils genau einen \glsIdx{Wahrheitswert} repräsentieren.
+	$A$ und $B$ können hier beliebige \Aussagen\ sein -- auch \Formeln\ --, die jeweils genau einen \glsIdx{Wahrheitswert} repräsentieren.
 }
 die in der \tablename\ angegebenen \glsIdxPl{Wahrheitswert} für die Operationen.
-Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen Operatoren, \textdh\ für die Konstanten, die unären und die binären Operatoren ausgefüllt.
-Dabei werden die Konstanten als 0-stellige Operatoren angesehen.
+Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen \Junktoren, \textdh\ für die Konstanten, die unären und die binären \Junktoren\ ausgefüllt.
+Dabei werden die Konstanten als 0-stellige \Junktoren\ angesehen.
 Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein Wert bekannt, so bleibt sie leer.
 
 \begin{table}
@@ -746,7 +758,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			\texttrue  & \textfalse & \texttrue  & \textfalse &
 			- & \Aussage\ B & - \\
 			\hline% -- Überschrift -----------------------------------------
-			\textbf{Operator}\Tnote{1} &
+			\textbf{\Junktor}\Tnote{1} &
 			\textbf{0}\Tnote{2} &
 			\multicolumn{2}{c:}{\textbf{1}} &
 			\multicolumn{4}{c|}{\textbf{2}} &
@@ -761,7 +773,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			\rowcolor{cRareUse}
 			$\glsSym{lfalse}$
 			& \textfalse & - & - & - & - & - & - & Falsum & Falsch & - \\
-			\hline\hline% == unäre Operatoren ==============================
+			\hline\hline% == unäre Junktoren ===============================
 			& - & \texttrue  & \texttrue  & - & - & - & - & & & -  \\
 			\tableline%.................................................
 			\rowcolor{cNormalUse}
@@ -775,7 +787,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			& Negation            & Nicht A          & \thepnot\Tnote{6} \\
 			\tableline%.................................................
 			& - & \textfalse & \textfalse & - & - & - & - & & & -  \\
-			\hline\hline% == binäre Operatoren =============================
+			\hline\hline% == binäre Junktoren ==============================
 			~ & - & - & - &\texttrue&\texttrue&\texttrue&\texttrue
 			& Tautologie & & - \\
 			\tableline%.................................................
@@ -860,10 +872,10 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			\multicolumn{11}{l}{~} \\
 			\multicolumn{11}{l}{\parbox{\linewidth-6pt}{
 				Um vollständig zu sein, \textdh\ alle 22 möglichen Kombinationen von \glsIdxPl{Wahrheitswert}n für höchstens zwei Variable zu berücksichtigen, enthält die \tablename\ auch viele ungebräuchliche Symbole und Operationen.
-				Die Zeilen mit den Klammern und den gebräuchlichsten Operatoren sind in der \tablename\ grau hinterlegt.
-				Hellgrau hinterlegt sind Zeilen mit weniger gebräuchlichen Operatoren.
-				Die restlichen Operatoren sind uninteressant und brauchen daher keine Priorität.
-				-- Im Folgenden werden von den in der Tabelle aufgeführten Operatoren nur noch $\ltrue$, $\lfalse$, $\lnot$, $\land$, $\lor$, $\lxor$, $\limp$, $\lequiv$, $\lrep$, $\lnand$ und $\lnor$ verwendet.
+				Die Zeilen mit den Klammern und den gebräuchlichsten \Junktoren\ sind in der \tablename\ grau hinterlegt.
+				Hellgrau hinterlegt sind Zeilen mit weniger gebräuchlichen \Junktoren.
+				Die restlichen \Junktoren\ sind uninteressant und brauchen daher keine Priorität.
+				-- Im Folgenden werden von den in der Tabelle aufgeführten \Junktoren\ nur noch $\ltrue$, $\lfalse$, $\lnot$, $\land$, $\lor$, $\lxor$, $\limp$, $\lequiv$, $\lrep$, $\lnand$ und $\lnor$ verwendet.
 			}} \\
 			\multicolumn{11}{l}{~} \\
 			\hline% -- Fußnoten --------------------------------------------
@@ -871,19 +883,19 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 		\begin{tablenotes}
 			\footnotesize
 			%
-			\item[1] Die Operatoren \chrqt{$\subset$}, \chrqt{$\supset$}, \chrqt{$\nsubset$} und \chrqt{$\nsupset$} haben hier nicht die Bedeutung der entsprechenden Operatoren der Mengenlehre und dürfen nicht damit verwechselt werden; entsprechendes gilt für \chrqt{$+$} und \chrqt{$\cdot$} mit Addition und Multiplikation.
+			\item[1] Die \Junktoren\ \chrqt{$\subset$}, \chrqt{$\supset$}, \chrqt{$\nsubset$} und \chrqt{$\nsupset$} haben hier nicht die Bedeutung der entsprechenden \Operatoren\ der Mengenlehre und dürfen nicht damit verwechselt werden; entsprechendes gilt für \chrqt{$+$} und \chrqt{$\cdot$} mit Addition und Multiplikation.
 			%
-			\item[2] 0-stellige Operatoren sind Konstante, hier \emph{\glsIdxPl{Wahrheitswert}}.
+			\item[2] 0-stellige \Junktoren\ sind Konstante, hier \emph{\glsIdxPl{Wahrheitswert}}.
 			%
-			\item[3] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle binären Operatoren aufzuführen.
+			\item[3] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle binären \Junktoren\ aufzuführen.
 			%
 			\item[4] Je kleiner die Zahl, je höher die Priorität.
 			%
-			\item[5] Klammerung ist genau genommen keine Operation und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet. Ihre Priorität - sofern man überhaupt davon sprechen kann - kann nur höher als die aller (anderen) Operatoren sein.
+			\item[5] Klammerung ist genau genommen keine Operation und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet. Ihre Priorität - sofern man überhaupt davon sprechen kann - kann nur höher als die aller \Junktoren\ sein.
 			%
-			\item[6] Die Priorität der unären Operatoren muss höher sein als die aller mehrwertigen, also auch der binären Operatoren.
-			Wenn alle unären Operatoren auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
-			Nur wenn es sowohl links-, als auch rechtsseitige unäre Operatoren gibt, muss man für diese Prioritäten definieren.
+			\item[6] Die Priorität der unären \Operatoren\ muss höher sein als die aller mehrwertigen, also auch der binären \Operatoren.
+			Wenn alle unären \Operatoren\ auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
+			Nur wenn es sowohl links-, als auch rechtsseitige unäre \Operatoren\ gibt, muss man für diese Prioritäten definieren.
 			%
 		\end{tablenotes}
 	\end{threeparttable}
@@ -891,11 +903,13 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 	\label{tab:Symbole}% Erst nach '\caption'!
 \end{table}
 
-Für einige Operatorsymbole%
-\footnote{Symbole, die für Operatoren verwendet werden.}
--- auch \defn{Junktoren} genannt --, Namen und Sprechweisen sind auch Alternativen angegeben.
+Für einige \Junktorsymbole%
+\footnote{%
+	Symbole, die für \Junktoren\ verwendet werden.
+},
+Namen und Sprechweisen sind auch Alternativen angegeben.
 Die durchgestrichenen (\textdh\ negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt.
-Wenn für eine bestimmte Kombination von \glsIdxPl{Wahrheitswert}n mehr als eine Zeile angegeben ist, so können die zugehörigen Operatoren zwar formal verschieden sein, liefern in der zweiwertigen \Aussagenlogik\ jedoch dieselben Ergebnisse.
+Wenn für eine bestimmte Kombination von \glsIdxPl{Wahrheitswert}n mehr als eine Zeile angegeben ist, so können die zugehörigen \Junktoren\ zwar formal verschieden sein, liefern in der zweiwertigen \Aussagenlogik\ jedoch dieselben Ergebnisse.
 
 Die zur Einsparung von Klammern definierten Prioritäten sind \vrefintab{tab:Prioritäten} angegeben.%
 \footnote{Zur Erinnerung: Es gilt Rechtsklammerung. \vrefseesub{sub:Prioritäten}}
@@ -914,30 +928,30 @@ Da Computerprogramme mit der \emph{Polnischen Notation}\idx{Polnische Notation}%
 	Durch einfaches Weglassen der Gliederungszeichen ergibt sich dann die Polnische Notation.
 	Noch einfacher für Computer ist die \defn{umgekehrte Polnische Notation}, bei der aus \seqqt{$(A\opbsp B)$} \seqqt{$A B \opbsp$} wird.
 }
-besser umgehen können und Klammern dort überflüssig sind, werden viele \glsIdxPl{Formel} auch parallel in der Polnischen Notation angegeben.
+besser umgehen können und Klammern dort überflüssig sind, werden viele \Formeln\ auch parallel in der Polnischen Notation angegeben.
 Dies wird auch auf Wunsch bei Ausgaben von \ASBA\ so gehandhabt.
 
 \subsubsection{Bausteine der aussagenlogischen Sprache}% - - - - - - - - - - - -
 \label{subsub:Bausteine}
 
 %TODO *** hier weitermachen
-Zur Einteilung der aussagenlogischen Operatoren werden die folgenden Mengen definiert:
+Zur Einteilung der \Junktoren\ werden die folgenden Mengen definiert:
 \begin{align}
 	& \glsSym{alCon}              & \defeq\quad & \{ \ltrue, \lfalse \}
 	&& \text {, Menge der \defn{aussagenlogischen Konstanten}}
 	\idx{Konstanten, Menge der}         \label{def:C}
 	\\
 	& \glsSym{alUna}              & \defeq\quad & \{ \lnot \}
-	&& \text{, Menge der \defn{unären aussagenlogischen Operatoren}}
-	\idx{unären Operatoren, Menge der}  \label{def:U}
+	&& \text{, Menge der \defn{unären \Junktoren}}
+	\idx{unäre Junktoren, Menge der}  \label{def:U}
 	\\
 	& \glsSym{alBin}              & \defeq\quad &
 	\{ \land, \lor, \lxor, \limp, \lequiv, \lrep, \lnand, \lnor \}
-	&& \text{, Menge der \defn{binären aussagenlogischen Operatoren}}
-	\idx{binären Operatoren, Menge der} \label{def:B}
+	&& \text{, Menge der \defn{binären \Junktoren}}
+	\idx{binäre Junktoren, Menge der} \label{def:B}
 \end{align}
 %
-Um damit \glsIdxPl{Formel} zu bilden, werden noch Variable gebraucht:
+Um damit \Formeln\ zu bilden, werden noch Variable gebraucht:
 \begin{align}
 	& \glsSym{alVar}  & \defeq     \quad & \{ \alvar_n \mid n \in \gsNo \}
 	&&&&
@@ -949,8 +963,8 @@ Die Mengen $\alCon$, $\alUna$, $\alBin$ und $\alVar$ müssen paarweise disjunkt 
 Damit können die folgende Mengen definiert werden:
 \begin{align}
 	& \glsSym{alJun}  & \defeq      & \qquad \alCon \cup \alUna \cup \alBin
-	&& \text{, Menge der \defn{aussagenlogischen Junktoren}}
-	\idx{Junktoren, Menge der}                              \label{def:alJun}
+	&& \text{, Menge der \defn{\Junktorsymbole}}
+	\idx{\Junktorsymbole, Menge der}                       \label{def:alJun}
 	\\
 	& \glsSym{alABC}  & \defeq      & \qquad \alVar \cup \alJun
 	&& \text{, \defn{Alphabet der aussagenlogischen Sprache}
@@ -958,7 +972,7 @@ Damit können die folgende Mengen definiert werden:
 	\idx{Alphabet der logischen Sprache}                    \label{def:alABC}
 	\\
 	& \glsSym{alJunx} & \subseteq\; & \qquad \alJun
-	&& \text{, eine Teilmenge der Junktoren für eine Indexvariable $x$}
+	&& \text{, eine Teilmenge der \Junktorsymbole\ für eine Indexvariable $x$}
 	~                                                       \label{def:alJunx}
 	\\
 	& \glsSym{alABCx} & \defeq      & \qquad \alVar \cup \alJun_x \quad
@@ -972,12 +986,13 @@ Sie werden auch \defn{Satzbuchstaben} oder kurz \defn{Atome} genannt.
 
 \subsubsection{Aussagenlogische Formeln}%  - - - - - - - - - - - - - - - - -
 \label{subsub:Formeln}
+\hidden{\Formel}
 
 Neben dem Alphabet $\alABC$ \textbzw\ $\alABC_x$ werden noch Klammern als Gliederungszeichen verwendet.
-Damit können nun rekursiv für jede Teilmenge $\alJun_x$ von $\alJun$ zwei Mengen von Formeln definiert werden:
+Damit können nun rekursiv für jede Teilmenge $\alJun_x$ von $\alJun$ zwei Mengen von \Formeln\ definiert werden:
 
-$\glsSym{alForx}$ sei die Menge der auf folgende Weise definierten \defn{aussagenlogischen Formeln mit Klammerung}%
-\idx{aussagenlogische Formel mit Klammerung}:
+$\glsSym{alForx}$ sei die Menge der auf folgende Weise definierten \defn{aussagenlogischen \Formeln\ mit Klammerung}%
+\idx{aussagenlogische \Formel\ mit Klammerung}:
 \begin{align}
 	A    \in & \alVar               && \metaimp &           A  \in \alFor_x
 	\\
@@ -990,11 +1005,11 @@ $\glsSym{alForx}$ sei die Menge der auf folgende Weise definierten \defn{aussage
 	& & \text{, für} \quad \opbsp \in \alBin \cap \alJun_x
 	\formulatoleft
 \end{align}
-Nur die auf diese Weise konstruierten Formeln sind Elemente von $\alFor_x$.
+Nur die auf diese Weise konstruierten \Formeln\ sind Elemente von $\alFor_x$.
 \\Für $\alJun_x = \alJun$ sei noch $\alFor \defeq \glsSym{alForx}$.
 
-\glsIdx{alForxp} sei die Menge der auf folgende Weise definierten aussagenlogischen Formeln in \emph{Polnischer Notation}%
-\idx{aussagenlogische Formel in Polnischer Notation}:
+\glsIdx{alForxp} sei die Menge der auf folgende Weise definierten aussagenlogischen \Formeln\ in \emph{Polnischer Notation}%
+\idx{aussagenlogische \Formel\ in Polnischer Notation}:
 \begin{align}
 	&                                  & \alVar              \subset \alForp_x
 	\\
@@ -1007,7 +1022,7 @@ Nur die auf diese Weise konstruierten Formeln sind Elemente von $\alFor_x$.
 	& & \text{, für}  \quad \opbsp \in \alBin \cap \alJun_x
 	\formulatoleft
 \end{align}
-Nur die auf diese Weise konstruierten Formeln sind Elemente von $\alForp_x$.
+Nur die auf diese Weise konstruierten \Formeln\ sind Elemente von $\alForp_x$.
 Schließlich sei noch $\alForp \defeq \glsSym{alForxp}$ falls $\alJun_x = \alJun$.
 
 Wie man leicht sieht, gilt
@@ -1021,19 +1036,20 @@ Wie man leicht sieht, gilt
 \end{equation}
 und weiterhin gibt es eine bijektive Abbildung von $\alFor$ nach $\alForp$. Auf einen \Beweis\ verzichten wir.
 %
-Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der \glsIdxPl{Formel} aus $\alFor_x$ einsparen.
-Die \glsIdxPl{Formel} aus $\alForp_x$ sind frei von Klammern.
-Die Namen der Operatoren finden sich \vrefintab{tab:Symbole}.
-Für aussagenlogische \glsIdxPl{Formel}, \textdh\ von Elementen aus $\alFor$ \textbzgl\ $\alForp$, werden hier normalerweise die kleinen griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwendet.
-Sie können dabei auch als \defn{\atomareFormel} bezeichnet werden, \textdh\ \glsIdxPl{Formel}, die sich nicht weiter zerlegen lassen.%
+Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der \Formeln\ aus $\alFor_x$ einsparen.
+Die \Formeln\ aus $\alForp_x$ sind frei von Klammern.
+Die Namen der \Junktoren\ finden sich \vrefintab{tab:Symbole}.
+Für aussagenlogische \Formeln, \textdh\ von Elementen aus $\alFor$ \textbzgl\ $\alForp$, werden hier normalerweise die kleinen griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwendet.
+Sie können dabei auch als \defn{\atomareFormel} bezeichnet werden, \textdh\ \Formeln, die sich nicht weiter zerlegen lassen.%
 \footnote{%
 	Nur die Elemente von $\alVar$ und $\alCon$ sind unzerlegbare Elemente von $\alFor$.
 }
 
-\subsection{Definition aussagenlogischer Operatoren durch andere}% -------------
+\subsection{Definition von Junktoren durch andere}% -------------
 \label{sub:ausOperatorDef}
+\hidden{\Junktor}
 
-Im folgenden gelte für zwei aussagenlogische \glsIdxPl{Formel} $\alpha$ und $\beta$:
+Im folgenden gelte für zwei aussagenlogische \Formeln\ $\alpha$ und $\beta$:
 \begin{itemize}
 	\item[] $\alpha \eq    \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$
 	stimmen als Zeichenkette überein.
@@ -1045,7 +1061,7 @@ Im folgenden gelte für zwei aussagenlogische \glsIdxPl{Formel} $\alpha$ und $\b
 Es werden verschiedene Teilmengen von $\alJun$ eingeführt, die jeweils ausreichen alle anderen Elemente von $\alJun$ zu definieren:
 \begin{align}
 	& \alJun_\iBool & \defeq & \quad\{ \lnot, \land, \lor \} \label{def:Jbool}
-	\qquad (\text{\glsIdx{Boolsche-Signatur}})
+	\qquad (\text{\BoolscheSignatur})
 	\\
 	& \alJun_\iAnd  & \defeq & \quad\{ \lnot, \land       \} \label{def:Jand}
 	\\
@@ -1062,10 +1078,10 @@ Es werden verschiedene Teilmengen von $\alJun$ eingeführt, die jeweils ausreich
 \end{align}
 Solche Teilmengen heißen \glsIdx{logische-Signatur}.
 %
-Im Folgenden stehen jeweils links die \glsIdxPl{Formel} in üblicher Schreibweise vollständig geklammert und rechts in Polnischer Notation (ohne Klammern).
-Ferner seien $\alpha$ und $\beta$ beliebige, nicht notwendig verschiedene \glsIdxPl{Formel} aus der passenden Menge $\alFor_x$ \textbzgl\ der um die mit Hilfe der Definitionen erweiterten Formelmenge.
+Im Folgenden stehen jeweils links die \Formeln\ in üblicher Schreibweise vollständig geklammert und rechts in Polnischer Notation (ohne Klammern).
+Ferner seien $\alpha$ und $\beta$ beliebige, nicht notwendig verschiedene \Formeln\ aus der passenden Menge $\alFor_x$ \textbzgl\ der um die mit Hilfe der Definitionen erweiterten \Formelmenge.
 
-Ausgehend von den Operatoren aus der \glsIdxBg{Boolsche-Signatur}{Boolschen Signatur} $\alJun_\iBool$ werden die restlichen Operatoren aus $\alJun$ definiert. Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den Operatoren aus $\alJun_\iAnd$:
+Ausgehend von den \Junktoren\ aus der \BoolschenSignatur\ $\alJun_\iBool$ werden die restlichen \Junktoren\ aus $\alJun$ definiert. Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den \Junktoren\ aus $\alJun_\iAnd$:
 \begin{align}
 	% folgt ------------------------
 	(\alpha \limp \beta) &\;\defeq\; (\lnot (\alpha \land  (\lnot \beta))) &
@@ -1090,7 +1106,7 @@ Ausgehend von den Operatoren aus der \glsIdxBg{Boolsche-Signatur}{Boolschen Sign
 	(\alpha \lnand \beta)&\;\defeq\; (\lnot (\alpha \land \beta )) &
 	\lnand \alpha  \beta &\;\defeq\;  \lnot  \land \alpha \beta \label{def:nand}
 \end{align}
-und die mit den Operatoren aus $\alJun_\iOr$:
+und die mit den \Junktoren\ aus $\alJun_\iOr$:
 \begin{align}
 	% NOR --------------------------
 	(\alpha \lnor \beta) &\;\defeq\; (\lnot (\alpha \lor \beta))   &
@@ -1107,7 +1123,7 @@ und die mit den Operatoren aus $\alJun_\iOr$:
 	\label{def:true}
 \end{align}
 %
-Ist \chrqt{$\lor$} oder \chrqt{$\land$} nicht vorgegeben, \textdh\ wird von den Elementen aus $\alJun_\iAnd$ \textbzgl\ $\alJun_\iOr$ statt von denen aus $\alJun_\iBool$ ausgegangen, so muss man den fehlenden Operator mittels der passenden der beiden folgenden Definitionen einführen:
+Ist \chrqt{$\lor$} oder \chrqt{$\land$} nicht vorgegeben, \textdh\ wird von den Elementen aus $\alJun_\iAnd$ \textbzgl\ $\alJun_\iOr$ statt von denen aus $\alJun_\iBool$ ausgegangen, so muss man den fehlenden \Junktor\ mittels der passenden der beiden folgenden Definitionen einführen:
 \begin{align}
 	% oder aus und -----------------
 	(\alpha \lor \beta)  & \;\defeq\; (\lnot((\lnot\alpha)\land(\lnot\beta))) &
@@ -1118,7 +1134,7 @@ Ist \chrqt{$\lor$} oder \chrqt{$\land$} nicht vorgegeben, \textdh\ wird von den 
 	\land \alpha  \beta  & \;\defeq\;  \lnot \lor \lnot \alpha \lnot \beta
 	\label{def:andor}
 \end{align}
-Nun sind wieder alle Operatoren definiert.
+Nun sind wieder alle \Junktoren\ definiert.
 
 Entsprechend wird bei Vorgabe von $\alJun_\iImp$ \textbzgl\ $\alJun_\iRep$ die passende der beiden folgenden Definitionen ausgewählt:
 \begin{align}
@@ -1162,7 +1178,7 @@ und, da \chrqt{$\lnot$} jetzt definiert ist, aus
 \end{align}
 ausgewählt und es ist \eqref{def:nand} \textbzgl\ \eqref{def:nor} als Gleichung nachzuweisen.
 
-Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der Definitionen \eqref{def:imp} bis \eqref{def:andnand}, ausgehend vom jeweils passenden $\alFor_x$, genau die gesamte Formelmenge $\alFor$ erzeugt werden kann.
+Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der Definitionen \eqref{def:imp} bis \eqref{def:andnand}, ausgehend vom jeweils passenden $\alFor_x$, genau die gesamte \Formelmenge\ $\alFor$ erzeugt werden kann.
 
 \subsection{Aussagenlogisches Axiomensystem}% ----------------------------------
 \label{sub:ausAxiome}
