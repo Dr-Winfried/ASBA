@@ -36,22 +36,22 @@
 
 % Metasprachliche Symbole ######################################################
 
-\newcommand*{\srand}{\mid}% in formalen Sätzen und Schlussregeln:   \textdots\ und \textdots\
+\newcommand*{\srand}{\mid}% in formalen Sätzen und Schlussregeln:   ... und ...
 % Nur im Mathematikmodus!
-\newcommand*{\metaandsym}{\&}%              \textdots\ und       \textdots\
-\newcommand*{\metaand}{\;\metaandsym\;}%    \textdots\ und       \textdots\ (besserer Abstand)
-\newcommand*{\metaorsym}{||}%               \textdots\ oder      \textdots\
-\newcommand*{\metaor}{\;\metaorsym\;}%      \textdots\ oder      \textdots\ (besserer Abstand)
-\newcommand*{\derivesym}{\vdash}%           \textdots\ ableitbar \textdots\
-\newcommand*{\derive}{\;\derivesym\;}%      \textdots\ ableitbar \textdots\ (besserer Abstand)
-\newcommand*{\metaimp}{\Rightarrow}%    aus \textdots\ folgt              \textdots\
-\newcommand*{\metarep}{\Leftarrow}%         \textdots\ folgt aus          \textdots\
-\newcommand*{\metaequiv}{\Leftrightarrow}%  \textdots\ genau dann wenn    \textdots\
-\newcommand*{\metadefeq}{:\metaequiv}%      \textdots\ definitionsgemäß " \textdots\
-\newcommand*{\eq}{=}%                       \textdots\ gleich             \textdots\
-\newcommand*{\defeq}{\coloneqq}%            \textdots\ definitionsgemäß " \textdots\
-\newcommand*{\swap}     {\leftrightarrows}% \textdots\ vertauscht mit     \textdots\
-\newcommand*{\subst}    {\leftarrowtail}%   \textdots\ substituiert durch \textdots\
+\newcommand*{\metaandsym}{\&}%              ... und       ...
+\newcommand*{\metaand}{\;\metaandsym\;}%    ... und       ... (besserer Abstand)
+\newcommand*{\metaorsym}{||}%               ... oder      ...
+\newcommand*{\metaor}{\;\metaorsym\;}%      ... oder      ... (besserer Abstand)
+\newcommand*{\derivesym}{\vdash}%           ... ableitbar ...
+\newcommand*{\derive}{\;\derivesym\;}%      ... ableitbar ... (besserer Abstand)
+\newcommand*{\metaimp}{\Rightarrow}%    aus ... folgt              ...
+\newcommand*{\metarep}{\Leftarrow}%         ... folgt aus          ...
+\newcommand*{\metaequiv}{\Leftrightarrow}%  ... genau dann wenn    ...
+\newcommand*{\metadefeq}{:\metaequiv}%      ... definitionsgemäß " ...
+\newcommand*{\eq}{=}%                       ... gleich             ...
+\newcommand*{\defeq}{\coloneqq}%            ... definitionsgemäß " ...
+\newcommand*{\swap}     {\leftrightarrows}% ... vertauscht mit     ...
+\newcommand*{\subst}    {\leftarrowtail}%   ... substituiert durch ...
 
 % Beispieloperatoren ===========================================================
 % \*bsp
@@ -71,7 +71,9 @@
 % Wahrheitswerte ---------------------------------------------------------------
 % Konstante --------------------------------------------------------------------
 \newcommand*{\ltrue} {\top}%            W       - wahr   (Wahrheitswert)
+\newcommand*{\wahr}  {\mathrm{wahr}}
 \newcommand*{\lfalse}{\bot}%            F       - falsch (Wahrheitswert)
+\newcommand*{\falsch}{\mathrm{falsch}}
 % unäre Operatoren -------------------------------------------------------------
 %            \lnot                      F W     - nicht A
 % binäre Operatoren ------------------------------------------------------------
@@ -120,7 +122,7 @@
 \newcommand*{\alJun} {\mathcal{J}}%     Menge der Operatorsymbole ([J]unktor)
 \newcommand*{\alABC} {\mathcal{A}}%     [A]lphabet der aussagenlogischen Sprache
 \newcommand*{\alFor} {\mathcal{L}}%     Menge der Formeln (Worte) ([l]anguage)
-\newcommand*{\alForp}{\alFor^\mathrm{p}}%   \textdots\ in polnischer Notation
+\newcommand*{\alForp}{\alFor^\mathrm{p}}%   ... in polnischer Notation
 % Indizes für Teilmengen von \alJun, \alABC, \alFor und \alForp
 \newcommand*{\iAnd} {\mathrm{and}}%
 \newcommand*{\iBool}{\mathrm{bool}}%
