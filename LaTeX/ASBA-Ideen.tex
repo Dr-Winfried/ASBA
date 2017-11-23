@@ -55,10 +55,10 @@ Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogis
 	&Y&&\defeq&&Y_1\cup Y_2\cup...\cup Y_k\cup\{\beta_1, \beta_2, ...,\beta_l \}
 	\formulatoleft\formulatoleft
 \end{align}
-%
+
 $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 \begin{align}
-	& \alpha \derive \beta \quad \metadefeq \quad
+	& \alpha \glsSym{derive} \beta \quad \metadefeq \quad
 	\parbox[t]{10.5cm}{%
 	$\beta$ ist mittels schrittweiser Anwendung \emph{\zulaessigerTransformationen} (siehe weiter unten) aus $\alpha$ \ableitbar.
 	Sprechweise: Aus $\alpha$ ist $\beta$ \defn{\ableitbar} oder \defn{\beweisbar};
@@ -67,31 +67,30 @@ $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 	}
 	\label{def:ableitbar}
 	\\
-	& \derive \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\chrqt{$\derivesym$} kann dann auch ganz entfallen)}
+	& \glsSym{derive} \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\chrqt{$\derivesym$} kann dann auch ganz entfallen)}
 	\\
-	&             X_1, X_2, ...,X_n, \alpha_1, \alpha_2, ..., \alpha_m \quad
-	\derive \quad Y_1, Y_2, ...,Y_n,  \beta_1,  \beta_2,  ..., \beta_m \quad
+	&                    X_1,X_2,...,X_n,\alpha_1,\alpha_2,...,\alpha_m\quad
+	\glsSym{derive}\quad Y_1,Y_2,...,Y_n, \beta_1, \beta_2,..., \beta_m\quad
 	\metadefeq \quad X \derive Y
 	\label{def:ableitbarKurz}
 	\formulatoleft
 \end{align}
-%
+
 Eine \defn{\zulaessigeTransformation} ist die Anwendung einer \emph{\Substitution}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
-Bei den \Schlussregeln\ und der \Substitution\ ($\subst$) soll das Komma stärker binden als \chrqt{$\derivesym$}, \chrqt{$\subst$} und \chrqt{$\srand$},
- wobei \chrqt{$\srand$} für \enquote{und} \textbzgl\ \chrqt{\glsIdx{metaand}}\vrefnotesub{sub:Aussagen} steht und schwächer bindet als \chrqt{$\derivesym$} und \chrqt{$\subst$}.%
-\footnote{siehe Fußnote~3 \vrefvontab{tab:Prioritäten}} %TODO Kommentar zu \srand prüfen
+Bei den \Schlussregeln\ und der \Substitution\ \chrGlsSym{subst} soll das Komma stärker binden als \chrGlsSym{derive}, \chrGlsSym{subst} und \chrGlsSym{srand}, wobei \chrGlsSym{srand} für \enquote{und} \textbzw\ \chrGlsSym{metaand}\vrefnotesub{sub:AussagenUndMetaoperationen} steht und schwächer bindet als \chrGlsSym{derive} und \chrGlsSym{subst}.%
+\footnote{siehe Fußnote~3 \vrefvontab{tab:Prioritäten}}
 
 Zur der Auswahl der \Basisregeln, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
-Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$E$} für \enquote{-Einführung} und \chrqt{$B$} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von \Junktoren.%
+Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$\mathrm{E}$} für \enquote{-Einführung} und \chrqt{$\mathrm{B}$} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von \Junktoren.%
 \footnote{%
 	In der \Monotonieregel\ wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \supseteq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \supseteq X $}.
 	Außerdem werden bei den Bezeichnungen \seqqt{$(\land 1)$} und \seqqt{$(\land 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$\andE$} \textbzw\ \seqqt{$\andB$} ersetzt.
 }
 
-Im Folgenden seien $\alpha$ und $\beta$ wieder stets \Formeln\ und $X$ und $Y$ Mengen von \Formeln.
+Im Folgenden seien $\alpha$ und $\beta$ \Formeln\ und $X$ und $Y$ Mengen von \Formeln.
 Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{$\lnot$} und \chrqt{$\land$} benötigt.
 Bei den weiteren \Schlussregeln\ wird noch \chrqt{$\limp$} gemäß der Definition~\vref{def:imp} verwendet.
-%
+
 \begin{align}
 	& \frac{}{\alpha\derive\alpha}
 	& & (\text{\defn{\Anfangsregel}})
@@ -118,7 +117,7 @@ Bei den weiteren \Schlussregeln\ wird noch \chrqt{$\limp$} gemäß der Definitio
 	\tag{\tagandB} \sym{\gls{andB}} \label{def:andB}
 	\formulatoleft
 \end{align}
-%
+
 In einer \Schlussregel\ werden die \Formeln%
 \footnote{hier: \Aussagen\ in einer formalen Form.}
 über dem Querstrich als \defn{\Voraussetzungen} und die unter dem Querstrich als \defn{\Folgerungen} der Regel bezeichnet.
@@ -132,32 +131,34 @@ Eine \Schlussregel\ steht für die \Aussage, dass mit ihren \Voraussetzungen\ au
 Die \defn{\zulaessigenTransformationen}, \textdh\ die Anwendung der \Schlussregeln, erfordern zulässige \Substitutionen.
 Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{$\eq$} dann mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
 \footnote{siehe~\cite{bib:NatuerlichesSchliessen}}
-Dazu seien $\alpha$, $\beta$ und $\gamma$ \glsIdxPl{vergleichbar}%
-\footnote{siehe Ende \vrefvonsub{sub:Aussagen}}
-\Formeln.
+Dazu seien $\alpha$, $\beta$ und $\gamma$ \vergleichbare\footnote{siehe Ende \vrefvonsub{sub:AussagenUndMetaoperationen}}\Formeln.
+
 Zunächst wird definiert:
 \begin{align}
-	\gamma(\alpha \subst \beta) \quad \defeq \quad
+	\gamma(\alpha \glsSym{subst} \beta) \quad \defeq \quad
 	\parbox[t]{11cm}{%
 		Die \Formel, die man erhält, wenn in $\gamma$ alle oder nur einige Vorkommen von $\alpha$ durch $\beta$ ersetzt werden.
 		-- Gegebenenfalls muss noch die Auswahl der Ersetzungen angegeben werden, andernfalls werden alle Vorkommen ersetzt.
 		Letzteres heißt dann \defn{vollständige} \Substitution.
 	} \label{def:Substitution}\\
-	\gamma(\alpha \swap \beta) \quad \defeq \quad
+	\gamma(\alpha \glsSym{swap} \beta) \quad \defeq \quad
 	\parbox[t]{11cm}{%
 		Die \Formel, die man erhält, die man erhält, wenn in $\gamma$ alle $\alpha$ und $\beta$ miteinander vertauscht werden.
 		Dazu ist es nötig, das $\alpha$ und $\beta$ voneinander unabhängig sind, vorzugsweise zwei verschiedene Variable.
 	} \label{def:Vertauschung}
 \end{align}
-\seqqt{$ \alpha \subst \beta $} heißt \defn{\Substitution} und \seqqt{$ \alpha \swap \beta $} \defn{\glsIdx{Vertauschung}} oder kurz \defn{Tausch}.
--- Sei noch $S = (s_1, s_2, ...)$ eine endliche Folge von \Substitutionen, die auch \glsIdxPl{Vertauschung} enthalten und auch leer sein kann. Dann wird definiert:
+
+\seqqt{$ \alpha \glsSym{subst} \beta $} heißt \defn{\Substitution} und \seqqt{$ \alpha \glsSym{swap} \beta $} \defn{\Vertauschung} oder kurz \defn{Tausch}.
+-- Sei noch $S = (s_1, s_2, ...)$ eine endliche Folge von \Substitutionen, die auch \Vertauschungen\ enthalten und auch leer sein kann.
+
+Dann wird definiert:
 \begin{align}
 	\gamma(S) & \quad \defeq \quad \gamma(s_1)(s_2)... \label{def:Substitutionen}\\
 	\gamma(\emptyset) & \quad \; = \quad \gamma & \text{(nur zur Verdeutlichung)}\\
 	\gamma(s_1,s_2,...) & \quad \defeq \quad \gamma(S)
 \end{align}
-%
-Die \glsIdx{Vertauschung} ist eine spezielle Form der \Substitution.
+
+Die \Vertauschung\ ist eine spezielle Form der \Substitution.
 Wenn $x$ und $y$ zwei verschiedene Variable, die in $\alpha$, $\beta$ und $\gamma$ nicht vorkommen, gilt:
 \[
 	\gamma(\alpha \swap \beta) = \gamma(\alpha\subst x, \beta\subst y,  y\subst\alpha, x \subst\beta)
@@ -175,7 +176,7 @@ Folgende Sprechweisen werden verwendet:
 	\item [$\gamma(S)$ :] $S$ wird auf $\gamma$ angewendet.
 \end{itemize}
 %
-Bei obiger Definition der \Substitution\ bleibt noch offen, unter welchen \Voraussetzungen\ sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \glsIdx{Vertauschung} und vollständige \Substitution\ verwendet werden.
+Bei obiger Definition der \Substitution\ bleibt noch offen, unter welchen \Voraussetzungen\ sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \Vertauschung\ und vollständige \Substitution\ verwendet werden.
 In diesen Fällen sind beliebige \Substitutionen\ von Variablen durch \Formeln\ erlaubt.
 
 Ist $\gamma$ wie oben und $S$ eine Menge von \Substitutionen.
@@ -191,7 +192,7 @@ Nun können die beiden \Identitaetsregeln\ definiert werden:
 	\tag{\tageqB} \sym{\gls{eqB}} \label{def:eqB}
 	\formulatoleft
 \end{align}
-%
+
 Die \Identitaetsregeln\ werden hier eingeführt, um die \Substitution\ zu rechtfertigen.
 Wie die \Basisregeln\ gelten sie als \Axiome, würden also eigentlich dazu gehören.
 Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \Basisregeln\ gezählt.
@@ -205,7 +206,7 @@ In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessigerTransf
 	In~\cite{bib:Rautenberg} werden die \Identitaetsregeln\ zwar weder aufgeführt noch angewandt, ohne \Substitution\ geht es aber nicht.
 }
 Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
-%
+
 \begin{align}
 	& \frac{X,\lnot\alpha\derive\alpha}{X\derive\alpha}
 	& & (\text{Beseitigung der Negation; Indirekter \Beweis})
@@ -232,7 +233,7 @@ Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 	\tag{\tagTR} \sym{\gls{TR}} \label{def:TR}
 	\formulatoleft
 \end{align}
-%
+
 Dabei werden zum \Beweis\ der \Schlussregeln\ in~\cite{bib:Rautenberg} folgende \Basisregeln\ verwendet:
 \begin{itemize}
 	\renewcommand*{\itemindent}{1cm}
@@ -254,7 +255,8 @@ Als Beispiel wird hier die \Schnittregel\ aus den \Basisregeln\ abgeleitet.%
 }
 Dazu wird verabredet, dass \vrefintab{tab:AbleitungSchnittregel} der Inhalt der Zelle in der Zeile $i$ und der Spalte $(X_n)$ mit $X_i$ bezeichnet wird.
 Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschriften nur auf die dort notierten $(X_n)$ verwiesen. Dass in der Spalte $(n)$ stets die Zeilennummer steht, wird im folgenden nicht mehr extra erwähnt.
--- Für die ausgefüllten Felder wird nun definiert:%
+
+Für die ausgefüllten Felder wird nun definiert:%
 \footnote{%
 	Eigentlich müsste man für jede \Substitution\ aus $S_i$ eine eigene Zeile vorsehen.
 	Um die Tabellen für die \Beweise\ kürzer zu halten, werden aufeinanderfolgende \Substitutionen\ zusammengefasst.
@@ -285,6 +287,7 @@ Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschrifte
 	\\
 	D_i & \defeq \text{die Indizes der $A_j$, von denen $A_i$ abhängig ist.}
 \end{align}
+
 Bis zur Zeile $i$ hat man die folgende \Schlussregel\ bewiesen:
 \[ \frac{A_{i_1} \srand A_{i_2} ...}{A_i} \quad \text{, für alle } i_j \in D_i \]
 Sei nun
@@ -357,7 +360,7 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 		12 & \centerParbox{1.4cm}{\tagAR, \tagMR, \tagnota, \tagnotb} & & $\dfrac{A_1 \srand A_2}{A_3}$ & & $\dfrac{X \derive \alpha \srand X, \alpha \derive \beta}{X \derive \beta}$ &
 		\\\hline
 	\end{tabular}
-	\caption{Ableitung der \Schnittregel\ aus den \Basisregeln}
+	\caption{\Ableitung\ der \Schnittregel\ aus den \Basisregeln}
 	\label{tab:AbleitungSchnittregel}
 \end{table}
 
@@ -522,7 +525,7 @@ Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 		16 & \centerParbox{1.5cm}{\tagimpE, \tagimpB, \tagSR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ &
 		\\\hline
 	\end{tabular}
-	\caption{Ableitung der \Kontraposition\ aus \allgemeingueltigenSchlussregeln}
+	\caption{\Ableitung\ der \Kontraposition\ aus \allgemeingueltigenSchlussregeln}
 	\label{tab:AbleitungKontraposition}
 \end{table}
 

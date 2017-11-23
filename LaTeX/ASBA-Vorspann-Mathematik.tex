@@ -38,6 +38,8 @@
 
 \newcommand*{\srand}{\mid}% in formalen Sätzen und Schlussregeln:   ... und ...
 % Nur im Mathematikmodus!
+\newcommand*{\metanot}{\thicksim}%          ... gilt nicht
+%%%\newcommand*{\metanot}{\;\metanotsym\;}%    ... gilt nicht    (besserer Abstand)
 \newcommand*{\metaandsym}{\&}%              ... und       ...
 \newcommand*{\metaand}{\;\metaandsym\;}%    ... und       ... (besserer Abstand)
 \newcommand*{\metaorsym}{||}%               ... oder      ...
@@ -53,30 +55,40 @@
 \newcommand*{\swap}     {\leftrightarrows}% ... vertauscht mit     ...
 \newcommand*{\subst}    {\leftarrowtail}%   ... substituiert durch ...
 
-% Beispieloperatoren ===========================================================
+% BeispielOperationen ==========================================================
 % \*bsp
 \newcommand*{\opbsp}{\circledast}
 \newcommand*{\opubsp}{\circleddash}
 \newcommand*{\relbsp}{\sim}
 \newcommand*{\relnbsp}{\nsim}
 \newcommand*{\releqbsp}{\simeq}
-\newcommand*{\lrelbsp}{\lhd}
-\newcommand*{\rrelbsp}{\rhd}
-\newcommand*{\lreleqbsp}{\unlhd}
-\newcommand*{\rreleqbsp}{\unrhd}
+\newcommand*{\relnebsp}{\nsimeq}
+\newcommand*{\relbackbsp}{\backsim}
+\newcommand*{\relbacknbsp}{\backnsim}
+\newcommand*{\relbackeqbsp}{\backsimeq}
+\newcommand*{\relbacknebsp}{\backnsimeq}
+
+%%%\newcommand*{\lrelbsp}{\triangleleft}
+%%%\newcommand*{\rrelbsp}{\triangleright}
+%%%\newcommand*{\lreleqbsp}{\trianglelefteq}
+%%%\newcommand*{\rreleqbsp}{\trianglerighteq}
+%%%\newcommand*{\lrelnbsp}{\ntriangleleft}
+%%%\newcommand*{\rrelnbsp}{\ntriangleright}
+%%%\newcommand*{\lrelnebsp}{\ntrianglelefteq}
+%%%\newcommand*{\rrelnebsp}{\ntrianglerighteq}
 
 % Definitionen für die Tabelle der Junktoren ===================================
-% \l*  -           logischer Operator
-% \ln* - negierter logischer Operator
+% \l*  -           logische Operation
+% \ln* - negierter logische Operation
 % Wahrheitswerte ---------------------------------------------------------------
 % Konstante --------------------------------------------------------------------
 \newcommand*{\ltrue} {\top}%            W       - wahr   (Wahrheitswert)
 \newcommand*{\wahr}  {\mathrm{wahr}}
 \newcommand*{\lfalse}{\bot}%            F       - falsch (Wahrheitswert)
 \newcommand*{\falsch}{\mathrm{falsch}}
-% unäre Operatoren -------------------------------------------------------------
+% unäre Operationen ------------------------------------------------------------
 %            \lnot                      F W     - nicht A
-% binäre Operatoren ------------------------------------------------------------
+% binäre Operationen -----------------------------------------------------------
 %            \lor                       W W W F - A oder B
 \newcommand*{\lrep}  {\leftarrow}%      W W F W - A folgt aus B
 \newcommand*{\limp}  {\rightarrow}%     W F W W - aus A folgt B
@@ -117,9 +129,9 @@
 % Mengen der Aussagenlogik
 \newcommand*{\alVar} {\mathcal{Q}}%     Menge der Variablensymbole
 \newcommand*{\alCon} {\mathcal{K}}%     Menge der [K]onstantensymbole
-\newcommand*{\alUna} {\mathcal{U}}%     Menge der [u]nären Operatorsymbole
-\newcommand*{\alBin} {\mathcal{O}}%     Menge der binären [O]peratorsymbole
-\newcommand*{\alJun} {\mathcal{J}}%     Menge der Operatorsymbole ([J]unktor)
+\newcommand*{\alUna} {\mathcal{U}}%     Menge der [u]nären Operationssymbole
+\newcommand*{\alBin} {\mathcal{O}}%     Menge der binären [O]perationssymbole
+\newcommand*{\alJun} {\mathcal{J}}%     Menge der Operationssymbole ([J]unktor)
 \newcommand*{\alABC} {\mathcal{A}}%     [A]lphabet der aussagenlogischen Sprache
 \newcommand*{\alFor} {\mathcal{L}}%     Menge der Formeln (Worte) ([l]anguage)
 \newcommand*{\alForp}{\alFor^\mathrm{p}}%   ... in polnischer Notation

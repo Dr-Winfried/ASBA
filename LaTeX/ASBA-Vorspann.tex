@@ -425,9 +425,6 @@
 % Weitere Abkürzungen
 \newcommand*{\textdots}{…}
 
-% Ergebnis von Makros verschwinden lassen
-\newcommand*{\hidden}[1]{}
-
 % Glossareinträge ##############################################################
 
 % Indices und Symbole ==========================================================
@@ -446,7 +443,7 @@
 
 \newcommand*{\idx}     [1]{\sindex[idx]{#1}}
 \newcommand*{\sym}     [1]{\sindex[sym]{#1}}
-\newcommand*{\glsSym}  [1]{\glspl   {#1}\sym{\gls{#1}}}% Symbol Mathematikmodus!
+\newcommand*{\glsSym}  [1]{\glspl   {#1}\sym{\gls{#1}}}% Symbol;Mathematikmodus!
 \newcommand*{\glsIdx}  [1]{\gls     {#1}\idx{\gls{#1}}}% normal
 \newcommand*{\GlsIdx}  [1]{\Gls     {#1}\idx{\gls{#1}}}% groß
 \newcommand*{\glsIdxPl}[1]{\glspl   {#1}\idx{\gls{#1}}}%          Plural
@@ -454,3 +451,6 @@
 \newcommand*{\glsIdxBg}[2]          {#2\idx {\gls{#1}}}%          Beugung
 \newcommand*{\GlsIdxBg}[2]          {#2\idx {\gls{#1}}}% groß und Beugung
 \newcommand*{\Tag}[1]{\tag{\glsPl   {#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag
+
+% Symbol quotiert ausgeben und ins Symbolverzeichnis und Glossar eintragen
+\newcommand*{\chrGlsSym}[1]{\chrqt{{\gls{#1}\sym{\gls{#1}}}}}
