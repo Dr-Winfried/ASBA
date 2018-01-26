@@ -39,13 +39,12 @@
 \newcommand*{\srand}{\mid}% in formalen Sätzen und Schlussregeln:   ... und ...
 % Nur im Mathematikmodus!
 \newcommand*{\metanot}{\thicksim}%          ... gilt nicht
-%%%\newcommand*{\metanot}{\;\metanotsym\;}%    ... gilt nicht    (besserer Abstand)
 \newcommand*{\metaandsym}{\&}%              ... und       ...
-\newcommand*{\metaand}{\;\metaandsym\;}%    ... und       ... (besserer Abstand)
+\newcommand*{\metaand}{\mathbin\metaandsym}%... und       ... (besserer Abstand)
 \newcommand*{\metaorsym}{||}%               ... oder      ...
-\newcommand*{\metaor}{\;\metaorsym\;}%      ... oder      ... (besserer Abstand)
+\newcommand*{\metaor}{\mathbin\metaorsym}%  ... oder      ... (besserer Abstand)
 \newcommand*{\derivesym}{\vdash}%           ... ableitbar ...
-\newcommand*{\derive}{\;\derivesym\;}%      ... ableitbar ... (besserer Abstand)
+\newcommand*{\derive}{\mathbin\derivesym}%  ... ableitbar ... (besserer Abstand)
 \newcommand*{\metaimp}{\Rightarrow}%    aus ... folgt              ...
 \newcommand*{\metarep}{\Leftarrow}%         ... folgt aus          ...
 \newcommand*{\metaequiv}{\Leftrightarrow}%  ... genau dann wenn    ...
@@ -55,18 +54,29 @@
 \newcommand*{\swap}     {\leftrightarrows}% ... vertauscht mit     ...
 \newcommand*{\subst}    {\leftarrowtail}%   ... substituiert durch ...
 
-% BeispielOperationen ==========================================================
+% Mathematische Operatoren =====================================================
+\DeclareMathOperator*{\stelrel} {stel_r}%      - Funktion, Relation
+\DeclareMathOperator*{\stelfunc}{stel_f}%      - Funktion, Relation
+\DeclareMathOperator*{\graph}{graph}%  graph   - Funktion, Relation
+\DeclareMathOperator*{\traeger}{car}%  carrier - Relation
+\DeclareMathOperator*{\Db}{dom}%       domain  - Funktion
+\DeclareMathOperator*{\Zb}{tar}%       target  - Funktion
+%%%\DeclareMathOperator*{\Wb}{ran}%       range   - Funktion
+%%%\DeclareMathOperator*{\Qb}{src}%       source  - partielle Funktion
+%%%\DeclareMathOperator*{command}{definition}
+
+% Beispieloperationen ==========================================================
 % \*bsp
-\newcommand*{\opbsp}{\circledast}
-\newcommand*{\opubsp}{\circleddash}
-\newcommand*{\relbsp}{\sim}
-\newcommand*{\relnbsp}{\nsim}
-\newcommand*{\releqbsp}{\simeq}
-\newcommand*{\relnebsp}{\nsimeq}
-\newcommand*{\relbackbsp}{\backsim}
-\newcommand*{\relbacknbsp}{\backnsim}
-\newcommand*{\relbackeqbsp}{\backsimeq}
-\newcommand*{\relbacknebsp}{\backnsimeq}
+\newcommand*{\opbsp}{\mathbin\circledast}
+\newcommand*{\opubsp}{\mathbin\circleddash}
+\newcommand*{\relbsp}{\mathrel\sim}
+\newcommand*{\relnbsp}{\mathrel\nsim}
+\newcommand*{\releqbsp}{\mathrel\simeq}
+\newcommand*{\relnebsp}{\mathrel\nsimeq}
+\newcommand*{\relbackbsp}{\mathrel\backsim}
+\newcommand*{\relbacknbsp}{\mathrel\backnsim}
+\newcommand*{\relbackeqbsp}{\mathrel\backsimeq}
+\newcommand*{\relbacknebsp}{\mathrel\backnsimeq}
 
 %%%\newcommand*{\lrelbsp}{\triangleleft}
 %%%\newcommand*{\rrelbsp}{\triangleright}
@@ -82,10 +92,10 @@
 % \ln* - negierter logische Operation
 % Wahrheitswerte ---------------------------------------------------------------
 % Konstante --------------------------------------------------------------------
-\newcommand*{\ltrue} {\top}%            W       - wahr   (Wahrheitswert)
-\newcommand*{\wahr}  {\mathrm{wahr}}
-\newcommand*{\lfalse}{\bot}%            F       - falsch (Wahrheitswert)
-\newcommand*{\falsch}{\mathrm{falsch}}
+\newcommand*{\ltrue} {\top}%            W       - wahr   (Wahrheitswert, Symbol)
+\newcommand*{\wahr}  {\emph{wahr}}%                                       (Text)
+\newcommand*{\lfalse}{\bot}%            F       - falsch (Wahrheitswert, Symbol)
+\newcommand*{\falsch}{\emph{falsch}}%                                     (Text)
 % unäre Operationen ------------------------------------------------------------
 %            \lnot                      F W     - nicht A
 % binäre Operationen -----------------------------------------------------------

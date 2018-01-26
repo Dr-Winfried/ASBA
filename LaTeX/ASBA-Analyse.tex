@@ -158,7 +158,7 @@ Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellt
 \newcommand*{\vsl}{\hspace{-6pt}\vsL}% für 2-stellige Zahlen
 \newcommand*{\vsc}{\hspace{6pt}}     % für die gedrehten Überschriften
 %
-\begin{table}[!htb]
+\begin{table}[H]
 	\begin{tabularx}{\linewidth-10.95pt}
 		{@{\hspace{.5cm}}rl@{\extracolsep{\fill}}|*{7}{c}@{\hspace{1cm}}|}
 		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.5cm]%
@@ -294,7 +294,7 @@ Punkt \ref{Ziel:Zwischenspeicher} wurde noch eingefügt, damit \ASBA\ effizient 
 Mit einem X werden wieder die Spalten einer Zeile markiert, deren zugehörige Ziele zur Sicherstellung der entsprechenden Eigenschaft beitragen sollen.
 Idealerweise sollte durch Erreichen aller aufgestellten Ziele \ASBA\ alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
 %
-\begin{table}[!htb]
+\begin{table}[H]
 	\begin{tabularx}{\linewidth-10.95pt}
 		{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{16}{c}@{\hspace{0.4cm}}|}
 		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]%
@@ -359,7 +359,7 @@ Idealerweise sollte durch Erreichen aller aufgestellten Ziele \ASBA\ alle angege
 \beginsection{Zusammenfassung}
 \label{sec:Zusammenfassung}
 
-\begin{table}[!htb]
+\begin{table}[H]
 	\begin{tabularx}{\linewidth-10.95pt}
 		{@{\hspace{.3cm}}rl@{\extracolsep{\fill}}|*{15}{c}@{\hspace{0.4cm}}|}
 		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]%
@@ -446,78 +446,78 @@ Idealerweise sollte das Erreichen aller aufgestellten Ziele alle gestellten Frag
 \label{sec:Umgebung}
 
 \vrefInfig{fig:Umgebung} wird beschrieben, welche Interaktionen \ASBA\ mit der Umgebung hat, \textdh\ welche Ein- und Ausgaben existieren und woher sie kommen \textbzw\ wohin sie gehen.
-%
-\begin{figure}[!htb]
+
+\begin{figure}[H]
 	\setlength\unitlength{1cm}
-	\begin{picture}(17.0,7.0)(-8.4,-3.5)
-	%%%			% Gitter                                            %%%
-	%%%			\color{lightgray}%                                  %%%
-	%%%			\multiput(-8.4,-3.0)(+0.0,1.0){ 7}{\line(1,0){17.0}}%%%
-	%%%			\multiput(-7.9,-3.5)(+1.0,0.0){17}{\line(0,1){ 7.0}}%%%
-	\linethickness{1.5pt}
-	% Hintergrund (grau) ===============================================
-	\color{gray}
-	% rechts: externes ASBA mit Pfeilen --------------------------------
-	\put(+3.00,-0.50){\framebox(2.40,1.60){\huge\textbf{\ASBA}}}
-	\put(+3.00,-0.50){\makebox(2.40,1.50)[t]{\textbild{externes}}}
-	\put(+4.00,+1.12){\vector(-1,+2){0.45}}% <--- externes ASBA
-	\put(+4.00,+2.05){\vector(+1,-2){0.47}}% ---> externes ASBA
-	\put(+3.81,+1.57){\marker{a}}
-	% rechts oben: externe Datenbank mit Pfeilen -----------------------
-	\put(+7.30,+2.30){\Datenbank{1.20}{0.40}{0.80}{\small externe}{\small Datenbank}}
-	\put(+5.41,+1.10){\vector(+1,+1){0.70}}% <--- externes ASBA
-	\put(+6.14,+1.39){\vector(-1,-1){0.72}}% ---> externes ASBA
-	\put(+5.60,+1.23){\marker{b}}
-	% Verbindung Auswertungen ---> Männchen ----------------------------
-	\put(+5.60,-2.30){\vector(-1,0){4.05}}%  Auswertungen ---> Männchen
-	\put(+3.50,-2.30){\marker{c}}
-	% Verbindung Männchen <---> Terminal -------------------------------
-	\put(-2.00,-2.00){\vector(+1,0){2.45}}% Männchen <--- Terminal
-	\put(+0.40,-2.30){\vector(-1,0){2.40}}% Männchen ---> Terminal
-	\put(-0.75,-2.15){\marker{d}}
-	% Verbindung Terminal <---> Datei ----------------------------------
-	\put(-5.50,-1.50){\vector(+3,-1){1.50}}% Terminal <--- Datei
-	\put(-4.01,-2.30){\vector(-3,+1){1.60}}% Terminal ---> Datei
-	\put(-5.00,-1.90){\marker{e}}
-	% Vordergrund (schwarz) ============================================
-	\color{black}
-	% rechts oben: Wolke mit Pfeilen -----------------------------------
-	\put(+3.40,+3.00){\Wolke{Internet}}
-	\put(+2.00,+2.54){\vector(-1,-1){0.98}}% ---> ASBA
-	\put(+1.53,+1.53){\vector(+1,+1){0.75}}% <--- ASBA
-	\put(+1.50,+1.95){\Marker{1}}
-	% links oben: Datenbank mit Pfeilen --------------------------------
-	\put(-7.00,+2.00){\Datenbank{1.50}{0.50}{1.00}{Datenbank}{}}
-	\put(-5.50,+2.20){\vector(+4,-1){3.95}}% ---> ASBA
-	\put(-1.51,+0.90){\vector(-4,+1){4.00}}% <--- ASBA
-	\put(-3.70,+1.55){\Marker{2}}
-	% links Mitte: Datei mit Pfeilen -----------------------------------
-	\put(-7.00,-1.00){\Datei{3.00}{2.00}{Datei}}
-	\put(-5.50,-0.80){\vector(+4,+1){3.95}}% ---> ASBA
-	\put(-1.51,-0.10){\vector(-4,-1){4.00}}% <--- ASBA
-	\put(-3.70,-0.45){\Marker{3}}
-	%links unten: Rechner mit Pfeilen ----------------------------------
-	\put(-3.00,-2.10){\Terminal{Terminal}}
-	\put(-2.50,-1.48){\vector(+1,+1){0.95}}% ---> ASBA
-	\put(-1.10,-0.52){\vector(-1,-1){0.95}}% <--- ASBA
-	\put(-2.00,-1.00){\Marker{4}}
-	% Mitte unten: Männchen mit Pfeilen --------------------------------
-	\put(+1.00,-1.80){\Maennchen}
-	\put(+0.85,-1.50){\vector(0,+1){1.00}}% ---> ASBA
-	\put(+1.15,-0.51){\vector(0,-1){1.00}}% <--- ASBA
-	\put(+0.80,-1.02){\Marker{5}}
-	% rechts unten: Papier mit Pfeil -----------------------------------
-	\put(+5.60,-3.00){\Papier{+2.00}{+0.30}{Ausgabe}}
-	\put(+1.51,-0.55){\vector(+4,-1){+4.10}}% <--- ASBA
-	\put(+3.25,-1.05){\Marker{6}}
-	% Mitte: ASBA ------------------------------------------------------
-	\linethickness{3pt}
-	\put(-1.5,-0.5){\framebox(3.0,2.0){\Huge\textbf{\ASBA}}}
+	\begin{picture}(17.0,9.5)(-8.4,-4.5)
+		% Gitter                                            %%%
+		\color{lightgray}%                                  %%%
+		\multiput(-8.4,-4.5)(+0.0,1.0){10}{\line(1,0){17.0}}%%%
+		\multiput(-7.9,-4.5)(+1.0,0.0){17}{\line(0,1){ 9.5}}%%%
+		\linethickness{1.5pt}
+		% Hintergrund (grau) ===============================================
+		\color{gray}
+		% rechts: externes ASBA mit Pfeilen --------------------------------
+		\put(+3.00,+0.50){\framebox(2.40,1.60){\huge\textbf{\ASBA}}}
+		\put(+3.00,+0.50){\makebox(2.40,1.50)[t]{\textbild{externes}}}
+		\put(+4.00,+2.12){\vector(-1,+4){0.35}}% <--- externes ASBA
+		\put(+4.00,+3.55){\vector(+1,-4){0.36}}% ---> externes ASBA
+		\put(+3.81,+2.82){\marker{a}}
+		% rechts oben: externe Datenbank mit Pfeilen -----------------------
+		\put(+7.30,+3.80){\Datenbank{1.20}{0.40}{0.80}{\small externe}{\small Datenbank}}
+		\put(+5.41,+2.10){\vector(+1,+2){0.70}}% <--- externes ASBA
+		\put(+6.14,+2.89){\vector(-1,-2){0.72}}% ---> externes ASBA
+		\put(+5.60,+2.48){\marker{b}}
+		% Verbindung Auswertungen ---> Männchen ----------------------------
+		\put(+5.60,-3.30){\vector(-1,0){4.05}}% Auswertungen ---> Männchen
+		\put(+3.50,-3.30){\marker{c}}
+		% Verbindung Männchen <---> Terminal -------------------------------
+		\put(-2.00,-3.00){\vector(+1,0){2.45}}% Männchen <--- Terminal
+		\put(+0.40,-3.30){\vector(-1,0){2.40}}% Männchen ---> Terminal
+		\put(-0.75,-3.15){\marker{d}}
+		% Verbindung Terminal <---> Datei ----------------------------------
+		\put(-5.50,-1.50){\vector(+3,-2){1.50}}% Terminal <--- Datei
+		\put(-4.01,-2.80){\vector(-3,+2){1.60}}% Terminal ---> Datei
+		\put(-5.00,-2.10){\marker{e}}
+		% Vordergrund (schwarz) ============================================
+		\color{black}
+		% rechts oben: Wolke mit Pfeilen -----------------------------------
+		\put(+3.40,+4.50){\Wolke{Internet}}
+		\put(+2.00,+4.04){\vector(-1,-3){0.82}}% ---> ASBA
+		\put(+1.53,+1.53){\vector(+1,+3){0.75}}% <--- ASBA
+		\put(+1.55,+2.70){\Marker{1}}
+		% links oben: Datenbank mit Pfeilen --------------------------------
+		\put(-7.00,+3.50){\Datenbank{1.50}{0.50}{1.00}{\large Datenbank}{}}
+		\put(-5.50,+3.75){\vector(+7,-4){3.95}}% ---> ASBA
+		\put(-1.51,+1.10){\vector(-7,+4){4.00}}% <--- ASBA
+		\put(-3.70,+2.40){\Marker{2}}
+		% links Mitte: Datei mit Pfeilen -----------------------------------
+		\put(-7.00,-1.00){\Datei{3.00}{2.00}{Datei}}
+		\put(-5.50,-0.80){\vector(+4,+1){3.95}}% ---> ASBA
+		\put(-1.51,-0.10){\vector(-4,-1){4.00}}% <--- ASBA
+		\put(-3.70,-0.45){\Marker{3}}
+		%links unten: Rechner mit Pfeilen ----------------------------------
+		\put(-3.00,-3.10){\Terminal{Terminal}}
+		\put(-2.50,-2.48){\vector(+1,+2){0.98}}% ---> ASBA
+		\put(-1.09,-0.52){\vector(-1,-2){0.98}}% <--- ASBA
+		\put(-2.00,-1.50){\Marker{4}}
+		% Mitte unten: Männchen mit Pfeilen --------------------------------
+		\put(+1.00,-2.80){\Maennchen}
+		\put(+0.85,-2.50){\vector(0,+1){2.00}}% ---> ASBA
+		\put(+1.15,-0.51){\vector(0,-1){2.00}}% <--- ASBA
+		\put(+0.80,-1.52){\Marker{5}}
+		% rechts unten: Papier mit Pfeil -----------------------------------
+		\put(+5.60,-4.20){\Papier{+2.00}{+0.30}{Ausgabe}}
+		\put(+1.51,-0.55){\vector(+2,-1){+4.10}}% <--- ASBA
+		\put(+3.25,-1.55){\Marker{6}}
+		% Mitte: ASBA ------------------------------------------------------
+		\linethickness{3pt}
+		\put(-1.5,-0.5){\framebox(3.0,2.0){\Huge\textbf{\ASBA}}}
 	\end{picture}
 	\caption{Die Umgebung von \ASBA}
 	\label{fig:Umgebung}% Erst nach '\caption'!
 \end{figure}
-%
+
 In den \vrefinfig{fig:Umgebung} abgebildeten Datenflüssen (1) bis (6) und (a) bis (e) werden die folgenden Daten übertragen:
 \begin{itemize}
 	\newcommand*{\vonnach}  [2]{#1 $\rightarrow$ #2}
@@ -573,7 +573,6 @@ In den \vrefinfig{fig:Umgebung} abgebildeten Datenflüssen (1) bis (6) und (a) b
 	\end{description}
 	%
 	\item[(a)]\label{dat:extInternet}
-	Nur die für \ASBA\ relevanten Daten:
 	\begin{description}
 		\item[\vonnach{Internet}{externes \ASBA}]\label{dat:ausextInternet}
 		Inhalte der Datenbank.
@@ -582,7 +581,6 @@ In den \vrefinfig{fig:Umgebung} abgebildeten Datenflüssen (1) bis (6) und (a) b
 	\end{description}
 	%
 	\item[(b)]\label{dat:extDatenbank}
-	Nur die für \ASBA\ relevanten Daten:
 	\begin{description}
 		\item[\vonnach{externe Datenbank}{externes \ASBA}]
 		\label{dat:ausextDatenbank} Inhalte der externen Datenbank.
@@ -661,8 +659,11 @@ Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehe
 	\textdh\ Folgen von Zeichen und Symbolen, in denen Zwischenraum -- insbesondere Leerstellen -- nicht zählen.
 	Mehrdimensionale Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenfolgen dargestellt werden.%
 	\footnote{%
-		\textZB\ könnte man eine 2$\times$2--Matrix $\begin{bmatrix}
-			a & b \\ c & d \end{bmatrix}$ auch darstellen als Folge von Zeilen: \seqqt{$[(a,b),(c,d)]$}, oder noch einfacher: \seqqt{$[a,b;c,d]$}.
+		\textZB\ könnte man eine 2$\times$2-Matrix
+		$\begin{bmatrix} a & b \\ c & d \end{bmatrix}$
+		auch darstellen als Folge von Zeilen: \enquote{$[(a,b),(c,d)]$}, oder noch einfacher: \enquote{$[a,b;c,d]$}.
+		In \ASBA wird die \LaTeX-Syntax verwendet.
+		Damit wird die soeben angegebene Matrix codiert durch \enquote{\$ \textbackslash begin\{bmatrix\} a \& b \textbackslash\textbackslash\ c \& d \textbackslash end\{bmatrix\}\$}.
 	}
 	\Beweise\ sind letztendlich nichts anderes, als erlaubte Transformationen dieser Zeichenfolgen.
 	%

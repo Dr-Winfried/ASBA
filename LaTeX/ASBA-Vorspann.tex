@@ -38,10 +38,15 @@
 
 % Pakete #######################################################################
 
+%% Nur für Entwicklung und Test ------------------------------------------------
+\usepackage{srcltx}% Klick im Viewer öffnet Editor und umgekehrt
+\setlength{\overfullrule}{5pt}
+
 % allgemein --------------------------------------------------------------------
 \usepackage[utf8]{inputenc}% Input encoding specification
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+%%\usepackage{ngerman}% Führt zum Stack-Overflow
 \usepackage{scrlayer-scrpage}
 \usepackage{geometry}% Flexible and complete interface to document dimensions.
 \usepackage{microtype}% Subliminal refinements towards typographical perfection.
@@ -62,6 +67,7 @@
 %\usepackage{cancel}% Place lines through mathematical formulae.
 
 % Tabellen ---------------------------------------------------------------------
+\usepackage{float}% An Improved Environment for Floats
 \usepackage[table]{xcolor}% Driver-independent color extensions - vor 'color'?
 %\usepackage{ctable}% Flexible typesetting of table and figure using key/value
 %% Das Paket ctable fast die Eigenschaften der Pakete
@@ -396,7 +402,17 @@
 \newcommand*{\vrefseesec}    [1]{siehe     \vrefsec             {#1}}
 \newcommand*{\vrefseesub}    [1]{siehe     \vrefsub             {#1}}
 \newcommand*{\vrefseesubsub} [1]{siehe     \vrefsubsub          {#1}}
+\newcommand*{\vrefseedef}    [1]{siehe     \vrefdef             {#1}}
 \newcommand*{\vrefseeziel}   [1]{siehe     \vrefziel            {#1}}
+
+\newcommand*{\vrefSeefig}    [1]{Siehe     \vreffig             {#1}}
+\newcommand*{\vrefSeetab}    [1]{Siehe     \vreftab             {#1}}
+\newcommand*{\vrefSeecha}    [1]{Siehe     \vrefcha             {#1}}
+\newcommand*{\vrefSeesec}    [1]{Siehe     \vrefsec             {#1}}
+\newcommand*{\vrefSeesub}    [1]{Siehe     \vrefsub             {#1}}
+\newcommand*{\vrefSeesubsub} [1]{Siehe     \vrefsubsub          {#1}}
+\newcommand*{\vrefSeedef}    [1]{Siehe     \vrefdef             {#1}}
+\newcommand*{\vrefSeeziel}   [1]{Siehe     \vrefziel            {#1}}
 
 \newcommand*{\vrefnotefig}   [1]{\footnote{\vrefseefig          {#1}}}
 \newcommand*{\vrefnotetab}   [1]{\footnote{\vrefseetab          {#1}}}
@@ -405,7 +421,7 @@
 \newcommand*{\vrefnotesub}   [1]{\footnote{\vrefseesub          {#1}}}
 \newcommand*{\vrefnotesubsub}[1]{\footnote{\vrefseesubsub       {#1}}}
 \newcommand*{\vrefnoteziel}  [1]{\footnote{\vrefseeziel         {#1}}}
-\newcommand*{\citenote}      [1]{\footnote{siehe~\cite          {#1}}}
+\newcommand*{\citenote}      [1]{\footnote{vergleiche~\cite     {#1}}}
 
 % Abkürzungen mit Punkten; zur Unterscheidung vom Satzende
 \newcommand*{\textbzgl}{bzgl.\@}
@@ -435,22 +451,24 @@
 \newcommand*{\Sym}[1]{#1\sym{$#1$}}% Index für ein Symbol - Mathematikmodus!
 
 % Glossareinträge ==============================================================
-%%%\GlsSetQuote{+}% wegen von ngerman; see glossaries guide for beginners
+%%%\GlsSetQuote{+}% wegen ngerman; see glossaries guide for beginners
 \makeglossaries
 \setacronymstyle{long-sc-short}
 
 % Symbol/Index/Glossar =========================================================
 
+%TODO Indices und Glossar in die richtige Reihenfolge bringen
+%TODO Manche Symbole sind mehrfach vorhanden
 \newcommand*{\idx}     [1]{\sindex[idx]{#1}}
 \newcommand*{\sym}     [1]{\sindex[sym]{#1}}
-\newcommand*{\glsSym}  [1]{\glspl   {#1}\sym{\gls{#1}}}% Symbol;Mathematikmodus!
-\newcommand*{\glsIdx}  [1]{\gls     {#1}\idx{\gls{#1}}}% normal
-\newcommand*{\GlsIdx}  [1]{\Gls     {#1}\idx{\gls{#1}}}% groß
-\newcommand*{\glsIdxPl}[1]{\glspl   {#1}\idx{\gls{#1}}}%          Plural
-\newcommand*{\GlsIdxPl}[1]{\Glspl   {#1}\idx{\gls{#1}}}% groß und Plural
-\newcommand*{\glsIdxBg}[2]          {#2\idx {\gls{#1}}}%          Beugung
-\newcommand*{\GlsIdxBg}[2]          {#2\idx {\gls{#1}}}% groß und Beugung
-\newcommand*{\Tag}[1]{\tag{\glsPl   {#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag
+\newcommand*{\glsSym}  [1]{\glspl{#1}\sym{\gls{#1}}}% Symbol;Mathematikmodus!
+\newcommand*{\glsIdx}  [1]{\gls  {#1}\idx{\gls{#1}}}% normal
+\newcommand*{\GlsIdx}  [1]{\Gls  {#1}\idx{\gls{#1}}}% groß
+\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%          Plural
+\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}% groß und Plural
+\newcommand*{\glsIdxBg}[2]       {#2\idx {\gls{#1}}}%          Beugung
+\newcommand*{\GlsIdxBg}[2]       {#2\idx {\gls{#1}}}% groß und Beugung
+\newcommand*{\Tag}[1]{\tag{\glsPl{#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag
 
 % Symbol quotiert ausgeben und ins Symbolverzeichnis und Glossar eintragen
 \newcommand*{\chrGlsSym}[1]{\chrqt{{\gls{#1}\sym{\gls{#1}}}}}

@@ -60,8 +60,8 @@ Alle hier aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und 
 \subsection{Bezeichnungen}% ----------------------------------------------------
 \label{sub:Bezeichnungen}
 
-Im Vorgriff auf \vrefsubsub{subsub:Definitionen} steht \seqqt{$A \metadefeq B$} für \enquote{$A$ \emph{ist definitionsgemäß gleich} $B$}, \seqqt{$A \metaand B$} für \enquote{$A$ \emph{und} $B$} und \seqqt{$A \metaor B$} für \enquote{$A$ \emph{oder} $B$}.
-
+Im Vorgriff auf \vrefsubsub{subsub:Definitionen} steht \enquote{$A \metadefeq B$} für \enquote{$A$ \emph{ist definitionsgemäß gleich} $B$}, \enquote{$A \metaand B$} für \enquote{$A$ \emph{und} $B$} und \enquote{$A \metaor B$} für \enquote{$A$ \emph{oder} $B$}.
+%
 \begin{align}
 	& \glsSym{gsN}          & \metadefeq & \quad
 	\text{Menge der \defn{natürlichen Zahlen}  ohne           $0$} \\
@@ -73,12 +73,12 @@ Im Vorgriff auf \vrefsubsub{subsub:Definitionen} steht \seqqt{$A \metadefeq B$} 
 	\text{$A$ ist       \defn{Teilmenge} von $B$}                 \\
 	& M^n                   & \metadefeq & \quad
 	M \times M \times \dots \times M
-	\text{ , das \defn{karthesische Produkt} aus $n$ Mengen $M$ mit } n \in \gsNo \\
+	\text{ , das \defn{kartesische Produkt} aus $n$ Mengen $M$ mit } n \in \gsNo \\
 	& M^0                   & =          & \quad \{()\}
 	\text{ , wobei $()$ das \defn{0-Tupel} ist}
 	\formulaspace
 \end{align}
-
+%
 Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Element von $\gsNo$.%
 \footnote{%
 	In der Literatur wird \chrqt{$\subset$} oft in der Bedeutung von \chrqt{$\subseteq$} verwendet.
@@ -86,8 +86,9 @@ Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Eleme
 }
 
 \begin{description}
-	%
-	\item[\Symbole] umfassen neben speziellen \Symbolen\ auch Buchstaben, Ziffern und Sonderzeichen.
+
+	% ----- Symbol -------------------------------------------------------------
+	\item [\Symbole] umfassen neben speziellen \Symbolen\ auch Buchstaben, Ziffern und Sonderzeichen.
 	Symbole, für die es kein eigenes typographisches Zeichen gibt, können auch durch Aufeinanderfolge mehrerer typographischer Zeichen, \textiAlg\ lateinische Buchstaben, dargestellt werden.
 	Wir nennen sie dann \defn{zusammengesetzte Symbole}, im Gegensatz zu den \defn{einfachen Symbolen}.
 	Charakteristisch für ein Symbol ist, dass es ohne Bedeutungsverlust nicht zerlegt werden kann.
@@ -98,7 +99,11 @@ Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Eleme
 	}
 	für die Menge der natürlichen Zahlen einschließlich 0 und \chrqt{$\sin$} für die Sinusfunktion.
 	-- Die Quotierung ist kein Bestandteil des \Symbols!
-	%
+
+	Wird für bestimmte \Objekte\ ein \Symbol\ verwendet, so nennen wir dies ein \defn{Objektsymbol}.
+	Ist das Objekt eine Funktion, Operation, Relation \textusw, so nennen wir das Symbol ein \defn{Funktionssymbol}, \defn{Operatorsymbol}, \defn{Relationssymbol} usw.
+
+	% ----- Zeichenkette -------------------------------------------------------
 	\item [\Zeichenketten] sind Folgen von einfachen \Symbolen, in denen im Prinzip auch Leerstellen und andere nicht druckbare Zeichen zulässig sind.%
 	\footnote{%
 		Da beim Ausdruck optisch nicht entschieden werden kann, ob ein Zwischenraum (white space) aus einem Tabulator oder \textevtl\ mehreren Leerzeichen besteht, verwenden wir nur einzelne Leerzeichen als Zwischenraumzeichen und vermeiden Zeilenumbrüche.
@@ -106,17 +111,17 @@ Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Eleme
 	Damit Leerstellen in \Zeichenketten\ leicht bestimmt und sogar gezählt werden können,
 	werden \Zeichenketten\ stets \strqt{in dieser} Schriftart und Quotierung dargestellt.
 	-- Die Quotierung ist kein Bestandteil der \Zeichenkette!
-	%
+
+	% ----- Zeichenfolge -------------------------------------------------------
 	\item [\Zeichenfolgen] sind ähnlich wie \Zeichenketten, außer das sie neben einfachen auch zusammengesetzte \Symbole\ enthalten können und Leerzeichen und andere Zwischenraumzeichen nicht zählen.
 	Letztere dienen nur der optischen Trennung der \Symbole\ und der besseren Lesbarkeit.
 	\Zeichenfolgen\ werden stets \seqqt{in dieser} Quotierung dargestellt.
 	-- Die Quotierung ist kein Bestandteil der \Zeichenfolge!
-	%
+
+	% ----- Formel -------------------------------------------------------------
 	\item [\Formeln] sind in diesem Dokument immer nach vorgegebenen Regeln aufgebaute \Zeichenfolgen%
 	\footnote{%
 		Es kann verschiedene Arten von \Formeln\ geben, \textzB\ aussagenlogische, prädikatenlogische und solche, die ein Taschenrechner auswerten kann.
-	%%%	Eine \Formel\ kann auch mehrdimensional dargestellt werden, lässt sich aber mittels geeigneter Definitionen immer eindeutig als eine \Zeichenfolge\ schreiben.
-	%%%	\textZB\ könnte man eine 2$\times$2--Matrix auch schreiben als Folge von Zeilen: \seqqt{$[(a,b),(c,d)]$}, oder noch einfacher: \seqqt{$[a,b;c,d]$}.
 	}.
 	Daher werden sie wie \Zeichenfolgen\ quotiert.
 	-- Die Quotierung ist kein Bestandteil der \Zeichenfolge!
@@ -127,30 +132,103 @@ Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Eleme
 		Wir bleiben der Klarheit willen bei \enquote{\Formel}.
 	}
 	Das ist dann so ziemlich die einfachste Regel.
-	%
-	\item[\Objekte] sind \textzB\ \Symbole, \Zeichenketten, \Zeichenfolgen\ und \Formeln, oder auch \Aussagen, Mengen, Zahlen, \textusw\ -- ganz allgemein reale oder gedachte Dinge an sich.
+
+	% ----- Objekt -------------------------------------------------------------
+	\item [\Objekte] sind \textzB\ \Symbole, \Zeichenketten, \Zeichenfolgen\ und \Formeln, oder auch \Aussagen, Mengen, Zahlen, \textusw\ -- ganz allgemein reale oder gedachte Dinge an sich.
 	Eine \Formel, die nicht quotiert ist, steht für den Wert dieser \Formel, der dann wieder ein \Objekt\ ist.
 	Entsprechend steht ein \Symbol, das nicht quotiert ist, für das dadurch bezeichnete \Objekt.
 	\textZB bezeichnet das \Symbol\ \chrqt{$\gsN$} die Menge $\gsN$ der natürlichen Zahlen ohne 0.
-	%
-	\item[\Operationen] in oder auf einer Menge $M$ sind $n$-stellige Funktionen $M^n \rightarrow M$.
-	Für eine \defn{binären}, \textdh\ 2-stellige \Operation\ $\opbsp$ schreibt man \textiAlg\ \enquote{$x \opbsp y$} statt \enquote{$\opbsp(x,y)$}.
+
+	% ----- Relation -----------------------------------------------------------
+	\item [\Relation] Eine \defn{$n$-stellige \Relation}\citenote{bib:Relation} $R$ ist ein (1+$n$)-Tupel $(G,A_1,\dots,A_n$) mit folgenden Eigenschaften:
+	\begin{itemize}
+		\item $n$, die \defn{\Stelligkeit}, ist eine natürliche Zahl.
+
+		$\stelrel R \defeq \stelrel(R) \defeq n$
+		%
+		\item Die $A_i$ für $1 \le i \le n$ sind Mengen, die \defn{\Traegermengen} (carrier) von $R$.
+
+		$\traeger_i R \defeq \traeger_i(R) \defeq A_i$
+		%
+		\item $G$, der \defn{\Graph} von $R$, ist eine Teilmenge des kartesischen Produkts $A_1 \times \dots \times A_n$.
+
+		$\graph R \defeq \graph(R) \defeq G$ (oft einfach mit $R$ bezeichnet)
+		%
+		\item $R(a_1,\dots\,a_n) \metadefeq (a_1,\dots\,a_n) \in G$
+	\end{itemize}
+	-- Für $n=0$ ist $G \subseteq \{()\}$\footnote{Das kartesische Produkt enthält nur noch das $0$-Tupel $()$.}, \textdh\ $R()$ ist entweder \wahr\ ($\true$) oder \falsch\ ($\false)$.
+	\\-- Für $n=1$ ist $G \subseteq A_1$, \textdh\ $R$ kann als Teilmenge von $A_1$ aufgefasst werden.
+	\\-- Für $n=2$ heißt die Relation \defn{binär} und man schreibt \enquote{$x R y$} statt \enquote{$R(x,y)$} \textbzw\ \enquote{$(x,y) \in R$}.
+	\\-- Ist $\traeger_i R = M$ für $1 \le i \le n$ so heißt $R$ eine Relation \defn{in} oder \defn{auf} $M$.
+
+	% ----- Umkehrrelation -----------------------------------------------------
+	\item [\Umkehrrelation] Die \defn{\Umkehrrelation} einer binären Relation $(G,A,B)$ ist die Relation $(G',B,A)$ mit $G' \defeq \{(b,a)|(a,b) \in G\}$.
+	Üblicherweise wird das zugehörige Relationssymbol gespiegelt.
+
+	% ----- Funktion -----------------------------------------------------------
+	\item [\Funktion] Eine \defn{$n$-stellige \Funktion}\citenote{bib:Funktion} ist ein (1+$n$+1)-Tupel $f = (G,A_1,\dots,A_n,B)$ mit folgenden Eigenschaften:
+	\begin{itemize}
+		\item $n$, die \defn{\Stelligkeit}%
+		\footnote{%
+			Die Werte der Stelligkeit als Relation und als Funktion sind verschieden, \textdh\ es gilt stets: $\stelrel(f) = \stelfunc(f) + 1$.
+		},
+		ist eine natürliche Zahl.
+
+		$\stelfunc f \defeq \stelfunc(f) \defeq n$
+
+		\item $f$ ist eine ($n$+1)-stellige Relation.
+
+		\item Zu jedem $n$-Tupel $\vec{a} = (a_1,\dots,a_n)$ mit $a_i \in A_i$ für $1 \le i \le n$ gibt es genau ein $b \in B$ mit $(a_1,\dots,a_n,b) \in G$, den \defn{\Funktionswert} von $\vec{a}$.
+
+		$f\vec{a} \defeq f a_1 \dots a_n \defeq f(\vec{a}) \defeq f(a_1,\dots,a_n) \defeq b$
+		\footnote{%
+			$f(a_1,\dots,a_n)$ und $f(a_1,\dots,a_n,b)$ sind wohl zu unterscheiden.
+			Ersteres ist ein Funktionsaufruf mit einem Funktionswert, letzteres eine Relation mit einem Wahrheitswert.
+		}
+
+		\item $A = A_1 \times \dots \times A_n$ ist der \defn{\Definitionsbereich} (domain) von $f$.
+
+		$\Db f \defeq \Db(f) \defeq A_1 \times \dots \times A_n$
+
+		\item $B$ ist der \defn{\Zielbereich} (target) von $f$
+
+		$\Zb f \defeq \Zb(f)$
+	\end{itemize}
+	Für $n = 0$ ist nur \seqqt{$f()$} zulässig. Es sei $b \defeq f()$. Dann ist $G = \{b\}$ und $f$ kann als Konstante $b$ aufgefasst werden.%
+	\footnote{%
+		Bei der Schreibweise ohne Klammern steht da statt \seqqt{$f()$} nur noch \seqqt{$f$}, statt \seqqt{$f()=b$} also nur noch \seqqt{$f=b$}.
+	}
+
+	Man sagt: $f$ ist eine $n$-stellige \Funktion\ von $A_1 \times \dots \times A_n$ \defn{in} (oder auch \defn{nach}) B (Schreibweise: $f : A_1 \times \dots \times A_n \rightarrow B$) oder, im Fall $n=1$, $f$ ist eine Funktion von $A$ in (oder nach) $B$ (Schreibweise: $f : A \rightarrow B$). Mit $A \defeq A_1 \times \dots \times A_n$ kann für $n > 0$ jede Funktion als $1$-stellig aufgefasst werden.
+
+	% ----- Operation ----------------------------------------------------------
+	\item [\Operationen] in oder auf einer Menge $M$ sind $n$-stellige Funktionen $M^n \rightarrow M$.
+	Für eine \defn{binäre}, \textdh\ 2-stellige \Operation\ $\opbsp$ schreibt man \textiAlg\ \enquote{$x \opbsp y$} statt \enquote{$\opbsp(x,y)$}.
 	Wenn nicht anders angegeben, sind \Operationen\ stets binär.
-	-- 0-stellige \Operationen\ können als Konstante aufgefasst werden.%
+	0-stellige \Operationen\ können wieder als Konstante aufgefasst werden.
+
+	Um Missverständnisse zu vermeiden, werden wir den Begriff \enquote{Operator} nicht verwenden.
+
+	% ----- Junktor ------------------------------------------------------------
+	\item [\Junktoren] sind aussagenlogische \Relationen\ und \Operationen.%
 	\footnote{%
-		Eine 0-stelliger \Operation\ $\opbsp$ auf M ist eine Abbildung $\opbsp : \{()\} \rightarrow M$.
+		Ein $n$-stelliger \Junktor\ $J$ sei eine \Operation\ und somit eine \Funktion.
+		Wegen $M = \{\true,\false\}$ kann er auch als eine $n$-stellige \Relation\ $J'$ aufgefasst werden:
+		$J' \defeq \{(\vec{a} \in M^n | J(\vec{a}) = \true\}$.
+
+		Umgekehrt kann eine $n$-stellige aussagenlogische \Relation\ $J'$ mittels:
+		$J''(\vec{a}) \defeq \true \text{ für } \vec{a} \in J', \false \text{ sonst}$, für $\vec{a} \in M^n$,
+
+		als $n$-stellige Operation aufgefasst werden.
+
+		Für $J\vec{a})=\true$ ist $(\vec{a} \in J'$ und somit $J''(\vec{a})=\true$.
+		Für $J(\vec{a})=\false$ ist $\vec{a} \notin J'$ und somit $J''(\vec{a})=\false$.
+		Also ist $J=J''$ und somit sind die aussagenlogischen $n$-stelligen \Relationen\ und \Operationen\ eineindeutig einander zuzuordnen.
+
+		Daher sind in der Aussagenlogik \Relationen\ und \Operationen\ nicht von vornherein unterscheidbar.
+		Wegen der Verabredungen in \vrefsub{sub:Beispielsymbole} muss das für die verwendeten aussagenlogischen \Relationen\ und \Operationen\ aber wohl definiert sein.
 	}
-	%
-	\item[\Relationen] in oder auf einer Menge $M$ sind Teilmengen von $M^n$.
-	Für eine \defn{binäre}, \textdh\ 2-stellige \Relation\ $\relbsp$ schreibt man \textiAlg\ \enquote{$x \relbsp y$} statt \enquote{$(x,y) \in\; \relbsp$}.
-	Wenn nicht anders angegeben, sind \Relationen\ stets binär.
-	%
-	\item[\Junktoren] sind aussagenlogische \Operationen.%
-	\footnote{%
-		Da bei einem \Junktor\ die Menge $M = \{\wahr,\falsch\}$ ist, kann er auch als eine \Relation\ verstanden werden:
-		\newline $(x \in\; \relbsp) \metadefeq (\opbsp(x) = \wahr)$, für $x \in M^n$
-	}
-	%
+	% --------------------------------------------------------------------------
 \end{description}
 
 Fußnoten dienen nur zu weiteren Erläuterungen sowie Verweisen in dieses Dokument und in die Literatur.
@@ -171,7 +249,9 @@ Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:
 	& für das \Objekt
 	\\
 	& \seqqt{$\sin$} & Eine \Zeichenfolge\ (\Formel)
-	& bestehend aus dem zusammengesetzten \Symbol\ \chrqt{$\sin$}
+	& bestehend aus dem zusammengesetzten\footnote{%
+		Was zusammengesetzte Symbole sind, muss jeweils definiert werden  \textbzw\ ergibt sich aus dem Zusammenhang.
+	} \Symbol\ \chrqt{$\sin$}
 	\\
 	& \seqqt {$sin$} & Eine \Zeichenfolge\ (\Formel)
 	& bestehend aus den einfachen \Symbolen\ \chrqt{$s$}, \chrqt{$i$} und \chrqt{$n$}
@@ -186,7 +266,7 @@ Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textd
 \label{sub:Beispielsymbole}
 
 Als Beispielsymbol für unäre \Operationen\ wird \chrGlsSym{opubsp} und für binäre \Operationen\ \chrGlsSym{opbsp} verwendet.
-Beispielsymbole für binäre Relationen sind \chrGlsSym{relbsp} und \chrGlsSym{releqbsp}, ihre \defn{Umkehrrelationen} \chrGlsSym{relbackbsp} \textbzw\ \chrGlsSym{relbackeqbsp} sowie ihre \defn{Negationen} \chrGlsSym{relnbsp} \textbzw\ \chrGlsSym{relnebsp}.%
+Beispielsymbole für binäre Relationen sind \chrGlsSym{relbsp} und \chrGlsSym{releqbsp}, ihre \defn{\Umkehrrelationen} \chrGlsSym{relbackbsp} \textbzw\ \chrGlsSym{relbackeqbsp} sowie ihre \defn{Negationen} \chrGlsSym{relnbsp} \textbzw\ \chrGlsSym{relnebsp}.%
 \footnote{%
 	Die Relationen brauchen kein Äquivalenzrelationen sein, auch wenn die angegebenen Symbole dies nahe legen.
 	Wenn eine der Relationen $\glsSym{relbsp}$, $\glsSym{releqbsp}$, $\glsSym{relbackbsp}$ oder $\glsSym{relbackeqbsp}$ definiert ist, sind wegen \eqref{def:relback}, \eqref{def:releqbsp} und \eqref{def:relbsp} auch die anderen drei Relationen definiert sowie wegen \eqref{def:relnbsp} auch $\glsSym{relnbsp}$ und $\glsSym{relnebsp}$.
@@ -194,27 +274,27 @@ Beispielsymbole für binäre Relationen sind \chrGlsSym{relbsp} und \chrGlsSym{r
 }
 Wenn nichts anderes gesagt wird, gelte mit diesen Symbolen stets:
 \begin{align}
-	& (A \glsSym{relbackbsp}   B) & \metadefeq & \quad  (B \relbsp  A)
-	\label{def:relback}   \\
-	& (A \glsSym{relnbsp}  B)  & \metadefeq & \quad ((A \relbsp   B) \text{ gilt nicht})
-	\label{def:relnbsp}    \formulatoleft\formulatoleft\formulatoleft
+	& (A \glsSym{relbackbsp} B) & \metadefeq & \quad  (B \relbsp  A)
+	\label{def:relback}  \\
+	& (A \glsSym{relnbsp}    B) & \metadefeq & \quad ((A \relbsp   B) \text{ gilt nicht})
+	\label{def:relnbsp}  \formulatoleft\formulatoleft\formulatoleft
 \end{align}
 Dabei ist \chrqt{$\relbackbsp$} ist die waagerechte Spiegelung von \chrqt{$\relbsp$} und statt des schrägen kann bei der Negation auch ein senkrechter Strich genommen werden.
 Je nachdem ob $\relbsp$ oder $\releqbsp$ definiert ist gelte weiterhin:
 \begin{align}
-	& (A \glsSym{releqbsp}  B) & \metadefeq & \quad ((A \relbsp   B) \metaor  (A \eq B))
-	\label{def:releqbsp}   \\
-	& (A \glsSym{relbsp} B)    & \metadefeq & \quad ((A \releqbsp B) \metaand (A \ne B))
-	\label{def:relbsp}    \formulatoleft\formulatoleft\formulatoleft
+	& (A \glsSym{releqbsp}   B) & \metadefeq & \quad ((A \relbsp   B) \metaor  (A \eq B))
+	\label{def:releqbsp} \\
+	& (A \glsSym{relbsp}     B) & \metadefeq & \quad ((A \releqbsp B) \metaand (A \ne B))
+	\label{def:relbsp}   \formulatoleft\formulatoleft\formulatoleft
 \end{align}
 
 In \eqref{def:relback} lassen sich, wenn $\relbackbsp$ gegeben ist, \chrqt{$\relbackbsp$} und \chrqt{$\relbsp$} auch vertauschen oder durch \chrqt{$\relbackeqbsp$} \textbzw\ \chrqt{$\releqbsp$} ersetzen, oder beides.
 Ähnliches gilt für \eqref{def:relnbsp}, \eqref{def:releqbsp} und \eqref{def:relbsp}.
 
-Man beachte, dass -- wenn man \chrqt{$\metadefeq$} durch \chrqt{$\metaequiv$} ersetzt -- weder \eqref{def:releqbsp} aus \eqref{def:relbsp} folgt noch umgekehrt.
+Man beachte, dass, wenn man \chrqt{$\metadefeq$} durch \chrqt{$\metaequiv$} ersetzt, weder \eqref{def:releqbsp} aus \eqref{def:relbsp} folgt noch umgekehrt.
 Beispiele dazu sind \vrefintab{tab:Gegenbeispiel} angegeben.
 
-\begin{table}[!htb]
+\begin{table}[H]
 	\setlength\extrarowheight{1.5pt}
 	\begin{center}
 		\begin{tabularx}{9.5cm}{|@{\extracolsep{\fill}}c|cccc|l|}
@@ -257,7 +337,7 @@ Wird eine binäre \Relation\ $\relbsp$ zusammen mit einer binären \Operation\ $
 	&&& A \relbsp B \quad \metaand \quad B \approx C \formulatoleft
 \end{align}
 
-Besondere Vereinbarungen für \chrqt{$\opubsp$} treffen wir nicht.
+Besondere Vereinbarungen für die unäre \Operation\ \chrqt{$\opubsp$} treffen wir nicht.
 
 Es sei noch angemerkt, dass wegen \eqref{def:relback} die Definition von \chrqt{$\metarep$} \vrefinsub{sub:AussagenUndMetaoperationen} überflüssig ist.
 Wegen der angegebenen Sprechweise ist sie dennoch angegeben.
@@ -417,14 +497,14 @@ Beispiele für \defn{\Aussagen}\ in \Metasprache\ sind
 (b) \enquote{Ich bin 1,83\,m groß.},
 (c) \enquote{Ich habe ein rotes Auto und das kann 200\,km/h schnell fahren.}, usw.
 Wie Beispiel (c) zeigt, kann eine \Aussage\ auch aus anderen \Aussagen\ zusammengesetzt sein.
-In diesem Fall bezeichnen wir sie als \defn{\zerlegbar}, ansonsten als \defn{\unzerlegbar} oder auch \defn{\Idx{atomar}}.
+In diesem Fall bezeichnen wir sie als \defn{\zerlegbar}, ansonsten als \defn{\unzerlegbar} oder auch \defn{\atomar}.
 -- Wir betrachten auch Relationen einschließlich ihrer Operanden als \Aussagen.%
 \footnote{%
 	Wird statt des Symbols der Name der zugehörigen Relation verwendet, ist dies unmittelbar einleuchtend.
 	So wird \textzB\ aus der \Formel\ \seqqt{$A<B$} die \Aussage\ \enquote{$A$ ist kleiner als $B$}.
 }
 
-Während die Beispiele (a) und (b) \unzerlegbare\ \Aussagen\ sind, ist Beispiel (c) \zerlegbar.
+Während die Beispiele (a) und (b) \unzerlegbare\ (\defn{\atomare}) \Aussagen\ sind, ist Beispiel (c) \zerlegbar.
 Für alle drei \Aussagen\ lässt sich feststellen, ob sie richtig sind oder nicht;
 für (a) allerdings nur im Nachhinein und für den zweiten Teil von (c) nur weil klar ist, worauf sich \enquote{das} bezieht.
 Natürlich muss auch der Zusammenhang, in dem eine \Aussage\ formuliert wird, bekannt sein.
@@ -521,8 +601,8 @@ Dann definieren wir:
 
 \begin{description}
 	%
-	\item[$\glsSym{eq}$] \defn{\glsIdx{Gleichheit}} \label{def:Gleichheit}
-	\seqqt{$A = B$} heißt, dass $A$ und $B$ in den \interessierendenEigenschaften\ für $\eq$ übereinstimmen.%
+	\item[$\glsSym{eq}$] \defn{\Gleichheit} \label{def:Gleichheit}
+	\seqqt{$A \eq B$} heißt, dass $A$ und $B$ in den \interessierendenEigenschaften\ für $\eq$ übereinstimmen.%
 	\footnote{%
 		\textZB\ sind zwei \Junktoren\ üblicherweise dann gleich, wenn sie stets denselben \emph{\Wahrheitswert} liefern.
 		Ihre Bezeichnungen oder \Symbole\ können dabei durchaus verschieden sein, interessieren bei der Feststellung der \Gleichheit\ aber nicht.
@@ -535,7 +615,7 @@ Dann definieren wir:
 	\seqqt{$A \ne B$} heißt, dass $A$ und $B$ in mindestens einer \interessierendenEigenschaft\ für $\eq$ nicht übereinstimmen.
 	Sprechweisen: \enquote{$A$ ist \emph{nicht dasselbe} wie $B$} (aber vielleicht das gleiche; siehe $\equiv$) oder \enquote{$A$ ist \emph{nicht identisch} zu $B$}.
 	%
-	\item[$\glsSym{equiv}$] \defn{\glsIdx{Aequivalenz}} \label{def:Aequivalenz}
+	\item[$\glsSym{equiv}$] \defn{\Aequivalenz} \label{def:Aequivalenz}
 	\seqqt{$A \equiv B$} heißt, dass $A$ und $B$ in den \interessierendenEigenschaften\ für $\equiv$ übereinstimmen.
 	Sprechweisen: \enquote{$A$ ist \emph{das gleiche} wie $B$} (aber nicht unbedingt dasselbe; siehe $\eq$) oder \enquote{$A$ ist \emph{so wie} $B$}.
 	-- Es kann auch verschiedene Äquivalenzen geben, für die dann verschiedene Bezeichnungen verwendet werden.
@@ -547,7 +627,7 @@ Dann definieren wir:
 \end{description}
 
 $\eq$, $\ne$, $\equiv$ und $\nequiv$ bezeichnen wir als  \defn{\Gleichheitsrelationen}.
-\Gleichheit\ und \Aequivalenz\ sind \defn{\emph}{Äquivalenzrelationen}, \textdh\ sie sind \emph{reflexiv} ($a \sim a$), \emph{transitiv} ($((a \sim b) \metaand (b \sim c)) \metaimp (a \sim c)$) und \emph{symmetrisch} ($(a \sim b) \metaimp (b \sim a)$)
+\Gleichheit\ und \Aequivalenz\ sind \defn{\Aequivalenzrelationen}, \textdh\ sie sind \emph{reflexiv} ($a \sim a$), \emph{transitiv} ($((a \sim b) \metaand (b \sim c)) \metaimp (a \sim c)$) und \emph{symmetrisch} ($(a \sim b) \metaimp (b \sim a)$)
 -- jeweils für alle zulässigen Objekte $a$, $b$ und $c$.
 
 Jede \interessierendeEigenschaft\ für $\equiv$ oder eine andere \Aequivalenz\ muss auch eine für $\eq$ sein.
@@ -581,7 +661,6 @@ Man beachte, dass $\metadefeq$ und $\defeq$ verschiedene Sprachebenen sind.
 \section{Beweise in ASBA}% =====================================================
 \beginsection{\Beweise\ in \ASBA}
 \label{sec:BeweiseASBA}
-%TODO === Verweise auf Definition prüfen und hinzufügen
 
 Die Regeln zur Formulierung und Prüfung der \Beweise\ müssen in \ASBA\ fest codiert werden.
 Sie sind quasi die \Axiome\ von \ASBA\ und sollten daher möglichst wenig voraussetzen.
@@ -596,7 +675,7 @@ Die Definition von \emph{\Schlussregel} und \emph{\Beweis} ist in diesem Dokumen
 
 Es sei $\formulaset$ eine Menge von \Formeln.%
 	\footnote{%
-	Die Menge der \Formeln\ wird auch als \defn{Sprache} (language) bezeichnet und die \Formeln\ sind dann die \Worte\ dieser \Sprache.
+	Die Menge der \Formeln\ wird auch als \defn{\Sprache} (language) bezeichnet und die \Formeln\ sind dann die \Worte\ dieser \Sprache.
 	Wir bleiben der Klarheit willen bei \Formel.
 	Dabei gibt es verschiedene Arten von \Formeln, \textzB\ aussagenlogische, prädikatenlogische, solche, die ein Taschenrechner auswerten kann, oder auch nach bestimmten Regeln gebildete \Zeichenketten.
 }
@@ -620,7 +699,7 @@ In diesem Fall kann sie zur \zulaessigenTransformation\ von \Formeln\ dienen.
 Ferner gilt:
 %
 \begin{itemize}
-	\item Eine \Schlussregel\ $\frac{\prerequisiteset}{\emptyset}$ ist allgemeingültig, \textdh\ sie ist immer wahr.
+	\item Eine \Schlussregel\ $\frac{\prerequisiteset}{\emptyset}$ ist allgemeingültig, \textdh\ sie ist immer gültig.
 	%
 	%TODO Ist die Definition von Axiom/ensystem haltbar?
 	\item Eine \Schlussregel\ $\frac{\emptyset}{\conclusionset}$ (oder kürzer $\conclusionset$), die keine \Voraussetzungen\ hat, nennen wir ein \defn{\Axiomensystem}.
@@ -717,7 +796,7 @@ Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-st
 Dabei werden die Konstanten als 0-stellige \Junktoren\ angesehen.
 Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein Wert bekannt, so bleibt sie leer.
 
-\begin{table}
+\begin{table}[p]
 	% Wahrheitswerte
 	\newcommand*{\texttrue} {W}%            in einem Kommentar stets 'W'
 	\newcommand*{\textfalse}{F}%            in einem Kommentar stets 'F'
@@ -774,13 +853,13 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			$\glsSym{ltrue}$
 			& \texttrue  & - & - & - & - & - & -
 			& Verum
-			& \defn{wahr} & - \\
+			& \defn{\wahr} & - \\
 			\tableline%.................................................
 			\rowcolor{cRareUse}
 			$\glsSym{lfalse}$
 			& \textfalse & - & - & - & - & - & -
 			& Falsum
-			& \defn{falsch} & - \\
+			& \defn{\falsch} & - \\
 			\hline\hline% == unäre Junktoren ===============================
 			& - & \texttrue & \texttrue  & - & - & - & - & & & - \\
 			\tableline%.................................................
@@ -943,15 +1022,14 @@ Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \A
 \footnote{%
 	Die Formalisierung stützt sich auf~\cite{bib:Aussagenlogik}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
 }
-Da Computerprogramme mit der \emph{Polnischen Notation}\idx{Polnische Notation}%
+Da Computerprogramme mit der \emph{\PolnischenNotation}%
 \footnote{%
-	Bei der \defn{Polnischen Notation} wird eine zweistellige \Operation\ \seqqt{$(A \opbsp B)$} dargestellt als \seqqt{$\opbsp A B$}.
-	Eine Zwischenstufe ist \seqqt{$\opbsp(A,B)$}, bei der noch die redundanten Gliederungszeichen Komma und Klammern -- auch andere als die runden -- hinzukommen, so dass die \Operationen\ optisch besser getrennt und dadurch für Menschen besser lesbar werden.
-	Durch einfaches Weglassen der Gliederungszeichen ergibt sich dann die Polnische Notation.
-	Noch einfacher für Computer ist die \defn{umgekehrte Polnische Notation}, bei der aus \seqqt{$(A\opbsp B)$} \seqqt{$A B \opbsp$} wird.
+	Bei der \defn{\PolnischenNotation} stehen die Operanden \textbzw\ Argumente von \Relationen\ und \Funktionen\ stets rechts von den Relations- und Funktionssymbolen.
+	Dadurch kann auf Gliederungszeichen wie Klammern und Kommata verzichtet werden.
+	Noch einfacher für Computer ist die \defn{umgekehrte Polnische Notation}, bei der die Operanden und Argumente links von den Symbolen stehen.
 }
 besser umgehen können und Klammern dort überflüssig sind, werden viele \Formeln\ auch parallel in der Polnischen Notation angegeben.
-Dies wird auch auf Wunsch bei Ausgaben von \ASBA\ so gehandhabt.
+Dies wird auf Wunsch auch bei Ausgaben von \ASBA\ so gehandhabt.
 
 \subsubsection{Bausteine der aussagenlogischen Sprache}% - - - - - - - - - - - -
 \label{subsub:Bausteine}
@@ -1003,50 +1081,49 @@ Die Mengen $\alCon$, $\alUna$, $\alBin$ und $\alVar$ müssen paarweise disjunkt 
 	\idx{Teil-Alphabet der aussagenlogischen Sprache}       \label{def:alABCx}
 \end{align}
 
-Für Elemente von $\alVar$ werden hier normalerweise die großen lateinischen Buchstaben $A$, $B$, $C$, \textusw\ verwendet.
-Sie werden auch \defn{Satzbuchstaben} oder kurz \defn{Atome} genannt.
+Für Elemente von $\alVar$ verwenden wir normalerweise die kleinen, lateinischen Buchstaben $a$, $b$, $c$, usw.
 
 \subsubsection{Aussagenlogische Formeln}%  - - - - - - - - - - - - - - - - -
 \label{subsub:Formeln}
 
 Neben dem Alphabet $\alABC$ \textbzw\ $\alABC_x$ werden noch Klammern als Gliederungszeichen verwendet.
-Damit können nun rekursiv für jede Teilmenge $\alJun_x$ von $\alJun$ zwei Mengen von \Formeln\ definiert werden:
+Damit können nun rekursiv für jede Teilmenge $\alJun_x$ von $\alJun$ zwei Mengen von aussagenlogischen \Formeln\ definiert werden, wobei wir für diese Formeln die kleinen, griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwenden.
 
-$\glsSym{alForx}$ sei die Menge der auf folgende Weise definierten \defn{aussagenlogischen \Formeln\ mit Klammerung}%
+$\glsSym{alForx}$ sei die Menge der auf folgende Weise definierten \defn{aussagenlogischen \Formeln\ mit Klammerung} zum Alphabet $\glsSym{alABCx}$%
 \idx{aussagenlogische \Formel\ mit Klammerung}:
 \begin{align}
-	A    \in & \alVar                && \metaimp &           A  \in \alFor_x
-	\\
-	A    \in & \alJun_x \cap \alCon  && \metaimp &           A  \in \alFor_x
-	\\
-	A    \in & \alFor_x              && \metaimp &   (\opbsp A) \in \alFor_x
-	& & \text{, für} \quad \opbsp \in \alUna \cap \alJun_x
-	\\
-	A, B \in & \alFor_x              && \metaimp & (A \opbsp B) \in \alFor_x
-	& & \text{, für} \quad \opbsp \in \alBin \cap \alJun_x
-	\formulatoleft
+	&                                & \alVar               \subset \alFor_x
+	&&& \text{, die Variablen}  \label{def:ForQ}  \\
+	&                                & \alJun_x \cap \alCon \subset \alFor_x
+	&&& \text{, die Konstanten} \label{def:ForJK} \\
+	\alpha      \in\alFor_x & \quad\metaimp &     (\opubsp\alpha)\in\alFor_x
+	&&& \text{, für} \quad \opubsp \in \alUna \cap \alJun_x
+	\label{def:ForU} \\
+	\alpha,\beta\in\alFor_x & \quad\metaimp & (\alpha\opbsp\beta)\in\alFor_x
+	&&& \text{, für} \quad \opbsp  \in \alBin \cap \alJun_x
+	\label{def:ForB} \formulatoleft
 \end{align}
 
 Nur die auf diese Weise konstruierten \Formeln\ sind Elemente von $\alFor_x$.
--- Für $\alJun_x = \alJun$ sei noch $\glsSym{alFor} \defeq \alFor_x$.
+-- Für $\alJun_x$ = $\alJun$ sei noch $\glsSym{alFor} \defeq \alFor_x$.
 
-\glsIdx{alForpx} sei die Menge der auf folgende Weise definierten aussagenlogischen \Formeln\ in \emph{Polnischer Notation}%
+\glsIdx{alForpx} sei die Menge der auf folgende Weise definierten \defn{aussagenlogischen \Formeln\ in \emph{Polnischer Notation}}%
 \idx{aussagenlogische \Formel\ in Polnischer Notation}:
 \begin{align}
-	&                                  & \alVar              \subset \alForp_x
-	\\
-	&                                  & \alJun_x \cap \alCon \subset \alForp_x
-	\\
-	A    \in \alForp_x & \quad \metaimp &  (\opbsp A)         \in     \alForp_x
-	& & \text{, für}  \quad \opbsp \in \alUna \cap \alJun_x
-	\\
-	A, B \in \alForp_x & \quad \metaimp & (A \opbsp B)        \in     \alForp_x
-	& & \text{, für}  \quad \opbsp \in \alBin \cap \alJun_x
-	\formulatoleft
+	&                               & \alVar               \subset \alForp_x
+	&&& \text{, die Variablen}  \label{def:ForQp}  \\
+	&                               & \alJun_x \cap \alCon \subset \alForp_x
+	&&& \text{, die Konstanten} \label{def:ForJKp} \\
+	\alpha      \in\alForp_x & \quad\metaimp & \opubsp\alpha    \in\alForp_x
+	&&& \text{, für}  \quad \opubsp \in \alUna \cap \alJun_x
+	\label{def:ForUp} \\
+	\alpha,\beta\in\alForp_x & \quad\metaimp & \opbsp\alpha\beta\in\alForp_x
+	&&& \text{, für}  \quad \opbsp  \in \alBin \cap \alJun_x
+	\label{def:ForBp} \formulatoleft
 \end{align}
 
 Nur die auf diese Weise konstruierten \Formeln\ sind Elemente von $\alForp_x$.
-Schließlich sei noch $\glsSym{alForp} \defeq \alForp_x$ falls $\alJun_x = \alJun$.
+-- Für $\alJun_x$ = $\alJun$ sei noch $\glsSym{alForp} \defeq \alForp_x$.
 
 Wie man leicht sieht, gilt
 \begin{equation}
@@ -1062,11 +1139,8 @@ und weiterhin gibt es eine bijektive Abbildung von $\alFor$ nach $\alForp$. Auf 
 Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der \Formeln\ aus $\alFor_x$ einsparen.
 Die \Formeln\ aus $\alForp_x$ sind frei von Klammern.
 Die Namen der \Junktoren\ finden sich \vrefintab{tab:Symbole}.
-Für aussagenlogische \Formeln, \textdh\ von Elementen aus $\alFor$ \textbzgl\ $\alForp$, werden hier normalerweise die kleinen griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwendet.
-Sie können dabei auch als \defn{\atomareFormel} bezeichnet werden, \textdh\ \Formeln, die sich nicht weiter zerlegen lassen.%
-\footnote{%
-	Nur die Elemente von $\alVar$ und $\alCon$ sind \unzerlegbare\ Elemente von $\alFor$.
-}
+
+Die \Formeln, die nach einer der Regeln \eqref{def:ForU}, \eqref{def:ForB}, \eqref{def:ForUp} oder \eqref{def:ForBp} gebildet wurden, sind offensichtlich \defn{\zerlegbar}, die anderen, \textdh\ Variablen und Konstanten (aus $\alVar$ \textbzw\ $\alCon$), sind \defn{\unzerlegbar}. Letztere bezeichnet man auch als \defn{\atomare\ \Formeln}.
 
 \subsection{Definition von Junktoren durch andere}% -------------
 \label{sub:ausJunktorDef}
@@ -1076,14 +1150,15 @@ Im folgenden gelte für zwei aussagenlogische \Formeln\ $\alpha$ und $\beta$:
 	\item[] $\alpha \glsSym{eq}    \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$
 	stimmen als \Zeichenkette\ überein.
 	%
-	\item[] $\alpha \glsSym{equiv} \beta \quad \metadefeq$ \quad $\alpha$ und $\beta$
-	\parbox[t]{11cm}{können mit Hilfe erlaubter \glsIdxPl{Substitution} und geltender \Axiome\ -- \vrefseesub{sub:ausAxiome} -- ineinander überführt werden.}
+	\item[] $\alpha \glsSym{equiv} \beta \quad \metadefeq$ \quad
+	\parbox[t]{13cm}{$\alpha$ und $\beta$ können mit Hilfe erlaubter \glsIdxPl{Substitution} und geltender \Axiome\ -- \vrefseesub{sub:ausAxiome} -- ineinander überführt werden.}
 \end{itemize}
+%TODO === Verweise auf Definitionen prüfen und hinzufügen
 
 Es werden verschiedene Teilmengen von $\alJun$ eingeführt, die jeweils ausreichen um alle anderen Elemente von $\alJun$ zu definieren:
 \begin{align}
 	& \alJun_\iBool & \defeq & \quad\{ \lnot, \land, \lor \} \label{def:Jbool}
-	\qquad (\text{\BoolscheSignatur})
+	\qquad \text{(\defn{\BoolscheSignatur})}
 	\\
 	& \alJun_\iAnd  & \defeq & \quad\{ \lnot, \land       \} \label{def:Jand}
 	\\

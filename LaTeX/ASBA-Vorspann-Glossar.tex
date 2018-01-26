@@ -38,13 +38,13 @@
 
 % Symbole für Mengen -----------------------------------------------------------
 
-%TODO Fehler: verschiedene Zeichensätze für \gsN im Text,Symbolverzeichnis und im Glossar!
+%TODO Fehler: verschiedene Zeichensätze für \gsN im Text und Symbolverzeichnis einerseits (richtig) und im Glossar andererseits (falsch)!
 \newglossaryentry{gsN}{
 	name      ={$\gsN$},
 	plural     ={\gsN},% im Mathematikmodus
 	description ={
 		Die Menge der natürlichen Zahlen ohne 0.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}
 	}
 }
 \newglossaryentry{gsNo}{
@@ -52,7 +52,7 @@
 	plural     ={\gsNo},% im Mathematikmodus
 	description ={
 		Die Menge der natürlichen Zahlen einschließlich 0.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 %TODO === Verweise auf Definition prüfen und hinzufügen
@@ -61,6 +61,7 @@
 	plural     ={\alABC},% im Mathematikmodus
 	description ={
 		Das Alphabet der aussagenlogischen \glos{Sprache}.
+		\\-- Zur Definition \vrefseesubsub{subsub:Formeln}.
 	}
 }
 \newglossaryentry{alABCx}{
@@ -68,22 +69,31 @@
 	plural     ={\alABC_x},% im Mathematikmodus
 	description ={
 		Eine Teilmenge des Alphabets $\alABC$ der aussagenlogischen \glos{Sprache}.
+		\\-- Zur Definition \vrefseesubsub{subsub:Formeln}.
 	}
 }
 \newglossaryentry{alBin}{
 	name      ={$\alBin$},
 	plural     ={\alBin},% im Mathematikmodus
-	description ={Die Menge der aussagenlogischen, binären \glos{Operationen}.}
+	description ={
+		Die Menge der binären \glos{Junktoren}.
+		\\-- Zur Definition \vrefseesubsub{subsub:Bausteine}.
+	}
 }
 \newglossaryentry{alCon}{
 	name      ={$\alCon$},
 	plural     ={\alCon},% im Mathematikmodus
-	description ={Die Menge der aussagenlogischen Konstanten.}
+	description ={
+		Die Menge der aussagenlogischen Konstanten.
+		\\-- Zur Definition \vrefseesubsub{subsub:Bausteine}.
+	}
 }
 \newglossaryentry{alFor}{
 	name      ={$\alFor$},
 	plural     ={\alFor},% im Mathematikmodus
-	description ={Die Menge der aussagenlogischen \glos{Formeln} mit Klammerung.}
+	description ={
+		Die Menge der aussagenlogischen \glos{Formeln} mit Klammerung.
+	}
 }
 \newglossaryentry{alForp}{
 	name      ={$\alForp$},
@@ -109,31 +119,41 @@
 \newglossaryentry{alJun}{
 	name      ={$\alJun$},
 	plural     ={\alJun},% im Mathematikmodus
-	description ={Die Menge der aussagenlogischen \glos{Operationssymbole}.}
+	description ={
+		Die Menge der \glos{Junktorsymbole}.
+		\\-- Zur Definition \vrefseesubsub{subsub:Bausteine}.
+	}
 }
 \newglossaryentry{alJunx}{
 	name      ={$\alJun_x$},
 	plural     ={\alJun_x},% im Mathematikmodus
 	description ={
-		Eine Teilmenge der Menge $\alJun$ der aussagenlogischen \glos{Operationssymbole}.
+		Eine Teilmenge der Menge $\alJun$ der \glos{Junktorsymbole}.
+		\\-- Zur Definition \vrefseesubsub{subsub:Bausteine}.
 	}
 }
 \newglossaryentry{alUna}{
 	name      ={$\alUna$},
 	plural     ={\alUna},% im Mathematikmodus
-	description ={Die Menge der aussagenlogischen unären Operationen.}
+	description ={
+		Die Menge der unären \glos{Junktoren}.
+		\\-- Zur Definition \vrefseesubsub{subsub:Bausteine}.
+	}
 }
 \newglossaryentry{alVar}{
 	name      ={$\alVar$},
 	plural     ={\alVar},% im Mathematikmodus
-	description ={Die Menge der aussagenlogischen Variablen.}
+	description ={
+		Die Menge der aussagenlogischen Variablen.
+		\\-- Zur Definition \vrefseesubsub{subsub:Bausteine}.
+	}
 }
 \newglossaryentry{MengeMo}{
 	name      ={$M^0$},
 	plural     ={M^0},% im Mathematikmodus
 	description ={
 		$\{()\}$ , wobei $()$ das 0-Tupel ist.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 \newglossaryentry{MengeMn}{
@@ -141,7 +161,7 @@
 	plural     ={M^n},% im Mathematikmodus
 	description ={
 		Das karthesische Produkt $M \times M \times \dots \times M$ aus $n$ Mengen $M$ mit $n \in \gsNo$.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 
@@ -152,7 +172,7 @@
 %%%	plural     ={\lrelbsp},% im Mathematikmodus
 %%%	description ={
 %%%		Beispielsymbol für eine binäre \glos{Relation} mit \emph{Umkehrrelation} $\rrelbsp$.
-%%%		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+%%%		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 %%%	}
 %%%}
 %%%\newglossaryentry{lreleqbsp}{
@@ -160,7 +180,7 @@
 %%%	plural     ={\lreleqbsp},% im Mathematikmodus
 %%%	description ={
 %%%		Beispielsymbol für eine binäre \glos{Relation} mit \glos{Gleichheit} und \emph{Umkehrrelation} $\rreleqbsp$.
-%%%		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+%%%		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 %%%	}
 %%%}
 %%%\newglossaryentry{lrelnbsp}{
@@ -168,7 +188,7 @@
 %%%	plural     ={\lrelnbsp},% im Mathematikmodus
 %%%	description ={
 %%%		Beispielsymbol für eine binäre negierte \glos{Relation} mit \emph{Umkehrrelation} $\rrelnbsp$.
-%%%		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+%%%		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 %%%	}
 %%%}
 %%%\newglossaryentry{lrelnebsp}{
@@ -176,7 +196,7 @@
 %%%	plural     ={\lrelnebsp},% im Mathematikmodus
 %%%	description ={
 %%%		Beispielsymbol für eine binäre negierte \glos{Relation} mit \emph{Ungleichheit} und \emph{Umkehrrelation} $\rrelnebsp$.
-%%%		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+%%%		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 %%%	}
 %%%}
 \newglossaryentry{opbsp}{
@@ -184,7 +204,7 @@
 	plural     ={\opbsp},% im Mathematikmodus
 	description ={
 		Beispielsymbol für eine binäre \glos{Operation}.
-		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 	}
 }
 \newglossaryentry{opubsp}{
@@ -192,7 +212,7 @@
 	plural     ={\opubsp},% im Mathematikmodus
 	description ={
 		Beispielsymbol für eine unäre \glos{Operation}.
-		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 	}
 }
 \newglossaryentry{relbsp}{
@@ -200,7 +220,7 @@
 	plural     ={\relbsp},% im Mathematikmodus
 	description ={
 		Beispielsymbol für eine binäre \glos{Relation} %%% mit \emph{Umkehrrelation} $\relbackbsp$
-		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 	}
 }
 \newglossaryentry{releqbsp}{
@@ -208,7 +228,7 @@
 	plural     ={\releqbsp},% im Mathematikmodus
 	description ={
 		Beispielsymbol für eine binäre \glos{Relation} mit \glos{Gleichheit} %%%  und \emph{Umkehrrelation} $\relbackeqbsp$
-		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 	}
 }
 \newglossaryentry{relnbsp}{
@@ -216,7 +236,7 @@
 	plural     ={\relnbsp},% im Mathematikmodus
 	description ={
 		Verneinung von $\relbsp$.
-		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 	}
 }
 \newglossaryentry{relnebsp}{
@@ -224,7 +244,7 @@
 	plural     ={\relnebsp},% im Mathematikmodus
 	description ={
 		Verneinung von $\releqbsp$.
-		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 	}
 }
 \newglossaryentry{relbackbsp}{
@@ -232,7 +252,7 @@
 	plural     ={\relbackbsp},% im Mathematikmodus
 	description ={
 		Beispielsymbol für eine binäre \glos{Relation} %%% mit \emph{Umkehrrelation} $\relbackbackbsp$
-		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 	}
 }
 \newglossaryentry{relbackeqbsp}{
@@ -240,7 +260,7 @@
 	plural     ={\relbackeqbsp},% im Mathematikmodus
 	description ={
 		Beispielsymbol für eine binäre \glos{Relation} mit \glos{Gleichheit} %%%  und \emph{Umkehrrelation} $\releqbsp$
-		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 	}
 }
 %%%\newglossaryentry{rrelbsp}{
@@ -248,7 +268,7 @@
 %%%	plural     ={\rrelbsp},% im Mathematikmodus
 %%%	description ={
 %%%		Beispielsymbol für eine binäre \glos{Relation} mit \emph{Umkehrrelation} $\lrelbsp$.
-%%%		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+%%%		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 %%%	}
 %%%}
 %%%\newglossaryentry{rreleqbsp}{
@@ -256,7 +276,7 @@
 %%%	plural     ={\rreleqbsp},% im Mathematikmodus
 %%%	description ={
 %%%		Beispielsymbol für eine binäre \glos{Relation} mit \glos{Gleichheit} und \emph{Umkehrrelation} $\lreleqbsp$.
-%%%		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+%%%		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 %%%	}
 %%%}
 %%%\newglossaryentry{rrelnbsp}{
@@ -264,7 +284,7 @@
 %%%	plural     ={\rrelnbsp},% im Mathematikmodus
 %%%	description ={
 %%%		Beispielsymbol für eine binäre negierte \glos{Relation} mit \emph{Umkehrrelation} $\lrelnbsp$.
-%%%		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+%%%		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 %%%	}
 %%%}
 %%%\newglossaryentry{rrelnebsp}{
@@ -272,7 +292,7 @@
 %%%	plural     ={\rrelnebsp},% im Mathematikmodus
 %%%	description ={
 %%%		Beispielsymbol für eine binäre negierte \glos{Relation} mit \glos{Ungleichheit} und \emph{Umkehrrelation} $\lrelnebsp$.
-%%%		-- zur Definition \vrefseesub{sub:Beispielsymbole}
+%%%		\\-- Zur Definition \vrefseesub{sub:Beispielsymbole}.
 %%%	}
 %%%}
 
@@ -290,7 +310,7 @@
 	plural     ={\derive},% im Mathematikmodus
 	description ={
 		\glos{Ableitungsrelation}:~ \textdots\ \emph{ableitbar} (beweisbar) \textdots
-		-- siehe \glos{ableitbar}.
+		\\-- Siehe \glos{ableitbar}.
 	}
 }
 \newglossaryentry{eq}{
@@ -298,6 +318,8 @@
 	plural     ={\eq},% im Mathematikmodus
 	description ={
 		Eine \glos{Metarelation}:~ \textdots\ \emph{gleich} (ist dasselbe wie; ist identisch zu) \textdots
+		\\-- Siehe \glos{Gleichheit}.
+		\\-- Zur Definition \vrefseesubsub{subsub:Vergleiche} und \vrefseesub{sub:ausJunktorDef}.
 	}
 }
 \newglossaryentry{equiv}{
@@ -305,6 +327,8 @@
 	plural     ={\equiv},% im Mathematikmodus
 	description ={
 		Eine \glos{Metarelation}:~ \textdots\ \emph{äquivalent zu} (ist das gleiche wie; ist so wie) \textdots
+		\\-- Siehe \glos{Äquivalenz}.
+		\\-- Zur Definition \vrefseesubsub{subsub:Vergleiche} und \vrefseesub{sub:ausJunktorDef}.
 	}
 }
 \newglossaryentry{metaand}{
@@ -312,7 +336,7 @@
 	plural     ={\metaand},% im Mathematikmodus
 	description ={
 		Eine \glos{Metaoperation}:~ \textdots\ \emph{und} \textdots
-		-- zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}
+		\\-- Zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}.
 	}
 }
 \newglossaryentry{metadefeq}{
@@ -327,7 +351,7 @@
 	plural     ={\metaequiv},% im Mathematikmodus
 	description ={
 		Eine \glos{Metarelation}:~ \textdots\ \emph{genau dann wenn} \textdots
-		-- zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}
+		\\-- Zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}.
 	}
 }
 \newglossaryentry{metaimp}{
@@ -335,7 +359,7 @@
 	plural     ={\metaimp},% im Mathematikmodus
 	description ={
 		Eine \glos{Metarelation}:~ \textdots\ \emph{dann auch} \textdots , die Umkehrrelation zu $\metarep$
-		-- zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}
+		\\-- Zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}.
 	}
 }
 \newglossaryentry{metanot}{
@@ -343,7 +367,7 @@
 	plural     ={\metanot},% im Mathematikmodus
 	description ={
 		Eine unäre \glos{Metaoperation}:~ \textdots emph{gilt nicht}
-		-- zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}
+		\\-- Zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}.
 	}
 }
 \newglossaryentry{metaor}{
@@ -351,7 +375,7 @@
 	plural     ={\metaor},% im Mathematikmodus
 	description ={
 		Eine \glos{Metaoperation}:~ \textdots\ \emph{oder} \textdots
-		-- zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}
+		\\-- Zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}.
 	}
 }
 \newglossaryentry{metarep}{
@@ -359,7 +383,7 @@
 	plural     ={\metarep},% im Mathematikmodus
 	description ={
 		Eine \glos{Metarelation}:~ \textdots\ \emph{sofern} \textdots , die Umkehrrelation zu $\metaimp$
-		-- zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}
+		\\-- Zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}.
 	}
 }
 \newglossaryentry{ne}{
@@ -381,7 +405,7 @@
 	plural     ={\subst},% im Mathematikmodus
 	description ={
 		\glos{Substitution}:~ \textdots\ \emph{substituiert durch} \textdots\
-		-- zur Definition \vrefseesub{sub:Identitätsregeln}.
+		\\-- Zur Definition \vrefseesub{sub:Identitätsregeln}.
 	}
 }
 \newglossaryentry{swap}{
@@ -389,7 +413,7 @@
 	plural     ={\swap},% im Mathematikmodus
 	description ={
 		\glos{Vertauschung}:~ \textdots\ \emph{vertauscht mit} \textdots\
-		-- zur Definition \vrefseesub{sub:Identitätsregeln}.
+		\\-- Zur Definition \vrefseesub{sub:Identitätsregeln}.
 	}
 }
 \newglossaryentry{srand}{
@@ -397,7 +421,7 @@
 	plural     ={\srand},% im Mathematikmodus
 	description ={
 		Eine \glos{Metaoperation}:~ \textdots\ \emph{und} \textdots\
-		-- wird nur bei den \glos{Schlussregeln} verwendet.
+		\\-- Wird nur bei den \glos{Schlussregeln} verwendet.
 	}
 }
 
@@ -408,7 +432,7 @@
 	plural     ={\lequiv},% im Mathematikmodus
 	description ={
 		Ein binärer \glos{Junktor}:~ \textdots\ \emph{genau dann wenn} \textdots\
-		-- zur Definition \vrefseetab{tab:Symbole}
+		\\-- Zur Definition \vrefseetab{tab:Symbole}.
 	}
 }
 \newglossaryentry{lfalse}{
@@ -416,7 +440,7 @@
 	plural     ={\lfalse},% im Mathematikmodus
 	description ={
 		Ein 0-stelliger \glos{Junktor}, \textdh\ eine aussagenlogische Konstante (\glos{Wahrheitswert}): \emph{$\falsch$}
-		-- zur Definition \vrefseetab{tab:Symbole}
+		\\-- Zur Definition \vrefseetab{tab:Symbole}.
 	}
 }
 \newglossaryentry{limp}{
@@ -424,7 +448,7 @@
 	plural     ={\limp},% im Mathematikmodus
 	description ={
 		Ein binärer \glos{Junktor}:~ \emph{Aus} \textdots\ \emph{folgt} \textdots\
-		-- zur Definition \vrefseetab{tab:Symbole}
+		\\-- Zur Definition \vrefseetab{tab:Symbole}.
 	}
 }
 \newglossaryentry{lnand}{
@@ -432,7 +456,7 @@
 	plural     ={\lnand},% im Mathematikmodus
 	description ={
 		Ein binärer \glos{Junktor}:~ \emph{Nicht zugleich}\textdots\ \emph{und} \textdots\
-		-- zur Definition \vrefseetab{tab:Symbole}
+		\\-- Zur Definition \vrefseetab{tab:Symbole}.
 	}
 }
 \newglossaryentry{lnor}{
@@ -441,14 +465,14 @@
 	description ={
 		Ein binärer \glos{Junktor}:~ \emph{weder} \textdots\ \emph{noch} \textdots\
 	}
-		-- zur Definition \vrefseetab{tab:Symbole}
+		\\-- Zur Definition \vrefseetab{tab:Symbole}.
 }
 \newglossaryentry{lnot}{
 	name      ={$\lnot$},
 	plural     ={\lnot},% im Mathematikmodus
 	description ={
 		Ein unärer \glos{Junktor}:~ \emph{Nicht} \textdots\
-		-- zur Definition \vrefseetab{tab:Symbole}
+		\\-- Zur Definition \vrefseetab{tab:Symbole}.
 	}
 }
 \newglossaryentry{lrep}{
@@ -456,7 +480,7 @@
 	plural     ={\lrep},% im Mathematikmodus
 	description ={
 		Ein binärer \glos{Junktor}:~ \textdots\ \emph{folgt aus} \textdots\
-		-- zur Definition \vrefseetab{tab:Symbole}
+		\\-- Zur Definition \vrefseetab{tab:Symbole}.
 	}
 }
 \newglossaryentry{ltrue}{
@@ -464,7 +488,7 @@
 	plural     ={\ltrue},% im Mathematikmodus
 	description ={
 		Ein 0-stelliger \glos{Junktor}, \textdh\ eine aussagenlogische Konstante (\glos{Wahrheitswert}): \emph{$\wahr$}
-		-- zur Definition \vrefseetab{tab:Symbole}
+		\\-- Zur Definition \vrefseetab{tab:Symbole}.
 	}
 }
 \newglossaryentry{lxor}{
@@ -472,7 +496,7 @@
 	plural     ={\lxor},% im Mathematikmodus
 	description ={
 		Ein binärer \glos{Junktor}:~ \emph{entweder} \textdots\ \emph{oder} \textdots\
-		-- zur Definition \vrefseetab{tab:Symbole}
+		\\-- Zur Definition \vrefseetab{tab:Symbole}.
 	}
 }
 
@@ -485,7 +509,7 @@
 		Teilmengenbeziehung:~ \textdots\ \emph{ist echte Teilmenge von} \textdots\
 		; Insbesondere kann keine \Gleichheit\ bestehen.
 		In der Literatur wird $\subset$ oft im Sinne von $\subseteq$ verwendet.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 \newglossaryentry{subseteq}{
@@ -494,7 +518,7 @@
 	description ={
 		Teilmengenbeziehung:~ \textdots\ \emph{ist Teilmenge von} \textdots\
 		; Insbesondere kann \Gleichheit\ bestehen.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 
@@ -505,119 +529,119 @@
 \newglossaryentry{AR}{
 	name      ={$\AR$},
 	plural     ={\AR},% im Mathematikmodus
-	description ={\glos{Anfangsregel}}
+	description ={\glos{Anfangsregel}}.
 }
 \newcommand* {\tagFS}{FS}% Argument für \tag - im Textmodus
 \newcommand*    {\FS}{(\text{FS})}% im Mathematikmodus
 \newglossaryentry{FS}{
 	name      ={$\FS$},
 	plural     ={\FS},% im Mathematikmodus
-	description ={\glos{formaler Satz}}
+	description ={\glos{formaler Satz}}.
 }
 \newcommand* {\tagMR}{MR}% Argument für \tag - im Textmodus
 \newcommand*    {\MR}{(\text{MR})}% im Mathematikmodus
 \newglossaryentry{MR}{
 	name      ={$\MR$},
 	plural     ={\MR},% im Mathematikmodus
-	description ={\glos{Monotonieregel}}
+	description ={\glos{Monotonieregel}}.
 }
 \newcommand* {\tagSR}{SR}% Argument für \tag - im Textmodus
 \newcommand*    {\SR}{(\text{SR})}% im Mathematikmodus
 \newglossaryentry{SR}{
 	name      ={$\SR$},
 	plural     ={\SR},% im Mathematikmodus
-	description ={\glos{Schnittregel} (Modus ponens)}
+	description ={\glos{Schnittregel} (Modus ponens)}.
 }
 \newcommand* {\tagTR}{TR}% Argument für \tag - im Textmodus
 \newcommand*    {\TR}{(\text{TR})}% im Mathematikmodus
 \newglossaryentry{TR}{
 	name      ={$\TR$},
 	plural     ={\TR},% im Mathematikmodus
-	description ={\glos{Abtrennungsregel}}
+	description ={\glos{Abtrennungsregel}}.
 }
 \newcommand* {\tageqB}{$\eq$B}% Argument für \tag - im Textmodus
 \newcommand*    {\eqB}{(\eq\text{B})}% im Mathematikmodus
 \newglossaryentry{eqB}{
 	name      ={$\eqB$},
 	plural     ={\eqB},% im Mathematikmodus
-	description ={Beseitigung von \chrqt{$\eq$}}
+	description ={Beseitigung von \chrqt{$\eq$}}.
 }
 \newcommand* {\tageqE}{$\eq$E}% Argument für \tag - im Textmodus
 \newcommand*    {\eqE}{(\eq\text{E})}% im Mathematikmodus
 \newglossaryentry{eqE}{
 	name      ={$\eqE$},
 	plural     ={\eqE},% im Mathematikmodus
-	description ={Einführung von \chrqt{$\eq$}}
+	description ={Einführung von \chrqt{$\eq$}}.
 }
 \newcommand* {\tagandB}{$\land$B}% Argument für \tag - im Textmodus
 \newcommand*    {\andB}{(\land\text{B})}% im Mathematikmodus
 \newglossaryentry{andB}{
 	name      ={$\andB$},
 	plural     ={\andB},% im Mathematikmodus
-	description ={Beseitigung von \chrqt{$\land$}}
+	description ={Beseitigung von \chrqt{$\land$}}.
 }
 \newcommand* {\tagandE}{$\land$E}% Argument für \tag - im Textmodus
 \newcommand*    {\andE}{(\land\text{E})}% im Mathematikmodus
 \newglossaryentry{andE}{
 	name      ={$\andE$},
 	plural     ={\andE},% im Mathematikmodus
-	description ={Einführung von \chrqt{$\land$}}
+	description ={Einführung von \chrqt{$\land$}}.
 }
 \newcommand* {\tagimpB}{$\limp$B}% Argument für \tag - im Textmodus
 \newcommand*    {\impB}{(\limp\text{B})}% im Mathematikmodus
 \newglossaryentry{impB}{
 	name      ={$\impB$},
 	plural     ={\impB},% im Mathematikmodus
-	description ={Beseitigung von \chrqt{$\limp$}}
+	description ={Beseitigung von \chrqt{$\limp$}}.
 }
 \newcommand* {\tagimpE}{$\limp$E}% Argument für \tag - im Textmodus
 \newcommand*    {\impE}{(\limp\text{E})}% im Mathematikmodus
 \newglossaryentry{impE}{
 	name      ={$\impE$},
 	plural     ={\impE},% im Mathematikmodus
-	description ={Einführung von \chrqt{$\limp$}}
+	description ={Einführung von \chrqt{$\limp$}}.
 }
 \newcommand* {\tagnota}{$\lnot$1}% Argument für \tag - im Textmodus
 \newcommand*    {\nota}{(\lnot\text{1})}% im Mathematikmodus
 \newglossaryentry{nota}{
 	name={ $\nota$},
 	plural     ={\nota},% im Mathematikmodus
-	description ={Einführung/Beseitigung von \chrqt{$\lnot$} Teil 1}
+	description ={Einführung/Beseitigung von \chrqt{$\lnot$} Teil 1}.
 }
 \newcommand* {\tagnotb}{$\lnot$2}% Argument für \tag - im Textmodus
 \newcommand*    {\notb}{(\lnot\text{2})}% im Mathematikmodus
 \newglossaryentry{notb}{
 	name      ={$\notb$},
 	plural     ={\notb},% im Mathematikmodus
-	description ={Einführung/Beseitigung von \chrqt{$\lnot$} Teil 2}
+	description ={Einführung/Beseitigung von \chrqt{$\lnot$} Teil 2}.
 }
 \newcommand* {\tagnotc}{$\lnot$3}% Argument für \tag - im Textmodus
 \newcommand*    {\notc}{(\lnot\text{3})}% im Mathematikmodus
 \newglossaryentry{notc}{
 	name      ={$\notc$},
 	plural     ={\notc},% im Mathematikmodus
-	description ={Beweistechnik \enquote{Indirekter \glos{Beweis}}}
+	description ={Beweistechnik \enquote{Indirekter \glos{Beweis}}}.
 }
 \newcommand* {\tagnotd}{$\lnot$4}% Argument für \tag - im Textmodus
 \newcommand*    {\notd}{(\lnot\text{4})}% im Mathematikmodus
 \newglossaryentry{notd}{% statt "notE"
 	name      ={$\notd$},
 	plural     ={\notd},% im Mathematikmodus
-	description ={Reductio ad absurdum (Indirekter \glos{Beweis})}
+	description ={Reductio ad absurdum (Indirekter \glos{Beweis})}.
 }
 %%%\newcommand* {\tagorB}{$\lor$B}% Argument für \tag - im Textmodus
 %%%\newcommand*    {\orB}{(\lor\text{B})}% im Mathematikmodus
 %%%\newglossaryentry{orB}{
 %%%	name      ={$\obB$},
 %%%	plural     ={\orB},% im Mathematikmodus
-%%%	description ={Beseitigung von \chrqt{$\lor$}}
+%%%	description ={Beseitigung von \chrqt{$\lor$}}.
 %%%}
 %%%\newcommand* {\tagorE}{$\lor$E}% Argument für \tag - im Textmodus
 %%%\newcommand*    {\orE}{(\lor\text{E})}% im Mathematikmodus
 %%%\newglossaryentry{orE}{
 %%%	name      ={$\obE$},
 %%%	plural     ={\orE},% im Mathematikmodus
-%%%	description ={Beseitigung von \chrqt{$\lor$}}
+%%%	description ={Beseitigung von \chrqt{$\lor$}}.
 %%%}
 
 % Fachbegriffe #################################################################
@@ -637,9 +661,8 @@
 		Wenn sich eine \glos{Formel} $\beta$ aus einer anderen \glos{Formel} $\alpha$ mittels \glos{zulässiger Transformationen} ableiten lässt, heißt $\beta$ \glos{ableitbar} aus $\alpha$.
 		Sprechweise: \seqqt{$ \alpha \text{ ableitbar } \beta $}.
 		Eine oder beide \glos{Formeln} $\alpha$ \textbzw\ $\beta$ dürfen dabei durch \glos{Formelmengen} ersetzt werden.
-		-- siehe \glos{Ableitungsrelation} und \chrqt{$\derivesym$}.
-		\newline
-		Synonym: \glos{beweisbar}.%
+		\\-- Siehe \glos{Ableitungsrelation} und \chrqt{$\derivesym$}.
+		\\-- Synonym: \glos{beweisbar}.
 	}
 }
 \newcommand*    {\Ableitung}  {\glsIdx  {Ableitung}}
@@ -662,7 +685,7 @@
 \newglossaryentry{Abtrennungsregel}{
 	name        ={Abtrennungsregel},
 	description ={
-		Eine \glos{Schlussregel} -- siehe~\glos{TR}
+		Eine \glos{Schlussregel} -- siehe~\glos{TR}.
 	}
 }
 \newcommand*    {\Aequivalenz}  {\glsIdx  {Aequivalenz}}
@@ -673,7 +696,7 @@
 	description ={
 		Eine \glos{Gleichheitsrelation}:
 		Zwei Objekte $A$ und $B$ sind \emph{gleich} (äquivalent), $A \equiv B$, wenn sie in den \glos{interessierenden Eigenschaften} für $\equiv$ übereinstimmen.
-		-- zur Definition \vrefseesubsub{subsub:Vergleiche}
+		\\-- Zur Definition \vrefseesubsub{subsub:Vergleiche}.
 	}
 }
 \newcommand*    {\Aequivalenzrelation}  {\glsIdx  {Aequivalenzrelation}}
@@ -689,7 +712,7 @@
 			\item[symmetrisch] ($(a \sim b) \metaimp (b \sim a)$)
 		\end{description}
 		jeweils für alle Elemente $a$, $b$ und $c$ aus $M$.
-		-- \vrefseesubsub{subsub:Vergleiche}
+		\\-- \vrefSeesubsub{subsub:Vergleiche}.
 	}
 }
 \newcommand*    {\allgemeingueltigeSchlussregel}  {\glsIdx  {allgemeingueltige-Schlussregel}}
@@ -701,6 +724,7 @@
 	plural      ={allgemeingültige Schlussregeln},
 	description ={
 		Eine \glos{Schlussregel} die aus den \glos{Basisregeln} und schon bekannten \glos{allgemeingültigen Schlussregeln} abgeleitet werden kann.
+		\\-- Zur Definition \vrefseesub{sub:Schlussregeln}.
 	}
 }
 \newcommand*    {\Anfangsregel}{\glsIdx{Anfangsregel}}
@@ -710,16 +734,33 @@
 		Eine \glos{Schlussregel} um beginnen zu können -- siehe~\glos{AR}.
 	}
 }
-%TODO einfügen: atomare Aussagen
-\newcommand*    {\atomareFormel} {\glsIdx  {atomare-Formel}}
-\newcommand*    {\atomareFormeln}{\glsIdxPl{atomare-Formel}}
-\newglossaryentry{atomare-Formel}{
-	name        ={atomare Formel},
-	plural      ={atomare Formeln},
+\newcommand*    {\atomar} {\glsIdx  {atomar}}
+\newcommand*    {\atomare}{\glsIdxPl{atomar}}
+\newglossaryentry{atomar}{
+	name        ={atomar},
+	plural      ={atomare},
 	description ={
-		Eine \glos{unzerlegbare} \glos{Formel}.
+		Synonym zu \defn{unzerlegbar}, siehe dort; vergleiche auch \glos{zerlegbar}.
 	}
 }
+%%%\newcommand*    {\atomareAussage} {\glsIdx  {atomare-Aussage}}
+%%%\newcommand*    {\atomareAussagen}{\glsIdxPl{atomare-Aussage}}
+%%%\newglossaryentry{atomare-Aussage}{
+%%%	name        ={atomare Aussage},
+%%%	plural      ={atomare Aussagen},
+%%%	description ={
+%%%		Eine \glos{unzerlegbare} \glos{Aussage}.
+%%%	}
+%%%}
+%%%\newcommand*    {\atomareFormel} {\glsIdx  {atomare-Formel}}
+%%%\newcommand*    {\atomareFormeln}{\glsIdxPl{atomare-Formel}}
+%%%\newglossaryentry{atomare-Formel}{
+%%%	name        ={atomare Formel},
+%%%	plural      ={atomare Formeln},
+%%%	description ={
+%%%		Eine \glos{unzerlegbare} \glos{Formel}.
+%%%	}
+%%%}
 \newcommand*    {\Ausgabeschema}  {\glsIdx  {Ausgabeschema}}
 \newcommand*    {\Ausgabeschemata}{\glsIdxPl{Ausgabeschema}}
 \newglossaryentry{Ausgabeschema}{
@@ -736,14 +777,14 @@
 	plural      ={Aussagen},
 	description ={
 		Eine \glos{Aussage} in natürlicher Sprache oder als \glos{Formel}, die einen \glos{Wahrheitswert} liefert.
-		-- zur Definition \vrefseesub{sub:AussagenUndMetaoperationen}
+		\\-- Zur Definition \vrefseesub{sub:AussagenUndMetaoperationen}.
 	}
 }
 \newcommand*    {\Aussagenlogik}{\glsIdx{Aussagenlogik}}
 \newglossaryentry{Aussagenlogik}{
 	name        ={Aussagenlogik},
 	description ={
-		-- zur Definition \vrefseesec{sec:Aussagenlogik}
+		-- Zur Definition \vrefseesec{sec:Aussagenlogik}.
 	}
 }
 \newcommand*    {\Axiom}  {\glsIdx  {Axiom}}
@@ -754,6 +795,7 @@
 	plural      ={Axiome},
 	description ={
 		Eine \glos{Formel}, die unbewiesen als wahr angesehen wird.
+		\\-- Zur Definition \vrefseesub{sub:Schlussregeln} und \vref{sub:ausAxiome}.
 	}
 }
 \newcommand*    {\Axiomensystem} {\glsIdx  {Axiomensystem}}
@@ -763,7 +805,7 @@
 	plural      ={Axiomensysteme},
 	description ={
 		Eine Menge von \glos{Axiomen}.
-		-- zur Definition \vrefseesub{sub:ausAxiome}
+		\\-- Zur Definition \vrefseesub{sub:Schlussregeln} und \vref{sub:ausAxiome}.
 	}
 }
 
@@ -777,7 +819,7 @@
 	description ={
 		Eine \glos{Schlussregel}, die nicht mehr auf andere zurückgeführt wird.
 		Obwohl das auch auf die \glos{Identitätsregeln} zutrifft, werden diese hier aber nicht dazu gezählt.
-		-- zur Definition \vrefseesub{sub:Basisregeln}
+		\\-- Zur Definition \vrefseesub{sub:Basisregeln}.
 	}
 }
 \newcommand*    {\Beweis}  {\glsIdx  {Beweis}}
@@ -789,7 +831,7 @@
 	plural      ={Beweise},
 	description ={
 		Eine zulässige Ableitung von \glos{Folgerungen} aus gegebenen \glos{Voraussetzungen}.
-		-- 	\newline\vrefseesec{sec:BeweiseASBA}.
+		\\-- \vrefSeesec{sec:BeweiseASBA}.
 	}
 }
 \newcommand*    {\beweisbar} {\glsIdx  {beweisbar}}
@@ -809,7 +851,7 @@
 	plural      ={Beweisschritte},
 	description ={
 		Eine Vorschrift, wie aus vorgegebenen \glos{Aussagen} (den \glos{Voraussetzungen}) weitere (die \glos{Folgerungen}) folgen.
-		-- zur Definition \vrefseesub{sub:Beweisschritte}
+		\\-- Zur Definition \vrefseesub{sub:Beweisschritte}.
 	}
 }
 \newcommand*    {\Beweisschrittfolge} {\glsIdx  {Beweisschrittfolge}}
@@ -817,7 +859,10 @@
 \newglossaryentry{Beweisschrittfolge}{
 	name        ={Beweisschrittfolge},
 	plural      ={Beweisschrittfolgen},
-	description ={Eine Folge von \glos{Beweisschritten}.}
+	description ={
+		Eine Folge von \glos{Beweisschritten}.
+		\\-- Zur Definition \vrefseesub{sub:Beweisschritte}.
+	}
 }
 \newcommand*    {\Beweisschrittmenge} {\glsIdx  {Beweisschrittmenge}}
 \newcommand*    {\Beweisschrittmengen}{\glsIdxPl{Beweisschrittmenge}}
@@ -826,6 +871,7 @@
 	plural      ={Beweisschrittmengen},
 	description ={
 		Eine Menge von \glos{Beweisschritten}, insbesondere die Menge der Glieder einer \glos{Beweisschrittfolge}.
+		\\-- Zur Definition \vrefseesub{sub:Beweisschritte}.
 	}
 }
 \newcommand*    {\BoolscheSignatur} {\glsIdx  {Boolsche-Signatur}}
@@ -849,8 +895,18 @@
 		Eine Definition mit Hilfe des \emph{Definitionssymbols} \chrqt{$\defeq$}.
 		\seqqt{$A \defeq B$} steht für \enquote{$A$ \emph{ist definitionsgemäß gleich} $B$} für \glos{Objekte} $A$ und $B$.
 		Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
-		-- Man vergleiche auch den Begriff \enquote{\glos{Metadefinition}} und das zugehörige \glos{Symbol} \chrqt{$\metadefeq$}.
-		-- zur Definition \vrefseesub{subsub:Definitionen}
+		\\-- Man vergleiche auch den Begriff \enquote{\glos{Metadefinition}} und das zugehörige \glos{Symbol} \chrqt{$\metadefeq$}.
+		\\-- Zur Definition \vrefseesub{subsub:Definitionen}.
+	}
+}
+\newcommand*    {\Definitionsbereich} {\glsIdx  {Definitionsbereich}}
+\newcommand*    {\Definitionsbereiche}{\glsIdxPl{Definitionsbereich}}
+\newglossaryentry{Definitionsbereich}{
+	name        ={Definitionsbereich},
+	plural      ={Definitionsbereiche},
+	description ={
+		einer \glos{Funktion}.
+		\\-- Zur genaueren Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 
@@ -883,6 +939,7 @@
 	plural      ={Folgerungen},
 	description ={
 		Die Folgerungen einer \glos{Schlussregel} $\frac{\prerequisiteset}{\conclusionset}$ sind die Elemente von $\conclusionset$.
+		\\-- Standardsymbol: $\conclusion$; zur Definition \vrefseesub{:Schlussregeln}.
 	}
 }
 %%%\newcommand*    {\Folgerungsmenge} {\glsIdx  {Folgerungsmenge}}
@@ -892,6 +949,7 @@
 %%%	plural      ={Folgerungsmengen},
 %%%	description ={
 %%%		Die Menge der \glos{Folgerungen} einer \glos{Schlussregel} \textbzw\ eines \glos{Beweises}.
+%%%		\\-- Standardsymbol: $\conclusionset$; zur Definition \vrefseesub{:Schlussregeln}.
 %%%	}
 %%%}
 \newcommand*    {\formalerSatz} {\glsIdx  {formaler-Satz}}
@@ -901,7 +959,8 @@
 	name        ={formaler Satz},
 	plural      ={formale Sätze},
 	description ={
-		Formale Darstellung eines mathematischen Satzes. -- siehe~\glos{FS}.
+		Formale Darstellung eines mathematischen Satzes.
+		\\-- Siehe~\glos{FS}; zur Definition \vrefseesub{sub:Schlussregeln}.
 	}
 }
 \newcommand*    {\Formel} {\glsIdx  {Formel}}
@@ -913,8 +972,8 @@
 		Unter einer \glos{Formel} verstehen wir stets eine mathematische \glos{Formel}.
 		Diese kann aus einem einzigen \glos{Symbol} bestehen (\glos{atomare Formel}), andererseits aber auch mehrdimensional sein, lässt sich dann aber mittels geeigneter \glos{Definitionen} immer eindeutig als eine \glos{Zeichenfolge} schreiben.
 		\glos{Sätze}, \glos{Beweise} und \glos{Schlussregeln} betrachten wir \emph{nicht} als \glos{Formeln}.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
-		-- zur Definition \vrefseesubsub{subsub:Formeln}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- Zur Definition \vrefseesubsub{subsub:Formeln}.
 	}
 }
 \newcommand*    {\Formelmenge} {\glsIdx  {Formelmenge}}
@@ -928,6 +987,28 @@
 		Wir bevorzugen \enquote{\glos{Formel}} und \enquote{\glos{Formelmenge}}.
 	}
 }
+\newcommand*    {\Funktion}  {\glsIdx  {Funktion}}
+\newcommand*    {\Funktionen}{\glsIdxPl{Funktion}}
+\newglossaryentry{Funktion}{
+	name        ={Funktion},
+	plural      ={Funktionen},
+	description ={
+		Eine \emph{$n$-stellige Funktion} $f$ von einer Menge $A = A_1 \times \dots \times A_n$, dem \emph{Definitionsbereich}, in eine Menge $B$, den \emph{Zielbereich}, ist eine ($n$+1)-stellige \glos{Relation} $(G,A_1,\dots,A_n,B)$ derart, dass es für jedes $\vec{a} = (a_1,\dots,a_n)$ mit $a_i \in A_i$ genau ein $b \in B$ gibt mit $(a_1,\dots,a_n,b) \in f$.
+		Dieses $b$ wird auch mit \seqqt{$f(a_1,\dots,a_n)$}, \seqqt{$f a_1 \dots a_n$}, \seqqt{$f(\vec{a})$} oder \seqqt{$f\vec{a}$} bezeichnet.
+		\\Schreibweise: \seqqt{$f : A \rightarrow B$} \textbzw\ \seqqt{$f : A_1 \times \dots \times A_n \rightarrow B$}
+		\\-- Zur Definition \vrefseesec{sub:Bezeichnungen}.
+	}
+}
+\newcommand*    {\Funktionswert} {\glsIdx  {Funktionswert}}
+\newcommand*    {\Funktionswerte}{\glsIdxPl{Funktionswert}}
+\newglossaryentry{Funktionswert}{
+	name        ={Funktionswert},
+	plural      ={Funktionswerte},
+	description ={
+		einer \glos{Funktion}.
+		\\-- Zur genaueren Definition \vrefseesub{sub:Bezeichnungen}.
+	}
+}
 
 %G === G === G === G === G === G === G === G === G === G === G === G === G === G
 
@@ -937,7 +1018,7 @@
 	description ={
 		Eine \glos{Gleichheitsrelation}:
 		Zwei Objekte $A$ und $B$ sind \emph{identisch}, $A \eq B$, wenn sie in den \glos{interessierenden Eigenschaften} für $\eq$ übereinstimmen.
-		-- zur Definition \vrefseesubsub{subsub:Vergleiche}
+		\\-- Zur Definition \vrefseesubsub{subsub:Vergleiche}
 	}
 }
 \newcommand*    {\Gleichheitsrelation}  {\glsIdx  {Gleichheitsrelation}}
@@ -947,6 +1028,16 @@
 	plural      ={Gleichheitsrelationen},
 	description ={
 		Eine mit \glos{Gleichheit} verwandte \glos{Relation}: $\eq$, $\ne$, $\equiv$ und $\nequiv$.
+	}
+}
+\newcommand*    {\Graph}  {\glsIdx  {Graph}}
+\newcommand*    {\Graphen}{\glsIdxPl{Graph}}
+\newglossaryentry{Graph}{
+	name        ={Graph},
+	plural      ={Graphen},
+	description ={
+		einer \glos{Funktion} oder \glos{Relation}.
+		\\-- Zur genaueren Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 
@@ -960,7 +1051,7 @@
 	description ={
 		Eigentlich eine \glos{Basisregel} zur Identität.
 		Da die \glos{Identitätsregeln} nur zur Rechtfertigung der \glos{Substitution} verwendet werden, werden sie hier nicht zu den \glos{Basisregeln} gezählt.
-		-- zur Definition \vrefseesub{sub:Identitätsregeln}
+		\\-- Zur Definition \vrefseesub{sub:Identitätsregeln}.
 	}
 }
 \newcommand*    {\interessierendeEigenschaft}   {\glsIdx  {interessierende-Eigenschaft}}
@@ -985,8 +1076,8 @@
 	description ={
 		Eine aussagenlogische \glos{Operation}.
 		Da die Werte einer aussagenlogischen \glos{Operation} \glos{Wahrheitswerte} sind, kann man einen \glos{Junktor} auch als \glos{Relation} verstehen.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
-		-- zur Definition \vrefseesub{sub:ausJunktorDef}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- Zur Definition \vrefseesub{sub:ausJunktorDef}.
 	}
 }
 \newcommand*    {\Junktorsymbol} {\glsIdx  {Junktorsymbol}}
@@ -995,7 +1086,10 @@
 	name        ={Junktorsymbol},
 	plural      ={Junktorsymbole},
 	description ={
-		Ein \glos{Symbol} für einen \glos{Junktor}.
+		Ein \glos{Symbol} für einen \glos{Junktor}.%
+		\footnote{%
+			Entsprechend \emph{Funktionssymbol}, \emph{Operatorsymbol}, \emph{Relationssymbol}, usw.
+		}
 	}
 }
 
@@ -1014,7 +1108,7 @@
 	description ={
 		Eine \glos{Gleichheitsrelation}:
 		Zwei Objekte $A$ und $B$ sind \emph{nicht gleich} (nicht äquivalent), $A \nequiv B$, wenn sie in mindestens einer \glos{interessierenden Eigenschaft} für $\equiv$ nicht übereinstimmen.
-		-- zur Definition \vrefseesubsub{subsub:Vergleiche}
+		\\-- Zur Definition \vrefseesubsub{subsub:Vergleiche}.
 	}
 }
 
@@ -1037,7 +1131,7 @@
 \newglossaryentry{Mengenlehre}{
 	name={Mengenlehre},
 	description ={
-		-- zur Definition \vrefseesec{sec:Mengenlehre}
+		-- Zur Definition \vrefseesec{sec:Mengenlehre}.
 	}
 }
 \newcommand*    {\Metadefinition}  {\glsIdx  {Metadefinition}}
@@ -1049,8 +1143,8 @@
 		Eine \glos{Definition} in der \glos{Metasprache} mit Hilfe des \emph{Metadefinitionssymbols} \chrqt{$\metadefeq$}.
 		\seqqt{$A \metadefeq B$} steht für \enquote{$A$ \emph{ist definitionsgemäß gleich} $B$} für \glos{Aussagen} $A$ und $B$.
 		Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
-		-- Man vergleiche auch den Begriff \enquote{\glos{Definition}} und das zugehörige \glos{Symbol} \chrqt{$\defeq$}.
-		-- zur Definition \vrefseesubsub{subsub:Definitionen}
+		\\-- Man vergleiche auch den Begriff \enquote{\glos{Definition}} und das zugehörige \glos{Symbol} \chrqt{$\defeq$}.
+		\\-- Zur Definition \vrefseesubsub{subsub:Definitionen}.
 	}
 }
 \newcommand*    {\Metaoperation}  {\glsIdx  {Metaoperation}}
@@ -1060,7 +1154,7 @@
 	plural      ={Metaoperationen},
 	description ={
 		Eine \glos{Operation} der \glos{Metasprache}: $\metaandsym$, $\metaorsym$ oder $\srand$.
-		-- zur Definition \vrefseesub{sub:AussagenUndMetaoperationen}
+		\\-- Zur Definition \vrefseesub{sub:AussagenUndMetaoperationen}.
 	}
 }
 \newcommand*    {\Metarelation}  {\glsIdx  {Metarelation}}
@@ -1070,7 +1164,7 @@
 	plural      ={Metarelationen},
 	description ={
 		Eine \glos{Relation} der \glos{Metasprache}: $\metaimp$, $\metarep$ oder $\metaequiv$.
-		-- zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}
+		\\-- Zur Definition siehe \vrefseesub{sub:AussagenUndMetaoperationen}.
 	}
 }
 \newcommand*    {\Metasprache} {\glsIdx  {Metasprache}}
@@ -1081,7 +1175,7 @@
 	description ={
 		Eine Sprache, in der \glos{Aussagen} über Elemente einer anderen Sprache getroffen werden können.
 		In diesem Dokument ist dies immer die normale Sprache.
-		-- \vrefseesec{sec:Metasprache}
+		\\-- \vrefSeesec{sec:Metasprache}.
 	}
 }
 \newcommand*    {\Monotonieregel}{\glsIdx{Monotonieregel}}
@@ -1102,7 +1196,7 @@
 	plural      ={Objekte},
 	description ={
 		\glos{Symbole}, \glos{Formeln} und \glos{Aussagen} sowie Mengen, \glos{Zeichenfolgen}, Zahlen; ganz allgemein reale oder gedachte Dinge an sich.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 \newcommand*    {\Operation}  {\glsIdx  {Operation}}
@@ -1113,8 +1207,8 @@
 	description ={
 		Eine -- meistens binäre, \textdh\ zweiwertige -- Funktion $M^n \rightarrow M$.
 		Für eine binäre \glos{Operation} $\opbsp : M \times M \rightarrow M$ schreibt man meistens $x \opbsp y$ statt $\opbsp(x,y)$.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
-		-- \vrefseesub{sub:Beispielsymbole}, \vrefseesub{sub:Operationen}
+		\\-- Zur Definition \vrefseesub{sub:Bezeichnungen}
+		\\-- \vrefSeesub{sub:Beispielsymbole} und \vref{sub:Operationen}.
 	}
 }
 \newcommand*    {\Operationssymbol} {\glsIdx  {Operationssymbol}}
@@ -1129,14 +1223,26 @@
 
 %P === P === P === P === P === P === P === P === P === P === P === P === P === P
 
+\newcommand*    {\PolnischeNotation}  {\glsIdx  {PolnischeNotation}}
+\newcommand*    {\PolnischeNotationen}{\glsIdxPl{PolnischeNotation}}
+\newcommand*    {\PolnischenNotation} {\glsIdxBg{PolnischeNotation}{Polnischen Notation}}
+\newglossaryentry{PolnischeNotation}{
+	name        ={Polnische Notation},
+	plural      ={Polnische Notationen},
+	description ={
+		Bei der \emph{Polnischen Notation} stehen die Operanden \textbzw\ Argumente von \Relationen\ und \Funktionen\ stets rechts von den Relations- und Funktionssymbolen.
+		Dadurch kann auf Gliederungszeichen wie Klammern und Kommata verzichtet werden.
+		Noch einfacher für Computer ist die \emph{umgekehrte Polnische Notation}, bei der die Operanden und Argumente links von den Symbolen stehen.
+	}
+}
 \newcommand*    {\Praedikat} {\glsIdx  {Praedikat}}
 \newcommand*    {\Praedikate}{\glsIdxPl{Praedikat}}
 \newglossaryentry{Praedikat}{
 	name        ={Prädikat},
 	plural      ={Prädikate},
 	description ={
-		Ein Element der \glos{Prädikatenlogik}
-		-- zur Definition \vrefseesec{sec:Prädikatenlogik}.
+		Ein Element der \glos{Prädikatenlogik}.
+		\\-- Zur Definition \vrefseesec{sec:Prädikatenlogik}.
 		\\\textZB\ kann man eine Gruppe als ein zweistelliges \glos{Prädikat} $\mathrm{Gruppe}(G,+)$ definieren, in dem $G$ eine Menge und $+$ eine \glos{Operation}, \textdh\ eine binäre (zweistellige) Funktion $ +: G \times G \rightarrow G $ ist, so dass die Gruppenaxiome erfüllt sind.
 	}
 }
@@ -1144,7 +1250,7 @@
 \newglossaryentry{Praedikatenlogik}{
 	name={Prädikatenlogik},
 	description ={
-		-- zur Definition \vrefseesec{sec:Prädikatenlogik}
+		-- Zur Definition \vrefseesec{sec:Prädikatenlogik}.
 	}
 }
 
@@ -1156,19 +1262,9 @@
 	name        ={Relation},
 	plural      ={Relationen},
 	description ={
-		Eine -- meistens binäre, \textdh\ zweiwertige -- Funktion $M \times M \times \dots \times M \rightarrow \{\wahr, \falsch\}$.
-		Für eine binäre \glos{Relation} $\relbsp : M \times M \rightarrow \{\wahr, \falsch\}$ schreibt man meistens $x \relbsp y$ statt $\relbsp(x,y)$ oder $\relbsp x y$.
-		-- zur Definition \vrefseesub{sub:Bezeichnungen}
- 		-- \vrefseesub{sub:Beispielsymbole}, \vrefseesub{sub:Gleichheit}
-	}
-}
-\newcommand*    {\Relationssymbol} {\glsIdx  {Relationssymbol}}
-\newcommand*    {\Relationssymbole}{\glsIdxPl{Relationssymbol}}
-\newglossaryentry{Relationssymbol}{
-	name        ={Relationssymbol},
-	plural      ={Relationssymbole},
-	description ={
-		Ein \glos{Symbol} für eine \glos{Relation}.
+		Eine \emph{$n$-stellige Relation} $R$ ist ein (1+$n$)-Tupel $(G,A_1,\dots,A_n$) mit $G \subseteq A_1 \times \dots \times A_n)$.
+		\\-- Zur genaueren Definition \vrefseesub{sub:Bezeichnungen}
+ 		\\-- \vrefSeesub{sub:Beispielsymbole} und \vref{sub:Gleichheit}.
 	}
 }
 
@@ -1194,7 +1290,7 @@
 		Eine \glos{Schlussregel} $\frac{\prerequisiteset}{\conclusionset}$ entspricht der \glos{Aussage}:
 		Wenn alle \glos{Voraussetzungen} $\prerequisite$ aus $\prerequisiteset$ zutreffen, dann auch alle \glos{Folgerungen} $\conclusion$ aus $\conclusionset$.
 		Wenn diese \glos{Aussage} zutrifft, kann die Schlussregel zur \glos{zulässigen Transformation} von \glos{Formeln} dienen.
-		-- zur Definition \vrefseesub{sub:Schlussregeln}
+		\\-- Zur Definition \vrefseesub{sub:Schlussregeln}.
 	}
 }
 \newcommand*    {\Schlussregelmenge} {\glsIdx  {Schlussregelmenge}}
@@ -1204,6 +1300,7 @@
 	plural      ={Schlussregelmengen},
 	description ={
 		Eine Menge von \glos{Schlussregeln}, meistens mit $\conclusionruleset$ bezeichnet.
+		\\-- Zur Definition \vrefseesub{:Schlussregeln}.
 	}
 }
 \newcommand*    {\Schnittregel}{\glsIdx{Schnittregel}}
@@ -1212,7 +1309,7 @@
 	plural      ={Schnittregeln},
 	description ={
 		Eine \glos{allgemeingültige Schlussregel}.
-		-- siehe~\glos{SR}
+		\\-- Siehe~\glos{SR}.
 	}
 }
 \newcommand*    {\Sprache} {\glsIdx  {Sprache}}
@@ -1221,7 +1318,17 @@
 	name        ={Sprache},
 	plural      ={Sprachen},
 	description ={
-		-- siehe \glos{Formelmenge}
+		-- Siehe \glos{Formelmenge}.
+	}
+}
+\newcommand*    {\Stelligkeit}  {\glsIdx  {Stelligkeit}}
+\newcommand*    {\Stelligkeiten}{\glsIdxPl{Stelligkeit}}
+\newglossaryentry{Stelligkeit}{
+	name        ={Stelligkeit},
+	plural      ={Stelligkeiten},
+	description ={
+		einer \glos{Funktion} oder \glos{Relation}.
+		\\-- Zur genaueren Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 %TODO überarbeiten: Substitution muss überarbeitet werden
@@ -1231,10 +1338,10 @@
 	name        ={Substitution},
 	plural      ={Substitutionen},
 	description ={
-		Die Ersetzung von einem, mehreren oder allen Teil-\glos{Formeln} ($\alpha$) in einer anderen \glos{Formel} ($\gamma$) durch eine dritte \glos{Formel} ($\beta$)
-		-- formal: $\gamma(\alpha\subst\beta)$.
+		Die Ersetzung von einem, mehreren oder allen Teil-\glos{Formeln} ($\alpha$) in einer anderen \glos{Formel} ($\gamma$) durch eine dritte \glos{Formel} ($\beta$).
+		\\-- Formal: $\gamma(\alpha\subst\beta)$.
 		Wenn alle $\alpha$ in $\gamma$ durch $\beta$ ersetzt werden, ist die \glos{Substitution} \emph{vollständig}.
-		-- zur Definition \vrefseesub{sub:Identitätsregeln}
+		\\-- Zur Definition \vrefseesub{sub:Identitätsregeln}.
 	}
 }
 \newcommand*    {\Substitutionsmenge} {\glsIdx  {Substitutionsmenge}}
@@ -1257,12 +1364,32 @@
 		Ein \emph{einfaches} \glos{Symbol} ist ein druckbares typographisches Zeichen.
 		Ein \emph{zusammengesetztes} \glos{Symbol} besteht aus mehreren einfachen \glos{Symbolen}.
 		In beiden Fällen wird ein \glos{Symbol} als \emph{\glos{unzerlegbar}} angesehen.
-		-- zur Definition \vrefseesec{sec:Notationen}
+		\\-- Zur Definition \vrefseesec{sec:Notationen}.
+	}
+}
+\newcommand*    {\Zielbereich} {\glsIdx  {Zielbereich}}
+\newcommand*    {\Zielbereiche}{\glsIdxPl{Zielbereich}}
+\newglossaryentry{Zielbereich}{
+	name        ={Zielbereich},
+	plural      ={Zielbereiche},
+	description ={
+		einer \glos{Funktion}.
+		\\-- Zur genaueren Definition \vrefseesub{sub:Bezeichnungen}.
 	}
 }
 
 %T === T === T === T === T === T === T === T === T === T === T === T === T === T
 
+\newcommand*    {\Traegermenge} {\glsIdx  {Traegermenge}}
+\newcommand*    {\Traegermengen}{\glsIdxPl{Traegermenge}}
+\newglossaryentry{Traegermenge}{
+	name        ={Trägermenge},
+	plural      ={Trägermengen},
+	description ={
+		einer \glos{Relation}.
+		\\-- Zur genaueren Definition \vrefseesub{sub:Bezeichnungen}.
+	}
+}
 \newcommand*    {\Transformation}  {\glsIdx  {Transformation}}
 \newcommand*    {\Transformationen}{\glsIdxPl{Transformation}}
 \newglossaryentry{Transformation}{
@@ -1277,21 +1404,32 @@
 \newcommand*    {\Transformationsmengen}{\glsIdxPl{Transformationsmenge}}
 \newglossaryentry{Transformationsmenge}{
 	name        ={Transformationsmenge},
-	plural      ={Transformationsmenge},
+	plural      ={Transformationsmengen},
 	description ={
 		Eine Menge von \glos{Transformationen}.
+		\\-- Zur Definition \vrefseesub{sub:Beweisschritte}.
 	}
 }
 
 %U === U === U === U === U === U === U === U === U === U === U === U === U === U
 
+\newcommand*    {\Umkehrrelation}  {\glsIdx  {Umkehrrelation}}
+\newcommand*    {\Umkehrrelationen}{\glsIdxPl{Umkehrrelation}}
+\newglossaryentry{Umkehrrelation}{
+	name        ={Umkehrrelation},
+	plural      ={Umkehrrelationen},
+	description ={
+		Die \glos{Umkehrrelation} zu einer binären \glos{Relation} $(G,A,B)$ ist die \glos{Relation} $(\{(b,a)|(a,b) \in G\},B,A)$.
+		Üblicherweise wird das zugehörige Relationssymbol gespiegelt.
+	}
+}
 \newcommand*    {\Ungleichheit}{\glsIdx{Ungleichheit}}
 \newglossaryentry{Ungleichheit}{
 	name        ={Ungleichheit},
 	description ={
 		Eine \glos{Gleichheitsrelation}:
 		Zwei Objekte $A$ und $B$ sind \emph{nicht identisch}, $A \ne B$, wenn sie in mindestens einer \glos{interessierenden Eigenschaft} für $\eq$ nicht übereinstimmen.
-		-- zur Definition \vrefseesubsub{subsub:Vergleiche}
+		\\-- Zur Definition \vrefseesubsub{subsub:Vergleiche}.
 	}
 }
 \newcommand*    {\unzerlegbar} {\glsIdx  {unzerlegbar}}
@@ -1301,7 +1439,7 @@
 	plural      ={unzerlegbare},
 	description ={
 		Eine \glos{Aussage}, die keine \glos{Metaoperation}, und eine \glos{Formel}, die keine \glos{Operation} und keine \glos{Relation} enthält, heißt \glos{unzerlegbar}.
-		-- vergleiche auch \glos{zerlegbar}
+		\\-- Synonym: \defn{atomar}; vergleiche auch \glos{zerlegbar}.
 	}
 }
 
@@ -1315,7 +1453,7 @@
 	description ={
 		Zwei \glos{Objekte} $A$ und $B$ sind \glos{vergleichbar}, wenn beide von derselben Art sind, \textdh\ wenn beide \textzB\ jeweils Mengen, \glos{Zeichenfolgen}, Zahlen, \textusw\ sind.
 		Dabei muss bei \glos{Formeln} zwischen der \glos{Formel} an sich und dem Ergebnis der \glos{Formel} unterschieden werden.
-		-- zur Definition \vrefseesub{subsub:Vergleichbar}
+		\\-- Zur Definition \vrefseesub{subsub:Vergleichbar}.
 	}
 }
 %TODO überarbeiten: Vertauschung muss überarbeitet werden
@@ -1326,9 +1464,9 @@
 	plural      ={Vertauschungen},
 	description ={
 		Die \glos{Vertauschung} von zwei unabhängigen Teil-\glos{Formeln} ($\alpha$ und $\beta$) in einer anderen \glos{Formel} ($\gamma$)
-		-- formal: $\gamma(\alpha\swap\beta)$.
+		\\-- Formal: $\gamma(\alpha\swap\beta)$.
 		Die \glos{Vertauschung} ist eine spezielle Form der \glos{Substitution}.
-		-- zur Definition siehe~\eqref{def:Vertauschung} \vrefinsub{sub:Identitätsregeln}
+		\\-- Zur Definition siehe~\eqref{def:Vertauschung} \vrefinsub{sub:Identitätsregeln}.
 	}
 }
 \newcommand*    {\Voraussetzung}  {\glsIdx  {Voraussetzung}}
@@ -1338,6 +1476,7 @@
 	plural      ={Voraussetzungen},
 	description ={
 		Die \glos{Voraussetzungen} einer \glos{Schlussregel} $\frac{\prerequisiteset}{\conclusionset}$ sind die Elemente von $\prerequisiteset$.
+		\\-- Standardsymbol: $\prerequisite$; zur Definition \vrefseesub{:Schlussregeln}.
 	}
 }
 \newcommand*    {\Voraussetzungsmenge} {\glsIdx  {Voraussetzungsmenge}}
@@ -1347,6 +1486,7 @@
 	plural      ={Voraussetzungsmengen},
 	description ={
 		Die Menge der \glos{Voraussetzungen} einer \glos{Schlussregel} \textbzw\ eines \glos{Beweises}.
+		\\-- Standardsymbol: $\prerequisiteset$; zur Definition \vrefseesub{:Schlussregeln}.
 	}
 }
 
@@ -1371,7 +1511,7 @@
 	description ={
 		Ein Element einer \glos{Sprache}.
 		In dem Fall Synonym zu \glodictionary{Formel}.
-		-- siehe \glos{Formelmenge}
+		\\-- Siehe \glos{Formelmenge}.
 	}
 }
 
@@ -1387,8 +1527,8 @@
 		Dabei sind als spezielle \glos{Symbole} auch \glos{Zeichenketten} erlaubt, solange die Zerlegung eindeutig bleibt.
 		\textZB\ kann \chrqt{sin} als ein einzelnes \glos{Symbol} -- für die Sinusfunktion -- aufgefasst werden, aber auch als Folge der Buchstaben \chrqt{s}, \chrqt{i} und \chrqt{n}.
 		\glos{Formeln} werden immer als \glos{Zeichenfolgen} aufgefasst.
-		-- siehe auch \glos{Zeichenkette}
-		-- zur Definition \vrefseesub{subsub:Definitionen}
+		\\-- Siehe auch \glos{Zeichenkette}.
+		\\-- Zur Definition \vrefseesub{subsub:Definitionen}.
 	}
 }
 \newcommand*    {\Zeichenkette} {\glsIdx  {Zeichenkette}}
@@ -1398,8 +1538,8 @@
 	plural      ={Zeichenketten},
 	description ={
 		Folgen von \glos{Symbolen}, auch Leerstellen und sonstigem Zwischenraum.
-		-- siehe auch \glos{Zeichenfolge}
-		-- zur Definition \vrefseesub{subsub:Definitionen}
+		\\-- Siehe auch \glos{Zeichenfolge}.
+		\\-- Zur Definition \vrefseesub{subsub:Definitionen}.
 	}
 }
 \newcommand*    {\zerlegbar} {\glsIdx  {zerlegbar}}
@@ -1410,7 +1550,7 @@
 	plural      ={zerlegbare},
 	description ={
 		Eine \glos{Aussage}, die eine \glos{Metaoperation}, und eine \glos{Formel}, die eine \glos{Operation} oder eine \glos{Relation} enthält, heißen \glos{zerlegbar}.
-		-- vergleiche auch \glos{unzerlegbar}
+		\\-- Vergleiche auch \glos{unzerlegbar}.
 	}
 }
 %TODO überarbeiten: zulässige Transformation muss voraussichtlich überarbeitet werden
