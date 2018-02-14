@@ -58,69 +58,69 @@ Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogis
 
 $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 \begin{align}
-	& \alpha \glsSym{derive} \beta \quad \metadefeq \quad
-	\parbox[t]{10.5cm}{%
+	& \alpha \definition{\symderive} \beta \quad \metadefeq \quad
+	\parbox[t]{11cm}{%
 	$\beta$ ist mittels schrittweiser Anwendung \emph{\zulaessigerTransformationen} (siehe weiter unten) aus $\alpha$ \ableitbar.
-	Sprechweise: Aus $\alpha$ ist $\beta$ \defn{\ableitbar} oder \defn{\beweisbar};
+	Sprechweise: Aus $\alpha$ ist $\beta$ \definition{\ableitbar} oder \definition{\beweisbar};
 	kurz: \enquote{$\alpha$ \emph{\ableitbar} $\beta$} \textbzw\ \enquote{$\alpha$ \emph{\beweisbar} $\beta$}
 	-- Es kann auch \chrqt{$\alpha$} durch \chrqt{$X$} und/oder \chrqt{$\beta$} durch \chrqt{$Y$} ersetzt werden.
 	}
 	\label{def:ableitbar}
 	\\
-	& \glsSym{derive} \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\chrqt{$\derivesym$} kann dann auch ganz entfallen)}
+	& \definition{\symderive} \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\chrqt{\symderive} kann dann auch ganz entfallen)}
 	\\
-	&                    X_1,X_2,...,X_n,\alpha_1,\alpha_2,...,\alpha_m\quad
-	\glsSym{derive}\quad Y_1,Y_2,...,Y_n, \beta_1, \beta_2,..., \beta_m\quad
+	& X_1,X_2,...,X_n,\alpha_1,\alpha_2,...,\alpha_m\quad
+	\definition{\symderive}\quad Y_1,Y_2,...,Y_n, \beta_1, \beta_2,..., \beta_m\quad
 	\metadefeq \quad X \derive Y
 	\label{def:ableitbarKurz}
 	\formulatoleft
 \end{align}
 
-Eine \defn{\zulaessigeTransformation} ist die Anwendung einer \emph{\Substitution}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
-Bei den \Schlussregeln\ und der \Substitution\ \chrGlsSym{subst} soll das Komma stärker binden als \chrGlsSym{derive}, \chrGlsSym{subst} und \chrGlsSym{srand}, wobei \chrGlsSym{srand} für \enquote{und} \textbzw\ \chrGlsSym{metaand}\vrefnotesub{sub:AussagenUndMetaoperationen} steht und schwächer bindet als \chrGlsSym{derive} und \chrGlsSym{subst}.%
+Eine \definition{\zulaessigeTransformation} ist die Anwendung einer \emph{\Substitution}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
+Bei den \Schlussregeln\ und der \Substitution\ \chrqt{\symsubst} soll das Komma stärker binden als \chrqt{\symderive}, \chrqt{\symsubst} und \chrqt{\symsrand}, wobei \chrqt{\symsrand} für \enquote{und} \textbzw\ \chrqt{\symmetaand}\vrefnotesub{sub:AussagenUndMetaoperationen} steht und schwächer bindet als \chrqt{\symderive} und \chrqt{\symsubst}.%
 \footnote{siehe Fußnote~3 \vrefvontab{tab:Prioritäten}}
 
 Zur der Auswahl der \Basisregeln, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
 Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$\mathrm{E}$} für \enquote{-Einführung} und \chrqt{$\mathrm{B}$} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von \Junktoren.%
 \footnote{%
 	In der \Monotonieregel\ wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \supseteq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \supseteq X $}.
-	Außerdem werden bei den Bezeichnungen \seqqt{$(\land 1)$} und \seqqt{$(\land 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$\andE$} \textbzw\ \seqqt{$\andB$} ersetzt.
+	Außerdem werden bei den Bezeichnungen \seqqt{$(\land 1)$} und \seqqt{$(\land 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
 }
 
 Im Folgenden seien $\alpha$ und $\beta$ \Formeln\ und $X$ und $Y$ Mengen von \Formeln.
-Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{$\lnot$} und \chrqt{$\land$} benötigt.
-Bei den weiteren \Schlussregeln\ wird noch \chrqt{$\limp$} gemäß der Definition~\vref{def:imp} verwendet.
+Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{\symlnot} und \chrqt{\symland} benötigt.
+Bei den weiteren \Schlussregeln\ wird noch \chrqt{\symlimp} gemäß der Definition~\vref{def:imp} verwendet.
 
 \begin{align}
 	& \frac{}{\alpha\derive\alpha}
-	& & (\text{\defn{\Anfangsregel}})
-	\tag{\tagAR} \sym{\gls{AR}} \label{def:Anfangsregel}
+	& & (\text{\definition{\Anfangsregel}})
+	\tag{\AR} \sym{\gls{AR}} \label{def:Anfangsregel}
 	\\\\
 	& \frac{X\derive\alpha}{X,Y\derive\alpha}
-	& & (\text{\defn{\Monotonieregel}})
-	\tag{\tagMR} \sym{\gls{MR}} \label{def:Monotonieregel}
+	& & (\text{\definition{\Monotonieregel}})
+	\tag{\MR} \sym{\gls{MR}} \label{def:Monotonieregel}
 	\\\\
 	& \frac{X\derive\alpha,\lnot\alpha}{X\derive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 1})
-	\tag{\tagnota} \sym{\gls{nota}} \label{def:nota}
+	\tag{\nota} \sym{\gls{nota}} \label{def:nota}
 	\\\\
 	& \frac{X,\alpha\derive\beta \srand X,\lnot\alpha\derive\beta}{X\derive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 2})
-	\tag{\tagnotb} \sym{\gls{notb}} \label{def:notb}
+	\tag{\notb} \sym{\gls{notb}} \label{def:notb}
 	\\\\
 	& \frac{X\derive\alpha,\beta}{X\derive\alpha\land\beta}
 	& & (\text{Einführung der Konjunktion})
-	\tag{\tagandE} \sym{\gls{andE}} \label{def:andE}
+	\tag{\andE} \sym{\gls{andE}} \label{def:andE}
 	\\\\
 	& \frac{X\derive\alpha\land\beta}{X\derive\alpha,\beta}
 	& & (\text{Beseitigung der Konjunktion})
-	\tag{\tagandB} \sym{\gls{andB}} \label{def:andB}
+	\tag{\andB} \sym{\gls{andB}} \label{def:andB}
 	\formulatoleft
 \end{align}
 
 In einer \Schlussregel\ werden die \Formeln%
 \footnote{hier: \Aussagen\ in einer formalen Form.}
-über dem Querstrich als \defn{\Voraussetzungen} und die unter dem Querstrich als \defn{\Folgerungen} der Regel bezeichnet.
+über dem Querstrich als \definition{\Voraussetzungen} und die unter dem Querstrich als \definition{\Folgerungen} der Regel bezeichnet.
 Eine \Schlussregel\ steht für die \Aussage, dass mit ihren \Voraussetzungen\ auch auch ihre \Folgerungen\ gelten.
 -- Im Gegensatz zu den weiteren \Schlussregeln\ werden die oben aufgelisteten \Basisregeln\ nicht weiter hinterfragt, \textdh\ sie gelten quasi als \Axiome.
 
@@ -129,31 +129,31 @@ Eine \Schlussregel\ steht für die \Aussage, dass mit ihren \Voraussetzungen\ au
 
 %TODO Durch Substitution ersetzen?
 Die \defn{\zulaessigenTransformationen}, \textdh\ die Anwendung der \Schlussregeln, erfordern zulässige \Substitutionen.
-Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{$\eq$} dann mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
-\footnote{siehe~\cite{bib:NatuerlichesSchliessen}}
+Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{\symeq} mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
+\footnote{\citesee{bib:NatuerlichesSchliessen}}
 Dazu seien $\alpha$, $\beta$ und $\gamma$ \vergleichbare\footnote{siehe Ende \vrefvonsub{sub:AussagenUndMetaoperationen}}\Formeln.
 
 Zunächst wird definiert:
 \begin{align}
-	\gamma(\alpha \glsSym{subst} \beta) \quad \defeq \quad
+	\gamma(\alpha \definition{\symsubst} \beta) \quad \defeq \quad
 	\parbox[t]{11cm}{%
 		Die \Formel, die man erhält, wenn in $\gamma$ alle oder nur einige Vorkommen von $\alpha$ durch $\beta$ ersetzt werden.
 		-- Gegebenenfalls muss noch die Auswahl der Ersetzungen angegeben werden, andernfalls werden alle Vorkommen ersetzt.
 		Letzteres heißt dann \defn{vollständige} \Substitution.
-	} \label{def:Substitution}\\
-	\gamma(\alpha \glsSym{swap} \beta) \quad \defeq \quad
+	} \label{def:SubstitutionAlt}\\
+	\gamma(\alpha \definition{\symswap} \beta) \quad \defeq \quad
 	\parbox[t]{11cm}{%
 		Die \Formel, die man erhält, die man erhält, wenn in $\gamma$ alle $\alpha$ und $\beta$ miteinander vertauscht werden.
 		Dazu ist es nötig, das $\alpha$ und $\beta$ voneinander unabhängig sind, vorzugsweise zwei verschiedene Variable.
 	} \label{def:Vertauschung}
 \end{align}
 
-\seqqt{$ \alpha \glsSym{subst} \beta $} heißt \defn{\Substitution} und \seqqt{$ \alpha \glsSym{swap} \beta $} \defn{\Vertauschung} oder kurz \defn{Tausch}.
+\seqqt{$ \alpha \symsubst \beta $} heißt \definition{\Substitution} und \seqqt{$ \alpha \symswap \beta $} \defn{\Vertauschung} oder kurz \defn{Tausch}.
 -- Sei noch $S = (s_1, s_2, ...)$ eine endliche Folge von \Substitutionen, die auch \Vertauschungen\ enthalten und auch leer sein kann.
 
 Dann wird definiert:
 \begin{align}
-	\gamma(S) & \quad \defeq \quad \gamma(s_1)(s_2)... \label{def:Substitutionen}\\
+	\gamma(S) & \quad \defeq \quad \gamma(s_1)(s_2)... \label{def:SubstitutionenAlt}\\
 	\gamma(\emptyset) & \quad \; = \quad \gamma & \text{(nur zur Verdeutlichung)}\\
 	\gamma(s_1,s_2,...) & \quad \defeq \quad \gamma(S)
 \end{align}
@@ -185,11 +185,11 @@ Nun können die beiden \Identitaetsregeln\ definiert werden:
 \begin{align}
 	& \frac{}{\alpha\eq\alpha}
 	& & (\text{Einführung der Identität})
-	\tag{\tageqE} \sym{\gls{eqE}} \label{def:eqE}
+	\tag{\eqE} \sym{\gls{eqE}} \label{def:eqE}
 	\\\\
 	& \frac{\alpha\eq\beta \srand \gamma}{\gamma(\alpha\subst\beta)}
 	& & (\text{Beseitigung der Identität})
-	\tag{\tageqB} \sym{\gls{eqB}} \label{def:eqB}
+	\tag{\eqB} \sym{\gls{eqB}} \label{def:eqB}
 	\formulatoleft
 \end{align}
 
@@ -210,27 +210,27 @@ Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 \begin{align}
 	& \frac{X,\lnot\alpha\derive\alpha}{X\derive\alpha}
 	& & (\text{Beseitigung der Negation; Indirekter \Beweis})
-	\tag{\tagnotc} \sym{\gls{notc}} \label{def:notc}
+	\tag{\notc} \sym{\gls{notc}} \label{def:notc}
 	\\\\
 	& \frac{X,\lnot\alpha\derive\beta,\lnot\beta}{X\derive\alpha}
 	& & (\text{Reductio ad absurdum})
-	\tag{\tagnotd} \sym{\gls{notd}} \label{def:notd}
+	\tag{\notd} \sym{\gls{notd}} \label{def:notd}
 	\\\\
 	& \frac{X,\alpha\derive\beta}{X\derive\alpha\limp\beta}
 	& & (\text{Einführung der Implikation})
-	\tag{\tagimpE} \sym{\gls{impE}} \label{def:impE}
+	\tag{\impE} \sym{\gls{impE}} \label{def:impE}
 	\\\\
 	& \frac{X\derive\alpha\limp\beta}{X,\alpha\derive\beta}
 	& & (\text{Beseitigung der Implikation})
-	\tag{\tagimpB} \sym{\gls{impB}} \label{def:impB}
+	\tag{\impB} \sym{\gls{impB}} \label{def:impB}
 	\\\\
 	& \frac{X\derive\alpha \srand X,\alpha\derive\beta}{X\derive\beta}
-	& & (\text{\defn{\Schnittregel}})
-	\tag{\tagSR} \sym{\gls{SR}} \label{def:SR}
+	& & (\text{\definition{\Schnittregel}})
+	\tag{\SR} \sym{\gls{SR}} \label{def:SR}
 	\\\\
 	& \frac{X\derive\alpha \srand \alpha\limp\beta}{X\derive\beta}
-	& & (\text{\defn{\Abtrennungsregel} -- \emph{Modus ponens}})
-	\tag{\tagTR} \sym{\gls{TR}} \label{def:TR}
+	& & (\text{\definition{\Abtrennungsregel} -- \emph{Modus ponens}})
+	\tag{\TR} \sym{\gls{TR}} \label{def:TR}
 	\formulatoleft
 \end{align}
 
@@ -238,12 +238,12 @@ Dabei werden zum \Beweis\ der \Schlussregeln\ in~\cite{bib:Rautenberg} folgende 
 \begin{itemize}
 	\renewcommand*{\itemindent}{1cm}
 	\renewcommand*{\labelsep}{5pt}
-	\item[\tagnotc~:] \tagAR, \tagMR,           \tagnotb
-	\item[\tagnotd~:] \tagAR, \tagMR, \tagnota, \tagnotb
-	\item[\tagimpE~:] \tagAR, \tagMR, \tagnota, \tagnotb, \tagandE
-	\item[\tagimpB~:] \tagAR, \tagMR, \tagnota, \tagnotb          , \tagandB
-	\item[\tagSR  ~:] \tagAR, \tagMR, \tagnota, \tagnotb
-	\item[\tagTR  ~:] \tagAR, \tagMR, \tagnota, \tagnotb, \tagandE
+	\item[\notc~:] \AR, \MR,        \notb
+	\item[\notd~:] \AR, \MR, \nota, \notb
+	\item[\impE~:] \AR, \MR, \nota, \notb, \andE
+	\item[\impB~:] \AR, \MR, \nota, \notb       , \andB
+	\item[\SR  ~:] \AR, \MR, \nota, \notb
+	\item[\TR  ~:] \AR, \MR, \nota, \notb, \andE
 \end{itemize}
 %
 \subsection{Beispiel einer Ableitung}% -----------------------------------------
@@ -307,7 +307,8 @@ Damit gilt für die Einträge in einer Zeile $i$:
 \begin{itemize}
 	\item Wenn $\Gamma_i$ nicht leer ist, ist $R_i$ eine \Schlussregel\ mit $R_i = \Gamma_i(S_i)$%
 	\footnote{%
-		siehe Definition~\eqref{def:Substitutionen} \vrefvonsub{sub:Identitätsregeln}
+	    %TODO Makro für Verweis benutzen
+		siehe Definition~\eqref{def:SubstitutionenAlt} \vrefvonsub{sub:Identitätsregeln}
 	}.
 	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \srand A_{z_2} \srand ...}{A_i}$ (alle $z_j \in Z_i$).
 	\item Wenn $A_i$ nicht leer ist, ist bis jetzt die \Schlussregel\ $\dfrac{A_{d_1} \srand A_{d_2} \srand ...}{A_i}$ (alle $d_j \in D_i$) schon bewiesen.
@@ -337,11 +338,11 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 		\\\hline
 		3 & \centerParbox{1.00cm}{Folge"=rung} & & & & $X \derive \beta$ & 3
 		\\\hline
-		4 & \tagMR & & $\dfrac{X \derive \alpha}{X, Y \derive \alpha}$ & & &
+		4 & \MR & & $\dfrac{X \derive \alpha}{X, Y \derive \alpha}$ & & &
 		\\\hline
 		5 & 4 & $Y \subst \lnot\alpha$ & $\dfrac{X \derive \alpha}{X, \lnot\alpha \derive \alpha}$ & 1 & $X, \lnot\alpha \derive \alpha$ & 1
 		\\\hline
-		6 & \tagAR & & $ \dfrac{}{\alpha \derive \alpha} $ & & &
+		6 & \AR & & $ \dfrac{}{\alpha \derive \alpha} $ & & &
 		\\\hline
 		7 & 6 & $\alpha \subst \lnot\alpha$ & $\dfrac{}{\lnot\alpha \derive \lnot\alpha}$ & & $\lnot\alpha \derive \lnot\alpha$ &
 		\\\hline
@@ -351,13 +352,13 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 			$Y \subst X$
 		} & $\dfrac{\lnot\alpha \derive \lnot\alpha}{X,\lnot\alpha \derive \lnot\alpha}$ & 7 & $X,\lnot\alpha \derive \lnot\alpha$ &
 		\\\hline
-		9 & \tagnota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
+		9 & \nota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
 		\\\hline
 		10 & 9 & $X \subst X, \lnot\alpha$ & $\dfrac{X,\lnot\alpha \derive \alpha, \lnot\alpha}{X,\lnot\alpha \derive \beta}$ & 5, 8 & $X,\lnot\alpha \derive \beta$ & 1
 		\\\hline
-		11 & \tagnotb & & $\dfrac{X,\alpha \derive \beta \srand X,\lnot\alpha \derive \beta}{X \derive \beta}$ & 2, 10 & 3 & 1, 2
+		11 & \notb & & $\dfrac{X,\alpha \derive \beta \srand X,\lnot\alpha \derive \beta}{X \derive \beta}$ & 2, 10 & 3 & 1, 2
 		\\\hline\hline
-		12 & \centerParbox{1.4cm}{\tagAR, \tagMR, \tagnota, \tagnotb} & & $\dfrac{A_1 \srand A_2}{A_3}$ & & $\dfrac{X \derive \alpha \srand X, \alpha \derive \beta}{X \derive \beta}$ &
+		12 & \centerParbox{1.4cm}{\AR, \MR, \nota, \notb} & & $\dfrac{A_1 \srand A_2}{A_3}$ & & $\dfrac{X \derive \alpha \srand X, \alpha \derive \beta}{X \derive \beta}$ &
 		\\\hline
 	\end{tabular}
 	\caption{\Ableitung\ der \Schnittregel\ aus den \Basisregeln}
@@ -377,7 +378,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		Die Angabe ist dann erforderlich, wenn darauf verwiesen wird.
 		Durch die Auflistung hat man aber einen vollständigen Überblick über die \Voraussetzungen\ und \Folgerungen\ eines \Beweises\ und die Zwischenannahmen.
 		Auf jede nötige \Voraussetzung\ und jede verwendete Zwischenannahme wird in der Spalte $(Z_n$) mindestens einmal verwiesen, so dass sie auch aufgeführt werden müssen.
-		Die Angabe der \Folgerungen\ erleichtert die Erstellung einer \emph{Ergebniszeile} (siehe Punkt~\ref{item:Ergebniszeile}).
+		Die Angabe der \Folgerungen\ erleichtert die Erstellung einer \emph{Ergebniszeile} (\seename Punkt~\ref{item:Ergebniszeile}).
 	}
 	Jede der drei Gruppen kann auch leer sein und es ist auch möglich, die Zeilen an anderen Stellen der Tabelle anzugeben, spätestens aber, wenn darauf verwiesen wird.
 	Für jede \Voraussetzung, \Folgerung\ und Annahme gibt es eine Zeile:
@@ -449,8 +450,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 \end{enumerate}
 %
 Ein weiteres Beispiel \vrefintab{tab:AbleitungKontraposition} soll verdeutlichen, wie Abhängigkeiten von Zwischenannahmen wieder beseitigt werden können.%
-\footnote{siehe~\cite{bib:NatuerlichesSchliessen},
-Kapitel 2.2.4 \emph{Eine Beispielableitung}}
+\footnote{\citesee{bib:NatuerlichesSchliessen}, Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 
 \begin{table}[!htb]
 	\setlength\tabcolsep{1pt}
@@ -477,15 +477,15 @@ Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 		\\\hline
 		4 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha$ & 4
 		\\\hline
-		5 & \tagimpB & & $\dfrac{X \derive \alpha\limp\beta}{X,\alpha \derive \beta}$ & & &
+		5 & \impB & & $\dfrac{X \derive \alpha\limp\beta}{X,\alpha \derive \beta}$ & & &
 		\\\hline
 		6 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha\limp\beta}{\alpha \derive \beta}$ & 2 & $\alpha \derive \beta $ & 2
 		\\\hline
-		7 & \tagSR & & $\dfrac{X \derive \alpha \srand X,\alpha \derive \beta}{X \derive \beta}$ & & &
+		7 & \SR & & $\dfrac{X \derive \alpha \srand X,\alpha \derive \beta}{X \derive \beta}$ & & &
 		\\\hline
 		8 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \alpha \derive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
 		\\\hline
-		9' & \tagandE & & $\dfrac{X \derive \alpha, \beta}{X \derive \alpha \land \beta}$ & & &
+		9' & \andE & & $\dfrac{X \derive \alpha, \beta}{X \derive \alpha \land \beta}$ & & &
 		\\\hline
 		10' & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \beta}{\alpha \land \beta}$ & & &
 		\\\hline
@@ -494,7 +494,7 @@ Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 			$\alpha \subst \lnot\beta$
 		}  & $\dfrac{\beta \srand \lnot\beta}{\beta \land \lnot\beta}$ & 8, 3 & $\beta \land \lnot\beta$ &
 		\\\hline
-		9 & \tagnota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
+		9 & \nota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
 		\\\hline
 		10 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \lnot\alpha}{\beta}$ & & &
 		\\\hline
@@ -503,7 +503,7 @@ Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 			$\alpha \subst \lnot\alpha$
 		} & $\dfrac{\beta \srand \lnot\beta}{\lnot\alpha}$ & 8, 3 & $\lnot\alpha$ & 2, 3, 4
 		\\\hline
-		12 & \tagimpE & & $\dfrac{X, \alpha \derive \beta}{X \derive \alpha\limp\beta}$ & & &
+		12 & \impE & & $\dfrac{X, \alpha \derive \beta}{X \derive \alpha\limp\beta}$ & & &
 		\\\hline
 		13 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \derive \beta}{\alpha\limp\beta}$ & & &
 		\\\hline
@@ -513,7 +513,7 @@ Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 			$\beta \subst \lnot\beta$
 		} & $\dfrac{\lnot\beta \derive \lnot\alpha}{\lnot\beta\limp\lnot\alpha}$ & 3, 11, ??? & $\lnot\beta\limp\lnot\alpha$ & 2, 3, 4, ???
 		\\\hline
-		15 & \tagimpE+1 & \SnCell{
+		15 & \impE+1 & \SnCell{
 			$\alpha \subst \gamma$\\
 			$\beta \subst \delta$\\
 			$\gamma \subst \alpha\limp\beta$\\
@@ -522,7 +522,7 @@ Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 		{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ & 2, 14 &
 		$(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & 2, 3, 4, ???
 		\\\hline\hline
-		16 & \centerParbox{1.5cm}{\tagimpE, \tagimpB, \tagSR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ &
+		16 & \centerParbox{1.5cm}{\impE, \impB, \SR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ &
 		\\\hline
 	\end{tabular}
 	\caption{\Ableitung\ der \Kontraposition\ aus \allgemeingueltigenSchlussregeln}

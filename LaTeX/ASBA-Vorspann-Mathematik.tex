@@ -36,56 +36,45 @@
 
 % Metasprachliche Symbole ######################################################
 
-\newcommand*{\srand}{\mid}% in formalen Sätzen und Schlussregeln:   ... und ...
 % Nur im Mathematikmodus!
-\newcommand*{\metanot}{\thicksim}%          ... gilt nicht
-\newcommand*{\metaandsym}{\&}%              ... und       ...
-\newcommand*{\metaand}{\mathbin\metaandsym}%... und       ... (besserer Abstand)
-\newcommand*{\metaorsym}{||}%               ... oder      ...
-\newcommand*{\metaor}{\mathbin\metaorsym}%  ... oder      ... (besserer Abstand)
-\newcommand*{\derivesym}{\vdash}%           ... ableitbar ...
-\newcommand*{\derive}{\mathbin\derivesym}%  ... ableitbar ... (besserer Abstand)
-\newcommand*{\metaimp}{\Rightarrow}%    aus ... folgt              ...
-\newcommand*{\metarep}{\Leftarrow}%         ... folgt aus          ...
-\newcommand*{\metaequiv}{\Leftrightarrow}%  ... genau dann wenn    ...
-\newcommand*{\metadefeq}{:\metaequiv}%      ... definitionsgemäß " ...
-\newcommand*{\eq}{=}%                       ... gleich             ...
-\newcommand*{\defeq}{\coloneqq}%            ... definitionsgemäß " ...
-\newcommand*{\swap}     {\leftrightarrows}% ... vertauscht mit     ...
-\newcommand*{\subst}    {\leftarrowtail}%   ... substituiert durch ...
+\newcommand*{\metanot}   {\thicksim}%             ... gilt nicht
+\newcommand*{\metaand}   {\mathbin{\&}}%          ... und       ...
+\newcommand*{\srand}     {\mathrel{\mid}}%        ... und ... (in Schlussregeln)
+\newcommand*{\metaor}    {\mathbin{||}}%          ... oder
+\newcommand*{\derive}    {\mathbin{\vdash}}%      ... ableitbar
+\newcommand*{\metaimp}   {\Rightarrow}%       aus ... folgt              ...
+\newcommand*{\metarep}   {\Leftarrow}%            ... folgt aus          ...
+\newcommand*{\metaequiv} {\Leftrightarrow}%       ... genau dann wenn    ...
+\newcommand*{\metadefeq} {:\metaequiv}%           ... definitionsgemäß " ...
+\newcommand*{\eq}        {=}%                     ... gleich             ...
+\newcommand*{\defeq}     {\coloneqq}%             ... definitionsgemäß " ...
+\newcommand*{\swap}      {\leftrightarrows}%      ... vertauscht mit     ...
+\newcommand*{\subst}     {\leftarrowtail}%        ... substituiert durch ...
+%%%\newcommand*{\wie}       {\stackrel{\wedge}{=}}%  ... entspricht         ...
 
 % Mathematische Operatoren =====================================================
-\DeclareMathOperator*{\stelrel} {stel_r}%      - Funktion, Relation
-\DeclareMathOperator*{\stelfunc}{stel_f}%      - Funktion, Relation
-\DeclareMathOperator*{\graph}{graph}%  graph   - Funktion, Relation
-\DeclareMathOperator*{\traeger}{car}%  carrier - Relation
-\DeclareMathOperator*{\Db}{dom}%       domain  - Funktion
-\DeclareMathOperator*{\Zb}{tar}%       target  - Funktion
-%%%\DeclareMathOperator*{\Wb}{ran}%       range   - Funktion
-%%%\DeclareMathOperator*{\Qb}{src}%       source  - partielle Funktion
-%%%\DeclareMathOperator*{command}{definition}
+\DeclareMathOperator*{\stelrel} {stel_r}%        - Funktion, Relation
+\DeclareMathOperator*{\stelfunc}{stel_f}%        - Funktion, Relation
+\DeclareMathOperator*{\graph}   {graph}% graph   - Funktion, Relation
+\DeclareMathOperator*{\traeger} {car}%   carrier - Relation
+\DeclareMathOperator*{\Db}{dom}%         domain  - Funktion
+\DeclareMathOperator*{\Zb}{tar}%         target  - Funktion
+%%%\DeclareMathOperator*{\Wb}{ran}%         range   - Funktion
+%%%\DeclareMathOperator*{\Qb}{src}%         source  - partielle Funktion
+%%%\DeclareMathOperator*{command}{definition}%
 
 % Beispieloperationen ==========================================================
 % \*bsp
-\newcommand*{\opbsp}{\mathbin\circledast}
-\newcommand*{\opubsp}{\mathbin\circleddash}
-\newcommand*{\relbsp}{\mathrel\sim}
-\newcommand*{\relnbsp}{\mathrel\nsim}
-\newcommand*{\releqbsp}{\mathrel\simeq}
-\newcommand*{\relnebsp}{\mathrel\nsimeq}
-\newcommand*{\relbackbsp}{\mathrel\backsim}
-\newcommand*{\relbacknbsp}{\mathrel\backnsim}
-\newcommand*{\relbackeqbsp}{\mathrel\backsimeq}
-\newcommand*{\relbacknebsp}{\mathrel\backnsimeq}
-
-%%%\newcommand*{\lrelbsp}{\triangleleft}
-%%%\newcommand*{\rrelbsp}{\triangleright}
-%%%\newcommand*{\lreleqbsp}{\trianglelefteq}
-%%%\newcommand*{\rreleqbsp}{\trianglerighteq}
-%%%\newcommand*{\lrelnbsp}{\ntriangleleft}
-%%%\newcommand*{\rrelnbsp}{\ntriangleright}
-%%%\newcommand*{\lrelnebsp}{\ntrianglelefteq}
-%%%\newcommand*{\rrelnebsp}{\ntrianglerighteq}
+\newcommand*{\opbsp}       {\mathbin{\circledast}}
+\newcommand*{\opubsp}      {\mathbin{\circleddash}}
+\newcommand*{\relbsp}      {\mathrel{\sim}}
+\newcommand*{\relnbsp}     {\mathrel{\nsim}}
+\newcommand*{\releqbsp}    {\mathrel{\simeq}}
+\newcommand*{\relnebsp}    {\mathrel{\nsimeq}}
+\newcommand*{\relbackbsp}  {\mathrel{\backsim}}
+\newcommand*{\relbacknbsp} {\mathrel{\backnsim}}
+\newcommand*{\relbackeqbsp}{\mathrel{\backsimeq}}
+\newcommand*{\relbacknebsp}{\mathrel{\backnsimeq}}
 
 % Definitionen für die Tabelle der Junktoren ===================================
 % \l*  -           logische Operation
@@ -110,29 +99,62 @@
 
 % Verwendete Konstanten- und Mengenbezeichnungen ===============================
 
-% \gs* = globales Symbol
-\newcommand*{\gsN} {\mathbb{N}}%   Menge der natürlichen Zahlen ohne           0
-\newcommand*{\gsNo}{\mathbb{N}_0}% Menge der natürlichen Zahlen einschließlich 0
+% spezielle Indizes
+\newcommand*{\links} [1]{#1^{\scriptscriptstyle <}}
+\newcommand*{\rechts}[1]{#1^{\scriptscriptstyle >}}
+
+% natürliche Zahlen
+\newcommand*{\IN}{{\fam5N}}% Menge der natürlichen Zahlen ohne           0
+\newcommand*{\INo}{\IN_0}%   Menge der natürlichen Zahlen einschließlich 0
+
+% Schriftarten
+\newcommand*{\abl}[1]{\mathbf{#1}}% Ableitungen (Kleinbuchstaben)
+\newcommand*{\Abl}[1]{\mathbf{#1}}% Mengen von Ableitungen (Großbuchstaben)
 
 % Elemente und Mengen für Beweise
-\newcommand*{\formulaset}       {\mathcal{L}}             % [l]anguage
-\newcommand*{\prerequisite}     {V}                       % [V]oraussetzung
-\newcommand*{\prerequisiteset}  {\mathcal{\prerequisite}}
-\newcommand*{\conclusion}       {F}                       % [F]olgerung
-\newcommand*{\conclusionset}    {\mathcal{\conclusion}}
+\newcommand*{\formulaSet}       {\mathcal{L}}           % [l]anguage
+\newcommand*{\formulaSetSet}    {\Pot(\formulaSet)}     %     P(L)
+\newcommand*{\deriveSet}        {\formulaSetSet^2}      %     P(L)^2
+\newcommand*{\deriveSetSet}     {\Pot(\deriveSet)}      %   P(P(L)^2)
+\newcommand*{\deriveSetRel}     {\Rel(\formulaSetSet)}  %   R(P(L))
+\newcommand*{\conclusionrulerel}{\Rel(\deriveSetRel)}   % R(R(P(L)))
+
+%%%\newcommand*{\formulaSetSetf}{\Potf(\formulaSet)}       %    Pe(L)
+\newcommand*{\deriveSetSetf}    {\Potf(\deriveSet)}     %  Pe(P(L)^2)
+\newcommand*{\deriveSetRelf}    {\Relf(\formulaSetSet)} %  Re(P(L))
+
+
+\newcommand*{\prerequisite}     {\mathbf{v}}              % [V]oraussetzung
+\newcommand*{\prerequisiteSet}  {\mathbf{V}}
+\newcommand*{\prerequisiterel}  {\derive_\prerequisiteSet}
+\newcommand*{\conclusion}       {\mathbf{f}}              % [F]olgerung
+\newcommand*{\conclusionSet}    {\mathbf{F}}
+\newcommand*{\conclusionrel}    {\derive_\conclusionSet}
+\newcommand*{\outcome}          {O}                       % [o]utcome
+\newcommand*{\outcomeSet}       {\mathcal{\outcome}}
+\newcommand*{\outcomerel}       {\derive_\outcomeSet}
 \newcommand*{\proofstep}        {B}                       % [B]eweisschritt
 \newcommand*{\proofstepsequenz} {\mathcal{S}}             % [s]equenz
-\newcommand*{\proofstepset}     {\mathcal{\proofstep}}
+\newcommand*{\proofstepSet}     {\mathcal{\proofstep}}
 \newcommand*{\transformation}   {T}                       % [T]ransformation
-\newcommand*{\transformationset}{\mathcal{\transformation}}
+\newcommand*{\transformsequenz} {\mathcal{\transformation}}
 \newcommand*{\conclusionrule}   {C}                       % [c]onclusion
-\newcommand*{\conclusionruleset}{\mathcal{\conclusionrule}}
+\newcommand*{\conclusionruleSet}{\mathcal{\conclusionrule}}
 \newcommand*{\substitution}     {E}                       % [E]rsetzung
-\newcommand*{\substitutionset}  {\mathcal{\substitution}}
+\newcommand*{\substitutionSet}  {\mathcal{\substitution}}
+\newcommand*{\tupelSet}         {\mathcal{T}}             % [T]upelmenge
+\newcommand*{\tupelSetf}        {\tupelSet_\finite}
+\newcommand*{\finite}           {\mathrm{e}}
+\newcommand*{\Pot}              {\mathcal{P}}             % [P]otenzmenge
+\newcommand*{\Potf}             {\Pot_\finite}
+\newcommand*{\Rel}              {\mathcal{R}}             % [R]elationsmenge
+\newcommand*{\Relf}             {\Rel_\finite}
+\newcommand*{\axiom}            {X}                       % A[x]iom
+\newcommand*{\axiomSet}         {\mathcal{\axiom}}
 
-% Potenzmenge:                       P
-% neue Mengensymbole: ABC EF   JKL  O Q  TUV
-% frei:                  D  GHI   MN   R    WXYZ
+% neue Mengensymbole: ABC EF   JKL  OPQ  TUV X
+% frei:                  D  GHI   MN   R    W YZ
+% doppelt:                          O    T
 
 % \al... = aussagenlogisch
 \newcommand*{\alvar} {q}%               Name einer Variablen

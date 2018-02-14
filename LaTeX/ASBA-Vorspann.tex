@@ -38,72 +38,77 @@
 
 % Pakete #######################################################################
 
-%% Nur für Entwicklung und Test ------------------------------------------------
-\usepackage{srcltx}% Klick im Viewer öffnet Editor und umgekehrt
-\setlength{\overfullrule}{5pt}
+% Pakete aus "LaTeX 2e Befehlsübersicht" - <...> für Parameter -----------------
+\usepackage[utf8]{inputenc}% Für direkte Eingabe von Umlauten mit [utf8]
+\usepackage[T1]{fontenc}%    Darstellung von Umlauten mit [T1]
+\usepackage[english,ngerman]{babel}% Neue deutsche Rechtschreibung mit [ngerman]
+%\usepackage{multicol}%       Verwende <n> Spalten: \begin{multicols}{<n>}
+\usepackage[fleqn]{amsmath}% Erweiterung für LaTeX-Mathe; fleqn=einrücken
+\usepackage{amssymb}%        Zusätzliche Mathesymbole (bsp. IR)
+\usepackage{graphicx}%       Bilder einbinden:\includegraphics[width=<x>]{build}
+%\usepackage{url}%            URLs einfügen: \url{http://...}
+\usepackage{textcomp}%       Zusätzliche Symbole z.B. \textmu
+%\usepackage{upgreek}%        Aufrechte griechische Symbole
+%\usepackage{wrapfig}%        Textumflossene Abbildungen
+%\usepackage{subcaption}%     Teilabbildungen in \begin{figure} mit
+%                            \begin{subfigure}[b]{<Weite>} und \hfill
+%\usepackage{pdfpages}%       \includepdf[<pages=1-2>]{<Anhang.pdf>}
+\usepackage[colorlinks,linktoc=all]{hyperref}% PDF-Verlinkungen im Inhaltsverz.
+% weiter empfohlen ---------------------
+\usepackage{lmodern}%        Ersetzt "Computer Modern" durch "Latin Modern"
+\usepackage{mathtools}%      Mathematical tools to use with asmmath
 
 % allgemein --------------------------------------------------------------------
-\usepackage[utf8]{inputenc}% Input encoding specification
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-%%\usepackage{ngerman}% Führt zum Stack-Overflow
 \usepackage{scrlayer-scrpage}
-\usepackage{geometry}% Flexible and complete interface to document dimensions.
+\usepackage{geometry}%  Flexible and complete interface to document dimensions.
 \usepackage{microtype}% Subliminal refinements towards typographical perfection.
-\usepackage{graphicx}% Alternative interface to graphics functions.
-\usepackage{pict2e}% New implementation of picture commands.
-\usepackage{multicol}% An environment for multicolumn output
-\usepackage{babel}% Multilingual support for plain TeX or LaTeX.
+\usepackage{pict2e}%    New implementation of picture commands.
 \usepackage[autostyle]{csquotes}% Contex sensitive quotation facilities
 
 % mathematische Pakete ---------------------------------------------------------
-\usepackage[fleqn]{amsmath}% Mathematical facilities for LaLeX from ASM
-\usepackage{amsfonts}% TeX fonts from the American Mathematical Society.
-\usepackage{amssymb}% Symbols from the American Mathematical Society.
-\usepackage{amsopn}% Provides a command \DeclareMathOperator.
-\usepackage{mathtools}% Mathematical tools to use with asmmath.
-\usepackage{mathabx}% Three series of mathematical symbols.
-\usepackage{mathpazo}% Fonts to typeset mathematics to match palatino.
-%\usepackage{cancel}% Place lines through mathematical formulae.
+\usepackage{amsfonts}%       TeX fonts from the American Mathematical Society.
+\usepackage{amsopn}%         Provides a command \DeclareMathOperator.
+\usepackage{mathabx}%        Three series of mathematical symbols.
+\usepackage{mathpazo}%       Fonts to typeset mathematics to match palatino.
+%\usepackage{stix}%           OpenType Unicode maths fonts.
+%%                            führt zu: To many symbol fonts declared
+%\usepackage{cancel}%         Place lines through mathematical formulae.
 
 % Tabellen ---------------------------------------------------------------------
-\usepackage{float}% An Improved Environment for Floats
-\usepackage[table]{xcolor}% Driver-independent color extensions - vor 'color'?
-%\usepackage{ctable}% Flexible typesetting of table and figure using key/value
-%% Das Paket ctable fast die Eigenschaften der Pakete
+\usepackage{float}%          An Improved Environment for Floats
+\usepackage[table]{xcolor}%  Driver-independent color extensions - vor 'color'?
+%\usepackage{ctable}%   Flexible typesetting of table and figure using key/value
+% Das Paket 'ctable' fasst (mit anderer Syntax) die Eigenschaften der Pakete
 \usepackage{array}%
-\usepackage{tabularx}% Erweiterung von tabular*
-\usepackage{booktabs}% Nicer layout of tables
-%% zusammen und lädt zusätzlich noch die Pakete
-\usepackage{rotating}% Rotating tools, including rotated full page floats
-\usepackage{xspace}% Behandelt Zwischenraum nach Makros
-\usepackage{color}% LaTeX support for color
-\usepackage{xkeyval}% Extension of the keyval package
+\usepackage{tabularx}%       Erweiterung von tabular*
+\usepackage{booktabs}%       Nicer layout of tables
+% zusammen und lädt zusätzlich noch die Pakete
+\usepackage{rotating}%       Rotating tools, including rotated full page floats
+\usepackage{xspace}%         Behandelt Zwischenraum nach Makros
+\usepackage{color}%          LaTeX support for color
+\usepackage{xkeyval}%        Extension of the keyval package
 % Ende der von 'ctable' geladenen Pakete
 \usepackage{threeparttable}% Tables with captions and notes all the same width.
-\usepackage{multirow}% Create tabular cell spanning multiple rows.
-\usepackage{diagbox}% Table heads with diagonal lines.
-\usepackage{arydshln}% Draw dash-lines in array/tabular.
-\usepackage{caption}% Customizing captions in floating environments.
+\usepackage{multirow}%       Create tabular cell spanning multiple rows.
+\usepackage{diagbox}%        Table heads with diagonal lines.
+\usepackage{arydshln}%       Draw dash-lines in array/tabular.
+\usepackage{caption}%        Customizing captions in floating environments.
 
-% Indizes ----------------------------------------------------------------------
-%\usepackage{makeidx}% Indexing - Entweder 'makeidx' oder 'splitidx'
-\usepackage[protected]{splitidx}% mehrere Indizes - Nur statt 'makeidx'
-%TODO Fehler: Der Index ist falsch sortiert
-%\usepackage{hvindex}% Support for indexing - after 'babel
-%\usepackage{showidx}% Index auf Seitenrand anzeigen - Zum Testen der Indizes
-%TODO Fehler: 'showindex' gibt direkt und nicht auf Rand aus
-\usepackage[nopostdot]{glossaries}% Create glossaries and lists of acronyms
-%TODO Fehler: 'hyperfirst' hat keine Wirkung'.
-%\usepackage{glossaries-german}% German language module for glossaries package
-
-% Verweise ---------------------------------------------------------------------
+% Verweise, Indizes und Glossar  -----------------------------------------------
 %\usepackage[germanb]{minitoc}\dosectoc% Unterverzeichnisse erstellen
 %TODO Fehler: 'minitoc' funktioniert nicht
 \usepackage{varioref}
-\usepackage[colorlinks,linktoc=all]{hyperref}% Extensive support for hypertext
-\usepackage{glossaries}% Create glossaries and lists of acronyms
-% lädt     {glossaries-german}% German language module for glossaries package
+%\usepackage{makeidx}%             Indexing - Entweder 'makeidx' oder 'splitidx'
+\usepackage[protected]{splitidx}%  mehrere Indizes - Nur statt 'makeidx'
+%\usepackage{hvindex}%             Support for indexing - after 'babel
+\usepackage[nopostdot]{glossaries}% Create glossaries and lists of acronyms
+%TODO Fehler: 'hyperfirst' hat keine Wirkung'.
+
+%% Nur für Entwicklung und Test ------------------------------------------------
+\usepackage{srcltx}%            Klick im Viewer öffnet Editor und umgekehrt
+\setlength{\overfullrule}{5pt}% Breite des schwarzen Balkens rechts von Overfull
+%\usepackage{showidx}%           Index auf Seitenrand; nicht mit 'splitidx'\marginparwidth
+%\setlength{\marginparwidth}{2cm}% Breite des Seitenrandes
 
 % Einstellung von globalen Werten und Makro-Redefinitionen #####################
 
@@ -134,9 +139,9 @@
 % ASBA <Chapter-Überschrift> \Chaptername~\thechapter
 %                            \sectionname~\thesection <Section-Überschrift> ASBA
 %Initialisierung
-\Ohead{ASBA}%               bleibt unverändert
-\Chead{Inhaltsverzeichnis}% wird laufend verändert
-\Ihead{}%                   wird laufend verändert
+\Ohead{ASBA}%          bleibt unverändert
+\Chead{\contentsname}% wird laufend verändert
+\Ihead{}%              wird laufend verändert
 
 % Kapitel ======================================================================
 \newcommand*{\Chaptername}{\chaptername}% wird mit 'Anhang' überschrieben
@@ -158,22 +163,26 @@
 	\Pagestyle%                         veränderte Kopfzeile aktivieren ...
 	\Thispagestyle%                     sicherheitshalber auch für diese Seite.
 	\addcontentsline{toc}{#1}{#2}%      Eintrag ins Inhaltsverzeichnis
-	%TODO Fehler: 2. Seite Kopf Mitte für Literaturverzeichnis = Abbildungsverzeichnis
 }
 \newcommand*{\Endchapter}{% am Ende eines Kapitels
 	\Thispagestyle% sicherheitshalber Kopfzeile für diese Seite aktivieren
 }
 % Indizes ======================================================================
-\newcommand*{\idxdictionary}[1]{%       nur für Indices
-	\Thispagestyle%       Kopfzeile für diese Seite aktivieren - vor \clearpage
-	\clearpage%                         neue Seite
-	\extendtheindex{}{%                 aktiviert die Kopfzeile für Index-Seiten
-		\Chead{#1}%                     Mitte in der Kopfzeile = <Kapitelname>
+\newcommand*{\idxdictionary}[2][]{%     nur für Indices
+	\extendtheindex{%                   vor 'printindex'
+		\beforechapter%                 Kopfzeile aktivieren und neue Seite
+	}{%                                 am Anfang von 'printindex'
+		\label{#1:#2}%             vvv  aktiviert die Kopfzeile für Index-Seiten
+		\Chead{#2}%                     Mitte in der Kopfzeile = <Kapitelname>
 		\Ihead{}%                       Innen in der Kopfzeile = <leer>
 		\Pagestyle%                     veränderte Kopfzeile aktivieren
 		\Thispagestyle%                 ... auch für diese Seite
-		\addcontentsline{toc}{section}{#1}% Eintrag ins Inhaltsverzeichnis
-	}{}{}
+		\addcontentsline{toc}{section}{#2}% Eintrag ins Inhaltsverzeichnis
+	}{%                                 vor dem Ende von 'printindex'
+	}{%                                 nach 'printindex'
+		\beforechapter%                 Kopfzeile aktivieren und neue Seite
+	}
+	\printindex[#1]
 }
 \newcommand*{\glodictionary}[1]{%       nur für Glossary
 	\Chead{#1}%                         Mitte in der Kopfzeile = <Kapitelname>
@@ -319,13 +328,12 @@
 \newcommand*{\formulaspace} {&&&&}      %  Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
 % Quotierung von Zeichen [chr], Zeichenfolgen [seq] und Zeichenketten [str]
-% Parameter im Textmodus/Mathematikmodus
-\newcommand*{\chrqt}[1] {\guilsinglleft{#1}\guilsinglright}% Symbol      /Symbol
-\newcommand*{\seqqt}[1] {\guillemotleft{#1}\guillemotright}% Zeichenfolge/Formel
+% Parameter im Textmodus
+%%%\newcommand*{\chrqt}[1]{\ensuremath{\langle}#1\ensuremath{\rangle}}
+\newcommand*{\chrqt}[1]{\ensuremath{\langle\text{#1}\rangle}}% Zeichen/Symbol
+\newcommand*{\seqqt}[1]{\ensuremath{\langle\!\langle\text{#1}\rangle\!\rangle}}% Zeichenfolge/Formel
 \newcommand*{\charf}[1]{\textbf{\texttt{#1}}}%Schriftart für Zeichen
 \newcommand*{\strqt}[1]       {``\charf{#1}''}%              Zeichenkette
-% Hervorhebung von neu definierten Begriffen
-\newcommand*{\defn}[1]{\textbf{#1}}
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
 \newcommand*{\sectionname}       {Abschnitt}
@@ -335,93 +343,109 @@
 \newcommand*{\subsubsectionname} {Paragraph}
 \newcommand*{\subsubsectionnames}{Paragraphen}
 
-\newcommand*{\indcha}        [1]{in diesem \chaptername    ~\ref{#1}}
-\newcommand*{\indsec}        [1]{in diesem \sectionname    ~\ref{#1}}
-\newcommand*{\indsub}        [1]{in diesem \subsectionname ~\ref{#1}}
-\newcommand*{\indsubsub}     [1]{in diesem Paragraphen     ~\ref{#1}}
+%%%% Nominativ
+%%%\newcommand*{\nomcha}        [1]{dieses       \chaptername~\ref{#1}}
+%%%\newcommand*{\nomsec}        [1]{dieser       \sectionname~\ref{#1}}
+%%%\newcommand*{\nomsub}        [1]{dieser    \subsectionname~\ref{#1}}
+%%%\newcommand*{\nomsubsub}     [1]{dieser \subsubsectionname~\ref{#1}}
 
-\newcommand*{\Indcha}        [1]{In diesem \chaptername    ~\ref{#1}}
-\newcommand*{\Indsec}        [1]{In diesem \sectionname    ~\ref{#1}}
-\newcommand*{\Indsub}        [1]{In diesem \subsectionname ~\ref{#1}}
-\newcommand*{\Indsubsub}     [1]{In diesem Paragraphen     ~\ref{#1}}
+% Dativ
+\newcommand*{\datcha}        [1]{diesem       \chaptername~\ref{#1}}
+\newcommand*{\datsec}        [1]{diesem       \sectionname~\ref{#1}}
+\newcommand*{\datsub}        [1]{diesem    \subsectionname~\ref{#1}}
+\newcommand*{\datsubsub}     [1]{diesem \subsubsectionname~\ref{#1}}
 
-\newcommand*{\vreffig}       [1]{\figurename              ~\vref{#1}}
-\newcommand*{\vreftab}       [1]{\tablename               ~\vref{#1}}
-\newcommand*{\vrefcha}       [1]{\chaptername             ~\vref{#1}}
-\newcommand*{\vrefsec}       [1]{\sectionname             ~\vref{#1}}
-\newcommand*{\vrefsub}       [1]{\subsectionname          ~\vref{#1}}
-\newcommand*{\vrefsubsub}    [1]{\subsubsectionname       ~\vref{#1}}
-\newcommand*{\vrefdef}       [1]{Definition~\vref               {#1}}
-\newcommand*{\vrefziel}      [1]{Ziel~\vref                     {#1}}
+% Akkusativ
+\newcommand*{\akkcha}        [1]{dieses       \chaptername~\ref{#1}}
+\newcommand*{\akksec}        [1]{diesen       \sectionname~\ref{#1}}
+\newcommand*{\akksub}        [1]{diesen    \subsectionname~\ref{#1}}
+\newcommand*{\akksubsub}     [1]{diesen \subsubsectionname~\ref{#1}}
 
-\newcommand*{\vrefausfig}    [1]{aus der   \vreffig             {#1}}
-\newcommand*{\vrefaustab}    [1]{aus der   \vreftab             {#1}}
-\newcommand*{\vrefauscha}    [1]{aus       \vrefcha             {#1}}
-\newcommand*{\vrefaussec}    [1]{aus       \vrefsec             {#1}}
-\newcommand*{\vrefaussub}    [1]{aus       \vrefsub             {#1}}
-\newcommand*{\vrefaussubsub} [1]{aus       \vrefsubsub          {#1}}
+% Referenzen
 
-\newcommand*{\vrefinfig}     [1]{in  der   \vreffig             {#1}}
-\newcommand*{\vrefintab}     [1]{in  der   \vreftab             {#1}}
-\newcommand*{\vrefincha}     [1]{im        \vrefcha             {#1}}
-\newcommand*{\vrefinsec}     [1]{im        \vrefsec             {#1}}
-\newcommand*{\vrefinsub}     [1]{im        \vrefsub             {#1}}
-\newcommand*{\vrefinsubsub}  [1]{im        \vrefsubsub          {#1}}
+\newcommand*{\vreffig}       [1]             {\figurename~\vref{#1}}
+\newcommand*{\vreftab}       [1]              {\tablename~\vref{#1}}
+\newcommand*{\vrefcha}       [1]            {\chaptername~\vref{#1}}
+\newcommand*{\vrefsec}       [1]            {\sectionname~\vref{#1}}
+\newcommand*{\vrefsub}       [1]         {\subsectionname~\vref{#1}}
+\newcommand*{\vrefsubsub}    [1]      {\subsubsectionname~\vref{#1}}
+\newcommand*{\vrefdef}       [1]              {Definition~\vref{#1}}
+\newcommand*{\vreffor}    [1]{\eqref{#1} auf \pagename~\pageref{#1}}
+\newcommand*{\vrefziel}      [1]                    {Ziel~\vref{#1}}
 
-\newcommand*{\vrefInfig}     [1]{In  der   \vreffig             {#1}}
-\newcommand*{\vrefIntab}     [1]{In  der   \vreftab             {#1}}
-\newcommand*{\vrefIncha}     [1]{Im        \vrefcha             {#1}}
-\newcommand*{\vrefInsec}     [1]{Im        \vrefsec             {#1}}
-\newcommand*{\vrefInsub}     [1]{Im        \vrefsub             {#1}}
-\newcommand*{\vrefInsubsub}  [1]{Im        \vrefsubsub          {#1}}
+\newcommand*{\vrefausfig}    [1]{aus der   \vreffig            {#1}}
+\newcommand*{\vrefaustab}    [1]{aus der   \vreftab            {#1}}
+\newcommand*{\vrefauscha}    [1]{aus       \vrefcha            {#1}}
+\newcommand*{\vrefaussec}    [1]{aus       \vrefsec            {#1}}
+\newcommand*{\vrefaussub}    [1]{aus       \vrefsub            {#1}}
+\newcommand*{\vrefaussubsub} [1]{aus       \vrefsubsub         {#1}}
 
-\newcommand*{\vrefvonfig}    [1]{von       \vreffig             {#1}}
-\newcommand*{\vrefvontab}    [1]{von       \vreftab             {#1}}
-\newcommand*{\vrefvoncha}    [1]{von       \vrefcha             {#1}}
-\newcommand*{\vrefvonsec}    [1]{von       \vrefsec             {#1}}
-\newcommand*{\vrefvonsub}    [1]{von       \vrefsub             {#1}}
-\newcommand*{\vrefvonsubsub} [1]{von       \vrefsubsub          {#1}}
+\newcommand*{\vrefinfig}     [1]{in  der   \vreffig            {#1}}
+\newcommand*{\vrefintab}     [1]{in  der   \vreftab            {#1}}
+\newcommand*{\vrefincha}     [1]{im        \vrefcha            {#1}}
+\newcommand*{\vrefinsec}     [1]{im        \vrefsec            {#1}}
+\newcommand*{\vrefinsub}     [1]{im        \vrefsub            {#1}}
+\newcommand*{\vrefinsubsub}  [1]{im        \vrefsubsub         {#1}}
 
-%%%\newcommand*{\vrefdfig}      [1]{die       \vreffig             {#1}}
-%%%\newcommand*{\vrefdtab}      [1]{die       \vreftab             {#1}}
-%%%\newcommand*{\vrefdcha}      [1]{das       \vrefcha             {#1}}
-%%%\newcommand*{\vrefdsec}      [1]{der       \vrefsec             {#1}}
-%%%\newcommand*{\vrefdsub}      [1]{der       \vrefsub             {#1}}
-%%%\newcommand*{\vrefdsubsub}   [1]{der       \vrefsubsub          {#1}}
+\newcommand*{\vrefInfig}     [1]{In  der   \vreffig            {#1}}
+\newcommand*{\vrefIntab}     [1]{In  der   \vreftab            {#1}}
+\newcommand*{\vrefIncha}     [1]{Im        \vrefcha            {#1}}
+\newcommand*{\vrefInsec}     [1]{Im        \vrefsec            {#1}}
+\newcommand*{\vrefInsub}     [1]{Im        \vrefsub            {#1}}
+\newcommand*{\vrefInsubsub}  [1]{Im        \vrefsubsub         {#1}}
 
-\newcommand*{\vrefDfig}      [1]{Die       \vreffig             {#1}}
-\newcommand*{\vrefDtab}      [1]{Die       \vreftab             {#1}}
-\newcommand*{\vrefDcha}      [1]{Das       \vrefcha             {#1}}
-\newcommand*{\vrefDsec}      [1]{Der       \vrefsec             {#1}}
-\newcommand*{\vrefDsub}      [1]{Der       \vrefsub             {#1}}
-\newcommand*{\vrefDsubsub}   [1]{Der       \vrefsubsub          {#1}}
+\newcommand*{\vrefvonfig}    [1]{von       \vreffig            {#1}}
+\newcommand*{\vrefvontab}    [1]{von       \vreftab            {#1}}
+\newcommand*{\vrefvoncha}    [1]{von       \vrefcha            {#1}}
+\newcommand*{\vrefvonsec}    [1]{von       \vrefsec            {#1}}
+\newcommand*{\vrefvonsub}    [1]{von       \vrefsub            {#1}}
+\newcommand*{\vrefvonsubsub} [1]{von       \vrefsubsub         {#1}}
 
-\newcommand*{\vrefseefig}    [1]{siehe     \vreffig             {#1}}
-\newcommand*{\vrefseetab}    [1]{siehe     \vreftab             {#1}}
-\newcommand*{\vrefseecha}    [1]{siehe     \vrefcha             {#1}}
-\newcommand*{\vrefseesec}    [1]{siehe     \vrefsec             {#1}}
-\newcommand*{\vrefseesub}    [1]{siehe     \vrefsub             {#1}}
-\newcommand*{\vrefseesubsub} [1]{siehe     \vrefsubsub          {#1}}
-\newcommand*{\vrefseedef}    [1]{siehe     \vrefdef             {#1}}
-\newcommand*{\vrefseeziel}   [1]{siehe     \vrefziel            {#1}}
+%%%\newcommand*{\vrefdfig}      [1]{die       \vreffig            {#1}}
+%%%\newcommand*{\vrefdtab}      [1]{die       \vreftab            {#1}}
+%%%\newcommand*{\vrefdcha}      [1]{das       \vrefcha            {#1}}
+%%%\newcommand*{\vrefdsec}      [1]{der       \vrefsec            {#1}}
+%%%\newcommand*{\vrefdsub}      [1]{der       \vrefsub            {#1}}
+%%%\newcommand*{\vrefdsubsub}   [1]{der       \vrefsubsub         {#1}}
+\newcommand*{\vrefDfig}      [1]{Die       \vreffig            {#1}}
+\newcommand*{\vrefDtab}      [1]{Die       \vreftab            {#1}}
+\newcommand*{\vrefDcha}      [1]{Das       \vrefcha            {#1}}
+\newcommand*{\vrefDsec}      [1]{Der       \vrefsec            {#1}}
+\newcommand*{\vrefDsub}      [1]{Der       \vrefsub            {#1}}
+\newcommand*{\vrefDsubsub}   [1]{Der       \vrefsubsub         {#1}}
 
-\newcommand*{\vrefSeefig}    [1]{Siehe     \vreffig             {#1}}
-\newcommand*{\vrefSeetab}    [1]{Siehe     \vreftab             {#1}}
-\newcommand*{\vrefSeecha}    [1]{Siehe     \vrefcha             {#1}}
-\newcommand*{\vrefSeesec}    [1]{Siehe     \vrefsec             {#1}}
-\newcommand*{\vrefSeesub}    [1]{Siehe     \vrefsub             {#1}}
-\newcommand*{\vrefSeesubsub} [1]{Siehe     \vrefsubsub          {#1}}
-\newcommand*{\vrefSeedef}    [1]{Siehe     \vrefdef             {#1}}
-\newcommand*{\vrefSeeziel}   [1]{Siehe     \vrefziel            {#1}}
+\newcommand*{\vrefseefig}    [1]{siehe     \vreffig            {#1}}
+\newcommand*{\vrefseetab}    [1]{siehe     \vreftab            {#1}}
+\newcommand*{\vrefseecha}    [1]{siehe     \vrefcha            {#1}}
+\newcommand*{\vrefseesec}    [1]{siehe     \vrefsec            {#1}}
+\newcommand*{\vrefseesub}    [1]{siehe     \vrefsub            {#1}}
+\newcommand*{\vrefseesubsub} [1]{siehe     \vrefsubsub         {#1}}
+\newcommand*{\vrefseedef}    [1]{siehe     \vrefdef            {#1}}
+\newcommand*{\vrefseefor}    [1]{siehe     \vreffor            {#1}}
+\newcommand*{\vrefseeziel}   [1]{siehe     \vrefziel           {#1}}
 
-\newcommand*{\vrefnotefig}   [1]{\footnote{\vrefseefig          {#1}}}
-\newcommand*{\vrefnotetab}   [1]{\footnote{\vrefseetab          {#1}}}
-\newcommand*{\vrefnotecha}   [1]{\footnote{\vrefseecha          {#1}}}
-\newcommand*{\vrefnotesec}   [1]{\footnote{\vrefseesec          {#1}}}
-\newcommand*{\vrefnotesub}   [1]{\footnote{\vrefseesub          {#1}}}
-\newcommand*{\vrefnotesubsub}[1]{\footnote{\vrefseesubsub       {#1}}}
-\newcommand*{\vrefnoteziel}  [1]{\footnote{\vrefseeziel         {#1}}}
-\newcommand*{\citenote}      [1]{\footnote{vergleiche~\cite     {#1}}}
+\newcommand*{\vrefSeefig}    [1]{Siehe     \vreffig            {#1}}
+\newcommand*{\vrefSeetab}    [1]{Siehe     \vreftab            {#1}}
+\newcommand*{\vrefSeecha}    [1]{Siehe     \vrefcha            {#1}}
+\newcommand*{\vrefSeesec}    [1]{Siehe     \vrefsec            {#1}}
+\newcommand*{\vrefSeesub}    [1]{Siehe     \vrefsub            {#1}}
+\newcommand*{\vrefSeesubsub} [1]{Siehe     \vrefsubsub         {#1}}
+\newcommand*{\vrefSeedef}    [1]{Siehe     \vrefdef            {#1}}
+\newcommand*{\vrefSeefor}    [1]{Siehe     \vreffor            {#1}}
+\newcommand*{\vrefSeeziel}   [1]{Siehe     \vrefziel           {#1}}
+
+\newcommand*{\vrefnotefig}   [1]{\footnote{\vrefseefig         {#1}}}
+\newcommand*{\vrefnotetab}   [1]{\footnote{\vrefseetab         {#1}}}
+\newcommand*{\vrefnotecha}   [1]{\footnote{\vrefseecha         {#1}}}
+\newcommand*{\vrefnotesec}   [1]{\footnote{\vrefseesec         {#1}}}
+\newcommand*{\vrefnotesub}   [1]{\footnote{\vrefseesub         {#1}}}
+\newcommand*{\vrefnotesubsub}[1]{\footnote{\vrefseesubsub      {#1}}}
+\newcommand*{\vrefnotedef}   [1]{\footnote{\vrefseedef         {#1}}}
+\newcommand*{\vrefnotefor}   [1]{\footnote{\vrefseefor         {#1}}}
+\newcommand*{\vrefnoteziel}  [1]{\footnote{\vrefseeziel        {#1}}}
+
+\newcommand*{\citesee}       [1]{\seename~\cite                {#1}}
+\newcommand*{\citenote}      [1]{\footnote{\citesee            {#1}}}
 
 % Abkürzungen mit Punkten; zur Unterscheidung vom Satzende
 \newcommand*{\textbzgl}{bzgl.\@}
@@ -447,28 +471,38 @@
 \makeindex
 \newindex[Symbolverzeichnis]{sym}
 \newindex[Index]{idx}
-\newcommand*{\Idx}[1]{#1\idx {#1}}%  normaler Index
-\newcommand*{\Sym}[1]{#1\sym{$#1$}}% Index für ein Symbol - Mathematikmodus!
 
 % Glossareinträge ==============================================================
-%%%\GlsSetQuote{+}% wegen ngerman; see glossaries guide for beginners
+%%%\GlsSetQuote{+}% wegen ngerman; see glossaries guide for beginners ???
 \makeglossaries
 \setacronymstyle{long-sc-short}
 
 % Symbol/Index/Glossar =========================================================
 
-%TODO Indices und Glossar in die richtige Reihenfolge bringen
-%TODO Manche Symbole sind mehrfach vorhanden
-\newcommand*{\idx}     [1]{\sindex[idx]{#1}}
-\newcommand*{\sym}     [1]{\sindex[sym]{#1}}
-\newcommand*{\glsSym}  [1]{\glspl{#1}\sym{\gls{#1}}}% Symbol;Mathematikmodus!
-\newcommand*{\glsIdx}  [1]{\gls  {#1}\idx{\gls{#1}}}% normal
-\newcommand*{\GlsIdx}  [1]{\Gls  {#1}\idx{\gls{#1}}}% groß
-\newcommand*{\glsIdxPl}[1]{\glspl{#1}\idx{\gls{#1}}}%          Plural
-\newcommand*{\GlsIdxPl}[1]{\Glspl{#1}\idx{\gls{#1}}}% groß und Plural
-\newcommand*{\glsIdxBg}[2]       {#2\idx {\gls{#1}}}%          Beugung
-\newcommand*{\GlsIdxBg}[2]       {#2\idx {\gls{#1}}}% groß und Beugung
-\newcommand*{\Tag}[1]{\tag{\glsPl{#1}}\sym{\gls{#1}}}% Glossary, Symbol, Tag
+%TODO Indices und Glossar in die richtige Reihenfolge bringen; Manche Symbole sind mehrfach vorhanden
+%TODO optionalen Parameter anwenden - z.B. bei der Definition
+% Texte;#1=Font-Kommando;#2=glo=Golossary-Name;#3=idx=Index-Eintrag;out=Ausgabe
+\newcommand*{\idx}     [2][]{\sindex[idx]{#2|#1}}% 2=idx
+\newcommand*{\glsIdx}  [2][]{\gls  {#2}\idx[#1]{#2}}% 2+=idx
+\newcommand*{\GlsIdx}  [2][]{\Gls  {#2}\idx[#1]{#2}}% 2+=idx
+\newcommand*{\glsIdxPl}[2][]{\glspl{#2}\idx[#1]{#2}}% 2+=idx; plural
+\newcommand*{\GlsIdxPl}[2][]{\Glspl{#2}\idx[#1]{#2}}% 2+=idx; plural
+\newcommand*{\glsIdy}  [3][]{\gls  {#2}\idx[#1]{#2}}%
+\newcommand*{\glsIdyPl}[3][]{\glspl{#2}\idx[#1]{#3}}%         plural
+%TODO \glsIdZBg muss noch aufgelöst werden
+\newcommand*{\glsIdZBg}[3][]        {#3\idx[#1]{\gls{#2}}}%
+% Symbole;...;#3=sym=Symbol-Eintrag;...
+\newcommand*{\sym}     [2][]{\sindex[sym]{\ensuremath{#2}|#1}}% 2=sym
+%TODO \glsSxm muss noch aufgelöst werden
+\newcommand*{\glsSxm}  [2][]{\gls{#2}\sym{\gls{#2}}}% 2+=sym
+\newcommand*{\glsSym}  [3][]{\gls{#2}\sym[#1]{\ensuremath{#3}}}%
 
-% Symbol quotiert ausgeben und ins Symbolverzeichnis und Glossar eintragen
-\newcommand*{\chrGlsSym}[1]{\chrqt{{\gls{#1}\sym{\gls{#1}}}}}
+% Hervorhebung von neu definierten Begriffen
+\newcommand*{\defn}      [1]{\textbf{#1}}
+\newcommand*{\textdef}   [1]{\textbf{\hyperpage{#1}}}% ein Font-Kommando
+% Die folgenden #1 müssen am Ende ein Makro mit genau einem optionalen
+% Parameter sein, der ein Font-Kommando verarbeiten kann.
+% Die Makros für #1 werden in Vorspann-Glossar definiert.
+\newcommand*{\definition}  [1]  {\defn{#1[textdef]}}
+\newcommand*{\opdefinition}[1]{\;\defn{#1[textdef]}\;}% umgebender Abstand
+\newcommand*{\undefinition}[1]  {\defn{#1[textdef]}\;}% folgender  Abstand
