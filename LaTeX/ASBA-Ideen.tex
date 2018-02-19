@@ -39,9 +39,9 @@
 \beginsection{Schlussregeln}
 \label{sec:Schlussregeln}
 
-In diesem \sectionname\ geht es um \zulaessigeTransformationen, \textdh\ \allgemeingueltigeSchlussregel.
+In diesem \sectionname\ geht es um \zulaessige\ \Transformationen, \textdh\ \allgemeingueltige\ \Schlussregeln.
 Dazu gehören zunächst die \Basisregeln.
-Dann aber auch alle aus den \Basisregeln\ und den bis dahin \allgemeingueltigenSchlussregeln\ korrekt abgeleiteten neuen \Schlussregeln.
+Dann aber auch alle aus den \Basisregeln\ und den bis dahin \allgemeingueltigen\ \Schlussregeln\ korrekt abgeleiteten neuen \Schlussregeln.
 Die \Schlussregeln\ haben die Form eines Formalen \Satzes.
 
 \subsection{Basisregeln}% ------------------------------------------------------
@@ -58,33 +58,33 @@ Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogis
 
 $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 \begin{align}
-	& \alpha \definition{\symderive} \beta \quad \metadefeq \quad
+	& \alpha \definition{\symderive} \beta \quad \symmetadefeq \quad
 	\parbox[t]{11cm}{%
-	$\beta$ ist mittels schrittweiser Anwendung \emph{\zulaessigerTransformationen} (siehe weiter unten) aus $\alpha$ \ableitbar.
+	$\beta$ ist mittels schrittweiser Anwendung \emph{\zulaessiger\ \Transformationen} (siehe weiter unten) aus $\alpha$ \ableitbar.
 	Sprechweise: Aus $\alpha$ ist $\beta$ \definition{\ableitbar} oder \definition{\beweisbar};
 	kurz: \enquote{$\alpha$ \emph{\ableitbar} $\beta$} \textbzw\ \enquote{$\alpha$ \emph{\beweisbar} $\beta$}
 	-- Es kann auch \chrqt{$\alpha$} durch \chrqt{$X$} und/oder \chrqt{$\beta$} durch \chrqt{$Y$} ersetzt werden.
 	}
 	\label{def:ableitbar}
 	\\
-	& \definition{\symderive} \beta \quad \metadefeq \quad \emptyset \derive \beta \qquad \text{(\chrqt{\symderive} kann dann auch ganz entfallen)}
+	& \definition{\symderive} \beta \quad \symmetadefeq \quad \emptyset \symderive \beta \qquad \text{(\chrqt{\symderive} kann dann auch ganz entfallen)}
 	\\
 	& X_1,X_2,...,X_n,\alpha_1,\alpha_2,...,\alpha_m\quad
 	\definition{\symderive}\quad Y_1,Y_2,...,Y_n, \beta_1, \beta_2,..., \beta_m\quad
-	\metadefeq \quad X \derive Y
+	\symmetadefeq \quad X \symderive Y
 	\label{def:ableitbarKurz}
 	\formulatoleft
 \end{align}
 
-Eine \definition{\zulaessigeTransformation} ist die Anwendung einer \emph{\Substitution}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
+Eine \definition{\zulaessige} \definition{\Transformation} ist die Anwendung einer \emph{\Substitution}{\vrefnotesub{sub:Identitätsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
 Bei den \Schlussregeln\ und der \Substitution\ \chrqt{\symsubst} soll das Komma stärker binden als \chrqt{\symderive}, \chrqt{\symsubst} und \chrqt{\symsrand}, wobei \chrqt{\symsrand} für \enquote{und} \textbzw\ \chrqt{\symmetaand}\vrefnotesub{sub:AussagenUndMetaoperationen} steht und schwächer bindet als \chrqt{\symderive} und \chrqt{\symsubst}.%
 \footnote{siehe Fußnote~3 \vrefvontab{tab:Prioritäten}}
 
 Zur der Auswahl der \Basisregeln, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
 Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$\mathrm{E}$} für \enquote{-Einführung} und \chrqt{$\mathrm{B}$} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von \Junktoren.%
 \footnote{%
-	In der \Monotonieregel\ wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \supseteq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \supseteq X $}.
-	Außerdem werden bei den Bezeichnungen \seqqt{$(\land 1)$} und \seqqt{$(\land 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
+	In der \Monotonieregel\ wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \symsupseteq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \symsupseteq X $}.
+	Außerdem werden bei den Bezeichnungen \seqqt{$(\symland 1)$} und \seqqt{$(\symland 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
 }
 
 Im Folgenden seien $\alpha$ und $\beta$ \Formeln\ und $X$ und $Y$ Mengen von \Formeln.
@@ -92,27 +92,27 @@ Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{\symlnot
 Bei den weiteren \Schlussregeln\ wird noch \chrqt{\symlimp} gemäß der Definition~\vref{def:imp} verwendet.
 
 \begin{align}
-	& \frac{}{\alpha\derive\alpha}
+	& \frac{}{\alpha\symderive\alpha}
 	& & (\text{\definition{\Anfangsregel}})
-	\tag{\AR} \sym{\gls{AR}} \label{def:Anfangsregel}
+	\tag{\AR} \label{def:AR}
 	\\\\
-	& \frac{X\derive\alpha}{X,Y\derive\alpha}
+	& \frac{X\symderive\alpha}{X,Y\symderive\alpha}
 	& & (\text{\definition{\Monotonieregel}})
-	\tag{\MR} \sym{\gls{MR}} \label{def:Monotonieregel}
+	\tag{\MR} \label{def:MR}
 	\\\\
-	& \frac{X\derive\alpha,\lnot\alpha}{X\derive\beta}
+	& \frac{X\symderive\alpha,\lnot\alpha}{X\symderive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 1})
 	\tag{\nota} \sym{\gls{nota}} \label{def:nota}
 	\\\\
-	& \frac{X,\alpha\derive\beta \srand X,\lnot\alpha\derive\beta}{X\derive\beta}
+	& \frac{X,\alpha\symderive\beta \srand X,\symlnot\alpha\symderive\beta}{X\symderive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 2})
 	\tag{\notb} \sym{\gls{notb}} \label{def:notb}
 	\\\\
-	& \frac{X\derive\alpha,\beta}{X\derive\alpha\land\beta}
+	& \frac{X\symderive\alpha,\beta}{X\symderive\alpha\symland\beta}
 	& & (\text{Einführung der Konjunktion})
 	\tag{\andE} \sym{\gls{andE}} \label{def:andE}
 	\\\\
-	& \frac{X\derive\alpha\land\beta}{X\derive\alpha,\beta}
+	& \frac{X\symderive\alpha\land\beta}{X\symderive\alpha,\beta}
 	& & (\text{Beseitigung der Konjunktion})
 	\tag{\andB} \sym{\gls{andB}} \label{def:andB}
 	\formulatoleft
@@ -128,7 +128,7 @@ Eine \Schlussregel\ steht für die \Aussage, dass mit ihren \Voraussetzungen\ au
 \label{sub:Identitätsregeln}
 
 %TODO Durch Substitution ersetzen?
-Die \defn{\zulaessigenTransformationen}, \textdh\ die Anwendung der \Schlussregeln, erfordern zulässige \Substitutionen.
+Die \zulaessigen\ \Transformationen, \textdh\ die Anwendung der \Schlussregeln, erfordern \zulaessige\ \Substitutionen.
 Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{\symeq} mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
 \footnote{\citesee{bib:NatuerlichesSchliessen}}
 Dazu seien $\alpha$, $\beta$ und $\gamma$ \vergleichbare\footnote{siehe Ende \vrefvonsub{sub:AussagenUndMetaoperationen}}\Formeln.
@@ -183,11 +183,11 @@ Ist $\gamma$ wie oben und $S$ eine Menge von \Substitutionen.
 
 Nun können die beiden \Identitaetsregeln\ definiert werden:
 \begin{align}
-	& \frac{}{\alpha\eq\alpha}
+	& \frac{}{\alpha\symeq\alpha}
 	& & (\text{Einführung der Identität})
 	\tag{\eqE} \sym{\gls{eqE}} \label{def:eqE}
 	\\\\
-	& \frac{\alpha\eq\beta \srand \gamma}{\gamma(\alpha\subst\beta)}
+	& \frac{\alpha\symeq\beta \srand \gamma}{\gamma(\alpha\subst\beta)}
 	& & (\text{Beseitigung der Identität})
 	\tag{\eqB} \sym{\gls{eqB}} \label{def:eqB}
 	\formulatoleft
@@ -200,7 +200,7 @@ Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \Basisre
 \subsection{Weitere Schlussregeln}% --------------------------------------------
 \label{sub:weitereSchlussregeln}
 
-In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessigerTransformationen\ weitere \Schlussregeln\ abgeleitet.%
+In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessiger\ \Transformationen\ weitere \Schlussregeln\ abgeleitet.%
 %TODO Identitätsregeln kommen bei Rautenberg später vor. ???
 \footnote{%
 	In~\cite{bib:Rautenberg} werden die \Identitaetsregeln\ zwar weder aufgeführt noch angewandt, ohne \Substitution\ geht es aber nicht.
@@ -208,29 +208,29 @@ In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessigerTransf
 Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 
 \begin{align}
-	& \frac{X,\lnot\alpha\derive\alpha}{X\derive\alpha}
+	& \frac{X,\symlnot\alpha\symderive\alpha}{X\symderive\alpha}
 	& & (\text{Beseitigung der Negation; Indirekter \Beweis})
 	\tag{\notc} \sym{\gls{notc}} \label{def:notc}
 	\\\\
-	& \frac{X,\lnot\alpha\derive\beta,\lnot\beta}{X\derive\alpha}
+	& \frac{X,\symlnot\alpha\symderive\beta,\symlnot\beta}{X\symderive\alpha}
 	& & (\text{Reductio ad absurdum})
 	\tag{\notd} \sym{\gls{notd}} \label{def:notd}
 	\\\\
-	& \frac{X,\alpha\derive\beta}{X\derive\alpha\limp\beta}
+	& \frac{X,\alpha\symderive\beta}{X\symderive\alpha\symlimp\beta}
 	& & (\text{Einführung der Implikation})
 	\tag{\impE} \sym{\gls{impE}} \label{def:impE}
 	\\\\
-	& \frac{X\derive\alpha\limp\beta}{X,\alpha\derive\beta}
+	& \frac{X\symderive\alpha\symlimp\beta}{X,\alpha\symderive\beta}
 	& & (\text{Beseitigung der Implikation})
 	\tag{\impB} \sym{\gls{impB}} \label{def:impB}
 	\\\\
-	& \frac{X\derive\alpha \srand X,\alpha\derive\beta}{X\derive\beta}
+	& \frac{X\symderive\alpha \srand X,\alpha\symderive\beta}{X\symderive\beta}
 	& & (\text{\definition{\Schnittregel}})
-	\tag{\SR} \sym{\gls{SR}} \label{def:SR}
+	\tag{\SR} \label{def:SR}
 	\\\\
-	& \frac{X\derive\alpha \srand \alpha\limp\beta}{X\derive\beta}
+	& \frac{X\symderive\alpha \srand \alpha\symlimp\beta}{X\symderive\beta}
 	& & (\text{\definition{\Abtrennungsregel} -- \emph{Modus ponens}})
-	\tag{\TR} \sym{\gls{TR}} \label{def:TR}
+	\tag{\TR} \label{def:TR}
 	\formulatoleft
 \end{align}
 
@@ -238,12 +238,12 @@ Dabei werden zum \Beweis\ der \Schlussregeln\ in~\cite{bib:Rautenberg} folgende 
 \begin{itemize}
 	\renewcommand*{\itemindent}{1cm}
 	\renewcommand*{\labelsep}{5pt}
-	\item[\notc~:] \AR, \MR,        \notb
-	\item[\notd~:] \AR, \MR, \nota, \notb
-	\item[\impE~:] \AR, \MR, \nota, \notb, \andE
-	\item[\impB~:] \AR, \MR, \nota, \notb       , \andB
-	\item[\SR  ~:] \AR, \MR, \nota, \notb
-	\item[\TR  ~:] \AR, \MR, \nota, \notb, \andE
+	\item[\ref{def:notc}~:] \ref{def:AR}, \ref{def:MR}, \ref{def:notb}
+	\item[\ref{def:notd}~:] \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}
+	\item[\ref{def:impE}~:] \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}, \ref{def:andE}
+	\item[\ref{def:impB}~:] \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}, \ref{def:andB}
+	\item[\ref{def:SR}~:]   \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}
+	\item[\ref{def:TR}~:]   \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}, \ref{def:andE}
 \end{itemize}
 %
 \subsection{Beispiel einer Ableitung}% -----------------------------------------
@@ -269,7 +269,7 @@ Für die ausgefüllten Felder wird nun definiert:%
 			\text{- \enquote{\Folgerung} = Die \Aussage\ $A_i$ ist eine \Folgerung.}\\
 			\text{- \enquote{Annahme} = Die \Aussage\ $A_i$ wird vorübergehend als zutreffend angenommen.}\\
 			\text{- $j$ = Verweis auf die \Schlussregel\ $\overline{R}_j$ für ein $j < i$.}\\
-			\text{- Verweis (ohne Klammern) auf eine \allgemeingueltigeSchlussregel.}
+			\text{- Verweis (ohne Klammern) auf eine \allgemeingueltige\ \Schlussregel.}
 		\end{array}
 	\right.
 	\\
@@ -332,33 +332,33 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 		\titleCell{1.65cm}{\Aussage}          {$A_n$} &
 		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
 		\\\hline\hline
-		1 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X \derive \alpha$ & 1
+		1 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X \symderive \alpha$ & 1
 		\\\hline
-		2 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X,\alpha \derive \beta$ & 2
+		2 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X,\alpha \symderive \beta$ & 2
 		\\\hline
-		3 & \centerParbox{1.00cm}{Folge"=rung} & & & & $X \derive \beta$ & 3
+		3 & \centerParbox{1.00cm}{Folge"=rung} & & & & $X \symderive \beta$ & 3
 		\\\hline
-		4 & \MR & & $\dfrac{X \derive \alpha}{X, Y \derive \alpha}$ & & &
+		4 & \ref{def:MR} & & $\dfrac{X \symderive \alpha}{X, Y \symderive \alpha}$ & & &
 		\\\hline
-		5 & 4 & $Y \subst \lnot\alpha$ & $\dfrac{X \derive \alpha}{X, \lnot\alpha \derive \alpha}$ & 1 & $X, \lnot\alpha \derive \alpha$ & 1
+		5 & 4 & $Y \subst \symlnot\alpha$ & $\dfrac{X \symderive \alpha}{X, \symlnot\alpha \symderive \alpha}$ & 1 & $X, \symlnot\alpha \symderive \alpha$ & 1
 		\\\hline
-		6 & \AR & & $ \dfrac{}{\alpha \derive \alpha} $ & & &
+		6 & \ref{def:AR} & & $ \dfrac{}{\alpha \symderive \alpha} $ & & &
 		\\\hline
-		7 & 6 & $\alpha \subst \lnot\alpha$ & $\dfrac{}{\lnot\alpha \derive \lnot\alpha}$ & & $\lnot\alpha \derive \lnot\alpha$ &
+		7 & 6 & $\alpha \subst \symlnot\alpha$ & $\dfrac{}{\symlnot\alpha \symderive \symlnot\alpha}$ & & $\symlnot\alpha \symderive \symlnot\alpha$ &
 		\\\hline
 		8 & 4 & \SnCell{%
-			$\alpha \subst \lnot\alpha$\\
-			$X \subst \lnot\alpha$\\
+			$\alpha \subst \symlnot\alpha$\\
+			$X \subst \symlnot\alpha$\\
 			$Y \subst X$
-		} & $\dfrac{\lnot\alpha \derive \lnot\alpha}{X,\lnot\alpha \derive \lnot\alpha}$ & 7 & $X,\lnot\alpha \derive \lnot\alpha$ &
+		} & $\dfrac{\symlnot\alpha \symderive \symlnot\alpha}{X,\symlnot\alpha \symderive \symlnot\alpha}$ & 7 & $X,\symlnot\alpha \symderive \symlnot\alpha$ &
 		\\\hline
-		9 & \nota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
+		9 & \ref{def:nota} & & $\dfrac{X \symderive \alpha, \symlnot\alpha}{X \symderive \beta}$ & & &
 		\\\hline
-		10 & 9 & $X \subst X, \lnot\alpha$ & $\dfrac{X,\lnot\alpha \derive \alpha, \lnot\alpha}{X,\lnot\alpha \derive \beta}$ & 5, 8 & $X,\lnot\alpha \derive \beta$ & 1
+		10 & 9 & $X \subst X, \symlnot\alpha$ & $\dfrac{X,\symlnot\alpha \symderive \alpha, \symlnot\alpha}{X,\symlnot\alpha \symderive \beta}$ & 5, 8 & $X,\symlnot\alpha \symderive \beta$ & 1
 		\\\hline
-		11 & \notb & & $\dfrac{X,\alpha \derive \beta \srand X,\lnot\alpha \derive \beta}{X \derive \beta}$ & 2, 10 & 3 & 1, 2
+		11 & \ref{def:notb} & & $\dfrac{X,\alpha \symderive \beta \srand X,\symlnot\alpha \symderive \beta}{X \symderive \beta}$ & 2, 10 & 3 & 1, 2
 		\\\hline\hline
-		12 & \centerParbox{1.4cm}{\AR, \MR, \nota, \notb} & & $\dfrac{A_1 \srand A_2}{A_3}$ & & $\dfrac{X \derive \alpha \srand X, \alpha \derive \beta}{X \derive \beta}$ &
+		12 & \centerParbox{1.4cm}{\ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}} & & $\dfrac{A_1 \srand A_2}{A_3}$ & & $\dfrac{X \symderive \alpha \srand X, \alpha \symderive \beta}{X \symderive \beta}$ &
 		\\\hline
 	\end{tabular}
 	\caption{\Ableitung\ der \Schnittregel\ aus den \Basisregeln}
@@ -395,7 +395,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
 		\item
 		\begin{enumerate}
-			\item $R_i =$ Verweis auf eine \allgemeingueltigeSchlussregel.
+			\item $R_i =$ Verweis auf eine \allgemeingueltige\ \Schlussregel.
 			\item $\overline{R}_i =$ Die \Schlussregel, auf die verwiesen wird.
 		\end{enumerate}
 		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
@@ -410,7 +410,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\end{enumerate}
 		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
 	\end{enumerate}
-	Man beachte, dass die \Schlussregel\ $\overline{R}_i$, stets allgemeingültig ist, da sie ausschließlich aus \allgemeingueltigenSchlussregeln\ mittels \Substitutionen\ abgeleitet worden ist.
+	Man beachte, dass die \Schlussregel\ $\overline{R}_i$, stets \allgemeingueltig\ ist, da sie ausschließlich aus \allgemeingueltigen\ \Schlussregeln\ mittels \Substitutionen\ abgeleitet worden ist.
 	Daher gibt es auch keine Beschränkung weiterer \Substitutionen\ durch irgendwelche Abhängigkeiten.
 
 	Nun kann die Zeile beendet werden, oder es geht weiter mit:
@@ -469,63 +469,63 @@ Ein weiteres Beispiel \vrefintab{tab:AbleitungKontraposition} soll verdeutlichen
 		\titleCell{1.65cm}{\Aussage}          {$A_n$} &
 		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
 		\\\hline \hline
-		1 & \centerParbox{1.00cm}{Folge"=rung} & & & & $(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & 1
+		1 & \centerParbox{1.00cm}{Folge"=rung} & & & & $(\alpha\symlimp\beta)\symlimp(\symlnot\beta\symlimp\symlnot\alpha)$ & 1
 		\\\hline
-		2 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha\limp\beta$ & 2
+		2 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha\symlimp\beta$ & 2
 		\\\hline
-		3 & \centerParbox{1.20cm}{An"=nahme} & & & & $\lnot\beta$ & 3
+		3 & \centerParbox{1.20cm}{An"=nahme} & & & & $\symlnot\beta$ & 3
 		\\\hline
 		4 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha$ & 4
 		\\\hline
-		5 & \impB & & $\dfrac{X \derive \alpha\limp\beta}{X,\alpha \derive \beta}$ & & &
+		5 & \impB & & $\dfrac{X \symderive \alpha\symlimp\beta}{X,\alpha \symderive \beta}$ & & &
 		\\\hline
-		6 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha\limp\beta}{\alpha \derive \beta}$ & 2 & $\alpha \derive \beta $ & 2
+		6 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha\symlimp\beta}{\alpha \symderive \beta}$ & 2 & $\alpha \symderive \beta $ & 2
 		\\\hline
-		7 & \SR & & $\dfrac{X \derive \alpha \srand X,\alpha \derive \beta}{X \derive \beta}$ & & &
+		7 & \SR & & $\dfrac{X \symderive \alpha \srand X,\alpha \symderive \beta}{X \symderive \beta}$ & & &
 		\\\hline
-		8 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \alpha \derive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
+		8 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \alpha \symderive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
 		\\\hline
-		9' & \andE & & $\dfrac{X \derive \alpha, \beta}{X \derive \alpha \land \beta}$ & & &
+		9' & \ref{def:andE} & & $\dfrac{X \symderive \alpha, \beta}{X \symderive \alpha \symland \beta}$ & & &
 		\\\hline
-		10' & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \beta}{\alpha \land \beta}$ & & &
+		10' & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \beta}{\alpha \symland \beta}$ & & &
 		\\\hline
 		11' & -1 &\SnCell{
 			$\alpha \swap \beta$\\
-			$\alpha \subst \lnot\beta$
-		}  & $\dfrac{\beta \srand \lnot\beta}{\beta \land \lnot\beta}$ & 8, 3 & $\beta \land \lnot\beta$ &
+			$\alpha \subst \symlnot\beta$
+		}  & $\dfrac{\beta \srand \symlnot\beta}{\beta \symland \symlnot\beta}$ & 8, 3 & $\beta \symland \symlnot\beta$ &
 		\\\hline
-		9 & \nota & & $\dfrac{X \derive \alpha, \lnot\alpha}{X \derive \beta}$ & & &
+		9 & \ref{def:nota} & & $\dfrac{X \symderive \alpha, \symlnot\alpha}{X \symderive \beta}$ & & &
 		\\\hline
-		10 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \lnot\alpha}{\beta}$ & & &
+		10 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \symlnot\alpha}{\beta}$ & & &
 		\\\hline
 		11 & -1 & \SnCell{
 			$\alpha \swap \beta$\\
-			$\alpha \subst \lnot\alpha$
-		} & $\dfrac{\beta \srand \lnot\beta}{\lnot\alpha}$ & 8, 3 & $\lnot\alpha$ & 2, 3, 4
+			$\alpha \subst \symlnot\alpha$
+		} & $\dfrac{\beta \srand \symlnot\beta}{\symlnot\alpha}$ & 8, 3 & $\symlnot\alpha$ & 2, 3, 4
 		\\\hline
-		12 & \impE & & $\dfrac{X, \alpha \derive \beta}{X \derive \alpha\limp\beta}$ & & &
+		12 & \impE & & $\dfrac{X, \alpha \symderive \beta}{X \symderive \alpha\symlimp\beta}$ & & &
 		\\\hline
-		13 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \derive \beta}{\alpha\limp\beta}$ & & &
+		13 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \symderive \beta}{\alpha\symlimp\beta}$ & & &
 		\\\hline
 		14 & -1 & \SnCell{
 			$\alpha \swap \beta$\\
-			$\alpha \subst \lnot\alpha$\\
-			$\beta \subst \lnot\beta$
-		} & $\dfrac{\lnot\beta \derive \lnot\alpha}{\lnot\beta\limp\lnot\alpha}$ & 3, 11, ??? & $\lnot\beta\limp\lnot\alpha$ & 2, 3, 4, ???
+			$\alpha \subst \symlnot\alpha$\\
+			$\beta \subst \symlnot\beta$
+		} & $\dfrac{\symlnot\beta \symderive \symlnot\alpha}{\symlnot\beta\symlimp\symlnot\alpha}$ & 3, 11, ??? & $\symlnot\beta\symlimp\symlnot\alpha$ & 2, 3, 4, ???
 		\\\hline
 		15 & \impE+1 & \SnCell{
 			$\alpha \subst \gamma$\\
 			$\beta \subst \delta$\\
-			$\gamma \subst \alpha\limp\beta$\\
-			$\delta \subst \lnot\beta\limp\lnot\alpha$
-		} & $\dfrac{\alpha\limp\beta \derive \lnot\beta\limp\lnot\alpha}
-		{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ & 2, 14 &
-		$(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)$ & 2, 3, 4, ???
+			$\gamma \subst \alpha\symlimp\beta$\\
+			$\delta \subst \symlnot\beta\symlimp\symlnot\alpha$
+		} & $\dfrac{\alpha\symlimp\beta \symderive \symlnot\beta\symlimp\symlnot\alpha}
+		{(\alpha\symlimp\beta)\symlimp(\symlnot\beta\symlimp\symlnot\alpha)}$ & 2, 14 &
+		$(\alpha\symlimp\beta)\symlimp(\symlnot\beta\symlimp\symlnot\alpha)$ & 2, 3, 4, ???
 		\\\hline\hline
-		16 & \centerParbox{1.5cm}{\impE, \impB, \SR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\limp\beta)\limp(\lnot\beta\limp\lnot\alpha)}$ &
+		16 & \centerParbox{1.5cm}{\impE, \impB, \SR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\symlimp\beta)\symlimp(\symlnot\beta\symlimp\symlnot\alpha)}$ &
 		\\\hline
 	\end{tabular}
-	\caption{\Ableitung\ der \Kontraposition\ aus \allgemeingueltigenSchlussregeln}
+	\caption{\Ableitung\ der \Kontraposition\ aus \allgemeingueltigen\ \Schlussregeln}
 	\label{tab:AbleitungKontraposition}
 \end{table}
 

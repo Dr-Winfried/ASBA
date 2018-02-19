@@ -53,7 +53,6 @@
 %\usepackage{subcaption}%     Teilabbildungen in \begin{figure} mit
 %                            \begin{subfigure}[b]{<Weite>} und \hfill
 %\usepackage{pdfpages}%       \includepdf[<pages=1-2>]{<Anhang.pdf>}
-\usepackage[colorlinks,linktoc=all]{hyperref}% PDF-Verlinkungen im Inhaltsverz.
 % weiter empfohlen ---------------------
 \usepackage{lmodern}%        Ersetzt "Computer Modern" durch "Latin Modern"
 \usepackage{mathtools}%      Mathematical tools to use with asmmath
@@ -94,6 +93,12 @@
 \usepackage{arydshln}%       Draw dash-lines in array/tabular.
 \usepackage{caption}%        Customizing captions in floating environments.
 
+%% Nur für Entwicklung und Test ------------------------------------------------
+\usepackage{srcltx}%            Klick im Viewer öffnet Editor und umgekehrt
+\setlength{\overfullrule}{5pt}% Breite des schwarzen Balkens rechts von Overfull
+%\usepackage{showidx}%           Index auf Seitenrand; nicht mit 'splitidx'\marginparwidth
+%\setlength{\marginparwidth}{2cm}% Breite des Seitenrandes
+
 % Verweise, Indizes und Glossar  -----------------------------------------------
 %\usepackage[germanb]{minitoc}\dosectoc% Unterverzeichnisse erstellen
 %TODO Fehler: 'minitoc' funktioniert nicht
@@ -101,14 +106,10 @@
 %\usepackage{makeidx}%             Indexing - Entweder 'makeidx' oder 'splitidx'
 \usepackage[protected]{splitidx}%  mehrere Indizes - Nur statt 'makeidx'
 %\usepackage{hvindex}%             Support for indexing - after 'babel
-\usepackage[nopostdot]{glossaries}% Create glossaries and lists of acronyms
+\usepackage[colorlinks,linktoc=all]{hyperref}% PDF-Verlinkungen im Inhaltsverz.
+%\usepackage{glossaries-german}%   German language module for glossaries package
+\usepackage[nopostdot]{glossaries}% Create glossaries/acronyms; after 'hyperref'
 %TODO Fehler: 'hyperfirst' hat keine Wirkung'.
-
-%% Nur für Entwicklung und Test ------------------------------------------------
-\usepackage{srcltx}%            Klick im Viewer öffnet Editor und umgekehrt
-\setlength{\overfullrule}{5pt}% Breite des schwarzen Balkens rechts von Overfull
-%\usepackage{showidx}%           Index auf Seitenrand; nicht mit 'splitidx'\marginparwidth
-%\setlength{\marginparwidth}{2cm}% Breite des Seitenrandes
 
 % Einstellung von globalen Werten und Makro-Redefinitionen #####################
 
@@ -145,11 +146,6 @@
 
 % Kapitel ======================================================================
 \newcommand*{\Chaptername}{\chaptername}% wird mit 'Anhang' überschrieben
-
-\newcommand*{\beforechapter}{% direkt vor \chapter (auch im Kommentar)
-	\Thispagestyle%        Kopfzeile für diese Seite aktivieren - vor \clearpage
-	\clearpage%            neue Seite
-}
 \newcommand*{\beginchapter}[1]{%        direkt nach \chapter
 	\Chead{#1}%                         Kopfzeile Mitte = <Kapitelname>
 	\Ihead{\Chaptername~\thechapter}%   Kopfzeile Innen = Kapitel/Anhang <Nr.>
@@ -167,27 +163,44 @@
 \newcommand*{\Endchapter}{% am Ende eines Kapitels
 	\Thispagestyle% sicherheitshalber Kopfzeile für diese Seite aktivieren
 }
-% Indizes ======================================================================
-\newcommand*{\idxdictionary}[2][]{%     nur für Indices
-	\extendtheindex{%                   vor 'printindex'
-		\beforechapter%                 Kopfzeile aktivieren und neue Seite
-	}{%                                 am Anfang von 'printindex'
-		\label{#1:#2}%             vvv  aktiviert die Kopfzeile für Index-Seiten
-		\Chead{#2}%                     Mitte in der Kopfzeile = <Kapitelname>
-		\Ihead{}%                       Innen in der Kopfzeile = <leer>
-		\Pagestyle%                     veränderte Kopfzeile aktivieren
-		\Thispagestyle%                 ... auch für diese Seite
-		\addcontentsline{toc}{section}{#2}% Eintrag ins Inhaltsverzeichnis
-	}{%                                 vor dem Ende von 'printindex'
-	}{%                                 nach 'printindex'
-		\beforechapter%                 Kopfzeile aktivieren und neue Seite
-	}
-	\printindex[#1]
-}
-\newcommand*{\glodictionary}[1]{%       nur für Glossary
-	\Chead{#1}%                         Mitte in der Kopfzeile = <Kapitelname>
+
+% Verzeichnisse ================================================================
+\newcommand*{\starteverzeichnis}[2][]{% am Anfang der Ausgabe des Verzeichnisses
+	\label{#1:#2}%             |  vvvv  4 Zeilen Aktivierung der Kopfzeile
+	\Chead{#2}%                         Mitte in der Kopfzeile = <Kapitelname>
 	\Ihead{}%                           Innen in der Kopfzeile = <leer>
 	\Pagestyle%                         veränderte Kopfzeile aktivieren
+	\Thispagestyle%                     ... auch für diese Seite
+	\addcontentsline{toc}{section}{#2}% Eintrag ins Inhaltsverzeichnis
+}
+\newcommand{\idxpreambel}{
+	Mit \textit{kursiven} Seitenzahlen wird auf die Definition oder sonstige wichtige Stellen verwiesen.\\~
+}
+
+% Indizes ----------------------------------------------------------------------
+\newcommand*{\idxdictionary}[2][]{%     nur für Indices
+	\extendtheindex{}{%                 am Anfang von '\printindex'
+		\starteverzeichnis[#1]{#2}
+		Index und Symbolverzeichnis enthalten keine gemeinsamen Einträge.
+		Andererseits erscheinen sie aber überwiegend auch im Glossar.
+		\idxpreambel
+	}{}{}
+	\printindex[#1]
+}
+
+% Glossar ----------------------------------------------------------------------
+\renewcommand{\glossaryheader}{%        am Anfang von '\printglossaries'
+	\starteverzeichnis[glo]{Glossar}
+}
+\renewcommand{\glossarypreamble}{%      Text am Anfang des Glossars
+	Die Einträge im Glossar kommen auch entweder im Index oder im Symbolverzeichnis vor.
+	Die Sortierung insbesondere der Symbole unterscheidet sich dabei.
+%TODO sort für folgende Einträge setzen:
+%%%	Symbole, die Buchstaben oder Ziffern enthalten, sind dort eingeordnet.
+	\idxpreambel
+}
+\newcommand*{\glodictionary}{%          nur für Glossary
+	\printglossaries
 }
 
 % Abschnitte ===================================================================
@@ -480,6 +493,8 @@
 % Symbol/Index/Glossar =========================================================
 
 %TODO Indices und Glossar in die richtige Reihenfolge bringen; Manche Symbole sind mehrfach vorhanden
+%TODO Im Index und Glossar prüfen: Haben alle Einträge einen Verweise auf die Definition?
+
 %TODO optionalen Parameter anwenden - z.B. bei der Definition
 % Texte;#1=Font-Kommando;#2=glo=Golossary-Name;#3=idx=Index-Eintrag;out=Ausgabe
 \newcommand*{\idx}     [2][]{\sindex[idx]{#2|#1}}% 2=idx
@@ -487,22 +502,25 @@
 \newcommand*{\GlsIdx}  [2][]{\Gls  {#2}\idx[#1]{#2}}% 2+=idx
 \newcommand*{\glsIdxPl}[2][]{\glspl{#2}\idx[#1]{#2}}% 2+=idx; plural
 \newcommand*{\GlsIdxPl}[2][]{\Glspl{#2}\idx[#1]{#2}}% 2+=idx; plural
-\newcommand*{\glsIdy}  [3][]{\gls  {#2}\idx[#1]{#2}}%
+\newcommand*{\glsIdy}  [3][]{\gls  {#2}\idx[#1]{#3}}%
 \newcommand*{\glsIdyPl}[3][]{\glspl{#2}\idx[#1]{#3}}%         plural
-%TODO \glsIdZBg muss noch aufgelöst werden
-\newcommand*{\glsIdZBg}[3][]        {#3\idx[#1]{\gls{#2}}}%
+%%%\newcommand*{\glsIdz}  [4][]{\gls  {#2}\idx[#1]{\gls*{#2}}#3}% 3=out
+
 % Symbole;...;#3=sym=Symbol-Eintrag;...
 \newcommand*{\sym}     [2][]{\sindex[sym]{\ensuremath{#2}|#1}}% 2=sym
-%TODO \glsSxm muss noch aufgelöst werden
-\newcommand*{\glsSxm}  [2][]{\gls{#2}\sym{\gls{#2}}}% 2+=sym
-\newcommand*{\glsSym}  [3][]{\gls{#2}\sym[#1]{\ensuremath{#3}}}%
+\newcommand*{\glsSym}  [3][]{\glssymbol{#2}\sym[#1]{#3}}
 
 % Hervorhebung von neu definierten Begriffen
 \newcommand*{\defn}      [1]{\textbf{#1}}
-\newcommand*{\textdef}   [1]{\textbf{\hyperpage{#1}}}% ein Font-Kommando
-% Die folgenden #1 müssen am Ende ein Makro mit genau einem optionalen
-% Parameter sein, der ein Font-Kommando verarbeiten kann.
-% Die Makros für #1 werden in Vorspann-Glossar definiert.
-\newcommand*{\definition}  [1]  {\defn{#1[textdef]}}
-\newcommand*{\opdefinition}[1]{\;\defn{#1[textdef]}\;}% umgebender Abstand
-\newcommand*{\undefinition}[1]  {\defn{#1[textdef]}\;}% folgender  Abstand
+\newcommand*{\textdef}   [1]{\textit{\hyperpage{#1}}}% ein 'Font-Kommando'
+% Die folgenden #1 müssen mit einem Makro enden, das genau einen optionalen
+% Parameter hat, der ein 'Font-Kommando' wie z.B. '\textdef'sein muss.
+% Das sind i.Alg. die vor '\...newglossaryentry' definierten Makros.
+\newcommand*{\definition}   [1]  {\defn{#1[textdef]}}
+\newcommand*{\undefinition} [1]  {\defn{#1[textdef]}\;}%unär: folgender  Abstand
+\newcommand*{\bindefinition}[1]{\;\defn{#1[textdef]}\;}%binär:umgebender Abstand
+
+%TODO Definitions-Verweise ins Glossar müssen noch definiert werden
+% Makros für das Glossar
+%%%\newcommand*{\nopageref}[1]{}% keine Seitennummer im Index/Glossar
+\newcommand*{\glos}[1]{\textsc{#1}}% Für Verweise ins Glossar

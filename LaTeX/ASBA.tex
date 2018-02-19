@@ -96,39 +96,18 @@
 
 	\input{ASBA-Literaturverzeichnis}
 
-	% Indizes und Glossars #####################################################
+	% Indizes und Glossar ######################################################
 
 	% Optionen -> TeXstudio konfigurieren -> Befehle -> Makeindex:
 	%     perl "C:\Program Files\MiKTeX 2.9\scripts\splitindex\splitindex.pl" %
-	% Optionen -> TeXstudio konfigurieren -> Erzeugen -> Übersetzen nach PDF:
-	%     txs:///pdflatex | txs:///makeindex | txs:///pdflatex | txs:///view-pdf
-	%
-	% Um Kopf- und Fußzeilen und korrekte Referenzen zu erhalten, müssen die
-	% Programme 'splitindices.pl' und 'makeglossaries.exe' aufgerufen und die
-	% erzeugte Datei 'ASBA.gls' modifiziert werden.
-	%
-	% Dies tut das Batchprogramm 'erzeugeIndizes.bat' und fügt mit Hilfe des
-	% Batchprogramms 'einfuegen.bat' in die Datei 'ASBA.gls' nach der zweiten
-	% Zeile je eine Zeile mit "\insertglo" und dem anschließenden Kommentar
-	% "% -- Eingefuegt" ein.
-	%
-	% Nach der ersten Übersetzung dieser Datei muss das Programm 'einfuegen.bat'
-	% manuell aufgerufen werden. Danach ist noch eine Übersetzung notwendig.
-	%
-	% Das Kommandos '\insertglo' muss vor Aufruf von '\printglossaries' mit
-	% '\newcommand' definiert werden.
+	% Optionen -> TeXstudio konfigurieren -> Erzeugen -> Standardcompiler:
+	%     txs:///pdflatex|txs:///makeindex|txs:///makeglossaries|txs:///pdflatex
 
-	\idxdictionary[idx]{Index}% Index ==========================================
+	\idxdictionary[idx]{Index}% =============== Index ==========================
 
-	\idxdictionary[sym]{Symbolverzeichnis}% ====================================
+	\idxdictionary[sym]{Symbolverzeichnis}% === Symbolverzeichnis ==============
 
-	\beforechapter% Kopfzeile aktivieren und neue Seite
-	\glodictionary{\glossaryname}% Index =======================================
-	\newcommand*{\insertglo}{\label{glo:Glossar}
-		\Thispagestyle
-		\addcontentsline{toc}{section}{\glossaryname}% Eintrag ins Inhaltsverzeichnis
-	}
-	\printglossaries
+	\glodictionary% =========================== Glossar ========================
 
 \end{document}
 

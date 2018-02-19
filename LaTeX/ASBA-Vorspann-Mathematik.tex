@@ -33,6 +33,14 @@
 
 % Glossareinträge werden in "ASBA-Vorspann-Glossar" definiert.
 % Elemente, die in anderen Dateien als "ASBA-Mathematik.tex" verwendet werden, werden in "ASBA-Vorspann.tex" definiert.
+% Namensbestandteile mit besonderer Bedeutung:
+%   al<name>     - aussagenlogisches <name>
+%   meta<name>   - metasprachliches <name>
+%   <name>Set    - Menge von <name>s
+%   <name>Rel    - Relation (aufgefasst als Menge) aus <name>s
+%   <name>Tup    - Tupel (Reihe, Sequenz) aus <name>s
+%   <name>Letter - Bezeichnung (Buchstabe) für (die Menge) <name>
+%   <name>Symbol - Bezeichnung (Text/Symbol) für (die Operation) <name>
 
 % Metasprachliche Symbole ######################################################
 
@@ -47,20 +55,24 @@
 \newcommand*{\metaequiv} {\Leftrightarrow}%       ... genau dann wenn    ...
 \newcommand*{\metadefeq} {:\metaequiv}%           ... definitionsgemäß " ...
 \newcommand*{\eq}        {=}%                     ... gleich             ...
-\newcommand*{\defeq}     {\coloneqq}%             ... definitionsgemäß " ...
+%%%\newcommand*{\defeq}     {\coloneqq}%             ... definitionsgemäß " ...
+\newcommand*{\defeq}     {:\eq}%                  ... definitionsgemäß " ...
 \newcommand*{\swap}      {\leftrightarrows}%      ... vertauscht mit     ...
 \newcommand*{\subst}     {\leftarrowtail}%        ... substituiert durch ...
 %%%\newcommand*{\wie}       {\stackrel{\wedge}{=}}%  ... entspricht         ...
 
 % Mathematische Operatoren =====================================================
-\DeclareMathOperator*{\stelrel} {stel_r}%        - Funktion, Relation
-\DeclareMathOperator*{\stelfunc}{stel_f}%        - Funktion, Relation
-\DeclareMathOperator*{\graph}   {graph}% graph   - Funktion, Relation
-\DeclareMathOperator*{\traeger} {car}%   carrier - Relation
-\DeclareMathOperator*{\Db}{dom}%         domain  - Funktion
-\DeclareMathOperator*{\Zb}{tar}%         target  - Funktion
-%%%\DeclareMathOperator*{\Wb}{ran}%         range   - Funktion
-%%%\DeclareMathOperator*{\Qb}{src}%         source  - partielle Funktion
+%                      Makro     Symbol          Beschreibung  Typ des Arguments
+\DeclareMathOperator*{\stelrel} {\stelrelSymbol}%  Stelligkeit    - Relation
+\DeclareMathOperator*{\stelfunc}{\stelfuncSymbol}% Stelligkeit    - Funktion
+\DeclareMathOperator*{\graph}   {\graphSymbol}%    graph          - Fkt., Rel.
+\DeclareMathOperator*{\traeger} {\traegerSymbol}% Träger, carrier - Relation
+\DeclareMathOperator*{\Db}      {\DbSymbol}% Def.-Bereich, domain - Funktion
+\DeclareMathOperator*{\Zb}      {\ZbSymbol}%  Zielbereich, target - Funktion
+%%%\DeclareMathOperator*{\Wb}   {\WbSymbol}% Wertebereich, range  - Funktion
+%%%\DeclareMathOperator*{\Qb}   {\QbSymbol}% Quellbereich, source - part. Fkt.
+\DeclareMathOperator*{\len}     {\lenSymbol}%  length - Tupel,Vektor,Folge,Reihe
+\DeclareMathOperator*{\Set}     {\SetSymbol}%   set of components - Tupel,...
 %%%\DeclareMathOperator*{command}{definition}%
 
 % Beispieloperationen ==========================================================
@@ -111,62 +123,63 @@
 \newcommand*{\abl}[1]{\mathbf{#1}}% Ableitungen (Kleinbuchstaben)
 \newcommand*{\Abl}[1]{\mathbf{#1}}% Mengen von Ableitungen (Großbuchstaben)
 
-% Elemente und Mengen für Beweise
-\newcommand*{\formulaSet}       {\mathcal{L}}           % [l]anguage
-\newcommand*{\formulaSetSet}    {\Pot(\formulaSet)}     %     P(L)
-\newcommand*{\deriveSet}        {\formulaSetSet^2}      %     P(L)^2
-\newcommand*{\deriveSetSet}     {\Pot(\deriveSet)}      %   P(P(L)^2)
-\newcommand*{\deriveSetRel}     {\Rel(\formulaSetSet)}  %   R(P(L))
-\newcommand*{\conclusionrulerel}{\Rel(\deriveSetRel)}   % R(R(P(L)))
-
-%%%\newcommand*{\formulaSetSetf}{\Potf(\formulaSet)}       %    Pe(L)
-\newcommand*{\deriveSetSetf}    {\Potf(\deriveSet)}     %  Pe(P(L)^2)
-\newcommand*{\deriveSetRelf}    {\Relf(\formulaSetSet)} %  Re(P(L))
-
-
-\newcommand*{\prerequisite}     {\mathbf{v}}              % [V]oraussetzung
-\newcommand*{\prerequisiteSet}  {\mathbf{V}}
-\newcommand*{\prerequisiterel}  {\derive_\prerequisiteSet}
-\newcommand*{\conclusion}       {\mathbf{f}}              % [F]olgerung
-\newcommand*{\conclusionSet}    {\mathbf{F}}
-\newcommand*{\conclusionrel}    {\derive_\conclusionSet}
-\newcommand*{\outcome}          {O}                       % [o]utcome
-\newcommand*{\outcomeSet}       {\mathcal{\outcome}}
-\newcommand*{\outcomerel}       {\derive_\outcomeSet}
-\newcommand*{\proofstep}        {B}                       % [B]eweisschritt
-\newcommand*{\proofstepsequenz} {\mathcal{S}}             % [s]equenz
-\newcommand*{\proofstepSet}     {\mathcal{\proofstep}}
-\newcommand*{\transformation}   {T}                       % [T]ransformation
-\newcommand*{\transformsequenz} {\mathcal{\transformation}}
-\newcommand*{\conclusionrule}   {C}                       % [c]onclusion
-\newcommand*{\conclusionruleSet}{\mathcal{\conclusionrule}}
-\newcommand*{\substitution}     {E}                       % [E]rsetzung
-\newcommand*{\substitutionSet}  {\mathcal{\substitution}}
-\newcommand*{\tupelSet}         {\mathcal{T}}             % [T]upelmenge
-\newcommand*{\tupelSetf}        {\tupelSet_\finite}
-\newcommand*{\finite}           {\mathrm{e}}
-\newcommand*{\Pot}              {\mathcal{P}}             % [P]otenzmenge
-\newcommand*{\Potf}             {\Pot_\finite}
-\newcommand*{\Rel}              {\mathcal{R}}             % [R]elationsmenge
+% Mengenoperationen
+\newcommand*{\finite}           {\mathrm{\finiteLetter}}   % endlich
+\newcommand*{\tupelSet}         {\mathcal{\tupelSetLetter}}% Menge der Tupel
+\newcommand*{\Pot}              {\mathcal{\PotLetter}}     % Potenzmenge
+\newcommand*{\Potf}             {\Pot_\finite}             % endliche Teilmengen
+\newcommand*{\Rel}              {\mathcal{\RelLetter}}     % alle Relationen
 \newcommand*{\Relf}             {\Rel_\finite}
-\newcommand*{\axiom}            {X}                       % A[x]iom
-\newcommand*{\axiomSet}         {\mathcal{\axiom}}
+
+% Mengen
+\newcommand*{\formulaSet}       {\mathcal{\formulaSetLetter}}% Formel-Sprache
+\newcommand*{\formulaSetSet}    {\symPot(\formulaSet)}     %     P(L)
+\newcommand*{\formulaSetSetf}   {\symPotf(\formulaSet)}    %    Pe(L)
+\newcommand*{\deriveSet}        {\formulaSetSet^2}         %     P(L)^2
+\newcommand*{\deriveSetSet}     {\symPot(\deriveSet)}      %   P(P(L)^2)
+\newcommand*{\deriveSetRel}     {\symRel(\formulaSetSet)}  %   R(P(L))
+\newcommand*{\conclusionruleRel}{\symRel(\deriveSetRel)}   % R(R(P(L)))
+\newcommand*{\deriveSetSetf}    {\symPotf(\deriveSet)}     %  Pe(P(L)^2)
+\newcommand*{\deriveSetRelf}    {\symRelf(\formulaSetSet)} %  Re(P(L))
+
+% Elemente und Mengen für Beweise
+\newcommand*{\prerequisite}     {\mathbf{\prerequisiteLetter}}% Voraussetzung
+\newcommand*{\prerequisiteSet}  {\mathbf{\prerequisiteSetLetter}}% Voraussetzungen als Menge
+\newcommand*{\prerequisiteRel}  {\symderive_\prerequisiteSet}% Voraussetzungen als Relation
+\newcommand*{\conclusion}       {\mathbf{\conclusionLetter}}% Folgerung
+\newcommand*{\conclusionSet}    {\mathbf{\conclusionSetLetter}}% Folgerungen als Menge
+\newcommand*{\conclusionRel}    {\symderive_\conclusionSet}% Folgerungen als Relation
+\newcommand*{\outcome}          {\outcomeLetter}           % Ergebnis
+\newcommand*{\outcomeSet}       {\mathcal{\outcome}}       % Ergebnisse als Menge
+\newcommand*{\outcomeRel}       {\symderive_\outcomeSet}   % Ergebnisse als Relation
+\newcommand*{\proofstep}        {\proofstepLetter}         % Beweisschritt
+\newcommand*{\proofstepTup}     {\mathcal{\proofstepTupLetter}}% Beweisschritte als Folge
+\newcommand*{\proofstepSet}     {\mathcal{\proofstep}}     % Beweisschritte als Menge
+\newcommand*{\transformation}   {\transformationLetter}    % Transformation
+\newcommand*{\transformationTup}{\mathcal{\transformation}}% Transformationen als Folge
+\newcommand*{\conclusionrule}   {\conclusionruleLetter}    % Schlussregel
+\newcommand*{\conclusionruleSet}{\mathcal{\conclusionrule}}% Schlussregeln
+\newcommand*{\substitution}     {\substitutionLetter}      % Substitution
+\newcommand*{\substitutionSet}  {\mathcal{\substitution}}  % Substitutionen
+\newcommand*{\axiom}            {\axiomLetter}             % Axiom
+\newcommand*{\axiomSet}         {\mathcal{\axiom}}         % Menge von Axiomen
 
 % neue Mengensymbole: ABC EF   JKL  OPQ  TUV X
 % frei:                  D  GHI   MN   R    W YZ
 % doppelt:                          O    T
 
 % \al... = aussagenlogisch
-\newcommand*{\alvar} {q}%               Name einer Variablen
+% Mengen
+\newcommand*{\alvar}         {\alvarLetter}%  Name einer Variablen
 % Mengen der Aussagenlogik
-\newcommand*{\alVar} {\mathcal{Q}}%     Menge der Variablensymbole
-\newcommand*{\alCon} {\mathcal{K}}%     Menge der [K]onstantensymbole
-\newcommand*{\alUna} {\mathcal{U}}%     Menge der [u]nären Operationssymbole
-\newcommand*{\alBin} {\mathcal{O}}%     Menge der binären [O]perationssymbole
-\newcommand*{\alJun} {\mathcal{J}}%     Menge der Operationssymbole ([J]unktor)
-\newcommand*{\alABC} {\mathcal{A}}%     [A]lphabet der aussagenlogischen Sprache
-\newcommand*{\alFor} {\mathcal{L}}%     Menge der Formeln (Worte) ([l]anguage)
-\newcommand*{\alForp}{\alFor^\mathrm{p}}%   ... in polnischer Notation
+\newcommand*{\alVar}{\mathcal{\alVarLetter}}% Variablensymbole
+\newcommand*{\alCon}{\mathcal{\alConLetter}}% Konstantensymbole
+\newcommand*{\alUna}{\mathcal{\alUnaLetter}}% unäre Operationssymbole
+\newcommand*{\alBin}{\mathcal{\alBinLetter}}% binäre Operationssymbole
+\newcommand*{\alJun}{\mathcal{\alJunLetter}}% Junktoren
+\newcommand*{\alABC}{\mathcal{\alABCLetter}}% Alphabet der al Sprache
+\newcommand*{\alFor}{\mathcal{\alForLetter}}% Menge der Formeln/Worte, Sprache
+\newcommand*{\alForp}{\alFor^\mathrm{\polnischLetter}}%...in polnischer Notation
 % Indizes für Teilmengen von \alJun, \alABC, \alFor und \alForp
 \newcommand*{\iAnd} {\mathrm{and}}%
 \newcommand*{\iBool}{\mathrm{bool}}%
