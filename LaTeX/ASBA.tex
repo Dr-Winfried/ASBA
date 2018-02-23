@@ -55,7 +55,6 @@
 
 \begin{document}
 	\maketitle
-
 	~\vfill Copyright \copyright\ 2017 Winfried Teschers\bigskip
 
 	\begin{otherlanguage}{english}
@@ -68,6 +67,7 @@
 	\tableofcontents
 	\Endchapter
 
+	\include{ASBA-Test}
 	\include{ASBA-Analyse}
 	\include{ASBA-Mathematik}
 	\include{ASBA-Ideen}
@@ -76,38 +76,65 @@
 
 	\chapter{Verzeichnisse}% ###################################################
 	\beginchapter{Verzeichnisse}
-	\label{cha:Verzeichnisse}
+	\label{cha-Verzeichnisse}
+
+	\newcommand*{\likesection}[2][section]{%statt \beginsection für Verzeichnisse
+		\beginchapter[Verzeichnisse]{#2}
+		\phantomsection%                    sichert korrekten Link hierhin
+		\addcontentsline{toc}{#1}{#2}%      Eintrag ins Inhaltsverzeichnis
+	}
 
 	%section{Tabellenverzeichnis}% =============================================
-	\likechapter[section]{\listtablename}
+	\likesection{\listtablename}
 	\begin{minipage}{\linewidth-10.95pt}
-		\label{dic:Tabellenverzeichnis}
+		\label{dic-Tabellenverzeichnis}
 		\listoftables
 	\end{minipage}
 	\Endchapter
 
 	%section{Abbildungsverzeichnis}% ===========================================
-	\likechapter[section]{\listfigurename}
+	\likesection{\listfigurename}
 	\begin{minipage}{\linewidth-10.95pt}
-		\label{dic:Abbildungsverzeichnis}
+		\label{dic-Abbildungsverzeichnis}
 		\listoffigures
 	\end{minipage}
 	\Endchapter
 
 	\input{ASBA-Literaturverzeichnis}
 
-	% Indizes und Glossar ######################################################
-
+	% Indizes ==================================================================
 	% Optionen -> TeXstudio konfigurieren -> Befehle -> Makeindex:
 	%     perl "C:\Program Files\MiKTeX 2.9\scripts\splitindex\splitindex.pl" %
 	% Optionen -> TeXstudio konfigurieren -> Erzeugen -> Standardcompiler:
 	%     txs:///pdflatex|txs:///makeindex|txs:///makeglossaries|txs:///pdflatex
+	% Indizes ------------------------------------------------------------------
+	\newcommand{\idxpreambel}{
+		Mit \textbf{\textit{fetten, kursiven}} Seitenzahlen wird auf die Definition oder sonstige wichtige Stellen verwiesen.
+		\par~
+	}
+	\newcommand*{\idxdictionary}[2]{%   nur für Indices
+		\extendtheindex{}{%             am Anfang von '\printindex'
+			\likesection{#2}
+			Index und Symbolverzeichnis enthalten keine gemeinsamen Einträge.
+			Andererseits erscheinen sie aber überwiegend auch im Glossar.
+			\idxpreambel
+		}{}{}
+		\printindex[#1]
+		\Chead{#2}%                     Kopfzeile Mitte = <Verzeichnisname>
+	}
+	\idxdictionary{idx}{Index}
+	\idxdictionary{sym}{Symbolverzeichnis}
 
-	\idxdictionary[idx]{Index}% =============== Index ==========================
-
-	\idxdictionary[sym]{Symbolverzeichnis}% === Symbolverzeichnis ==============
-
-	\glodictionary% =========================== Glossar ========================
+	% Glossar ==================================================================
+	\renewcommand{\glossarypreamble}{%  am Beginn des Glossars
+		\likesection{Glossar}
+		Die Einträge im Glossar kommen auch entweder im Index oder im Symbolverzeichnis vor.
+		Die Sortierung insbesondere der Symbole unterscheidet sich dabei.
+		\idxpreambel
+	}
+	\setglossarystyle{listhypergroup}
+	\printglossaries
+	\Chead{Glossar}%                    Kopfzeile Mitte = <Verzeichnisname>
 
 \end{document}
 

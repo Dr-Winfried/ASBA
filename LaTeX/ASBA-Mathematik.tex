@@ -33,18 +33,18 @@
 
 \chapter{Mathematische Grundlagen}% ############################################
 \beginchapter{Mathematische Grundlagen}
-\label{cha:Grundlagen}
+\label{cha-Grundlagen}
 
-Die mathematischen Grundlagen werden einerseits gebraucht, um die erlaubten \Beweisschritte\vrefnotesec{sub:Beweisschritte} zu definieren, andererseits dienen sie auch zum Testen von \ASBA.
-Daher werden sie in \datcha{cha:Grundlagen} ausführlicher behandelt, als für die Erstellung von \ASBA\ erforderlich ist.
+Die mathematischen Grundlagen werden einerseits gebraucht, um die erlaubten \Beweisschritte\vrefnotesec{sub-Beweisschritte} zu definieren, andererseits dienen sie auch zum Testen von \ASBA.
+Daher werden sie in \datcha{cha-Grundlagen} ausführlicher behandelt, als für die Erstellung von \ASBA\ erforderlich ist.
 Alle hier aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und die \Beweise\ dann von \ASBA\ verifiziert werden.
 
 \section{Notationen}% ==========================================================
 \beginsection{Notationen}
-\label{sec:Notationen}
+\label{sec-Notationen}
 
 \begin{itemize}
-	\item Die in \datsec{sec:Notationen} aufgeführten Notationen werden in \datcha{cha:Grundlagen} verwendet, ohne nochmals erläutert zu werden. Abweichungen davon müssen gesondert angegeben.
+	\item Die in \datsec{sec-Notationen} aufgeführten Notationen werden in \datcha{cha-Grundlagen} verwendet, ohne nochmals erläutert zu werden. Abweichungen davon müssen gesondert angegeben.
 	%
 	\item Sätze mit \enquote{wir} bestimmen Notationen, die \textevtl\ nur für dieses Dokument gelten.
 	Bei allgemein bekannten Notationen wird \enquote{wir} nicht verwendet.
@@ -56,7 +56,7 @@ Alle hier aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und 
 	\item Werden Begriffe definiert, so werden sie \defn{in dieser} Schriftart hervorgehoben.
 \end{itemize}
 %
-Im Vorgriff auf \vrefsubsub{subsub:Definitionen} stehen \enquote{$A \symmetadefeq B$} und \enquote{$A \symdefeq B$} für \enquote{$A$ \emph{ist definitionsgemäß gleich} $B$}, \enquote{$A \symmetaand B$} für \enquote{$A$ \emph{und} $B$} und \enquote{$A \symmetaor B$} für \enquote{$A$ \emph{oder} $B$}.
+Im Vorgriff auf \vrefsubsub{subsub-Definitionen} stehen \enquote{$A \symmetadefeq B$} und \enquote{$A \symdefeq B$} für \enquote{$A$ \emph{ist definitionsgemäß gleich} $B$}, \enquote{$A \symmetaand B$} für \enquote{$A$ \emph{und} $B$} und \enquote{$A \symmetaor B$} für \enquote{$A$ \emph{oder} $B$}.
 -- Wir definieren für Mengen $A$ und $B$:%
 \footnote{%
 	In der Literatur wird \chrqt{\symsubset} oft in der Bedeutung von \chrqt{\symsubseteq} verwendet.
@@ -66,23 +66,23 @@ Im Vorgriff auf \vrefsubsub{subsub:Definitionen} stehen \enquote{$A \symmetadefe
 \begin{align}
 	& A \bindefinition{\symsubset}   B & \symmetadefeq \quad &
 	\text{$A$ ist \defn{echte Teilmenge} von $B$}
-	\label{def:subset}   \\
+	\label{def-subset}   \\
 	& A \bindefinition{\symsubseteq} B & \symmetadefeq \quad &
 	\text{$A$ ist       \defn{Teilmenge} von $B$}
-	\label{def:subseteq} \\
+	\label{def-subseteq} \\
 	%
 	&      \definition{\symIN}         &     \symdefeq \quad &
 	\text{die Menge der \defn{natürlichen Zahlen}  ohne           $0$}
-	\label{def:IN}       \\
+	\label{def-IN}       \\
 	&      \definition{\symINo}        &     \symdefeq \quad &
 	\text{die Menge der \defn{natürlichen Zahlen} (einschließlich $0$)}
-	\label{def:INo}
+	\label{def-INo}
 	\formulatoleft
 \end{align}
-Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Element von $\symINo$.
+Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Element aus $\symINo$.
 
 \subsection{Bezeichnungen}% ----------------------------------------------------
-\label{sub:Bezeichnungen}
+\label{sub-Bezeichnungen}
 
 \begin{description}
 
@@ -103,7 +103,7 @@ Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Eleme
 	Ist das Objekt eine Funktion, Operation, Relation \textusw, so nennen wir das Symbol ein \defn{Funktionssymbol}, \defn{Operatorsymbol}, \defn{Relationssymbol} usw.
 
 	% ----- Zeichenkette -------------------------------------------------------
-	\item [\Zeichenketten] sind Folgen von einfachen \Symbolen, in denen im Prinzip auch Leerstellen und andere nicht druckbare Zeichen zulässig sind.%
+	\item [\Zeichenketten] sind Folgen aus einfachen \Symbolen, in denen im Prinzip auch Leerstellen und andere nicht druckbare Zeichen zulässig sind.%
 	\footnote{%
 		Da beim Ausdruck optisch nicht entschieden werden kann, ob ein Zwischenraum (white space) aus einem Tabulator oder \textevtl\ mehreren Leerzeichen besteht, verwenden wir nur einzelne Leerzeichen als Zwischenraumzeichen und vermeiden Zeilenumbrüche.
 	}
@@ -118,21 +118,21 @@ Wenn wir von einer \defn{natürlichen Zahl} sprechen, meinen wir immer ein Eleme
 	-- Die Quotierung ist kein Bestandteil der \Zeichenfolge!
 
 	% ----- Formel -------------------------------------------------------------
-	\item [\Formeln] \label{def:Formel} sind in diesem Dokument immer nach vorgegebenen Regeln aufgebaute \Zeichenfolgen%
+	\item [\Formeln] \label{def-Formel} sind in diesem Dokument immer nach vorgegebenen Regeln aufgebaute \Zeichenfolgen%
 	\footnote{%
 		Es kann verschiedene Arten von \Formeln\ geben, \textzB\ aussagenlogische, prädikatenlogische und solche, die ein Taschenrechner auswerten kann.
 	}.
 	Daher werden sie wie \Zeichenfolgen\ quotiert.
 	-- Die Quotierung ist kein Bestandteil der \Zeichenfolge!
 
-	Man kann eine \Formel\ auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen Menge $\formulaSet$ von \Zeichenfolgen\ ist.%
+	Man kann eine \Formel\ auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen Menge $\symformulaSet$ von \Zeichenfolgen\ ist.%
 	\footnote{%
-		Die \Formel\ wird dann auch \definition{\Wort} der \definition{\Sprache} $\formulaSet$ genannt - besonders, wenn die Elemente von $\formulaSet$ \Zeichenketten\ statt \Zeichenfolgen\ sind.
+		Die \Formel\ wird dann auch \definition{\Wort} der \definition{\Sprache} $\symformulaSet$ genannt - besonders, wenn die Elemente aus $\symformulaSet$ \Zeichenketten\ statt \Zeichenfolgen\ sind.
 		Wir bleiben der Klarheit willen bei \enquote{\Formel}.
 	}
 	Das ist dann so ziemlich die einfachste Regel.
 
-	Wenn eine \Zeichenfolge\ nicht korrekt nach den vorgegebenen Regeln aufgebaut ist \textbzw\ kein Element der vorgegebenen Menge $\formulaSet$ ist, werden wir sie \emph{nicht} als \Formel\ bezeichnen, auch nicht als \enquote{fehlerhafte Formel} oder ähnlich.
+	Wenn eine \Zeichenfolge\ nicht korrekt nach den vorgegebenen Regeln aufgebaut ist \textbzw\ kein Element der vorgegebenen Menge $\symformulaSet$ ist, werden wir sie \emph{nicht} als \Formel\ bezeichnen, auch nicht als \enquote{fehlerhafte Formel} oder ähnlich.
 	Sie ist dann einfach keine \Formel.
 
 	% ----- Objekt -------------------------------------------------------------
@@ -149,9 +149,11 @@ Für das Verständnis des Textes sollten sie nicht nötig sein, es reichen
 Grundkenntnisse der Mathematik.
 
 \subsection{Quotierung}% -------------------------------------------------------
-\label{sub:Quotierung}
+\label{sub-Quotierung}
 
-Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:
+Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:\footnote{%
+	Was zusammengesetzte \Symbole\ sind, muss jeweils definiert werden  \textbzw\ ergibt sich aus dem Zusammenhang.
+}
 
 \begin{tabular}{llll}
 	&        $\sin$  & Ein \Objekt
@@ -161,9 +163,7 @@ Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:
 	& für das \Objekt
 	\\
 	& \seqqt{$\sin$} & Eine \Zeichenfolge\ (\Formel)
-	& aus dem zusammengesetzten\footnote{%
-		Was zusammengesetzte Symbole sind, muss jeweils definiert werden  \textbzw\ ergibt sich aus dem Zusammenhang.
-	} \Symbol\ \chrqt{$\sin$}
+	& aus dem zusammengesetzten \Symbol\ \chrqt{$\sin$}
 	\\
 	& \seqqt {$sin$} & Eine \Zeichenfolge\ (\Formel)
 	& aus den einfachen \Symbolen\ \chrqt{$s$}, \chrqt{$i$} und \chrqt{$n$}
@@ -175,24 +175,25 @@ Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:
 Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textdh\ einer \Zeichenfolge\ oder sogar einer ganzen \Formel; \textzB\ ist die Bezeichnung für das indizierte \Objekt\ $a_i$ gleich \seqqt{$a_i$}.
 
 \subsection{Weitere Bezeichnungen}% ----------------------------------------------------
-\label{sub:weitereBezeichnungen}
+\label{sub-weitereBezeichnungen}
 
 \begin{description}
 
+%TODO überarbeiten, Dopplungen meiden, mit Glossar abgleichen; eindeutige Bezeichnungen
 	% ----- Tupel --------------------------------------------------------------
 	\item [\Tupel] Ein \defn{$n$-\Tupel} ist eine endliche Folge $\vec{a} = (a_1, \dots, a_n)$ mit folgenden Eigenschaften:
 	\begin{itemize}
-		\item $n$, die \defn{Länge}, \textdh\ die Anzahl der \defn{Komponenten} von $\vec{a}$, ist eine natürliche Zahl.
+		\item $n$, die \defn{Länge}, \textdh\ die Anzahl der \defn{Komponenten} aus $\vec{a}$, ist eine natürliche Zahl.
 
 		$\undefinition{\symlen} \vec{a} \symdefeq \definition{\symlen}(\vec{a}) \symdefeq n$
 		%
 		\item Die $a_i$ für $1 \le i \le n$ sind Elemente meist vorgegebener Mengen.
 		%
-		\item $\undefinition{\symSet} \vec{a} \symdefeq$ $\definition{\symSet}(\vec{a}) \symdefeq$ die Menge aller Komponenten $a_i$ von $\vec{a}$.
+		\item $\undefinition{\symSet} \vec{a} \symdefeq$ $\definition{\symSet}(\vec{a}) \symdefeq$ die Menge aller Komponenten $a_i$ aus $\vec{a}$.
 	\end{itemize}
 	Für $n=0$ ist $\vec{a} = ()$, das \defn{leere \Tupel} oder \defn{$0$-\Tupel}.
 
-	Wo immer $\vec{a}$ und $a_i$ mit $i \in \symINo$ gemeinsam vorkommen, ist $a_i$ die $i$-te Komponente von $\vec{a}$.
+	Wo immer $\vec{a}$ und $a_i$ mit $i \in \symINo$ gemeinsam vorkommen, ist $a_i$ die $i$-te Komponente aus $\vec{a}$.
 
 	% ----- Relation -----------------------------------------------------------
 	\item [\Relation] Eine \defn{$n$-stellige \Relation}\citenote{bib:Relation} $R$ ist ein (1+$n$)-\Tupel\ $(G,A_1,\dots,A_n$) mit folgenden Eigenschaften:
@@ -207,7 +208,7 @@ Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textd
 		%
 		\item $G$, der \definition{\Graph} von $R$, ist eine Teilmenge des kartesischen Produkts $A_1 \times \dots \times A_n$.
 
-		$\graph R \symdefeq \graph(R) \symdefeq G$ (oft einfach mit $R$ bezeichnet)
+		$\symgraph R \symdefeq \symgraph(R) \symdefeq G$ (oft einfach mit $R$ bezeichnet)
 		%
 		\item $R(a_1,\dots\,a_n) \symmetadefeq (a_1,\dots\,a_n) \in G$
 	\end{itemize}
@@ -219,9 +220,9 @@ Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textd
 	\\Für $n=1$ ist $G \symsubseteq A_1$, \textdh\ $R$ kann als Teilmenge von $A_1$ aufgefasst werden.
 	\\Für $n=2$ heißt die Relation \defn{binär} und man schreibt \enquote{$x R y$} statt \enquote{$R(x,y)$} \textbzw\ \enquote{$(x,y) \in R$}.
 
-	Ist $R=(G,M,\dots,M)$, so heißt $R$ eine $n$-stellige Relation \defn{in} oder \defn{auf} $M$.
+	Ist $R=(G,M,\dots,M)$, so heißt $R$ eine $n$-stellige Relation \defn{auf}\alternativ{in} $M$.
 
-	Ist $|G|$ endlich, so nennen wir $R$ eine \defn{endliche} Relation.
+	Ist $|G|$ endlich, so nennen wir auch $R$ \defn{endliche}.
 
 	% ----- Umkehrrelation -----------------------------------------------------
 	\item [\Umkehrrelation] Die \definition{\Umkehrrelation} einer binären Relation $(G,A,B)$ ist die Relation $(G',B,A)$ mit $G' \symdefeq \{(b,a)\mid(a,b) \in G\}$.
@@ -261,7 +262,8 @@ Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textd
 		Bei der Schreibweise ohne Klammern steht da statt \seqqt{$f()$} nur noch \seqqt{$f$} und statt \seqqt{$f()=b$}, insgesamt also nur noch \seqqt{$f=b$}.
 	}
 
-	Man sagt: $f$ ist eine $n$-stellige \Funktion\ von $A_1 \times \dots \times A_n$ \defn{in} (oder auch \defn{nach}) B (Schreibweise: $f : A_1 \times \dots \times A_n \rightarrow B$) oder, im Fall $n=1$, $f$ ist eine Funktion von $A$ in (oder nach) $B$ (Schreibweise: $f : A \rightarrow B$). Mit $A \symdefeq A_1 \times \dots \times A_n$ kann für $n > 0$ jede Funktion als $1$-stellig aufgefasst werden.
+	Man sagt: $f$ ist eine $n$-stellige \Funktion\ von $A_1 \times \dots \times A_n$ \defn{nach}\alternativ{in} $B$ (Schreibweise: $f : A_1 \times \dots \times A_n \rightarrow B$) oder, im Fall $n=1$, $f$ ist eine Funktion von $A$ nach $B$ (Schreibweise: $f : A \rightarrow B$).
+	Mit $A \symdefeq A_1 \times \dots \times A_n$ kann für $n > 0$ jede Funktion als $1$-stellig aufgefasst werden.
 
 	% ----- Operation ----------------------------------------------------------
 	\item [\Operationen] in oder auf einer Menge $M$ sind $n$-stellige Funktionen $\symMengeMn \rightarrow M$.
@@ -273,7 +275,7 @@ Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textd
 
 	% ----- Junktor ------------------------------------------------------------
 	\item [\Junktoren] sind aussagenlogische \Relationen\ und \Operationen.%
-	\footnote{\label{def:Junktor}%
+	\footnote{\label{def-Junktor}%
 		Ein $n$-stelliger \Junktor\ $J$ sei eine \Operation\ und somit eine \Funktion.
 		Wegen $M = \{\true,\false\}$ kann er auch als eine $n$-stellige \Relation\ $J'$ aufgefasst werden:
 		$J' \symdefeq \{\vec{a} \in \symMengeMn \mid J(\vec{a}) = \true\}$.
@@ -286,26 +288,26 @@ Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textd
 		Also ist $J=J''$ und so können die aussagenlogischen $n$-stelligen \Relationen\ und \Operationen\ einander eineindeutig zugeordnet werden.
 
 		~~Daher sind in der Aussagenlogik \Relationen\ und \Operationen\ nicht von vornherein unterscheidbar.
-		Wegen der Verabredungen in \vrefsub{sub:Beispielsymbole} muss für die verwendeten \Junktoren\ daher jeweils wohl definiert sein, ob sie als \Relation\ und \Operation\ zu verstehen sind.
+		Wegen der Verabredungen in \vrefsub{sub-Beispielsymbole} muss für die verwendeten \Junktoren\ daher jeweils wohl definiert sein, ob sie als \Relation\ und \Operation\ zu verstehen sind.
 	}
 \end{description}
 
 \subsection{Relationen und Operationen}% --------------------------------
-\label{sub:Beispielsymbole}
+\label{sub-Beispielsymbole}
 
 Als Beispielsymbol für unäre \Operationen\ wird \chrqt{\symopubsp} und für binäre \Operationen\ \chrqt{\symopbsp} verwendet.
 Beispielsymbole für binäre Relationen sind \chrqt{\symrelbsp} und \chrqt{\symreleqbsp}, ihre \Umkehrrelationen \chrqt{\symrelbackbsp} \textbzw\ \chrqt{\symrelbackeqbsp} sowie ihre \defn{Negationen} \chrqt{\symrelnbsp} \textbzw\ \chrqt{\symrelnebsp}.%
 \footnote{%
 	Die Relationen brauchen keine Äquivalenzrelationen sein, auch wenn die angegebenen Symbole dies nahe legen.
-	Wenn eine der Relationen $\symrelbsp$, $\symreleqbsp$, $\symrelbackbsp$ oder $\symrelbackeqbsp$ definiert ist, sind wegen \eqref{def:relback}, \eqref{def:releqbsp} und \eqref{def:relbsp} auch die anderen drei Relationen definiert sowie wegen \eqref{def:relnbsp} auch $\symrelnbsp$, $\symrelnebsp$, $\not{\symrelbackbsp}$ und $\not{\symrelbackeqbsp}$.
+	Wenn eine der Relationen $\symrelbsp$, $\symreleqbsp$, $\symrelbackbsp$ oder $\symrelbackeqbsp$ definiert ist, sind wegen \eqref{def-relback}, \eqref{def-releqbsp} und \eqref{def-relbsp} auch die anderen drei Relationen definiert sowie wegen \eqref{def-relnbsp} auch $\symrelnbsp$, $\symrelnebsp$, $\not{\symrelbackbsp}$ und $\not{\symrelbackeqbsp}$.
 	(Für die letzten beiden habe ich keine schöneren Symbole gefunden.)
 }
 Wenn nichts anderes gesagt wird, gelte mit diesen Symbolen bei gegebenem \chrqt{\symrelbsp} stets:
 \begin{align}
 	& (A \bindefinition{\symrelbackbsp} B) & \symmetadefeq \quad &  (B \symrelbsp A)
-	\label{def:relback}  \\
+	\label{def-relback}  \\
 	& (A \bindefinition{\symrelnbsp}    B) & \symmetadefeq \quad & ((A \symrelbsp B) \text{ gilt nicht})
-	\label{def:relnbsp}  \formulatoleft\formulatoleft\formulatoleft
+	\label{def-relnbsp}  \formulatoleft\formulatoleft\formulatoleft
 \end{align}
 Dabei ist \chrqt{\symrelbackbsp} ist die waagerechte Spiegelung von \chrqt{\symrelbsp} und statt des schrägen kann bei der Negation auch ein senkrechter Strich genommen werden.
 
@@ -315,12 +317,14 @@ Entsprechend für die nächsten beiden Definitionen.
 Je nachdem ob $\symrelbsp$ oder $\symreleqbsp$ gegeben ist gelte ferner:
 \begin{align}
 	& (A \bindefinition{\symreleqbsp}   B) & \symmetadefeq \quad & ((A \symrelbsp   B) \symmetaor  (A \symeq B))
-	\label{def:releqbsp} \\
+	\label{def-releqbsp} \\
 	& (A \bindefinition{\symrelbsp}     B) & \symmetadefeq \quad & ((A \symreleqbsp B) \symmetaand (A \ne B))
-	\label{def:relbsp}   \formulatoleft\formulatoleft\formulatoleft
+	\label{def-relbsp}   \formulatoleft\formulatoleft\formulatoleft
 \end{align}
 
-Man beachte, dass, wenn man \chrqt{\symmetadefeq} durch \chrqt{\symmetaequiv} ersetzt, weder \eqref{def:releqbsp} aus \eqref{def:relbsp} folgt noch umgekehrt.\eqref{def:releqbsp} und \eqref{def:relbsp} folgen aber dann auseinander, wenn aus \chrqt{$\symrelbsp$} die Ungleichheit \textbzw\ aus der Gleichheit \chrqt{$\symreleqbsp$} folgt. Beispiele dazu sind \vrefintab{tab:Gegenbeispiel} angegeben.
+Man beachte, dass, wenn man \chrqt{\symmetadefeq} durch \chrqt{\symmetaequiv} ersetzt, weder \eqref{def-releqbsp} aus \eqref{def-relbsp} folgt noch umgekehrt.
+\eqref{def-releqbsp} und \eqref{def-relbsp} folgen aber dann auseinander, wenn aus \chrqt{$\symrelbsp$} die Ungleichheit \textbzw\ aus der Gleichheit \chrqt{$\symreleqbsp$} folgt.
+Beispiele dazu sind \vrefintab{tab-Gegenbeispiel} angegeben.
 %
 \begin{table}[H]
 	\centering
@@ -334,29 +338,29 @@ Man beachte, dass, wenn man \chrqt{\symmetadefeq} durch \chrqt{\symmetaequiv} er
 		\\
 		\hline
 		~$\symreleqbsp$&$A\symreleqbsp A$&$A\symreleqbsp B$&       &$B\symreleqbsp B$&
-		\text{Es gilt \eqref{def:releqbsp}}
+		\text{Es gilt \eqref{def-releqbsp}}
 		\\
 		~$\symrelbsp  $&                 &$A\symrelbsp   B$&       &                 &
-		\text{und \eqref{def:relbsp}}
+		\text{und \eqref{def-relbsp}}
 		\\
 		\hline
 		~$\symreleqbsp$&$A\symreleqbsp A$&$A\symreleqbsp B$&       &$B\symreleqbsp B$&
-		\text{Es gilt \eqref{def:releqbsp}}
+		\text{Es gilt \eqref{def-releqbsp}}
 		\\
 		~$\symrelbsp  $&                 &$A\symrelbsp   B$&       &$B\symrelbsp   B$&
-		\text{aber nicht \eqref{def:relbsp}}
+		\text{aber nicht \eqref{def-relbsp}}
 		\\
 		\hline
 		~$\symreleqbsp$&$A\symreleqbsp A$&$A\symreleqbsp B$&       &                 &
-		\text{Es gilt \eqref{def:relbsp}}
+		\text{Es gilt \eqref{def-relbsp}}
 		\\
 		~$\symrelbsp  $&                 &$A\symrelbsp   B$&       &                 &
-		\text{aber nicht \eqref{def:releqbsp}}
+		\text{aber nicht \eqref{def-releqbsp}}
 		\\
 		\hline
 	\end{tabularx}
 	\caption{Beispiele für $\symreleqbsp$ und $\symrelbsp$}
-	\label{tab:Gegenbeispiel}% Erst nach '\caption'!
+	\label{tab-Gegenbeispiel}% Erst nach '\caption'!
 \end{table}
 %
 Wird eine binäre \Relation\ $\symrelbsp$ zusammen mit einer binären \Operation\ $\symopbsp$ oder einer weiteren binären \Relation\ $\approx$ verwendet wird, treffen wir folgende Vereinbarung:%
@@ -373,18 +377,18 @@ Wird eine binäre \Relation\ $\symrelbsp$ zusammen mit einer binären \Operation
 \end{align}
 Besondere Vereinbarungen für die unäre \Operation\ \chrqt{\symopubsp} treffen wir nicht.
 
-Es sei noch angemerkt, dass wegen \eqref{def:relback} die Definition von \chrqt{\symmetarep} \vrefinsub{sub:AussagenUndMetaoperationen} überflüssig ist.
+Es sei noch angemerkt, dass wegen \eqref{def-relback} die Definition von \chrqt{\symmetarep} \vrefinsub{sub-AussagenUndMetaoperationen} überflüssig ist.
 Wegen der angegebenen Sprechweise ist sie dennoch angegeben.
-Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab:Prioritäten} angegeben.
-Damit wären dann alle Klammern in \datsub{sub:Beispielsymbole} überflüssig.
+Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab-Prioritaeten} angegeben.
+Damit wären dann alle Klammern in \datsub{sub-Beispielsymbole} überflüssig.
 
 \subsection{Prioritäten}% --------------------------------------
 \beginsection{Prioritäten}
-\label{sub:Prioritäten}
+\label{sub-Prioritaeten}
 
-\vrefDtab{tab:Prioritäten} listet zur Vermeidung von Klammern die Prioritäten der in diesem Dokument verwendeten \Operationen, \Relationen, \Junktoren\ und \Definitionen\ in absteigender Folge von höherer zu niedrigerer Priorität, \textdh\ von starker zu schwacher Bindung auf.%
+\vrefDtab{tab-Prioritaeten} listet zur Vermeidung von Klammern die Prioritäten der in diesem Dokument verwendeten \Operationen, \Relationen, \Junktoren\ und \Definitionen\ in absteigender Folge von höherer zu niedrigerer Priorität, \textdh\ von starker zu schwacher Bindung auf.%
 \footnote{Priorität 1 ist höher und bindet damit stärker als Priorität 2, usw.}
-Das Weglassen redundanter Klammern wird in \datcha{cha:Grundlagen} nicht weiter thematisiert.%
+Das Weglassen redundanter Klammern wird in \datcha{cha-Grundlagen} nicht weiter thematisiert.%
 \footnote{%
 	Gesetzt den Fall, dass \ASBA\ die \Voraussetzungen\ und \Folgerungen\ eines mathematischen Satzes richtig und die \Beweisschritte, \textzB\ durch fehlerhafte Interpretation einer \Formel, falsch einliest, ansonsten aber richtig arbeitet.
 	Dann kann man folgende Fälle unterscheiden:\\
@@ -474,20 +478,20 @@ Die Prioritäten der \Junktoren\ wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Se
 		\end{tabularx}
 		\begin{tablenotes}
 			\footnotesize
-			\item[1] \vrefseesub{sub:Beispielsymbole}
-			\item[2] \vrefseetab{tab:Symbole}
-			\item[3] \vrefseesub{sub:Bezeichnungen}
-			\item[4] \vrefseesubsub{subsub:Vergleiche}
-			\item[5] \vrefseesub{sub:Basisregeln}
-			\item[6] \vrefseesubsub{subsub:Definitionen}
-			\item[7] \vrefseesub{sub:AussagenUndMetaoperationen}
-			\item[8] \chrqt{\symsrand} wird nur bei den \Schlussregeln\ (\vrefseesub{sub:Schlussregeln}) verwendet.
+			\item[1] \vrefseesub{sub-Beispielsymbole}
+			\item[2] \vrefseetab{tab-Symbole}
+			\item[3] \vrefseesub{sub-Bezeichnungen}
+			\item[4] \vrefseesubsub{subsub-Vergleiche}
+			\item[5] \vrefseesub{sub-Basisregeln}
+			\item[6] \vrefseesubsub{subsub-Definitionen}
+			\item[7] \vrefseesub{sub-AussagenUndMetaoperationen}
+			\item[8] \chrqt{\symsrand} wird nur bei den \Schlussregeln\ (\vrefseesub{sub-Schlussregeln}) verwendet.
 			Zwar bezeichnen \chrqt{\symmetaand} und \chrqt{\symsrand} dieselbe \Operation, aber je nach verwendetem Symbol hat sie eine unterschiedliche Priorität.
 			\item[9] Innerhalb von \Formeln\ können Satzzeichen eine andere Bedeutung und Priorität haben.
 		\end{tablenotes}
 	\end{threeparttable}
 	\caption{Prioritäten in abnehmender Reihenfolge}
-	\label{tab:Prioritäten}% Erst nach '\caption'!
+	\label{tab-Prioritaeten}% Erst nach '\caption'!
 \end{table}
 
 Für \Operationen\ derselben Priorität wählen wir in diesem Dokument Rechtsklammerung%
@@ -501,7 +505,7 @@ Für \Operationen\ derselben Priorität wählen wir in diesem Dokument Rechtskla
 
 \section{Metasprache}% =========================================================
 \beginsection{Metasprache}
-\label{sec:Metasprache}
+\label{sec-Metasprache}
 
 Wenn man über eine Sprache spricht, braucht man eine zweite Sprache, die \definition{\Metasprache}, in der \Aussagen\ über erstere getroffen werden können.%
 \footnote{%
@@ -525,7 +529,7 @@ Durch diese Formalisierung erinnert sie dann schon an mathematische \Formeln.
 Die Sprachebenen sollten aber sorgfältig unterschieden werden.
 
 \subsection{Aussagen und Metaoperationen}% --------------------------------------
-\label{sub:AussagenUndMetaoperationen}
+\label{sub-AussagenUndMetaoperationen}
 
 Beispiele für \definition{\Aussagen} in \Metasprache\ sind
 (a) \enquote{Morgen scheint die Sonne.},
@@ -582,10 +586,10 @@ Offensichtlich sind das alles ebenfalls \Aussagen, jetzt aber teilweise formalis
 
 Wir nennen $\symmetaand$ und $\symmetaor$ \definition{\Metaoperationen} und $\symmetaimp$, $\symmetarep$ und $\symmetaequiv$ \definition{\Metarelationen}%
 \footnote{%
-	Man könnte \Metaoperationen\ und \Metarelationen\ auch als \defn{Metajunktoren} bezeichnen. Zur Unterscheidung von \Operationen\ und \Relationen\ vergleiche aber auch die Fußnote~\ref{def:Junktor} auf Seite~\pageref{def:Junktor}.
+	Man könnte \Metaoperationen\ und \Metarelationen\ auch als \defn{Metajunktoren} bezeichnen. Zur Unterscheidung von \Operationen\ und \Relationen\ vergleiche aber auch die Fußnote~\ref{def-Junktor} auf Seite~\pageref{def-Junktor}.
 }.
 Die damit gebildeten \Aussagen\ können natürlich auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
-Für den Fall fehlender Klammern sind ihre Prioritäten \vrefintab{tab:Prioritäten} angegeben.
+Für den Fall fehlender Klammern sind ihre Prioritäten \vrefintab{tab-Prioritaeten} angegeben.
 
 Um Verwechslungen mit den \Junktoren\ zu vermeiden, verwenden wir für die metasprachlichen \Operationen\ \enquote{und} und \enquote{oder} die Symbole \chrqt{\symmetaand} und \chrqt{\symmetaor}.
 $A$ und $B$ können als Operanden von \chrqt{\symmetaequiv}, \chrqt{\symmetaand} und \chrqt{\symmetaor} vertauscht werden, ohne das Ergebnis zu ändern.%
@@ -601,10 +605,10 @@ Wird in einer (Teil"~)\Aussage\ nur eine der \Operationen\ $\symmetaand$ oder $\
 Zusammengefasst ist die Reihenfolge der \Operationen\ und der Auswertung dort beliebig.
 
 \subsection{Mit Gleichheit verwandte Relationen}% ------------------------------
-\label{sub:Gleichheit}
+\label{sub-Gleichheit}
 
 \subsubsection{Vergleichbar}%- - - - - - - - - - - - - - - - - - - - - - - - - -
-\label{subsub:Vergleichbar}
+\label{subsub-Vergleichbar}
 
 Zwei \Objekte\ $A$ und $B$ sind \definition{\vergleichbar}, wenn beide von derselben Art sind, \textdh\ wenn \textzB\ jeweils beide Mengen, \Zeichenfolgen, Zahlen, \textusw\ sind.
 Dabei muss bei \Formeln\ zwischen der \Formel\ an sich und dem Ergebnis der \Formel\ unterschieden werden. Siehe Beispiel (a).
@@ -632,33 +636,33 @@ Die folgende Tabelle fasst dass zusammen:
 \end{center}
 
 \subsubsection{Vergleiche}%- - - - - - - - - - - - - - - - - - - - - - - - - - -
-\label{subsub:Vergleiche}
+\label{subsub-Vergleiche}
 
 $A$ und $B$ seien \Objekte.
 Dann definieren wir:
 
 \begin{description}
 	%
-	\item[$\definition{\symeq}$] \definition{\Gleichheit} \label{def:Gleichheit}
+	\item[$\definition{\symeq}$] \definition{\Gleichheit} \label{def-Gleichheit}
 	\seqqt{$A \symeq B$} heißt, dass $A$ und $B$ in den \interessierendenEigenschaften\ für $\symeq$ übereinstimmen.%
 	\footnote{%
 		\textZB\ sind zwei \Junktoren\ üblicherweise dann gleich, wenn sie stets denselben \emph{\Wahrheitswert} liefern.
 		Ihre Bezeichnungen oder \Symbole\ können dabei durchaus verschieden sein, interessieren bei der Feststellung der \Gleichheit\ aber nicht.
-		\textZB\ bezeichnen \chrqt{\symmetaand} und \chrqt{\symsrand} (\vrefseesec{sec:Beweise}) dieselbe \Operation, haben aber verschiedene Priorität. -- \vrefseetab{tab:Prioritäten}
+		\textZB\ bezeichnen \chrqt{\symmetaand} und \chrqt{\symsrand} (\vrefseesec{sec-Beweise}) dieselbe \Operation, haben aber verschiedene Priorität. -- \vrefseetab{tab-Prioritaeten}
 	}
 	Sprechweisen: \enquote{$A$ ist \emph{dasselbe} wie $B$} oder \enquote{$A$ ist \emph{identisch} zu $B$}
 	-- Inwieweit die Begriffe \emph{Gleichheit} und \emph{Identität} korrelieren, wird hier nicht erörtert.\citenote{bib:Identitaet}
 	%
-	\item[$\definition{\symne}$] \definition{\Ungleichheit} \label{def:Ungleichheit}
+	\item[$\definition{\symne}$] \definition{\Ungleichheit} \label{def-Ungleichheit}
 	\seqqt{$A \ne B$} heißt, dass $A$ und $B$ in mindestens einer \interessierendenEigenschaft\ für $\symeq$ nicht übereinstimmen.
 	Sprechweisen: \enquote{$A$ ist \emph{nicht dasselbe} wie $B$} (aber vielleicht das gleiche; siehe $\equiv$) oder \enquote{$A$ ist \emph{nicht identisch} zu $B$}.
 	%
-	\item[$\definition{\symequiv}$] \definition{\Aequivalenz} \label{def:Aequivalenz}
+	\item[$\definition{\symequiv}$] \definition{\Aequivalenz} \label{def-Aequivalenz}
 	\seqqt{$A \equiv B$} heißt, dass $A$ und $B$ in den \interessierendenEigenschaften\ für $\equiv$ übereinstimmen.
 	Sprechweisen: \enquote{$A$ ist \emph{das gleiche} wie $B$} (aber nicht unbedingt dasselbe; siehe $\symeq$) oder \enquote{$A$ ist \emph{so wie} $B$}.
 	-- Es kann auch verschiedene Äquivalenzen geben, für die dann verschiedene Bezeichnungen verwendet werden.
 	%
-	\item[$\definition{\symnequiv}$] \definition{\Kontravalenz} \label{def:Kontravalenz}
+	\item[$\definition{\symnequiv}$] \definition{\Kontravalenz} \label{def-Kontravalenz}
 	\seqqt{$A \nequiv B$} heißt, dass $A$ und $B$ in mindestens einer \interessierendenEigenschaft\ für $\nequiv$ nicht übereinstimmen.
 	Sprechweisen: \enquote{$A$ ist \emph{nicht das gleiche} wie $B$} oder \enquote{$A$ ist \emph{nicht so wie} $B$}.
 	%
@@ -672,21 +676,21 @@ Jede \interessierendeEigenschaft\ für $\equiv$ oder eine andere \Aequivalenz\ m
 Daraus folgt insbesondere, dass mit $(A \symeq B)$ auch $(A \equiv B)$ und mit $(A \nequiv B)$ auch $(A \ne B)$ gilt.
 
 \subsubsection{Definitionen}%- - - - - - - - - - - - - - - - - - - - - - - - - -
-\label{subsub:Definitionen}
+\label{subsub-Definitionen}
 
 Seien $A$ und $B$ \Aussagen\ \textbzw\ \Objekte%
 \footnote{%
 	Die Anforderungen an $A$ und $B$ sind intuitiv klar.
-	Insbesondere darf $B$ nicht von dem bisher undefinierten Teil von $A$ abhängig sein.
+	Insbesondere darf $B$ nicht von einem bisher undefinierten Teil von $A$ abhängig sein.
 }.
 \begin{description}
 	%
-	\item[$\definition{\symmetadefeq}$] \definition{\Metadefinition} \label{def:Metadefinition}
+	\item[$\definition{\symmetadefeq}$] \definition{\Metadefinition} \label{def-Metadefinition}
 	\enquote{$A \symmetadefeq B$} heißt, dass die \Aussage\ $A$ \emph{definitionsgemäß gleich} der \Aussage\ $B$ ist.
 	Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
 	\enquote{$A$ \emph{steht für} $B$}; $A$ und $B$ können sich gegenseitig ersetzten.
 	%
-	\item[$\definition{\symdefeq}$] \definition{\Definition} \label{def:Definition}
+	\item[$\definition{\symdefeq}$] \definition{\Definition} \label{def-Definition}
 	\enquote{$A \symdefeq B$} heißt, dass das \Objekt\ $A$ \emph{definitionsgemäß gleich} dem \Objekt\ $B$ ist.
 	Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
 	\enquote{$A$ \emph{steht für} $B$}; $A$ und $B$ können sich gegenseitig ersetzten.%
@@ -698,7 +702,7 @@ Man beachte, dass $\symmetadefeq$ und $\symdefeq$ verschiedene Sprachebenen sind
 
 \section{Beweise in ASBA}% =====================================================
 \beginsection{\Beweise\ in \ASBA}
-\label{sec:BeweiseASBA}
+\label{sec-BeweiseASBA}
 
 Die Regeln zur Formulierung und Prüfung der \Beweise\ müssen in \ASBA\ fest codiert werden.
 Sie sind quasi die \Axiome\ von \ASBA\ und sollten daher möglichst wenig voraussetzen.
@@ -712,89 +716,89 @@ Dies berücksichtigen wir in den Beispielen, fordern zunächst aber nicht notwen
 Zuerst brauchen wir aber noch ein paar Definitionen.
 
 \subsection{Definitionen und Verabredungen}% -----------------------------------
-\label{sub:Verabredungen}
+\label{sub-Verabredungen}
 
-Zu \chrqt{\symlen} und \chrqt{\symSet} Vergleiche die Definition von \emph{$n$-\Tupel} \vrefinsub{sub:weitereBezeichnungen}.
+Zu \chrqt{\symlen} und \chrqt{\symSet} Vergleiche die Definition von \emph{$n$-\Tupel} \vrefinsub{sub-weitereBezeichnungen}.
 
 \begin{align}
 	& |M|                          & \symdefeq \quad & \text{Kardinalität von } M
-	&&\text{, die \defn{Anzahl der Elemente} von } M
-	\label{def:Anzahl}
+	&&\text{, die \defn{Anzahl der Elemente} aus } M
+	\label{def-Anzahl}
 	\\
 	& \definition{\symMengeMn}     & \symdefeq \quad & M \times \dots \times M \quad \text{ , für } n \in \symINo
 	&&\text{, das \defn{kartesische Produkt} aus $n$ Mengen } M
-	\label{def:kartesischesProdukt}
+	\label{def-kartesischesProdukt}
 	\\
 	& \symMengeMo                  &    \symeq \quad & \{()\}
 	&&\text{, wobei $()$ das \defn{0-\Tupel} ist}
-	\label{def:Mo}
+	\label{def-Mo}
 	\\
 	& \definition{\symtupelSet}(M) & \symdefeq \quad & \{ \vec{a} \mid \vec{a} \in \symMengeMn \symland n \in \symINo \}
-	&&\text{, die Menge der \definition{\Tupel} \defn{über} } M
-	\label{def:Tupelmenge}
+	&&\text{, die Menge der \definition{\Tupel} \defn{über} $M$, ihre \definition{\Tupelmenge}}
+	\label{def-Tupelmenge}
 	\\
 	& \links{(A,B)}                & \symdefeq \quad & A
 	&& \text{, die \defn{linke Seite} eines geordneten Paares.}
-	\label{def:links}
+	\label{def-links}
 	\\
 	& \rechts{(A,B)}               & \symdefeq \quad & B
 	&& \text{, die \defn{rechte Seite} eines geordneten Paares.}
-	\label{def:rechts}
+	\label{def-rechts}
 	\\
 	& \definition{\symPot}(M)      & \symdefeq \quad & \{ A \mid A \symsubseteq M \}
 	&&\text{, die \definition{\Potenzmenge} der Menge } M
-	\label{def:Potenzmenge}
+	\label{def-Potenzmenge}
 	\\
 	& \definition{\symPotf}(M)     & \symdefeq \quad & \{ A \mid A \symsubseteq M \symland |A| \in \symINo\}
 	&& \text{, die \defn{endlichen Teilmengen} von } M
-	\label{def:endlichePotenzmenge}
+	\label{def-endlichePotenzmenge}
 	\\
 	& \definition{\symRel}(M)      & \symdefeq \quad & \{ R \mid R \symsubseteq M \times M\}
 	&& \text{, die Menge der \defn{binären Relationen} in } M
-	\label{def:Relationsmenge}
+	\label{def-Relationsmenge}
 	\\
 	& \definition{\symRelf}(M)     & \symdefeq \quad & \{ R \mid R \symsubseteq M \times M \symland |R| \in \symINo\}
 	&& \text{, die \defn{endlichen binären Relationen} in } M
-	\label{def:endlicheRelationsmenge}
+	\label{def-endlicheRelationsmenge}
 	\\
 	& \definition{\symderiveR}     & \symdefeq \quad & R
 	&& \text{, für Relationen } R \in \deriveSetRel
-	\label{def:Ableitung}
+	\label{def-Ableitung}
 \end{align}
 Offensichtlich gilt für Mengen $M$ und $N$:
 \begin{align}
 	& \symPotf(M) \symsubseteq \symPot          (M)
 	& ,          \qquad
 	& \symRelf(M) \symsubseteq \symRel          (M)
-	\label{eq:Setf} \\
+	\label{eq-Setf} \\
 	& \symRel (M) =            \symPot (M \times M)=\symPot (M^2)
 	& ,          \qquad
 	& \symRelf(M) =            \symPotf(M \times M)=\symPotf(M^2)
-	\label{eq:relPot} \\
+	\label{eq-relPot} \\
 	& \symPot (M) \symsubset   \symPot          (N)
 	& \symmetaequiv \qquad
 	& \symPotf(M) \symsubset   \symPotf         (N)
 	& \symmetaequiv \qquad
 	&               M  \symsubset                          N
-	\label{eq:potPot} \\
+	\label{eq-potPot} \\
 	& \symRel (M) \symsubset   \symRel          (N)
 	& \symmetaequiv \qquad
 	& \symRelf(M) \symsubset   \symRelf         (N)
 	& \symmetaequiv \qquad
 	&               M  \symsubset                          N
-	\label{eq:relRel} \\
+	\label{eq-relRel} \\
 	&                                 \vec{a}  \in \symtupelSet(M^2)
 	& \symmetaequiv \qquad  & \symSet(\vec{a}) \in \symRelf    (M)
-	\label{eq:vecrel}
+	\label{eq-vecrel}
 \end{align}
 
 \subsection{Formeln und Ableitungen}% ----------------------------
-\label{sub:Ableitungen}
+\label{sub-Ableitungen}
 
-Im Folgenden sei $\formulaSet$ stets eine gegebene Menge von \Formeln, \textzB\ alle korrekten \Formeln\ der \Aussagenlogik\ oder der \Praedikatenlogik.
-Für die folgenden Betrachtungen ist aber nur nötig, dass die Elemente von $\formulaSet$ \Zeichenfolgen\ sind.
-Die Teilmengen von $\formulaSet$ nennen wir \definition{\Formelmengen}.
-Es sind genau die Elemente von $\formulaSetSet$.
+Im Folgenden sei $\symformulaSet$ stets eine gegebene Menge aus \Formeln, \textzB\ alle korrekten \Formeln\ der \Aussagenlogik\ oder der \Praedikatenlogik.
+Für die folgenden Betrachtungen ist aber nur nötig, dass die Elemente aus $\symformulaSet$ \Zeichenfolgen\ sind.
+Die Teilmengen von $\symformulaSet$ nennen wir \definition{\Formelmengen}.
+Es sind genau die Elemente aus $\formulaSetSet$.
 
 Bei einem Beweis werden aus einer \Formelmenge\ $\Gamma$ von \Axiomen\ und schon bewiesenen \Formeln\ mittels zulässiger
 \footnote{%
@@ -803,11 +807,11 @@ Bei einem Beweis werden aus einer \Formelmenge\ $\Gamma$ von \Axiomen\ und schon
 }
 \Ableitungen\ die \Formeln\ einer \Formelmenge\ $\Delta$ abgeleitet; Schreibweise: \seqqt{$\Gamma \symderive \Delta$}.
 
-Für Teilmengen $\Gamma$ und $\Delta$ von $\formulaSet$ sei also:
+Für Teilmengen $\Gamma$ und $\Delta$ von $\symformulaSet$ sei also:
 \begin{itemize}
 	\item $\Gamma \bindefinition{\symderive} \Delta \symmetadefeq$ $\Gamma$ \definition{\ableitbar} $\Delta$; oder auch $\Gamma$ \definition{\beweisbar} $\Delta$.
 	%
-	\item $\Gamma \bindefinition{\symderive} \Delta$ nennen wir auch eine \definition{\Ableitung} \defn{in} $\formulaSet$.
+	\item $\Gamma \bindefinition{\symderive} \Delta$ nennen wir auch eine \definition{\Ableitung} \defn{in} $\symformulaSet$.
 	Damit ist $(\Gamma,\Delta)$ ein Element einer binären Relation $\symderive$ in $\formulaSetSet$, einer sogenannten \definition{\Ableitungsrelation}.
 	%
 	\item Wenn wir von einer Ableitung $\abl{a}$ sprechen, meinen wir immer ein Element einer \Ableitungsrelation, \textdh\ ein geordnetes Paar, \textzB\ $(\Gamma, \Delta) \in \formulaSetSet \times \formulaSetSet$, dargestellt als $\Gamma \symderive \Delta$.
@@ -827,13 +831,14 @@ Zur Vereinfachung der Darstellung und besseren Lesbarkeit treffen wir noch folge
 	Das entspricht dann einem \definition{\Axiom}.
 \end{itemize}
 %
-Im Folgenden halten wir uns bei der Verwendung von Buchstaben so weit wie möglich an folgende Vereinbarungen:
+Im Folgenden halten wir uns bei der Verwendung von Buchstaben so weit wie möglich an folgende Vereinbarungen:%
+\footnote{Die letzte Gleichung ergibt sich aus \vreffor{eq-relPot}.}
 \begin{align}
 	&  \text{griechisch, klein:}       && \alpha, \beta, \gamma, \dots
-	&& \text{\Formel}                  && \in \qquad \; \; \formulaSet
+	&& \text{\Formel}                  && \in \qquad \; \; \symformulaSet
 	\\
 	&  \text{griechisch, groß:}        && \Gamma, \Delta, \Theta, \dots
-	&& \text{Formelmenge}              && \in \quad \; \formulaSetSet
+	&& \text{\Formelmenge}             && \in \quad \; \formulaSetSet
 	\\
 	&  \text{lateinisch, fett, klein:} && \abl{a}, \abl{b}, \abl{c}, \dots
 	&& \text{\Ableitung}               && \in \quad \; \deriveSet
@@ -841,23 +846,22 @@ Im Folgenden halten wir uns bei der Verwendung von Buchstaben so weit wie mögli
 	&  \text{lateinisch, fett, groß:}  && \Abl{A}, \Abl{B}, \Abl{C}, \dots
 	&& \text{\Ableitungsrelation}      && \in \deriveSetSet = \deriveSetRel
 \end{align}
-\footnote{Die letzte Gleichung ergibt sich aus \vreffor{eq:relPot}.}
 Damit definieren wir folgende Aussagen:
 \begin{align}
 	\frac{\; \Abl{A}  \;}{\; \Abl{B} \;}
 	& \quad \symmetadefeq \quad
 	\text{ Mit den \Ableitungen\ aus $\Abl{A}$ lassen sich die aus $\Abl{B}$ ableiten.}
-	\label{def:AB}
+	\label{def-AB}
 	\\
 	\frac{\; \vec{\abl{a}} \;}{\; \vec{\abl{b}} \;} \qquad
 	& \quad \symmetadefeq \quad
-	\text{ Mit den Komponenten von $\vec{\abl{a}}$ lassen sich die von $\vec{\abl{b}}$ ableiten.}
-	\label{def:ab}
+	\text{ Mit den Komponenten aus $\vec{\abl{a}}$ lassen sich die aus $\vec{\abl{b}}$ ableiten.}
+	\label{def-ab}
 	\\
 	\frac{\abl{a}_1 \srand \dots \srand \abl{a}_n}{\abl{b}_1 \srand \dots \srand \abl{b}_m}
 	& \quad \symmetadefeq \quad
 	\text{ Mit den \Ableitungen\ $\abl{a}_i$ lassen sich die $\abl{b}_j$ ableiten.}
-	\label{def:aabb}
+	\label{def-aabb}
 \end{align}
 wobei in der letzten Definition $1 \le i \le n$ und $1 \le j \le m$ sei und die $\abl{a}_i$ und die $\abl{b}_j$ dabei jeweils beliebig permutiert werden können.
 \chrqt{\symsrand} und Bruchstrich stehen für die \Metaoperationen\ \chrqt{\symmetaand} und \chrqt{\symmetaimp}.%
@@ -869,16 +873,16 @@ wobei in der letzten Definition $1 \le i \le n$ und $1 \le j \le m$ sei und die 
 Wir nennen alle drei Formen \definition{\Schlussregeln}%
 \footnote{%
 	Genau genommen nur um die Darstellung einer Schlussregel.
-	Die Exakte Definition erfolgt \vrefinsub{sub:Schlussregeln}.
+	Die Exakte Definition erfolgt \vrefinsub{sub-Schlussregeln}.
 }.
-Die Elemente von $A$ \textbzw\ die Komponenten $a_i$ nennen wir die \definition{\Voraussetzungen} und die Elemente von $B$ \textbzw\ die Komponenten $b_j$ die \definition{\Folgerungen} der \Schlussregel.
+Die Elemente aus $A$ \textbzw\ die Komponenten $a_i$ nennen wir die \definition{\Voraussetzungen} und die Elemente aus $B$ \textbzw\ die Komponenten $b_j$ die \definition{\Folgerungen} der \Schlussregel.
 Offensichtlich gilt:
 \begin{align}
-	& \frac{a_1 \srand \dots \srand a_n}{b_1 \srand \dots \srand b_m} \; \symmetaequiv \; \frac{\; \vec{a} \;}{\; \vec{b} \;} \; \symmetaequiv \; \frac{\symSet(\vec{a})}{\symSet(\vec{b})} \label{eq:AB}
+	& \frac{a_1 \srand \dots \srand a_n}{b_1 \srand \dots \srand b_m} \; \symmetaequiv \; \frac{\; \vec{a} \;}{\; \vec{b} \;} \; \symmetaequiv \; \frac{\symSet(\vec{a})}{\symSet(\vec{b})} \label{eq-AB}
 \end{align}
 Wir nennen eine \Schlussregel\ auch einen \definition{\formalenSatz} und nennen sie \definition{\beschraenkt}, wenn sie nur endlich viele \Voraussetzungen\ und \Folgerungen\ hat.
-Die \Schlussregeln\ nach \eqref{def:ab} und \eqref{def:aabb} sind per se beschränkt.
-Die nach \eqref{def:AB} genau dann, wenn $\Abl{A}$ und $\Abl{B}$ endliche Mengen sind, \textdh\ wenn sie Elemente von
+Die \Schlussregeln\ nach \eqref{def-ab} und \eqref{def-aabb} sind per se beschränkt.
+Die nach \eqref{def-AB} genau dann, wenn $\Abl{A}$ und $\Abl{B}$ endliche Mengen sind, \textdh\ wenn sie Elemente aus%TODO Text fehlt
 
 Die Mengen der \Voraussetzungen\ und \Folgerungen\ dürfen auch leer sein.
 Dies führt zu den folgenden Spezialfällen:
@@ -889,16 +893,16 @@ Dies führt zu den folgenden Spezialfällen:
 \end{itemize}
 
 \subsection{Schlussregeln}% ----------------------------------------------------
-\label{sub:Schlussregeln}
+\label{sub-Schlussregeln}
 
-%%%Wir betrachten zuerst noch die Menge der binären Relationen\vrefnotesub{sub:weitereBezeichnungen} in $\formulaSetSet$.
+%%%Wir betrachten zuerst noch die Menge der binären Relationen\vrefnotesub{sub-weitereBezeichnungen} in $\formulaSetSet$.
 %%%Sei also $R$ eine solche binäre Relation und $A \in R$.
-%%%Dann gilt wegen~\eqref{def:links}, \eqref{def:rechts}, \eqref{def:Potenzmenge}, \eqref{def:Relationsmenge} und~\vreffor{def:Ableitung}:
+%%%Dann gilt wegen~\eqref{def-links}, \eqref{def-rechts}, \eqref{def-Potenzmenge}, \eqref{def-Relationsmenge} und~\vreffor{def-Ableitung}:
 %%%\begin{align}
 %%%	&  A \in R \in \deriveSetRel   \\
 %%%	&  A = (\links{A},\rechts{A})
 %%%	&& \text{und es gilt}
-%%%	&& \links{A}, \rechts{A} \symsubseteq \formulaSet \\
+%%%	&& \links{A}, \rechts{A} \symsubseteq \symformulaSet \\
 %%%	&  \links{A} \symderiveR \rechts{A}
 %%%	&& \text{oder einfach}
 %%%	&& \links{A} \symderive  \rechts{A}
@@ -911,17 +915,17 @@ Dies führt zu den folgenden Spezialfällen:
 
 Nach diesen Vorbereitungen fassen wir noch mal zusammen:\\
 Ein geordnetes Paar $(\prerequisiteSet, \conclusionSet) \in \deriveSetSet^2 = \deriveSetRel^2$ heißt eine
-\definition{\Schlussregel} \defn{für} $\formulaSet$, geschrieben $\frac{\prerequisiteSet}{\conclusionSet}$; und es gilt:
+\definition{\Schlussregel} \defn{für} $\symformulaSet$, geschrieben $\frac{\prerequisiteSet}{\conclusionSet}$; und es gilt:
 \begin{align}
 	& \prerequisiteSet \in \deriveSetRel
 	&& \text{, die \definition{\Voraussetzungen}}
-	& \text{, eine Menge von \defn{$\prerequisiteSet$-\Ableitungen}.}
-	\label{def:ruleRelationVoraussetzungen}
+	& \text{, eine Menge aus \defn{$\prerequisiteSet$-\Ableitungen}.}
+	\label{def-ruleRelationVoraussetzungen}
 	\\
 	& \conclusionSet   \in \deriveSetRel
 	&& \text{, die \definition{\Folgerungen}}
-	& \text{, eine Menge von   \defn{$\conclusionSet$-\Ableitungen}.}
-	\label{def:ruleRelationFolgerungen}
+	& \text{, eine Menge aus   \defn{$\conclusionSet$-\Ableitungen}.}
+	\label{def-ruleRelationFolgerungen}
 	\\
 	& \abl{a} \in \prerequisiteSet \quad \symmetaimp
 	&& \abl{a} = (\Gamma, \Delta) \; \symmetaand \; \Gamma, \Delta \in \formulaSetSet
@@ -939,7 +943,7 @@ Die \Schlussregel\ entspricht der \Aussage:
 	\item[] \emph{Mit den \Voraussetzungen\ aus $\prerequisiteSet$ lassen sich alle \Folgerungen\ aus $\conclusionSet$ ableiten}%
 	\footnote{mittels noch zu definierender \emph{\zulaessiger\ \Transformationen}}.
 \end{itemize}
-Die \glsIdy{Schlussregel}{Schlussregel, allgemeingültig} heißt \defn{\allgemeingueltig}, wenn aus den \Voraussetzungen\ alle \Folgerungen\ abgleitet\ werden können.
+Die \Schlussregel\ heißt \definition{\allgemeingueltig}, wenn aus den \Voraussetzungen\ alle \Folgerungen\ abgleitet\ werden können.
 In diesem Fall kann sie zur \zulaessigen\ \Transformation\ von weiteren \Formeln\ dienen.
 
 Die Mengen der \Voraussetzungen\ und \Folgerungen\ sowie die beiden Seiten einer \Ableitung\ dürfen auch leer sein.
@@ -953,47 +957,47 @@ Dies führt zu den folgenden semantischen Spezialfällen:
 	\item Ein Menge $B$ von \Formeln, die als allgemeingültig zu beweisen sind, kann durch eine \Folgerung\ $(\emptyset,B)$ repräsentiert werden.
 \end{itemize}
 %
-Wenn eine Schlussregel $\frac{\prerequisiteSet}{\conclusionSet}$ beschränkt ist, sind $\prerequisiteSet$ und $\conclusionSet$ endliche Mengen und es gibt wegen~\vreffor{eq:vecrel} zwei \Tupel\ $\vec{\prerequisite}, \vec{\conclusion} \in \symtupelSet(\deriveSet)$, so dass gilt:
+Wenn eine Schlussregel $\frac{\prerequisiteSet}{\conclusionSet}$ beschränkt ist, sind $\prerequisiteSet$ und $\conclusionSet$ endliche Mengen und es gibt wegen~\vreffor{eq-vecrel} zwei \Tupel\ $\vec{\prerequisite}, \vec{\conclusion} \in \symtupelSet(\deriveSet)$, so dass gilt:
 \footnote{%
-	Statt $\ge$ könnte in \eqref{eq:SRTb} auch $\symeq$ genommen werden.
+	Statt $\ge$ könnte in \eqref{eq-SRTb} auch $\symeq$ genommen werden.
 	Dann müssten die $\prerequisite_n$ und die $\conclusion_m$ jeweils paarweise verschieden sein, was wir nicht voraussetzen wollen.
 }
 \begin{align}
 	&     \prerequisiteSet      & \symeq \quad & \symSet(\vec{\prerequisite})
 	&,\;& \conclusionSet        & \symeq \quad & \symSet(\vec{\conclusion})
-	\label{eq:SRTa}  \\
+	\label{eq-SRTa}  \\
 	&     N                     &    \ge \quad & |\prerequisiteSet|
 	&,\;& M                     &    \ge \quad & |\conclusionSet|
 	&,\;& \text{mit } N, M \in \symINo
-	\label{eq:SRTb}          \\
+	\label{eq-SRTb}          \\
 	& \vec{\prerequisite}       & \symeq \quad & \{\prerequisite_1,\dots,\prerequisite_N \}
 	&,\;& \vec{\conclusion}     & \symeq \quad & \{\conclusion_1,\dots,\conclusion_M\}
-	\label{eq:SRTc}          \\
+	\label{eq-SRTc}          \\
 	&       \prerequisite_n     & \symeq \quad & ( \links{\prerequisite}_n, \rechts{\prerequisite}_n )
 	&,\;& \conclusion_m         & \symeq \quad & ( \links{\conclusion}_m, \rechts{\conclusion}_m )
 	&,\;& \text{für } 1 \le n \le N \text{ , } 1 \le m \le M
-	\label{eq:SRTd}          \\
+	\label{eq-SRTd}          \\
 	& \links{\prerequisite}_n   & \symderive_\prerequisiteSet \quad & \rechts{\prerequisite}_n
 	&,\;& \links{\conclusion}_m & \symderive_\conclusionSet   \quad & \rechts{\conclusion}_m
 	&,\;& \text{für } 1 \le n \le N \text{ , } 1 \le m \le M
-	\label{eq:SRTe}          \formulatoleft
+	\label{eq-SRTe}          \formulatoleft
 \end{align}
 also
 \begin{align}
 	&  \vec{\prerequisite} & = \quad & \{(\links{\prerequisite}_n,
 	\rechts{\prerequisite}_n) \mid 1 \le n \le N \}
-	\label{def:Voraussetzungen}
+	\label{def-Voraussetzungen}
 	\\
 	&  \vec{\conclusion}   & = \quad & \{(\links{\conclusion}_m,
 	\rechts{\conclusion}_m)   \mid 1 \le m \le M \}
-	\label{def:Folgerungen} \formulatoleft\formulatoleft
+	\label{def-Folgerungen} \formulatoleft\formulatoleft
 \end{align}
 und wir nennen auch das Paar $(\vec{\prerequisite}, \vec{\conclusion})$ \Schlussregel.
-Diese ist per se \beschraenkt\ und ein Element von $\symtupelSet(\deriveSet)^2$.
+Diese ist per se \beschraenkt\ und ein Element aus $\symtupelSet(\deriveSet)^2$.
 Nun haben wir alternative Schreibweisen für \beschraenkte\ \Schlussregeln:%
 \footnote{%
-	Nach \eqref{def:AB}, \eqref{def:ab} und \vreffor{def:aabb} sind die \enquote{Brüche} \Aussagen, und keine Paare mehr.
-	Die Äquivalenz der Aussagen steht schon in \vreffor{eq:AB}
+	Nach \eqref{def-AB}, \eqref{def-ab} und \vreffor{def-aabb} sind die \enquote{Brüche} \Aussagen, und keine Paare mehr.
+	Die Äquivalenz der Aussagen steht schon in \vreffor{eq-AB}
 }
 \[
 	\frac{             \prerequisiteSet}{             \conclusionSet} \; \symmetaequiv \;
@@ -1008,45 +1012,45 @@ Nun haben wir alternative Schreibweisen für \beschraenkte\ \Schlussregeln:%
 		\links{\conclusion}_M   \symderive_\conclusionSet   \rechts{\conclusion}_M
 	}
 	\quad \text{\defn{, \definition{\Schlussregel}} oder \definition{\formalerSatz}}
-	\tag{\FS} \label{def:FS}
+	\tag{\tagFS} \label{def-FS}
 \]
 
 \subsection{Beweise}% ----------------------------------------------------------
-\label{sub:Beweise}
+\label{sub-Beweise}
 
 Für einen \definition{\Beweis} in \ASBA\ ist stets gegeben:%
 \footnote{%
 	\ASBA\ selbst kann nur endliche Mengen abspeichern.
-	Für \ASBA muss daher einschränkend $\conclusionruleSet \in \symRelf(\symRelf(\symPotf(\formulaSet)))$ und $\outcomeSet \in \symRelf(\symPotf(\formulaSet))$ sein.
+	Für \ASBA muss daher einschränkend $\conclusionruleSet \in \symRelf(\symRelf(\symPotf(\symformulaSet)))$ und $\outcomeSet \in \symRelf(\symPotf(\symformulaSet))$ sein.
 }
 \begin{align}
-	& \formulaSet        &           \quad &
-	&& \text{, eine Menge von \Formeln, die zugrundeliegende \definition{\Sprache}.}
-	\label{def:Sprache}      \\
-	& \substitutionSet   & \symsubseteq \quad & \{ \substitution \mid \substitution : \formulaSet \rightarrow \formulaSet \}
-	&& \text{, eine Menge von \Funktionen, die \definition{\Substitutionen}.}
-	\label{def:Substitution} \\
+	& \symformulaSet     &           \quad &
+	&& \text{, eine Menge aus \Formeln, die zugrundeliegende \definition{\Sprache}.}
+	\label{def-Sprache}      \\
+	& \substitutionSet   & \symsubseteq \quad & \{ \substitution \mid \substitution : \symformulaSet \rightarrow \symformulaSet \}
+	&& \text{, eine Menge aus \Funktionen, die \definition{\Substitutionen}.}
+	\label{def-Substitution} \\
 	& \conclusionruleSet & \in       \quad & \conclusionruleRel
-	&& \text{, eine Menge von \definition{\Schlussregeln}.}
-	\label{def:Schlussregel} \\
+	&& \text{, eine Menge aus \definition{\Schlussregeln}.}
+	\label{def-Schlussregel} \\
 	& \outcomeSet        & \in       \quad & \deriveSetRel
-	&& \text{, eine Menge von \Ableitungen, die \definition{\Ergebnisse}.}
-	\label{def:Folgerung} &&
+	&& \text{, eine Menge aus \Ableitungen, die \definition{\Ergebnisse}.}
+	\label{def-Folgerung} &&
 \end{align}
 %
 Die \emph{\Substitutionen} sorgen \textzB\ dafür, dass aus einer allgemeingültigen Formel wie  \seqqt{$\alpha \symlimp (\beta \symlimp \alpha)$} \textzB\ die allgemeingültige Formel \seqqt{$\gamma \symlimp (\delta \symlimp \gamma)$} abgeleitet werden kann.
 %
 Die \emph{\Schlussregeln} geben erlaubte Schlussfolgerungen aus gegebenen Elementen an und umfassen auch die Voraussetzungen eines Satzes.
-Die \emph{\Ergebnisse} schließlich sind das, was mittels eines Beweises aus den gegebenen Voraussetzungen $\formulaSet$, $\substitutionSet$ und $\conclusionruleSet$ gefolgert werden soll.
+Die \emph{\Ergebnisse} schließlich sind das, was mittels eines Beweises aus den gegebenen Voraussetzungen $\symformulaSet$, $\substitutionSet$ und $\conclusionruleSet$ gefolgert werden soll.
 
 Im Fall von \beschraenkten\ \Schlussregeln\ können statt $\conclusionruleSet$ und $\outcomeSet$ auch
 \begin{align}
 	& \vec{\conclusionrule} & \in \quad & \symtupelSet(\symtupelSet(\deriveSet)^2)
-	&& \text{, ein \Tupel\ von \definition{\Schlussregeln}.}
-	\label{def:Schlussregelvector} \\
+	&& \text{, ein \Tupel\ aus \definition{\Schlussregeln}.}
+	\label{def-Schlussregelvector} \\
 	& \vec{\outcome}        & \in \quad & \quad \; \symtupelSet(\deriveSet)
-	&& \text{, ein \Tupel\ von \definition{\Ableitungen}, die \definition{\Ergebnisse}.}
-	\label{def:Folgerungsvector}    \formulatoleft
+	&& \text{, ein \Tupel\ aus \definition{\Ableitungen}, die \definition{\Ergebnisse}.}
+	\label{def-Folgerungsvector}    \formulatoleft
 \end{align}
 gegeben sein. Mit
 \begin{align}
@@ -1054,10 +1058,10 @@ gegeben sein. Mit
 	\\
 	& \outcomeSet \symdefeq \symSet(\vec{\outcome})
 \end{align}
-ergibt sich wegen \eqref{eq:Setf} und \vreffor{eq:vecrel} wieder die erste Form.
+ergibt sich wegen \eqref{eq-Setf} und \vreffor{eq-vecrel} wieder die erste Form.
 
 \subsection{Beispiel für einen Beweis}% ----------------------------------------
-\label{sub:Beispielbeweis}
+\label{sub-Beispielbeweis}
 
 %%%\textbf{****** Nacharbeiten ***** **************}%TODO *** Nacharbeiten
 \textbf{****** Hier weitermachen *******************}%TODO *** hier weitermachen
@@ -1065,7 +1069,7 @@ ergibt sich wegen \eqref{eq:Setf} und \vreffor{eq:vecrel} wieder die erste Form.
 Zur Veranschaulichung ein Beispiel:\citenote{bib:HilbertKalkuel}
 \begin{align}
 	& \substitution_{\alpha,\beta}(\delta) & \symdefeq \quad & \text{das }\delta \text{, bei dem alle Vorkommen von $\alpha$ durch $\beta$ ersetzt wurden} \\
-	& \formulaSet        & \symdefeq \quad & \text{die Menge aller \Formeln\ der aussagenlogischen \Sprache} \\
+	& \symformulaSet     & \symdefeq \quad & \text{die Menge aller \Formeln\ der aussagenlogischen \Sprache} \\
 	& \prerequisite_1    & \symdefeq \quad & (A, \{\alpha\}) \\
 	& \prerequisite_2    & \symdefeq \quad & (B, \{\alpha \symlimp \beta\}) \\
 	& \prerequisite_3    & \symdefeq \quad & (A \cup B, \{\beta\}) \\
@@ -1080,7 +1084,7 @@ Zur Veranschaulichung ein Beispiel:\citenote{bib:HilbertKalkuel}
 %TODO Beispiel vervollständigen
 
 \subsection{Beweisschritte}% ---------------------------------------------------
-\label{sub:Beweisschritte}
+\label{sub-Beweisschritte}
 
 %TODO Elimination von Voraussetzungen behandeln!
 Ein \Beweis%
@@ -1092,25 +1096,25 @@ in \ASBA\ besteht aus
 	& \text{einer Folge} && \proofstepTup = (\proofstep_1, \proofstep_2, ..., \proofstep_K)
 	&& \text{von \emph{\Beweisschritten} } \proofstep_k
 	&& \text{, die \definition{\Beweisschrittfolge}}
-	\label{def:Beweisschrittfolge}
+	\label{def-Beweisschrittfolge}
 	\\
 	& \text{einer Folge} && \transformationTup = (\transformation_1, \transformation_2, ..., \transformation_K)
 	&& \text{von \emph{\Transformationen} } \transformation_k
 	&& \text{, die \definition{\Transformationsfolge}}
-	\label{def:Transformationsfolge}
+	\label{def-Transformationsfolge}
 \end{align}
-Dabei ist $K$ ein Element von $\symINo$, $0 \le k \le K$, die \definition{\Beweisschritte} $\proofstep_k$ sind \Schlussregeln\ und die \Transformationen\ $\transformation_k$ werden später definiert.
+Dabei ist $K$ ein Element aus $\symINo$, $0 \le k \le K$, die \definition{\Beweisschritte} $\proofstep_k$ sind \Schlussregeln\ und die \Transformationen\ $\transformation_k$ werden später definiert.
 %TODO Verweis auf Definition der Transformationen fehlt
 Wir definieren noch:
 \begin{align}
 	& \proofstepSet_k & \symdefeq \quad & \{\proofstep_1, \proofstep_2, ..., \proofstep_k\} & \quad \text{, für~~} 0 \le k \le K
-	\label{def:Beweisschrittebis} \\
-	& \proofstepSet   & \symdefeq \quad & \proofstepSet_K \label{def:Beweisschrittmenge}
+	\label{def-Beweisschrittebis} \\
+	& \proofstepSet   & \symdefeq \quad & \proofstepSet_K \label{def-Beweisschrittmenge}
 	\formulatoleft\formulatoleft\formulatoleft
 \end{align}
 und nennen $\proofstepSet$ die \definition{\Beweisschrittmenge} der \Beweisschrittfolge\ $\proofstepTup$.
 Dann ist $\proofstepSet_0=\emptyset$ und $\proofstepSet_i\symsubseteq\proofstepSet_j\symsubseteq\proofstepSet$ für $0\le i\le j\le K$.
--- Wir nennen die \Beweisschrittfolge\ auch eine \definition{\Ableitung} von $\conclusionSet$ aus $\prerequisiteSet$.
+-- Wir nennen die \Beweisschrittfolge\ auch eine \definition{\Ableitung} aus $\conclusionSet$ aus $\prerequisiteSet$.
 
 %TODO Rolle der Transformationen erläutern
 Jeder \Beweisschritt\ $ \proofstep_k \text{ für } 1 \le k \le K $ muss entweder eine \Voraussetzung\ aus $\prerequisiteSet$ oder durch Anwendung einer \allgemeingueltigen\ \Schlussregel\ auf eine Teilmenge von $\proofstepSet_{k-1}$ eine wahre \Formel\ oder eine weitere \allgemeingueltige\ \Schlussregel\ sein.
@@ -1126,12 +1130,12 @@ Wir stützen uns dabei weitgehend auf~\cite{bib:Rautenberg}, ohne das jedes Mal 
 
 \section{Aussagenlogik}% =======================================================
 \beginsection{Aussagenlogik}
-\label{sec:Aussagenlogik}
+\label{sec-Aussagenlogik}
 
 \subsection{Konstante und Operationen}% ----------------------------------------
-\label{sub:Operationen}
+\label{sub-Operationen}
 
-\vrefDtab{tab:Symbole}%
+\vrefDtab{tab-Symbole}%
 \footnote{%
 	Die \tablename\ basiert auf den Wahrheitstafeln in~\cite{bib:Junktor} Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.
 }
@@ -1350,7 +1354,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 		\end{tablenotes}
 	\end{threeparttable}
 	\caption{Definition von aussagenlogischen Symbolen.}
-	\label{tab:Symbole}% Erst nach '\caption'!
+	\label{tab-Symbole}% Erst nach '\caption'!
 \end{table}
 
 Für einige \Junktorsymbole%
@@ -1361,11 +1365,11 @@ Namen und Sprechweisen sind auch Alternativen angegeben.
 Die durchgestrichenen (\textdh\ negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt.
 Wenn für eine bestimmte Kombination von \Wahrheitswerten\ mehr als eine Zeile angegeben ist, so können die zugehörigen \Junktoren\ zwar formal verschieden sein, liefern in der zweiwertigen \Aussagenlogik\ jedoch dieselben Ergebnisse.
 
-Die zur Einsparung von Klammern definierten Prioritäten sind \vrefintab{tab:Prioritäten} angegeben.%
-\footnote{Zur Erinnerung: Es gilt Rechtsklammerung. \vrefseesub{sub:Prioritäten}}
+Die zur Einsparung von Klammern definierten Prioritäten sind \vrefintab{tab-Prioritaeten} angegeben.%
+\footnote{Zur Erinnerung: Es gilt Rechtsklammerung. \vrefseesub{sub-Prioritaeten}}
 
 \subsection{Formalisierung}% ---------------------------------------------------
-\label{sub:Formalisierung}
+\label{sub-Formalisierung}
 
 Da sie die Grundlage -- quasi das Fundament -- des mathematischen Inhalts von \ASBA\ sind, müssen die \Axiome, \Saetze, \Beweise, \textusw\ der \Aussagenlogik\ (und später der \Praedikatenlogik) in streng formaler Form vorliegen.%
 \footnote{%
@@ -1381,30 +1385,30 @@ besser umgehen können und Klammern dort überflüssig sind, werden viele \Forme
 Dies wird auf Wunsch auch bei Ausgaben von \ASBA\ so gehandhabt.
 
 \subsubsection{Bausteine der aussagenlogischen Sprache}% - - - - - - - - - - - -
-\label{subsub:Bausteine}
+\label{subsub-Bausteine}
 
 %TODO * hier bei der Aussagenlogik weitermachen
 Zur Einteilung der \Junktoren\ werden die folgenden Mengen definiert:
 \begin{align}
 	& \definition{\symalCon}              & \symdefeq \quad & \{ \symltrue, \symlfalse \}
 	&& \text {, Menge der \defn{aussagenlogischen Konstanten}}
-	\idx{Konstante, aussagenlogisch, Menge davon} \label{def:C}
+	\idx{Konstante, aussagenlogisch, Menge davon} \label{def-C}
 	\\
 	& \definition{\symalUna}              & \symdefeq \quad & \{ \symlnot \}
 	&& \text{, Menge der \defn{unären \Junktoren}}
-	\idx{Junktor, unär, Menge davon}              \label{def:U}
+	\idx{Junktor, unär, Menge davon}              \label{def-U}
 	\\
 	& \definition{\symalBin}              & \symdefeq \quad &
 	\{ \symland, \symlor, \symlxor, \symlimp, \symlequiv, \symlrep, \symlnand, \symlnor \}
 	&& \text{, Menge der \defn{binären \Junktoren}}
-	\idx{Junktor, binär, Menge davon}             \label{def:B}
+	\idx{Junktor, binär, Menge davon}             \label{def-B}
 \end{align}
 
 Um damit \Formeln\ zu bilden, werden noch Variable gebraucht:
 \begin{align}
 	& \definition{\symalVar}  & \symdefeq \quad & \{ \alvar_n \mid n \in \symINo \}
 	&&&&
-	&& \text{, Menge der \defn{aussagenlogischen Variablen}} \label{def:alVar}
+	&& \text{, Menge der \defn{aussagenlogischen Variablen}} \label{def-alVar}
 	&&
 \end{align}
 
@@ -1413,25 +1417,25 @@ Die Mengen $\symalCon$, $\symalUna$, $\symalBin$ und $\symalVar$ müssen paarwei
 \begin{align}
 	& \definition{\symalJun}  & \symdefeq      \qquad & \symalCon \cup \symalUna \cup \symalBin
 	&& \text{, Menge der \definition{\Junktorsymbole}}
-	\idx{Junktorsymbole, Menge der} \label{def:alJun}
+	\idx{Junktorsymbole, Menge der} \label{def-alJun}
 	\\
 	& \definition{\symalABC}  & \symdefeq      \qquad & \symalVar \cup \symalJun
 	&& \text{, \defn{Alphabet der aussagenlogischen \Sprache}
-	(\defn{für} $\symalJun$)}       \label{def:alABC}
+	(\defn{für} $\symalJun$)}       \label{def-alABC}
 	\\
 	& \definition{\symalJunx} & \symsubseteq\; \qquad & \symalJun
-	&& \text{, eine Teilmenge der \Junktorsymbole\ für eine Indexvariable $x$}
-	~                               \label{def:alJunx}
+	&& \text{, eine Teilmenge von } \symalJun \text{ für eine Indexvariable } x
+	~                               \label{def-alJunx}
 	\\
 	& \definition{\symalABCx} & \symdefeq      \qquad & \symalVar \cup \symalJunx \quad
-	&& \text{, Alphabet der aussagenlogischen Sprache
-	für $\symalJunx$}               \label{def:alABCx}
+	&& \text{, das Alphabet der aussagenlogischen Sprache
+	für } \symalJunx                \label{def-alABCx}
 \end{align}
 
-Für Elemente von $\symalVar$ verwenden wir normalerweise die kleinen, lateinischen Buchstaben $a$, $b$, $c$, usw.
+Für Elemente aus $\symalVar$ verwenden wir normalerweise die kleinen, lateinischen Buchstaben $a$, $b$, $c$, usw.
 
 \subsubsection{Aussagenlogische Formeln}%  - - - - - - - - - - - - - - - - -
-\label{subsub:Formeln}
+\label{subsub-Formeln}
 
 Neben dem Alphabet $\symalABC$ \textbzw\ $\symalABCx$ werden noch Klammern als Gliederungszeichen verwendet.
 Damit können nun rekursiv für jede Teilmenge $\symalJun_x$ von $\symalJun$ zwei Mengen von aussagenlogischen \Formeln\ definiert werden, wobei wir für diese Formeln die kleinen, griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwenden.
@@ -1440,42 +1444,42 @@ $\definition{\symalForx}$ sei die Menge der auf folgende Weise definierten \defi
 \idx{Formel, aussagenlogisch mit Klammerung}:
 \begin{align}
 	&                    & \symalVar                    \symsubset \symalForx
-	&&& \text{, die Variablen}  \label{def:ForQ}
+	&&& \text{, die Variablen}  \label{def-ForQ}
 	\\
 	&                    & \symalJun_x \cap \symalCon   \symsubset \symalForx
-	&&& \text{, die Konstanten} \label{def:ForJK}
+	&&& \text{, die Konstanten} \label{def-ForJK}
 	\\
 	\alpha \in\symalForx & \quad\symmetaimp & (\symopubsp\alpha)\in\symalForx
 	&&& \text{, für} \quad \symopubsp \in \symalUna \cap \symalJunx
-	\label{def:ForU}
+	\label{def-ForU}
 	\\
 	\alpha,\beta\in\symalForx & \quad\symmetaimp & (\alpha\symopbsp\beta) \in\symalForx
 	&&& \text{, für} \quad \symopbsp  \in \symalBin \cap \symalJunx
-	\label{def:ForB}
+	\label{def-ForB}
 	\formulatoleft
 \end{align}
 
-Nur die auf diese Weise konstruierten \Formeln\ sind Elemente von $\symalForx$.
+Nur die auf diese Weise konstruierten \Formeln\ sind Elemente aus $\symalForx$.
 -- Für $\symalJunx$ = $\symalJun$ sei noch $\definition{\symalFor} \symdefeq \symalForx$.
 
 $\definition{\symalForpx}$ sei die Menge der auf folgende Weise definierten \definition{aussagenlogischen \Formeln} \defn{in Polnischer Notation}\idx{Formel, aussagenlogisch in Polnischer Notation}:
 \begin{align}
 	&                          & \symalVar                   \symsubset \symalForpx
-	&&& \text{, die Variablen}  \label{def:ForQp}
+	&&& \text{, die Variablen}  \label{def-ForQp}
 	\\
 	&                          & \symalJunx \cap \symalCon   \symsubset \symalForpx
-	&&& \text{, die Konstanten} \label{def:ForJKp}
+	&&& \text{, die Konstanten} \label{def-ForJKp}
 	\\
 	\alpha      \in\symalForpx & \quad\symmetaimp & \symopubsp\alpha \in\symalForpx
 	&&& \text{, für}  \quad \symopubsp \in \symalUna  \cap \symalJunx
-	\label{def:ForUp}
+	\label{def-ForUp}
 	\\
 	\alpha,\beta\in\symalForpx & \quad\symmetaimp & \symopbsp\alpha\beta\in\symalForpx
 	&&& \text{, für}  \quad \symopbsp  \in \symalBin  \cap \symalJunx
-	\label{def:ForBp} \formulatoleft
+	\label{def-ForBp} \formulatoleft
 \end{align}
 
-Nur die auf diese Weise konstruierten \Formeln\ sind Elemente von $\symalForpx$.
+Nur die auf diese Weise konstruierten \Formeln\ sind Elemente aus $\symalForpx$.
 -- Für $\symalJunx$ = $\symalJun$ sei noch $\definition{\symalForp} \symdefeq \symalForpx$.
 
 Wie man leicht sieht, gilt
@@ -1489,14 +1493,14 @@ Wie man leicht sieht, gilt
 \end{equation}
 und weiterhin gibt es eine bijektive Abbildung von $\symalFor$ nach $\symalForp$. Auf einen \Beweis\ verzichten wir.
 %
-Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der \Formeln\ aus $\symalForx$ einsparen.
+Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub-Bausteine} lassen sich in der Regel noch viele Klammern der \Formeln\ aus $\symalForx$ einsparen.
 Die \Formeln\ aus $\symalForpx$ sind frei von Klammern.
-Die Namen der \Junktoren\ finden sich \vrefintab{tab:Symbole}.
+Die Namen der \Junktoren\ finden sich \vrefintab{tab-Symbole}.
 
-Die \Formeln, die nach einer der Regeln \eqref{def:ForU}, \eqref{def:ForB}, \eqref{def:ForUp} oder \eqref{def:ForBp} gebildet wurden, sind offensichtlich \defn{\zerlegbar}, die anderen, \textdh\ Variablen und Konstanten (aus $\symalVar$ \textbzw\ $\symalCon$), sind \defn{\unzerlegbar}. Letztere bezeichnet man auch als \defn{\atomare\ \Formeln}.
+Die \Formeln, die nach einer der Regeln \eqref{def-ForU}, \eqref{def-ForB}, \eqref{def-ForUp} oder \eqref{def-ForBp} gebildet wurden, sind offensichtlich \defn{\zerlegbar}, die anderen, \textdh\ Variablen und Konstanten (aus $\symalVar$ \textbzw\ $\symalCon$), sind \defn{\unzerlegbar}. Letztere bezeichnet man auch als \defn{\atomare\ \Formeln}.
 
 \subsection{Definition von Junktoren durch andere}% -------------
-\label{sub:ausJunktorDef}
+\label{sub-ausJunktorDef}
 
 Im folgenden gelte für zwei aussagenlogische \Formeln\ $\alpha$ und $\beta$:
 \begin{itemize}
@@ -1504,26 +1508,26 @@ Im folgenden gelte für zwei aussagenlogische \Formeln\ $\alpha$ und $\beta$:
 	stimmen als \Zeichenkette\ überein.
 	%
 	\item[] $\alpha \bindefinition{\symequiv} \beta \quad \symmetadefeq$ \quad
-	\parbox[t]{13cm}{$\alpha$ und $\beta$ können mit Hilfe erlaubter \Substitutionen\ und geltender \Axiome\ -- \vrefseesub{sub:ausAxiome} -- ineinander überführt werden.}
+	\parbox[t]{13cm}{$\alpha$ und $\beta$ können mit Hilfe erlaubter \Substitutionen\ und geltender \Axiome\ -- \vrefseesub{sub-ausAxiome} -- ineinander überführt werden.}
 \end{itemize}
 %TODO === Verweise auf Definitionen prüfen und hinzufügen
 
-Es werden verschiedene Teilmengen von $\symalJun$ eingeführt, die jeweils ausreichen um alle anderen Elemente von $\symalJun$ zu definieren:
+Es werden verschiedene Teilmengen von $\symalJun$ eingeführt, die jeweils ausreichen um alle anderen Elemente aus $\symalJun$ zu definieren:
 \begin{align}
-	&\symalJun_\iBool&\symdefeq\quad&\{\symlnot,\symland,\symlor\}\label{def:Jbool}
-	\qquad \text{(\definition{\BoolscheSignatur})}
+	&\symalJun_\iBool&\symdefeq\quad&\{\symlnot,\symland,\symlor\}\label{def-Jbool}
+	\qquad \text{(\definition{\BoolescheSignatur})}
 	\\
-	&\symalJun_\iAnd &\symdefeq\quad&\{\symlnot,\symland \}\label{def:Jand}
+	&\symalJun_\iAnd &\symdefeq\quad&\{\symlnot,\symland \}\label{def-Jand}
 	\\
-	&\symalJun_\iOr  &\symdefeq\quad&\{\symlnot,\symlor  \}\label{def:Jor}
+	&\symalJun_\iOr  &\symdefeq\quad&\{\symlnot,\symlor  \}\label{def-Jor}
 	\\
-	&\symalJun_\iImp &\symdefeq\quad&\{\symlnot,\symlimp \}\label{def:Jimp}
+	&\symalJun_\iImp &\symdefeq\quad&\{\symlnot,\symlimp \}\label{def-Jimp}
 	\\
-	&\symalJun_\iRep &\symdefeq\quad&\{\symlnot,\symlrep \}\label{def:Jrep}
+	&\symalJun_\iRep &\symdefeq\quad&\{\symlnot,\symlrep \}\label{def-Jrep}
 	\\
-	&\symalJun_\iNand&\symdefeq\quad&\{\symlnand         \}\label{def:Jnand}
+	&\symalJun_\iNand&\symdefeq\quad&\{\symlnand         \}\label{def-Jnand}
 	\\
-	&\symalJun_\iNor &\symdefeq\quad&\{\symlnor          \}\label{def:Jnor}
+	&\symalJun_\iNor &\symdefeq\quad&\{\symlnor          \}\label{def-Jnor}
 	\formulatoleft\formulatoleft\formulatoleft
 \end{align}
 Solche Teilmengen heißen \logischeSignatur.
@@ -1531,47 +1535,47 @@ Solche Teilmengen heißen \logischeSignatur.
 Im Folgenden stehen jeweils links die \Formeln\ in üblicher Schreibweise vollständig geklammert und rechts in Polnischer Notation (ohne Klammern).
 Ferner seien $\alpha$ und $\beta$ beliebige, nicht notwendig verschiedene \Formeln\ aus der passenden Menge $\symalForx$ \textbzgl\ der um die mit Hilfe der Definitionen erweiterten \Formelmenge.
 
-Ausgehend von den \Junktoren\ aus der \BoolschenSignatur\ $\symalJun_\iBool$ werden die restlichen \Junktoren\ aus $\symalJun$ definiert.
+Ausgehend von den \Junktoren\ aus der \BooleschenSignatur\ $\symalJun_\iBool$ werden die restlichen \Junktoren\ aus $\symalJun$ definiert.
 Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den \Junktoren\ aus $\symalJun_\iAnd$:
 \begin{align}
 	% folgt ------------------------
 	(\alpha \bindefinition{\symlimp}   \beta) &\;\symdefeq\; (\symlnot (\alpha \symland  (\symlnot \beta))) &
 	\bindefinition{\symlimp}  \alpha   \beta  &\;\symdefeq\;  \symlnot    \symland \alpha \symlnot \beta
-	\label{def:imp}
+	\label{def-imp}
 	\\
 	% sofern -----------------------
 	(\alpha \bindefinition{\symlrep}   \beta) &\;\symdefeq\; (\symlnot (\beta \symland  (\symlnot \alpha))) &
 	\bindefinition{\symlrep}   \beta  \alpha  &\;\symdefeq\;  \symlnot    \symland \beta \symlnot \alpha
-	\label{def:rep}
+	\label{def-rep}
 	\\
 	% genau dann -------------------
 	(\alpha \bindefinition{\symlequiv} \beta) &\;\symdefeq\; ((\alpha \symlimp \beta) \symland (\alpha \symlrep \beta)) &
 	\bindefinition{\symlequiv} \alpha  \beta  &\;\symdefeq\; \symland \symlimp \alpha \beta \symlrep \alpha \beta
-	\label{def:equiv}
+	\label{def-equiv}
 	\\
 	%falsch ------------------------
 	\definition{\symlfalse}                   &\;\symdefeq\; (\alvar_0 \symland (\symlnot \alvar_0)) &
-	\definition{\symlfalse}                   &\;\symdefeq\;  \symland \alvar_0  \symlnot \alvar_0   \label{def:false}
+	\definition{\symlfalse}                   &\;\symdefeq\;  \symland \alvar_0  \symlnot \alvar_0   \label{def-false}
 	\\
 	% NAND -------------------------
 	(\alpha \bindefinition{\symlnand}  \beta) &\;\symdefeq\; (\symlnot (\alpha \symland \beta )) &
-	\bindefinition{\symlnand}  \alpha  \beta  &\;\symdefeq\;  \symlnot  \symland \alpha \beta \label{def:nand}
+	\bindefinition{\symlnand}  \alpha  \beta  &\;\symdefeq\;  \symlnot  \symland \alpha \beta \label{def-nand}
 \end{align}
 und die mit den \Junktoren\ aus $\symalJun_\iOr$:
 \begin{align}
 	% NOR --------------------------
 	(\alpha \bindefinition{\symlnor}   \beta) & \;\symdefeq\; (\symlnot (\alpha \symlor \beta))   &
-	\bindefinition{\symlnor}   \alpha  \beta  & \;\symdefeq\;  \symlnot  \symlor \alpha \beta \label{def:nor}
+	\bindefinition{\symlnor}   \alpha  \beta  & \;\symdefeq\;  \symlnot  \symlor \alpha \beta \label{def-nor}
 	\\
 	% plus -------------------------
 	(\alpha \bindefinition{\symlxor}   \beta) & \;\symdefeq\; ((\alpha \symlor \beta) \symland (\symlnot (\alpha \symland \beta)))&
 	\bindefinition{\symlxor}   \alpha  \beta  & \;\symdefeq\;  \symland \symlor\alpha\beta \symlnot \symland \alpha \beta
-	\label{def:add}
+	\label{def-add}
 	\\
 	% wahr -------------------------
 	\definition{\symltrue} & \;\symdefeq\; (\alvar_0 \symlor (\symlnot \alvar_0)) &
 	\definition{\symltrue} & \;\symdefeq\;  \symlor \alvar_0  \symlnot \alvar_0
-	\label{def:true}
+	\label{def-true}
 \end{align}
 
 Ist \chrqt{\symlor} oder \chrqt{\symland} nicht vorgegeben, \textdh\ wird von den Elementen aus $\symalJun_\iAnd$ \textbzgl\ $\symalJun_\iOr$ statt von denen aus $\symalJun_\iBool$ ausgegangen, so muss man den fehlenden \Junktor\ mittels der passenden der beiden folgenden Definitionen einführen:
@@ -1579,11 +1583,11 @@ Ist \chrqt{\symlor} oder \chrqt{\symland} nicht vorgegeben, \textdh\ wird von de
 	% oder aus und -----------------
 	(\alpha \symlor \beta)  & \;\symdefeq\; (\symlnot((\symlnot\alpha)\symland(\symlnot\beta))) &
 	\symlor \alpha  \beta   & \;\symdefeq\;  \symlnot \symland \symlnot \alpha \symlnot \beta
-	\label{def:orand} \\
+	\label{def-orand} \\
 	% und aus oder -----------------
 	(\alpha \symland \beta) & \;\symdefeq\; (\symlnot((\symlnot\alpha)\symlor(\symlnot\beta)))  &
 	\symland \alpha  \beta  & \;\symdefeq\;  \symlnot \symlor \symlnot \alpha \symlnot \beta
-	\label{def:andor}
+	\label{def-andor}
 \end{align}
 Nun sind wieder alle \Junktoren\ definiert.
 
@@ -1592,18 +1596,18 @@ Entsprechend wird bei Vorgabe von $\symalJun_\iImp$ \textbzgl\ $\symalJun_\iRep$
 	% oder aus imp -----------------
 	(\alpha \symlor  \beta) & \;\symdefeq\; ((\symlnot \alpha) \symlimp \beta)         &
 	\symlor \alpha   \beta  & \;\symdefeq\;   \symlimp \symlnot \alpha \beta
-	\label{def:orrep}
+	\label{def-orrep}
 	\\
 	% und aus rep ------------------
 	(\alpha \symland \beta) & \;\symdefeq\; (\symlnot ((\symlnot \beta) \symlrep \alpha)) &
 	\symland \alpha  \beta  & \;\symdefeq\;  \symlnot \symlrep \symlnot \beta \alpha
-	\label{def:andrep}
+	\label{def-andrep}
 \end{align}
-woraufhin dann \eqref{def:imp} \textbzgl\ \eqref{def:rep} als Gleichung nachzuweisen ist.
-Da aus \eqref{def:rep} durch \Vertauschung\ der Variablen unmittelbar
+woraufhin dann \eqref{def-imp} \textbzgl\ \eqref{def-rep} als Gleichung nachzuweisen ist.
+Da aus \eqref{def-rep} durch \Vertauschung\ der Variablen unmittelbar
 \begin{align}
 	(\alpha \symlrep \beta) & \;\equiv\; (\beta \symlimp \alpha) &
-	\symlrep \alpha  \beta  & \;\equiv\;  \symlimp \beta \alpha  \label{eq:repimp}
+	\symlrep \alpha  \beta  & \;\equiv\;  \symlimp \beta \alpha  \label{eq-repimp}
 \end{align}
 folgt, vermindert sich der Aufwand dazu erheblich.
 
@@ -1611,30 +1615,30 @@ Bei Vorgabe von $\symalJun_\iNand$ \textbzgl\ $\symalJun_\iNor$ schließlich wer
 \begin{align}
 	% nicht aus nor ----------------
 	(\symlnot \alpha) & \;\symdefeq\; (\alpha \symlnor \alpha)  &
-	\symlnot  \alpha  & \;\symdefeq\;  \symlnor \alpha \alpha   \label{def:notnor} \\
+	\symlnot  \alpha  & \;\symdefeq\;  \symlnor \alpha \alpha   \label{def-notnor} \\
 	% nicht aus nand ---------------
 	(\symlnot \alpha) & \;\symdefeq\; (\alpha \symlnand \alpha) &
-	\symlnot  \alpha  & \;\symdefeq\;  \symlnand \alpha \alpha  \label{def:notnand}
+	\symlnot  \alpha  & \;\symdefeq\;  \symlnand \alpha \alpha  \label{def-notnand}
 \end{align}
 und, da \chrqt{\symlnot} jetzt definiert ist, aus
 \begin{align}
 	% oder aus nor -----------------
 	(\alpha \symlor \beta)  & \;\symdefeq\; (\symlnot(\alpha \symlnor \beta))  &
 	\symlor \alpha  \beta   & \;\symdefeq\;  \symlnot \symlnor \alpha \beta
-	\label{def:ornor} \\
+	\label{def-ornor} \\
 	% und aus nand -----------------
 	(\alpha \symland \beta) & \;\symdefeq\; (\symlnot(\alpha \symlnand \beta)) &
 	\symland \alpha  \beta  & \;\symdefeq\;  \symlnot \symlnand \alpha \beta
-	\label{def:andnand}
+	\label{def-andnand}
 \end{align}
-ausgewählt und es ist \eqref{def:nand} \textbzgl\ \eqref{def:nor} als Gleichung nachzuweisen.
+ausgewählt und es ist \eqref{def-nand} \textbzgl\ \eqref{def-nor} als Gleichung nachzuweisen.
 
-Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der Definitionen \eqref{def:imp} bis \eqref{def:andnand}, ausgehend vom jeweils passenden $\symalForx$, genau die gesamte \Formelmenge\ $\symalFor$ erzeugt werden kann.
+Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der Definitionen \eqref{def-imp} bis \eqref{def-andnand}, ausgehend vom jeweils passenden $\symalForx$, genau die gesamte \Formelmenge\ $\symalFor$ erzeugt werden kann.
 
 \subsection{Aussagenlogisches Axiomensystem}% ----------------------------------
-\label{sub:ausAxiome}
+\label{sub-ausAxiome}
 
-Ausgehend von der \logischenSignatur $\symalJun_\iAnd = \{\symlnot, \symland\}$ und der \vrefdef{def:imp} von \chrqt{\symlimp} werden die folgenden vier logischen \Axiome\ definiert:
+Ausgehend von der \logischenSignatur $\symalJun_\iAnd = \{\symlnot, \symland\}$ und der \vrefdef{def-imp} von \chrqt{\symlimp} werden die folgenden vier logischen \Axiome\ definiert:
 \begin{align}
 	&
 	(\alpha\symlimp\beta\symlimp\gamma)\symlimp(\alpha\symlimp\beta)\symlimp(\alpha\symlimp\gamma)
@@ -1660,14 +1664,14 @@ Ausgehend von der \logischenSignatur $\symalJun_\iAnd = \{\symlnot, \symland\}$ 
 
 \section{Prädikatenlogik}% =====================================================
 \beginsection{Praedikatenlogik}
-\label{sec:Prädikatenlogik}
+\label{sec-Praedikatenlogik}
 
 \todo{Prädikatenlogik bearbeiten.}%%%
 %TODO Prädikatenlogik bearbeiten. %%%
 
 \section{Mengenlehre}% =========================================================
 \beginsection{Mengenlehre}
-\label{sec:Mengenlehre}
+\label{sec-Mengenlehre}
 
 \todo{Mengenlehre bearbeiten.}%%%
 %TODO Mengenlehre bearbeiten. %%%

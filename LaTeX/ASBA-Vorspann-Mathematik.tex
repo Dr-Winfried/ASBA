@@ -36,9 +36,9 @@
 % Namensbestandteile mit besonderer Bedeutung:
 %   al<name>     - aussagenlogisches <name>
 %   meta<name>   - metasprachliches <name>
-%   <name>Set    - Menge von <name>s
+%   <name>Set    - Menge (bestehend) aus <name>s
 %   <name>Rel    - Relation (aufgefasst als Menge) aus <name>s
-%   <name>Tup    - Tupel (Reihe, Sequenz) aus <name>s
+%   <name>Tup    - Tupel, Folge aus <name>s
 %   <name>Letter - Bezeichnung (Buchstabe) für (die Menge) <name>
 %   <name>Symbol - Bezeichnung (Text/Symbol) für (die Operation) <name>
 
@@ -71,8 +71,8 @@
 \DeclareMathOperator*{\Zb}      {\ZbSymbol}%  Zielbereich, target - Funktion
 %%%\DeclareMathOperator*{\Wb}   {\WbSymbol}% Wertebereich, range  - Funktion
 %%%\DeclareMathOperator*{\Qb}   {\QbSymbol}% Quellbereich, source - part. Fkt.
-\DeclareMathOperator*{\len}     {\lenSymbol}%  length - Tupel,Vektor,Folge,Reihe
-\DeclareMathOperator*{\Set}     {\SetSymbol}%   set of components - Tupel,...
+\DeclareMathOperator*{\len}     {\lenSymbol}%              length - Tupel, Folge
+\DeclareMathOperator*{\Set}     {\SetSymbol}% Menge d.Komponenten - Tupel, Folge
 %%%\DeclareMathOperator*{command}{definition}%
 
 % Beispieloperationen ==========================================================
@@ -133,8 +133,8 @@
 
 % Mengen
 \newcommand*{\formulaSet}       {\mathcal{\formulaSetLetter}}% Formel-Sprache
-\newcommand*{\formulaSetSet}    {\symPot(\formulaSet)}     %     P(L)
-\newcommand*{\formulaSetSetf}   {\symPotf(\formulaSet)}    %    Pe(L)
+\newcommand*{\formulaSetSet}    {\symPot(\symformulaSet)}  %     P(L)
+\newcommand*{\formulaSetSetf}   {\symPotf(\symformulaSet)} %    Pe(L)
 \newcommand*{\deriveSet}        {\formulaSetSet^2}         %     P(L)^2
 \newcommand*{\deriveSetSet}     {\symPot(\deriveSet)}      %   P(P(L)^2)
 \newcommand*{\deriveSetRel}     {\symRel(\formulaSetSet)}  %   R(P(L))
@@ -153,8 +153,8 @@
 \newcommand*{\outcomeSet}       {\mathcal{\outcome}}       % Ergebnisse als Menge
 \newcommand*{\outcomeRel}       {\symderive_\outcomeSet}   % Ergebnisse als Relation
 \newcommand*{\proofstep}        {\proofstepLetter}         % Beweisschritt
-\newcommand*{\proofstepTup}     {\mathcal{\proofstepTupLetter}}% Beweisschritte als Folge
-\newcommand*{\proofstepSet}     {\mathcal{\proofstep}}     % Beweisschritte als Menge
+\newcommand*{\proofstepTup}     {\vec{\proofstep}}         % Beweisschritte als Folge
+\newcommand*{\proofstepSet}     {\mathcal{\proofstepSetLetter}}% Beweisschritte als Menge
 \newcommand*{\transformation}   {\transformationLetter}    % Transformation
 \newcommand*{\transformationTup}{\mathcal{\transformation}}% Transformationen als Folge
 \newcommand*{\conclusionrule}   {\conclusionruleLetter}    % Schlussregel
@@ -162,7 +162,7 @@
 \newcommand*{\substitution}     {\substitutionLetter}      % Substitution
 \newcommand*{\substitutionSet}  {\mathcal{\substitution}}  % Substitutionen
 \newcommand*{\axiom}            {\axiomLetter}             % Axiom
-\newcommand*{\axiomSet}         {\mathcal{\axiom}}         % Menge von Axiomen
+\newcommand*{\axiomSet}         {\mathcal{\axiom}}         % Menge aus Axiomen
 
 % neue Mengensymbole: ABC EF   JKL  OPQ  TUV X
 % frei:                  D  GHI   MN   R    W YZ
@@ -170,24 +170,26 @@
 
 % \al... = aussagenlogisch
 % Mengen
-\newcommand*{\alvar}         {\alvarLetter}%  Name einer Variablen
+\newcommand*{\alvar}          {\alvarLetter}%  Name einer Variablen
 % Mengen der Aussagenlogik
-\newcommand*{\alVar}{\mathcal{\alVarLetter}}% Variablensymbole
-\newcommand*{\alCon}{\mathcal{\alConLetter}}% Konstantensymbole
-\newcommand*{\alUna}{\mathcal{\alUnaLetter}}% unäre Operationssymbole
-\newcommand*{\alBin}{\mathcal{\alBinLetter}}% binäre Operationssymbole
-\newcommand*{\alJun}{\mathcal{\alJunLetter}}% Junktoren
-\newcommand*{\alABC}{\mathcal{\alABCLetter}}% Alphabet der al Sprache
-\newcommand*{\alFor}{\mathcal{\alForLetter}}% Menge der Formeln/Worte, Sprache
-\newcommand*{\alForp}{\alFor^\mathrm{\polnischLetter}}%...in polnischer Notation
+\newcommand*{\alVar} {\mathcal{\alVarLetter}}% Variablensymbole
+\newcommand*{\alCon} {\mathcal{\alConLetter}}% Konstantensymbole
+\newcommand*{\alUna} {\mathcal{\alUnaLetter}}% unäre Operationssymbole
+\newcommand*{\alBin} {\mathcal{\alBinLetter}}% binäre Operationssymbole
+\newcommand*{\alJun} {\mathcal{\alJunLetter}}% Junktoren
+\newcommand*{\alABC} {\mathcal{\alABCLetter}}% Alphabet der al Sprache
+\newcommand*{\alFor} {\mathcal{\alForLetter}%Menge der aussagenlogischen Formeln
+	^                  \mathrm{\AussageLetter}}
+\newcommand*{\alForp}{\mathcal{\alForLetter}% ...in polnischer Notation
+	^                  \mathrm{\AussageLetter\polnischLetter}}
 % Indizes für Teilmengen von \alJun, \alABC, \alFor und \alForp
-\newcommand*{\iAnd} {\mathrm{and}}%
-\newcommand*{\iBool}{\mathrm{bool}}%
-\newcommand*{\iImp} {\mathrm{imp}}%
-\newcommand*{\iNand}{\mathrm{nand}}%
-\newcommand*{\iNor} {\mathrm{nor}}%
-\newcommand*{\iOr}  {\mathrm{or}}%
-\newcommand*{\iRep} {\mathrm{rep}}%
+\newcommand*{\iAnd}  {\mathrm{and}}%
+\newcommand*{\iBool} {\mathrm{bool}}%
+\newcommand*{\iImp}  {\mathrm{imp}}%
+\newcommand*{\iNand} {\mathrm{nand}}%
+\newcommand*{\iNor}  {\mathrm{nor}}%
+\newcommand*{\iOr}   {\mathrm{or}}%
+\newcommand*{\iRep}  {\mathrm{rep}}%
 % Konstanten und Symbole
 \newcommand*{\true}  {\mathrm{true}}
 \newcommand*{\false} {\mathrm{false}}

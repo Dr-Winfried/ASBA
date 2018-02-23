@@ -99,21 +99,56 @@
 %\usepackage{showidx}%           Index auf Seitenrand; nicht mit 'splitidx'\marginparwidth
 %\setlength{\marginparwidth}{2cm}% Breite des Seitenrandes
 
-% Verweise, Indizes und Glossar  -----------------------------------------------
-%\usepackage[germanb]{minitoc}\dosectoc% Unterverzeichnisse erstellen
-%TODO Fehler: 'minitoc' funktioniert nicht
-\usepackage{varioref}
-%\usepackage{makeidx}%             Indexing - Entweder 'makeidx' oder 'splitidx'
+% Verzeichnisse ----------------------------------------------------------------
+%TODO 'minitoc' anwenden
+\usepackage[germanb]{minitoc}%     Unterverzeichnisse
 \usepackage[protected]{splitidx}%  mehrere Indizes - Nur statt 'makeidx'
-%\usepackage{hvindex}%             Support for indexing - after 'babel
-\usepackage[colorlinks,linktoc=all]{hyperref}% PDF-Verlinkungen im Inhaltsverz.
-%\usepackage{glossaries-german}%   German language module for glossaries package
-\usepackage[nopostdot]{glossaries}% Create glossaries/acronyms; after 'hyperref'
-%TODO Fehler: 'hyperfirst' hat keine Wirkung'.
+%\usepackage{makeidx}%             Indexing - Entweder 'makeidx' oder 'splitidx'
+%\usepackage{hvindex}%             Support for 'makeidx' - after 'babel
+
+\usepackage{varioref}%             \vref...
+\usepackage[colorlinks,destlabel,hyperindex,linkcolor=blue,pagebackref,unicode,
+	pdftitle   ={ASBA - Axiome, Sätze, Beweise und Auswertungen},
+	pdfauthor  ={Dr. Winfried Teschers},
+	pdfsubject ={Projektdokument},
+	pdfkeywords={Mathematik, automatisches Beweisen, Beweisunterstützung}
+]{hyperref}
+% Paket ' hyperref': Extensive support for hypertext in LaTeX
+% colorlinks  - colors the links instead of using boxes
+% destlabel   - verwendet key von \label{key} nach Start von Kapiteln u.a.
+% hyperindex  - make items in the index by hyperlinked back to the text
+% linkcolor   - Color for normal internal links
+% pagebackref - inserts extra ‘back’ links into the bibliography for each entry
+% unicode     - Unicode encoded PDF strings
+% pdftitle    - Title    im PDF-Dokument
+% pdfauthor   - Author   im PDF-Dokument
+% pdfsubject  - Subject  im PDF-Dokument
+% pdfkeywords - Keywords im PDF-Dokument
+%TODO \autoref u.a. von 'hyperref' nutzen
+%%%\addto\extrasngerman{% siehe manual for 'hyperref' Seite 17
+%%%	\def\subsectionautorefname{\subsectionname}%
+%%%	\def\subsubsectionautorefname{\subsubsectionname}%
+%%%}
+
+\usepackage[nopostdot,xindy]{glossaries}
+%%%\usepackage[toc,index,nohypertypes={index},nopostdot,xindy]{glossaries}
+% Paket 'glossaries': Create glossaries and lists of acronyms
+% - nach 'hyperref'
+% - läd 'glossaries-german'
+% Optionen:         ('glossaries' erfordert 1. zusätzlichen Lauf von pdflatex)
+% toc          - in den Inhalt (erfordert 2. zusätzlichen Lauf von pdflatex)
+% index
+% nohypertypes - ={index} -
+% nopostdot    - Keinen zusätzlichen Punkt am Ende der Einträge.
+% xindy        - Verwendung von 'xindy' für die Sortierung
+% lädt {glossaries-german}% German language module for glossaries package
+%\GlsSetQuote{+}% nur für 'makeindex' - siehe 'User Manual for glossaries' S. 31
 
 % Einstellung von globalen Werten und Makro-Redefinitionen #####################
 
 \geometry{textwidth=170mm,textheight=256mm,twoside}% optional Option 'showframe'
+%TODO ausprobieren
+%%%\geometry{showframe}
 
 % Kopfzeilen ===================================================================
 \newcommand*{\texthead}[1]{\textnormal{\textsf{\textbf{#1}}}}% Schriftart
@@ -146,61 +181,14 @@
 
 % Kapitel ======================================================================
 \newcommand*{\Chaptername}{\chaptername}% wird mit 'Anhang' überschrieben
-\newcommand*{\beginchapter}[1]{%        direkt nach \chapter
-	\Chead{#1}%                         Kopfzeile Mitte = <Kapitelname>
-	\Ihead{\Chaptername~\thechapter}%   Kopfzeile Innen = Kapitel/Anhang <Nr.>
+\newcommand*{\beginchapter}[2][\Chaptername~\thechapter]{% direkt nach \chapter
+	\Chead{#2}%                         Kopfzeile Mitte = <Kapitelname>
+	\Ihead{#1}%                         Kopfzeile Innen = Kapitel/Anhang <Nr.>
 	\Pagestyle%                         veränderte Kopfzeile aktivieren
 	\Thispagestyle%                     ... auch für diese Seite, da ...
 }%                                      '\chapter' Kopf-/Fußzeilen deaktiviert
-\newcommand*{\likechapter}[2][chapter]{%statt \beginchapter für Inhalts-,
-	%                                   Tabellen- und Abbildungsverzeichnis
-	\Chead{#2}%                         Mitte in der Kopfzeile = <Kapitelname>
-	\Ihead{}%                           Innen in der Kopfzeile = <leer>
-	\Pagestyle%                         veränderte Kopfzeile aktivieren ...
-	\Thispagestyle%                     sicherheitshalber auch für diese Seite.
-	\addcontentsline{toc}{#1}{#2}%      Eintrag ins Inhaltsverzeichnis
-}
 \newcommand*{\Endchapter}{% am Ende eines Kapitels
 	\Thispagestyle% sicherheitshalber Kopfzeile für diese Seite aktivieren
-}
-
-% Verzeichnisse ================================================================
-\newcommand*{\starteverzeichnis}[2][]{% am Anfang der Ausgabe des Verzeichnisses
-	\label{#1:#2}%             |  vvvv  4 Zeilen Aktivierung der Kopfzeile
-	\Chead{#2}%                         Mitte in der Kopfzeile = <Kapitelname>
-	\Ihead{}%                           Innen in der Kopfzeile = <leer>
-	\Pagestyle%                         veränderte Kopfzeile aktivieren
-	\Thispagestyle%                     ... auch für diese Seite
-	\addcontentsline{toc}{section}{#2}% Eintrag ins Inhaltsverzeichnis
-}
-\newcommand{\idxpreambel}{
-	Mit \textit{kursiven} Seitenzahlen wird auf die Definition oder sonstige wichtige Stellen verwiesen.\\~
-}
-
-% Indizes ----------------------------------------------------------------------
-\newcommand*{\idxdictionary}[2][]{%     nur für Indices
-	\extendtheindex{}{%                 am Anfang von '\printindex'
-		\starteverzeichnis[#1]{#2}
-		Index und Symbolverzeichnis enthalten keine gemeinsamen Einträge.
-		Andererseits erscheinen sie aber überwiegend auch im Glossar.
-		\idxpreambel
-	}{}{}
-	\printindex[#1]
-}
-
-% Glossar ----------------------------------------------------------------------
-\renewcommand{\glossaryheader}{%        am Anfang von '\printglossaries'
-	\starteverzeichnis[glo]{Glossar}
-}
-\renewcommand{\glossarypreamble}{%      Text am Anfang des Glossars
-	Die Einträge im Glossar kommen auch entweder im Index oder im Symbolverzeichnis vor.
-	Die Sortierung insbesondere der Symbole unterscheidet sich dabei.
-%TODO sort für folgende Einträge setzen:
-%%%	Symbole, die Buchstaben oder Ziffern enthalten, sind dort eingeordnet.
-	\idxpreambel
-}
-\newcommand*{\glodictionary}{%          nur für Glossary
-	\printglossaries
 }
 
 % Abschnitte ===================================================================
@@ -459,6 +447,8 @@
 
 \newcommand*{\citesee}       [1]{\seename~\cite                {#1}}
 \newcommand*{\citenote}      [1]{\footnote{\citesee            {#1}}}
+\newcommand*{\alternativ}   [1]{\footnote{alternativ: \defn{#1}}}
+\newcommand*{\alternativen} [2]{\footnote{alternativ: \defn{#1} oder \defn{#2}}}
 
 % Abkürzungen mit Punkten; zur Unterscheidung vom Satzende
 \newcommand*{\textbzgl}{bzgl.\@}
@@ -478,49 +468,23 @@
 % Weitere Abkürzungen
 \newcommand*{\textdots}{…}
 
-% Glossareinträge ##############################################################
+% Verzeichnisse ################################################################
 
-% Indices und Symbole ==========================================================
+% Indices und Symbole
 \makeindex
 \newindex[Symbolverzeichnis]{sym}
 \newindex[Index]{idx}
 
-% Glossareinträge ==============================================================
-%%%\GlsSetQuote{+}% wegen ngerman; see glossaries guide for beginners ???
+% Glossareinträge
 \makeglossaries
 \setacronymstyle{long-sc-short}
 
-% Symbol/Index/Glossar =========================================================
-
-%TODO Indices und Glossar in die richtige Reihenfolge bringen; Manche Symbole sind mehrfach vorhanden
-%TODO Im Index und Glossar prüfen: Haben alle Einträge einen Verweise auf die Definition?
-
-%TODO optionalen Parameter anwenden - z.B. bei der Definition
-% Texte;#1=Font-Kommando;#2=glo=Golossary-Name;#3=idx=Index-Eintrag;out=Ausgabe
-\newcommand*{\idx}     [2][]{\sindex[idx]{#2|#1}}% 2=idx
-\newcommand*{\glsIdx}  [2][]{\gls  {#2}\idx[#1]{#2}}% 2+=idx
-\newcommand*{\GlsIdx}  [2][]{\Gls  {#2}\idx[#1]{#2}}% 2+=idx
-\newcommand*{\glsIdxPl}[2][]{\glspl{#2}\idx[#1]{#2}}% 2+=idx; plural
-\newcommand*{\GlsIdxPl}[2][]{\Glspl{#2}\idx[#1]{#2}}% 2+=idx; plural
-\newcommand*{\glsIdy}  [3][]{\gls  {#2}\idx[#1]{#3}}%
-\newcommand*{\glsIdyPl}[3][]{\glspl{#2}\idx[#1]{#3}}%         plural
-%%%\newcommand*{\glsIdz}  [4][]{\gls  {#2}\idx[#1]{\gls*{#2}}#3}% 3=out
-
-% Symbole;...;#3=sym=Symbol-Eintrag;...
-\newcommand*{\sym}     [2][]{\sindex[sym]{\ensuremath{#2}|#1}}% 2=sym
-\newcommand*{\glsSym}  [3][]{\glssymbol{#2}\sym[#1]{#3}}
-
 % Hervorhebung von neu definierten Begriffen
 \newcommand*{\defn}      [1]{\textbf{#1}}
-\newcommand*{\textdef}   [1]{\textit{\hyperpage{#1}}}% ein 'Font-Kommando'
+\newcommand*{\textdef}   [1]{\textbf{\textit{\hyperpage{#1}}}}% ein 'Font-Kommando'
 % Die folgenden #1 müssen mit einem Makro enden, das genau einen optionalen
 % Parameter hat, der ein 'Font-Kommando' wie z.B. '\textdef'sein muss.
 % Das sind i.Alg. die vor '\...newglossaryentry' definierten Makros.
 \newcommand*{\definition}   [1]  {\defn{#1[textdef]}}
 \newcommand*{\undefinition} [1]  {\defn{#1[textdef]}\;}%unär: folgender  Abstand
 \newcommand*{\bindefinition}[1]{\;\defn{#1[textdef]}\;}%binär:umgebender Abstand
-
-%TODO Definitions-Verweise ins Glossar müssen noch definiert werden
-% Makros für das Glossar
-%%%\newcommand*{\nopageref}[1]{}% keine Seitennummer im Index/Glossar
-\newcommand*{\glos}[1]{\textsc{#1}}% Für Verweise ins Glossar

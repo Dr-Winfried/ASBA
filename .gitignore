@@ -230,6 +230,7 @@ nppBackup/
 *.bcf
 *.bit
 *.blg
+*.brf
 *.dvi
 *.fdb_latexmk
 *.fls
@@ -244,7 +245,11 @@ nppBackup/
 *.lof
 *.log
 *.lot
+*.maf
+*.mst
+*.mtc*
 *.out
 *.sym
 *.synctex.gz
 *.toc
+*.xdy
