@@ -31,9 +31,9 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = de_DE
 
-\chapter{Design}% ##############################################################
+\chapter     {Design}% #########################################################
 \beginchapter{Design}
-\label{cha-Design}
+\label   {cha-Design}
 
 Dieses Projekt soll Open Source sein.
 Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)} und für die Software die \emph{GNU Affero General Public License (APGL)}.
@@ -42,16 +42,16 @@ Damit das Projekt gegebenenfalls durch verschiedene Entwickler gleichzeitig bear
 
 Wenn die Lizenzen nicht mitgeliefert wurden, können sie unter \url{http://www.gnu.org/licenses/} gefunden werden.
 
-\section{Anforderungen}% =======================================================
+\section     {Anforderungen}% ==================================================
 \beginsection{Anforderungen}
-\label{sec-Anforderungen}
+\label   {sec-Anforderungen}
 
 Die Anforderungen ergeben sich zunächst aus den Zielen \vrefinsec{sec-Ziele}.
 Die beiden Ziele~\ref{Ziel-Daten}~\emph{Daten} und~\ref{Ziel-Lizenz}~\emph{Lizenz} sind für die Entwicklung von \ASBA\ von sekundärer Bedeutung und werden daher in diesem \sectionname\ nicht übernommen.
 Die anderen Ziele werden noch verfeinert.
 
-\todo{Ziele aus Abschnitt "'Ziele"' in Anforderungen umwandeln.}%%%
-%TODO Ziele aus Abschnitt "'Ziele"' in Anforderungen umwandeln. %%%
+\todo{Ziele aus Abschnitt "'Ziele"' in Anforderungen umwandeln.}
+%TODO Ziele aus Abschnitt "'Ziele"' in Anforderungen umwandeln.
 %
 \begin{enumerate}
 
@@ -72,81 +72,81 @@ Die anderen Ziele werden noch verfeinert.
 	\end{enumerate}
 	Dabei sind alle Begriffe nur innerhalb eines Fachgebiets und seiner untergeordneten \Fachgebiete\ gültig, solange sie nicht umdefiniert werden.
 	Das oberste \Fachgebiet\ ist die ganze Mathematik.
-	-- \vrefseeziel{Ziel-Eingaben}
+	--- \vrefseeziel{Ziel-Eingaben}
 
 	\item \label{Anforderung-Pruefung} \emph{Prüfung}:
 	Vorhandene \Beweise\ können automatisch geprüft werden.
-	-- \vrefseeziel{Ziel-Pruefung}
+	--- \vrefseeziel{Ziel-Pruefung}
 
 	\item \label{Anforderung-Ausgaben} \emph{Ausgaben}:
 	Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener \Ausgabeschemata\ erfolgen.
-	-- \vrefseeziel{Ziel-Ausgaben} - \emph{Ausgabe in polnischer Notation}
+	--- \vrefseeziel{Ziel-Ausgaben} - \emph{Ausgabe in Polnischer Notation}
 
 	\item \label{Anforderung-Auswertungen} \emph{Auswertungen}:
 	Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
 	Insbesondere kann zu jedem \Beweis\ angegeben werden, wie lang er ist und welche \Axiome\ und Sätze%
 	\footnote{Sätze, die quasi als \Axiome\ verwendet werden.}
 	er benötigt.
-	-- \vrefseeziel{Ziel-Auswertungen}
+	--- \vrefseeziel{Ziel-Auswertungen}
 
 	\item \label{Anforderung-Anpassbarkeit} \emph{Anpassbarkeit}:
-	\Fachbegriffe\ und die Darstellung bei der Ausgabe können mit Hilfe von -- gegebenenfalls unbenannten -- untergeordneten \Fachgebieten\ angepasst werden.
-	-- \vrefseeziel{Ziel-Anpassbarkeit}
+	\Fachbegriffe\ und die Darstellung bei der Ausgabe können mit Hilfe von --- gegebenenfalls unbenannten --- untergeordneten \Fachgebieten\ angepasst werden.
+	--- \vrefseeziel{Ziel-Anpassbarkeit}
 
 	\item \label{Anforderung-Individualitaet} \emph{Individualität}:
 	\Axiome\ und Sätze können für jeden \Beweis\ individuell vorausgesetzt werden.
 	Dabei sind fachgebietsspezifische \Fachbegriffe\ erlaubt.
-	-- \vrefseeziel{Ziel-Individualitaet})
+	--- \vrefseeziel{Ziel-Individualitaet})
 
 	\item \label{Anforderung-Internet} \emph{Internet}:
 	Die Daten können auf mehrere Dateien verteilt sein.
-	Ein Teil davon -- oder sogar alle -- können im Internet liegen.
-	-- \vrefseeziel{Ziel-Internet}
+	Ein Teil davon --- oder sogar alle --- können im Internet liegen.
+	--- \vrefseeziel{Ziel-Internet}
 
 	\item \label{Anforderung-Kommunikation} \emph{Kommunikation}:
 	Die Kommunikation mit \ASBA\ kann mit den \Fachbegriffen\ der einzelnen \Fachgebiete\ erfolgen.
-	-- \vrefseeziel{Ziel-Kommunikation}
+	--- \vrefseeziel{Ziel-Kommunikation}
 
 	\item \label{Anforderung-Zugriff} \emph{Zugriff}:
 	Der Zugriff auf \ASBA\ kann lokal und über das Internet erfolgen.
-	-- \vrefseeziel{Ziel-Zugriff}
+	--- \vrefseeziel{Ziel-Zugriff}
 
 	\item \label{Anforderung-Unabhaengigkeit} \emph{Unabhängigkeit}:
 	\ASBA\ kann offline und online arbeiten.
-	-- \vrefseeziel{Ziel-Unabhaengigkeit}
+	--- \vrefseeziel{Ziel-Unabhaengigkeit}
 
 	\item \label{Anforderung-Rekursion} \emph{Rekursion}:
-	Es kann rekursiv über alle verwendeten Dateien -- auch solchen, die im Internet liegen -- ausgewertet werden.
-	-- \vrefseeziel{Ziel-Rekursion}
+	Es kann rekursiv über alle verwendeten Dateien --- auch solchen, die im Internet liegen --- ausgewertet werden.
+	--- \vrefseeziel{Ziel-Rekursion}
 
 	\item \label{Anforderung-Bedienbarkeit} \emph{Bedienbarkeit}:
 	\ASBA\ ist einfach zu bedienen.
-	-- \vrefseeziel{Ziel-Bedienbarkeit}
+	--- \vrefseeziel{Ziel-Bedienbarkeit}
 
 \end{enumerate}
 
-\section{Axiome}% ==============================================================
-\beginsection{\Axiome}
-\label{sec-Axiome}
-\todo{Axiome auswählen und definieren.}%%%
-%TODO Axiome auswählen und definieren. %%%
+\section[Axiome]{\Axiome}% =====================================================
+\beginsection   {\Axiome}
+\label       {sec-Axiome}
+\todo{Axiome auswählen und definieren.}
+%TODO Axiome auswählen und definieren.
 
-\section{Beweise}% =============================================================
-\beginsection{\Beweise}
-\label{sec-Beweise}
-\todo{Schlussregeln auswählen und Beweise definieren.}%%%
-%TODO Schlussregeln auswählen und Beweise definieren. %%%
+\section[Beweise]{\Beweise}% ===================================================
+\beginsection    {\Beweise}
+\label        {sec-Beweise}
+\todo{Schlussregeln auswählen und Beweise definieren.}
+%TODO Schlussregeln auswählen und Beweise definieren.
 
-\section{Datenstruktur}% =======================================================
+\section     {Datenstruktur}% ==================================================
 \beginsection{Datenstruktur}
-\label{sec-Datenstruktur}
-\todo{Datenstruktur abstrakt und in XML definieren.}%%%
-%TODO Datenstruktur abstrakt und in XML definieren. %%%
+\label   {sec-Datenstruktur}
+\todo{Datenstruktur abstrakt und in XML definieren.}
+%TODO Datenstruktur abstrakt und in XML definieren.
 
-\section{Bausteine}% ===========================================================
+\section     {Bausteine}% ======================================================
 \beginsection{Bausteine}
-\label{sec-Bausteine}
-\todo{Bausteine? definieren.}%%%
-%TODO Bausteine? definieren. %%%
+\label   {sec-Bausteine}
+\todo{Bausteine? definieren.}
+%TODO Bausteine? definieren.
 
 \Endchapter

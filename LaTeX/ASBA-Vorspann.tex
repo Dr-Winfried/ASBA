@@ -31,49 +31,70 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = de_DE
 
-% Glossareinträge werden in "ASBA-Vorspann-Glossar" definiert.
-% Elemente, die nur in "ASBA-Mathematik.tex" verwendet werden, werden in "ASBA-Vorspann-Mathematik.tex" definiert.
+% Testroutinen #################################################################
+
+% Schalter zum Testen
+\newif\ifWPTtest% Schalter zum Testen; noch AUS
+\WPTtesttrue%      allgemeiner Test         EIN
+
+\newcommand*{\WPTerrorIfDefined}[1]{% Testen, ob '\#1' schon definiert ist. Wenn ja, Fehlerausgabe
+	\ifWPTtest
+		\ifx#1\WPTundefined
+		\else
+			\errmessage{WPT: Schon definiert \string#1 : \meaning#1}
+		\fi
+	\else
+	\fi
+}
+%\ifWPTtest
+%\else
+%\fi
+
+% ##############################################################################
+
+% Elemente, die nur in 'ASBA-Mathematik.tex' verwendet werden, werden in 'ASBA-Vorspann-Mathematik.tex' definiert.
+% Glossareinträge werden in 'ASBA-Vorspann-Glossar' definiert.
 
 \documentclass[english, ngerman, parskip=half, headsepline, footsepline, fleqn, notitlepage]{scrreprt}
 
 % Pakete #######################################################################
 
-% Pakete aus "LaTeX 2e Befehlsübersicht" - <...> für Parameter -----------------
+% Pakete aus 'LaTeX 2e Befehlsübersicht' - <...> für Parameter =================
 \usepackage[utf8]{inputenc}% Für direkte Eingabe von Umlauten mit [utf8]
 \usepackage[T1]{fontenc}%    Darstellung von Umlauten mit [T1]
 \usepackage[english,ngerman]{babel}% Neue deutsche Rechtschreibung mit [ngerman]
-%\usepackage{multicol}%       Verwende <n> Spalten: \begin{multicols}{<n>}
+%\usepackage{multicol}%      Verwende <n> Spalten: \begin{multicols}{<n>}
 \usepackage[fleqn]{amsmath}% Erweiterung für LaTeX-Mathe; fleqn=einrücken
-\usepackage{amssymb}%        Zusätzliche Mathesymbole (bsp. IR)
+\usepackage{amssymb}%        Zusätzliche Mathesymbole (z.B. IR)
 \usepackage{graphicx}%       Bilder einbinden:\includegraphics[width=<x>]{build}
-%\usepackage{url}%            URLs einfügen: \url{http://...}
 \usepackage{textcomp}%       Zusätzliche Symbole z.B. \textmu
-%\usepackage{upgreek}%        Aufrechte griechische Symbole
-%\usepackage{wrapfig}%        Textumflossene Abbildungen
-%\usepackage{subcaption}%     Teilabbildungen in \begin{figure} mit
+%\usepackage{upgreek}%       Aufrechte griechische Symbole
+%\usepackage{wrapfig}%       Textumflossene Abbildungen
+%\usepackage{subcaption}%    Teilabbildungen in \begin{figure} mit
 %                            \begin{subfigure}[b]{<Weite>} und \hfill
-%\usepackage{pdfpages}%       \includepdf[<pages=1-2>]{<Anhang.pdf>}
-% weiter empfohlen ---------------------
-\usepackage{lmodern}%        Ersetzt "Computer Modern" durch "Latin Modern"
+%\usepackage{pdfpages}%      \includepdf[<pages=1-2>]{<Anhang.pdf>}
+%\usepackage{url}%     URLs einfügen: \url{http://...}; ersetzt durch 'hyperref'
+% weiter empfohlen -------------------------------------------------------------
+\usepackage{lmodern}%        Ersetzt 'Computer Modern' durch 'Latin Modern'
 \usepackage{mathtools}%      Mathematical tools to use with asmmath
 
-% allgemein --------------------------------------------------------------------
-\usepackage{scrlayer-scrpage}
+% allgemein ====================================================================
+\usepackage{scrlayer-scrpage}% für Koma-Scripts
 \usepackage{geometry}%  Flexible and complete interface to document dimensions.
 \usepackage{microtype}% Subliminal refinements towards typographical perfection.
 \usepackage{pict2e}%    New implementation of picture commands.
 \usepackage[autostyle]{csquotes}% Contex sensitive quotation facilities
 
-% mathematische Pakete ---------------------------------------------------------
+% mathematische Pakete =========================================================
 \usepackage{amsfonts}%       TeX fonts from the American Mathematical Society.
 \usepackage{amsopn}%         Provides a command \DeclareMathOperator.
 \usepackage{mathabx}%        Three series of mathematical symbols.
 \usepackage{mathpazo}%       Fonts to typeset mathematics to match palatino.
-%\usepackage{stix}%           OpenType Unicode maths fonts.
-%%                            führt zu: To many symbol fonts declared
-%\usepackage{cancel}%         Place lines through mathematical formulae.
+%\usepackage{stix}%          OpenType Unicode maths fonts.
+%%                           führt zu: To many symbol fonts declared
+%\usepackage{cancel}%        Place lines through mathematical formulae.
 
-% Tabellen ---------------------------------------------------------------------
+% Tabellen =====================================================================
 \usepackage{float}%          An Improved Environment for Floats
 \usepackage[table]{xcolor}%  Driver-independent color extensions - vor 'color'?
 %\usepackage{ctable}%   Flexible typesetting of table and figure using key/value
@@ -93,27 +114,36 @@
 \usepackage{arydshln}%       Draw dash-lines in array/tabular.
 \usepackage{caption}%        Customizing captions in floating environments.
 
-%% Nur für Entwicklung und Test ------------------------------------------------
-\usepackage{srcltx}%            Klick im Viewer öffnet Editor und umgekehrt
-\setlength{\overfullrule}{5pt}% Breite des schwarzen Balkens rechts von Overfull
-%\usepackage{showidx}%           Index auf Seitenrand; nicht mit 'splitidx'\marginparwidth
-%\setlength{\marginparwidth}{2cm}% Breite des Seitenrandes
-
-% Verzeichnisse ----------------------------------------------------------------
+% Verzeichnisse ================================================================
 %TODO 'minitoc' anwenden
 \usepackage[germanb]{minitoc}%     Unterverzeichnisse
 \usepackage[protected]{splitidx}%  mehrere Indizes - Nur statt 'makeidx'
 %\usepackage{makeidx}%             Indexing - Entweder 'makeidx' oder 'splitidx'
 %\usepackage{hvindex}%             Support for 'makeidx' - after 'babel
 
+% Verschiedenes ================================================================
+
+\geometry{textwidth=170mm,textheight=256mm,twoside}% optional Option 'showframe'
+%TODO ausprobieren
+%%%\geometry{showframe}
+
+\ifWPTtest % Start: Nur für Entwicklung und Test ===============================
+\usepackage{srcltx}%            Klick im Viewer öffnet Editor und umgekehrt
+\setlength{\overfullrule}{5pt}% Breite des schwarzen Balkens rechts von Overfull
+%\usepackage{showidx}%          Index auf Seitenrand; nicht mit splitidx
+%\setlength{\marginparwidth}{2cm}% Breite des Seitenrandes für 'showidx'
+\else \fi %  Ende:  Nur für Entwicklung und Test -------------------------------
+
+% Vwerweise ====================================================================
 \usepackage{varioref}%             \vref...
+
+% --- hyperref --- Extensive support for hypertext in LaTeX --------------------
 \usepackage[colorlinks,destlabel,hyperindex,linkcolor=blue,pagebackref,unicode,
 	pdftitle   ={ASBA - Axiome, Sätze, Beweise und Auswertungen},
 	pdfauthor  ={Dr. Winfried Teschers},
 	pdfsubject ={Projektdokument},
 	pdfkeywords={Mathematik, automatisches Beweisen, Beweisunterstützung}
 ]{hyperref}
-% Paket ' hyperref': Extensive support for hypertext in LaTeX
 % colorlinks  - colors the links instead of using boxes
 % destlabel   - verwendet key von \label{key} nach Start von Kapiteln u.a.
 % hyperindex  - make items in the index by hyperlinked back to the text
@@ -124,17 +154,18 @@
 % pdfauthor   - Author   im PDF-Dokument
 % pdfsubject  - Subject  im PDF-Dokument
 % pdfkeywords - Keywords im PDF-Dokument
-%TODO \autoref u.a. von 'hyperref' nutzen
+%%% ggf. noch \autoref u.a. von 'hyperref' nutzen; dazu:
 %%%\addto\extrasngerman{% siehe manual for 'hyperref' Seite 17
 %%%	\def\subsectionautorefname{\subsectionname}%
 %%%	\def\subsubsectionautorefname{\subsubsectionname}%
 %%%}
 
-\usepackage[nopostdot,xindy]{glossaries}
-%%%\usepackage[toc,index,nohypertypes={index},nopostdot,xindy]{glossaries}
-% Paket 'glossaries': Create glossaries and lists of acronyms
+% --- glossaries --- Create glossaries and lists of acronyms -------------------
+\usepackage[nopostdot,section=section,toc,xindy={glsnumbers=false}]{glossaries}
+%%%\usepackage[...,index,nohypertypes={index},...]{glossaries}
+% Paket 'glossaries': 
 % - nach 'hyperref'
-% - läd 'glossaries-german'
+% - läd  'glossaries-german'
 % Optionen:         ('glossaries' erfordert 1. zusätzlichen Lauf von pdflatex)
 % toc          - in den Inhalt (erfordert 2. zusätzlichen Lauf von pdflatex)
 % index
@@ -145,10 +176,6 @@
 %\GlsSetQuote{+}% nur für 'makeindex' - siehe 'User Manual for glossaries' S. 31
 
 % Einstellung von globalen Werten und Makro-Redefinitionen #####################
-
-\geometry{textwidth=170mm,textheight=256mm,twoside}% optional Option 'showframe'
-%TODO ausprobieren
-%%%\geometry{showframe}
 
 % Kopfzeilen ===================================================================
 \newcommand*{\texthead}[1]{\textnormal{\textsf{\textbf{#1}}}}% Schriftart
@@ -196,6 +223,10 @@
 	\Cohead{#1}%                        oben rechts mittig = <Abschnittsname>
 	\Lohead{\sectionname~\thesection}%  oben rechts innen = <Abschnittsnummer>
 	\Pagestyle%                         veränderte Kopfzeile aktivieren
+}
+\newcommand*{\likesection}[2][section]{%statt \beginsection für Verzeichnisse
+	\beginchapter[Verzeichnisse]{#2}
+	\addcontentsline{toc}{#1}{#2}%      Eintrag ins Inhaltsverzeichnis
 }
 
 % Fußzeilen ====================================================================
@@ -320,9 +351,9 @@
 	\put(-1.5,-1.0){\makebox(3.0,1.5){\textbild{#1}}}
 }
 
-% sonstige nützliche Kommandos #################################################
+% sonstige nützliche Makros ####################################################
 
-% Im Parameter von '\turl' muss vor jedem Zeichen aus "{}#&%$" ein '\' stehen
+% Im Parameter von '\turl' muss vor jedem Zeichen aus '{}#&%$' ein '\' stehen
 % und '\' und '~' durch '\textbackslash' bzw. '\textasctilde' ersetzt werden.
 \newcommand*{\tourl}[1]{$\rightarrow$~\url{#1}}
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
@@ -330,11 +361,13 @@
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
 % Quotierung von Zeichen [chr], Zeichenfolgen [seq] und Zeichenketten [str]
 % Parameter im Textmodus
-%%%\newcommand*{\chrqt}[1]{\ensuremath{\langle}#1\ensuremath{\rangle}}
-\newcommand*{\chrqt}[1]{\ensuremath{\langle\text{#1}\rangle}}% Zeichen/Symbol
-\newcommand*{\seqqt}[1]{\ensuremath{\langle\!\langle\text{#1}\rangle\!\rangle}}% Zeichenfolge/Formel
+\newcommand*{\chrqt}[1]{\ensuremath{\left<\text{#1}\right>}}% Zeichen/Symbol
+\newcommand*{\seqqt}[1]{\ensuremath{\left<\mkern-4mu\left<\text{#1}\right>\mkern-4mu\right>}}% Zeichenfolge/Formel
 \newcommand*{\charf}[1]{\textbf{\texttt{#1}}}%Schriftart für Zeichen
 \newcommand*{\strqt}[1]       {``\charf{#1}''}%              Zeichenkette
+% Sonstige Quotierungen:
+\newcommand*{\standsfor}[1]{\enquote{#1}}% Beschreibung eines Begriffs
+\newcommand*{\statement}[1]{\enquote{#1}}% Aussage in natürlicher Sprache
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
 \newcommand*{\sectionname}       {Abschnitt}
@@ -344,17 +377,20 @@
 \newcommand*{\subsubsectionname} {Paragraph}
 \newcommand*{\subsubsectionnames}{Paragraphen}
 
-%%%% Nominativ
-%%%\newcommand*{\nomcha}        [1]{dieses       \chaptername~\ref{#1}}
-%%%\newcommand*{\nomsec}        [1]{dieser       \sectionname~\ref{#1}}
-%%%\newcommand*{\nomsub}        [1]{dieser    \subsectionname~\ref{#1}}
-%%%\newcommand*{\nomsubsub}     [1]{dieser \subsubsectionname~\ref{#1}}
+% Referenzen -------------------------------------------------------------------
+
+% Nominativ
+\newcommand*{\nomcha}        [1]{dieses       \chaptername~\ref{#1}}
+\newcommand*{\nomsec}        [1]{dieser       \sectionname~\ref{#1}}
+\newcommand*{\nomsub}        [1]{dieser    \subsectionname~\ref{#1}}
+\newcommand*{\nomsubsub}     [1]{dieser \subsubsectionname~\ref{#1}}
 
 % Dativ
 \newcommand*{\datcha}        [1]{diesem       \chaptername~\ref{#1}}
 \newcommand*{\datsec}        [1]{diesem       \sectionname~\ref{#1}}
 \newcommand*{\datsub}        [1]{diesem    \subsectionname~\ref{#1}}
 \newcommand*{\datsubsub}     [1]{diesem \subsubsectionname~\ref{#1}}
+\newcommand*{\datapp}        [1]{diesem      \appendixname~\ref{#1}}
 
 % Akkusativ
 \newcommand*{\akkcha}        [1]{dieses       \chaptername~\ref{#1}}
@@ -362,7 +398,13 @@
 \newcommand*{\akksub}        [1]{diesen    \subsectionname~\ref{#1}}
 \newcommand*{\akksubsub}     [1]{diesen \subsubsectionname~\ref{#1}}
 
-% Referenzen
+% Nominativ
+\newcommand*{\vrefDfig}      [1]{Die       \vreffig            {#1}}
+\newcommand*{\vrefDtab}      [1]{Die       \vreftab            {#1}}
+\newcommand*{\vrefDcha}      [1]{Das       \vrefcha            {#1}}
+\newcommand*{\vrefDsec}      [1]{Der       \vrefsec            {#1}}
+\newcommand*{\vrefDsub}      [1]{Der       \vrefsub            {#1}}
+\newcommand*{\vrefDsubsub}   [1]{Der       \vrefsubsub         {#1}}
 
 \newcommand*{\vreffig}       [1]             {\figurename~\vref{#1}}
 \newcommand*{\vreftab}       [1]              {\tablename~\vref{#1}}
@@ -402,19 +444,6 @@
 \newcommand*{\vrefvonsub}    [1]{von       \vrefsub            {#1}}
 \newcommand*{\vrefvonsubsub} [1]{von       \vrefsubsub         {#1}}
 
-%%%\newcommand*{\vrefdfig}      [1]{die       \vreffig            {#1}}
-%%%\newcommand*{\vrefdtab}      [1]{die       \vreftab            {#1}}
-%%%\newcommand*{\vrefdcha}      [1]{das       \vrefcha            {#1}}
-%%%\newcommand*{\vrefdsec}      [1]{der       \vrefsec            {#1}}
-%%%\newcommand*{\vrefdsub}      [1]{der       \vrefsub            {#1}}
-%%%\newcommand*{\vrefdsubsub}   [1]{der       \vrefsubsub         {#1}}
-\newcommand*{\vrefDfig}      [1]{Die       \vreffig            {#1}}
-\newcommand*{\vrefDtab}      [1]{Die       \vreftab            {#1}}
-\newcommand*{\vrefDcha}      [1]{Das       \vrefcha            {#1}}
-\newcommand*{\vrefDsec}      [1]{Der       \vrefsec            {#1}}
-\newcommand*{\vrefDsub}      [1]{Der       \vrefsub            {#1}}
-\newcommand*{\vrefDsubsub}   [1]{Der       \vrefsubsub         {#1}}
-
 \newcommand*{\vrefseefig}    [1]{siehe     \vreffig            {#1}}
 \newcommand*{\vrefseetab}    [1]{siehe     \vreftab            {#1}}
 \newcommand*{\vrefseecha}    [1]{siehe     \vrefcha            {#1}}
@@ -447,10 +476,11 @@
 
 \newcommand*{\citesee}       [1]{\seename~\cite                {#1}}
 \newcommand*{\citenote}      [1]{\footnote{\citesee            {#1}}}
-\newcommand*{\alternativ}   [1]{\footnote{alternativ: \defn{#1}}}
-\newcommand*{\alternativen} [2]{\footnote{alternativ: \defn{#1} oder \defn{#2}}}
+\newcommand*{\alternativ}    [1]{\footnote{alternativ:    \defFt{#1}}}
+\newcommand*{\alternativen}  [2]{\footnote{alternativ:    \defFt{#1} oder \defFt{#2}}}
 
-% Abkürzungen mit Punkten; zur Unterscheidung vom Satzende
+% Abkürzungen mit Punkten; zur Unterscheidung vom Satzende ---------------------
+
 \newcommand*{\textbzgl}{bzgl.\@}
 \newcommand*{\textbzw} {bzw.\@}
 \newcommand*{\textdh}  {d.\@\,h.\@}
@@ -468,23 +498,7 @@
 % Weitere Abkürzungen
 \newcommand*{\textdots}{…}
 
-% Verzeichnisse ################################################################
+% Index ########################################################################
 
-% Indices und Symbole
 \makeindex
-\newindex[Symbolverzeichnis]{sym}
 \newindex[Index]{idx}
-
-% Glossareinträge
-\makeglossaries
-\setacronymstyle{long-sc-short}
-
-% Hervorhebung von neu definierten Begriffen
-\newcommand*{\defn}      [1]{\textbf{#1}}
-\newcommand*{\textdef}   [1]{\textbf{\textit{\hyperpage{#1}}}}% ein 'Font-Kommando'
-% Die folgenden #1 müssen mit einem Makro enden, das genau einen optionalen
-% Parameter hat, der ein 'Font-Kommando' wie z.B. '\textdef'sein muss.
-% Das sind i.Alg. die vor '\...newglossaryentry' definierten Makros.
-\newcommand*{\definition}   [1]  {\defn{#1[textdef]}}
-\newcommand*{\undefinition} [1]  {\defn{#1[textdef]}\;}%unär: folgender  Abstand
-\newcommand*{\bindefinition}[1]{\;\defn{#1[textdef]}\;}%binär:umgebender Abstand

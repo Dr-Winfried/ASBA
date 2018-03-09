@@ -1,0 +1,89 @@
+%%############################################################################%%
+%%                                                                            %%
+%% Datei:  ASBA-Test.tex                                                      %%
+%% Inhalt: Kapitel "Test"                                                     %%
+%%                                                                            %%
+%% Copyright (C) 2017  Winfried Teschers                                      %%
+%%                                                                            %%
+%% This program is free software: you can redistribute it and/or modify       %%
+%% it under the terms of the GNU Affero General Public License as published   %%
+%% by the Free Software Foundation, either version 3 of the License, or       %%
+%% (at your option) any later version.                                        %%
+%%                                                                            %%
+%% This program is distributed in the hope that it will be useful,            %%
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of             %%
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              %%
+%% GNU Affero General Public License for more details.                        %%
+%%                                                                            %%
+%% You should have received a copy of the GNU Affero General Public License   %%
+%% along with this program.  If not, see <http://www.gnu.org/licenses/>.      %%
+%%                                                                            %%
+%% Dr. Winfried Teschers                                                      %%
+%% Anton-Günther-Straße 26c                                                   %%
+%% 91083 Baiersdorf                                                           %%
+%% Germany                                                                    %%
+%%                                                                            %%
+%% e-mail: winfried.teschers@t-online.de                                      %%
+%%                                                                            %%
+%%############################################################################%%
+
+% !TeX root = ASBA.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+
+%\chapter                     {Vorwort}% #######################################
+\phantomsection% sichert korrekten Link im Inhaltsverzeichnis
+\label                    {cha-Vorwort}
+~\vskip 1.6cm
+{\huge\textbf{\textsf         {Vorwort}}}
+\vskip 0.8cm
+\beginchapter[]               {Vorwort}
+\addcontentsline{toc}{chapter}{Vorwort}% Eintrag ins Inhaltsverzeichnis
+
+Schon während meiner aktiven Zeit habe ich davon geträumt, ein Programm zu erstellen, mit dem man mathematische \Saetze\ und \Beweise\ speichern und überprüfen kann.
+Es sollte auch statistische Auswertungen beherrschen und \textua\ Fragen beantworten können wie \textzB\
+"`Welche \Axiome\ sind zum \Beweis\ eines bestimmten \Satzes\ erforderlich?"' oder
+"`Wie viele \Beweisschritte\ erfordert ein bestimmter \Beweis?"'.
+Ein \Beweis\ mit weniger \Axiomen\ und weniger \Beweisschritten\ wäre dann vorzuziehen.
+
+Einige Jahre nach meiner Pensionierung habe ich Ende 2016 endlich damit angefangen, das Projekt \ASBA\ zu starten.
+Im Internet habe ich das Projekt "`Hilbert II"' (\cite{bib:HilbertII}) gefunden, dass eine ähnliche Zielsetzung hat.
+Ich habe dann mit dem Projektleiter Michael Meyling Kontakt aufgenommen und war zuversichtlich, Synergien nutzen zu können.
+Leider hat sich dann herausgestellt, dass mein Ansatz viel umfangreicher und somit mit "`Hilbert II"' wohl nicht kompatibel ist.
+Daher betreibe ich \ASBA\ als ein Ein-Mann-Projekt und dies wird bis zur Fertigstellung der ersten Version dieses Dokuments wohl so bleiben müssen.
+Vielleicht ergibt sich dann ja eine Zusammenarbeit mit anderen Enthusiasten.
+
+Da in diesem Dokument viele mathematische \Formeln\ vorkommen und \ASBA\ auch \LaTeX-Code generieren soll, ist es in \LaTeX\ verfasst.
+Dieses für mich neue Textsystem war eine große, spannende Herausforderung und ist einer der Gründe für die lange Dauer der Erstellung dieses Dokuments.
+Hinzu kommt, dass ich keinen Termindruck habe und endlich mal 100\% versuchen kann -- in meinem Job wurde ich daran aus verständlichen Gründen gehindert.
+
+\ASBA\ soll eine Basis für die Überprüfung und Archivierung mathematischer \Saetze\ und \Beweise\ sein.
+Daher halte ich es für unerlässlich, alle verwendeten Begriffe eindeutig genug zu spezifizieren (100\%!).
+Natürlich will ich mich dabei an die übliche Nomenklatur halten.
+Aber was ist üblich?
+Steht \chrqt{\MtsSubset} für "`Teilmenge"' oder "`echte Teilmenge"'?
+Ist $0$ ein Element aus \MtsIN\ oder nicht?
+Daher habe ich versucht, alle wichtigen, verwendeten Begriffe der Mathematik, aber auch der \formalisiertenMetasprache\ streng zu definieren, normalerweise im Text, teilweise aber nur in einer Fußnote, auf jeden Fall aber im Glossar.
+Dort sind auch manche Begriffe aufgeführt, die im Text nicht definiert wurden.
+
+Alle im Glossar und Symbolverzeichnis aufgeführten Begriffe und \Symbole\ sind blau geschrieben und im PDF-Dokument mit einem Link ins Glossar \textbzw\ Symbolverzeichnis versehen.
+\textcolor{blue}{Wenn dieser Text nicht blau erscheint, haben sie allerdings Pech gehabt.}
+
+Fußnoten dienen nur zu weiteren Erläuterungen sowie Verweisen in dieses Dokument und in die Literatur.
+Daher können sie auch etwas "`lascher"' formuliert sein.
+Für das Verständnis des Textes sollten sie nicht nötig sein, es reichen Grundkenntnisse der Mathematik.
+
+Wenn im Text "`wir"' verwendet wird, geht es um Definitionen, die von allgemein bekannten möglicherweise abweichen.
+"`Wir"' und nicht "`ich"', da ich den Leser einschließe und außer an dieser Einleitung in Zukunft möglicherweise auch andere Autoren an diesem Dokument beteiligt sein werden.
+
+\bigskip
+
+Baiersdorf, den 03. März 2018
+
+Winfried Teschers
+
+\color{gray}%%% Anfang grauer Text ---------------------------------------------
+\bigskip
+
+PS: Texte, deren Bearbeitung zurückgestellt ist, sind in dieser Schriftfarbe geschrieben.
+\color{black}%%% Ende  grauer Text ---------------------------------------------

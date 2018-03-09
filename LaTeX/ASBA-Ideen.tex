@@ -31,88 +31,88 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = de_DE
 
-\chapter{Ideen}% ###############################################################
+\chapter     {Ideen}% ##########################################################
 \beginchapter{Ideen}
-\label{cha-Ideen}
+\label   {cha-Ideen}
 
-\section{Schlussregeln}% =======================================================
-\beginsection{Schlussregeln}
-\label{sec-Schlussregeln}
+\section[Schlussregeln]{\Schlussregeln}% =======================================
+\beginsection          {\Schlussregeln}
+\label              {sec-Schlussregeln}
 
-In diesem \sectionname\ geht es um \zulaessige\ \Transformationen, \textdh\ \allgemeingueltige\ \Schlussregeln.
+In diesem \sectionname\ geht es um \zulaessigeUmwandlungen, \textdh\ \allgemeingueltigeSchlussregeln.
 Dazu gehören zunächst die \Basisregeln.
-Dann aber auch alle aus den \Basisregeln\ und den bis dahin \allgemeingueltigen\ \Schlussregeln\ korrekt abgeleiteten neuen \Schlussregeln.
+Dann aber auch alle aus den \Basisregeln\ und den bis dahin \allgemeingueltigenSchlussregeln\ korrekt abgeleiteten neuen \Schlussregeln.
 Die \Schlussregeln\ haben die Form eines Formalen \Satzes.
 
-\subsection{Basisregeln}% ------------------------------------------------------
-\label{sub-Basisregeln}
+\subsection[Basisregeln]{\Basisregeln}% ----------------------------------------
+\label               {sub-Basisregeln}
 
 Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \Basisregeln\ definiert. Zuvor werden aber noch einige \Definitionen\ gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \Formeln\, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \Formeln\ und
 \begin{align}
 	%
-	&X&&\defeq&&X_1\cup X_2\cup...\cup X_n\cup\{\alpha_1,\alpha_2,...,\alpha_m\}
+	&X&&\MtsDefEq&&X_1\cup X_2\cup...\cup X_n\cup\{\alpha_1,\alpha_2,...,\alpha_m\}
 	\\
-	&Y&&\defeq&&Y_1\cup Y_2\cup...\cup Y_k\cup\{\beta_1, \beta_2, ...,\beta_l \}
+	&Y&&\MtsDefEq&&Y_1\cup Y_2\cup...\cup Y_k\cup\{\beta_1, \beta_2, ...,\beta_l \}
 	\formulatoleft\formulatoleft
 \end{align}
 
 $X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
 \begin{align}
-	& \alpha \definition{\symderive} \beta \quad \symmetadefeq \quad
+	& \alpha \defSymBin{\MtsDerive} \beta \quad \MtsDefEquiv \quad
 	\parbox[t]{11cm}{%
-	$\beta$ ist mittels schrittweiser Anwendung \emph{\zulaessiger\ \Transformationen} (siehe weiter unten) aus $\alpha$ \ableitbar.
-	Sprechweise: Aus $\alpha$ ist $\beta$ \definition{\ableitbar} oder \definition{\beweisbar};
-	kurz: \enquote{$\alpha$ \emph{\ableitbar} $\beta$} \textbzw\ \enquote{$\alpha$ \emph{\beweisbar} $\beta$}
-	-- Es kann auch \chrqt{$\alpha$} durch \chrqt{$X$} und/oder \chrqt{$\beta$} durch \chrqt{$Y$} ersetzt werden.
+	$\beta$ ist mittels schrittweiser Anwendung \emph{\zulaessigerUmwandlungen} (siehe weiter unten) aus $\alpha$ \ableitbar.
+	Sprechweise: Aus $\alpha$ ist $\beta$ \defTxt{\ableitbar} oder \defTxt{\beweisbar};
+	kurz: \standsfor{$\alpha$ \emph{\ableitbar} $\beta$} \textbzw\ \standsfor{$\alpha$ \emph{\beweisbar} $\beta$}
+	--- Es kann auch \chrqt{$\alpha$} durch \chrqt{$X$} und/oder \chrqt{$\beta$} durch \chrqt{$Y$} ersetzt werden.
 	}
 	\label{def-ableitbar}
 	\\
-	& \definition{\symderive} \beta \quad \symmetadefeq \quad \emptyset \symderive \beta \qquad \text{(\chrqt{\symderive} kann dann auch ganz entfallen)}
+	& \defSymUna{\MtsDerive} \beta \quad \MtsDefEquiv \quad \emptyset \MtsDerive \beta \qquad \text{(\chrqt{\MtsDerive} kann dann auch ganz entfallen)}
 	\\
 	& X_1,X_2,...,X_n,\alpha_1,\alpha_2,...,\alpha_m\quad
-	\definition{\symderive}\quad Y_1,Y_2,...,Y_n, \beta_1, \beta_2,..., \beta_m\quad
-	\symmetadefeq \quad X \symderive Y
+	\defSym{\MtsDerive}\quad Y_1,Y_2,...,Y_n, \beta_1, \beta_2,..., \beta_m\quad
+	\MtsDefEquiv \quad X \MtsDerive Y
 	\label{def-ableitbarKurz}
 	\formulatoleft
 \end{align}
 
-Eine \definition{\zulaessige} \definition{\Transformation} ist die Anwendung einer \emph{\Substitution}{\vrefnotesub{sub-Identitaetsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub-Schlussregeln}.
-Bei den \Schlussregeln\ und der \Substitution\ \chrqt{\symsubst} soll das Komma stärker binden als \chrqt{\symderive}, \chrqt{\symsubst} und \chrqt{\symsrand}, wobei \chrqt{\symsrand} für \enquote{und} \textbzw\ \chrqt{\symmetaand}\vrefnotesub{sub-AussagenUndMetaoperationen} steht und schwächer bindet als \chrqt{\symderive} und \chrqt{\symsubst}.%
+Eine \defTxt{\zulaessigeUmwandlung} ist die Anwendung einer \emph{\Ersetzung}{\vrefnotesub{sub-Identitaetsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub-Schlussregeln}.
+Bei den \Schlussregeln\ und der \Ersetzung\ \chrqt{\MtsSubst} soll das Komma stärker binden als \chrqt{\MtsDerive}, \chrqt{\MtsSubst} und \chrqt{\MtsUnd}, wobei \chrqt{\MtsUnd} für \standsfor{und} \textbzw\ \chrqt{\MtsAnd}\vrefnotesub{sub-AussagenUndMetaoperationen} steht und schwächer bindet als \chrqt{\MtsDerive} und \chrqt{\MtsSubst}.%
 \footnote{siehe Fußnote~3 \vrefvontab{tab-Prioritaeten}}
 
 Zur der Auswahl der \Basisregeln, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
-Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$\mathrm{E}$} für \enquote{-Einführung} und \chrqt{$\mathrm{B}$} für \enquote{-Beseitigung} (oder \enquote{-Elimination}) von \Junktoren.%
+Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$\mathrm{E}$} für "`-Einführung"' und \chrqt{$\mathrm{B}$} für "`-Beseitigung"' (oder "`-Elimination"') von \Junktoren.%
 \footnote{%
-	In der \Monotonieregel\ wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \symsupseteq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \symsupseteq X $}.
-	Außerdem werden bei den Bezeichnungen \seqqt{$(\symland 1)$} und \seqqt{$(\symland 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
+	In der \Monotonieregel\ wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \MtsSupsetEq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \MtsSupsetEq X $}.
+	Außerdem werden bei den Bezeichnungen \seqqt{$(\FrmAnd 1)$} und \seqqt{$(\FrmAnd 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
 }
 
 Im Folgenden seien $\alpha$ und $\beta$ \Formeln\ und $X$ und $Y$ Mengen von \Formeln.
-Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{\symlnot} und \chrqt{\symland} benötigt.
-Bei den weiteren \Schlussregeln\ wird noch \chrqt{\symlimp} gemäß der Definition~\vref{def-imp} verwendet.
+Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{\FrmNot} und \chrqt{\FrmAnd} benötigt.
+Bei den weiteren \Schlussregeln\ wird noch \chrqt{\FrmImp} gemäß der Definition~\vref{def-imp} verwendet.
 
 \begin{align}
-	& \frac{}{\alpha\symderive\alpha}
-	& & (\text{\definition{\Anfangsregel}})
+	& \frac{}{\alpha\MtsDerive\alpha}
+	& & (\text{\defTxt{\Anfangsregel}})
 	\tag{\tagAR} \label{def-AR}
 	\\\\
-	& \frac{X\symderive\alpha}{X,Y\symderive\alpha}
-	& & (\text{\definition{\Monotonieregel}})
+	& \frac{X\MtsDerive\alpha}{X,Y\MtsDerive\alpha}
+	& & (\text{\defTxt{\Monotonieregel}})
 	\tag{\tagMR} \label{def-MR}
 	\\\\
-	& \frac{X\symderive\alpha,\lnot\alpha}{X\symderive\beta}
+	& \frac{X\MtsDerive\alpha,\FrmNot\alpha}{X\MtsDerive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 1})
 	\tag{\tagnota} \label{def-nota}
 	\\\\
-	& \frac{X,\alpha\symderive\beta \srand X,\symlnot\alpha\symderive\beta}{X\symderive\beta}
+	& \frac{X,\alpha\MtsDerive\beta \MtsUnd X,\FrmNot\alpha\MtsDerive\beta}{X\MtsDerive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 2})
 	\tag{\tagnotb} \label{def-notb}
 	\\\\
-	& \frac{X\symderive\alpha,\beta}{X\symderive\alpha\symland\beta}
+	& \frac{X\MtsDerive\alpha,\beta}{X\MtsDerive\alpha\FrmAnd\beta}
 	& & (\text{Einführung der Konjunktion})
 	\tag{\tagandE} \label{def-andE}
 	\\\\
-	& \frac{X\symderive\alpha\land\beta}{X\symderive\alpha,\beta}
+	& \frac{X\MtsDerive\alpha\FrmAnd\beta}{X\MtsDerive\alpha,\beta}
 	& & (\text{Beseitigung der Konjunktion})
 	\tag{\tagandB} \label{def-andB}
 	\formulatoleft
@@ -120,116 +120,116 @@ Bei den weiteren \Schlussregeln\ wird noch \chrqt{\symlimp} gemäß der Definiti
 
 In einer \Schlussregel\ werden die \Formeln%
 \footnote{hier: \Aussagen\ in einer formalen Form.}
-über dem Querstrich als \definition{\Voraussetzungen} und die unter dem Querstrich als \definition{\Folgerungen} der Regel bezeichnet.
+über dem Querstrich als \defTxt{\Voraussetzungen} und die unter dem Querstrich als \defTxt{\Folgerungen} der Regel bezeichnet.
 Eine \Schlussregel\ steht für die \Aussage, dass mit ihren \Voraussetzungen\ auch auch ihre \Folgerungen\ gelten.
 -- Im Gegensatz zu den weiteren \Schlussregeln\ werden die oben aufgelisteten \Basisregeln\ nicht weiter hinterfragt, \textdh\ sie gelten quasi als \Axiome.
 
-\subsection{Identitätsregeln}% --------------------------------------------------------
-\label{sub-Identitaetsregeln}
+\subsection[Identitätsregeln]{\Identitaetsregeln}% -----------------------------
+\label                    {sub-Identitaetsregeln}
 
-%TODO Durch Substitution ersetzen?
-Die \zulaessigen\ \Transformationen, \textdh\ die Anwendung der \Schlussregeln, erfordern \zulaessige\ \Substitutionen.
-Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{\symeq} mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
+%TODO Durch Ersetzung ersetzen?
+Die \zulaessigenUmwandlungen, \textdh\ die Anwendung der \Schlussregeln, erfordern \zulaessige\ \Ersetzungen.
+Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{\MtsEq} mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
 \footnote{\citesee{bib:NatuerlichesSchliessen}}
 Dazu seien $\alpha$, $\beta$ und $\gamma$ \vergleichbare\footnote{siehe Ende \vrefvonsub{sub-AussagenUndMetaoperationen}}\Formeln.
 
 Zunächst wird definiert:
 \begin{align}
-	\gamma(\alpha \definition{\symsubst} \beta) \quad \defeq \quad
+	\gamma(\alpha \defSymBin{\MtsSubst} \beta) \quad \MtsDefEq \quad
 	\parbox[t]{11cm}{%
 		Die \Formel, die man erhält, wenn in $\gamma$ alle oder nur einige Vorkommen von $\alpha$ durch $\beta$ ersetzt werden.
-		-- Gegebenenfalls muss noch die Auswahl der Ersetzungen angegeben werden, andernfalls werden alle Vorkommen ersetzt.
-		Letzteres heißt dann \defn{vollständige} \Substitution.
-	} \label{def-SubstitutionAlt}\\
-	\gamma(\alpha \definition{\symswap} \beta) \quad \defeq \quad
+		--- Gegebenenfalls muss noch die Auswahl der Ersetzungen angegeben werden, andernfalls werden alle Vorkommen ersetzt.
+		Letzteres heißt dann \defFt{vollständige} \Ersetzung.
+	} \label{def-ErsetzungAlt}\\
+	\gamma(\alpha \defSymBin{\MtsSwap} \beta) \quad \MtsDefEq \quad
 	\parbox[t]{11cm}{%
-		Die \Formel, die man erhält, die man erhält, wenn in $\gamma$ alle $\alpha$ und $\beta$ miteinander vertauscht werden.
+		Die \Formel, die man erhält, wenn in $\gamma$ alle $\alpha$ und $\beta$ miteinander vertauscht werden.
 		Dazu ist es nötig, das $\alpha$ und $\beta$ voneinander unabhängig sind, vorzugsweise zwei verschiedene Variable.
 	} \label{def-Vertauschung}
 \end{align}
 
-\seqqt{$ \alpha \symsubst \beta $} heißt \definition{\Substitution} und \seqqt{$ \alpha \symswap \beta $} \defn{\Vertauschung} oder kurz \defn{Tausch}.
--- Sei noch $S = (s_1, s_2, ...)$ eine endliche Folge aus \Substitutionen, die auch \Vertauschungen\ enthalten und auch leer sein kann.
+\seqqt{$ \alpha \MtsSubst \beta $} heißt \defTxt{\Ersetzung} und \seqqt{$ \alpha \MtsSwap \beta $} \defFt{\Vertauschung} oder kurz \defFt{Tausch}.
+-- Sei noch $S = (s_1, s_2, ...)$ eine endliche Folge von \Ersetzungen, die auch \Vertauschungen\ enthalten und auch leer sein kann.
 
 Dann wird definiert:
 \begin{align}
-	\gamma(S) & \quad \defeq \quad \gamma(s_1)(s_2)... \label{def-SubstitutionenAlt}\\
+	\gamma(S) & \quad \MtsDefEq \quad \gamma(s_1)(s_2)... \label{def-ErsetzungenAlt}\\
 	\gamma(\emptyset) & \quad \; = \quad \gamma & \text{(nur zur Verdeutlichung)}\\
-	\gamma(s_1,s_2,...) & \quad \defeq \quad \gamma(S)
+	\gamma(s_1,s_2,...) & \quad \MtsDefEq \quad \gamma(S)
 \end{align}
 
-Die \Vertauschung\ ist eine spezielle Form der \Substitution.
+Die \Vertauschung\ ist eine spezielle Form der \Ersetzung.
 Wenn $x$ und $y$ zwei verschiedene Variable, die in $\alpha$, $\beta$ und $\gamma$ nicht vorkommen, gilt:
 \[
-	\gamma(\alpha \swap \beta) = \gamma(\alpha\subst x, \beta\subst y,  y\subst\alpha, x \subst\beta)
+	\gamma(\alpha \MtsSwap \beta) = \gamma(\alpha\MtsSubst x, \beta\MtsSubst y,  y\MtsSubst\alpha, x \MtsSubst\beta)
 \]
 
-Sei zusätzlich noch $s$ eine \Substitution.
+Sei zusätzlich noch $s$ eine \Ersetzung.
 Folgende Sprechweisen werden verwendet:
 \begin{itemize}
 	\renewcommand*{\itemindent}{1,5cm}
 	\renewcommand*{\labelsep}{5pt}
-	\item [$\gamma(\alpha \subst \beta)$ :] In $\gamma$ wird $\alpha$ (\defn{vollständig}) \defn{durch $\beta$ substituiert}.
-	\item [$\gamma(\alpha \swap \beta)$ :] In $\gamma$ werden $\alpha$ und $\beta$ \defn{vertauscht}.
-	\item [$\gamma(s)$ :] $s$ wird auf $\gamma$ \defn{angewendet}.
-	\item [$\gamma(S)$ :] Die \Substitutionen\ aus S werden in der angegebenen Reihenfolge auf $\gamma$ angewendet.
+	\item [$\gamma(\alpha \MtsSubst \beta)$ :] In $\gamma$ wird $\alpha$ (\defFt{vollständig}) \defFt{durch $\beta$ substituiert}.
+	\item [$\gamma(\alpha \MtsSwap  \beta)$ :] In $\gamma$ werden $\alpha$ und $\beta$ \defFt{vertauscht}.
+	\item [$\gamma(s)$ :] $s$ wird auf $\gamma$ \defFt{angewendet}.
+	\item [$\gamma(S)$ :] Die \Ersetzungen\ aus S werden in der angegebenen Reihenfolge auf $\gamma$ angewendet.
 	\item [$\gamma(S)$ :] $S$ wird auf $\gamma$ angewendet.
 \end{itemize}
 %
-Bei obiger Definition der \Substitution\ bleibt noch offen, unter welchen \Voraussetzungen\ sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \Vertauschung\ und vollständige \Substitution\ verwendet werden.
-In diesen Fällen sind beliebige \Substitutionen\ von Variablen durch \Formeln\ erlaubt.
+Bei obiger Definition der \Ersetzung\ bleibt noch offen, unter welchen \Voraussetzungen\ sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \Vertauschung\ und vollständige \Ersetzung\ verwendet werden.
+In diesen Fällen sind beliebige \Ersetzungen\ von Variablen durch \Formeln\ erlaubt.
 
-Ist $\gamma$ wie oben und $S$ eine Menge aus \Substitutionen.
+Ist $\gamma$ wie oben und $S$ eine Menge von \Ersetzungen.
 
 Nun können die beiden \Identitaetsregeln\ definiert werden:
 \begin{align}
-	& \frac{}{\alpha\symeq\alpha}
+	& \frac{}{\alpha\MtsEq\alpha}
 	& & (\text{Einführung der Identität})
 	\tag{\tageqE} \label{def-eqE}
 	\\\\
-	& \frac{\alpha\symeq\beta \srand \gamma}{\gamma(\alpha\subst\beta)}
+	& \frac{\alpha\MtsEq\beta \MtsUnd \gamma}{\gamma(\alpha\MtsSubst\beta)}
 	& & (\text{Beseitigung der Identität})
 	\tag{\tageqB} \label{def-eqB}
 	\formulatoleft
 \end{align}
 
-Die \Identitaetsregeln\ werden hier eingeführt, um die \Substitution\ zu rechtfertigen.
+Die \Identitaetsregeln\ werden hier eingeführt, um die \Ersetzung\ zu rechtfertigen.
 Wie die \Basisregeln\ gelten sie als \Axiome, würden also eigentlich dazu gehören.
 Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \Basisregeln\ gezählt.
 
-\subsection{Weitere Schlussregeln}% --------------------------------------------
-\label{sub-weitereSchlussregeln}
+\subsection[Weitere Schlussregeln]{Weitere \Schlussregeln}% --------------------
+\label                          {sub-weitereSchlussregeln}
 
-In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessiger\ \Transformationen\ weitere \Schlussregeln\ abgeleitet.%
+In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessiger\ \Umwandlungen\ weitere \Schlussregeln\ abgeleitet.%
 %TODO Identitätsregeln kommen bei Rautenberg später vor. ???
 \footnote{%
-	In~\cite{bib:Rautenberg} werden die \Identitaetsregeln\ zwar weder aufgeführt noch angewandt, ohne \Substitution\ geht es aber nicht.
+	In~\cite{bib:Rautenberg} werden die \Identitaetsregeln\ zwar weder aufgeführt noch angewandt, ohne \Ersetzung\ geht es aber nicht.
 }
 Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 
 \begin{align}
-	& \frac{X,\symlnot\alpha\symderive\alpha}{X\symderive\alpha}
+	& \frac{X,\FrmNot\alpha\MtsDerive\alpha}{X\MtsDerive\alpha}
 	& & (\text{Beseitigung der Negation; Indirekter \Beweis})
 	\tag{\tagnotc} \label{def-notc}
 	\\\\
-	& \frac{X,\symlnot\alpha\symderive\beta,\symlnot\beta}{X\symderive\alpha}
+	& \frac{X,\FrmNot\alpha\MtsDerive\beta,\FrmNot\beta}{X\MtsDerive\alpha}
 	& & (\text{Reductio ad absurdum})
 	\tag{\tagnotd} \label{def-notd}
 	\\\\
-	& \frac{X,\alpha\symderive\beta}{X\symderive\alpha\symlimp\beta}
+	& \frac{X,\alpha\MtsDerive\beta}{X\MtsDerive\alpha\FrmImp\beta}
 	& & (\text{Einführung der Implikation})
 	\tag{\tagimpE} \label{def-impE}
 	\\\\
-	& \frac{X\symderive\alpha\symlimp\beta}{X,\alpha\symderive\beta}
+	& \frac{X\MtsDerive\alpha\FrmImp\beta}{X,\alpha\MtsDerive\beta}
 	& & (\text{Beseitigung der Implikation})
 	\tag{\tagimpB} \label{def-impB}
 	\\\\
-	& \frac{X\symderive\alpha \srand X,\alpha\symderive\beta}{X\symderive\beta}
-	& & (\text{\definition{\Schnittregel}})
+	& \frac{X\MtsDerive\alpha \MtsUnd X,\alpha\MtsDerive\beta}{X\MtsDerive\beta}
+	& & (\text{\defTxt{\Schnittregel}})
 	\tag{\tagSR} \label{def-SR}
 	\\\\
-	& \frac{X\symderive\alpha \srand \alpha\symlimp\beta}{X\symderive\beta}
-	& & (\text{\definition{\Abtrennungsregel} -- \emph{Modus ponens}})
+	& \frac{X\MtsDerive\alpha \MtsUnd \alpha\FrmImp\beta}{X\MtsDerive\beta}
+	& & (\text{\defTxt{\Abtrennungsregel} --- \emph{Modus ponens}})
 	\tag{\tagTR} \label{def-TR}
 	\formulatoleft
 \end{align}
@@ -247,8 +247,8 @@ Dabei werden zum \Beweis\ der \Schlussregeln\ in~\cite{bib:Rautenberg} folgende 
 	\item[\ref{def-TR}   ~:] \ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}, \ref{def-andE}
 \end{itemize}
 %
-\subsection{Beispiel einer Ableitung}% -----------------------------------------
-\label{sub-BeispielAbleitung}
+\subsection[Beispiel einer Ableitung]{Beispiel einer \Ableitung}% --------------
+\label                           {sub-BeispielAbleitung}
 
 Als Beispiel wird hier die \Schnittregel\ aus den \Basisregeln\ abgeleitet.%
 \footnote{%
@@ -259,48 +259,48 @@ Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschrifte
 
 Für die ausgefüllten Felder wird nun definiert:%
 \footnote{%
-	Eigentlich müsste man für jede \Substitution\ aus $S_i$ eine eigene Zeile vorsehen.
-	Um die Tabellen für die \Beweise\ kürzer zu halten, werden aufeinanderfolgende \Substitutionen\ zusammengefasst.
+	Eigentlich müsste man für jede \Ersetzung\ aus $S_i$ eine eigene Zeile vorsehen.
+	Um die Tabellen für die \Beweise\ kürzer zu halten, werden aufeinanderfolgende \Ersetzungen\ zusammengefasst.
 }
 \begin{align}
-	R_i & \defeq
+	R_i & \MtsDefEq
 	\left\{
 		\begin{array}{l}
-			\text{- \enquote{\Voraussetzung} = Die \Aussage\ $A_i$ ist eine \Voraussetzung.}\\
-			\text{- \enquote{\Folgerung} = Die \Aussage\ $A_i$ ist eine \Folgerung.}\\
-			\text{- \enquote{Annahme} = Die \Aussage\ $A_i$ wird vorübergehend als zutreffend angenommen.}\\
+			\text{- \strqt{\Voraussetzung} = Die \Aussage\ $A_i$ ist eine \Voraussetzung.}\\
+			\text{- \strqt{\Folgerung} = Die \Aussage\ $A_i$ ist eine \Folgerung.}\\
+			\text{- \strqt{Annahme} = Die \Aussage\ $A_i$ wird vorübergehend als zutreffend angenommen.}\\
 			\text{- $j$ = Verweis auf die \Schlussregel\ $\overline{R}_j$ für ein $j < i$.}\\
-			\text{- Verweis (ohne Klammern) auf eine \allgemeingueltige\ \Schlussregel.}
+			\text{- Verweis (ohne Klammern) auf eine \allgemeingueltigeSchlussregel.}
 		\end{array}
 	\right.
 	\\
-	S_i & \defeq \text{Die Folge aus den anzuwendenden \Substitutionen.}
+	S_i & \MtsDefEq \text{Die Folge von den anzuwendenden \Ersetzungen.}
 	\\
-	\overline{R}_i & \defeq \text{Das Ergebnis der in der angegebenen Reihenfolge angewendeten}\\
-	& \quad\;\; \text{\Substitutionen aus $S_i$ auf die \Schlussregel\ $R_i$}
+	\overline{R}_i & \MtsDefEq \text{Das Ergebnis der in der angegebenen Reihenfolge angewendeten}\\
+	& \quad\;\; \text{\Ersetzungen\ aus $S_i$ auf die \Schlussregel\ $R_i$}
 	\\
-	Z_i & \defeq \text{Die Indizes $j$ (mit $j < i$) als Verweise auf eine oder mehrere \Aussagen\ $A_j$,}\\
+	Z_i & \MtsDefEq \text{Die Indizes $j$ (mit $j < i$) als Verweise auf eine oder mehrere \Aussagen\ $A_j$,}\\
 	& \quad\;\;\text{ welche zusammen genau die \Voraussetzungen\ der \Schnittregel\ } \overline{R}_i \text{ erfüllen.}
 	\\
-	A_i & \defeq \text{\Folgerung(en) der \Schlussregel\ $\overline{R}_i$ --}\\
+	A_i & \MtsDefEq \text{\Folgerung(en) der \Schlussregel\ $\overline{R}_i$ ---}\\
 	& \quad\;\; \text{auch in Form der Indizes von einem oder mehreren von $Aj$ (mit $j < i$).}\\
 	& \quad\;\; \text{In der Ergebniszeile kann hier auch die bewiesene \Aussage\ als \Schlussregel\ stehen.}
 	\\
-	D_i & \defeq \text{die Indizes der $A_j$, von denen $A_i$ abhängig ist.}
+	D_i & \MtsDefEq \text{die Indizes der $A_j$, von denen $A_i$ abhängig ist.}
 \end{align}
 
 Bis zur Zeile $i$ hat man die folgende \Schlussregel\ bewiesen:
-\[ \frac{A_{i_1} \srand A_{i_2} ...}{A_i} \quad \text{, für alle } i_j \in D_i \]
+\[ \frac{A_{i_1} \MtsUnd A_{i_2} ...}{A_i} \quad \text{, für alle } i_j \in D_i \]
 Sei nun
 \[
-	\Gamma_i \defeq
+	\Gamma_i \MtsDefEq
 	\left\{
 		\begin{array}{ll}
-			\text{leer}    & \text{ für } R_i = \text{\enquote{\Voraussetzung}} \\
-			\text{leer}    & \text{ für } R_i = \text{\enquote{\Folgerung}}     \\
-			\text{leer}    & \text{ für } R_i = \text{\enquote{Annahme}}        \\
-			\overline{R_j} & \text{ für } R_i = j \quad \text{(eine \defn{interne} \Schlussregel)} \\
-			\text{die \Schlussregel} & \text{ für } R_i = \text{Verweis auf eine \defn{externe} \Schlussregel}
+			\text{leer}    & \text{ für } R_i = \text{\strqt{\Voraussetzung}} \\
+			\text{leer}    & \text{ für } R_i = \text{\strqt{\Folgerung}}     \\
+			\text{leer}    & \text{ für } R_i = \text{\strqt{Annahme}}        \\
+			\overline{R_j} & \text{ für } R_i = j \quad \text{(eine \defFt{interne} \Schlussregel)} \\
+			\text{die \Schlussregel} & \text{ für } R_i = \text{Verweis auf eine \defFt{externe} \Schlussregel}
 		\end{array}
 	\right.
 \]
@@ -309,10 +309,10 @@ Damit gilt für die Einträge in einer Zeile $i$:
 	\item Wenn $\Gamma_i$ nicht leer ist, ist $R_i$ eine \Schlussregel\ mit $R_i = \Gamma_i(S_i)$%
 	\footnote{%
 	    %TODO Makro für Verweis benutzen
-		siehe Definition~\eqref{def-SubstitutionenAlt} \vrefvonsub{sub-Identitaetsregeln}
+		siehe Definition~\eqref{def-ErsetzungenAlt} \vrefvonsub{sub-Identitaetsregeln}
 	}.
-	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \srand A_{z_2} \srand ...}{A_i}$ (alle $z_j \in Z_i$).
-	\item Wenn $A_i$ nicht leer ist, ist bis jetzt die \Schlussregel\ $\dfrac{A_{d_1} \srand A_{d_2} \srand ...}{A_i}$ (alle $d_j \in D_i$) schon bewiesen.
+	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \MtsUnd A_{z_2} \MtsUnd ...}{A_i}$ (alle $z_j \in Z_i$).
+	\item Wenn $A_i$ nicht leer ist, ist bis jetzt die \Schlussregel\ $\dfrac{A_{d_1} \MtsUnd A_{d_2} \MtsUnd ...}{A_i}$ (alle $d_j \in D_i$) schon bewiesen.
 \end{itemize}
 $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 
@@ -333,33 +333,33 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 		\titleCell{1.65cm}{\Aussage}          {$A_n$} &
 		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
 		\\\hline\hline
-		1 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X \symderive \alpha$ & 1
+		1 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X \MtsDerive \alpha$ & 1
 		\\\hline
-		2 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X,\alpha \symderive \beta$ & 2
+		2 & \centerParbox{1.35cm}{Voraus"=setzung} & & & & $X,\alpha \MtsDerive \beta$ & 2
 		\\\hline
-		3 & \centerParbox{1.00cm}{Folge"=rung} & & & & $X \symderive \beta$ & 3
+		3 & \centerParbox{1.00cm}{Folge"=rung} & & & & $X \MtsDerive \beta$ & 3
 		\\\hline
-		4 & \ref{def-MR} & & $\dfrac{X \symderive \alpha}{X, Y \symderive \alpha}$ & & &
+		4 & \ref{def-MR} & & $\dfrac{X \MtsDerive \alpha}{X, Y \MtsDerive \alpha}$ & & &
 		\\\hline
-		5 & 4 & $Y \subst \symlnot\alpha$ & $\dfrac{X \symderive \alpha}{X, \symlnot\alpha \symderive \alpha}$ & 1 & $X, \symlnot\alpha \symderive \alpha$ & 1
+		5 & 4 & $Y \MtsSubst \FrmNot\alpha$ & $\dfrac{X \MtsDerive \alpha}{X, \FrmNot\alpha \MtsDerive \alpha}$ & 1 & $X, \FrmNot\alpha \MtsDerive \alpha$ & 1
 		\\\hline
-		6 & \ref{def-AR} & & $ \dfrac{}{\alpha \symderive \alpha} $ & & &
+		6 & \ref{def-AR} & & $ \dfrac{}{\alpha \MtsDerive \alpha} $ & & &
 		\\\hline
-		7 & 6 & $\alpha \subst \symlnot\alpha$ & $\dfrac{}{\symlnot\alpha \symderive \symlnot\alpha}$ & & $\symlnot\alpha \symderive \symlnot\alpha$ &
+		7 & 6 & $\alpha \MtsSubst \FrmNot\alpha$ & $\dfrac{}{\FrmNot\alpha \MtsDerive \FrmNot\alpha}$ & & $\FrmNot\alpha \MtsDerive \FrmNot\alpha$ &
 		\\\hline
 		8 & 4 & \SnCell{%
-			$\alpha \subst \symlnot\alpha$\\
-			$X \subst \symlnot\alpha$\\
-			$Y \subst X$
-		} & $\dfrac{\symlnot\alpha \symderive \symlnot\alpha}{X,\symlnot\alpha \symderive \symlnot\alpha}$ & 7 & $X,\symlnot\alpha \symderive \symlnot\alpha$ &
+			$\alpha \MtsSubst \FrmNot\alpha$\\
+			$X \MtsSubst \FrmNot\alpha$\\
+			$Y \MtsSubst X$
+		} & $\dfrac{\FrmNot\alpha \MtsDerive \FrmNot\alpha}{X,\FrmNot\alpha \MtsDerive \FrmNot\alpha}$ & 7 & $X,\FrmNot\alpha \MtsDerive \FrmNot\alpha$ &
 		\\\hline
-		9 & \ref{def-nota} & & $\dfrac{X \symderive \alpha, \symlnot\alpha}{X \symderive \beta}$ & & &
+		9 & \ref{def-nota} & & $\dfrac{X \MtsDerive \alpha, \FrmNot\alpha}{X \MtsDerive \beta}$ & & &
 		\\\hline
-		10 & 9 & $X \subst X, \symlnot\alpha$ & $\dfrac{X,\symlnot\alpha \symderive \alpha, \symlnot\alpha}{X,\symlnot\alpha \symderive \beta}$ & 5, 8 & $X,\symlnot\alpha \symderive \beta$ & 1
+		10 & 9 & $X \MtsSubst X, \FrmNot\alpha$ & $\dfrac{X,\FrmNot\alpha \MtsDerive \alpha, \FrmNot\alpha}{X,\FrmNot\alpha \MtsDerive \beta}$ & 5, 8 & $X,\FrmNot\alpha \MtsDerive \beta$ & 1
 		\\\hline
-		11 & \ref{def-notb} & & $\dfrac{X,\alpha \symderive \beta \srand X,\symlnot\alpha \symderive \beta}{X \symderive \beta}$ & 2, 10 & 3 & 1, 2
+		11 & \ref{def-notb} & & $\dfrac{X,\alpha \MtsDerive \beta \MtsUnd X,\FrmNot\alpha \MtsDerive \beta}{X \MtsDerive \beta}$ & 2, 10 & 3 & 1, 2
 		\\\hline\hline
-		12 & \centerParbox{1.4cm}{\ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}} & & $\dfrac{A_1 \srand A_2}{A_3}$ & & $\dfrac{X \symderive \alpha \srand X, \alpha \symderive \beta}{X \symderive \beta}$ &
+		12 & \centerParbox{1.4cm}{\ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}} & & $\dfrac{A_1 \MtsUnd A_2}{A_3}$ & & $\dfrac{X \MtsDerive \alpha \MtsUnd X, \alpha \MtsDerive \beta}{X \MtsDerive \beta}$ &
 		\\\hline
 	\end{tabular}
 	\caption{\Ableitung\ der \Schnittregel\ aus den \Basisregeln}
@@ -384,7 +384,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	Jede der drei Gruppen kann auch leer sein und es ist auch möglich, die Zeilen an anderen Stellen der Tabelle anzugeben, spätestens aber, wenn darauf verwiesen wird.
 	Für jede \Voraussetzung, \Folgerung\ und Annahme gibt es eine Zeile:
 	\begin{enumerate}
-		\item $R_i =$ \enquote{\Voraussetzung}, \enquote{\Folgerung} oder \enquote{Annahme}.
+		\item $R_i =$ \strqt{\Voraussetzung}, \strqt{\Folgerung} oder \strqt{Annahme}.
 		\item $A_i =$ Die aktuelle \Voraussetzung, \Folgerung\ oder Annahme.
 		\item $D_i =$ $i$ \quad (ein Verweis auf $A_i$).
 	\end{enumerate}
@@ -396,7 +396,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
 		\item
 		\begin{enumerate}
-			\item $R_i =$ Verweis auf eine \allgemeingueltige\ \Schlussregel.
+			\item $R_i =$ Verweis auf eine \allgemeingueltigeSchlussregel.
 			\item $\overline{R}_i =$ Die \Schlussregel, auf die verwiesen wird.
 		\end{enumerate}
 		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
@@ -406,22 +406,22 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\item
 		\begin{enumerate}
 			\item $R_i = j$, wenn die schon bewiesene \Schlussregel\ $\overline{R}_j$ (mit $j < i$) angewendet werden soll.
-			\item $S_i =$ Die auf die \Schlussregel\ $R_i$ anzuwendende \Substitution.
-			\item $\overline{R}_i =$ Das Ergebnis der \Substitution\ $S_i$ auf die \Schlussregel\ $R_i$.
+			\item $S_i =$ Die auf die \Schlussregel\ $R_i$ anzuwendende \Ersetzung.
+			\item $\overline{R}_i =$ Das Ergebnis der \Ersetzung\ $S_i$ auf die \Schlussregel\ $R_i$.
 		\end{enumerate}
 		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.
 	\end{enumerate}
-	Man beachte, dass die \Schlussregel\ $\overline{R}_i$, stets \allgemeingueltig\ ist, da sie ausschließlich aus \allgemeingueltigen\ \Schlussregeln\ mittels \Substitutionen\ abgeleitet worden ist.
-	Daher gibt es auch keine Beschränkung weiterer \Substitutionen\ durch irgendwelche Abhängigkeiten.
+	Man beachte, dass die \Schlussregel\ $\overline{R}_i$, stets allgemeingültig ist, da sie ausschließlich aus \allgemeingueltigenSchlussregeln\ mittels \Ersetzungen\ abgeleitet worden ist.
+	Daher gibt es auch keine Beschränkung weiterer \Ersetzungen\ durch irgendwelche Abhängigkeiten.
 
 	Nun kann die Zeile beendet werden, oder es geht weiter mit:
 	\begin{enumerate}
 		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
 		\item \label{item-Anwendung} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine \Voraussetzung\ der \Schlussregel\ $\overline{R}_i$ sind, möglichst in der verwendeten Reihenfolge.
-		-- Für jedes angegebene $j$ werden noch die Abhängigkeiten $D_j$ den Abhängigkeiten $D_i$ hinzugefügt.
+		--- Für jedes angegebene $j$ werden noch die Abhängigkeiten $D_j$ den Abhängigkeiten $D_i$ hinzugefügt.
 		%
 		\item $A_i =$ \Folgerung(en) der \Schlussregel\ $\overline{R}_i$.
-		-- Wenn diese \Folgerungen\ schon als \Aussagen\ $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
+		--- Wenn diese \Folgerungen\ schon als \Aussagen\ $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
 		Damit werden die Zusammenhänge und der Abschluss des \Beweises\ besser ersichtlich.
 		%
 		\item $D_i =$ Die Verweise wurden schon in (\ref{item-Anwendung}) eingetragen.%
@@ -430,21 +430,21 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	\end{enumerate}
 	Der \Beweis\ muss so lange fortgeführt werden, bis alle \Folgerungen\ als \Aussagen\ in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \Voraussetzungen\ abhängig sind.
 	%
-	\item \label{item-Ergebniszeile} In einer \defn{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \Schlussregel\ formuliert und in einer passenden Spalte notiert werden.
+	\item \label{item-Ergebniszeile} In einer \defFt{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \Schlussregel\ formuliert und in einer passenden Spalte notiert werden.
 	Zusätzlich können dort auch noch alle verwendeten \Schlussregeln\ gesammelt werden.
 	Dies kann \textzB\ folgendermaßen geschehen:
 	\begin{enumerate}
 		%
 		\item $(R_n) =$ Verweise auf alle verwendeten externen \Schlussregeln.
 		%
-		\item $(\overline{R}_n) =$ Die bewiesene Behauptung als \Schlussregeln, wobei alle $A_i$, die \Voraussetzungen\ sind, als \Voraussetzung\ und alle $A_j$, die \Folgerungen\ sind, als \Folgerung\ eingesetzt werden, jeweils in der Form \enquote{$A_i$} \textbzgl\ \enquote{$A_j$}.
+		\item $(\overline{R}_n) =$ Die bewiesene Behauptung als \Schlussregeln, wobei alle $A_i$, die \Voraussetzungen\ sind, als \Voraussetzung\ und alle $A_j$, die \Folgerungen\ sind, als \Folgerung\ eingesetzt werden.
 		Das ergibt dann:
-		\[ \frac{A_{i_1} \srand A_{i_2} \srand ...}{A_{j_1} \srand A_{j_2} \srand ...} \]
+		\[ \frac{A_{i_1} \MtsUnd A_{i_2} \MtsUnd ...}{A_{j_1} \MtsUnd A_{j_2} \MtsUnd ...} \]
 		%
 		\item $(A_n) =$ $\overline{R}_i$, wobei die \Voraussetzungen\ und \Folgerungen\ aufgelöst werden.
 		%
 		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der \Folgerungen\, vermindert um die \Voraussetzungen.
-		-- Wenn das Feld dabei nicht leer bleibt, ist der \Beweis\ missglückt!
+		--- Wenn das Feld dabei nicht leer bleibt, ist der \Beweis\ missglückt!
 		%
 	\end{enumerate}
 	%
@@ -470,67 +470,67 @@ Ein weiteres Beispiel \vrefintab{tab-AbleitungKontraposition} soll verdeutlichen
 		\titleCell{1.65cm}{\Aussage}          {$A_n$} &
 		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
 		\\\hline \hline
-		1 & \centerParbox{1.00cm}{Folge"=rung} & & & & $(\alpha\symlimp\beta)\symlimp(\symlnot\beta\symlimp\symlnot\alpha)$ & 1
+		1 & \centerParbox{1.00cm}{Folge"=rung} & & & & $(\alpha\FrmImp\beta)\FrmImp(\FrmNot\beta\FrmImp\FrmNot\alpha)$ & 1
 		\\\hline
-		2 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha\symlimp\beta$ & 2
+		2 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha\FrmImp\beta$ & 2
 		\\\hline
-		3 & \centerParbox{1.20cm}{An"=nahme} & & & & $\symlnot\beta$ & 3
+		3 & \centerParbox{1.20cm}{An"=nahme} & & & & $\FrmNot\beta$ & 3
 		\\\hline
 		4 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha$ & 4
 		\\\hline
-		5 & \impB & & $\dfrac{X \symderive \alpha\symlimp\beta}{X,\alpha \symderive \beta}$ & & &
+		5 & \impB & & $\dfrac{X \MtsDerive \alpha\FrmImp\beta}{X,\alpha \MtsDerive \beta}$ & & &
 		\\\hline
-		6 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha\symlimp\beta}{\alpha \symderive \beta}$ & 2 & $\alpha \symderive \beta $ & 2
+		6 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha\FrmImp\beta}{\alpha \MtsDerive \beta}$ & 2 & $\alpha \MtsDerive \beta $ & 2
 		\\\hline
-		7 & \SR & & $\dfrac{X \symderive \alpha \srand X,\alpha \symderive \beta}{X \symderive \beta}$ & & &
+		7 & \SR & & $\dfrac{X \MtsDerive \alpha \MtsUnd X,\alpha \MtsDerive \beta}{X \MtsDerive \beta}$ & & &
 		\\\hline
-		8 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \alpha \symderive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
+		8 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \alpha \MtsDerive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
 		\\\hline
-		9' & \ref{def-andE} & & $\dfrac{X \symderive \alpha, \beta}{X \symderive \alpha \symland \beta}$ & & &
+		9' & \ref{def-andE} & & $\dfrac{X \MtsDerive \alpha, \beta}{X \MtsDerive \alpha \FrmAnd \beta}$ & & &
 		\\\hline
-		10' & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \beta}{\alpha \symland \beta}$ & & &
+		10' & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \beta}{\alpha \FrmAnd \beta}$ & & &
 		\\\hline
 		11' & -1 &\SnCell{
-			$\alpha \swap \beta$\\
-			$\alpha \subst \symlnot\beta$
-		}  & $\dfrac{\beta \srand \symlnot\beta}{\beta \symland \symlnot\beta}$ & 8, 3 & $\beta \symland \symlnot\beta$ &
+			$\alpha \MtsSwap \beta$\\
+			$\alpha \MtsSubst \FrmNot\beta$
+		}  & $\dfrac{\beta \MtsUnd \FrmNot\beta}{\beta \FrmAnd \FrmNot\beta}$ & 8, 3 & $\beta \FrmAnd \FrmNot\beta$ &
 		\\\hline
-		9 & \ref{def-nota} & & $\dfrac{X \symderive \alpha, \symlnot\alpha}{X \symderive \beta}$ & & &
+		9 & \ref{def-nota} & & $\dfrac{X \MtsDerive \alpha, \FrmNot\alpha}{X \MtsDerive \beta}$ & & &
 		\\\hline
-		10 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \srand \symlnot\alpha}{\beta}$ & & &
+		10 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \FrmNot\alpha}{\beta}$ & & &
 		\\\hline
 		11 & -1 & \SnCell{
-			$\alpha \swap \beta$\\
-			$\alpha \subst \symlnot\alpha$
-		} & $\dfrac{\beta \srand \symlnot\beta}{\symlnot\alpha}$ & 8, 3 & $\symlnot\alpha$ & 2, 3, 4
+			$\alpha \MtsSwap \beta$\\
+			$\alpha \MtsSubst \FrmNot\alpha$
+		} & $\dfrac{\beta \MtsUnd \FrmNot\beta}{\FrmNot\alpha}$ & 8, 3 & $\FrmNot\alpha$ & 2, 3, 4
 		\\\hline
-		12 & \impE & & $\dfrac{X, \alpha \symderive \beta}{X \symderive \alpha\symlimp\beta}$ & & &
+		12 & \impE & & $\dfrac{X, \alpha \MtsDerive \beta}{X \MtsDerive \alpha\FrmImp\beta}$ & & &
 		\\\hline
-		13 & -1 & $X \subst \emptyset$ & $\dfrac{\alpha \symderive \beta}{\alpha\symlimp\beta}$ & & &
+		13 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsDerive \beta}{\alpha\FrmImp\beta}$ & & &
 		\\\hline
 		14 & -1 & \SnCell{
-			$\alpha \swap \beta$\\
-			$\alpha \subst \symlnot\alpha$\\
-			$\beta \subst \symlnot\beta$
-		} & $\dfrac{\symlnot\beta \symderive \symlnot\alpha}{\symlnot\beta\symlimp\symlnot\alpha}$ & 3, 11, ??? & $\symlnot\beta\symlimp\symlnot\alpha$ & 2, 3, 4, ???
+			$\alpha \MtsSwap \beta$\\
+			$\alpha \MtsSubst \FrmNot\alpha$\\
+			$\beta \MtsSubst \FrmNot\beta$
+		} & $\dfrac{\FrmNot\beta \MtsDerive \FrmNot\alpha}{\FrmNot\beta\FrmImp\FrmNot\alpha}$ & 3, 11, ??? & $\FrmNot\beta\FrmImp\FrmNot\alpha$ & 2, 3, 4, ???
 		\\\hline
 		15 & \impE+1 & \SnCell{
-			$\alpha \subst \gamma$\\
-			$\beta \subst \delta$\\
-			$\gamma \subst \alpha\symlimp\beta$\\
-			$\delta \subst \symlnot\beta\symlimp\symlnot\alpha$
-		} & $\dfrac{\alpha\symlimp\beta \symderive \symlnot\beta\symlimp\symlnot\alpha}
-		{(\alpha\symlimp\beta)\symlimp(\symlnot\beta\symlimp\symlnot\alpha)}$ & 2, 14 &
-		$(\alpha\symlimp\beta)\symlimp(\symlnot\beta\symlimp\symlnot\alpha)$ & 2, 3, 4, ???
+			$\alpha \MtsSubst \gamma$\\
+			$\beta \MtsSubst \delta$\\
+			$\gamma \MtsSubst \alpha\FrmImp\beta$\\
+			$\delta \MtsSubst \FrmNot\beta\FrmImp\FrmNot\alpha$
+		} & $\dfrac{\alpha\FrmImp\beta \MtsDerive \FrmNot\beta\FrmImp\FrmNot\alpha}
+		{(\alpha\FrmImp\beta)\FrmImp(\FrmNot\beta\FrmImp\FrmNot\alpha)}$ & 2, 14 &
+		$(\alpha\FrmImp\beta)\FrmImp(\FrmNot\beta\FrmImp\FrmNot\alpha)$ & 2, 3, 4, ???
 		\\\hline\hline
-		16 & \centerParbox{1.5cm}{\impE, \impB, \SR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\symlimp\beta)\symlimp(\symlnot\beta\symlimp\symlnot\alpha)}$ &
+		16 & \centerParbox{1.5cm}{\impE, \impB, \SR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\FrmImp\beta)\FrmImp(\FrmNot\beta\FrmImp\FrmNot\alpha)}$ &
 		\\\hline
 	\end{tabular}
-	\caption{\Ableitung\ der \Kontraposition\ aus \allgemeingueltigen\ \Schlussregeln}
+	\caption{\Ableitung\ der \Kontraposition\ aus \allgemeingueltigenSchlussregeln}
 	\label{tab-AbleitungKontraposition}
 \end{table}
 
-\todo{Beispielableitung der Kontraposition vervollständigen}%%%
-%TODO Beispielableitung der Kontraposition vervollständigen %%%
+\todo{Beispielableitung der Kontraposition vervollständigen}
+%TODO Beispielableitung der Kontraposition vervollständigen
 
 \Endchapter

@@ -34,166 +34,224 @@
 % Glossareinträge werden in "ASBA-Vorspann-Glossar" definiert.
 % Elemente, die in anderen Dateien als "ASBA-Mathematik.tex" verwendet werden, werden in "ASBA-Vorspann.tex" definiert.
 % Namensbestandteile mit besonderer Bedeutung:
-%   al<name>     - aussagenlogisches <name>
-%   meta<name>   - metasprachliches <name>
-%   <name>Set    - Menge (bestehend) aus <name>s
-%   <name>Rel    - Relation (aufgefasst als Menge) aus <name>s
-%   <name>Tup    - Tupel, Folge aus <name>s
-%   <name>Letter - Bezeichnung (Buchstabe) für (die Menge) <name>
-%   <name>Symbol - Bezeichnung (Text/Symbol) für (die Operation) <name>
+%   Bezeichnungen:
+%     <Name>Ltr     = Bezeichnung (Buchstabe)      für (die Menge)     <Name>
+%     <Name>Idx     = Bezeichnung (Buchstabe/Text) für einen Index zu  <Name>
+%     <Name>Txt     = Bezeichnung           (Text) für (die Operation) <Name>
+%     <Name>Symbol  = Bezeichnung    (Symbol/Text) für (die Operation) <Name>
+%     <Name>Set     = Menge    von <Name>n (keine bis alle)
+%     <Name>Rel     = Relation von <Name>n
+%     <Name>Tup     = Tupel    von <Name>n
+%     All<Name>     = Menge  aller <Name>n
+%   Ergebnisse von Operationen auf Mengen:
+%     Pot<Menge>    = Menge    der Teilmengen                   von <Name>
+%     Rel<Menge>    = Menge    der binären Relationen           auf <Name>
+%     Relf<Menge>   = Menge    der endlichen binären Relationen auf <Name>
+%     Tup<Menge>    = Menge    der Tupel                        auf <Name>
+%   Sonstiges:
+%     <Relation>Bck = Umkehrrelation
+%     <Operator>Eq  = Operator oder Gleich
+%     <Operator>N   = negierter Operator
+%     <Oper.>BckEqN = Kombination in dieser Reihenfolge
+%
+% Folgende Makros sind alles "eigene"
+%   \Raw...    - Symbol/Text ohne Verweis;erfordert bei Symbolen Mathematikmodus
+%   \...Bsp... - Beispielsymbol für Formel- oder Metasprache (f.Mathematikmodus)
+%   \Bsp...    -                    mit Verweis ins Symbolverzeichnis
+%   \...Mts... - Symbol der Metasprache                    (für Mathematikmodus)
+%   \Mts...    -                    mit Verweis ins Symbolverzeichnis
+%   \...Frm... - Symbol der Formelsprache                  (für Mathematikmodus)
+%   \Frm...    -                    mit Verweis ins Symbolverzeichnis
+%   \...Txt... - individuelle Bezeichnung                  (für       Textmodus)
+%   \Txt...    -                    mit Verweis in  Glossar und Index
+%
+% Weitere "eigene" Kombinationen: OpU, OpB, Bck
 
 % Metasprachliche Symbole ######################################################
-
-% Nur im Mathematikmodus!
-\newcommand*{\metanot}   {\thicksim}%             ... gilt nicht
-\newcommand*{\metaand}   {\mathbin{\&}}%          ... und       ...
-\newcommand*{\srand}     {\mathrel{\mid}}%        ... und ... (in Schlussregeln)
-\newcommand*{\metaor}    {\mathbin{||}}%          ... oder
-\newcommand*{\derive}    {\mathbin{\vdash}}%      ... ableitbar
-\newcommand*{\metaimp}   {\Rightarrow}%       aus ... folgt              ...
-\newcommand*{\metarep}   {\Leftarrow}%            ... folgt aus          ...
-\newcommand*{\metaequiv} {\Leftrightarrow}%       ... genau dann wenn    ...
-\newcommand*{\metadefeq} {:\metaequiv}%           ... definitionsgemäß " ...
-\newcommand*{\eq}        {=}%                     ... gleich             ...
-%%%\newcommand*{\defeq}     {\coloneqq}%             ... definitionsgemäß " ...
-\newcommand*{\defeq}     {:\eq}%                  ... definitionsgemäß " ...
-\newcommand*{\swap}      {\leftrightarrows}%      ... vertauscht mit     ...
-\newcommand*{\subst}     {\leftarrowtail}%        ... substituiert durch ...
-%%%\newcommand*{\wie}       {\stackrel{\wedge}{=}}%  ... entspricht         ...
-
-% Mathematische Operatoren =====================================================
-%                      Makro     Symbol          Beschreibung  Typ des Arguments
-\DeclareMathOperator*{\stelrel} {\stelrelSymbol}%  Stelligkeit    - Relation
-\DeclareMathOperator*{\stelfunc}{\stelfuncSymbol}% Stelligkeit    - Funktion
-\DeclareMathOperator*{\graph}   {\graphSymbol}%    graph          - Fkt., Rel.
-\DeclareMathOperator*{\traeger} {\traegerSymbol}% Träger, carrier - Relation
-\DeclareMathOperator*{\Db}      {\DbSymbol}% Def.-Bereich, domain - Funktion
-\DeclareMathOperator*{\Zb}      {\ZbSymbol}%  Zielbereich, target - Funktion
-%%%\DeclareMathOperator*{\Wb}   {\WbSymbol}% Wertebereich, range  - Funktion
-%%%\DeclareMathOperator*{\Qb}   {\QbSymbol}% Quellbereich, source - part. Fkt.
-\DeclareMathOperator*{\len}     {\lenSymbol}%              length - Tupel, Folge
-\DeclareMathOperator*{\Set}     {\SetSymbol}% Menge d.Komponenten - Tupel, Folge
-%%%\DeclareMathOperator*{command}{definition}%
+% \RawMts*
+\newcommand*{\RawMtsNot}     {\mathbin{\thicksim}}%               ... gilt nicht
+\newcommand*{\RawMtsAnd}     {\mathbin{\&}}%                        ... und  ...
+\newcommand*{\RawMtsUnd}     {\mathbin{\mid}}%nur in Schlussregeln: ... und  ...
+\newcommand*{\RawMtsOr}      {\mathbin{\parallel}}%                 ... oder ...
+\newcommand*{\RawMtsDerive}  {\mathrel{\vdash}}%          ... ableitbar      ...
+\newcommand*{\RawMtsImp}     {\mathrel{\Rightarrow}}% von ... folgt          ...
+\newcommand*{\RawMtsRep}     {\mathrel{\Leftarrow}}%      ... folgt von      ...
+\newcommand*{\RawMtsEquiv}   {\mathrel{\Leftrightarrow}}% .. genau dann, wenn ..
+\newcommand*{\RawMtsDefEquiv}{\mathrel{:\mkern-2mu\RawMtsEquiv}}% def.gemäß -"-
+\newcommand*{\RawMtsEq}      {\mathrel{=\mkern-10mu=}}%          ...  gleich ...
+\newcommand*{\RawMtsEqN}     {\mathrel{=\mkern-16mu/\mkern-16mu=}}% . ungleich .
+\newcommand*{\RawMtsDefEq}   {\mathrel{:\mkern-2mu\RawMtsEq}}% def.gemäß gleich
+\newcommand*{\RawMtsAequiv}  {\mathrel{\equiv}}%     ...       äquivalent zu ...
+\newcommand*{\RawMtsNAequiv} {\mathrel{\nequiv}}%    ... nicht äquivalent zu ...
+\newcommand*{\RawMtsSwap}    {\mathbin{\leftrightarrows}}% .. vertauscht mit ...
+\newcommand*{\RawMtsSubst}   {\mathbin{\leftarrowtail}}%.. substituiert durch ..
 
 % Beispieloperationen ==========================================================
-% \*bsp
-\newcommand*{\opbsp}       {\mathbin{\circledast}}
-\newcommand*{\opubsp}      {\mathbin{\circleddash}}
-\newcommand*{\relbsp}      {\mathrel{\sim}}
-\newcommand*{\relnbsp}     {\mathrel{\nsim}}
-\newcommand*{\releqbsp}    {\mathrel{\simeq}}
-\newcommand*{\relnebsp}    {\mathrel{\nsimeq}}
-\newcommand*{\relbackbsp}  {\mathrel{\backsim}}
-\newcommand*{\relbacknbsp} {\mathrel{\backnsim}}
-\newcommand*{\relbackeqbsp}{\mathrel{\backsimeq}}
-\newcommand*{\relbacknebsp}{\mathrel{\backnsimeq}}
+% \RawBsp*; OpU=unär, OpB=binär, Rel=Relation, Bck=Umkehr-; N=nicht, Eq=gleich
+\newcommand*{\RawBspOpU}      {\mathbin{\circleddash}}
+\newcommand*{\RawBspOpB}      {\mathbin{\circledast}}
+\newcommand*{\RawBspRel}      {\mathrel{\prec}}
+\newcommand*{\RawBspRelEq}    {\mathrel{\preceq}}
+\newcommand*{\RawBspRelBck}   {\mathrel{\succ}}
+\newcommand*{\RawBspRelBckEq} {\mathrel{\succeq}}
+\newcommand*{\RawBspRelN}     {\mathrel{\nprec}}
+\newcommand*{\RawBspRelEqN}   {\mathrel{\npreceq}}
+\newcommand*{\RawBspRelBckN}  {\mathrel{\nsucc}}
+\newcommand*{\RawBspRelBckEqN}{\mathrel{\nsucceq}}
 
 % Definitionen für die Tabelle der Junktoren ===================================
-% \l*  -           logische Operation
-% \ln* - negierter logische Operation
-% Wahrheitswerte ---------------------------------------------------------------
-% Konstante --------------------------------------------------------------------
-\newcommand*{\ltrue} {\top}%            W       - wahr   (Wahrheitswert, Symbol)
-\newcommand*{\wahr}  {\emph{wahr}}%                                       (Text)
-\newcommand*{\lfalse}{\bot}%            F       - falsch (Wahrheitswert, Symbol)
-\newcommand*{\falsch}{\emph{falsch}}%                                     (Text)
+% Konstante (Wahrheitswete) ----------------------------------------------------
+\newcommand*{\RawMtsFalse}    {\mathord{\mathrm{\MtsFalseTxt}}}%F - falsch (Sym)
+\newcommand*{\RawMtsTrue}     {\mathord{\mathrm{\MtsTrueTxt}}}% W - wahr   (Sym)
+\newcommand*{\RawFrmFalse}    {\mathord{\bot}}%                         (Symbol)
+\newcommand*{\RawFrmTrue}     {\mathord{\top}}%                         (Symbol)
+\newcommand*{\RawTxtFalse}    {\emph{\TxtFalseTxt}}%                      (Text)
+\newcommand*{\RawTxtTrue}     {\emph{\TxtTrueTxt}}%                       (Text)
 % unäre Operationen ------------------------------------------------------------
-%            \lnot                      F W     - nicht A
+% Wahrheitswert von A                            W F
+\newcommand*{\RawFrmNot}      {\lnot}%           F W     - nicht A
 % binäre Operationen -----------------------------------------------------------
-%            \lor                       W W W F - A oder B
-\newcommand*{\lrep}  {\leftarrow}%      W W F W - A folgt aus B
-\newcommand*{\limp}  {\rightarrow}%     W F W W - aus A folgt B
-\newcommand*{\lequiv}{\leftrightarrow}% W F F W - A genau dann wenn B
-%            \land                      W F F F - A und B
-\newcommand*{\lnand} {\uparrow}%        F W W W - nicht   (A und  B)
-\newcommand*{\lxor}  {+}%               F W W F - entweder A oder B
-\newcommand*{\lnor}  {\downarrow}%      F F F W - weder    A noch B
+% Wahrheitswert von A                            W W F F
+% Wahrheitswert von B                            W F W F
+\newcommand*{\RawFrmOr}       {\lor}%            W W W F - A oder B
+\newcommand*{\RawFrmRep}      {\leftarrow}%      W W F W - A folgt von B
+\newcommand*{\RawFrmImp}      {\rightarrow}%     W F W W - von A folgt B
+\newcommand*{\RawFrmEquiv}    {\leftrightarrow}% W F F W - A genau dann wenn B
+\newcommand*{\RawFrmAnd}      {\land}%           W F F F - A und B
+\newcommand*{\RawFrmNand}     {\uparrow}%        F W W W - nicht   (A und  B)
+\newcommand*{\RawFrmXor}      {+}%               F W W F - entweder A oder B
+\newcommand*{\RawFrmNor}      {\downarrow}%      F F F W - weder    A noch B
+% außerhalb der Tabelle --------------------------------------------------------
+\newcommand*{\RawFrmEq}       {=}%          Gleichheit   in Formeln
+\newcommand*{\RawFrmEqN}      {\ne}%        Ungleichheit in Formeln
+\newcommand*{\RawMtsIn}       {\in}%        ist  Element aus (der Menge)
+\newcommand*{\RawMtsSubset}   {\subset}%    ist        echte  Teilmenge von
+\newcommand*{\RawMtsSubsetN}  {\nsubset}%   ist  keine echte  Teilmenge von
+\newcommand*{\RawMtsSubsetEq} {\subseteq}%  ist (gleich oder) Teilmenge von
+\newcommand*{\RawMtsNi}       {\ni}%        (die Menge) enthält das Element
+\newcommand*{\RawMtsSupset}   {\supset}%    ist        echte  Obermenge von
+\newcommand*{\RawMtsSupsetN}  {\nsupset}%   ist  keine echte  Obermenge von
+\newcommand*{\RawMtsSupsetEq} {\supseteq}%  ist (gleich oder) Obermenge von
+\newcommand*{\RawMtsTimes}    {\times}%     karthesisches Produkt
 
-% Verwendete Konstanten- und Mengenbezeichnungen ===============================
-
-% spezielle Indizes
-\newcommand*{\links} [1]{#1^{\scriptscriptstyle <}}
-\newcommand*{\rechts}[1]{#1^{\scriptscriptstyle >}}
-
-% natürliche Zahlen
-\newcommand*{\IN}{{\fam5N}}% Menge der natürlichen Zahlen ohne           0
-\newcommand*{\INo}{\IN_0}%   Menge der natürlichen Zahlen einschließlich 0
+% Neue Operatoren
+\DeclareMathOperator{\RawMtsGraph}  {\MtsGraphTxt}% Graph von        Funktion/Relation
+\DeclareMathOperator{\RawMtsTraeger}{\MtsTraegerTxt}% Trägermenge einer       Relation
+\DeclareMathOperator{\RawMtsStel}   {\MtsStelTxt}% Stelligkeit einer Funktion/Relation
+\DeclareMathOperator{\RawMtsStelF}  {\MtsStelTxt_f}% Stelligkeit für [F]unktionen
+\DeclareMathOperator{\RawMtsStelR}  {\MtsStelTxt_r}% Stelligkeit für [R]elationen
+\DeclareMathOperator{\RawMtsQb}     {\MtsQbTxt}% Quellbereich einer partiellen Funktion
+\DeclareMathOperator{\RawMtsDb}     {\MtsDbTxt}% Definitionsbereich einer      Funktion
+\DeclareMathOperator{\RawMtsZb}     {\MtsZbTxt}% Zielbereich        einer      Funktion
+\DeclareMathOperator{\RawMtsWb}     {\MtsWbTxt}% Wertebereich       einer      Funktion
+\DeclareMathOperator{\RawMtsLen}    {\MtsLenTxt}% Länge            eines/r Tupels/Folge
+\DeclareMathOperator{\RawMtsSet}    {\MtsSetTxt}% Komponentenmenge eines/r Tupels/Folge
 
 % Schriftarten
-\newcommand*{\abl}[1]{\mathbf{#1}}% Ableitungen (Kleinbuchstaben)
-\newcommand*{\Abl}[1]{\mathbf{#1}}% Mengen von Ableitungen (Großbuchstaben)
+\newcommand*{\varFt}[1]  {\mathbf{#1}}% Variable aus Alphabet   (Kleinbuchstabe)
+\newcommand*{\DrvFt}[1]  {\mathbf{#1}}% Mengen von Ableitungen   (Großbuchstabe)
+\newcommand*{\drvFt}[1]  {\mathbf{#1}}% ein Element davon (Klein-/Großbuchstabe)
+\newcommand*{\IdxFt}[1]  {\mathrm{#1}}% fester Index      (Klein-/Großbuchstabe)
+\newcommand*{\SetFt}[1] {\mathcal{#1}}% vorgegebene Menge        (Großbuchstabe)
+\newcommand*{\ElmFt}[1]          {#1}%  ein Element davon        (Großbuchstabe)
+\newcommand*{\SetOp}[1]{\mathfrak{#1}}% Mengenoperation                   (Text)
 
-% Mengenoperationen
-\newcommand*{\finite}           {\mathrm{\finiteLetter}}   % endlich
-\newcommand*{\tupelSet}         {\mathcal{\tupelSetLetter}}% Menge der Tupel
-\newcommand*{\Pot}              {\mathcal{\PotLetter}}     % Potenzmenge
-\newcommand*{\Potf}             {\Pot_\finite}             % endliche Teilmengen
-\newcommand*{\Rel}              {\mathcal{\RelLetter}}     % alle Relationen
-\newcommand*{\Relf}             {\Rel_\finite}
+% Indizes für Teilmengen von \RawFrmJun, \RawFrmABC, \RawFrmFor und \RawFrmForp} (rechts unten)
+\newcommand*{\iAnd}    {\IdxFt{and}}%
+\newcommand*{\iBool}   {\IdxFt{bool}}%
+\newcommand*{\iImp}    {\IdxFt{imp}}%
+\newcommand*{\iNand}   {\IdxFt{nand}}%
+\newcommand*{\iNor}    {\IdxFt{nor}}%
+\newcommand*{\iOr}     {\IdxFt{or}}%
+\newcommand*{\iRep}    {\IdxFt{rep}}%
+% spezielle Indizes (rechts oben)
+\newcommand*{\RawMtsFinite}  {\IdxFt{\MtsFiniteLtr}}% nur die endlichen Elemente
+\newcommand*{\RawFrmPolnisch}{\IdxFt{\FrmPolnischLtr}}% in Polnischer Notation
+\newcommand*{\RawFrmLogisch} {\IdxFt{\FrmLogischLtr}}% die Aussagenlogik betreffend
+\newcommand*{\links} [1]{#1^{\scriptscriptstyle <}}% linkes  Element vom Paar
+\newcommand*{\rechts}[1]{#1^{\scriptscriptstyle >}}% rechtes Element vom Paar
 
-% Mengen
-\newcommand*{\formulaSet}       {\mathcal{\formulaSetLetter}}% Formel-Sprache
-\newcommand*{\formulaSetSet}    {\symPot(\symformulaSet)}  %     P(L)
-\newcommand*{\formulaSetSetf}   {\symPotf(\symformulaSet)} %    Pe(L)
-\newcommand*{\deriveSet}        {\formulaSetSet^2}         %     P(L)^2
-\newcommand*{\deriveSetSet}     {\symPot(\deriveSet)}      %   P(P(L)^2)
-\newcommand*{\deriveSetRel}     {\symRel(\formulaSetSet)}  %   R(P(L))
-\newcommand*{\conclusionruleRel}{\symRel(\deriveSetRel)}   % R(R(P(L)))
-\newcommand*{\deriveSetSetf}    {\symPotf(\deriveSet)}     %  Pe(P(L)^2)
-\newcommand*{\deriveSetRelf}    {\symRelf(\formulaSetSet)} %  Re(P(L))
+% abgeleitete Mengen - ohne Verweis ins Glossar
+\newcommand*{\RawMtsFol} {\SetOp{\MtsFolLtr}}%  Menge der Folgen             auf
+\newcommand*{\RawMtsFolf}{\RawMtsFol_{\RawMtsFinite}}% ... nur die endlichen Folgen
+%TODO \MtsTup durch \MtsFolf ersetzen
+\newcommand*{\RawMtsTup} {\SetOp{\MtsTupLtr}}%  Menge der Tupel              auf
+\newcommand*{\RawMtsPot} {\SetOp{\MtsPotLtr}}%  Menge der Teilmengen         von
+\newcommand*{\RawMtsPotf}{\RawMtsPot_{\RawMtsFinite}}%... nur die endlichen Teilmengen
+\newcommand*{\RawMtsRel} {\SetOp{\MtsRelLtr}}%  Menge der binären Relationen auf
+\newcommand*{\RawMtsRelf}{\RawMtsRel_{\RawMtsFinite}}%... nur die endlichen Relationen
 
-% Elemente und Mengen für Beweise
-\newcommand*{\prerequisite}     {\mathbf{\prerequisiteLetter}}% Voraussetzung
-\newcommand*{\prerequisiteSet}  {\mathbf{\prerequisiteSetLetter}}% Voraussetzungen als Menge
-\newcommand*{\prerequisiteRel}  {\symderive_\prerequisiteSet}% Voraussetzungen als Relation
-\newcommand*{\conclusion}       {\mathbf{\conclusionLetter}}% Folgerung
-\newcommand*{\conclusionSet}    {\mathbf{\conclusionSetLetter}}% Folgerungen als Menge
-\newcommand*{\conclusionRel}    {\symderive_\conclusionSet}% Folgerungen als Relation
-\newcommand*{\outcome}          {\outcomeLetter}           % Ergebnis
-\newcommand*{\outcomeSet}       {\mathcal{\outcome}}       % Ergebnisse als Menge
-\newcommand*{\outcomeRel}       {\symderive_\outcomeSet}   % Ergebnisse als Relation
-\newcommand*{\proofstep}        {\proofstepLetter}         % Beweisschritt
-\newcommand*{\proofstepTup}     {\vec{\proofstep}}         % Beweisschritte als Folge
-\newcommand*{\proofstepSet}     {\mathcal{\proofstepSetLetter}}% Beweisschritte als Menge
-\newcommand*{\transformation}   {\transformationLetter}    % Transformation
-\newcommand*{\transformationTup}{\mathcal{\transformation}}% Transformationen als Folge
-\newcommand*{\conclusionrule}   {\conclusionruleLetter}    % Schlussregel
-\newcommand*{\conclusionruleSet}{\mathcal{\conclusionrule}}% Schlussregeln
-\newcommand*{\substitution}     {\substitutionLetter}      % Substitution
-\newcommand*{\substitutionSet}  {\mathcal{\substitution}}  % Substitutionen
-\newcommand*{\axiom}            {\axiomLetter}             % Axiom
-\newcommand*{\axiomSet}         {\mathcal{\axiom}}         % Menge aus Axiomen
+% natürliche Zahlen u.a. - ohne Verweis ins Glossar
+% alternativ: '{\fam5' statt '\mathbb{'
+\newcommand*{\RawMtsIN}   {{\fam5\MtsINLtr}}% Menge der natürlichen Zahlen ohne 0
+%\newcommand*{\RawMtsIN}{\mathbb{\MtsINLtr}}% Menge der natürlichen Zahlen ohne 0
+\newcommand*{\RawMtsINo}     {\RawMtsIN_0}%   Menge der natürlichen Zahlen mit  0
+\newcommand*{\RawMtsMo}  {M^0}
+\newcommand*{\RawMtsMn}  {M^n}
 
-% neue Mengensymbole: ABC EF   JKL  OPQ  TUV X
-% frei:                  D  GHI   MN   R    W YZ
-% doppelt:                          O    T
+% weitere Mengen
+\newcommand*{\RawMtsSprache}         {\SetFt{\MtsSpracheLtr}}% Formel-Sprache
+% ... - mit Verweis ins Glossar
+\newcommand*{\MtsPotSprache}         {\ensuremath{\MtsPot(\MtsSprache)}}%        P(L)
+\newcommand*{\MtsPotfSprache}        {\ensuremath{\MtsPotf(\MtsSprache)}}%      Pe(L)
+\newcommand*{\MtsAllDerive}          {\ensuremath{\MtsPotSprache^2}}%            P(L)^2
+\newcommand*{\MtsPotAllDerive}       {\ensuremath{\MtsPot(\MtsAllDerive)}}%    P(P(L)^2)
+\newcommand*{\MtsRelAllDerive}       {\ensuremath{\MtsRel(\MtsPotSprache)}}%   R(P(L))
+\newcommand*{\MtsAllSchlussregel}    {\ensuremath{\MtsPotAllDerive^2}}%        P(P(L)^2)^2
+\newcommand*{\MtsRelSchlussregel}    {\ensuremath{\MtsRel(\MtsRelAllDerive)}}% R(P(L)^2)
+\newcommand*{\MtsPotfAllDerive}      {\ensuremath{\MtsPotf(\MtsAllDerive)}}%  Pe(P(L)^2)
+\newcommand*{\MtsRelfAllDerive}      {\ensuremath{\MtsRelf(\MtsPotSprache)}}% Re(P(L))
 
-% \al... = aussagenlogisch
-% Mengen
-\newcommand*{\alvar}          {\alvarLetter}%  Name einer Variablen
-% Mengen der Aussagenlogik
-\newcommand*{\alVar} {\mathcal{\alVarLetter}}% Variablensymbole
-\newcommand*{\alCon} {\mathcal{\alConLetter}}% Konstantensymbole
-\newcommand*{\alUna} {\mathcal{\alUnaLetter}}% unäre Operationssymbole
-\newcommand*{\alBin} {\mathcal{\alBinLetter}}% binäre Operationssymbole
-\newcommand*{\alJun} {\mathcal{\alJunLetter}}% Junktoren
-\newcommand*{\alABC} {\mathcal{\alABCLetter}}% Alphabet der al Sprache
-\newcommand*{\alFor} {\mathcal{\alForLetter}%Menge der aussagenlogischen Formeln
-	^                  \mathrm{\AussageLetter}}
-\newcommand*{\alForp}{\mathcal{\alForLetter}% ...in polnischer Notation
-	^                  \mathrm{\AussageLetter\polnischLetter}}
-% Indizes für Teilmengen von \alJun, \alABC, \alFor und \alForp
-\newcommand*{\iAnd}  {\mathrm{and}}%
-\newcommand*{\iBool} {\mathrm{bool}}%
-\newcommand*{\iImp}  {\mathrm{imp}}%
-\newcommand*{\iNand} {\mathrm{nand}}%
-\newcommand*{\iNor}  {\mathrm{nor}}%
-\newcommand*{\iOr}   {\mathrm{or}}%
-\newcommand*{\iRep}  {\mathrm{rep}}%
-% Konstanten und Symbole
-\newcommand*{\true}  {\mathrm{true}}
-\newcommand*{\false} {\mathrm{false}}
+% Elemente und Mengen für Beweise - ohne Verweis ins Glossar
+\newcommand*{\RawMtsVoraussetzung}   {\drvFt{\MtsVoraussetzungLtr}}%    eine      Voraussetzung
+\newcommand*{\RawMtsVoraussetzungSet}{\SetFt{\MtsVoraussetzungSetLtr}}% Menge der Voraussetzungen
+\newcommand*{\RawMtsVoraussetzungRel}{\RawMtsDerive_{\RawMtsVoraussetzungSet}}%... als Relation
+\newcommand*{\RawMtsFolgerung}       {\drvFt{\MtsFolgerungLtr}}%        eine      Folgerung
+\newcommand*{\RawMtsFolgerungSet}    {\SetFt{\MtsFolgerungSetLtr}}%     Menge der Folgerungen
+\newcommand*{\RawMtsFolgerungRel}    {\RawMtsDerive_{\RawMtsFolgerungSet}}% ... als Relation
+\newcommand*{\RawMtsErgebnis}        {\drvFt{\MtsErgebnisLtr}}%         ein       Ergebnis
+\newcommand*{\RawMtsErgebnisSet}     {\SetFt{\MtsErgebnisSetLtr}}%      Menge von Ergebnissen
+\newcommand*{\RawMtsErgebnisRel}     {\RawMtsDerive_{\RawMtsErgebnisSet}}% ... als Relation
+\newcommand*{\RawMtsBeweisschritt}   {\ElmFt{\MtsBeweisschrittLtr}}%    ein       Beweisschritt
+\newcommand*{\RawMtsBeweisschrittTup}{\vec{\RawMtsBeweisschritt}}%      Folge der Beweisschritte
+\newcommand*{\RawMtsBeweisschrittSet}{\SetFt{\MtsBeweisschrittSetLtr}}% Menge der Beweisschritte
+\newcommand*{\RawMtsUmwandlung}      {\ElmFt{\MtsUmwandlungLtr}}%       eine      Umwandlung
+\newcommand*{\RawMtsUmwandlungTup}   {\SetFt{\MtsUmwandlungLtr}}%       Folge von Umwandlungen
+\newcommand*{\RawMtsSchlussregel}    {\ElmFt{\MtsSchlussregelLtr}}%     eine      Schlussregel
+\newcommand*{\RawMtsSchlussregelSet} {\SetFt{\RawMtsSchlussregel}}%     Menge von Schlussregeln
+\newcommand*{\RawMtsErsetzung}       {\ElmFt{\MtsErsetzungLtr}}%        eine      Ersetzung
+\newcommand*{\RawMtsErsetzungSet}    {\SetFt{\MtsErsetzungLtr}}%        Menge von Ersetzungen
+\newcommand*{\RawMtsAxiom}           {\ElmFt{\MtsAxiomLtr}}%            ein       Axiom
+\newcommand*{\RawMtsAxiomSet}        {\SetFt{\MtsAxiomLtr}}%            Menge von Axiomen
 
-% sonstige Kommandos für den Mathematiksatz ####################################
+% Mengen der Aussagenlogik - ohne Verweis ins Glossar
+\newcommand*{\RawFrmvar} {\varFt{\FrmvarLtr}}% Variablensymbol
+\newcommand*{\RawFrmVar} {\SetFt{\FrmVarLtr}}% Menge der Variablensymbole
+\newcommand*{\RawFrmABC} {\SetFt{\FrmABCLtr}}% Menge der Buchstaben (Alphabet) der aussagenlogischen Sprache
+\newcommand*{\RawFrmJun} {\SetFt{\FrmJunLtr}}% Menge der Junktoren
+\newcommand*{\RawFrmCon} {\RawFrmJun_{\IdxFt{\FrmConIdx}}}% Menge der         Konstantensymbole
+\newcommand*{\RawFrmUna} {\RawFrmJun_{\IdxFt{\FrmUnaIdx}}}% Menge der unären  Operationssymbole
+\newcommand*{\RawFrmBin} {\RawFrmJun_{\IdxFt{\FrmBinIdx}}}% Menge der binären Operationssymbole
+\newcommand*{\RawFrmFor} {\SetFt{\FrmForLtr}^{\RawFrmLogisch}}% Menge der aussagenlogischen Formeln
+\newcommand*{\RawFrmForp}{\SetFt{\FrmForLtr}^{\RawFrmLogisch\RawFrmPolnisch}}% ...in Polnischer Notation
+
+% sonstige Makro für den Mathematiksatz ########################################
 
 \mathtoolsset{showonlyrefs,showmanualtags}% Nur mit \ref referenzierte Gleichungen, aber alle manuellen Tags
+
+% Gleichung im Rahmen - siehe Rautenberg Seite 389
+% #1=Rahmenfarbe, #2=Hintergrundfarbe, #3=mathematische Formel, #4=Marke
+\makeatletter
+\def\myMathBox    {@ifnextchar[{\my@MBoxi}     {\my@MBoxii[black]}}
+\def\my@MBoxi [#1]{@ifnextchar[{\my@MBoxii[#1]}{\my@MBoxii[white]}}
+\def\my@MBoxii[#1][#2]#3#4{%
+	\par
+	\noindent\fcolorbox{#1}{#2}{%
+		\parbox{\linewidth-1.5\labelwidth-2\fboxrule-2\fboxsep{#3}}%
+	}%
+	\parbox{1.5\labelwidth}{%
+		\begin{eqnarray}\label{#4}\end{eqnarray}%
+	}
+	\par
+}
+\makeatother

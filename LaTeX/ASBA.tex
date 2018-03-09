@@ -43,59 +43,57 @@
 	{\footnotesize winfried.teschers@t-online.de}
 }
 \subject{Projektdokument}
-\title{{\Huge ASBA}\\\Axiome, \Saetze, \Beweise\ und Auswertungen}
+\title{{\Huge \ASBA}\\\Axiome, \Saetze, \Beweise\ und Auswertungen}
 \subtitle{Projekt zur maschinellen Überprüfung von mathematischen \Beweisen\ und deren Ausgabe in lesbarer Form}
 \author{Winfried Teschers}
 \date{\today}
 \publishers{\vspace{1cm}\normalsize
-	Es wird ein Programmsystem beschrieben, das zu eingegebenen Axiomen, Sätzen, und Beweisen letztere prüft, Auswertungen generiert und zu gegebenen Ausgabeschemata eine Ausgabe der Elemente in üblicher Formelschreibweise im \LaTeX-Format erstellt.
+	Es wird ein Programmsystem beschrieben, das zu eingegebenen \Axiomen, \Saetzen\ und \Beweisen\ letztere prüft, Auswertungen generiert und unter Zuhilfenahme gegebener \Ausgabeschemata\ eine Ausgabe im \LaTeX-Format in mathematisch üblicher Schreibweise mit \Formeln\ erstellt.
 }
 
 % Dokument #####################################################################
 
 \begin{document}
 	\maketitle
-	~\vfill Copyright \copyright\ 2017 Winfried Teschers\bigskip
+	~\vfill Copyright \copyright\ 2018 Winfried Teschers\bigskip
 
 	\begin{otherlanguage}{english}
 		Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version~1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 		You should have received a copy of the GNU Free Documentation License along with this document.
 		If not, see \url{http://www.gnu.org/licenses/}.
-	\end{otherlanguage}{english}
+	\end{otherlanguage}
 
 	%chapter{Inhaltsverzeichnis}% ##############################################
 	\tableofcontents
 	\Endchapter
 
-	\include{ASBA-Test}
+	\include{ASBA-Vorwort}
 	\include{ASBA-Analyse}
 	\include{ASBA-Mathematik}
+	\color{gray}%%% Anfang grauer Text
 	\include{ASBA-Ideen}
+	\color{black}%%% Ende grauer Text
 	\include{ASBA-Design}
 	\include{ASBA-Anhang}
 
-	\chapter{Verzeichnisse}% ###################################################
+	\chapter     {Verzeichnisse}% ##############################################
 	\beginchapter{Verzeichnisse}
-	\label{cha-Verzeichnisse}
-
-	\newcommand*{\likesection}[2][section]{%statt \beginsection für Verzeichnisse
-		\beginchapter[Verzeichnisse]{#2}
-		\phantomsection%                    sichert korrekten Link hierhin
-		\addcontentsline{toc}{#1}{#2}%      Eintrag ins Inhaltsverzeichnis
-	}
+	\label   {app-Verzeichnisse}
 
 	%section{Tabellenverzeichnis}% =============================================
+	\phantomsection% sichert korrekten Link im Inhaltsverzeichnis
+	\label{cha-Tabellenverzeichnis}
 	\likesection{\listtablename}
 	\begin{minipage}{\linewidth-10.95pt}
-		\label{dic-Tabellenverzeichnis}
 		\listoftables
 	\end{minipage}
 	\Endchapter
 
 	%section{Abbildungsverzeichnis}% ===========================================
+	\phantomsection% sichert korrekten Link im Inhaltsverzeichnis
+	\label{cha-Abbildungsverzeichnis}
 	\likesection{\listfigurename}
 	\begin{minipage}{\linewidth-10.95pt}
-		\label{dic-Abbildungsverzeichnis}
 		\listoffigures
 	\end{minipage}
 	\Endchapter
@@ -108,33 +106,48 @@
 	% Optionen -> TeXstudio konfigurieren -> Erzeugen -> Standardcompiler:
 	%     txs:///pdflatex|txs:///makeindex|txs:///makeglossaries|txs:///pdflatex
 	% Indizes ------------------------------------------------------------------
+%TODO vereinfachen - kein Symbolverzeichnis mehr
 	\newcommand{\idxpreambel}{
-		Mit \textbf{\textit{fetten, kursiven}} Seitenzahlen wird auf die Definition oder sonstige wichtige Stellen verwiesen.
-		\par~
+		% Schriftart wie \hyperDef
+		Mit {\large \textbf{\textcolor{blue}{großen, fetten}}} Seitenzahlen wird auf die Definition oder sonstige wichtige Stellen verwiesen.
+	}
+	\newcommand{\glopreambel}{
+		\idxpreambel
+		--- Aus dem Author nicht bekannten Gründen sind die angegebenen Seitenzahlen manchmal um eins zu klein.
 	}
 	\newcommand*{\idxdictionary}[2]{%   nur für Indices
 		\extendtheindex{}{%             am Anfang von '\printindex'
 			\likesection{#2}
-			Index und Symbolverzeichnis enthalten keine gemeinsamen Einträge.
-			Andererseits erscheinen sie aber überwiegend auch im Glossar.
+			Die Einträge im Index erscheinen überwiegend auch im Glossar.
 			\idxpreambel
+			\vskip 1cm
 		}{}{}
 		\printindex[#1]
 		\Chead{#2}%                     Kopfzeile Mitte = <Verzeichnisname>
 	}
 	\idxdictionary{idx}{Index}
-	\idxdictionary{sym}{Symbolverzeichnis}
 
 	% Glossar ==================================================================
-	\renewcommand{\glossarypreamble}{%  am Beginn des Glossars
-		\likesection{Glossar}
-		Die Einträge im Glossar kommen auch entweder im Index oder im Symbolverzeichnis vor.
-		Die Sortierung insbesondere der Symbole unterscheidet sich dabei.
-		\idxpreambel
+	\renewcommand{\glossarypreamble}{%  am Beginn der Symbole
+		\label{dic-Symbolverzeichnis}
+		\beginchapter[Verzeichnisse]{Symbolverzeichnis}
+		\glopreambel
+		\vskip 1cm
 	}
-	\setglossarystyle{listhypergroup}
-	\printglossaries
-	\Chead{Glossar}%                    Kopfzeile Mitte = <Verzeichnisname>
+	\printglossary[type=symbols,style=list]
+	\Chead{Symbolverzeichnis}%          Kopfzeile Mitte
+	\Endchapter
+	\newpage% ------------------------------------------------------------------
+	\renewcommand{\glossarypreamble}{%  am Beginn des Glossars
+		\label{dic-Glossar}
+		\beginchapter[Verzeichnisse]{Glossar}
+		Die Einträge im Glossar kommen auch im Index vor.
+		\glopreambel
+		\vskip 1cm
+	}
+	\printglossary[type=main,style=listhypergroup]
+	\Chead{Glossar}%                    Kopfzeile Mitte
+	\Endchapter
 
 \end{document}
 
