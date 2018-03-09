@@ -248,6 +248,9 @@ nppBackup/
 *.maf
 *.mst
 *.mtc*
+*.nlg
+*.not
+*.ntn
 *.out
 *.sym
 *.synctex.gz
