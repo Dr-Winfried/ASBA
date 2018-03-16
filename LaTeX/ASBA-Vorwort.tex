@@ -63,11 +63,10 @@ Natürlich will ich mich dabei an die übliche Nomenklatur halten.
 Aber was ist üblich?
 Steht \chrqt{\MtsSubset} für "`Teilmenge"' oder "`echte Teilmenge"'?
 Ist $0$ ein Element aus \MtsIN\ oder nicht?
-Daher habe ich versucht, alle wichtigen, verwendeten Begriffe der Mathematik, aber auch der \formalisiertenMetasprache\ streng zu definieren, normalerweise im Text, teilweise aber nur in einer Fußnote, auf jeden Fall aber im Glossar.
+Daher habe ich versucht, alle wichtigen, verwendeten Begriffe der Mathematik, aber auch der \formalenMetasprache\ streng zu definieren, normalerweise im Text, teilweise aber nur in einer Fußnote, auf jeden Fall aber im Glossar.
 Dort sind auch manche Begriffe aufgeführt, die im Text nicht definiert wurden.
 
-Alle im Glossar und Symbolverzeichnis aufgeführten Begriffe und \Symbole\ sind blau geschrieben und im PDF-Dokument mit einem Link ins Glossar \textbzw\ Symbolverzeichnis versehen.
-\textcolor{blue}{Wenn dieser Text nicht blau erscheint, haben sie allerdings Pech gehabt.}
+Alle im Glossar und Symbolverzeichnis aufgeführten Begriffe werden bei der Definition \likehyperDef{in dieser} und bei der Verwendung \likehyperTxt{in dieser} Schriftart ausgegeben. Zusätzlich sind die Begriffe und Symbole im PDF-Dokument mit einem Link ins Glossar \textbzw\ Symbolverzeichnis versehen.
 
 Fußnoten dienen nur zu weiteren Erläuterungen sowie Verweisen in dieses Dokument und in die Literatur.
 Daher können sie auch etwas "`lascher"' formuliert sein.
@@ -82,8 +81,12 @@ Baiersdorf, den 03. März 2018
 
 Winfried Teschers
 
-\color{gray}%%% Anfang grauer Text ---------------------------------------------
-\bigskip
+\iftestFlg
+	\color{gray}%%% Anfang grauer Text -----------------------------------------
+	\bigskip
+	Dummy-Einträge: Text = \Dummy, Symbol = \dummy, gls-Index = \gls{ind-Dummy}, idx-Index = \idx             {Dummy}\\
+	Dummy-Einträge: Text = \Dummy, Symbol = \dummy, gls-Index = \gls{ind-Dummy}, idx-Index = \idx[Index-Dummy]{Dummy}
 
-PS: Texte, deren Bearbeitung zurückgestellt ist, sind in dieser Schriftfarbe geschrieben.
-\color{black}%%% Ende  grauer Text ---------------------------------------------
+	PS: Texte, deren Bearbeitung zurückgestellt ist, sind in dieser Schriftfarbe geschrieben.
+	\color{black}%%% Ende  grauer Text -----------------------------------------
+\else \fi

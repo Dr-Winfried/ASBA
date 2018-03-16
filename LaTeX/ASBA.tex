@@ -100,54 +100,45 @@
 
 	\input{ASBA-Literaturverzeichnis}
 
-	% Indizes ==================================================================
-	% Optionen -> TeXstudio konfigurieren -> Befehle -> Makeindex:
-	%     perl "C:\Program Files\MiKTeX 2.9\scripts\splitindex\splitindex.pl" %
-	% Optionen -> TeXstudio konfigurieren -> Erzeugen -> Standardcompiler:
-	%     txs:///pdflatex|txs:///makeindex|txs:///makeglossaries|txs:///pdflatex
-	% Indizes ------------------------------------------------------------------
-%TODO vereinfachen - kein Symbolverzeichnis mehr
-	\newcommand{\idxpreambel}{
-		% Schriftart wie \hyperDef
-		Mit {\large \textbf{\textcolor{blue}{großen, fetten}}} Seitenzahlen wird auf die Definition oder sonstige wichtige Stellen verwiesen.
-	}
-	\newcommand{\glopreambel}{
-		\idxpreambel
-		--- Aus dem Author nicht bekannten Gründen sind die angegebenen Seitenzahlen manchmal um eins zu klein.
-	}
-	\newcommand*{\idxdictionary}[2]{%   nur für Indices
-		\extendtheindex{}{%             am Anfang von '\printindex'
-			\likesection{#2}
-			Die Einträge im Index erscheinen überwiegend auch im Glossar.
-			\idxpreambel
-			\vskip 1cm
-		}{}{}
-		\printindex[#1]
-		\Chead{#2}%                     Kopfzeile Mitte = <Verzeichnisname>
-	}
-	\idxdictionary{idx}{Index}
-
 	% Glossar ==================================================================
-	\renewcommand{\glossarypreamble}{%  am Beginn der Symbole
-		\label{dic-Symbolverzeichnis}
-		\beginchapter[Verzeichnisse]{Symbolverzeichnis}
-		\glopreambel
-		\vskip 1cm
+	% Optionen -> TeXstudio konfigurieren -> Erzeugen -> Standardcompiler:
+	%     txs:///pdflatex|txs:///makeglossaries|txs:///pdflatex
+	\newcommand{\glopreambel}{
+%%%		Mit Seitenzahlen \likehyperDef{in dieser} Schriftart wird auf die Definition oder sonstige wichtige Stellen verwiesen.
+%%%%%%		--- Aus dem Author nicht bekannten Gründen sind die angegebenen Seitenzahlen manchmal um eins zu klein.
+%%%		\vskip 1cm
 	}
+	\iftestFlg \glsaddallunused[symbols,main] \else \fi
+	% --------------------------------------------------------------------------
+	\renewcommand{\glossarypreamble}{%  am Beginn des Index
+		\beginchapter[Verzeichnisse]{Index}
+		\label                  {dic-Index}
+	}
+	\renewcommand*{\glsnamefont}[1]{\textmd{#1}}
+	\printindex[style=mcolindexgroup]
+	\Chead{Index}%                      Kopfzeile Mitte
+	\Endchapter
+	\newpage% ------------------------------------------------------------------
+	\renewcommand{\glossarypreamble}{%  am Beginn des Symbolverzeichnisses
+		\beginchapter[Verzeichnisse]{Symbolverzeichnis}
+		\label                  {dic-Symbolverzeichnis}
+		\glopreambel
+	}
+	\renewcommand*{\glsnamefont}[1]{#1}
 	\printglossary[type=symbols,style=list]
 	\Chead{Symbolverzeichnis}%          Kopfzeile Mitte
 	\Endchapter
 	\newpage% ------------------------------------------------------------------
 	\renewcommand{\glossarypreamble}{%  am Beginn des Glossars
-		\label{dic-Glossar}
 		\beginchapter[Verzeichnisse]{Glossar}
-		Die Einträge im Glossar kommen auch im Index vor.
+		\label                  {dic-Glossar}
 		\glopreambel
-		\vskip 1cm
 	}
+	\renewcommand*{\glsnamefont}[1]{\textbf{#1}}
 	\printglossary[type=main,style=listhypergroup]
 	\Chead{Glossar}%                    Kopfzeile Mitte
 	\Endchapter
+	% --------------------------------------------------------------------------
 
 \end{document}
 

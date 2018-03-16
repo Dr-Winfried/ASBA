@@ -56,7 +56,7 @@ Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogis
 	\formulatoleft\formulatoleft
 \end{align}
 
-$X$ und $Y$ können auch die leere Menge sein. Damit wird definiert:
+$X$ und $Y$ können auch die \leereMenge\ sein. Damit wird definiert:
 \begin{align}
 	& \alpha \defSymBin{\MtsDerive} \beta \quad \MtsDefEquiv \quad
 	\parbox[t]{11cm}{%
@@ -84,37 +84,37 @@ Zur der Auswahl der \Basisregeln, der Formulierung und der Bezeichnungen wird au
 Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$\mathrm{E}$} für "`-Einführung"' und \chrqt{$\mathrm{B}$} für "`-Beseitigung"' (oder "`-Elimination"') von \Junktoren.%
 \footnote{%
 	In der \Monotonieregel\ wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \MtsSupsetEq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \MtsSupsetEq X $}.
-	Außerdem werden bei den Bezeichnungen \seqqt{$(\FrmAnd 1)$} und \seqqt{$(\FrmAnd 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
+	Außerdem werden bei den Bezeichnungen \seqqt{$(\OjkAnd 1)$} und \seqqt{$(\OjkAnd 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
 }
 
 Im Folgenden seien $\alpha$ und $\beta$ \Formeln\ und $X$ und $Y$ Mengen von \Formeln.
-Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{\FrmNot} und \chrqt{\FrmAnd} benötigt.
-Bei den weiteren \Schlussregeln\ wird noch \chrqt{\FrmImp} gemäß der Definition~\vref{def-imp} verwendet.
+Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{\OjkNot} und \chrqt{\OjkAnd} benötigt.
+Bei den weiteren \Schlussregeln\ wird noch \chrqt{\OjkImp} gemäß der Definition~\vref{def-imp} verwendet.
 
 \begin{align}
 	& \frac{}{\alpha\MtsDerive\alpha}
 	& & (\text{\defTxt{\Anfangsregel}})
-	\tag{\tagAR} \label{def-AR}
+	\tagAR \label{def-AR}
 	\\\\
 	& \frac{X\MtsDerive\alpha}{X,Y\MtsDerive\alpha}
 	& & (\text{\defTxt{\Monotonieregel}})
-	\tag{\tagMR} \label{def-MR}
+	\tagMR \label{def-MR}
 	\\\\
-	& \frac{X\MtsDerive\alpha,\FrmNot\alpha}{X\MtsDerive\beta}
+	& \frac{X\MtsDerive\alpha,\OjkNot\alpha}{X\MtsDerive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 1})
-	\tag{\tagnota} \label{def-nota}
+	\tagnota \label{def-nota}
 	\\\\
-	& \frac{X,\alpha\MtsDerive\beta \MtsUnd X,\FrmNot\alpha\MtsDerive\beta}{X\MtsDerive\beta}
+	& \frac{X,\alpha\MtsDerive\beta \MtsUnd X,\OjkNot\alpha\MtsDerive\beta}{X\MtsDerive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 2})
-	\tag{\tagnotb} \label{def-notb}
+	\tagnotb \label{def-notb}
 	\\\\
-	& \frac{X\MtsDerive\alpha,\beta}{X\MtsDerive\alpha\FrmAnd\beta}
+	& \frac{X\MtsDerive\alpha,\beta}{X\MtsDerive\alpha\OjkAnd\beta}
 	& & (\text{Einführung der Konjunktion})
-	\tag{\tagandE} \label{def-andE}
+	\tagandE \label{def-andE}
 	\\\\
-	& \frac{X\MtsDerive\alpha\FrmAnd\beta}{X\MtsDerive\alpha,\beta}
+	& \frac{X\MtsDerive\alpha\OjkAnd\beta}{X\MtsDerive\alpha,\beta}
 	& & (\text{Beseitigung der Konjunktion})
-	\tag{\tagandB} \label{def-andB}
+	\tagandB \label{def-andB}
 	\formulatoleft
 \end{align}
 
@@ -185,11 +185,11 @@ Nun können die beiden \Identitaetsregeln\ definiert werden:
 \begin{align}
 	& \frac{}{\alpha\MtsEq\alpha}
 	& & (\text{Einführung der Identität})
-	\tag{\tageqE} \label{def-eqE}
+	\tageqE \label{def-eqE}
 	\\\\
 	& \frac{\alpha\MtsEq\beta \MtsUnd \gamma}{\gamma(\alpha\MtsSubst\beta)}
 	& & (\text{Beseitigung der Identität})
-	\tag{\tageqB} \label{def-eqB}
+	\tageqB \label{def-eqB}
 	\formulatoleft
 \end{align}
 
@@ -208,29 +208,29 @@ In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessiger\ \Umw
 Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 
 \begin{align}
-	& \frac{X,\FrmNot\alpha\MtsDerive\alpha}{X\MtsDerive\alpha}
+	& \frac{X,\OjkNot\alpha\MtsDerive\alpha}{X\MtsDerive\alpha}
 	& & (\text{Beseitigung der Negation; Indirekter \Beweis})
-	\tag{\tagnotc} \label{def-notc}
+	\tagnotc \label{def-notc}
 	\\\\
-	& \frac{X,\FrmNot\alpha\MtsDerive\beta,\FrmNot\beta}{X\MtsDerive\alpha}
+	& \frac{X,\OjkNot\alpha\MtsDerive\beta,\OjkNot\beta}{X\MtsDerive\alpha}
 	& & (\text{Reductio ad absurdum})
-	\tag{\tagnotd} \label{def-notd}
+	\tagnotd \label{def-notd}
 	\\\\
-	& \frac{X,\alpha\MtsDerive\beta}{X\MtsDerive\alpha\FrmImp\beta}
+	& \frac{X,\alpha\MtsDerive\beta}{X\MtsDerive\alpha\OjkImp\beta}
 	& & (\text{Einführung der Implikation})
-	\tag{\tagimpE} \label{def-impE}
+	\tagimpE \label{def-impE}
 	\\\\
-	& \frac{X\MtsDerive\alpha\FrmImp\beta}{X,\alpha\MtsDerive\beta}
+	& \frac{X\MtsDerive\alpha\OjkImp\beta}{X,\alpha\MtsDerive\beta}
 	& & (\text{Beseitigung der Implikation})
-	\tag{\tagimpB} \label{def-impB}
+	\tagimpB \label{def-impB}
 	\\\\
 	& \frac{X\MtsDerive\alpha \MtsUnd X,\alpha\MtsDerive\beta}{X\MtsDerive\beta}
 	& & (\text{\defTxt{\Schnittregel}})
-	\tag{\tagSR} \label{def-SR}
+	\tagSR \label{def-SR}
 	\\\\
-	& \frac{X\MtsDerive\alpha \MtsUnd \alpha\FrmImp\beta}{X\MtsDerive\beta}
+	& \frac{X\MtsDerive\alpha \MtsUnd \alpha\OjkImp\beta}{X\MtsDerive\beta}
 	& & (\text{\defTxt{\Abtrennungsregel} --- \emph{Modus ponens}})
-	\tag{\tagTR} \label{def-TR}
+	\tagTR \label{def-TR}
 	\formulatoleft
 \end{align}
 
@@ -341,23 +341,23 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 		\\\hline
 		4 & \ref{def-MR} & & $\dfrac{X \MtsDerive \alpha}{X, Y \MtsDerive \alpha}$ & & &
 		\\\hline
-		5 & 4 & $Y \MtsSubst \FrmNot\alpha$ & $\dfrac{X \MtsDerive \alpha}{X, \FrmNot\alpha \MtsDerive \alpha}$ & 1 & $X, \FrmNot\alpha \MtsDerive \alpha$ & 1
+		5 & 4 & $Y \MtsSubst \OjkNot\alpha$ & $\dfrac{X \MtsDerive \alpha}{X, \OjkNot\alpha \MtsDerive \alpha}$ & 1 & $X, \OjkNot\alpha \MtsDerive \alpha$ & 1
 		\\\hline
 		6 & \ref{def-AR} & & $ \dfrac{}{\alpha \MtsDerive \alpha} $ & & &
 		\\\hline
-		7 & 6 & $\alpha \MtsSubst \FrmNot\alpha$ & $\dfrac{}{\FrmNot\alpha \MtsDerive \FrmNot\alpha}$ & & $\FrmNot\alpha \MtsDerive \FrmNot\alpha$ &
+		7 & 6 & $\alpha \MtsSubst \OjkNot\alpha$ & $\dfrac{}{\OjkNot\alpha \MtsDerive \OjkNot\alpha}$ & & $\OjkNot\alpha \MtsDerive \OjkNot\alpha$ &
 		\\\hline
 		8 & 4 & \SnCell{%
-			$\alpha \MtsSubst \FrmNot\alpha$\\
-			$X \MtsSubst \FrmNot\alpha$\\
+			$\alpha \MtsSubst \OjkNot\alpha$\\
+			$X \MtsSubst \OjkNot\alpha$\\
 			$Y \MtsSubst X$
-		} & $\dfrac{\FrmNot\alpha \MtsDerive \FrmNot\alpha}{X,\FrmNot\alpha \MtsDerive \FrmNot\alpha}$ & 7 & $X,\FrmNot\alpha \MtsDerive \FrmNot\alpha$ &
+		} & $\dfrac{\OjkNot\alpha \MtsDerive \OjkNot\alpha}{X,\OjkNot\alpha \MtsDerive \OjkNot\alpha}$ & 7 & $X,\OjkNot\alpha \MtsDerive \OjkNot\alpha$ &
 		\\\hline
-		9 & \ref{def-nota} & & $\dfrac{X \MtsDerive \alpha, \FrmNot\alpha}{X \MtsDerive \beta}$ & & &
+		9 & \ref{def-nota} & & $\dfrac{X \MtsDerive \alpha, \OjkNot\alpha}{X \MtsDerive \beta}$ & & &
 		\\\hline
-		10 & 9 & $X \MtsSubst X, \FrmNot\alpha$ & $\dfrac{X,\FrmNot\alpha \MtsDerive \alpha, \FrmNot\alpha}{X,\FrmNot\alpha \MtsDerive \beta}$ & 5, 8 & $X,\FrmNot\alpha \MtsDerive \beta$ & 1
+		10 & 9 & $X \MtsSubst X, \OjkNot\alpha$ & $\dfrac{X,\OjkNot\alpha \MtsDerive \alpha, \OjkNot\alpha}{X,\OjkNot\alpha \MtsDerive \beta}$ & 5, 8 & $X,\OjkNot\alpha \MtsDerive \beta$ & 1
 		\\\hline
-		11 & \ref{def-notb} & & $\dfrac{X,\alpha \MtsDerive \beta \MtsUnd X,\FrmNot\alpha \MtsDerive \beta}{X \MtsDerive \beta}$ & 2, 10 & 3 & 1, 2
+		11 & \ref{def-notb} & & $\dfrac{X,\alpha \MtsDerive \beta \MtsUnd X,\OjkNot\alpha \MtsDerive \beta}{X \MtsDerive \beta}$ & 2, 10 & 3 & 1, 2
 		\\\hline\hline
 		12 & \centerParbox{1.4cm}{\ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}} & & $\dfrac{A_1 \MtsUnd A_2}{A_3}$ & & $\dfrac{X \MtsDerive \alpha \MtsUnd X, \alpha \MtsDerive \beta}{X \MtsDerive \beta}$ &
 		\\\hline
@@ -443,7 +443,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		%
 		\item $(A_n) =$ $\overline{R}_i$, wobei die \Voraussetzungen\ und \Folgerungen\ aufgelöst werden.
 		%
-		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der \Folgerungen\, vermindert um die \Voraussetzungen.
+		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der \Folgerungen, vermindert um die \Voraussetzungen.
 		--- Wenn das Feld dabei nicht leer bleibt, ist der \Beweis\ missglückt!
 		%
 	\end{enumerate}
@@ -470,60 +470,60 @@ Ein weiteres Beispiel \vrefintab{tab-AbleitungKontraposition} soll verdeutlichen
 		\titleCell{1.65cm}{\Aussage}          {$A_n$} &
 		\titleCell{1.95cm}{Abhängig"=keiten}          {$D_n$}
 		\\\hline \hline
-		1 & \centerParbox{1.00cm}{Folge"=rung} & & & & $(\alpha\FrmImp\beta)\FrmImp(\FrmNot\beta\FrmImp\FrmNot\alpha)$ & 1
+		1 & \centerParbox{1.00cm}{Folge"=rung} & & & & $(\alpha\OjkImp\beta)\OjkImp(\OjkNot\beta\OjkImp\OjkNot\alpha)$ & 1
 		\\\hline
-		2 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha\FrmImp\beta$ & 2
+		2 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha\OjkImp\beta$ & 2
 		\\\hline
-		3 & \centerParbox{1.20cm}{An"=nahme} & & & & $\FrmNot\beta$ & 3
+		3 & \centerParbox{1.20cm}{An"=nahme} & & & & $\OjkNot\beta$ & 3
 		\\\hline
 		4 & \centerParbox{1.20cm}{An"=nahme} & & & & $\alpha$ & 4
 		\\\hline
-		5 & \impB & & $\dfrac{X \MtsDerive \alpha\FrmImp\beta}{X,\alpha \MtsDerive \beta}$ & & &
+		5 & \impB & & $\dfrac{X \MtsDerive \alpha\OjkImp\beta}{X,\alpha \MtsDerive \beta}$ & & &
 		\\\hline
-		6 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha\FrmImp\beta}{\alpha \MtsDerive \beta}$ & 2 & $\alpha \MtsDerive \beta $ & 2
+		6 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha\OjkImp\beta}{\alpha \MtsDerive \beta}$ & 2 & $\alpha \MtsDerive \beta $ & 2
 		\\\hline
 		7 & \SR & & $\dfrac{X \MtsDerive \alpha \MtsUnd X,\alpha \MtsDerive \beta}{X \MtsDerive \beta}$ & & &
 		\\\hline
 		8 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \alpha \MtsDerive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
 		\\\hline
-		9' & \ref{def-andE} & & $\dfrac{X \MtsDerive \alpha, \beta}{X \MtsDerive \alpha \FrmAnd \beta}$ & & &
+		9' & \ref{def-andE} & & $\dfrac{X \MtsDerive \alpha, \beta}{X \MtsDerive \alpha \OjkAnd \beta}$ & & &
 		\\\hline
-		10' & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \beta}{\alpha \FrmAnd \beta}$ & & &
+		10' & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \beta}{\alpha \OjkAnd \beta}$ & & &
 		\\\hline
 		11' & -1 &\SnCell{
 			$\alpha \MtsSwap \beta$\\
-			$\alpha \MtsSubst \FrmNot\beta$
-		}  & $\dfrac{\beta \MtsUnd \FrmNot\beta}{\beta \FrmAnd \FrmNot\beta}$ & 8, 3 & $\beta \FrmAnd \FrmNot\beta$ &
+			$\alpha \MtsSubst \OjkNot\beta$
+		}  & $\dfrac{\beta \MtsUnd \OjkNot\beta}{\beta \OjkAnd \OjkNot\beta}$ & 8, 3 & $\beta \OjkAnd \OjkNot\beta$ &
 		\\\hline
-		9 & \ref{def-nota} & & $\dfrac{X \MtsDerive \alpha, \FrmNot\alpha}{X \MtsDerive \beta}$ & & &
+		9 & \ref{def-nota} & & $\dfrac{X \MtsDerive \alpha, \OjkNot\alpha}{X \MtsDerive \beta}$ & & &
 		\\\hline
-		10 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \FrmNot\alpha}{\beta}$ & & &
+		10 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \OjkNot\alpha}{\beta}$ & & &
 		\\\hline
 		11 & -1 & \SnCell{
 			$\alpha \MtsSwap \beta$\\
-			$\alpha \MtsSubst \FrmNot\alpha$
-		} & $\dfrac{\beta \MtsUnd \FrmNot\beta}{\FrmNot\alpha}$ & 8, 3 & $\FrmNot\alpha$ & 2, 3, 4
+			$\alpha \MtsSubst \OjkNot\alpha$
+		} & $\dfrac{\beta \MtsUnd \OjkNot\beta}{\OjkNot\alpha}$ & 8, 3 & $\OjkNot\alpha$ & 2, 3, 4
 		\\\hline
-		12 & \impE & & $\dfrac{X, \alpha \MtsDerive \beta}{X \MtsDerive \alpha\FrmImp\beta}$ & & &
+		12 & \impE & & $\dfrac{X, \alpha \MtsDerive \beta}{X \MtsDerive \alpha\OjkImp\beta}$ & & &
 		\\\hline
-		13 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsDerive \beta}{\alpha\FrmImp\beta}$ & & &
+		13 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsDerive \beta}{\alpha\OjkImp\beta}$ & & &
 		\\\hline
 		14 & -1 & \SnCell{
 			$\alpha \MtsSwap \beta$\\
-			$\alpha \MtsSubst \FrmNot\alpha$\\
-			$\beta \MtsSubst \FrmNot\beta$
-		} & $\dfrac{\FrmNot\beta \MtsDerive \FrmNot\alpha}{\FrmNot\beta\FrmImp\FrmNot\alpha}$ & 3, 11, ??? & $\FrmNot\beta\FrmImp\FrmNot\alpha$ & 2, 3, 4, ???
+			$\alpha \MtsSubst \OjkNot\alpha$\\
+			$\beta \MtsSubst \OjkNot\beta$
+		} & $\dfrac{\OjkNot\beta \MtsDerive \OjkNot\alpha}{\OjkNot\beta\OjkImp\OjkNot\alpha}$ & 3, 11, ??? & $\OjkNot\beta\OjkImp\OjkNot\alpha$ & 2, 3, 4, ???
 		\\\hline
 		15 & \impE+1 & \SnCell{
 			$\alpha \MtsSubst \gamma$\\
 			$\beta \MtsSubst \delta$\\
-			$\gamma \MtsSubst \alpha\FrmImp\beta$\\
-			$\delta \MtsSubst \FrmNot\beta\FrmImp\FrmNot\alpha$
-		} & $\dfrac{\alpha\FrmImp\beta \MtsDerive \FrmNot\beta\FrmImp\FrmNot\alpha}
-		{(\alpha\FrmImp\beta)\FrmImp(\FrmNot\beta\FrmImp\FrmNot\alpha)}$ & 2, 14 &
-		$(\alpha\FrmImp\beta)\FrmImp(\FrmNot\beta\FrmImp\FrmNot\alpha)$ & 2, 3, 4, ???
+			$\gamma \MtsSubst \alpha\OjkImp\beta$\\
+			$\delta \MtsSubst \OjkNot\beta\OjkImp\OjkNot\alpha$
+		} & $\dfrac{\alpha\OjkImp\beta \MtsDerive \OjkNot\beta\OjkImp\OjkNot\alpha}
+		{(\alpha\OjkImp\beta)\OjkImp(\OjkNot\beta\OjkImp\OjkNot\alpha)}$ & 2, 14 &
+		$(\alpha\OjkImp\beta)\OjkImp(\OjkNot\beta\OjkImp\OjkNot\alpha)$ & 2, 3, 4, ???
 		\\\hline\hline
-		16 & \centerParbox{1.5cm}{\impE, \impB, \SR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\FrmImp\beta)\FrmImp(\FrmNot\beta\FrmImp\FrmNot\alpha)}$ &
+		16 & \centerParbox{1.5cm}{\impE, \impB, \SR} & & $\dfrac{}{A_1}$ & & $\dfrac{}{(\alpha\OjkImp\beta)\OjkImp(\OjkNot\beta\OjkImp\OjkNot\alpha)}$ &
 		\\\hline
 	\end{tabular}
 	\caption{\Ableitung\ der \Kontraposition\ aus \allgemeingueltigenSchlussregeln}

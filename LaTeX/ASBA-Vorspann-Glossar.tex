@@ -31,7 +31,8 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = de_DE
 
-%TODO Im Index und Glossar prüfen: Haben alle Einträge einen Verweise auf die Definition?
+\newif\ifimGlossarFlg% Schalter ob im Glossar; noch AUS
+\newcommand{\imGlossar}[1]{\ifimGlossarFlg #1\else\fi}
 
 % Elemente, die keine Glossareinträge sind und dafür nicht gebraucht werden,
 % werden in "ASBA-Vorspann.tex" und "ASBA-Mathematik-Vorspann.tex" definiert.
@@ -39,8 +40,10 @@
 \newglossary[nlg]{symbols}{not}{ntn}{Symbole}
 
 % Fonts für die Liste der Seitenangaben
-\newcommand*{\hyperDef}[1]{\textbf{\hypersf{#1}}}% für Definitionen
-\newcommand*{\hyperTxt}[1]{\hyperrm{#1}}%   normal für Texte
+\newcommand*    {\hyperTxt}[1]             {\hyperrm{#1}}%  für       Definitionen
+\newcommand*{\likehyperTxt}[1]        {\linkcolor{#1}}%  simuliert Definitionen
+\newcommand*    {\hyperDef}[1]{\textbf     {\hypersf{#1}}}% für       Definitionen
+\newcommand*{\likehyperDef}[1]{\textbf{\linkcolor{#1}}}% simuliert Definitionen
 \GlsAddXdyAttribute{hyperDef}% damit xindy damit umgehen kann
 \GlsAddXdyAttribute{hyperTxt}% damit xindy damit umgehen kann
 
@@ -54,8 +57,8 @@
 % neue Symbole -----------------------------------------------------------------
 % Ausgabe und Aufnahme ins Glossar - - - - - - - - - - - - - - - - - - - - - - -
 % [<Font-Makro>] {<Glossary Key>}
-\newcommand*{\glsSym}[2][]{\glssymbol [#1]             {#2}}% mit  Link ins Glossar
-\newcommand*{\glsTag}[1]  {\glssymbol*[format=hyperDef]{#1}}% ohne Link ins Glossar
+\newcommand*{\glsSym}[2][]     {\glssymbol[#1]{#2}}%                                  mit  Link ins Glossar
+\newcommand*{\glsTag}[1]  {\tag{\glssymbol*   {#1}}\glsadd[format=hyperDef]{#1}}% ohne Link ins Glossar
 % ... mit Hervorhebung der Seitennummer- - - - - - - - - - - - - - - - - - - - -
 % {<Makro>} - An <Makro> muss [<Font-Makro>] angehängt werden können
 \newcommand*{\defSym}   [1]          {#1[format=hyperDef]}
@@ -63,35 +66,38 @@
 \newcommand*{\defSymBin}[1]{\;\defSym{#1}\;}% binär: umgebender Abstand
 
 % neue Begriffe ----------------------------------------------------------------
-% hervorgehoben, aber kein Verweis - - - - - - - - - - - - - - - - - - - - - - -
-% {<Begriff>}
-\newcommand*{\defFt}[1]{\textbf{#1}}
-% nur Eintrag im Index - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-% [Font-Makro] {<Index-Eintrag>}
-\newcommand*{\idx}[2][]{\sindex[idx]{#2|#1}}
-% Ausgabe und Aufnahme in Index und Glossar- - - - - - - - - - - - - - - - - - -
-% [Font-Makro] {Golossary key}
-% 1. Buchstabe klein
-\newcommand*{\glsIdx}   [2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\glstext   [format=#1]{#2}}
-\newcommand*{\glsIdxI}  [2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\glsuseri  [format=#1]{#2}}
-\newcommand*{\glsIdxII} [2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\glsuserii [format=#1]{#2}}
-\newcommand*{\glsIdxIII}[2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\glsuseriii[format=#1]{#2}}
-\newcommand*{\glsIdxIV} [2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\glsuseriv [format=#1]{#2}}
-\newcommand*{\glsIdxV}  [2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\glsuserv  [format=#1]{#2}}
-\newcommand*{\glsIdxVI} [2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\glsuservi [format=#1]{#2}}
-\newcommand*{\glsIdxPl} [2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\glspl     [format=#1]{#2}}
-% 1. Buchstabe groß
-\newcommand*{\GlsIdx}   [2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\Glstext   [format=#1]{#2}}
-\newcommand*{\GlsIdxPl} [2][hyperTxt]{\idx[#1]{\glsentrytext{#2}}\Glspl     [format=#1]{#2}}
-% ... mit Hervorhebung der Seitennummer- - - - - - - - - - - - - - - - - - - - -
-% {<Makro>} - An <Makro> muss [<Font-Makro>] angehängt werden können
-\newcommand*{\defTxt}[1]{\defFt{#1[hyperDef]}}% Seitennummer hervorheben
-% normal und Verweis ins Glossar - - - - - - - - - - - - - - - - - - - - - - - -
+% Ausgabe und Aufnahme insGlossar mit Hervorhebung der Seitennummer- - - - - - -
+% {<Makro>} - An <Makro> muss [format=<Font-Makro>] angehängt werden können
+\newcommand*{\defTxt}[1]{\defFt{#1[format=hyperDef]}}
+
+% Automatischer Index ==========================================================
+\newcommand*{\addIdx}[2][]{% {Index-Eintrag} - Index hinzufügen
+	\newterm[name={#2},#1]{ind-#2}
+	\glsadd               {ind-#2}
+}
+\newcommand*{\idx}[2][]{% [Text]{Index-Eintrag} - Ausgabe und Index hinzufügen
+	\addIdx{#2}
+	\def\ArgumentEins{#1}
+	\def\ASBAundefined{}
+	\ifx\ArgumentEins\ASBAundefined #2\else #1\fi%  wenn Text leer, Index-Eintrag ausgeben
+}
 
 % Glossar-Einträge #############################################################
-
-\newglossaryentry{dummy}{name={\ensuremath{\text{|--}}},type={symbols},description={Dummy Symbol}}%%% Nur zum Testen
-\newglossaryentry{Dummy}{name={Dummy},description={Dummy Text}}%%% Nur zum Testen
+\iftestFlg
+	\newcommand*{\dummy}[1][]{\glsSym[#1]{dummy}}% Dummy für Symbolverzeichnis
+	\newglossaryentry{dummy}{
+		name  ={\ensuremath{\#}},
+		symbol={\ensuremath{\#}},
+		type  ={symbols},
+		description={Dummy Symbol für das Symbolverzeichnis}
+	}
+	\newcommand*{\Dummy}[1][]{\glstext[#1]{Dummy}}% Dummy für Glossar
+	\newglossaryentry{Dummy}{
+		name        ={Dummy\addIdx{Dummy}},
+		description ={Dummy Begriff für das Glossar}
+	}
+\else \fi
+\imGlossarFlgtrue% Beginn der Glossareinträge ==================================
 
 % Symbole für Beispieloperationen und -relationen ------------------------------
 % \Bsp* - Ausgabe als Symbol und Aufnahme in Symbolliste und Glossar
@@ -106,6 +112,7 @@
 		Beispielsymbol für eine unäre \Operation.
 	}
 }
+
 \newcommand*              {\BspOpB}[1][]{\glsSym[#1]{BspOpB}}
 \newglossaryentry          {BspOpB}{
 	name  ={\ensuremath{\RawBspOpB}},
@@ -116,6 +123,7 @@
 		Beispielsymbol für eine binäre \Operation.
 	}
 }
+
 %Nummerierung ändern (Verneinung ans Ende)
 \newcommand*              {\BspRel}[1][]{\glsSym[#1]{BspRel}}
 \newglossaryentry          {BspRel}{
@@ -127,6 +135,7 @@
 		Beispielsymbol für eine binäre \Relation\ mit \Umkehrrelation\ \BspRelBck.
 	}
 }
+
 \newcommand*              {\BspRelEq}[1][]{\glsSym[#1]{BspRelEq}}
 \newglossaryentry          {BspRelEq}{
 	name  ={\ensuremath{\RawBspRelEq}},
@@ -137,6 +146,7 @@
 		Beispielsymbol für eine binäre \Relation\ mit \Gleichheit\ und \Umkehrrelation\ \BspRelBckEq.
 	}
 }
+
 \newcommand*              {\BspRelBck}[1][]{\glsSym[#1]{BspRelBck}}
 \newglossaryentry          {BspRelBck}{
 	name  ={\ensuremath{\RawBspRelBck}},
@@ -147,6 +157,7 @@
 		Beispielsymbol für eine binäre \Relation\ mit \Umkehrrelation\ \BspRel.
 	}
 }
+
 \newcommand*              {\BspRelBckEq}[1][]{\glsSym[#1]{BspRelBckEq}}
 \newglossaryentry          {BspRelBckEq}{
 	name  ={\ensuremath{\RawBspRelBckEq}},
@@ -157,6 +168,7 @@
 		Beispielsymbol für eine binäre \Relation\ mit \Gleichheit\ und \Umkehrrelation\ \BspRelEq.
 	}
 }
+
 \newcommand*              {\BspRelN}[1][]{\glsSym[#1]{BspRelN}}
 \newglossaryentry          {BspRelN}{
 	name  ={\ensuremath{\RawBspRelN}},
@@ -167,6 +179,7 @@
 		Verneinung von \BspRel.
 	}
 }
+
 \newcommand*              {\BspRelEqN}[1][]{\glsSym[#1]{BspRelEqN}}
 \newglossaryentry          {BspRelEqN}{
 	name  ={\ensuremath{\RawBspRelEqN}},
@@ -177,6 +190,7 @@
 		Verneinung von \BspRelEq.
 	}
 }
+
 \newcommand*              {\BspRelBckN}[1][]{\glsSym[#1]{BspRelBckN}}
 \newglossaryentry          {BspRelBckN}{
 	name  ={\ensuremath{\RawBspRelBckN}},
@@ -187,6 +201,7 @@
 		Verneinung von \BspRelBck.
 	}
 }
+
 \newcommand*              {\BspRelBckEqN}[1][]{\glsSym[#1]{BspRelBckEqN}}
 \newglossaryentry          {BspRelBckEqN}{
 	name  ={\ensuremath{\RawBspRelBckEqN}},
@@ -206,89 +221,97 @@
 	name  ={\ensuremath{\RawMtsNot}},
 	symbol={\ensuremath{\RawMtsNot}},
 	sort  ={= 1 1 1},
-	see   ={FrmNot},
+	see   ={OjkNot},
 	type  ={symbols},
 	description={
 		Eine unäre \Metaoperation:~ \textdots\ \emph{gilt nicht}.
 	}
 }
+
 \newcommand*              {\MtsAnd}[1][]{\glsSym[#1]{MtsAnd}}
 \newglossaryentry          {MtsAnd}{
 	name  ={\ensuremath{\RawMtsAnd}},
 	symbol={\ensuremath{\RawMtsAnd}},
 	sort  ={= 1 1 2},
-	see   ={FrmAnd},
+	see   ={OjkAnd},
 	type  ={symbols},
 	description={
 		Eine \Metaoperation:~ \textdots\ \emph{und} \textdots
 	}
 }
+
 \newcommand*              {\MtsOr}[1][]{\glsSym[#1]{MtsOr}}
 \newglossaryentry          {MtsOr}{
 	name  ={\ensuremath{\RawMtsOr}},
 	symbol={\ensuremath{\RawMtsOr}},
 	sort  ={= 1 1 3},
-	see   ={FrmOr},
+	see   ={OjkOr},
 	type  ={symbols},
 	description={
 		Eine \Metaoperation:~ \textdots\ \emph{oder} \textdots
 	}
 }
+
 \newcommand*              {\MtsImp}[1][]{\glsSym[#1]{MtsImp}}
 \newglossaryentry          {MtsImp}{
 	name  ={\ensuremath{\RawMtsImp}},
 	symbol={\ensuremath{\RawMtsImp}},
 	sort  ={= 1 2 1},
-	see   ={FrmImp},
+	see   ={OjkImp},
 	type  ={symbols},
 	description={
 		Eine \Metarelation:~ \textdots\ \emph{dann auch} \textdots, die \Umkehrrelation\ zu \MtsRep.
 	}
 }
+
 \newcommand*              {\MtsRep}[1][]{\glsSym[#1]{MtsRep}}
 \newglossaryentry          {MtsRep}{
 	name  ={\ensuremath{\RawMtsRep}},
 	symbol={\ensuremath{\RawMtsRep}},
 	sort  ={= 1 2 2},
-	see   ={FrmRep},
+	see   ={OjkRep},
 	type  ={symbols},
 	description={
 		Eine \Metarelation:~ \textdots\ \emph{sofern} \textdots , die \Umkehrrelation\ zu \MtsImp.
 	}
 }
+
 \newcommand*              {\MtsEquiv}[1][]{\glsSym[#1]{MtsEquiv}}
 \newglossaryentry          {MtsEquiv}{
 	name  ={\ensuremath{\RawMtsEquiv}},
 	symbol={\ensuremath{\RawMtsEquiv}},
 	sort  ={= 1 2 3},
-	see   ={FrmEquiv},
+	see   ={OjkEquiv},
 	type  ={symbols},
 	description={
 		Eine \Metarelation:~ \textdots\ \emph{genau dann wenn} \textdots
 	}
 }
+
 \newcommand*              {\MtsEq}[1][]{\glsSym[#1]{MtsEq}}
 \newglossaryentry          {MtsEq}{
 	name  ={\ensuremath{\RawMtsEq}},
 	symbol={\ensuremath{\RawMtsEq}},
 	sort  ={= 1 3 1},
-	see   ={FrmEq,Gleichheit},
+	see   ={OjkEq,Gleichheit},
 	type  ={symbols},
 	description={
 		Eine \Metarelation:~ \textdots\ \emph{ist gleich} (dasselbe wie; identisch zu) \textdots
 	}
 }
+
 \newcommand*              {\MtsEqN}[1][]{\glsSym[#1]{MtsEqN}}
 \newglossaryentry          {MtsEqN}{
 	name  ={\ensuremath{\RawMtsEqN}},
 	symbol={\ensuremath{\RawMtsEqN}},
 	sort  ={= 1 3 2},
-	see   ={FrmEqN},%%% Ungleichheit?
+	see   ={OjkEqN},%%% Ungleichheit?
 	type  ={symbols},
 	description={
 		Eine \Metarelation:~ \textdots\ \emph{ist ungleich} (nicht dasselbe wie, nicht identisch zu) \textdots
 	}
 }
+
 \newcommand*              {\MtsAequiv}[1][]{\glsSym[#1]{MtsAequiv}}
 \newglossaryentry          {MtsAequiv}{
 	name  ={\ensuremath{\RawMtsAequiv}},
@@ -300,6 +323,7 @@
 		Eine \Metarelation:~ \textdots\ \emph{äquivalent} (so wie; ähnlich) \textdots
 	}
 }
+
 \newcommand*              {\MtsAequivN}[1][]{\glsSym[#1]{MtsAequivN}}
 \newglossaryentry          {MtsAequivN}{
 	name  ={\ensuremath{\RawMtsNAequiv}},
@@ -311,6 +335,7 @@
 		Eine \Metarelation:~ \textdots\ \emph{nicht äquivalent} (nicht so wie; nicht ähnlich) \textdots
 	}
 }
+
 \newcommand*              {\MtsDefEquiv}[1][]{\glsSym[#1]{MtsDefEquiv}}
 \newglossaryentry          {MtsDefEquiv}{
 	name  ={\ensuremath{\RawMtsDefEquiv}},
@@ -321,6 +346,7 @@
 		\Metadefinition:~ \textdots\ \emph{definitionsgemäß genau dann wenn} \textdots
 	}
 }
+
 \newcommand*              {\MtsDefEq}[1][]{\glsSym[#1]{MtsDefEq}}
 \newglossaryentry          {MtsDefEq}{
 	name  ={\ensuremath{\RawMtsDefEq}},
@@ -331,18 +357,20 @@
 		\Definition:~ \textdots\ \emph{definitionsgemäß gleich} (dasselbe wie; identisch zu) \textdots
 	}
 }
+
 \newcommand*              {\MtsUnd}[1][]{\glsSym[#1]{MtsUnd}}
 %ToDo prüfen
 \newglossaryentry          {MtsUnd}{
 	name  ={\ensuremath{\RawMtsUnd}},
 	symbol={\ensuremath{\RawMtsUnd}},
 	sort  ={= 1 5 1},
-	see   ={MtsAnd,FrmAnd},
+	see   ={MtsAnd,OjkAnd},
 	type  ={symbols},
 	description={
 		Eine \Metaoperation\ (nur für Schlussregeln):~ \textdots\ \emph{und} \textdots
 	}
 }
+
 \newcommand*              {\MtsDerive}[1][]{\glsSym[#1]{MtsDerive}}
 \newglossaryentry          {MtsDerive}{
 	name  ={\ensuremath{\RawMtsDerive}},
@@ -354,6 +382,7 @@
 		\Ableitungsrelation:~ \textdots\ \emph{\ableitbar} (\beweisbar) \textdots
 	}
 }
+
 \newcommand*              {\MtsDeriveR}[1][]{\glsSym[#1]{MtsDeriveR}}
 \newglossaryentry          {MtsDeriveR}{
 	name  ={\ensuremath{\RawMtsDerive_R}},
@@ -364,8 +393,8 @@
 		Eine Darstellung der \Relation\ $R$ aus $\MtsRel(\MtsPot(\MtsSprache))$ als \Ableitungsrelation.
 	}
 }
+
 \newcommand*              {\MtsSubst}[1][]{\glsSym[#1]{MtsSubst}}
-%%%ToDo prüfen
 \newglossaryentry          {MtsSubst}{
 	name  ={\ensuremath{\RawMtsSubst}},
 	symbol={\ensuremath{\RawMtsSubst}},
@@ -375,8 +404,8 @@
 		\Ersetzung:~ \textdots\ \emph{substituiert durch} \textdots
 	}
 }
+
 \newcommand*              {\MtsSwap}[1][]{\glsSym[#1]{MtsSwap}}
-%%%ToDo prüfen
 \newglossaryentry          {MtsSwap}{
 	name  ={\ensuremath{\RawMtsSwap}},
 	symbol={\ensuremath{\RawMtsSwap}},
@@ -388,12 +417,12 @@
 }
 
 % aussagenlogische Operationen, dargestellt mit Symbolen -----------------------
-% \Frm* - Ausgabe als Symbol und Aufnahme in Symbolliste und Glossar
+% \Ojk* - Ausgabe als Symbol und Aufnahme in Symbolliste und Glossar
 
-\newcommand*              {\FrmFalse}[1][]{\glsSym[#1]{FrmFalse}}
-\newglossaryentry          {FrmFalse}{
-	name  ={\ensuremath{\RawFrmFalse}},
-	symbol={\ensuremath{\RawFrmFalse}},
+\newcommand*              {\OjkFalse}[1][]{\glsSym[#1]{OjkFalse}}
+\newglossaryentry          {OjkFalse}{
+	name  ={\ensuremath{\RawOjkFalse}},
+	symbol={\ensuremath{\RawOjkFalse}},
 	sort  ={= 2 0 1},
 	see   ={MtsFalse},
 	type  ={symbols},
@@ -401,10 +430,11 @@
 		Ein 0-stelliger \Junktor, \textdh\ eine aussagenlogische Konstante mit dem \Wahrheitswert\ \TxtFalse.
 	}
 }
-\newcommand*              {\FrmTrue}[1][]{\glsSym[#1]{FrmTrue}}
-\newglossaryentry          {FrmTrue}{
-	name  ={\ensuremath{\RawFrmTrue}},
-	symbol={\ensuremath{\RawFrmTrue}},
+
+\newcommand*              {\OjkTrue}[1][]{\glsSym[#1]{OjkTrue}}
+\newglossaryentry          {OjkTrue}{
+	name  ={\ensuremath{\RawOjkTrue}},
+	symbol={\ensuremath{\RawOjkTrue}},
 	sort  ={= 2 0 2},
 	see   ={MtsTrue},
 	type  ={symbols},
@@ -412,10 +442,11 @@
 		Ein 0-stelliger \Junktor, \textdh\ eine aussagenlogische Konstante mit dem \Wahrheitswert\ \TxtTrue.
 	}
 }
-\newcommand*              {\FrmNot}[1][]{\glsSym[#1]{FrmNot}}
-\newglossaryentry          {FrmNot}{
-	name  ={\ensuremath{\RawFrmNot}},
-	symbol={\ensuremath{\RawFrmNot}},
+
+\newcommand*              {\OjkNot}[1][]{\glsSym[#1]{OjkNot}}
+\newglossaryentry          {OjkNot}{
+	name  ={\ensuremath{\RawOjkNot}},
+	symbol={\ensuremath{\RawOjkNot}},
 	sort  ={= 2 1 1},
 	see   ={MtsNot},
 	type  ={symbols},
@@ -423,32 +454,35 @@
 		Ein unärer \Junktor:~ \emph{nicht} \textdots
 	}
 }
-\newcommand*              {\FrmAnd}[1][]{\glsSym[#1]{FrmAnd}}
-\newglossaryentry          {FrmAnd}{
-	name  ={\ensuremath{\RawFrmAnd}},
-	symbol={\ensuremath{\RawFrmAnd}},
+
+\newcommand*              {\OjkAnd}[1][]{\glsSym[#1]{OjkAnd}}
+\newglossaryentry          {OjkAnd}{
+	name  ={\ensuremath{\RawOjkAnd}},
+	symbol={\ensuremath{\RawOjkAnd}},
 	sort  ={= 2 1 2},
-	see   ={FrmNand,MtsAnd},
+	see   ={OjkNand,MtsAnd},
 	type  ={symbols},
 	description={
 		Ein binärer \Junktor:~ \textdots\ \emph{und} \textdots
 	}
 }
-\newcommand*              {\FrmOr}[1][]{\glsSym[#1]{FrmOr}}
-\newglossaryentry          {FrmOr}{
-	name  ={\ensuremath{\RawFrmOr}},
-	symbol={\ensuremath{\RawFrmOr}},
+
+\newcommand*              {\OjkOr}[1][]{\glsSym[#1]{OjkOr}}
+\newglossaryentry          {OjkOr}{
+	name  ={\ensuremath{\RawOjkOr}},
+	symbol={\ensuremath{\RawOjkOr}},
 	sort  ={= 2 1 3},
-	see   ={FrmNor,FrmXor,MtsOr},
+	see   ={OjkNor,OjkXor,MtsOr},
 	type  ={symbols},
 	description={
 		Ein binärer \Junktor:~ \textdots\ \emph{oder} \textdots
 	}
 }
-\newcommand*              {\FrmImp}[1][]{\glsSym[#1]{FrmImp}}
-\newglossaryentry          {FrmImp}{
-	name  ={\ensuremath{\RawFrmImp}},
-	symbol={\ensuremath{\RawFrmImp}},
+
+\newcommand*              {\OjkImp}[1][]{\glsSym[#1]{OjkImp}}
+\newglossaryentry          {OjkImp}{
+	name  ={\ensuremath{\RawOjkImp}},
+	symbol={\ensuremath{\RawOjkImp}},
 	sort  ={= 2 2 1},
 	see   ={MtsImp},
 	type  ={symbols},
@@ -456,10 +490,11 @@
 		Ein binärer \Junktor:~ \emph{aus} \textdots\ \emph{folgt} \textdots
 	}
 }
-\newcommand*              {\FrmRep}[1][]{\glsSym[#1]{FrmRep}}
-\newglossaryentry          {FrmRep}{
-	name  ={\ensuremath{\RawFrmRep}},
-	symbol={\ensuremath{\RawFrmRep}},
+
+\newcommand*              {\OjkRep}[1][]{\glsSym[#1]{OjkRep}}
+\newglossaryentry          {OjkRep}{
+	name  ={\ensuremath{\RawOjkRep}},
+	symbol={\ensuremath{\RawOjkRep}},
 	sort  ={= 2 2 2},
 	see   ={MtsRep},
 	type  ={symbols},
@@ -467,10 +502,11 @@
 		Ein binärer \Junktor:~ \textdots\ \emph{folgt aus} \textdots
 	}
 }
-\newcommand*              {\FrmEquiv}[1][]{\glsSym[#1]{FrmEquiv}}
-\newglossaryentry          {FrmEquiv}{
-	name  ={\ensuremath{\RawFrmEquiv}},
-	symbol={\ensuremath{\RawFrmEquiv}},
+
+\newcommand*              {\OjkEquiv}[1][]{\glsSym[#1]{OjkEquiv}}
+\newglossaryentry          {OjkEquiv}{
+	name  ={\ensuremath{\RawOjkEquiv}},
+	symbol={\ensuremath{\RawOjkEquiv}},
 	sort  ={= 2 2 3},
 	see   ={MtsEquiv},
 	type  ={symbols},
@@ -478,44 +514,48 @@
 		Ein binärer \Junktor:~ \textdots\ \emph{genau dann wenn} \textdots
 	}
 }
-\newcommand*              {\FrmNand}[1][]{\glsSym[#1]{FrmNand}}
-\newglossaryentry          {FrmNand}{
-	name  ={\ensuremath{\RawFrmNand}},
-	symbol={\ensuremath{\RawFrmNand}},
+
+\newcommand*              {\OjkNand}[1][]{\glsSym[#1]{OjkNand}}
+\newglossaryentry          {OjkNand}{
+	name  ={\ensuremath{\RawOjkNand}},
+	symbol={\ensuremath{\RawOjkNand}},
 	sort  ={= 2 3 1},
-	see   ={FrmAnd},
+	see   ={OjkAnd},
 	type  ={symbols},
 	description={
 		Ein binärer \Junktor:~ \emph{nicht zugleich} \textdots\ \emph{und} \textdots
 	}
 }
-\newcommand*              {\FrmNor}[1][]{\glsSym[#1]{FrmNor}}
-\newglossaryentry          {FrmNor}{
-	name  ={\ensuremath{\RawFrmNor}},
-	symbol={\ensuremath{\RawFrmNor}},
+
+\newcommand*              {\OjkNor}[1][]{\glsSym[#1]{OjkNor}}
+\newglossaryentry          {OjkNor}{
+	name  ={\ensuremath{\RawOjkNor}},
+	symbol={\ensuremath{\RawOjkNor}},
 	sort  ={= 2 3 2},
-	see   ={FrmOr,FrmXor},
+	see   ={OjkOr,OjkXor},
 	type  ={symbols},
 	description={
 		Ein binärer \Junktor:~ \emph{weder} \textdots\ \emph{noch} \textdots
 	}
 }
-\newcommand*              {\FrmXor}[1][]{\glsSym[#1]{FrmXor}}
-\newglossaryentry          {FrmXor}{
-	name  ={\ensuremath{\RawFrmXor}},
-	symbol={\ensuremath{\RawFrmXor}},
+
+\newcommand*              {\OjkXor}[1][]{\glsSym[#1]{OjkXor}}
+\newglossaryentry          {OjkXor}{
+	name  ={\ensuremath{\RawOjkXor}},
+	symbol={\ensuremath{\RawOjkXor}},
 	sort  ={= 2 3 3},
-	see   ={FrmOr,FrmNor},
+	see   ={OjkOr,OjkNor},
 	type  ={symbols},
 	description={
 		Ein binärer \Junktor:~ \emph{entweder} \textdots\ \emph{oder} \textdots
 	}
 }
-\newcommand*              {\FrmEq}[1][]{\glsSym[#1]{FrmEq}}
+
+\newcommand*              {\OjkEq}[1][]{\glsSym[#1]{OjkEq}}
 %ToDo prüfen
-\newglossaryentry          {FrmEq}{
-	name  ={\ensuremath{\RawFrmEq}},
-	symbol={\ensuremath{\RawFrmEq}},
+\newglossaryentry          {OjkEq}{
+	name  ={\ensuremath{\RawOjkEq}},
+	symbol={\ensuremath{\RawOjkEq}},
 	sort  ={= 2 4 1},
 	see   ={MtsEq},
 	type  ={symbols},
@@ -523,11 +563,12 @@
 		Logische Gleichheit:~ \textdots\ \emph{gleich} \textdots
 	}
 }
-\newcommand*              {\FrmEqN}[1][]{\glsSym[#1]{FrmEqN}}
+
+\newcommand*              {\OjkEqN}[1][]{\glsSym[#1]{OjkEqN}}
 %ToDo prüfen
-\newglossaryentry          {FrmEqN}{
-	name  ={\ensuremath{\RawFrmEqN}},
-	symbol={\ensuremath{\RawFrmEqN}},
+\newglossaryentry          {OjkEqN}{
+	name  ={\ensuremath{\RawOjkEqN}},
+	symbol={\ensuremath{\RawOjkEqN}},
 	sort  ={= 2 4 2},
 	see   ={MtsEqN},
 	type  ={symbols},
@@ -536,7 +577,7 @@
 	}
 }
 
-% Mengen-Operatoren ------------------------------------------------------------
+% Element und Mengen-Relationen und Operationen --------------------------------
 % \sym* - Ausgabe als Symbol und Aufnahme in Symbolliste und Glossar
 %TODO ### Überprüfung hier fortsetzen.
 
@@ -544,962 +585,1125 @@
 \newglossaryentry          {MtsIn}{
 	name  ={\ensuremath{\RawMtsIn}},
 	symbol={\ensuremath{\RawMtsIn}},
-	sort  ={= 3 0 1},
+	sort  ={= 3 1 1},
 	type  ={symbols},
 	description={
-		Ein Mengenoperator:~ \textdots\ \emph{ist Element aus} (der Menge) \textdots
+		Eine Elementrelation:~ \textdots\ \emph{ist Element aus} (der Menge) \textdots
 	}
 }
+
 \newcommand*              {\MtsNi}[1][]{\glsSym[#1]{MtsNi}}
 \newglossaryentry          {MtsNi}{
 	name  ={\ensuremath{\RawMtsNi}},
 	symbol={\ensuremath{\RawMtsNi}},
-	sort  ={= 3 0 2},
+	sort  ={= 3 1 2},
 	type  ={symbols},
 	description={
-		Ein Mengenoperator:~ \textdots\ \emph{ist Element aus} (der Menge) \textdots
+		Eine Elementrelation:~ \textdots\ \emph{ist Element aus} (der Menge) \textdots
 	}
 }
+
+\newcommand*              {\MtsInN}[1][]{\glsSym[#1]{MtsInN}}
+\newglossaryentry          {MtsInN}{
+	name  ={\ensuremath{\RawMtsInN}},
+	symbol={\ensuremath{\RawMtsInN}},
+	sort  ={= 3 2 1},
+	type  ={symbols},
+	description={
+		Eine Elementrelation:~ \textdots\ \emph{ist kein Element aus} (der Menge) \textdots
+	}
+}
+
+\newcommand*              {\MtsNiN}[1][]{\glsSym[#1]{MtsNiN}}
+\newglossaryentry          {MtsNiN}{
+	name  ={\ensuremath{\RawMtsNiN}},
+	symbol={\ensuremath{\RawMtsNiN}},
+	sort  ={= 3 2 2},
+	type  ={symbols},
+	description={
+		Eine Elementrelation:~ \textdots\ \emph{ist kein Element aus} (der Menge) \textdots
+	}
+}
+
 \newcommand*              {\MtsSubset}[1][]{\glsSym[#1]{MtsSubset}}
 \newglossaryentry          {MtsSubset}{
 	name  ={\ensuremath{\RawMtsSubset}},
 	symbol={\ensuremath{\RawMtsSubset}},
-	sort  ={= 3 1 1},
+	sort  ={= 4 1 1},
 	type  ={symbols},
 	description={
-		Mengenoperator:~ (die Menge) \textdots\ \emph{ist echte Teilmenge von} (der Menge) \textdots
-		; es kann keine \Gleichheit\ bestehen.
+		Eine Mengenrelation:~ (die Menge) \textdots\ \emph{ist echte Teilmenge von} (der Menge) \textdots
+		Es kann keine \Gleichheit\ bestehen.
 		In der Literatur wird \MtsSubset\ oft im Sinne von \MtsSubsetEq\ verwendet.
 	}
 }
+
 \newcommand*              {\MtsSubsetEq}[1][]{\glsSym[#1]{MtsSubsetEq}}
 \newglossaryentry          {MtsSubsetEq}{
 	name  ={\ensuremath{\RawMtsSubsetEq}},
 	symbol={\ensuremath{\RawMtsSubsetEq}},
-	sort  ={= 3 1 2},
+	sort  ={= 4 1 2},
 	type  ={symbols},
 	description={
-		Ein Mengenoperator:~ (die Menge) \textdots\ \emph{ist Teilmenge von} (der Menge) \textdots
-		; es kann \Gleichheit\ bestehen.
+		Eine Mengenrelation:~ (die Menge) \textdots\ \emph{ist Teilmenge von} (der Menge) \textdots
+		Es kann \Gleichheit\ bestehen.
 	}
 }
+
 \newcommand*              {\MtsSubsetN}[1][]{\glsSym[#1]{MtsSubsetN}}
 \newglossaryentry          {MtsSubsetN}{
 	name  ={\ensuremath{\RawMtsSubsetN}},
 	symbol={\ensuremath{\RawMtsSubsetN}},
-	sort  ={= 3 1 3},
+	sort  ={= 4 1 3},
 	type  ={symbols},
 	description={
-		Ein Mengenoperator:~ (die Menge) \textdots\ \emph{ist keine echte Teilmenge von} (der Menge) \textdots
+		Eine Mengenrelation:~ (die Menge) \textdots\ \emph{ist keine echte Teilmenge von} (der Menge) \textdots
+		Es kann aber \Gleichheit\ bestehen.
 	}
 }
+
+\newcommand*              {\MtsSubsetEqN}[1][]{\glsSym[#1]{MtsSubsetEqN}}
+\newglossaryentry          {MtsSubsetEqN}{
+	name  ={\ensuremath{\RawMtsSubsetEqN}},
+	symbol={\ensuremath{\RawMtsSubsetEqN}},
+	sort  ={= 4 1 4},
+	type  ={symbols},
+	description={
+		Eine Mengenrelation:~ (die Menge) \textdots\ \emph{ist keine Teilmenge von} (der Menge) \textdots
+		Es kann auch keine \Gleichheit\ bestehen.
+	}
+}
+
 \newcommand*              {\MtsSupset}[1][]{\glsSym[#1]{MtsSupset}}
 \newglossaryentry          {MtsSupset}{
 	name  ={\ensuremath{\RawMtsSupset}},
 	symbol={\ensuremath{\RawMtsSupset}},
-	sort  ={= 3 2 1},
+	sort  ={= 4 2 1},
 	type  ={symbols},
 	description={
-		Ein Mengenoperator:~ (die Menge) \textdots\ \emph{ist echte Obermenge von} (der Menge) \textdots
-		; es kann keine \Gleichheit\ bestehen.
+		Eine Mengenrelation:~ (die Menge) \textdots\ \emph{ist echte Obermenge von} (der Menge) \textdots
+		Es kann keine \Gleichheit\ bestehen.
 		In der Literatur wird \MtsSupset\ oft im Sinne von \MtsSupsetEq\ verwendet.
 	}
 }
+
 \newcommand*              {\MtsSupsetEq}[1][]{\glsSym[#1]{MtsSupsetEq}}
 \newglossaryentry          {MtsSupsetEq}{
 	name  ={\ensuremath{\RawMtsSupsetEq}},
 	symbol={\ensuremath{\RawMtsSupsetEq}},
-	sort  ={= 3 2 2},
+	sort  ={= 4 2 2},
 	type  ={symbols},
 	description={
-		Ein Mengenoperator:~ (die Menge) \textdots\ \emph{ist Obermenge von} (der Menge) \textdots
-		; es kann \Gleichheit\ bestehen.
+		Eine Mengenrelation:~ (die Menge) \textdots\ \emph{ist Obermenge von} (der Menge) \textdots
+		Es kann \Gleichheit\ bestehen.
 	}
 }
+
 \newcommand*              {\MtsSupsetN}[1][]{\glsSym[#1]{MtsSupsetN}}
 \newglossaryentry          {MtsSupsetN}{
 	name  ={\ensuremath{\RawMtsSupsetN}},
 	symbol={\ensuremath{\RawMtsSupsetN}},
-	sort  ={= 3 2 3},
+	sort  ={= 4 2 3},
 	type  ={symbols},
 	description={
-		Teilmengenbeziehung:~ (die Menge) \textdots\ \emph{ist keine echte Obermenge von} (der Menge) \textdots
+		Eine Mengenrelation:~ (die Menge) \textdots\ \emph{ist keine echte Obermenge von} (der Menge) \textdots
+		Es kann aber \Gleichheit\ bestehen.
+	}
+}
+
+\newcommand*              {\MtsSupsetEqN}[1][]{\glsSym[#1]{MtsSupsetEqN}}
+\newglossaryentry          {MtsSupsetEqN}{
+	name  ={\ensuremath{\RawMtsSupsetEqN}},
+	symbol={\ensuremath{\RawMtsSupsetEqN}},
+	sort  ={= 4 2 4},
+	type  ={symbols},
+	description={
+		Eine Mengenrelation:~ (die Menge) \textdots\ \emph{ist keine Obermenge von} (der Menge) \textdots
+		Es kann auch keine \Gleichheit\ bestehen.
+	}
+}
+
+\newcommand*              {\MtsCap}[1][]{\glsSym[#1]{MtsCap}}
+\newglossaryentry          {MtsCap}{
+	name  ={\ensuremath{\RawMtsCap}},
+	symbol={\ensuremath{\RawMtsCap}},
+	sort  ={= 4 3 1},
+	type  ={symbols},
+	description={
+		Eine Mengenoperation:~ (die Menge) \textdots\ \defFt{geschnitten mit} (der Menge) \textdots
+		--- der \defFt{Durchschnitt} zweier Mengen
+	}
+}
+
+\newcommand*              {\MtsCup}[1][]{\glsSym[#1]{MtsCup}}
+\newglossaryentry          {MtsCup}{
+	name  ={\ensuremath{\RawMtsCup}},
+	symbol={\ensuremath{\RawMtsCup}},
+	sort  ={= 4 3 2},
+	type  ={symbols},
+	description={
+		Eine Mengenoperation:~ (die Menge) \textdots\ \defFt{vereinigt mit} (der Menge) \textdots
+		--- die \defFt{Vereinigung} zweier Mengen
+	}
+}
+
+\newcommand*              {\MtsSetminus}[1][]{\glsSym[#1]{MtsSetminus}}
+\newglossaryentry          {MtsSetminus}{
+	name  ={\ensuremath{\RawMtsSetminus}},
+	symbol={\ensuremath{\RawMtsSetminus}},
+	sort  ={= 4 3 3},
+	type  ={symbols},
+	description={
+		Eine Mengenoperation:~ (die Menge) \textdots\ \defFt{ohne} (die Menge) \textdots
+		--- die \defFt{Differenz} zweier Mengen
+	}
+}
+
+\newcommand*              {\MtsTimes}[1][]{\glsSym[#1]{MtsTimes}}
+\newglossaryentry          {MtsTimes}{
+	name  ={\ensuremath{\RawMtsTimes}},
+	symbol={\ensuremath{\RawMtsTimes}},
+	sort  ={= 4 3 3},
+	type  ={symbols},
+	description={
+		Eine Mengenoperation:~ das \defFt{Kreuzprodukt}\alternativ{karthesisches Produkt} zweier Mengen
 	}
 }
 
 % Schlussregeln ----------------------------------------------------------------
 % \*    - Ausgabe sowohl im Text- als auch Mathematik-Modus
-% \sym* - Ausgabe als Symbol und Eintrag in Symbolliste und Glossar
-% \tag* - wie \sym*, aber ohne Verweis ins Glossar
-% Verweise:
+% \gls* - wie \sym*            und zusätzlich Verweis ins Symbolverzeichnis
+% \sym* - Ausgabe als geklammertes Symbol und Eintrag ins Symbolverzeichnis
+% \tag* - Tag in einer Formel setzen      und Eintrag ins Symbolverzeichnis
+% Verweise auf die Formel mit dem Tag:
 %   \ref    {def-*} -->  \*
 %   \eqref  {def-*} --> (\*)
-%   \vreffor{def-*} --> (\*) auf Seite n
+%   \vreffor{def-*} --> (\*) auf Seite <n>
 
 \newcommand*    {\AR}{\ensuremath{\text{AR}}}
-\newcommand* {\symAR}[1][]{\glsSym[#1]{AR}}
-\newcommand* {\tagAR}     {\glsTag    {AR}}
+\newcommand* {\glsAR} [1][]{\gls   [#1]{AR}}
+\newcommand* {\symAR} [1][]{\glsSym[#1]{AR}}
+\newcommand* {\tagAR}      {\glsTag    {AR}}
 \newglossaryentry{AR}{
 	name      ={(\AR)},
 	symbol     ={\AR},
 	sort    ={= 9 AR},
-	see        ={Anfangsregel},
+	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
 	description={
-		Eine \Schlussregel.
+		Eine \Schlussregel: \Anfangsregel.
 	}
 }
+
 \newcommand*    {\FS}{\ensuremath{\text{FS}}}
-\newcommand* {\symFS}[1][]{\glsSym[#1]{FS}}
-\newcommand* {\tagFS}     {\glsTag    {FS}}
+\newcommand* {\glsFS} [1][]{\gls   [#1]{FS}}
+\newcommand* {\symFS} [1][]{\glsSym[#1]{FS}}
+\newcommand* {\tagFS}      {\glsTag    {FS}}
 \newglossaryentry{FS}{
 	name      ={(\FS)},
 	symbol     ={\FS},
 	sort    ={= 9 FS},
-	see        ={formalerSatz},
+	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
 	description={
-		Eine \Schlussregel.
+		Eine \Schlussregel: \formalerSatz.
 	}
 }
+
 \newcommand*    {\MR}{\ensuremath{\text{MR}}}
-\newcommand* {\symMR}[1][]{\glsSym[#1]{MR}}
-\newcommand* {\tagMR}     {\glsTag    {MR}}
+\newcommand* {\glsMR} [1][]{\gls   [#1]{MR}}
+\newcommand* {\symMR} [1][]{\glsSym[#1]{MR}}
+\newcommand* {\tagMR}      {\glsTag    {MR}}
 \newglossaryentry{MR}{
 	name      ={(\MR)},
 	symbol     ={\MR},
 	sort    ={= 9 MR},
-	see        ={Monotonieregel},
+	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
 	description={
-		Eine \Schlussregel.
+		Eine \Schlussregel: \Monotonieregel.
 	}
 }
+
 \newcommand*    {\SR}{\ensuremath{\text{SR}}}
-\newcommand* {\symSR}[1][]{\glsSym[#1]{SR}}
-\newcommand* {\tagSR}     {\glsTag    {SR}}
+\newcommand* {\glsSR} [1][]{\gls   [#1]{SR}}
+\newcommand* {\symSR} [1][]{\glsSym[#1]{SR}}
+\newcommand* {\tagSR}      {\glsTag    {SR}}
 \newglossaryentry{SR}{
 	name      ={(\SR)},
 	symbol     ={\SR},
 	sort    ={= 9 SR},
-	see        ={Schnittregel},
+	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
 	description={
-		Eine \Schlussregel.
+		Eine \Schlussregel: \Schnittregel.
 	}
 }
+
 \newcommand*    {\TR}{\ensuremath{\text{TR}}}
-\newcommand* {\symTR}[1][]{\glsSym[#1]{TR}}
-\newcommand* {\tagTR}     {\glsTag    {TR}}
+\newcommand* {\glsTR} [1][]{\gls   [#1]{TR}}
+\newcommand* {\symTR} [1][]{\glsSym[#1]{TR}}
+\newcommand* {\tagTR}      {\glsTag    {TR}}
 %ToDo prüfen
 \newglossaryentry{TR}{
 	name      ={(\TR)},
 	symbol     ={\TR},
 	sort    ={= 9 TR},
-	see        ={Abtrennungsregel},
+	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
 	description={
-		Eine \Schlussregel.
+		Eine \Schlussregel: \Abtrennungsregel.
 	}
 }
-\newcommand*    {\andB}{\ensuremath{\FrmAnd\text{B}}}
+
+\newcommand*    {\andB}{\ensuremath{\OjkAnd\text{B}}}
+\newcommand* {\glsandB}[1][]{\gls   [#1]{andB}}
 \newcommand* {\symandB}[1][]{\glsSym[#1]{andB}}
 \newcommand* {\tagandB}     {\glsTag    {andB}}
 %ToDo prüfen
 \newglossaryentry{andB}{
 	name      ={(\andB)},
 	symbol     ={\andB},
-	see         ={andE},
-	sort     ={= 9 1 B},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 1 1},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Beseitigung von \FrmAnd.
+		Eine \Schlussregel: Beseitigung von \OjkAnd.
 	}
 }
-\newcommand*    {\andE}{\ensuremath{\FrmAnd\text{E}}}
+
+\newcommand*    {\andE}{\ensuremath{\OjkAnd\text{E}}}
+\newcommand* {\glsandE}[1][]{\gls   [#1]{andE}}
 \newcommand* {\symandE}[1][]{\glsSym[#1]{andE}}
 \newcommand* {\tagandE}     {\glsTag    {andE}}
 \newglossaryentry{andE}{
 	name      ={(\andE)},
 	symbol     ={\andE},
-	see         ={andB},
-	sort     ={= 9 1 E},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 1 2},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Einführung von \FrmAnd.
+		Eine \Schlussregel: Einführung von \OjkAnd.
 	}
 }
-\newcommand*    {\orB}{\ensuremath{\RawFrmOr\text{B}}}
+
+\newcommand*    {\orB}{\ensuremath{\RawOjkOr\text{B}}}
+\newcommand* {\glsorB}[1][]{\gls   [#1]{orB}}
 \newcommand* {\symorB}[1][]{\glsSym[#1]{orB}}
 \newcommand* {\tagorB}     {\glsTag    {orB}}
 \newglossaryentry{orB}{
 	name      ={(\orB)},
 	symbol     ={\orB},
-	see         ={orE},
-	sort    ={= 9 2 B},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 2 1},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Beseitigung von \FrmOr.
+		Eine \Schlussregel: Beseitigung von \OjkOr.
 	}
 }
-\newcommand*    {\orE}{\ensuremath{\RawFrmOr\text{E}}}
+
+\newcommand*    {\orE}{\ensuremath{\RawOjkOr\text{E}}}
+\newcommand* {\glsorE}[1][]{\gls   [#1]{orE}}
 \newcommand* {\symorE}[1][]{\glsSym[#1]{orE}}
 \newcommand* {\tagorE}     {\glsTag    {orE}}
 \newglossaryentry{orE}{
 	name      ={(\orE)},
 	symbol     ={\orE},
-	see         ={orB},
-	sort    ={= 9 2 E},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 2 2},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Einführung von \FrmOr.
+		Eine \Schlussregel: Einführung von \OjkOr.
 	}
 }
-\newcommand*    {\impB}{\ensuremath{\RawFrmImp\text{B}}}
+
+\newcommand*    {\impB}{\ensuremath{\RawOjkImp\text{B}}}
+\newcommand* {\glsimpB}[1][]{\gls   [#1]{impB}}
 \newcommand* {\symimpB}[1][]{\glsSym[#1]{impB}}
 \newcommand* {\tagimpB}     {\glsTag    {impB}}
 \newglossaryentry{impB}{
 	name      ={(\impB)},
 	symbol     ={\impB},
-	see         ={impE},
-	sort     ={= 9 3 B},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 3 1},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Beseitigung von \FrmImp.
+		Eine \Schlussregel: Beseitigung von \OjkImp.
 	}
 }
-\newcommand*    {\impE}{\ensuremath{\RawFrmImp\text{E}}}
+
+\newcommand*    {\impE}{\ensuremath{\RawOjkImp\text{E}}}
+\newcommand* {\glsimpE}[1][]{\gls   [#1]{impE}}
 \newcommand* {\symimpE}[1][]{\glsSym[#1]{impE}}
 \newcommand* {\tagimpE}     {\glsTag    {impE}}
 \newglossaryentry{impE}{
 	name      ={(\impE)},
 	symbol     ={\impE},
-	see         ={impB},
-	sort     ={= 9 3 E},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 3 2},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Einführung von \FrmImp.
+		Eine \Schlussregel: Einführung von \OjkImp.
 	}
 }
-\newcommand*    {\nota}{\ensuremath{\RawFrmNot\text{1}}}
+
+\newcommand*    {\nota}{\ensuremath{\RawOjkNot\text{1}}}
+\newcommand* {\glsnota}[1][]{\gls   [#1]{nota}}
 \newcommand* {\symnota}[1][]{\glsSym[#1]{nota}}
 \newcommand* {\tagnota}     {\glsTag    {nota}}
 \newglossaryentry{nota}{
 	name      ={(\nota)},
 	symbol     ={\nota},
-	sort     ={= 9 4 1},
-	see        ={notb,notc,notd},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 4 1},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Einführung/Beseitigung von \FrmNot\ Teil 1.
+		Eine \Schlussregel: Einführung/Beseitigung von \OjkNot\ Teil 1.
 	}
 }
-\newcommand*    {\notb}{\ensuremath{\RawFrmNot\text{2}}}
+
+\newcommand*    {\notb}{\ensuremath{\RawOjkNot\text{2}}}
+\newcommand* {\glsnotb}[1][]{\gls   [#1]{notb}}
 \newcommand* {\symnotb}[1][]{\glsSym[#1]{notb}}
 \newcommand* {\tagnotb}     {\glsTag    {notb}}
 \newglossaryentry{notb}{
 	name      ={(\notb)},
 	symbol     ={\notb},
-	sort     ={= 9 4 2},
-	see        ={nota,notc,notd},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 4 2},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Einführung/Beseitigung von \FrmNot\ Teil 2.
+		Eine \Schlussregel: Einführung/Beseitigung von \OjkNot\ Teil 2.
 	}
 }
-\newcommand*    {\notc}{\ensuremath{\RawFrmNot\text{3}}}
+
+\newcommand*    {\notc}{\ensuremath{\RawOjkNot\text{3}}}
+\newcommand* {\glsnotc}[1][]{\gls   [#1]{notc}}
 \newcommand* {\symnotc}[1][]{\glsSym[#1]{notc}}
 \newcommand* {\tagnotc}     {\glsTag    {notc}}
 \newglossaryentry{notc}{
 	name      ={(\notc)},
 	symbol     ={\notc},
-	sort     ={= 9 4 3},
-	see        ={nota,notb,notd},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 4 3},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Beweistechnik "`Indirekter \Beweis"'.
+		Eine \Schlussregel: Beweistechnik "Indirekter \Beweis".
 	}
 }
-\newcommand*    {\notd}{\ensuremath{\RawFrmNot\text{4}}}
+
+\newcommand*    {\notd}{\ensuremath{\RawOjkNot\text{4}}}
+\newcommand* {\glsnotd}[1][]{\gls   [#1]{notd}}
 \newcommand* {\symnotd}[1][]{\glsSym[#1]{notd}}
 \newcommand* {\tagnotd}     {\glsTag    {notd}}
 \newglossaryentry{notd}{
 	name      ={(\notd)},
 	symbol     ={\notd},
-	sort     ={= 9 4 4},
-	see        ={nota,notb,notc},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 4 4},
 	type       ={symbols},
 	description={
 		Eine \Schlussregel: Reductio ad absurdum (Indirekter \Beweis).
 	}
 }
-\newcommand*    {\eqB}{\ensuremath{\RawFrmEq\text{B}}}
+
+\newcommand*    {\eqB}{\ensuremath{\RawOjkEq\text{B}}}
+\newcommand* {\glseqB}[1][]{\gls   [#1]{eqB}}
 \newcommand* {\symeqB}[1][]{\glsSym[#1]{eqB}}
 \newcommand* {\tageqB}     {\glsTag    {eqB}}
 \newglossaryentry{eqB}{
 	name      ={(\eqB)},
 	symbol     ={\eqB},
-	see         ={eqE},
-	sort    ={= 9 5 B},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 5 1},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Beseitigung von \FrmEq.
+		Eine \Schlussregel: Beseitigung von \OjkEq.
 	}
 }
-\newcommand*    {\eqE}{\ensuremath{\RawFrmEq\text{E}}}
+
+\newcommand*    {\eqE}{\ensuremath{\RawOjkEq\text{E}}}
+\newcommand* {\glseqE}[1][]{\gls   [#1]{eqE}}
 \newcommand* {\symeqE}[1][]{\glsSym[#1]{eqE}}
 \newcommand* {\tageqE}     {\glsTag    {eqE}}
 \newglossaryentry{eqE}{
 	name      ={(\eqE)},
 	symbol     ={\eqE},
-	see         ={eqB},
-	sort    ={= 9 5 E},
+	user6      ={},% Dummy für \glsTag
+	sort       ={= 9 5 2},
 	type       ={symbols},
 	description={
-		Eine \Schlussregel: Einführung von \FrmEq.
+		Eine \Schlussregel: Einführung von \OjkEq.
 	}
 }
 
 % Symbole für Mengen und Elemente ----------------------------------------------
 % \Mts* - Ausgabe als Symbol und Aufnahme in Symbolliste und Glossar
-% \Frm* - Ausgabe als Symbol und Aufnahme in Symbolliste und Glossar
+% \Ojk* - Ausgabe als Symbol und Aufnahme in Symbolliste und Glossar
 % Anmerkung:
 %   Eigentlich gehören die hier aufgeführten Mengen alle zur Metasprache.
 %   Mengen, die zur Bildung von aussagen- und prädikatenlogischen Formeln dienen,
-%   sind trotzdem mit 'Frm' statt 'Mts' markiert.
+%   sind trotzdem mit 'Ojk' statt 'Mts' markiert.
 
-\newcommand*              {\MtsFiniteLtr}          {e}% endliche Menge
-\newcommand*              {\FrmLogischLtr}         {A}% die Aussagenlogik betreffend
-\newcommand*              {\FrmPolnischLtr}        {p}% ...in Polnischer Notation
-
-\newcommand*              {\MtsINLtr}              {N}% Natürliche Zahlen
-\newcommand*              {\MtsIN}[1][]{\glsSym[#1]{MtsIN}}
-\newglossaryentry          {MtsIN}{
-	name  ={\ensuremath{\RawMtsIN}},
-	symbol={\ensuremath{\RawMtsIN}},
-	sort  ={N},%           \MtsINLtr
-	see   ={MtsINo},
-	type  ={symbols},
-	description={
-		Die Menge der natürlichen Zahlen ohne 0.
-	}
-}
-\newcommand*              {\MtsINo}[1][]{\glsSym[#1]{MtsINo}}
-\newglossaryentry          {MtsINo}{
-	name  ={\ensuremath{\RawMtsINo}},
-	symbol={\ensuremath{\RawMtsINo}},
-	sort  ={N 0},%         \MtsINLtr 0
-	see   ={MtsIN},
-	type  ={symbols},
-	description={
-		Die Menge der natürlichen Zahlen einschließlich 0.
-	}
-}
-\newcommand*              {\FrmABCLtr}             {A}% Alphabet der aussagenlog. Sprache
-\newcommand*              {\FrmABC}[1][]{\glsSym[#1]{FrmABC}}
-\newglossaryentry          {FrmABC}{
-	name  ={\ensuremath{\RawFrmABC}},
-	symbol={\ensuremath{\RawFrmABC}},
-	sort  ={A},%           \FrmABCLtr
-	type  ={symbols},
-	description={
-		Das Alphabet der aussagenlogischen \Sprache.
-	}
-}
-\newcommand*              {\FrmABCx}[1][]{\glsSym[#1]{FrmABCx}}
-\newglossaryentry          {FrmABCx}{
-	name  ={\ensuremath{\RawFrmABC_x}},
-	symbol={\ensuremath{\RawFrmABC_x}},
-	sort  ={A x},%         \FrmABCLtr x
-	see   ={FrmABC},
-	type  ={symbols},
-	description={
-		Eine Teilmenge des Alphabets \FrmABC\ der aussagenlogischen \Sprache.
-	}
-}
-\newcommand*              {\FrmBinIdx}             {b}% binäre Junktoren
-\newcommand*              {\FrmBin}[1][]{\glsSym[#1]{FrmBin}}
-\newglossaryentry          {FrmBin}{
-	%TODO \RawFrmBin = \RawFrmJun_{\IdxFt{\FrmBinIdx}} führt zu Fehlern
-	name  ={\ensuremath{\SetFt{J}_{\IdxFt{\FrmBinIdx}}}},
-	symbol={\ensuremath{\RawFrmBin}},
-	sort  ={J b},%         \FrmJunLtr \FrmBinIdx
-	see   ={FrmJun,Junktor},
-	type  ={symbols},
-	description={
-		Die Menge der binären \Junktoren.
-	}
-}
-\newcommand*              {\FrmConIdx}             {c}% Konstantensymbole
-\newcommand*              {\FrmCon}[1][]{\glsSym[#1]{FrmCon}}
-\newglossaryentry          {FrmCon}{
-	%TODO \RawFrmCon = \RawFrmJun_{\IdxFt{\FrmConIdx}} führt zu Fehlern
-	name  ={\ensuremath{\SetFt{J}_{\IdxFt{\FrmConIdx}}}},
-	symbol={\ensuremath{\RawFrmCon}},
-	sort  ={J c},%         \FrmJunLtr \FrmConIdx
-	see   ={FrmJun,Junktor},
-	type  ={symbols},
-	description={
-		Die Menge der aussagenlogischen Konstanten.
-	}
-}
-\newcommand*              {\FrmForLtr}             {L}% language, Sprache; siehe auch \MtsSpracheLtr
-\newcommand*              {\FrmFor}[1][]{\glsSym[#1]{FrmFor}}
-\newglossaryentry          {FrmFor}{
-	name  ={\ensuremath{\RawFrmFor}},
-	symbol={\ensuremath{\RawFrmFor}},
-	sort  ={L A},%         \FrmForLtr \FrmLogischLtr
-	see   ={Formel,Formelmenge},
-	type  ={symbols},
-	description={
-		Die Menge der \aussagenlogischenFormeln\ mit Klammerung.
-	}
-}
-\newcommand*              {\FrmForp}[1][]{\glsSym[#1]{FrmForp}}
-\newglossaryentry          {FrmForp}{
-	name  ={\ensuremath{\RawFrmForp}},
-	symbol={\ensuremath{\RawFrmForp}},
-	sort  ={L Ap},%        \FrmForLtr \FrmLogischLtr\FrmPolnischLtr
-	type  ={symbols},
-	see   ={Formel,Formelmenge},
-	description={
-		Die Menge der aussagenlogischen \Formeln\ in \PolnischerNotation.
-	}
-}
-\newcommand*              {\FrmForx}[1][]{\glsSym[#1]{FrmForx}}
-\newglossaryentry          {FrmForx}{
-	name  ={\ensuremath{\RawFrmFor_x}},
-	symbol={\ensuremath{\RawFrmFor_x}},
-	sort  ={L A x},%       \FrmForLtr \FrmLogischLtr x
-	see   ={FrmFor,Formel,Formelmenge},
-	type  ={symbols},
-	description={
-		Eine Teilmenge der Menge \FrmFor\ der aussagenlogischen \Formeln\ mit Klammerung.
-	}
-}
-\newcommand*              {\FrmForpx}[1][]{\glsSym[#1]{FrmForpx}}
-\newglossaryentry          {FrmForpx}{
-	name  ={\ensuremath{\RawFrmForp_x}},
-	symbol={\ensuremath{\RawFrmForp_x}},
-	sort  ={L Ap x},%      \FrmForLtr \FrmLogischLtr\FrmPolnischLtr x
-	see   ={FrmForp,Formel,Formelmenge},
-	type  ={symbols},
-	description={
-		Eine Teilmenge der Menge \FrmForp\ der aussagenlogischen \Formel\ in \PolnischerNotation.
-	}
-}
-\newcommand*              {\FrmJunLtr}             {J}% Junktoren
-\newcommand*              {\FrmJun}[1][]{\glsSym[#1]{FrmJun}}
-\newglossaryentry          {FrmJun}{
-	name  ={\ensuremath{\RawFrmJun}},
-	symbol={\ensuremath{\RawFrmJun}},
-	sort  ={J},%           \FrmJunLtr
-	see   ={Junktor,Junktorsymbol},
-	type  ={symbols},
-	description={
-		Die Menge der \Junktorsymbole.
-	}
-}
-\newcommand*              {\FrmJunx}[1][]{\glsSym[#1]{FrmJunx}}
-\newglossaryentry          {FrmJunx}{
-	name  ={\ensuremath{\RawFrmJun_x}},
-	symbol={\ensuremath{\RawFrmJun_x}},
-	sort  ={J x},%         \FrmJunLtr x
-	see   ={FrmJun},
-	type  ={symbols},
-	description={
-		Eine Teilmenge der Menge \FrmJun\ der \Junktorsymbole.
-	}
-}
-\newcommand*              {\FrmUnaIdx}             {u}% unäre Junktoren
-\newcommand*              {\FrmUna}[1][]{\glsSym[#1]{FrmUna}}
-\newglossaryentry          {FrmUna}{
-	name  ={\ensuremath{\RawFrmUna}},
-	symbol={\ensuremath{\RawFrmUna}},
-	sort  ={J u},%         \FrmJunLtr \FrmUnaIdx
-	see   ={FrmJun,Junktor},
-	type  ={symbols},
-	description={
-		Die Menge der unären \Junktoren.
-	}
-}
-\newcommand*              {\FrmvarLtr}             {q}% Name von aussagenlogischen Variablen
-\newcommand*              {\Frmvar}[1][]{\glsSym[#1]{Frmvar}}
-\newglossaryentry          {Frmvar}{
-	name  ={\ensuremath{\RawFrmvar}},
-	symbol={\ensuremath{\RawFrmvar}},
-	sort  ={q},%           \FrmvarLtr
-	see   ={FrmVar,Aussagenlogik},
-	type  ={symbols},
-	description={
-		Die $\Frmvar_i$ für $i \in \MtsINo$ sind die aussagenlogischen Variablen.
-	}
-}
-\newcommand*              {\FrmVarLtr}             {Q}% Menge der aussagenlogischen Variablen
-\newcommand*              {\FrmVar}[1][]{\glsSym[#1]{FrmVar}}
-\newglossaryentry          {FrmVar}{
-	name  ={\ensuremath{\RawFrmVar}},
-	symbol={\ensuremath{\RawFrmVar}},
-	sort  ={Q},%           \FrmVarLtr
-	see   ={Frmvar,Aussagenlogik},
-	type  ={symbols},
-	description={
-		Die Menge der aussagenlogischen Variablen $\Frmvar_i$ für $i \in \MtsINo$.
-	}
-}
-\newcommand*              {\MtsAxiomLtr}           {X}%  A[x]iom
+\newcommand*           {\LtrMtsAxiom}              {X}%  A[x]iom
 \newcommand*              {\MtsAxiom}[1][]{\glsSym[#1]{MtsAxiom}}
 \newglossaryentry          {MtsAxiom}{
 	name  ={\ensuremath{\RawMtsAxiom}},
 	symbol={\ensuremath{\RawMtsAxiom}},
-	sort  ={X Element},%   \MtsAxiomLtr Element
-	see   ={MtsAxiomSet,Axiom},
+	sort  ={X Ele},%    \LtrMtsAxiom Element
 	type  ={symbols},
 	description={
 		Ein \Axiom.
 	}
 }
+
 \newcommand*              {\MtsAxiomSet}[1][]{\glsSym[#1]{MtsAxiomSet}}
 \newglossaryentry          {MtsAxiomSet}{
 	name  ={\ensuremath{\RawMtsAxiomSet}},
 	symbol={\ensuremath{\RawMtsAxiomSet}},
-	sort  ={X Menge},%     \MtsAxiomLtr Menge
-	see   ={MtsAxiom,Axiom},
+	sort  ={X Men},%    \LtrMtsAxiom Menge
 	type  ={symbols},
 	description={
 		Eine Menge von \Axiomen.
 	}
 }
-\newcommand*              {\MtsBeweisschrittLtr}   {b}%           Beweisschritt
+
+\newcommand*           {\LtrMtsBeweisschritt}      {b}%           Beweisschritt
 \newcommand*              {\MtsBeweisschritt}[1][]{\glsSym[#1]{MtsBeweisschritt}}
 \newglossaryentry          {MtsBeweisschritt}{
 	name  ={\ensuremath{\RawMtsBeweisschritt}},
 	symbol={\ensuremath{\RawMtsBeweisschritt}},
-	sort  ={b Element},%  \MtsBeweisschrittLtr Element
-	see   ={MtsBeweisschrittTup,MtsBeweisschrittSet,Beweisschritt},
+	sort  ={b Ele},%    \LtrMtsBeweisschritt Element
 	type  ={symbols},
 	description={
 		Ein \Beweisschritt.
 	}
 }
+
 \newcommand*              {\MtsBeweisschrittTup}[1][]{\glsSym[#1]{MtsBeweisschrittTup}}
 \newglossaryentry          {MtsBeweisschrittTup}{
 	name  ={\ensuremath{\RawMtsBeweisschrittTup}},
 	symbol={\ensuremath{\RawMtsBeweisschrittTup}},
-	sort  ={b Tupel},%     \MtsBeweisschrittLtr Tupel
-	see   ={MtsBeweisschritt,MtsBeweisschrittSet,Beweisschritt},
+	sort  ={b Tup},%    \LtrMtsBeweisschritt Tupel
 	type  ={symbols},
 	description={
 		Eine Menge von \Beweisschritten.
 	}
 }
-\newcommand*              {\MtsBeweisschrittSetLtr}{B}% Menge der    Beweisschritte
+
+\newcommand*           {\LtrMtsBeweisschrittSet}   {B}% Menge der    Beweisschritte
 \newcommand*              {\MtsBeweisschrittSet}[1][]{\glsSym[#1]{MtsBeweisschrittSet}}
 \newglossaryentry          {MtsBeweisschrittSet}{
 	name  ={\ensuremath{\RawMtsBeweisschrittSet}},
 	symbol={\ensuremath{\RawMtsBeweisschrittSet}},
-	sort  ={B Menge},%     \MtsBeweisschrittSetLtr Menge
-	see   ={MtsBeweisschritt,MtsBeweisschrittTup,Beweisschritt},
+	sort  ={B Men},%    \LtrMtsBeweisschrittSet Menge
 	type  ={symbols},
 	description={
 		Eine Menge von \Beweisschritten.
 	}
 }
-\newcommand*              {\MtsErsetzungLtr}       {E}%   Ersetzung, Substitution
-\newcommand*              {\MtsErsetzung}[1][]{\glsSym[#1]{MtsErsetzung}}
-\newglossaryentry          {MtsErsetzung}{
-	name  ={\ensuremath{\RawMtsErsetzung}},
-	symbol={\ensuremath{\RawMtsErsetzung}},
-	sort  ={E Element},%   \MtsErsetzungLtr Element
-	see   ={MtsErsetzungSet,Ersetzung},
-	type  ={symbols},
-	description={
-		Ein \Ersetzung.
-	}
-}
-\newcommand*              {\MtsErsetzungSet}[1][]{\glsSym[#1]{MtsErsetzungSet}}
-\newglossaryentry          {MtsErsetzungSet}{
-	name  ={\ensuremath{\RawMtsErsetzungSet}},
-	symbol={\ensuremath{\RawMtsErsetzungSet}},
-	sort  ={E Menge},%     \MtsErsetzungLtr Menge
-	see   ={MtsErsetzung,Ersetzung},
-	type  ={symbols},
-	description={
-		Eine Menge von \Ersetzungen.
-	}
-}
-\newcommand*              {\MtsFolgerungLtr}       {f}% eine         Folgerung
-\newcommand*              {\MtsFolgerung}[1][]{\glsSym[#1]{MtsFolgerung}}
-\newglossaryentry          {MtsFolgerung}{
-	name  ={\ensuremath{\RawMtsFolgerung}},
-	symbol={\ensuremath{\RawMtsFolgerung}},
-	sort  ={F Element},%   \MtsFolgerungLtr Element
-	see   ={MtsFolgerungSet,MtsFolgerungRel,Folgerung},
-	type  ={symbols},
-	description={
-		Eine \Folgerung.
-	}
-}
-\newcommand*              {\MtsFolgerungSetLtr}    {F}% Menge von    Folgerungen
-\newcommand*              {\MtsFolgerungSet}[1][]{\glsSym[#1]{MtsFolgerungSet}}
-\newglossaryentry          {MtsFolgerungSet}{
-	name  ={\ensuremath{\RawMtsFolgerungSet}},
-	symbol={\ensuremath{\RawMtsFolgerungSet}},
-	sort  ={F Menge},%     \MtsFolgerungSetLtr Menge
-	see   ={MtsFolgerung,MtsFolgerungRel,Folgerung},
-	type  ={symbols},
-	description={
-		Eine Menge von \Folgerungen.
-	}
-}
-\newcommand*              {\MtsFolgerungRel}[1][]{\glsSym[#1]{MtsFolgerungRel}}
-\newglossaryentry          {MtsFolgerungRel}{
-	name  ={\ensuremath{\RawMtsFolgerungRel}},
-	symbol={\ensuremath{\RawMtsFolgerungRel}},
-	sort  ={F Relation},%  \MtsFolgerungSetLtr Relation
-	see   ={MtsFolgerung,MtsFolgerungSet,Folgerung},
-	type  ={symbols},
-	description={
-		Eine Relation (als Menge aufgefasst) von \Folgerungen.
-	}
-}
-\newcommand*              {\MtsMn}[1][]{\glsSym[#1]{MtsMn}}
-\newglossaryentry          {MtsMn}{
-	name  ={\ensuremath{\RawMtsMn}},
-	symbol={\ensuremath{\RawMtsMn}},
-	sort  ={M n},
-	see   ={MtsMo,Tupel},
-	type  ={symbols},
-	description={
-		Das kartesische Produkt $M \times \dots \times M$ aus $n$ Mengen $M$ mit $n \in \MtsINo$.
-	}
-}
-\newcommand*              {\MtsMo}[1][]{\glsSym[#1]{MtsMo}}
-\newglossaryentry          {MtsMo}{
-	name  ={\ensuremath{\RawMtsMo}},
-	symbol={\ensuremath{\RawMtsMo}},
-	sort  ={M 0},
-	see   ={MtsMn,Tupel},
-	type  ={symbols},
-	description={
-		$\{()\}$, wobei $()$ das $0$-\Tupel\ ist.
-	}
-}
-\newcommand*              {\MtsErgebnisLtr}        {e}%      Ergebnis; outcome
+
+\newcommand*           {\LtrMtsErgebnis}           {e}%      Ergebnis; result
 \newcommand*              {\MtsErgebnis}[1][]{\glsSym[#1]{MtsErgebnis}}
 \newglossaryentry          {MtsErgebnis}{
 	name  ={\ensuremath{\RawMtsErgebnis}},
 	symbol={\ensuremath{\RawMtsErgebnis}},
-	sort  ={O Element},%   \MtsErgebnisLtr Element
-	see   ={MtsErgebnisSet,MtsErgebnisRel,Ergebnis},
+	sort  ={r Ele},%    \LtrMtsErgebnis Element
 	type  ={symbols},
 	description={
 		Ein \Ergebnis.
 	}
 }
-\newcommand*              {\MtsErgebnisSetLtr}     {E}%         Ergebnismenge; outcomeset
+
+\newcommand*           {\LtrMtsErgebnisSet}        {E}%         Ergebnismenge; resultset
 \newcommand*              {\MtsErgebnisSet}[1][]{\glsSym[#1]{MtsErgebnisSet}}
 \newglossaryentry          {MtsErgebnisSet}{
 	name  ={\ensuremath{\RawMtsErgebnisSet}},
 	symbol={\ensuremath{\RawMtsErgebnisSet}},
-	sort  ={O Menge},%     \MtsErgebnisSetLtr Menge
-	see   ={MtsErgebnis,MtsErgebnisRel,Ergebnis},
+	sort  ={R Men},%    \LtrMtsErgebnisSet Menge
 	type  ={symbols},
 	description={
 		Eine Menge von \Ergebnissen.
 	}
 }
+
 \newcommand*              {\MtsErgebnisRel}[1][]{\glsSym[#1]{MtsErgebnisRel}}
 \newglossaryentry          {MtsErgebnisRel}{
 	name  ={\ensuremath{\RawMtsErgebnisRel}},
 	symbol={\ensuremath{\RawMtsErgebnisRel}},
-	sort  ={O Relation},%  \MtsErgebnisSetLtr Relation
-	see   ={MtsErgebnis,MtsErgebnisSet,Ergebnis},
+	sort  ={R Rel},%    \LtrMtsErgebnisSet Relation
 	type  ={symbols},
 	description={
 		Eine Relation (aufgefasst als Menge) von \Ergebnissen.
 	}
 }
-\newcommand*              {\MtsSchlussregelLtr}    {C}%          Schlussregel; conclusionrule
+
+\newcommand*           {\LtrMtsErsetzung}          {E}%   Ersetzung, Substitution
+\newcommand*              {\MtsErsetzung}[1][]{\glsSym[#1]{MtsErsetzung}}
+\newglossaryentry          {MtsErsetzung}{
+	name  ={\ensuremath{\RawMtsErsetzung}},
+	symbol={\ensuremath{\RawMtsErsetzung}},
+	sort  ={E Ele},%    \LtrMtsErsetzung Element
+	see   ={MtsErsetzungSet},
+	type  ={symbols},
+	description={
+		Ein \Ersetzung.
+	}
+}
+
+\newcommand*              {\MtsErsetzungSet}[1][]{\glsSym[#1]{MtsErsetzungSet}}
+\newglossaryentry          {MtsErsetzungSet}{
+	name  ={\ensuremath{\RawMtsErsetzungSet}},
+	symbol={\ensuremath{\RawMtsErsetzungSet}},
+	sort  ={E Men},%    \LtrMtsErsetzung Menge
+	see   ={MtsErsetzung},
+	type  ={symbols},
+	description={
+		Eine Menge von \Ersetzungen.
+	}
+}
+
+\newcommand*           {\LtrMtsFolgerung}          {f}% eine         Folgerung
+\newcommand*              {\MtsFolgerung}[1][]{\glsSym[#1]{MtsFolgerung}}
+\newglossaryentry          {MtsFolgerung}{
+	name  ={\ensuremath{\RawMtsFolgerung}},
+	symbol={\ensuremath{\RawMtsFolgerung}},
+	sort  ={F Ele},%    \LtrMtsFolgerung Element
+	type  ={symbols},
+	description={
+		Eine \Folgerung.
+	}
+}
+
+\newcommand*           {\LtrMtsFolgerungSet}       {F}% Menge von    Folgerungen
+\newcommand*              {\MtsFolgerungSet}[1][]{\glsSym[#1]{MtsFolgerungSet}}
+\newglossaryentry          {MtsFolgerungSet}{
+	name  ={\ensuremath{\RawMtsFolgerungSet}},
+	symbol={\ensuremath{\RawMtsFolgerungSet}},
+	sort  ={F Men},%    \LtrMtsFolgerungSet Menge
+	type  ={symbols},
+	description={
+		Eine Menge von \Folgerungen.
+	}
+}
+
+\newcommand*              {\MtsFolgerungRel}[1][]{\glsSym[#1]{MtsFolgerungRel}}
+\newglossaryentry          {MtsFolgerungRel}{
+	name  ={\ensuremath{\RawMtsFolgerungRel}},
+	symbol={\ensuremath{\RawMtsFolgerungRel}},
+	sort  ={F Rel},%    \LtrMtsFolgerungSet Relation
+	type  ={symbols},
+	description={
+		Eine Relation (als Menge aufgefasst) von \Folgerungen.
+	}
+}
+
+\newcommand*              {\MtsEmptyset}[1][]{\glsSym[#1]{MtsEmptyset}}
+\newglossaryentry          {MtsEmptyset}{
+	name  ={\ensuremath{\RawMtsEmptyset}},
+	symbol={\ensuremath{\RawMtsEmptyset}},
+	sort  ={O},
+	type  ={symbols},
+	description={
+		Die \leereMenge, \textdh\ die einzige \Menge\ ohne \Elemente; auch mit $\{\}$ bezeichnet.
+	}
+}
+
+\newcommand*           {\LtrMtsIN}                 {N}% Natürliche Zahlen
+\newcommand*              {\MtsIN}[1][]{\glsSym[#1]{MtsIN}}
+\newglossaryentry          {MtsIN}{
+	name  ={\ensuremath{\RawMtsIN}},
+	symbol={\ensuremath{\RawMtsIN}},
+	sort  ={N},%        \LtrMtsIN
+	type  ={symbols},
+	description={
+		Die Menge der natürlichen Zahlen ohne 0.
+	}
+}
+
+\newcommand*              {\MtsINo}[1][]{\glsSym[#1]{MtsINo}}
+\newglossaryentry          {MtsINo}{
+	name  ={\ensuremath{\RawMtsINo}},
+	symbol={\ensuremath{\RawMtsINo}},
+	sort  ={N 0},%      \LtrMtsIN 0
+	type  ={symbols},
+	description={
+		Die Menge der natürlichen Zahlen (mit 0).
+	}
+}
+
+\newcommand*              {\MtsMn}[1][]{\glsSym[#1]{MtsMn}}
+\newglossaryentry          {MtsMn}{
+	name  ={\ensuremath{\RawMtsMn}},
+	symbol={\ensuremath{\RawMtsMn}},
+	sort  ={M n},
+	see   ={Tupel},
+	type  ={symbols},
+	description={
+		Das kartesische Produkt $M \times \dots \times M$ aus $n$ Mengen $M$ mit $n \MtsIn \MtsINo$.
+	}
+}
+
+\newcommand*              {\MtsMo}[1][]{\glsSym[#1]{MtsMo}}
+\newglossaryentry          {MtsMo}{
+	name  ={\ensuremath{\RawMtsMo}},
+	symbol={\ensuremath{\RawMtsMo}},
+	sort  ={M 0},
+	type  ={symbols},
+	description={
+		$\{()\}$, wobei $()$ das $0$-\Tupel\ ist.
+	}
+}
+
+\newcommand*           {\LtrMtsSchlussregel}       {C}%          Schlussregel; conclusionrule
 \newcommand*              {\MtsSchlussregel}[1][]{\glsSym[#1]{MtsSchlussregel}}
 \newglossaryentry          {MtsSchlussregel}{
 	name  ={\ensuremath{\RawMtsSchlussregel}},
 	symbol={\ensuremath{\RawMtsSchlussregel}},
-	sort  ={C Element},%   \MtsSchlussregelLtr Element
-	see   ={MtsSchlussregelSet,Schlussregel},
+	sort  ={C Ele},%    \LtrMtsSchlussregel Element
 	type  ={symbols},
 	description={
 		Eine \Schlussregel.
 	}
 }
+
 \newcommand*              {\MtsSchlussregelSet}[1][]{\glsSym[#1]{MtsSchlussregelSet}}
 \newglossaryentry          {MtsSchlussregelSet}{
 	name  ={\ensuremath{\RawMtsSchlussregelSet}},
 	symbol={\ensuremath{\RawMtsSchlussregelSet}},
-	sort  ={C Menge},%     \MtsSchlussregelLtr Menge
-	see   ={MtsSchlussregel,Schlussregel},
+	sort  ={C Men},%    \LtrMtsSchlussregel Menge
 	type  ={symbols},
-	description={Eine Menge von \Schlussregeln.}
+	description={
+		Eine Menge von \Schlussregeln.
+	}
 }
-\newcommand*              {\MtsSpracheLtr}         {L}% language,Sprache; siehe auch \FrmForLtr
+
+\newcommand*           {\LtrMtsSprache}            {L}% language,Sprache; siehe auch \LtrOjkFor
 \newcommand*              {\MtsSprache}[1][]{\glsSym[#1]{MtsSprache}}
 \newglossaryentry          {MtsSprache}{
 	name  ={\ensuremath{\RawMtsSprache}},
 	symbol={\ensuremath{\RawMtsSprache}},
-	sort  ={L},%           \MtsSpracheLtr
+	sort  ={L},%        \LtrMtsSprache
 	see   ={Formelmenge},
 	type  ={symbols},
 	description={
-		Eine \Formelmenge.
+		Eine \Sprache.
 	}
 }
-\newcommand*              {\MtsTupLtr}             {T}% sequenz; Menge der Tupel
+
+\newcommand*           {\LtrMtsTup}                {T}% sequenz; Menge der Tupel
 \newcommand*              {\MtsTup}[1][]{\glsSym[#1]{MtsTup}}
 \newglossaryentry          {MtsTup}{
 	name  ={\ensuremath{\RawMtsTup}},
 	symbol={\ensuremath{\RawMtsTup}},
-	sort  ={T},%           \MtsTupLtr
-	see   ={Tupel,Tupelmenge},
+	sort  ={T},%        \LtrMtsTup
+	see   ={Tupelmenge},
 	type  ={symbols},
 	description={
-		Ein Mengenoperator: $\MtsTup(M)$ ist die Menge aller \Tupel\ von $M$.
+		Eine Mengenoperation: $\MtsTup(M)$ ist die Menge aller \Tupel\ von $M$.
 	}
 }
-\newcommand*              {\MtsUmwandlungLtr}      {T}%        Umwandlung, Transformation
+
+\newcommand*           {\LtrMtsUmwandlung}         {T}%        Umwandlung, Transformation
 \newcommand*              {\MtsUmwandlung}[1][]{\glsSym[#1]{MtsUmwandlung}}
 \newglossaryentry          {MtsUmwandlung}{
 	name  ={\ensuremath{\RawMtsUmwandlung}},
 	symbol={\ensuremath{\RawMtsUmwandlung}},
-	sort  ={T Element},%   \MtsUmwandlungLtr Element
-	see   ={MtsUmwandlungTup,Umwandlung},
+	sort  ={T Ele},%    \LtrMtsUmwandlung Element
 	type  ={symbols},
 	description={
 		Eine \Umwandlung.
 	}
 }
+
 \newcommand*              {\MtsUmwandlungTup}[1][]{\glsSym[#1]{MtsUmwandlungTup}}
 \newglossaryentry          {MtsUmwandlungTup}{
 	name  ={\ensuremath{\RawMtsUmwandlungTup}},
 	symbol={\ensuremath{\RawMtsUmwandlungTup}},
-	sort  ={T Tupel},%     \MtsUmwandlungLtr Tupel
-	see   ={MtsUmwandlung,Umwandlung},
+	sort  ={T Tup},%    \LtrMtsUmwandlung Tupel
 	type  ={symbols},
 	description={
 		Eine Menge von \Umwandlungen.
 	}
 }
-\newcommand*              {\MtsVoraussetzungLtr}   {v}% Eine      Voraussetzung
+
+\newcommand*           {\LtrMtsVoraussetzung}      {v}% Eine      Voraussetzung
 \newcommand*              {\MtsVoraussetzung}[1][]{\glsSym[#1]{MtsVoraussetzung}}
 \newglossaryentry          {MtsVoraussetzung}{
 	name  ={\ensuremath{\RawMtsVoraussetzung}},
 	symbol={\ensuremath{\RawMtsVoraussetzung}},
-	sort  ={V Element},%   \MtsVoraussetzungLtr Element
-	see   ={MtsVoraussetzungSet,MtsVoraussetzungRel,Voraussetzung},
+	sort  ={V Ele},%    \LtrMtsVoraussetzung Element
 	type  ={symbols},
 	description={
 		Eine \Voraussetzung.
 	}
 }
-\newcommand*              {\MtsVoraussetzungSetLtr}{V}% Menge der    Voraussetzungen
+
+\newcommand*           {\LtrMtsVoraussetzungSet}   {V}% Menge der    Voraussetzungen
 \newcommand*              {\MtsVoraussetzungSet}[1][]{\glsSym[#1]{MtsVoraussetzungSet}}
 \newglossaryentry          {MtsVoraussetzungSet}{
 	name  ={\ensuremath{\RawMtsVoraussetzungSet}},
 	symbol={\ensuremath{\RawMtsVoraussetzungSet}},
-	sort  ={V Menge},%     \MtsVoraussetzungSetLtr Menge
-	see   ={MtsVoraussetzung,MtsVoraussetzungRel,Voraussetzung},
+	sort  ={V Men},%    \LtrMtsVoraussetzungSet Menge
 	type  ={symbols},
 	description={
 		Eine Menge von \Voraussetzungen.
 	}
 }
+
 \newcommand*              {\MtsVoraussetzungRel}[1][]{\glsSym[#1]{MtsVoraussetzungRel}}
 \newglossaryentry          {MtsVoraussetzungRel}{
 	name  ={\ensuremath{\RawMtsVoraussetzungRel}},
 	symbol={\ensuremath{\RawMtsVoraussetzungRel}},
-	sort  ={V Relation},%  \MtsVoraussetzungSetLtr Relation
-	see   ={MtsVoraussetzung,MtsVoraussetzungSet,Voraussetzung},
+	sort  ={V Rel},%    \LtrMtsVoraussetzungSet Relation
 	type  ={symbols},
 	description={
 		Eine Relation (aufgefasst als Menge) von \Voraussetzungen.
 	}
 }
 
+% Symbole für die Konstruktiuon von logischen Formeln
+
+\newcommand*           {\LtrOjkABC}                {A}
+\newcommand*              {\OjkABC}[1][]{\glsSym[#1]{OjkABC}}
+\newglossaryentry          {OjkABC}{
+	name  ={\ensuremath{\RawOjkABC}},
+	symbol={\ensuremath{\RawOjkABC}},
+	sort  ={A},%        \LtrOjkABC
+	type  ={symbols},
+	description={
+		Das Alphabet der aussagenlogischen \Sprache.
+	}
+}
+
+\newcommand*              {\OjkABCx}[1][]{\glsSym[#1]{OjkABCx}}
+\newglossaryentry          {OjkABCx}{
+	name  ={\ensuremath{\RawOjkABC_x}},
+	symbol={\ensuremath{\RawOjkABC_x}},
+	sort  ={A x},%      \LtrOjkABC x
+	type  ={symbols},
+	description={
+		Eine Teilmenge des Alphabets \OjkABC\ der aussagenlogischen \Sprache.
+	}
+}
+
+\newcommand*           {\LtrOjkFor}                {L}% language, Sprache; siehe auch \LtrMtsSprache
+\newcommand*              {\OjkFor}[1][]{\glsSym[#1]{OjkFor}}
+\newglossaryentry          {OjkFor}{
+	name  ={\ensuremath{\RawOjkFor}},
+	symbol={\ensuremath{\RawOjkFor}},
+	sort  ={L A},%      \LtrOjkFor \InxLogisch
+	type  ={symbols},
+	description={
+		Eine \Formelmenge: Die Menge der \aussagenlogischenFormeln\ mit \Klammerung.
+	}
+}
+
+\newcommand*              {\OjkForp}[1][]{\glsSym[#1]{OjkForp}}
+\newglossaryentry          {OjkForp}{
+	name  ={\ensuremath{\RawOjkForp}},
+	symbol={\ensuremath{\RawOjkForp}},
+	sort  ={L Ap},%     \LtrOjkFor \InxLogisch\InxPolnisch
+	type  ={symbols},
+	description={
+		Eine \Formelmenge: Die Menge der \aussagenlogischenFormeln\ in \PolnischerNotation.
+	}
+}
+
+\newcommand*              {\OjkForx}[1][]{\glsSym[#1]{OjkForx}}
+\newglossaryentry          {OjkForx}{
+	name  ={\ensuremath{\RawOjkFor_x}},
+	symbol={\ensuremath{\RawOjkFor_x}},
+	sort  ={L A x},%    \LtrOjkFor \InxLogisch x
+	type  ={symbols},
+	description={
+		Eine \Formelmenge: Eine Teilmenge der Menge \OjkFor\ der \aussagenlogischenFormeln\ mit \Klammerung.
+	}
+}
+
+\newcommand*              {\OjkForpx}[1][]{\glsSym[#1]{OjkForpx}}
+\newglossaryentry          {OjkForpx}{
+	name  ={\ensuremath{\RawOjkForp_x}},
+	symbol={\ensuremath{\RawOjkForp_x}},
+	sort  ={L Ap x},%   \LtrOjkFor \InxLogisch\InxPolnisch x
+	type  ={symbols},
+	description={
+		Eine \Formelmenge: Eine Teilmenge der Menge \OjkForp\ der \aussagenlogischenFormel\ in \PolnischerNotation.
+	}
+}
+
+\newcommand*           {\LtrOjkJun}                {J}% Junktoren
+\newcommand*              {\OjkJun}[1][]{\glsSym[#1]{OjkJun}}
+\newglossaryentry          {OjkJun}{
+	name  ={\ensuremath{\RawOjkJun}},
+	symbol={\ensuremath{\RawOjkJun}},
+	sort  ={J},%        \LtrOjkJun
+	see   ={Junktor},
+	type  ={symbols},
+	description={
+		Die Menge der \Junktorsymbole.
+	}
+}
+
+\newcommand*              {\OjkJunx}[1][]{\glsSym[#1]{OjkJunx}}
+\newglossaryentry          {OjkJunx}{
+	name  ={\ensuremath{\RawOjkJun_x}},
+	symbol={\ensuremath{\RawOjkJun_x}},
+	sort  ={J x},%      \LtrOjkJun x
+	type  ={symbols},
+	description={
+		Eine Teilmenge der Menge \OjkJun\ der \Junktorsymbole.
+	}
+}
+
+\newcommand*              {\OjkBin}[1][]{\glsSym[#1]{OjkBin}}
+\newglossaryentry          {OjkBin}{
+	name  ={\ensuremath{\RawOjkBin}},
+	symbol={\ensuremath{\RawOjkBin}},
+	sort  ={J b},%      \LtrOjkJun \InxBin
+	type  ={symbols},
+	description={
+		Die Menge der binären \Junktoren.
+	}
+}
+
+\newcommand*              {\OjkCon}[1][]{\glsSym[#1]{OjkCon}}
+\newglossaryentry          {OjkCon}{
+	name  ={\ensuremath{\RawOjkCon}},
+	symbol={\ensuremath{\RawOjkCon}},
+	sort  ={J c},%      \LtrOjkJun \InxCon
+	type  ={symbols},
+	description={
+		Die Menge der aussagenlogischen Konstanten.
+	}
+}
+
+\newcommand*              {\OjkUna}[1][]{\glsSym[#1]{OjkUna}}
+\newglossaryentry          {OjkUna}{
+	name  ={\ensuremath{\RawOjkUna}},
+	symbol={\ensuremath{\RawOjkUna}},
+	sort  ={J u},%      \LtrOjkJun \InxUna
+	type  ={symbols},
+	description={
+		Die Menge der unären \Junktoren.
+	}
+}
+
+\newcommand*           {\LtrOjkvar}                {q}% Name von aussagenlogischen Variablen
+\newcommand*              {\Ojkvar}[1][]{\glsSym[#1]{Ojkvar}}
+\newglossaryentry          {Ojkvar}{
+	name  ={\ensuremath{\RawOjkvar}},
+	symbol={\ensuremath{\RawOjkvar}},
+	sort  ={q},%        \LtrOjkvar
+	see   ={Aussagenlogik},
+	type  ={symbols},
+	description={
+		Die $\Ojkvar_i \MtsIn OjkVar$ für $i \in \MtsINo$ sind die aussagenlogischen \Variablen.
+	}
+}
+
+\newcommand*           {\LtrOjkVar}                {Q}% Menge der aussagenlogischen Variablen
+\newcommand*              {\OjkVar}[1][]{\glsSym[#1]{OjkVar}}
+\newglossaryentry          {OjkVar}{
+	name  ={\ensuremath{\RawOjkVar}},
+	symbol={\ensuremath{\RawOjkVar}},
+	sort  ={Q},%        \LtrOjkVar
+	see   ={Aussagenlogik},
+	type  ={symbols},
+	description={
+		Die Menge der aussagenlogischen Variablen $\Ojkvar_i$ für $i \in \MtsINo$.
+	}
+}
+
 % Operationen mit Namen (Buchstaben) -------------------------------------------
 % \sym* - Ausgabe als Symbol und Aufnahme in Symbolliste und Glossar
 
-\newcommand*              {\MtsDbTxt}              {dom}% [dom]ain; Definitionsbereich einer Funktion
+\newcommand*           {\StrMtsDb}                 {dom}% [dom]ain; Definitionsbereich einer Funktion
 \newcommand*              {\MtsDb}[1][]{\glsSym[#1]{MtsDb}}
 %ToDo prüfen
 \newglossaryentry          {MtsDb}{
 	name  ={\ensuremath{\RawMtsDb}},
 	symbol={\ensuremath{\RawMtsDb}},
-	sort  ={dom},%         \MtsDbTxt
+	sort  ={dom},%      \StrMtsDb
 	see   ={Quellbereich,Funktion},
 	type  ={symbols},
 	description={
 		$\MtsDb(f)$ für $f : A \rightarrow B$ ist die Menge $A$
 	}
 }
-\newcommand*              {\MtsGraphTxt}           {graph}% Graph; Funktionen/Relationen
+
+\newcommand*           {\StrMtsGraph}              {graph}% Graph; Funktionen/Relationen
 \newcommand*              {\MtsGraph}[1][]{\glsSym[#1]{MtsGraph}}
 %ToDo prüfen
 \newglossaryentry          {MtsGraph}{
 	name  ={\ensuremath{\RawMtsGraph}},
 	symbol={\ensuremath{\RawMtsGraph}},
-	sort  ={graph},%       \MtsGraphTxt
+	sort  ={graph},%    \StrMtsGraph
 	see   ={Funktion,Relation,Graph},
 	type  ={symbols},
 	description ={
 		$\MtsGraph(R)$ ist der \Graph\ der \Funktion\ \textbzw\ Relation $R$.
 	}
 }
-\newcommand*              {\MtsLenTxt}             {len}% Länge ([len]gth) Tupel/Folge
+
+\newcommand*           {\StrMtsLen}                {len}% Länge ([len]gth) Tupel/Folge
 \newcommand*              {\MtsLen}[1][]{\glsSym[#1]{MtsLen}}
 %ToDo prüfen
 \newglossaryentry          {MtsLen}{
 	name  ={\ensuremath{\RawMtsLen}},
 	symbol={\ensuremath{\RawMtsLen}},
-	sort  ={len},%         \MtsLenTxt
+	sort  ={len},%      \StrMtsLen
 	see   ={Folge,Tupel},
 	type  ={symbols},
 	description={
 		$\MtsLen(\vec{a})$ ist die Länge, \textdh\ die Anzahl der \Komponenten\ einer \Folge\ \textbzw\ eines \Tupels.
 	}
 }
-\newcommand*              {\MtsPotLtr}             {P}% Potenzmenge
+
+\newcommand*           {\LtrMtsPot}                {P}% Potenzmenge
 \newcommand*              {\MtsPot}[1][]{\glsSym[#1]{MtsPot}}
 %ToDo prüfen
 \newglossaryentry          {MtsPot}{
 	name  ={\ensuremath{\RawMtsPot}},
 	symbol={\ensuremath{\RawMtsPot}},
-	sort  ={P},%           \MtsPotLtr
+	sort  ={P},%        \LtrMtsPot
 	see   ={MtsPotf},
 	type  ={symbols},
 	description={
 		Menge der Teilmengen (\Potenzmenge).
 	}
 }
-\newcommand*              {\MtsPotf}[1][]{\glsSym[#1]{Dummy}}
+
+\newcommand*              {\MtsPotf}[1][]{\glsSym[#1]{MtsPotf}}
 %ToDo prüfen
-%%%%\newglossaryentry          {MtsPotf}{
-%%%%	name  ={\ensuremath{\RawMtsPotf}},
-%%%%	symbol={\ensuremath{\RawMtsPotf}},
-%%%%	sort  ={P e},%         \MtsPotLtr \MtsFiniteLtr
-%%%%	see   ={MtsPot,Potenzmenge},
-%%%%	type  ={symbols},
-%%%%	description={
-%%%%		Menge der endlichen Teilmengen.
-%%%%	}
-%%%%}
-\newcommand*              {\MtsQbTxt}              {src}% Quellbereich ([s]ou[rc]e) einer partiellen Fkt.
+\newglossaryentry          {MtsPotf}{
+	name  ={\ensuremath{\RawMtsPotf}},
+	symbol={\ensuremath{\RawMtsPotf}},
+	sort  ={P e},%      \LtrMtsPot \InxEndlich
+	see   ={MtsPot,Potenzmenge},
+	type  ={symbols},
+	description={
+		Menge der endlichen Teilmengen.
+	}
+}
+
+\newcommand*           {\StrMtsQb}                 {src}% Quellbereich ([s]ou[rc]e) einer partiellen Fkt.
 \newcommand*              {\MtsQb}[1][]{\glsSym[#1]{MtsQb}}
 %ToDo prüfen
 \newglossaryentry          {MtsQb}{
 	name  ={\ensuremath{\RawMtsQb}},
 	symbol={\ensuremath{\RawMtsQb}},
-	sort  ={src},%         \MtsQbTxt
+	sort  ={src},%      \StrMtsQb
 	see   ={Definitionsbereich,Funktion},
 	type  ={symbols},
 	description={
 		$\MtsQb(f)$ für $f : A \rightarrow B$ ist die Menge $\{a \in A | f(a) \text{ existiert\}}$.
 	}
 }
-\newcommand*              {\MtsRelLtr}             {R}% Menge der Relationen
+
+\newcommand*           {\LtrMtsRel}                {R}% Menge der Relationen
 \newcommand*              {\MtsRel}[1][]{\glsSym[#1]{MtsRel}}
 %ToDo prüfen
 \newglossaryentry          {MtsRel}{
 	name  ={\ensuremath{\RawMtsRel}},
 	symbol={\ensuremath{\RawMtsRel}},
-	sort  ={R},%           \MtsRelLtr
+	sort  ={R},%        \LtrMtsRel
 	see   ={MtsRelf,Relation},
 	type  ={symbols},
 	description={
 		Menge der binären Relationen.
 	}
 }
-\newcommand*              {\MtsRelf}[1][]{\glsSym[#1]{dummy}}
+
+\newcommand*              {\MtsRelf}[1][]{\glsSym[#1]{MtsRelf}}
 %ToDo prüfen
-%%%%\newglossaryentry          {MtsRelf}{
-%%%%	name  ={\ensuremath{\RawMtsRelf}},
-%%%%	symbol={\ensuremath{\RawMtsRelf}},
-%%%%	sort  ={R e},%         \MtsRelLtr\MtsFiniteLtr
-%%%%	see   ={MtsRel,Relation},
-%%%%	type  ={symbols},
-%%%%	description={
-%%%%		Menge der endlichen binären Relationen.
-%%%%	}
-%%%%}
-\newcommand*              {\MtsSetTxt}             {set}% Komponentenmenge Tupel/Folge
+\newglossaryentry          {MtsRelf}{
+	name  ={\ensuremath{\RawMtsRelf}},
+	symbol={\ensuremath{\RawMtsRelf}},
+	sort  ={R e},%      \LtrMtsRel\InxEndlich
+	see   ={MtsRel},
+	type  ={symbols},
+	description={
+		Menge der endlichen binären \Relationen.
+	}
+}
+
+\newcommand*           {\StrMtsSet}                {set}% Komponentenmenge Tupel/Folge
 \newcommand*              {\MtsSet}[1][]{\glsSym[#1]{MtsSet}}
 %ToDo prüfen
 \newglossaryentry          {MtsSet}{
 	name  ={\ensuremath{\RawMtsSet}},
 	symbol={\ensuremath{\RawMtsSet}},
-	sort  ={Set},%         \MtsSetTxt
+	sort  ={Set},%      \StrMtsSet
 	see   ={Folge,Tupel},
 	type  ={symbols},
 	description={
 		$\MtsSet(\vec{a})$ ist die Menge der \Komponenten\ eine \Folge\ \textbzw\ eines \Tupels.
 	}
 }
-\newcommand*              {\MtsStelTxt}            {stel}% [Stel]ligkeit Funktionen/Relationen
+
+\newcommand*           {\StrMtsStel}               {stel}% [Stel]ligkeit Funktionen/Relationen
 \newcommand*              {\MtsStelF}[1][]{\glsSym[#1]{MtsStelF}}
 %ToDo prüfen
 \newglossaryentry          {MtsStelF}{
 	name  ={\ensuremath{\RawMtsStelF}},
 	symbol={\ensuremath{\RawMtsStelF}},
-	sort  ={stel f},%   \MtsStelTxt             f
+	sort  ={stel f},%   \StrMtsStel f
 	see   ={Funktion,MtsStelR},
 	type  ={symbols},
 	description={
 		\Stelligkeit\ einer \Funktion.
 	}
 }
+
 \newcommand*              {\MtsStelR}[1][]{\glsSym[#1]{MtsStelR}}
 %ToDo prüfen
 \newglossaryentry          {MtsStelR}{
 	name  ={\ensuremath{\RawMtsStelR}},
 	symbol={\ensuremath{\RawMtsStelR}},
-	sort  ={stel r},%   \MtsStelTxt             r
+	sort  ={stel r},%   \StrMtsStel r
 	see   ={Relation,MtsStelF},
 	type  ={symbols},
 	description={
 		\Stelligkeit\ einer \Relation.
 	}
 }
-\newcommand*              {\MtsTraegerTxt}         {car}% ([car]rier) Trägermenge einer Relation
+
+\newcommand*           {\StrMtsTraeger}            {car}% ([car]rier) Trägermenge einer Relation
 \newcommand*              {\MtsTraeger}[1][]{\glsSym[#1]{MtsTraeger}}
 %ToDo prüfen
 \newglossaryentry          {MtsTraeger}{
 	name  ={\ensuremath{\RawMtsTraeger}},
 	symbol={\ensuremath{\RawMtsTraeger}},
-	sort  ={car},%         \MtsTraegerTxt
+	sort  ={car},%      \StrMtsTraeger
 	see   ={Traegermenge,Relation},
 	type  ={symbols},
 	description={
-		$\MtsTraeger_i(R)$ für $R \MtsSubsetEq A_1 \times \cdots \times A_n$ ist die \Traegermenge\ $A_i$ für $i$ von $1$ bis $n$.
+		$\MtsTraeger_i(R)$ für $R \MtsSubsetEq A_1 \times \dots \times A_n$ ist die \Traegermenge\ $A_i$ für $i$ von $1$ bis $n$.
 	}
 }
-\newcommand*              {\MtsWbTxt}              {ran}% Wertebereich ([ran]ge) einer Funktion
+
+\newcommand*           {\StrMtsWb}                 {ran}% Wertebereich ([ran]ge) einer Funktion
 \newcommand*              {\MtsWb}[1][]{\glsSym[#1]{MtsWb}}
 %ToDo prüfen
 \newglossaryentry          {MtsWb}{
 	name  ={\ensuremath{\RawMtsWb}},
 	symbol={\ensuremath{\RawMtsWb}},
-	sort  ={ran},%         \MtsWbTxt
+	sort  ={ran},%      \StrMtsWb
 	see   ={Zielbereich,Funktion},
 	type  ={symbols},
 	description={
 		$\MtsWb(f)$ für $f : A \rightarrow B$ ist die Menge $\{f(a) | a \in A\}$.
 	}
 }
-\newcommand*              {\MtsZbTxt}              {tar}% Zielbereich ([tar]get) einer Funktion
+
+\newcommand*           {\StrMtsZb}                 {tar}% Zielbereich ([tar]get) einer Funktion
 \newcommand*              {\MtsZb}[1][]{\glsSym[#1]{MtsZb}}
 %ToDo prüfen
 \newglossaryentry          {MtsZb}{
 	name  ={\ensuremath{\RawMtsZb}},
 	symbol={\ensuremath{\RawMtsZb}},
-	sort  ={tar},%         \MtsZbTxt
+	sort  ={tar},%      \StrMtsZb
 	see   ={Wertebereich,Funktion},
 	type  ={symbols},
 	description={
@@ -1508,81 +1712,92 @@
 }
 
 % Individuelle Bezeichnungen ---------------------------------------------------
-% \Txt* - Ausgabe als Text und Aufnahme in Symbolverzeichnis bzw. Glossar und Index
+% \Txt* - Ausgabe als Text und Aufnahme isn Symbolverzeichnis bzw. Glossar
 
-\newcommand*              {\MtsFalseTxt}           {false}
+\newcommand*           {\StrMtsFalse}              {false}
 \newcommand*              {\MtsFalse}[1][]{\glsSym[#1]{MtsFalse}}
 %ToDo prüfen
 \newglossaryentry          {MtsFalse}{
 	name  ={\ensuremath{\RawMtsFalse}},
 	symbol={\ensuremath{\RawMtsFalse}},
-	sort  ={false},%       \MtsFalseTxt
-	see   ={FrmFalse,MtsTrue},
+	sort  ={false},%    \StrMtsFalse
+	see   ={OjkFalse,MtsTrue},
 	type  ={symbols},
 	description={
-		Der metasprachliche \Wahrheitswert \TxtFalse\ als \Symbol.
+		Der metasprachliche \Wahrheitswert\ \TxtFalse\ als \Symbol.
 	}
 }
-\newcommand*              {\MtsTrueTxt}            {true}
+
+\newcommand*           {\StrMtsTrue}               {true}
 \newcommand*              {\MtsTrue}[1][]{\glsSym[#1]{MtsTrue}}
 %ToDo prüfen
 \newglossaryentry          {MtsTrue}{
 	name  ={\ensuremath{\RawMtsTrue}},
 	symbol={\ensuremath{\RawMtsTrue}},
-	sort  ={true},%        \MtsTrueTxt
-	see   ={FrmTrue,MtsFalse},
+	sort  ={true},%     \StrMtsTrue
+	see   ={OjkTrue,MtsFalse},
 	type  ={symbols},
 	description={
-		Der metasprachliche \Wahrheitswert \TxtTrue\ als \Symbol.
+		Der metasprachliche \Wahrheitswert\ \TxtTrue\ als \Symbol.
 	}
 }
-\newcommand*              {\TxtFalseTxt}           {falsch}
-\newcommand*              {\TxtFalse}[1][]{\glsIdx[#1]{Dummy}}
-\renewcommand*{\TxtFalse}{falsch}
-%ToDo prüfen
+
+\newcommand*           {\StrTxtFalse}              {falsch}
+\newcommand*              {\TxtFalse}[1][]{\glstext[#1]{TxtFalse}}
 \newglossaryentry          {TxtFalse}{
-	name       =       {\RawTxtFalse},
-	sort       ={falsch},% \TxtFalseTxt
-	see        ={TxtTrue,MtsFalse,FrmFalse},
+	name     =         {\RawTxtFalse},
+	sort     ={falsch},%\StrTxtFalse
+	see      ={TxtTrue,MtsFalse,OjkFalse},
 	description={
 		Ein metasprachlicher \Wahrheitswert\ in Textform.
 	}
 }
 
-\newcommand*              {\TxtTrueTxt}            {wahr}
-\newcommand*              {\TxtTrue}[1][]{\glsIdx[#1]{Dummy}}
-\renewcommand*{\TxtTrue}{wahr}
-%ToDo prüfen
+\newcommand*           {\StrTxtTrue}               {wahr}
+\newcommand*              {\TxtTrue}[1][]{\glstext[#1]{TxtTrue}}
 \newglossaryentry          {TxtTrue}{
-	name       =       {\RawTxtTrue},
-	sort       ={wahr},%   \TxtTrueTxt
-	see        ={TxtFalse,MtsTrue,FrmTrue},
+	name     =         {\RawTxtTrue},
+	sort     ={wahr},%  \StrTxtTrue
+	see      ={TxtFalse,MtsTrue,OjkTrue},
 	description={
 		Ein metasprachlicher \Wahrheitswert\ in Textform.
 	}
 }
 
 % Fachbegriffe -----------------------------------------------------------------
-% Hilfsmakros:       Glossary-   Index-Eintrag  Textausgabe
-%   \glsIdx  {key}   name        name           text
-%   \glsIdxI {key}   name        name           user1
-%   \GlsIdxPl{key}   name        name           Plural
+
+\newcommand*    {\YYY}  [1][]{\glstext[#1]{YYY}}
+\newcommand*    {\YYYYY}[1][]{\glspl  [#1]{YYY}}
+%ToDo prüfen
+\newglossaryentry{YYY}{
+	name        ={YYY\addIdx{YYY}},
+	plural      ={YYYYY},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=YYY
+	}
+}
+\newcommand*      {\XXXYYY} [1][]{\glstext[#1]{XXXYYY}}
+\newcommand*     {\XXXXYYYY}[1][]{\glspl  [#1]{XXXYYY}}
+%ToDo prüfen
+\newglossaryentry  {XXXYYY}{
+	name        =       {-, XXX\addIdx[
+	name        =       {-, XXX},
+	sort        =     {YYY, XXX}]{XXXYYY}},
+	sort        =     {YYY, XXX},
+	text        ={XXX  YYY}
+	plural      ={XXXX YYYY},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=XXX YYY
+	}
+}
 
 %A === A === A === A === A === A === A === A === A === A === A === A === A === A
 
-\newcommand*    {\ASBA}[1][hyperTxt]{\textbf{\glsIdx[#1]{ASBA}}}
-\newglossaryentry{ASBA}{
-	name        ={ASBA},
-	description ={
-		ist ein Akronym für "`\textbf{A}xiome, \textbf{S}ätze, \textbf{B}eweise und \textbf{A}uswertungen"'.
-		Es bezeichnet das in diesem Dokument beschriebene Programmsystem, das zu eingegebenen \Axiomen, \Saetzen\ und \Beweisen\ letztere prüft, Auswertungen generiert und unter Zuhilfenahme gegebener \Ausgabeschemata\ eine Ausgabe im \LaTeX-Format in mathematisch üblicher Schreibweise mit \Formeln\ erstellt.
-	}
-}
-\newcommand*    {\ableitbar} [1][hyperTxt]{\glsIdx  [#1]{ableitbar}}
-\newcommand*    {\ableitbare}[1][hyperTxt]{\glsIdxPl[#1]{ableitbar}}
+\newcommand*    {\ableitbar} [1][]{\glstext[#1]{ableitbar}}
+\newcommand*    {\ableitbare}[1][]{\glspl  [#1]{ableitbar}}
 %ToDo prüfen
 \newglossaryentry{ableitbar}{
-	name        ={ableitbar},
+	name        ={ableitbar\addIdx{ableitbar}},
 	plural      ={ableitbare},
 	see         ={Ableitungsrelation},
 	description ={
@@ -1592,34 +1807,39 @@
 		Eine oder beide \Formeln\ $\alpha$ \textbzw\ $\beta$ dürfen dabei durch \Formelmengen\ ersetzt werden.
 	}
 }
-\newcommand*    {\Ableitung}  [1][hyperTxt]{\glsIdx  [#1]{Ableitung}}
-\newcommand*    {\Ableitungen}[1][hyperTxt]{\glsIdxPl[#1]{Ableitung}}
+
+\newcommand*        {\Ableitung}  [1][]{\glstext[#1]{Ableitung}}
+\newcommand*        {\Ableitungen}[1][]{\glspl  [#1]{Ableitung}}
 %ToDo prüfen
-\newglossaryentry{Ableitung}{
-	name        ={Ableitung},
-	plural      ={Ableitungen},
-	see         ={Ableitungsmenge,Ableitungsrelation},
-	description ={
-		Eine \Aussage\ $A \MtsDerive B$ \textbzw\ allgemeiner $A \MtsDeriveR B$ mit $A,B \MtsSubsetEq \MtsSprache$.
-		Dies entspricht einem Element $(A,B)$ einer \Ableitungsrelation\ \MtsDerive\ \textbzw\ \MtsDeriveR (\textdh\ $(A,B) \in R$.
-		Die semantische Aussage ist die, das die \Formeln\ aus $B$ aus den \Formeln\ aus $A$ abgeleitet werden können.
-	}
+\longnewglossaryentry{Ableitung}{
+	name            ={Ableitung\addIdx{Ableitung}},
+	plural          ={Ableitungen},
+	see             ={Ableitungsmenge,Ableitungsrelation,Aussage,Konklusion,Logik,Praemisse,Schlussregel}
+}{
+	\begin{citeWiki}{bib:Ableitung}{ ohne Fußnote und Verweise ins Internet}
+		Eine \textbf{Ableitung}, \textbf{Herleitung}, oder Deduktion ist in der Logik die Gewinnung von Aussagen aus anderen Aussagen. Dabei werden Schlussregeln auf Prämissen angewandt, um zu Konklusionen zu gelangen. Welche Schlussregeln dabei erlaubt sind, wird durch das verwendete Kalkül bestimmt.
+	\end{citeWiki}
+	Eine \Aussage\ $A \MtsDerive B$ \textbzw\ allgemeiner $A \MtsDeriveR B$ mit $A,B \MtsSubsetEq \MtsSprache$.
+	Dies entspricht einem Element $(A,B)$ einer \Ableitungsrelation\ \MtsDerive\ \textbzw\ \MtsDeriveR (\textdh\ $(A,B) \in R$.
+	Die semantische Aussage ist die, das die \Formeln\ aus $B$ aus den \Formeln\ aus $A$ abgeleitet werden können.
 }
-\newcommand*    {\Ableitungsmenge} [1][hyperTxt]{\glsIdx  [#1]{Ableitungsmenge}}
-\newcommand*    {\Ableitungsmengen}[1][hyperTxt]{\glsIdxPl[#1]{Ableitungsmenge}}
+
+\newcommand*    {\Ableitungsmenge} [1][]{\glstext[#1]{Ableitungsmenge}}
+\newcommand*    {\Ableitungsmengen}[1][]{\glspl  [#1]{Ableitungsmenge}}
 %ToDo prüfen
 \newglossaryentry{Ableitungsmenge}{
-	name        ={Ableitungsmenge},
+	name        ={Ableitungsmenge\addIdx{Ableitungsmenge}},
 	plural      ={Ableitungsmengen},
 	description ={
 		Eine Menge von \Ableitungen, letztlich nichts anderes als eine \Ableitungsrelation.
 	}
 }
-\newcommand*    {\Ableitungsrelation}  [1][hyperTxt]{\glsIdx  [#1]{Ableitungsrelation}}
-\newcommand*    {\Ableitungsrelationen}[1][hyperTxt]{\glsIdxPl[#1]{Ableitungsrelation}}
+
+\newcommand*    {\Ableitungsrelation}  [1][]{\glstext[#1]{Ableitungsrelation}}
+\newcommand*    {\Ableitungsrelationen}[1][]{\glspl  [#1]{Ableitungsrelation}}
 %ToDo prüfen
 \newglossaryentry{Ableitungsrelation}{
-	name        ={Ableitungsrelation},
+	name        ={Ableitungsrelation\addIdx{Ableitungsrelation}},
 	plural      ={Ableitungsrelationen},
 	see         ={Ableitung},
 	description ={
@@ -1627,20 +1847,22 @@
 		Für $R \in \MtsAllDerive$ auch mit \MtsDeriveR\ bezeichnet.
 	}
 }
-\newcommand*    {\Abtrennungsregel}[1][hyperTxt]{\glsIdx[#1]{Abtrennungsregel}}
+
+\newcommand*    {\Abtrennungsregel}[1][]{\glstext[#1]{Abtrennungsregel}}
 %ToDo prüfen
 \newglossaryentry{Abtrennungsregel}{
-	name        ={Abtrennungsregel},
+	name        ={Abtrennungsregel\addIdx{Abtrennungsregel}},
 	see         ={TR},
 	description ={
 		Eine \Schlussregel.
 	}
 }
-\newcommand*    {\Aequivalenz}  [1][hyperTxt]{\glsIdx  [#1]{Aequivalenz}}
-\newcommand*    {\Aequivalenzen}[1][hyperTxt]{\glsIdxPl[#1]{Aequivalenz}}
+
+\newcommand*    {\Aequivalenz}  [1][]{\glstext[#1]{Aequivalenz}}
+\newcommand*    {\Aequivalenzen}[1][]{\glspl  [#1]{Aequivalenz}}
 %ToDo prüfen
 \newglossaryentry{Aequivalenz}{
-	name        ={Äquivalenz},
+	name        ={Äquivalenz\addIdx[name={Äquivalenz}]{Aequivalenz}},
 	plural      ={Äquivalenzen},
 	see         ={MtsAequiv},
 	description ={
@@ -1648,11 +1870,12 @@
 		Zwei Objekte $A$ und $B$ sind \emph{äquivalent}\alternativ{ähnlich}, $A \MtsAequiv B$, wenn sie in den \interessierendenEigenschaften\ für \MtsAequiv\ übereinstimmen.
 	}
 }
-\newcommand*    {\Aequivalenzrelation}  [1][hyperTxt]{\glsIdx  [#1]{Aequivalenzrelation}}
-\newcommand*    {\Aequivalenzrelationen}[1][hyperTxt]{\glsIdxPl[#1]{Aequivalenzrelation}}
+
+\newcommand*    {\Aequivalenzrelation}  [1][]{\glstext[#1]{Aequivalenzrelation}}
+\newcommand*    {\Aequivalenzrelationen}[1][]{\glspl  [#1]{Aequivalenzrelation}}
 %ToDo prüfen
 \longnewglossaryentry{Aequivalenzrelation}{
-	name            ={Äquivalenzrelation},
+	name            ={Äquivalenzrelation\addIdx[name={Äquivalenzrelation}]{Aequivalenzrelation}},
 	plural          ={Äquivalenzrelationen}
 }{
 	Eine binäre \Relation\ \BspRel\ auf einer Menge $M$ mit folgenden Eigenschaften:
@@ -1663,74 +1886,107 @@
 
 	jeweils für alle Elemente $a$, $b$ und $c$ aus $M$.
 }
-\newcommand*    {\Anfangsregel}[1][hyperTxt]{\glsIdx  [#1]{Anfangsregel}}
+
+\newcommand*{\Alphabet}[1][]{Alphabet}% TODO=Alphabet
+
+\newcommand*    {\Anfangsregel}[1][]{\glstext[#1]{Anfangsregel}}
 %ToDo prüfen
 \newglossaryentry{Anfangsregel}{
-	name        ={Anfangsregel},
+	name        ={Anfangsregel\addIdx{Alphabet}},
 	description ={
-		Die \Schlussregel\ \AR\ um anfangen zu können.
+		Die \Schlussregel\ \glsAR\ um anfangen zu können.
 	}
 }
-\newcommand*    {\atomar} [1][hyperTxt]{\glsIdx  [#1]{atomar}}
-\newcommand*    {\atomare}[1][hyperTxt]{\glsIdxPl[#1]{atomar}}
-%ToDo prüfen
+
+\newcommand*    {\ASBA}[1][]{\glstext[#1]{ASBA}}
+\newglossaryentry{ASBA}{
+	name        ={ASBA\addIdx{ASBA}},
+	text        ={ASBA},% wegen Verwendung in einer Überschrift nötig
+	description ={
+		ist ein Akronym für "`\textbf{A}xiome, \textbf{S}ätze, \textbf{B}eweise und \textbf{A}uswertungen"'.
+		Es bezeichnet das in diesem Dokument beschriebene Programmsystem, das zu eingegebenen \Axiomen, \Saetzen\ und \Beweisen\ letztere prüft, Auswertungen generiert und unter Zuhilfenahme gegebener \Ausgabeschemata\ eine Ausgabe im \LaTeX-Format in mathematisch üblicher Schreibweise mit \Formeln\ erstellt.
+	}
+}
+
+\newcommand*    {\atomar}  [1][]{\glstext[#1]{atomar}}
+\newcommand*    {\Atomar}  [1][]{\Glstext[#1]{atomar}}
+\newcommand*    {\atomare} [1][]{\glspl  [#1]{atomar}}
+\newcommand*    {\Atomare} [1][]{\glspl  [#1]{atomar}}
+\newcommand*    {\atomaren}[1][]{\glspl  [#1]{atomar}[n]}
+\newcommand*    {\atomares}[1][]{\glstext[#1]{atomar}[s]}
 \newglossaryentry{atomar}{
-	name        ={atomar},
+	name        ={atomar\addIdx{atomar}},
 	plural      ={atomare},
-	see         ={zerlegbar,unzerlegbar},
+	see         ={zerlegbar},
 	description ={
-		Synonym zu \unzerlegbar.
-		Das Attribut betrifft \Aussagen\ und \Formeln.
+		Das Attribut \defFt{\atomar} kann auf \Aussagen, \Formeln\ und \Symbole\ angewendet werden.
+		\Atomar\ sind solche, die keine echten \Unterobjekte\ gleicher \Objektart\ enthalten.
 	}
 }
-\newcommand*    {\Ausgabeschema}  [1][hyperTxt]{\glsIdx  [#1]{Ausgabeschema}}
-\newcommand*    {\Ausgabeschemata}[1][hyperTxt]{\glsIdxPl[#1]{Ausgabeschema}}
+
+\newcommand*    {\Ausgabeschema}  [1][]{\glstext[#1]{Ausgabeschema}}
+\newcommand*    {\Ausgabeschemata}[1][]{\glspl  [#1]{Ausgabeschema}}
 %ToDo prüfen
 \newglossaryentry{Ausgabeschema}{
-	name        ={Ausgabeschema},
+	name        ={Ausgabeschema\addIdx{Ausgabeschema}},
 	plural      ={Ausgabeschemata},
 	description ={
 		Ein Schema, mit dem bestimmte mathematische \Objekte\ ausgegeben werden sollen.
 	}
 }
-\newcommand*    {\Aussage} [1][hyperTxt]{\glsIdx  [#1]{Aussage}}
-\newcommand*    {\Aussagen}[1][hyperTxt]{\glsIdxPl[#1]{Aussage}}
-%ToDo prüfen
-\newglossaryentry{Aussage}{
-	name        ={Aussage},
-	plural      ={Aussagen},
-	description ={
-		Eine \Aussage\ in natürlicher Sprache oder als \Formel, die einen \Wahrheitswert\ liefert.
-	}
-}
-\newcommand*        {\Aussagenlogik}[1][hyperTxt]{\glsIdx [#1]{Aussagenlogik}}
-\newcommand*        {\AussagenL}    [1][hyperTxt]{\glsIdxI[#1]{Aussagenlogik}}
-\longnewglossaryentry{Aussagenlogik}{
-	name            ={Aussagenlogik},
-	user1           ={Aussagen-},
-	see             ={Logik,Praedikatenlogik}
-}{
-	\Wikipedia~\cite{bib:Aussagenlogik} schreibt dazu (Zitat ohne Verweise ins Internet):
 
-	Die \textbf{Aussagenlogik} ist ein Teilgebiet der Logik, das sich mit Aussagen und deren Verknüpfung durch Junktoren befasst, ausgehend von strukturlosen Elementaraussagen (Atomen), denen ein Wahrheitswert zugeordnet wird. In der \textit{klassischen Aussagenlogik} wird jeder Aussage genau einer der zwei Wahrheitswerte „wahr“ und „falsch“ zugeordnet. Der Wahrheitswert einer zusammengesetzten Aussage lässt sich ohne zusätzliche Informationen aus den Wahrheitswerten ihrer Teilaussagen bestimmen.\par
+\newcommand*        {\Aussage} [1][]{\glstext[#1]{Aussage}}
+\newcommand*        {\Aussagen}[1][]{\glspl  [#1]{Aussage}}
+%ToDo prüfen
+\longnewglossaryentry{Aussage}{
+	name            ={Aussage\addIdx{Aussage}},
+	plural          ={Aussagen}
+}{
+	\begin{citeWiki}{bib:Aussage}{ ohne Verweise ins Internet}
+		Eine \textbf{Aussage} im Sinn der aristotelischen Logik ist ein sprachliches Gebilde, von dem es sinnvoll ist zu \textit{fragen}, ob es wahr oder falsch ist (so genanntes Aristotelisches Zweiwertigkeitsprinzip). Es ist nicht erforderlich, \textit{sagen} zu können, ob das Gebilde wahr oder falsch ist. Es genügt, dass die Frage nach Wahrheit („Zutreffen“) oder Falschheit („Nicht-Zutreffen“) sinnvoll ist, – was zum Beispiel bei Fragesätzen, Ausrufen und Wünschen nicht der Fall ist. Aussagen sind somit Sätze, die Sachverhalte beschreiben und denen man einen Wahrheitswert zuordnen kann.
+	\end{citeWiki}
+	\imGlossar{\appendAussage}
 }
-\newcommand*    {\Axiom}  [1][hyperTxt]{\glsIdx  [#1]{Axiom}}
-\newcommand*    {\Axiome} [1][hyperTxt]{\glsIdxPl[#1]{Axiom}}
-\newcommand*    {\Axiomen}[1][hyperTxt]{\glsIdxPl[#1]{Axiom}[n]}
+\newcommand*  {\appendAussage}{%
+	Das entscheidende Kriterium ist, dass man einer \Aussage\ zumindest im Prinzip einen \Wahrheitswert\ zuordnen kann, \textggf\ nach Ersetzung von Parametern durch konkrete Argumente.
+	Da man \logischenAusdruecken\ und \Relationen\ mit Argumenten ebenfalls einen \Wahrheitswert\ zuordnen kann, können wir sie stets auch als \Aussagen\ behandeln.\relax
+}
+
+\newcommand*{\logischenAusdruecke} [1][]{logischen Ausdrücke}%  TODO=logischer Ausdruck
+\newcommand*{\logischenAusdruecken}[1][]{logischen Ausdrücken}% TODO=logischer Ausdruck
+\newcommand*        {\Aussagenlogik}[1][]{\glstext [#1]{Aussagenlogik}}
+\newcommand*        {\AussagenL}    [1][]{\glsuseri[#1]{Aussagenlogik}}
+\longnewglossaryentry{Aussagenlogik}{
+	name            ={Aussagenlogik\addIdx{Aussagenlogik}},
+	user1           ={Aussagen-},
+	see             ={Aussage,Junktor,Logik,Praedikatenlogik,Wahrheitswert}
+}{
+	\begin{citeWiki}{bib:Aussagenlogik}{ ohne Verweise ins Internet}
+		Die \textbf{Aussagenlogik} ist ein Teilgebiet der Logik, das sich mit Aussagen und deren Verknüpfung durch Junktoren befasst, ausgehend von strukturlosen Elementaraussagen (Atomen), denen ein Wahrheitswert zugeordnet wird. In der \textit{klassischen Aussagenlogik} wird jeder Aussage genau einer der zwei Wahrheitswerte „wahr“ und „falsch“ zugeordnet. Der Wahrheitswert einer zusammengesetzten Aussage lässt sich ohne zusätzliche Informationen aus den Wahrheitswerten ihrer Teilaussagen bestimmen.
+	\end{citeWiki}
+}
+
+\newcommand*{\Auswertung}  [1][]{Auswertung}%   TODO=Auswertung
+\newcommand*{\Auswertungen}[1][]{Auswertungen}% TODO=Auswertung
+
+\newcommand*    {\Axiom}  [1][]{\glstext[#1]{Axiom}}
+\newcommand*    {\Axiome} [1][]{\glspl  [#1]{Axiom}}
+\newcommand*    {\Axiomen}[1][]{\glspl  [#1]{Axiom}[n]}
 %ToDo prüfen
 \newglossaryentry{Axiom}{
-	name        ={Axiom},
+	name        ={Axiom\addIdx{Axiom}},
 	plural      ={Axiome},
 	see         ={MtsAxiom,MtsAxiomSet},
 	description ={
 		Eine \Formel, die unbewiesen als wahr angesehen wird.
 	}
 }
-\newcommand*    {\Axiomensystem} [1][hyperTxt]{\glsIdx  [#1]{Axiomensystem}}
-\newcommand*    {\Axiomensysteme}[1][hyperTxt]{\glsIdxPl[#1]{Axiomensystem}}
+
+\newcommand*    {\Axiomensystem} [1][]{\glstext[#1]{Axiomensystem}}
+\newcommand*    {\Axiomensysteme}[1][]{\glspl  [#1]{Axiomensystem}}
 %ToDo prüfen
 \newglossaryentry{Axiomensystem}{
-	name        ={Axiomensystem},
+	name        ={Axiomensystem\addIdx{Axiomensystem}},
 	plural      ={Axiomensysteme},
 	description ={
 		Eine Menge von \Axiomen.
@@ -1739,56 +1995,71 @@
 
 %B === B === B === B === B === B === B === B === B === B === B === B === B === B
 
-\newcommand*    {\Basisregel} [1][hyperTxt]{\glsIdx  [#1]{Basisregel}}
-\newcommand*    {\Basisregeln}[1][hyperTxt]{\glsIdxPl[#1]{Basisregel}}
+\newcommand*    {\Basisregel} [1][]{\glstext[#1]{Basisregel}}
+\newcommand*    {\Basisregeln}[1][]{\glspl  [#1]{Basisregel}}
 %ToDo prüfen
 \newglossaryentry{Basisregel}{
-	name        ={Basisregel},
+	name        ={Basisregel\addIdx{Basisregel}},
 	plural      ={Basisregeln},
 	description ={
 		Eine \Schlussregel, die nicht mehr auf andere zurückgeführt wird.
 		Obwohl das auch auf die \Identitaetsregeln\ zutrifft, werden diese hier aber nicht dazu gezählt.
 	}
 }
-\newcommand*    {\beschraenkt}  [1][hyperTxt]{\glsIdx  [#1]{beschraenkt}}
-\newcommand*    {\beschraenkte} [1][hyperTxt]{\glsIdxPl[#1]{beschraenkt}}
-\newcommand*    {\beschraenkten}[1][hyperTxt]{\glsIdxPl[#1]{beschraenkt}[n]}
+
+\newcommand*    {\Baustein} [1][]{\glstext[#1]{Baustein}}
+\newcommand*    {\Bausteine}[1][]{\glspl  [#1]{Baustein}}
+%ToDo prüfen
+\newglossaryentry{Baustein}{
+	name        ={Baustein\addIdx{Baustein}},
+	plural      ={Baustein},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Baustein
+	}
+}
+
+\newcommand*    {\beschraenkt}  [1][]{\glstext[#1]{beschraenkt}}
+\newcommand*    {\beschraenkte} [1][]{\glspl  [#1]{beschraenkt}}
+\newcommand*    {\beschraenkten}[1][]{\glspl  [#1]{beschraenkt}[n]}
 %ToDo prüfen
 \newglossaryentry{beschraenkt}{
-	name        ={beschränkt},
+	name        ={beschränkt\addIdx[name={beschränkt}]{beschraenkt}},
 	plural      ={beschränkte},
 	description ={
 		Eine \Schlussregel\ heißt \beschraenkt, wenn sie nur endlich viele Voraussetzungen und Folgerungen hat.
 	}
 }
-\newcommand*    {\Beweis}  [1][hyperTxt]{\glsIdx  [#1]{Beweis}}
-\newcommand*    {\Beweise} [1][hyperTxt]{\glsIdxPl[#1]{Beweis}}
-\newcommand*    {\Beweises}[1][hyperTxt]{\glsIdx  [#1]{Beweis}[es]}
-\newcommand*    {\Beweisen}[1][hyperTxt]{\glsIdxPl[#1]{Beweis}[n]}
+
+\newcommand*    {\Beweis}  [1][]{\glstext[#1]{Beweis}}
+\newcommand*    {\Beweise} [1][]{\glspl  [#1]{Beweis}}
+\newcommand*    {\Beweises}[1][]{\glstext[#1]{Beweis}[es]}
+\newcommand*    {\Beweisen}[1][]{\glspl  [#1]{Beweis}[n]}
 %ToDo prüfen
 \newglossaryentry{Beweis}{
-	name        ={Beweis},
+	name        ={Beweis\addIdx{Beweis}},
 	plural      ={Beweise},
 	description ={
 		Eine zulässige Ableitung von \Folgerungen\ aus gegebenen \Voraussetzungen.
 	}
 }
-\newcommand*    {\beweisbar} [1][hyperTxt]{\glsIdx  [#1]{beweisbar}}
-\newcommand*    {\beweisbare}[1][hyperTxt]{\glsIdxPl[#1]{beweisbar}}
+
+\newcommand*    {\beweisbar} [1][]{\glstext[#1]{beweisbar}}
+\newcommand*    {\beweisbare}[1][]{\glspl  [#1]{beweisbar}}
 %ToDo prüfen
 \newglossaryentry{beweisbar}{
-	name        ={beweisbar},
+	name        ={beweisbar\addIdx{beweisbar}},
 	plural      ={beweisbare},
 	description ={
 		Synonym zu \ableitbar.
 	}
 }
-\newcommand*    {\Beweisschritt}  [1][hyperTxt]{\glsIdx  [#1]{Beweisschritt}}
-\newcommand*    {\Beweisschritte} [1][hyperTxt]{\glsIdxPl[#1]{Beweisschritt}}
-\newcommand*    {\Beweisschritten}[1][hyperTxt]{\glsIdxPl[#1]{Beweisschritt}[n]}
+
+\newcommand*    {\Beweisschritt}  [1][]{\glstext[#1]{Beweisschritt}}
+\newcommand*    {\Beweisschritte} [1][]{\glspl  [#1]{Beweisschritt}}
+\newcommand*    {\Beweisschritten}[1][]{\glspl  [#1]{Beweisschritt}[n]}
 %ToDo prüfen
 \newglossaryentry{Beweisschritt}{
-	name        ={Beweisschritt},
+	name        ={Beweisschritt\addIdx{Beweisschritt}},
 	plural      ={Beweisschritte},
 	see         ={MtsBeweisschritt,MtsBeweisschrittSet,MtsBeweisschrittTup},
 	symbol      ={\ensuremath{\RawMtsBeweisschritt}},
@@ -1796,45 +2067,60 @@
 		Eine Vorschrift, wie aus vorgegebenen \Aussagen\ (den \Voraussetzungen) weitere (die \Folgerungen) folgen.
 	}
 }
-\newcommand*    {\Beweisschrittfolge} [1][hyperTxt]{\glsIdx  [#1]{Beweisschrittfolge}}
-\newcommand*    {\Beweisschrittfolgen}[1][hyperTxt]{\glsIdxPl[#1]{Beweisschrittfolge}}
+
+\newcommand*    {\Beweisschrittfolge} [1][]{\glstext[#1]{Beweisschrittfolge}}
+\newcommand*    {\Beweisschrittfolgen}[1][]{\glspl  [#1]{Beweisschrittfolge}}
 %ToDo prüfen
 \newglossaryentry{Beweisschrittfolge}{
-	name        ={Beweisschrittfolge},
+	name        ={Beweisschrittfolge\addIdx{Beweisschrittfolge}},
 	plural      ={Beweisschrittfolgen},
 	description ={
 		Eine Folge von \Beweisschritten.
 	}
 }
-\newcommand*    {\Beweisschrittmenge} [1][hyperTxt]{\glsIdx  [#1]{Beweisschrittmenge}}
-\newcommand*    {\Beweisschrittmengen}[1][hyperTxt]{\glsIdxPl[#1]{Beweisschrittmenge}}
+
+\newcommand*    {\Beweisschrittmenge} [1][]{\glstext[#1]{Beweisschrittmenge}}
+\newcommand*    {\Beweisschrittmengen}[1][]{\glspl  [#1]{Beweisschrittmenge}}
 %ToDo prüfen
 \newglossaryentry{Beweisschrittmenge}{
-	name        ={Beweisschrittmenge},
+	name        ={Beweisschrittmenge\addIdx{Beweisschrittmenge}},
 	plural      ={Beweisschrittmengen},
 	description ={
 		Eine Menge von \Beweisschritten, insbesondere die Menge der Glieder einer \Beweisschrittfolge.
 	}
 }
-\newcommand*    {\binaer} [1][hyperTxt]{\glsIdx  [#1]{binaer}}
-\newcommand*    {\binaere}[1][hyperTxt]{\glsIdxPl[#1]{binaer}}
+
+\newcommand*    {\binaer} [1][]{\glstext[#1]{binaer}}
+\newcommand*    {\binaere}[1][]{\glspl  [#1]{binaer}}
 %ToDo prüfen
 \newglossaryentry{binaer}{
-	name        ={binär},
+	name        ={binär\addIdx[name={binär}]{binaer}},
 	plural      ={binäre},
 	see         ={unaer},
 	description ={
-		Eine \Operation\, \Funktion\ oder \Relation\ heißt \defFt{binär}, wenn ihre \Stelligkeit\ gleich 2 ist.
+		Eine \Operation, \Funktion\ oder \Relation\ heißt \defFt{binär}, wenn ihre \Stelligkeit\ gleich 2 ist.
 	}
 }
 
 %D === D === D === D === D === D === D === D === D === D === D === D === D === D
 
-\newcommand*    {\Definition}  [1][hyperTxt]{\glsIdx  [#1]{Definition}}
-\newcommand*    {\Definitionen}[1][hyperTxt]{\glsIdxPl[#1]{Definition}}
+\newcommand*    {\logischeDarstellung} [1][]{\glstext[#1]{logischeDarstellung}}
+%ToDo prüfen
+\newglossaryentry{logischeDarstellung}{
+	name       ={logische Darstellung\addIdx[
+	name       ={logische Darstellung},
+	sort       ={         Darstellung, logische}]{logischeDarstellung}},
+	sort       ={         Darstellung, logische},
+	description={
+		\todo{Beschreibung fehlt noch}% TODO=logische Darstellung
+	}
+}
+
+\newcommand*    {\Definition}  [1][]{\glstext[#1]{Definition}}
+\newcommand*    {\Definitionen}[1][]{\glspl  [#1]{Definition}}
 %ToDo prüfen
 \newglossaryentry{Definition}{
-	name        ={Definition},
+	name        ={Definition\addIdx{Definition}},
 	plural      ={Definitionen},
 	see         ={Metadefinition},
 	description ={
@@ -1843,11 +2129,12 @@
 		Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
 	}
 }
-\newcommand*    {\Definitionsbereich} [1][hyperTxt]{\glsIdx  [#1]{Definitionsbereich}}
-\newcommand*    {\Definitionsbereiche}[1][hyperTxt]{\glsIdxPl[#1]{Definitionsbereich}}
+
+\newcommand*    {\Definitionsbereich} [1][]{\glstext[#1]{Definitionsbereich}}
+\newcommand*    {\Definitionsbereiche}[1][]{\glspl  [#1]{Definitionsbereich}}
 %ToDo prüfen
 \newglossaryentry{Definitionsbereich}{
-	name        ={Definitionsbereich},
+	name        ={Definitionsbereich\addIdx{Definitionsbereich}},
 	plural      ={Definitionsbereiche},
 	symbol      ={\MtsDb},
 	see         = {MtsDb,Quellbereich,Funktion},
@@ -1858,12 +2145,25 @@
 
 %E === E === E === E === E === E === E === E === E === E === E === E === E === E
 
-\newcommand*    {\interessierendeEigenschaft}   [1][hyperTxt]{\glsIdx  [#1]{interessierendeEigenschaft}}
-\newcommand*    {\interessierendenEigenschaft}  [1][hyperTxt]{\glsIdxPl[#1]{interessierendeEigenschaft}}
-\newcommand*    {\interessierendenEigenschaften}[1][hyperTxt]{\glsIdxPl[#1]{interessierendeEigenschaft}[en]}
+\newcommand*    {\echt} [1][]{\glstext[#1]{echt}}
+\newcommand*    {\echte}[1][]{\glspl  [#1]{echt}}
 %ToDo prüfen
-\newglossaryentry{interessierendeEigenschaft}{
+\newglossaryentry{echt}{
+	name        ={echt\addIdx{echt}},
+	plural      ={echte},
+	description ={
+		Attribut für ???% TODO=echt
+	}
+}
+
+\newcommand*      {\interessierendeEigenschaft}  [1][]{\glstext[#1]{interessierendeEigenschaft}}
+\newcommand*     {\interessierendenEigenschaft}  [1][]{\glspl  [#1]{interessierendeEigenschaft}}
+\newcommand*     {\interessierendenEigenschaften}[1][]{\glspl  [#1]{interessierendeEigenschaft}[en]}
+%ToDo prüfen
+\newglossaryentry  {interessierendeEigenschaft}{
+	name        =                 {Eigenschaft, interessierende\addIdx[
 	name        =                 {Eigenschaft, interessierende},
+	sort        =                 {Eigenschaft, interessierende}]{interessierendeEigenschaft}},
 	sort        =                 {Eigenschaft, interessierende},
 	text        ={interessierende  Eigenschaft},
 	plural      ={interessierenden Eigenschaft},% Dativ
@@ -1871,12 +2171,51 @@
 		Solche Eigenschaften von \Objekten, die im aktuellen Zusammenhang von Interesse sind, \textzB\ einen bestimmten Wert zu haben, Element einer bestimmten Menge zu sein, ein bestimmtes \Objekt\ zu bezeichnen, usw.
 	}
 }
-\newcommand*    {\Ergebnis}   [1][hyperTxt]{\glsIdx  [#1]{Ergebnis}}
-\newcommand*    {\Ergebnisse} [1][hyperTxt]{\glsIdxPl[#1]{Ergebnis}}
-\newcommand*    {\Ergebnissen}[1][hyperTxt]{\glsIdxPl[#1]{Ergebnis}[n]}
+
+\newcommand*     {\Element} [1][]{\glstext[#1]{Element}}
+%%%%\newcommand*     {\Elemente}[1][]{\glsPl  [#1]{Element}}
+\newcommand*     {\Elemente}[1][]{Elemente}% TODO ### ??? ###
+%ToDo \emptyset ersetzen
+\longnewglossaryentry {Element}{
+	name             ={Element\addIdx{Element}},
+	plural           ={Elemente},
+	see              ={Menge,Mengenlehre,Relation}
+}{
+	\begin{citeWiki}{bib:Element}{ ohne Verweise ins Internet}
+		Ein \textbf{Element} in der Mathematik ist immer im Rahmen der Mengenlehre oder Klassenlogik zu verstehen. Die grundlegende Relation, wenn x ein Element ist und M eine Menge oder Klasse ist, lautet:
+
+		„x ist Element von M“ oder mit Hilfe des Elementzeichens „x \MtsIn\ M“.
+	\end{citeWiki}
+}
+
+\newcommand*    {\Elementoperation}  [1][]{\glstext[#1]{Elementoperation}}
+\newcommand*    {\Elementoperationen}[1][]{\glspl  [#1]{Elementoperation}}
+%ToDo prüfen
+\newglossaryentry{Elementoperation}{
+	name        ={Elementoperation\addIdx{Elementoperation}},
+	plural      ={Elementoperationen},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Elementoperation
+	}
+}
+
+\newcommand*    {\Elementrelation}  [1][]{\glstext[#1]{Elementrelation}}
+\newcommand*    {\Elementrelationen}[1][]{\glspl  [#1]{Elementrelation}}
+%ToDo prüfen
+\newglossaryentry{Elementrelation}{
+	name        ={Elementrelation\addIdx{Elementrelation}},
+	plural      ={Elementrelationen},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Elementrelation
+	}
+}
+
+\newcommand*    {\Ergebnis}   [1][]{\glstext[#1]{Ergebnis}}
+\newcommand*    {\Ergebnisse} [1][]{\glspl  [#1]{Ergebnis}}
+\newcommand*    {\Ergebnissen}[1][]{\glspl  [#1]{Ergebnis}[n]}
 %ToDo prüfen
 \newglossaryentry{Ergebnis}{
-	name        ={Ergebnis},
+	name        ={Ergebnis\addIdx{Ergebnis}},
 	plural      ={Ergebnisse},
 	see         ={MtsErgebnis,MtsErgebnisSet,MtsErgebnisRel},
 	description ={
@@ -1884,33 +2223,36 @@
 		Ein \Ergebnis\ eines \Beweises.
 	}
 }
-\newcommand*    {\Ergebnismenge} [1][hyperTxt]{\glsIdx  [#1]{Ergebnismenge}}
-\newcommand*    {\Ergebnismengen}[1][hyperTxt]{\glsIdxPl[#1]{Ergebnismenge}}
+
+\newcommand*    {\Ergebnismenge} [1][]{\glstext[#1]{Ergebnismenge}}
+\newcommand*    {\Ergebnismengen}[1][]{\glspl  [#1]{Ergebnismenge}}
 %ToDo prüfen
 \newglossaryentry{Ergebnismenge}{
-	name        ={Ergebnismenge},
+	name        ={Ergebnismenge\addIdx{Ergebnismenge}},
 	plural      ={Ergebnismengen},
 	description ={
 		Eine \Ableitungsmenge:
 		Die Menge \MtsErgebnisSet\ der \Ergebnisse\ eines \Beweises.
 	}
 }
-\newcommand*    {\Ersetzung}  [1][hyperTxt]{\glsIdx  [#1]{Ersetzung}}
-\newcommand*    {\Ersetzungen}[1][hyperTxt]{\glsIdxPl[#1]{Ersetzung}}
+
+\newcommand*    {\Ersetzung}  [1][]{\glstext[#1]{Ersetzung}}
+\newcommand*    {\Ersetzungen}[1][]{\glspl  [#1]{Ersetzung}}
 %ToDo prüfen
 \newglossaryentry{Ersetzung}{
-	name        ={Ersetzung},
+	name        ={Ersetzung\addIdx{Ersetzung}},
 	plural      ={Ersetzungen},
 	description ={
 		Eine \Funktion\ zur \Umwandlung\ einer \Formel\ mittels \Ersetzung\ in eine gleichwertige.
 		Die \Ersetzung\ heißt \zulaessig, wenn sie vorgegebene Regeln erfüllt.
 	}
 }
-\newcommand*    {\Ersetzungsmenge} [1][hyperTxt]{\glsIdx  [#1]{Ersetzungsmenge}}
-\newcommand*    {\Ersetzungsmengen}[1][hyperTxt]{\glsIdxPl[#1]{Ersetzungsmenge}}
+
+\newcommand*    {\Ersetzungsmenge} [1][]{\glstext[#1]{Ersetzungsmenge}}
+\newcommand*    {\Ersetzungsmengen}[1][]{\glspl  [#1]{Ersetzungsmenge}}
 %ToDo prüfen
 \newglossaryentry{Ersetzungsmenge}{
-	name        ={Ersetzungsmenge},
+	name        ={Ersetzungsmenge\addIdx{Ersetzungsmenge}},
 	plural      ={Ersetzungsmengen},
 	description ={
 		Eine Menge von \Ersetzungen, meistens mit \MtsErsetzungSet bezeichnet.
@@ -1919,33 +2261,36 @@
 
 %F === F === F === F === F === F === F === F === F === F === F === F === F === F
 
-\newcommand*    {\Fachbegriff}  [1][hyperTxt]{\glsIdx  [#1]{Fachbegriff}}
-\newcommand*    {\Fachbegriffe} [1][hyperTxt]{\glsIdxPl[#1]{Fachbegriff}}
-\newcommand*    {\Fachbegriffen}[1][hyperTxt]{\glsIdxPl[#1]{Fachbegriff}[n]}
+\newcommand*    {\Fachbegriff}  [1][]{\glstext[#1]{Fachbegriff}}
+\newcommand*    {\Fachbegriffe} [1][]{\glspl  [#1]{Fachbegriff}}
+\newcommand*    {\Fachbegriffen}[1][]{\glspl  [#1]{Fachbegriff}[n]}
 %ToDo prüfen
 \newglossaryentry{Fachbegriff}{
-	name        ={Fachbegriff},
+	name        ={Fachbegriff\addIdx{Fachbegriff}},
 	plural      ={Fachbegriffe},
 	description ={
 		Ein Name für einen mathematischen Begriff.
 	}
 }
-\newcommand*    {\Fachgebiet}  [1][hyperTxt]{\glsIdx  [#1]{Fachgebiet}}
-\newcommand*    {\Fachgebiete} [1][hyperTxt]{\glsIdxPl[#1]{Fachgebiet}}
-\newcommand*    {\Fachgebieten}[1][hyperTxt]{\glsIdxPl[#1]{Fachgebiet}[n]}
+
+\newcommand*    {\Fachgebiet}  [1][]{\glstext[#1]{Fachgebiet}}
+\newcommand*    {\Fachgebiets} [1][]{\glstext[#1]{Fachgebiet}[s]}
+\newcommand*    {\Fachgebiete} [1][]{\glspl  [#1]{Fachgebiet}}
+\newcommand*    {\Fachgebieten}[1][]{\glspl  [#1]{Fachgebiet}[n]}
 %ToDo prüfen
 \newglossaryentry{Fachgebiet}{
-	name        ={Fachgebiet},
+	name        ={Fachgebiet\addIdx{Fachgebiet}},
 	plural      ={Fachgebiete},
 	description ={
 		Ein Teil der Mathematik mit einer zugehörigen Basis aus \Axiomen, \Saetzen, \Fachbegriffen\ und Darstellungsweisen.
 	}
 }
-\newcommand*    {\Folge} [1][hyperTxt]{\glsIdx  [#1]{Folge}}
-\newcommand*    {\Folgen}[1][hyperTxt]{\glsIdxPl[#1]{Folge}}
+
+\newcommand*    {\Folge} [1][]{\glstext[#1]{Folge}}
+\newcommand*    {\Folgen}[1][]{\glspl  [#1]{Folge}}
 %ToDo prüfen
 \newglossaryentry{Folge}{
-	name        ={Folge},
+	name        ={Folge\addIdx{Folge}},
 	plural      ={Folgen},
 	see         ={MtsLen,leereFolge,Tupel},
 	description ={
@@ -1956,12 +2301,15 @@
 		Eine endliche \Folge\ der Länge $n$ heißt auch \defFt{$n$-\Tupel} und die leere \Folge\ demnach \defFt{$0$-\Tupel}.
 	}
 }
-\newcommand*    {\leereFolge} [1][hyperTxt]{\glsIdx  [#1]{leereFolge}}
-\newcommand*    {\leereFolgen}[1][hyperTxt]{\glsIdx  [#1]{leereFolge}[n]}
-\newcommand*    {\leerenFolge}[1][hyperTxt]{\glsIdxPl[#1]{leereFolge}}
+
+\newcommand*    {\leereFolge} [1][]{\glstext[#1]{leereFolge}}
+\newcommand*    {\leereFolgen}[1][]{\glstext[#1]{leereFolge}[n]}
+\newcommand*    {\leerenFolge}[1][]{\glspl  [#1]{leereFolge}}
 %ToDo prüfen
 \newglossaryentry{leereFolge}{
+	name        =           {-, leere\addIdx[
 	name        =           {-, leere},
+	sort        =       {Folge, leere}]{leereFolge}},
 	sort        =       {Folge, leere},
 	text        ={leere  Folge},
 	plural      ={leeren Folge},% Singular Dativ
@@ -1970,11 +2318,12 @@
 		Eine \Folge\ heißt \defFt{leer}, wenn ihre Länge $0$ ist, \textdh\ wenn sie keine \Komponenten\ besitzt.
 	}
 }
-\newcommand*    {\Folgerung}  [1][hyperTxt]{\glsIdx  [#1]{Folgerung}}
-\newcommand*    {\Folgerungen}[1][hyperTxt]{\glsIdxPl[#1]{Folgerung}}
+
+\newcommand*    {\Folgerung}  [1][]{\glstext[#1]{Folgerung}}
+\newcommand*    {\Folgerungen}[1][]{\glspl  [#1]{Folgerung}}
 %ToDo prüfen
-\newglossaryentry{Folgerung}{
-	name        ={Folgerung},
+\newglossaryentry{Folgerung}{% TODO==> Konklusion
+	name        ={Folgerung\addIdx{Folgerung}},
 	plural      ={Folgerungen},
 	see         ={Schlussregel},
 	description ={
@@ -1983,22 +2332,35 @@
 		Die \Voraussetzungen\ werden normalerweise mit $\MtsVoraussetzung_i$ bezeichnet.
 	}
 }
-\newcommand*    {\Folgerungsmenge} [1][hyperTxt]{\glsIdx  [#1]{Folgerungsmenge}}
-\newcommand*    {\Folgerungsmengen}[1][hyperTxt]{\glsIdxPl[#1]{Folgerungsmenge}}
+
+\newcommand*    {\Folgerungsmenge} [1][]{\glstext[#1]{Folgerungsmenge}}
+\newcommand*    {\Folgerungsmengen}[1][]{\glspl  [#1]{Folgerungsmenge}}
 %ToDo prüfen
 \newglossaryentry{Folgerungsmenge}{
-	name        ={Folgerungsmenge},
+	name        ={Folgerungsmenge\addIdx{Folgerungsmenge}},
 	plural      ={Folgerungsmengen},
 	description ={
 		Eine \Ableitungsmenge:
 		Die Menge \MtsFolgerungSet\ der \Folgerungen\ einer \Schlussregel\ \textbzw\ eines \Beweises.
 	}
 }
-\newcommand*    {\Formel} [1][hyperTxt]{\glsIdx  [#1]{Formel}}
-\newcommand*    {\Formeln}[1][hyperTxt]{\glsIdxPl[#1]{Formel}}
+
+\newcommand*    {\Formationsregel} [1][]{\glstext[#1]{Formationsregel}}
+\newcommand*    {\Formationsregeln}[1][]{\glspl  [#1]{Formationsregel}}
+%ToDo prüfen
+\newglossaryentry{Formationsregel}{
+	name        ={Formationsregel\addIdx{Formationsregel}},
+	plural      ={Formationsregel},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Formationsregel
+	}
+}
+
+\newcommand*    {\Formel} [1][]{\glstext[#1]{Formel}}
+\newcommand*    {\Formeln}[1][]{\glspl  [#1]{Formel}}
 %ToDo prüfen
 \newglossaryentry{Formel}{
-	name        ={Formel},
+	name        ={Formel\addIdx{Formel}},
 	plural      ={Formeln},
 	description ={
 		Unter einer \Formel\ verstehen wir stets eine mathematische \Formel.
@@ -2006,11 +2368,14 @@
 		\Saetze, \Beweise\ und \Schlussregeln\ betrachten wir \emph{nicht} als \Formeln.
 	}
 }
-\newcommand*    {\allgemeingueltigeFormel} [1][hyperTxt]{\glsIdx  [#1]{allgemeingueltigeFormel}}
-\newcommand*    {\allgemeingueltigenFormel}[1][hyperTxt]{\glsIdxPl[#1]{allgemeingueltigeFormel}}
+
+\newcommand*    {\allgemeingueltigeFormel} [1][]{\glstext[#1]{allgemeingueltigeFormel}}
+\newcommand*    {\allgemeingueltigenFormel}[1][]{\glspl  [#1]{allgemeingueltigeFormel}}
 %ToDo prüfen
 \newglossaryentry{allgemeingueltigeFormel}{
+	name        =                       {-, allgemeingültige\addIdx[
 	name        =                       {-, allgemeingültige},
+	sort        =                  {Formel, allgemeingültige}]{allgemeingueltigeFormel}},
 	sort        =                  {Formel, allgemeingültige},
 	text        ={allgemeingültige  Formel},
 	plural      ={allgemeingültigen Formel},% Singular Dativ
@@ -2018,23 +2383,28 @@
 		Eine \Formel\ heißt \defFt{allgemeingültig}, wenn sie aus den \Axiomen\ und \allgemeingueltigenSchlussregeln\ abgeleitet werden kann.
 	}
 }
-\newcommand*    {\aussagenlogischeFormel}  [1][hyperTxt]{\glsIdx  [#1]{aussagenlogischeFormel}}
-\newcommand*    {\aussagenlogischenFormeln}[1][hyperTxt]{\glsIdxPl[#1]{aussagenlogischeFormel}[n]}
+
+\newcommand*    {\aussagenlogischeFormel}  [1][]{\glstext[#1]{aussagenlogischeFormel}}
+\newcommand*    {\aussagenlogischenFormel} [1][]{\glspl  [#1]{aussagenlogischeFormel}}
+\newcommand*    {\aussagenlogischenFormeln}[1][]{\glspl  [#1]{aussagenlogischeFormel}[n]}
 %ToDo prüfen
 \newglossaryentry{aussagenlogischeFormel}{
+	name        =                       {-, aussagenlogische\addIdx[
 	name        =                       {-, aussagenlogische},
+	sort        =                  {Formel, aussagenlogische}]{aussagenlogischeFormel}},
 	sort        =                  {Formel, aussagenlogische},
 	text        ={aussagenlogische  Formel},
 	plural      ={aussagenlogischen Formel},% Singular Dativ
 	description ={
-		Eine \Formel\ heißt \defFt{aussagenlogisch}, wenn sie ein Element von \FrmFor\ ist.
+		Eine \Formel\ heißt \defFt{aussagenlogisch}, wenn sie ein Element von \OjkFor\ ist.
 	}
 }
-\newcommand*    {\Formelmenge} [1][hyperTxt]{\glsIdx  [#1]{Formelmenge}}
-\newcommand*    {\Formelmengen}[1][hyperTxt]{\glsIdxPl[#1]{Formelmenge}}
+
+\newcommand*    {\Formelmenge} [1][]{\glstext[#1]{Formelmenge}}
+\newcommand*    {\Formelmengen}[1][]{\glspl  [#1]{Formelmenge}}
 %ToDo prüfen
 \newglossaryentry{Formelmenge}{
-	name        ={Formelmenge},
+	name        ={Formelmenge\addIdx{Formelmenge}},
 	plural      ={Formelmengen},
 	description ={
 		Eine Menge von \Formeln, oft mit \glssymbol{MtsSprache} bezeichnet.
@@ -2042,11 +2412,12 @@
 		Wir bevorzugen "`\Formel"' und "`\Formelmenge"'.
 	}
 }
-\newcommand*    {\Funktion}  [1][hyperTxt]{\glsIdx  [#1]{Funktion}}
-\newcommand*    {\Funktionen}[1][hyperTxt]{\glsIdxPl[#1]{Funktion}}
+
+\newcommand*    {\Funktion}  [1][]{\glstext[#1]{Funktion}}
+\newcommand*    {\Funktionen}[1][]{\glspl  [#1]{Funktion}}
 %ToDo prüfen
 \newglossaryentry{Funktion}{
-	name        ={Funktion},
+	name        ={Funktion\addIdx{Funktion}},
 	plural      ={Funktionen},
 	description ={
 		Eine \defFt{$n$-stellige Funktion} $f$ von einer Menge $A = A_1 \times \dots \times A_n$, dem \Definitionsbereich, in eine Menge $B$, den \Zielbereich, ist eine ($n$+1)-stellige \Relation\ $(G,A_1,\dots,A_n,B)$ derart, dass es für jedes $\vec{a} = (a_1,\dots,a_n)$ mit $a_i \in A_i$ genau ein $b \in B$ gibt mit $(a_1,\dots,a_n,b) \in f$.
@@ -2054,11 +2425,12 @@
 		\\Schreibweise: \seqqt{$f : A \rightarrow B$} \textbzw\ \seqqt{$f : A_1 \times \dots \times A_n \rightarrow B$}
 	}
 }
-\newcommand*    {\Funktionswert} [1][hyperTxt]{\glsIdx  [#1]{Funktionswert}}
-\newcommand*    {\Funktionswerte}[1][hyperTxt]{\glsIdxPl[#1]{Funktionswert}}
+
+\newcommand*    {\Funktionswert} [1][]{\glstext[#1]{Funktionswert}}
+\newcommand*    {\Funktionswerte}[1][]{\glspl  [#1]{Funktionswert}}
 %ToDo prüfen
 \newglossaryentry{Funktionswert}{
-	name        ={Funktionswert},
+	name        ={Funktionswert\addIdx{Funktionswert}},
 	plural      ={Funktionswerte},
 	description ={
 		einer \Funktion.
@@ -2067,30 +2439,32 @@
 
 %G === G === G === G === G === G === G === G === G === G === G === G === G === G
 
-\newcommand*    {\Gleichheit}[1][hyperTxt]{\glsIdx[#1]{Gleichheit}}
+\newcommand*    {\Gleichheit}[1][]{\glstext[#1]{Gleichheit}}
 %ToDo prüfen
 \newglossaryentry{Gleichheit}{
-	name        ={Gleichheit},
+	name        ={Gleichheit\addIdx{Gleichheit}},
 	description ={
 		Eine \Gleichheitsrelation:
 		Zwei Objekte $A$ und $B$ sind \emph{gleich} (dasselbe; identisch), $A \MtsEq B$, wenn sie in den \interessierendenEigenschaften\ für \MtsEq\ übereinstimmen.
 	}
 }
-\newcommand*    {\Gleichheitsrelation}  [1][hyperTxt]{\glsIdx  [#1]{Gleichheitsrelation}}
-\newcommand*    {\Gleichheitsrelationen}[1][hyperTxt]{\glsIdxPl[#1]{Gleichheitsrelation}}
+
+\newcommand*    {\Gleichheitsrelation}  [1][]{\glstext[#1]{Gleichheitsrelation}}
+\newcommand*    {\Gleichheitsrelationen}[1][]{\glspl  [#1]{Gleichheitsrelation}}
 %ToDo prüfen
 \newglossaryentry{Gleichheitsrelation}{
-	name        ={Gleichheitsrelation},
+	name        ={Gleichheitsrelation\addIdx{Gleichheitsrelation}},
 	plural      ={Gleichheitsrelationen},
 	description ={
 		Eine mit \Gleichheit\ verwandte \Relation: \MtsEq, \MtsEqN, \MtsAequiv\ und \MtsAequivN.
 	}
 }
-\newcommand*    {\Graph}  [1][hyperTxt]{\glsIdx  [#1]{Graph}}
-\newcommand*    {\Graphen}[1][hyperTxt]{\glsIdxPl[#1]{Graph}}
+
+\newcommand*    {\Graph}  [1][]{\glstext[#1]{Graph}}
+\newcommand*    {\Graphen}[1][]{\glspl  [#1]{Graph}}
 %ToDo prüfen
 \newglossaryentry{Graph}{
-	name        ={Graph},
+	name        ={Graph\addIdx{Graph}},
 	plural      ={Graphen},
 	symbol  ={\MtsGraph},
 	see      ={MtsGraph},
@@ -2101,11 +2475,11 @@
 
 %I === I === I === I === I === I === I === I === I === I === I === I === I === I
 
-\newcommand*    {\Identitaetsregel} [1][hyperTxt]{\glsIdx  [#1]{Identitaetsregel}}
-\newcommand*    {\Identitaetsregeln}[1][hyperTxt]{\glsIdxPl[#1]{Identitaetsregel}}
+\newcommand*    {\Identitaetsregel} [1][]{\glstext[#1]{Identitaetsregel}}
+\newcommand*    {\Identitaetsregeln}[1][]{\glspl  [#1]{Identitaetsregel}}
 %ToDo prüfen
 \newglossaryentry{Identitaetsregel}{
-	name        ={Identitätsregel},
+	name        ={Identitätsregel\addIdx[name={Identitätsregel}]{Identitaetsregel}},
 	plural      ={Identitätsregeln},
 	description ={
 		Eigentlich eine \Basisregel\ zur Identität.
@@ -2115,22 +2489,53 @@
 
 %J === J === J === J === J === J === J === J === J === J === J === J === J === J
 
-\newcommand*    {\Junktor}  [1][hyperTxt]{\glsIdx  [#1]{Junktor}}
-\newcommand*    {\Junktoren}[1][hyperTxt]{\glsIdxPl[#1]{Junktor}}
+\newcommand*    {\Junktor}  [1][]{\glstext[#1]{Junktor}}
+\newcommand*    {\Junktoren}[1][]{\glspl  [#1]{Junktor}}
 %ToDo prüfen
 \newglossaryentry{Junktor}{
-	name        ={Junktor},
+	name        ={Junktor\addIdx{Junktor}},
 	plural      ={Junktoren},
 	description ={
 		Eine aussagenlogische \Operation.
 		Da die Werte einer aussagenlogischen \Operation\ \Wahrheitswerte\ sind, kann man einen \Junktor\ auch als \Relation\ verstehen.
 	}
 }
-\newcommand*    {\Junktorsymbol} [1][hyperTxt]{\glsIdx  [#1]{Junktorsymbol}}
-\newcommand*    {\Junktorsymbole}[1][hyperTxt]{\glsIdxPl[#1]{Junktorsymbol}}
+
+\newcommand*    {\binaererJunktor}  [1][]{\glstext[#1]{binaererJunktor}}
+\newcommand*    {\binaerenJunktoren}[1][]{\glspl  [#1]{binaererJunktor}[en]}
+%ToDo prüfen
+\newglossaryentry{binaererJunktor}{
+	name        =              {-, binärer\addIdx[
+	name        =              {-, binärer},
+	sort        =        {Junktor, binärer}]{binaererJunktor}},
+	sort        =        {Junktor, binärer},
+	text        ={binärer Junktor}
+	plural      ={binären Junktor},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=binärer Junktor
+	}
+}
+
+\newcommand*    {\unaererJunktor}  [1][]{\glstext[#1]{unaererJunktor}}
+\newcommand*    {\unaerenJunktoren}[1][]{\glspl  [#1]{unaererJunktor}[en]}
+%ToDo prüfen
+\newglossaryentry{unaererJunktor}{
+	name        =             {-, unärer\addIdx[
+	name        =             {-, unärer},
+	sort        =       {Junktor, unärer}]{unaererJunktor}},
+	sort        =       {Junktor, unärer},
+	text        ={unärer Junktor}
+	plural      ={unären Junktor},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=unärer Junktor
+	}
+}
+
+\newcommand*    {\Junktorsymbol} [1][]{\glstext[#1]{Junktorsymbol}}
+\newcommand*    {\Junktorsymbole}[1][]{\glspl  [#1]{Junktorsymbol}}
 %ToDo prüfen
 \newglossaryentry{Junktorsymbol}{
-	name        ={Junktorsymbol},
+	name        ={Junktorsymbol\addIdx{Junktorsymbol}},
 	plural      ={Junktorsymbole},
 	description ={
 		Ein \Symbol\ für einen \Junktor.%
@@ -2142,11 +2547,20 @@
 
 %K === K === K === K === K === K === K === K === K === K === K === K === K === K
 
-\newcommand*    {\Komponente} [1][hyperTxt]{\glsIdx  [#1]{Komponente}}
-\newcommand*    {\Komponenten}[1][hyperTxt]{\glsIdxPl[#1]{Komponente}}
+\newcommand*    {\Klammerung}[1][]{\glstext[#1]{Klammerung}}
+%ToDo prüfen
+\newglossaryentry{Klammerung}{
+	name        ={Klammerung\addIdx{Klammerung}},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Klammerung
+	}
+}
+
+\newcommand*    {\Komponente} [1][]{\glstext[#1]{Komponente}}
+\newcommand*    {\Komponenten}[1][]{\glspl  [#1]{Komponente}}
 %ToDo prüfen
 \newglossaryentry{Komponente}{
-	name        ={Komponente},
+	name        ={Komponente\addIdx{Komponente}},
 	plural      ={Komponenten},
 	see         ={Folge,Tupel},
 	description ={
@@ -2154,18 +2568,51 @@
 		$a_i$ heißt die \defFt{$i$-te \Komponente} von $\vec{a}$.
 	}
 }
-\newcommand*    {\Kontraposition}[1][hyperTxt]{\glsIdx[#1]{Kontraposition}}
+
+\newcommand*{\Konklusion}[1][]{\likehyperTxt{Konklusion}}% TODO=Konklusion=Folgerung
+
+\newcommand*        {\Konstante} [1][]{\glstext[#1]{Konstante}}
+\newcommand*        {\Konstanten}[1][]{\glspl  [#1]{Konstante}}
 %ToDo prüfen
-\newglossaryentry{Kontraposition}{
-	name        ={Kontraposition},
+\longnewglossaryentry{Konstante}{
+	name            ={Konstante\addIdx{Konstante}},
+	plural          ={Konstanten},
+	see             ={Variable}
+}{
+	\begin{citeWiki}{bib:Konstante}{ ohne Fußnote und Verweise ins Internet}
+		Allgemein ist eine \textbf{Konstante} (von lateinisch constans „feststehend“) ein Zeichen beziehungsweise ein Sprachausdruck mit einer „genau bestimmte[n] Bedeutung, die im Laufe der Überlegungen unverändert bleibt“[1]. Die Konstante ist damit ein Gegenbegriff zur Variablen.
+	\end{citeWiki}
+}
+
+\newcommand*    {\aussagenlogischeKonstante}  [1][]{\glstext[#1]{aussagenlogischeKonstante}}
+\newcommand*    {\aussagenlogischenKonstante} [1][]{\glspl  [#1]{aussagenlogischeKonstante}}
+\newcommand*    {\aussagenlogischenKonstanten}[1][]{\glspl  [#1]{aussagenlogischeKonstante}[n]}
+%ToDo prüfen
+\newglossaryentry{aussagenlogischeKonstante}{
+	name        =                          {-, aussagenlogische\addIdx[
+	name        =                          {-, aussagenlogische},
+	sort        =                  {Konstante, aussagenlogische}]{aussagenlogischeKonstante}},
+	sort        =                  {Konstante, aussagenlogische},
+	text        ={aussagenlogische  Konstante},
+	plural      ={aussagenlogischen Konstante},% Singular Dativ
 	description ={
-		Die allgemeingültige \Aussage: $ (\alpha \FrmImp \beta) \FrmImp (\FrmNot\beta \FrmImp \FrmNot\alpha) $.
+		Eine \Konstante\ heißt \defFt{aussagenlogisch}, wenn sie ein Element von \OjkCon\ ist.
 	}
 }
-\newcommand*    {\Kontravalenz}[1][hyperTxt]{\glsIdx[#1]{Kontravalenz}}
+
+\newcommand*    {\Kontraposition}[1][]{\glstext[#1]{Kontraposition}}
+%ToDo prüfen
+\newglossaryentry{Kontraposition}{
+	name        ={Kontraposition\addIdx{Kontraposition}},
+	description ={
+		Die allgemeingültige \Aussage: $ (\alpha \OjkImp \beta) \OjkImp (\OjkNot\beta \OjkImp \OjkNot\alpha) $.
+	}
+}
+
+\newcommand*    {\Kontravalenz}[1][]{\glstext[#1]{Kontravalenz}}
 %ToDo prüfen
 \newglossaryentry{Kontravalenz}{
-	name        ={Kontravalenz},
+	name        ={Kontravalenz\addIdx{Kontravalenz}},
 	description ={
 		Eine \Gleichheitsrelation:
 		Zwei Objekte $A$ und $B$ sind \emph{nicht äquivalent} (nicht ähnlich), $A \MtsAequivN B$, wenn sie in mindestens einer \interessierendenEigenschaft\ für \MtsAequiv\ nicht übereinstimmen.
@@ -2174,32 +2621,87 @@
 
 %L === L === L === L === L === L === L === L === L === L === L === L === L === L
 
-\newcommand*        {\Logik}[1][hyperTxt]{\glsIdx[#1]{Logik}}
+\newcommand*        {\Logik}[1][]{\glstext[#1]{Logik}}
 \longnewglossaryentry{Logik}{
-	name            ={Logik},
-	see             ={Aussagenlogik,Praedikatenlogik}
+	name            ={Logik\addIdx{Logik}},
+	see             ={Aussage,Aussagenlogik,Praedikatenlogik}
 }{
-	\Wikipedia~\cite{bib:Logik} schreibt dazu (Zitat ohne altgriechischen Text, Fußnote und Verweise ins Internet):
-
-	Mit \textbf{Logik} (von altgriechisch [\dots]‚denkende Kunst‘, ‚Vorgehensweise‘) oder auch \textbf{Folgerichtigkeit} wird im Allgemeinen das vernünftige Schlussfolgern und im Besonderen dessen Lehre – die \textbf{Schlussfolgerungslehre} oder auch \textbf{Denklehre} – bezeichnet. In der Logik wird die Struktur von Argumenten im Hinblick auf ihre Gültigkeit untersucht, unabhängig vom Inhalt der Aussagen. Bereits in diesem Sinne spricht man auch von „formaler“ Logik. Traditionell ist die Logik ein Teil der Philosophie. Ursprünglich hat sich die traditionelle Logik in Nachbarschaft zur Rhetorik entwickelt. Seit dem 20. Jahrhundert versteht man unter Logik überwiegend symbolische Logik, die auch als grundlegende Strukturwissenschaft, z. B. innerhalb der Mathematik und der theoretischen Informatik, behandelt wird.\par
+	\begin{citeWiki}{bib:Logik}{ ohne altgriechischen Text, Fußnote und Verweise ins Internet}
+		Mit \textbf{Logik} (von altgriechisch [\textdots]‚denkende Kunst‘, ‚Vorgehensweise‘) oder auch \textbf{Folgerichtigkeit} wird im Allgemeinen das vernünftige Schlussfolgern und im Besonderen dessen Lehre – die \textbf{Schlussfolgerungslehre} oder auch \textbf{Denklehre} – bezeichnet. In der Logik wird die Struktur von Argumenten im Hinblick auf ihre Gültigkeit untersucht, unabhängig vom Inhalt der Aussagen. Bereits in diesem Sinne spricht man auch von „formaler“ Logik. Traditionell ist die Logik ein Teil der Philosophie. Ursprünglich hat sich die traditionelle Logik in Nachbarschaft zur Rhetorik entwickelt. Seit dem 20. Jahrhundert versteht man unter Logik überwiegend symbolische Logik, die auch als grundlegende Strukturwissenschaft, z. B. innerhalb der Mathematik und der theoretischen Informatik, behandelt wird.
+	\end{citeWiki}
 }
 
 %M === M === M === M === M === M === M === M === M === M === M === M === M === M
 
-\newcommand*        {\Mengenlehre}[1][hyperTxt]{\glsIdx[#1]{Mengenlehre}}
+\newcommand*        {\Menge} [1][]{\glstext[#1]{Menge}}
+\newcommand*        {\Mengen}[1][]{\glspl  [#1]{Menge}}
+%ToDo prüfen
+\longnewglossaryentry{Menge}{
+	name            ={Menge\addIdx{Menge}},
+	plural          ={Mengen},
+	see             ={Element,Folge,leereMenge,Mengelehre,Tupel}
+}{
+	\begin{citeWiki}{bib:Menge}{ ohne Verweise ins Internet}
+		Eine \textbf{Menge} ist ein Verbund, eine Zusammenfassung von einzelnen Elementen. Die \textit{Menge} ist eines der wichtigsten und grundlegenden Konzepte der Mathematik, mit ihrer Betrachtung beschäftigt sich die Mengenlehre.
+
+		Bei der Beschreibung einer Menge geht es ausschließlich um die Frage, welche Elemente in ihr enthalten sind. Es wird nicht danach gefragt, ob ein Element mehrmals enthalten ist oder ob es eine Reihenfolge unter den Elementen gibt. Eine Menge muss kein Element enthalten – es gibt genau eine Menge ohne Elemente, die „leere Menge“. In der Mathematik sind die Elemente einer Menge häufig Zahlen, Punkte eines Raumes oder ihrerseits Mengen. Das Konzept ist jedoch auf beliebige Objekte anwendbar: z. B. in der Statistik auf Stichproben, in der Medizin auf Patientenakten, am Marktstand auf eine Tüte mit Früchten.
+
+		Ist die Reihenfolge der Elemente von Bedeutung, dann spricht man von einer endlichen oder unendlichen Folge, wenn sich die Folgenglieder mit den natürlichen Zahlen aufzählen lassen (das erste, das zweite, usw.). Endliche Folgen heißen auch Tupel. In einem Tupel oder einer Folge können Elemente auch mehrfach vorkommen. Ein Gebilde, das wie eine Menge Elemente enthält, wobei es zusätzlich auf die Anzahl der Exemplare jedes Elements ankommt, jedoch nicht auf die Reihenfolge, heißt Multimenge.
+	\end{citeWiki}
+}
+
+\newcommand*     {\leereMenge} [1][]{\glstext[#1]{leereMenge}}
+%ToDo \emptyset ersetzen
+\newglossaryentry {leereMenge}{
+	name        =          {-, leere\addIdx[
+	name        =          {-, leere},
+	sort        =      {Menge, leere}]{leereMenge}},
+	sort        =      {Menge, leere},
+	text        ={leere Menge},
+	description ={
+		Die \defFt{leere Menge} ist die einzige \Menge\ ohne \Elemente.
+		Sie wird mit $\emptyset$ bezeichnet.
+	}
+}
+
+\newcommand*        {\Mengenlehre}[1][]{\glstext[#1]{Mengenlehre}}
 %ToDo prüfen
 \longnewglossaryentry{Mengenlehre}{
-	name            ={Mengenlehre}
+	name            ={Mengenlehre\addIdx{Mengenlehre}},
+	see             ={Axiom,Objekt,Menge}
 }{
-	\Wikipedia~\cite{bib:Mengenlehre} schreibt dazu (Zitat ohne Verweise ins Internet):
-
-	Die \textbf{Mengenlehre} ist ein grundlegendes Teilgebiet der Mathematik, das sich mit der Untersuchung von Mengen, also von Zusammenfassungen von Objekten, beschäftigt. Die gesamte Mathematik, wie sie heute üblicherweise gelehrt wird, ist in der Sprache der Mengenlehre formuliert und baut auf den Axiomen der Mengenlehre auf. Die meisten mathematischen Objekte, die in Teilbereichen wie Algebra, Analysis, Geometrie, Stochastik oder Topologie behandelt werden, um nur einige wenige zu nennen, lassen sich als Mengen definieren. Gemessen daran ist die Mengenlehre eine recht junge Wissenschaft; erst nach der Überwindung der Grundlagenkrise der Mathematik im frühen 20. Jahrhundert konnte die Mengenlehre ihren heutigen, zentralen und grundlegenden Platz in der Mathematik einnehmen.\par
+	\begin{citeWiki}{bib:Mengenlehre}{ ohne Verweise ins Internet}
+		Die \textbf{Mengenlehre} ist ein grundlegendes Teilgebiet der Mathematik, das sich mit der Untersuchung von Mengen, also von Zusammenfassungen von Objekten, beschäftigt. Die gesamte Mathematik, wie sie heute üblicherweise gelehrt wird, ist in der Sprache der Mengenlehre formuliert und baut auf den Axiomen der Mengenlehre auf. Die meisten mathematischen Objekte, die in Teilbereichen wie Algebra, Analysis, Geometrie, Stochastik oder Topologie behandelt werden, um nur einige wenige zu nennen, lassen sich als Mengen definieren. Gemessen daran ist die Mengenlehre eine recht junge Wissenschaft; erst nach der Überwindung der Grundlagenkrise der Mathematik im frühen 20. Jahrhundert konnte die Mengenlehre ihren heutigen, zentralen und grundlegenden Platz in der Mathematik einnehmen.
+	\end{citeWiki}
 }
-\newcommand*    {\Metadefinition}  [1][hyperTxt]{\glsIdx  [#1]{Metadefinition}}
-\newcommand*    {\Metadefinitionen}[1][hyperTxt]{\glsIdxPl[#1]{Metadefinition}}
+
+\newcommand*    {\Mengenoperation}  [1][]{\glstext[#1]{Mengenoperation}}
+\newcommand*    {\Mengenoperationen}[1][]{\glspl  [#1]{Mengenoperation}}
+%ToDo prüfen
+\newglossaryentry{Mengenoperation}{
+	name        ={Mengenoperation\addIdx{Mengenoperation}},
+	plural      ={Mengenoperationen},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Mengenoperation
+	}
+}
+
+\newcommand*    {\Mengenrelation}  [1][]{\glstext[#1]{Mengenrelation}}
+\newcommand*    {\Mengenrelationen}[1][]{\glspl  [#1]{Mengenrelation}}
+%ToDo prüfen
+\newglossaryentry{Mengenrelation}{
+	name        ={Mengenrelation\addIdx{Mengenrelation}},
+	plural      ={Mengenrelationen},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Mengenrelation
+	}
+}
+
+\newcommand*    {\Metadefinition}  [1][]{\glstext[#1]{Metadefinition}}
+\newcommand*    {\Metadefinitionen}[1][]{\glspl  [#1]{Metadefinition}}
 %ToDo prüfen
 \newglossaryentry{Metadefinition}{
-	name        ={Metadefinition},
+	name        ={Metadefinition\addIdx{Metadefinition}},
 	plural      ={Metadefinitionen},
 	see         ={Definition},
 	description ={
@@ -2208,42 +2710,57 @@
 		Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
 	}
 }
-\newcommand*    {\Metaformel} [1][hyperTxt]{\glsIdx  [#1]{Metaformel}}
-\newcommand*    {\Metaformeln}[1][hyperTxt]{\glsIdxPl[#1]{Metaformel}}
+
+\newcommand*    {\Metaformel} [1][]{\glstext[#1]{Metaformel}}
+\newcommand*    {\Metaformeln}[1][]{\glspl  [#1]{Metaformel}}
 \newglossaryentry{Metaformel}{
-	name        ={Metaformel},
+	name        ={Metaformel\addIdx{Metaformel}},
 	plural      ={Metaformeln},
 	description ={
-		Eine \Formel\ der \formalisiertenMetasprache.
+		Eine \Formel\ der \formalenMetasprache.
 	}
 }
-\newcommand*    {\Metaoperation}  [1][hyperTxt]{\glsIdx  [#1]{Metaoperation}}
-\newcommand*    {\Metaoperationen}[1][hyperTxt]{\glsIdxPl[#1]{Metaoperation}}
+
+\newcommand*    {\Metajunktor}  [1][]{\glstext[#1]{Metajunktor}}
+\newcommand*    {\Metajunktoren}[1][]{\glspl  [#1]{Metajunktor}}
+%ToDo prüfen
+\newglossaryentry{Metajunktor}{
+	name        ={Metajunktor\addIdx{Metajunktor}},
+	plural      ={Metajunktoren},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Metajunktor
+	}
+}
+
+\newcommand*    {\Metaoperation}  [1][]{\glstext[#1]{Metaoperation}}
+\newcommand*    {\Metaoperationen}[1][]{\glspl  [#1]{Metaoperation}}
 %ToDo prüfen
 \newglossaryentry{Metaoperation}{
-	name        ={Metaoperation},
+	name        ={Metaoperation\addIdx{Metaoperation}},
 	plural      ={Metaoperationen},
 	description ={
 		Eine \Operation\ der \Metasprache: \MtsAnd, \MtsOr\ oder \MtsUnd.
 	}
 }
-\newcommand*    {\Metarelation}  [1][hyperTxt]{\glsIdx  [#1]{Metarelation}}
-\newcommand*       {\Mrelationen}[1][hyperTxt]{\glsIdxI [#1]{Metarelation}}
-\newcommand*    {\Metarelationen}[1][hyperTxt]{\glsIdxPl[#1]{Metarelation}}
+
+\newcommand*    {\Metarelation}  [1][]{\glstext [#1]{Metarelation}}
+\newcommand*       {\Mrelationen}[1][]{\glsuseri[#1]{Metarelation}}
+\newcommand*    {\Metarelationen}[1][]{\glspl   [#1]{Metarelation}}
 %ToDo prüfen
 \newglossaryentry{Metarelation}{
-	name        ={Metarelation},
+	name        ={Metarelation\addIdx{Metarelation}},
 	user1       =   {-relationen},
 	plural      ={Metarelationen},
 	description ={
 		Eine \Relation\ der \Metasprache: \MtsImp, \MtsRep\ oder \MtsEquiv.
 	}
 }
-\newcommand*    {\Metasprache} [1][hyperTxt]{\glsIdx  [#1]{Metasprache}}
-\newcommand*    {\Metasprachen}[1][hyperTxt]{\glsIdxPl[#1]{Metasprache}}
+
+\newcommand*    {\Metasprache} [1][]{\glstext[#1]{Metasprache}}
+\newcommand*    {\Metasprachen}[1][]{\glspl  [#1]{Metasprache}}
 %ToDo prüfen
 \newglossaryentry{Metasprache}{
-	name        ={Metasprache},
+	name        ={Metasprache\addIdx{Metasprache}},
 	plural      ={Metasprachen},
 	see         ={Objektsprache},
 	description ={
@@ -2251,34 +2768,51 @@
 		In diesem Dokument ist dies immer die normale Umgangssprache.
 	}
 }
-\newcommand*    {\formalisierteMetasprache} [1][hyperTxt]{\glsIdx  [#1]{formalisierteMetasprache}}
-\newcommand*    {\formalisiertenMetasprache}[1][hyperTxt]{\glsIdx  [#1]{formalisierteMetasprache}}
+
+\newcommand*      {\formaleMetasprache}[1][]{\glstext[#1]{formaleMetasprache}}
+\newcommand*     {\formalenMetasprache}[1][]{\glspl  [#1]{formaleMetasprache}}
 %ToDo prüfen
-\newglossaryentry{formalisierteMetasprache}{
-	name        =                         {-, formalisierte},
-	sort        =               {Metasprache, formalisierte},
-	text        ={formalisierte  Metasprache},
-	plural      ={formalisierten Metasprache},
+\newglossaryentry  {formaleMetasprache}{
+	name        =                   {-, formale\addIdx[
+	name        =                   {-, formale},
+	sort        =         {Metasprache, formale}]{formaleMetasprache}},
+	sort        =         {Metasprache, formale},
+	text        ={formale  Metasprache},
+	plural      ={formalen Metasprache},
 	description ={
 		Eine \Metasprache, deren Ausdrucksmittel \Formeln\ sind.
 		In diesem Dokument gehören die meisten \Formeln\ dazu und werden daher als \Metaformeln\ bezeichnet.
 		Die Definition der Bedeutung der \Metaformeln\ ist mehr beschreibend und nicht so exakt wie bei den \Formeln\ der Mathematik, den hier sogenannten \Objektformeln.
 	}
 }
-\newcommand*    {\Metavariable} [1][hyperTxt]{\glsIdx [#1]{Metavariable}}
-\newcommand*       {\Mvariablen}[1][hyperTxt]{\glsIdxI[#1]{Metavariable}}
+
+\newcommand*    {\Metasymbol} [1][]{\glstext[#1]{Metasymbol}}
+\newcommand*    {\Metasymbole}[1][]{\glspl  [#1]{Metasymbol}}
 %ToDo prüfen
-\newglossaryentry{Metavariable}{
-	name        ={Metavariable},
-	user1       =   {-variablen},
+\newglossaryentry{Metasymbol}{
+	name        ={Metasymbol\addIdx{Metasymbol}},
+	plural      ={Metasymbole},
+	see         ={Objektsymbol},
 	description ={
-		Eine \Variable\ der \formalisiertenMetasprache.
+		Ein \Symbol\ der \formalenMetasprache.
 	}
 }
-\newcommand*    {\Monotonieregel}[1][hyperTxt]{\glsIdx  [#1]{Monotonieregel}}
+
+\newcommand*    {\Metavariable} [1][]{\glstext [#1]{Metavariable}}
+\newcommand*       {\Mvariablen}[1][]{\glsuseri[#1]{Metavariable}}
+%ToDo prüfen
+\newglossaryentry{Metavariable}{
+	name        ={Metavariable\addIdx{Metavariable}},
+	user1       =   {-variablen},
+	description ={
+		Eine \Variable\ der \formalenMetasprache.
+	}
+}
+
+\newcommand*    {\Monotonieregel}[1][]{\glstext[#1]{Monotonieregel}}
 %ToDo prüfen
 \newglossaryentry{Monotonieregel}{
-	name        ={Monotonieregel},
+	name        ={Monotonieregel\addIdx{Monotonieregel}},
 	see         ={MR},
 	description ={
 		Eine \Schlussregel.
@@ -2287,11 +2821,24 @@
 
 %N === N === N === N === N === N === N === N === N === N === N === N === N === N
 
-\newcommand*    {\Negation}  [1][hyperTxt]{\glsIdx  [#1]{Negation}}
-\newcommand*    {\Negationen}[1][hyperTxt]{\glsIdxPl[#1]{Negation}}
+\newcommand*     {\natuerlicheZahl}  [1][]{\glstext[#1]{natuerlicheZahl}}
+\newcommand*    {\natuerlichenZahlen}[1][]{\glspl  [#1]{natuerlicheZahl}[en]}
+%ToDo prüfen
+\newglossaryentry {natuerlicheZahl}{
+	name        =            {Zahl, natürliche\addIdx[
+	name        =            {Zahl, natürliche}]{natuerlicheZahl}},
+	text        ={natürliche  Zahl}
+	plural      ={natürlichen Zahl},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=natürliche Zahl
+	}
+}
+
+\newcommand*    {\Negation}  [1][]{\glstext[#1]{Negation}}
+\newcommand*    {\Negationen}[1][]{\glspl  [#1]{Negation}}
 %ToDo prüfen
 \newglossaryentry{Negation}{
-	name        ={Negation},
+	name        ={Negation\addIdx{Negation}},
 	plural      ={Negationen},
 	description ={
 		Die \Negation\ (zu) einer binären \Relation\ $(G,A,B)$ ist die \Relation\ $(H,A,B)$ mit $H = (A \times B) \setminus G\}$.
@@ -2301,52 +2848,109 @@
 
 %O === O === O === O === O === O === O === O === O === O === O === O === O === O
 
-\newcommand*    {\Objekt}  [1][hyperTxt]{\glsIdx  [#1]{Objekt}}
-\newcommand*    {\Objekts} [1][hyperTxt]{\glsIdx  [#1]{Objekt}[s]}
-\newcommand*    {\Objekte} [1][hyperTxt]{\glsIdxPl[#1]{Objekt}}
-\newcommand*    {\Objekten}[1][hyperTxt]{\glsIdxPl[#1]{Objekt}[n]}
+
+\newcommand*{\Oberaussage}[1][]{\likehyperTxt{Oberaussage}}% TODO=Oberaussage
+\newglossaryentry{Oberaussage}{
+	name        ={Oberaussage\addIdx{Oberaussage}},
+	plural      ={Oberaussagen},
+	description ={
+		Eine \Aussage\ $A$ ist genau dann eine \defFt{Oberaussage} einer \Aussage\ $B$, wenn $B$ eine \Unteraussage\ von $A$ ist.
+	}
+}
+
+\newcommand*{\echteOberaussage}[1][]{\likehyperTxt{echteOberaussage}}% TODO=echte Oberaussage
+
+\newcommand*{\Oberformel}[1][]{\likehyperTxt{Oberformel}}% TODO=Oberformel
+
+\newcommand*{\echteOberformel}[1][]{\likehyperTxt\likehyperTxt}% TODO=echte Oberformel
+
+\newcommand*{\Obermenge}[1][]{\likehyperTxt{Obermenge}}% TODO=Obermenge
+
+\newcommand*{\echteObermenge}[1][]{\likehyperTxt{echteObermenge}}% TODO=echte Obermenge
+
+\newcommand*{\Oberobjekt}[1][]{\likehyperTxt{Oberobjekt}}% TODO=Oberobjekt
+
+\newcommand*{\echtesOberobjekt} [1][]{\likehyperTxt{echtesOberobjekt}}% TODO=echtes Oberobjekt
+
+\newcommand*{\Obersymbol}[1][]{\likehyperTxt{Obersymbol}}% TODO=Obersymbol
+
+\newcommand*{\echtesObersymbol}[1][]{\likehyperTxt{echtesObersymbol}}% TODO=echtes Obersymbol
+
+\newcommand*    {\Objekt}  [1][]{\glstext[#1]{Objekt}}
+\newcommand*    {\Objekts} [1][]{\glstext[#1]{Objekt}[s]}
+\newcommand*    {\Objekte} [1][]{\glspl  [#1]{Objekt}}
+\newcommand*    {\Objekten}[1][]{\glspl  [#1]{Objekt}[n]}
 %ToDo prüfen
 \newglossaryentry{Objekt}{
-	name        ={Objekt},
+	name        ={Objekt\addIdx{Objekt}},
 	plural      ={Objekte},
 	description ={
 		\Symbole, \Formeln\ und \Aussagen\ sowie Mengen, \Zeichenfolgen, Zahlen; ganz allgemein reale oder gedachte Dinge an sich.
 	}
 }
-\newcommand*    {\Objektformel} [1][hyperTxt]{\glsIdx  [#1]{Objektformel}}
-\newcommand*    {\Objektformeln}[1][hyperTxt]{\glsIdxPl[#1]{Objektformel}}
+
+\newcommand*    {\Objektart}  [1][]{\glstext[#1]{Objektart}}
+\newcommand*    {\Objektarten}[1][]{\glspl  [#1]{Objektart}}
+%ToDo prüfen
+\newglossaryentry{Objektart}{
+	name        ={Objektart\addIdx{Objektart}},
+	plural      ={Objektarten},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Objektart
+	}
+}
+
+\newcommand*    {\Objektformel} [1][]{\glstext[#1]{Objektformel}}
+\newcommand*    {\Objektformeln}[1][]{\glspl  [#1]{Objektformel}}
 %ToDo prüfen
 \newglossaryentry{Objektformel}{
-	name        ={Objektformel},
+	name        ={Objektformel\addIdx{Objektformel}},
 	plural      ={Objektformeln},
 	description ={
 		Eine \Formel\ der \Objektsprache.
 	}
 }
-\newcommand*    {\Objektsprache} [1][hyperTxt]{\glsIdx[#1]{Objektsprache}}
+
+\newcommand*    {\Objektsprache} [1][]{\glstext[#1]{Objektsprache}}
+\newcommand*    {\Objektsprachen}[1][]{\glspl  [#1]{Objektsprache}}
 %ToDo prüfen
 \newglossaryentry{Objektsprache}{
-	name        ={Objektsprache},
+	name        ={Objektsprache\addIdx{Objektsprache}},
+	plural      ={Objektsprachen},
 	description ={
-		Je nach der aktuellen (mathematischen) Umgebung die \Formeln\ der \Aussagenlogik, der \Praedikatenlogik\ oder der \Mengenlehre.
+		Je nach der aktuellen (mathematischen) Umgebung die \Formeln\ der \Aussagenlogik, der \Praedikatenlogik, der \Mengenlehre oder eines anderen \Fachgebiets.
 	}
 }
-\newcommand*    {\Operation}  [1][hyperTxt]{\glsIdx  [#1]{Operation}}
-\newcommand*    {\Operationen}[1][hyperTxt]{\glsIdxPl[#1]{Operation}}
+
+\newcommand*    {\Objektsymbol} [1][]{\glstext[#1]{Objektsymbol}}
+\newcommand*    {\Objektsymbole}[1][]{\glspl  [#1]{Objektsymbol}}
+%ToDo prüfen
+\newglossaryentry{Objektsymbol}{
+	name        ={Objektsymbol\addIdx{Objektsymbol}},
+	plural      ={Objektsymbole},
+	see         ={Metasymbol},
+	description ={
+		Ein \Symbol\ der \Objektsprache.
+	}
+}
+
+\newcommand*    {\Operation}  [1][]{\glstext[#1]{Operation}}
+\newcommand*    {\Operationen}[1][]{\glspl  [#1]{Operation}}
 %ToDo prüfen
 \newglossaryentry{Operation}{
-	name        ={Operation},
+	name        ={Operation\addIdx{Operation}},
 	plural      ={Operationen},
 	description ={
 		Eine --- meistens binäre, \textdh\ zweiwertige --- Funktion $M^n \rightarrow M$.
 		Für eine binäre \Operation\ $\BspOpB : M \times M \rightarrow M$ schreibt man meistens $x \BspOpB y$ statt $\BspOpB(x,y)$.
 	}
 }
-\newcommand*    {\Operationssymbol} [1][hyperTxt]{\glsIdx  [#1]{Operationssymbol}}
-\newcommand*    {\Operationssymbole}[1][hyperTxt]{\glsIdxPl[#1]{Operationssymbol}}
+
+\newcommand*    {\Operationssymbol} [1][]{\glstext[#1]{Operationssymbol}}
+\newcommand*    {\Operationssymbole}[1][]{\glspl  [#1]{Operationssymbol}}
 %ToDo prüfen
 \newglossaryentry{Operationssymbol}{
-	name        ={Operationssymbol},
+	name        ={Operationssymbol\addIdx{Operationssymbol}},
 	plural      ={Operationssymbole},
 	description ={
 		Ein \Symbol\ für eine \Operation.
@@ -2355,13 +2959,15 @@
 
 %P === P === P === P === P === P === P === P === P === P === P === P === P === P
 
-\newcommand*    {\PolnischeNotation}  [1][hyperTxt]{\glsIdx  [#1]{PolnischeNotation}}
-\newcommand*    {\PolnischeNotationen}[1][hyperTxt]{\glsIdx  [#1]{PolnischeNotation}[en]}
-\newcommand*    {\PolnischerNotation} [1][hyperTxt]{\glsIdxI [#1]{PolnischeNotation}}
-\newcommand*    {\PolnischenNotation} [1][hyperTxt]{\glsIdxPl[#1]{PolnischeNotation}[en]}
+\newcommand*    {\PolnischeNotation}  [1][]{\glstext [#1]{PolnischeNotation}}
+\newcommand*    {\PolnischeNotationen}[1][]{\glstext [#1]{PolnischeNotation}[en]}
+\newcommand*    {\PolnischerNotation} [1][]{\glsuseri[#1]{PolnischeNotation}}
+\newcommand*    {\PolnischenNotation} [1][]{\glspl   [#1]{PolnischeNotation}[en]}
 %ToDo prüfen
 \newglossaryentry{PolnischeNotation}{
+	name        =           {Notation, Polnische\addIdx[
 	name        =           {Notation, Polnische},
+	text        ={Polnische  Notation}]{PolnischeNotation}},
 	text        ={Polnische  Notation},
 	user1       ={Polnischer Notation},% Singular Genitiv
 	plural      ={Polnischen Notation},% Singular Dativ
@@ -2371,44 +2977,49 @@
 		Noch einfacher für Computer ist die \defFt{umgekehrte} \PolnischeNotation, bei der die Operanden und Argumente links von den Symbolen stehen.
 	}
 }
-\newcommand*    {\Potenzmenge} [1][hyperTxt]{\glsIdx  [#1]{Potenzmenge}}
-\newcommand*    {\Potenzmengen}[1][hyperTxt]{\glsIdxPl[#1]{Potenzmenge}}
+
+\newcommand*    {\Potenzmenge} [1][]{\glstext[#1]{Potenzmenge}}
+\newcommand*    {\Potenzmengen}[1][]{\glspl  [#1]{Potenzmenge}}
 %ToDo prüfen
 \newglossaryentry{Potenzmenge}{
-	name        ={Potenzmenge},
+	name        ={Potenzmenge\addIdx{Potenzmenge}},
 	plural      ={Potenzmengen},
 	description ={
 		Die \Potenzmenge\ $\MtsPot(M)$ einer Menge $M$ ist die Menge ihrer Teilmengen.
 	}
 }
-\newcommand*    {\Praedikat} [1][hyperTxt]{\glsIdx  [#1]{Praedikat}}
-\newcommand*    {\Praedikate}[1][hyperTxt]{\glsIdxPl[#1]{Praedikat}}
+
+\newcommand*    {\Praedikat} [1][]{\glstext[#1]{Praedikat}}
+\newcommand*    {\Praedikate}[1][]{\glspl  [#1]{Praedikat}}
 %ToDo prüfen
 \newglossaryentry{Praedikat}{
-	name        ={Prädikat},
+	name        ={Prädikat\addIdx[name={Prädikat}]{Praedikat}},
 	plural      ={Prädikate},
 	description ={
 		Ein Element der \Praedikatenlogik. ---
 		\textZB\ kann man eine Gruppe als ein zweistelliges \Praedikat\ $\mathrm{Gruppe}(G,+)$ definieren, in dem $G$ eine Menge und $+$ eine \Operation, \textdh\ eine binäre (zweistellige) Funktion $ +: G \times G \rightarrow G $ ist, so dass die Gruppenaxiome erfüllt sind.
 	}
 }
-\newcommand*        {\Praedikatenlogik}[1][hyperTxt]{\glsIdx  [#1]{Praedikatenlogik}}
+
+\newcommand*        {\Praedikatenlogik}[1][]{\glstext[#1]{Praedikatenlogik}}
 \longnewglossaryentry{Praedikatenlogik}{
-	name            ={Prädikatenlogik},
+	name            ={Prädikatenlogik\addIdx[name={Prädikatenlogik}]{Praedikatenlogik}},
 	see             ={Aussagenlogik,Logik}
 }{
-	\Wikipedia~\cite{bib:Praedikatenlogik} schreibt dazu (Zitat ohne Verweise ins Internet):
-
-	Die \textbf{Prädikatenlogiken} (auch \textbf{Quantorenlogiken}) bilden eine Familie logischer Systeme, die es erlauben, einen weiten und in der Praxis vieler Wissenschaften und deren Anwendungen wichtigen Bereich von Argumenten zu formalisieren und auf ihre Gültigkeit zu überprüfen. Auf Grund dieser Eigenschaft spielt die Prädikatenlogik eine große Rolle in der Logik sowie in Mathematik, Informatik, Linguistik und Philosophie.\par
+	\begin{citeWiki}{bib:Praedikatenlogik}{ ohne Verweise ins Internet}
+		Die \textbf{Prädikatenlogiken} (auch \textbf{Quantorenlogiken}) bilden eine Familie logischer Systeme, die es erlauben, einen weiten und in der Praxis vieler Wissenschaften und deren Anwendungen wichtigen Bereich von Argumenten zu formalisieren und auf ihre Gültigkeit zu überprüfen. Auf Grund dieser Eigenschaft spielt die Prädikatenlogik eine große Rolle in der Logik sowie in Mathematik, Informatik, Linguistik und Philosophie.
+	\end{citeWiki}
 }
+
+\newcommand*{\Praemisse}[1][]{\likehyperTxt{Prämisse}}% TODO=Prämisse=Voraussetzung
 
 %Q === Q === Q === Q === Q === Q === Q === Q === Q === Q === Q === Q === Q === Q
 
-\newcommand*    {\Quellbereich} [1][hyperTxt]{\glsIdx  [#1]{Quellbereich}}
-\newcommand*    {\Quellbereiche}[1][hyperTxt]{\glsIdxPl[#1]{Quellbereich}}
+\newcommand*    {\Quellbereich} [1][]{\glstext[#1]{Quellbereich}}
+\newcommand*    {\Quellbereiche}[1][]{\glspl  [#1]{Quellbereich}}
 %ToDo prüfen
 \newglossaryentry{Quellbereich}{
-	name        ={Quellbereich},
+	name        ={Quellbereich\addIdx{Quellbereich}},
 	plural      ={Quellbereiche},
 	symbol      ={\MtsQb},
 	see         = {MtsQb,Definitionsbereich,Funktion},
@@ -2419,11 +3030,11 @@
 
 %R === R === R === R === R === R === R === R === R === R === R === R === R === R
 
-\newcommand*    {\Relation}  [1][hyperTxt]{\glsIdx  [#1]{Relation}}
-\newcommand*    {\Relationen}[1][hyperTxt]{\glsIdxPl[#1]{Relation}}
+\newcommand*    {\Relation}  [1][]{\glstext[#1]{Relation}}
+\newcommand*    {\Relationen}[1][]{\glspl  [#1]{Relation}}
 %ToDo prüfen
 \newglossaryentry{Relation}{
-	name        ={Relation},
+	name        ={Relation\addIdx{Relation}},
 	plural      ={Relationen},
 	description ={
 		Eine \defFt{$n$-stellige} \Relation\ $R$ ist ein (1+$n$)-\Tupel\ $(G,A_1,\dots,A_n$) mit $G \MtsSubsetEq A_1 \times \dots \times A_n)$.
@@ -2432,24 +3043,27 @@
 
 %S === S === S === S === S === S === S === S === S === S === S === S === S === S
 
-\newcommand*    {\Satz}   [1][hyperTxt]{\glsIdx  [#1]{Satz}}
-\newcommand*    {\Satzes} [1][hyperTxt]{\glsIdx  [#1]{Satz}[s]}
-\newcommand*    {\Saetze} [1][hyperTxt]{\glsIdxPl[#1]{Satz}}
-\newcommand*    {\Saetzen}[1][hyperTxt]{\glsIdxPl[#1]{Satz}[n]}
+\newcommand*    {\Satz}   [1][]{\glstext[#1]{Satz}}
+\newcommand*    {\Satzes} [1][]{\glstext[#1]{Satz}[s]}
+\newcommand*    {\Saetze} [1][]{\glspl  [#1]{Satz}}
+\newcommand*    {\Saetzen}[1][]{\glspl  [#1]{Satz}[n]}
 %ToDo prüfen
 \newglossaryentry{Satz}{
-	name        ={Satz},
+	name        ={Satz\addIdx{Satz}},
 	plural      ={Sätze},
 	description ={
 		Eine mathematische \Aussage, dass bestimmte \Folgerungen\ aus gegebenen \Voraussetzungen\ abgeleitet werden können.
 	}
 }
-\newcommand*    {\formalerSatz} [1][hyperTxt]{\glsIdx  [#1]{formalerSatz}}
-\newcommand*    {\formalenSatz} [1][hyperTxt]{\glsIdxPl[#1]{formalerSatz}}
+
+\newcommand*    {\formalerSatz} [1][]{\glstext[#1]{formalerSatz}}
+\newcommand*    {\formalenSatz} [1][]{\glspl  [#1]{formalerSatz}}
 %ToDo prüfen
 \newglossaryentry{formalerSatz}{
-	name        =            {-, formal},
-	sort        =         {Satz, formal},
+	name        =            {-, formaler\addIdx[
+	name        =            {-, formaler},
+	sort        =         {Satz, formaler}]{formalerSatz}},
+	sort        =         {Satz, formaler},
 	text        ={formaler Satz},
 	plural      ={formalen Satz},% Singular Dativ
 	see         ={FS},
@@ -2457,13 +3071,14 @@
 		Formale Darstellung eines mathematischen \Satzes.
 	}
 }
-\newcommand*    {\Schlussregel} [1][hyperTxt]{\glsIdx  [#1]{Schlussregel}}
-\newcommand*    {\Schlussregeln}[1][hyperTxt]{\glsIdxPl[#1]{Schlussregel}}
+
+\newcommand*    {\Schlussregel} [1][]{\glstext[#1]{Schlussregel}}
+\newcommand*    {\Schlussregeln}[1][]{\glspl  [#1]{Schlussregel}}
 %ToDo prüfen
 \newglossaryentry{Schlussregel}{
-	name        ={Schlussregel},
+	name        ={Schlussregel\addIdx{Schlussregel}},
 	plural      ={Schlussregeln},
-	see         ={MtsSchlussregel,MtsSchlussregelSet,allgemeingueltig},
+	see         ={MtsSchlussregel,MtsSchlussregelSet},
 	description ={
 		Eine \Schlussregel\ $\frac{\MtsVoraussetzungSet}{\MtsFolgerungSet}$ entspricht der \Aussage:
 		\begin{quote}
@@ -2472,25 +3087,29 @@
 		Wenn diese \Aussage\ zutrifft, kann die Schlussregel zur \zulaessigen\ \Umwandlung\ von \Formel\ dienen.
 	}
 }
-\newcommand*    {\allgemeingueltigeSchlussregel}  [1][hyperTxt]{\glsIdx  [#1]{allgemeingueltigeSchlussregel}}
-\newcommand*    {\allgemeingueltigeSchlussregeln} [1][hyperTxt]{\glsIdx  [#1]{allgemeingueltigeSchlussregel}[n]}
-\newcommand*    {\allgemeingueltigenSchlussregel} [1][hyperTxt]{\glsIdxPl[#1]{allgemeingueltigeSchlussregel}}
-\newcommand*    {\allgemeingueltigenSchlussregeln}[1][hyperTxt]{\glsIdxPl[#1]{allgemeingueltigeSchlussregel}[n]}
+
+\newcommand*    {\allgemeingueltigeSchlussregel}  [1][]{\glstext[#1]{allgemeingueltigeSchlussregel}}
+\newcommand*    {\allgemeingueltigeSchlussregeln} [1][]{\glstext[#1]{allgemeingueltigeSchlussregel}[n]}
+\newcommand*    {\allgemeingueltigenSchlussregel} [1][]{\glspl  [#1]{allgemeingueltigeSchlussregel}}
+\newcommand*    {\allgemeingueltigenSchlussregeln}[1][]{\glspl  [#1]{allgemeingueltigeSchlussregel}[n]}
 %ToDo prüfen
 \newglossaryentry{allgemeingueltigeSchlussregel}{
-	name        =                             {-, allgemeingültig},
-	sort        =                  {Schlussregel, allgemeingültig},
+	name        =                             {-, allgemeingültige\addIdx[
+	name        =                             {-, allgemeingültige},
+	sort        =                  {Schlussregel, allgemeingültige}]{allgemeingueltigeSchlussregel}},
+	sort        =                  {Schlussregel, allgemeingültige},
 	text        ={allgemeingültige  Schlussregel},
 	plural      ={allgemeingültigen Schlussregel},% Singular Dativ
 	description ={
 		Eine \Schlussregel\ heißt \defFt{allgemeingültig}, wenn sie aus den \Basisregeln\ und schon bekannten \allgemeingueltigenSchlussregeln\ abgeleitet werden kann.
 	}
 }
-\newcommand*    {\Schlussregelmenge} [1][hyperTxt]{\glsIdx  [#1]{Schlussregelmenge}}
-\newcommand*    {\Schlussregelmengen}[1][hyperTxt]{\glsIdxPl[#1]{Schlussregelmenge}}
+
+\newcommand*    {\Schlussregelmenge} [1][]{\glstext[#1]{Schlussregelmenge}}
+\newcommand*    {\Schlussregelmengen}[1][]{\glspl  [#1]{Schlussregelmenge}}
 %ToDo prüfen
 \newglossaryentry{Schlussregelmenge}{
-	name        ={Schlussregelmenge},
+	name        ={Schlussregelmenge\addIdx{Schlussregelmenge}},
 	plural      ={Schlussregelmengen},
 	symbol      ={\ensuremath{\RawMtsSchlussregelSet}},
 	see         ={MtsSchlussregelSet},
@@ -2498,94 +3117,148 @@
 		Eine Menge von \Schlussregeln, meistens mit \MtsSchlussregelSet\ bezeichnet.
 	}
 }
-\newcommand*    {\Schnittregel}[1][hyperTxt]{\glsIdx[#1]{Schnittregel}}
+
+\newcommand*    {\Schnittregel}[1][]{\glstext[#1]{Schnittregel}}
 %ToDo prüfen
 \newglossaryentry{Schnittregel}{
-	name        ={Schnittregel},
+	name        ={Schnittregel\addIdx{Schnittregel}},
 	plural      ={Schnittregeln},
 	see         ={SR},
 	description ={
 		Eine \allgemeingueltigeSchlussregel.
 	}
 }
-%ToDo prüfen
-\newcommand*        {\Signatur}[1][hyperTxt]{\glsIdx[#1]{Signatur}}
-\longnewglossaryentry{Signatur}{
-	name            ={Signatur},
-	plural          ={Signaturen}
-}{
-	\Wikipedia~\cite{bib:Signatur} schreibt (Zitat ohne Verweise ins Internet):
 
-	In der mathematischen Logik besteht eine \textbf{Signatur} aus der Menge der Symbole, die in der betrachteten Sprache zu den üblichen, rein logischen Symbolen hinzukommt, und einer Abbildung, die jedem Symbol der Signatur eine Stelligkeit eindeutig zuordnet. Während die logischen Symbole wie  $ \forall ,\exists ,\land ,\lor ,\rightarrow ,\leftrightarrow ,\neg $ stets als „für alle“, „es gibt ein“, „und“, „oder“, „folgt“, „äquivalent zu“ bzw. „nicht“ interpretiert werden, können durch die semantische Interpretation der Symbole der Signatur verschiedene Strukturen (insbesondere Modelle von Aussagen der Logik) unterschieden werden. Die Signatur ist der spezifische Teil einer elementaren Sprache.\par
+\newcommand*        {\Signatur}[1][]{\glstext[#1]{Signatur}}
+%ToDo prüfen
+\longnewglossaryentry{Signatur}{
+	name            ={Signatur\addIdx{Signatur}},
+	plural          ={Signaturen},
+	see             ={Logik,Sprache,Stelligkeit,Symbol}
+}{
+	\begin{citeWiki}{bib:Signatur}{ ohne Verweise ins Internet}
+		In der mathematischen Logik besteht eine \textbf{Signatur} aus der Menge der Symbole, die in der betrachteten Sprache zu den üblichen, rein logischen Symbolen hinzukommt, und einer Abbildung, die jedem Symbol der Signatur eine Stelligkeit eindeutig zuordnet. Während die logischen Symbole wie  $ \forall ,\exists ,\land ,\lor ,\rightarrow ,\leftrightarrow ,\neg $ stets als „für alle“, „es gibt ein“, „und“, „oder“, „folgt“, „äquivalent zu“ bzw. „nicht“ interpretiert werden, können durch die semantische Interpretation der Symbole der Signatur verschiedene Strukturen (insbesondere Modelle von Aussagen der Logik) unterschieden werden. Die Signatur ist der spezifische Teil einer elementaren Sprache.
+	\end{citeWiki}
 }
-\newcommand*    {\BoolescheSignatur} [1][hyperTxt]{\glsIdx  [#1]{BoolescheSignatur}}
-\newcommand*    {\BooleschenSignatur}[1][hyperTxt]{\glsIdxPl[#1]{BoolescheSignatur}}
+
+\newcommand*    {\BoolescheSignatur} [1][]{\glstext[#1]{BoolescheSignatur}}
+\newcommand*    {\BooleschenSignatur}[1][]{\glspl  [#1]{BoolescheSignatur}}
 %ToDo prüfen
 \newglossaryentry{BoolescheSignatur}{
+	name        =                  {-, Boolesche\addIdx[
 	name        =                  {-, Boolesche},
+	sort        =           {Signatur, Boolesche}]{BoolescheSignatur}},
 	sort        =           {Signatur, Boolesche},
 	text        ={Boolesche  Signatur},
 	plural      ={Booleschen Signatur},% Singular Dativ
 	description ={
-		Die \logischeSignatur\ $\{\FrmNot, \FrmAnd, \FrmOr\}$.
+		Die \logischeSignatur\ $\{\OjkNot, \OjkAnd, \OjkOr\}$.
 	}
 }
-\newcommand*    {\logischeSignatur}  [1][hyperTxt]{\glsIdx  [#1]{logischeSignatur}}
-\newcommand*    {\logischeSignaturen}[1][hyperTxt]{\glsIdx  [#1]{logischeSignatur}[en]}
-\newcommand*    {\logischenSignatur} [1][hyperTxt]{\glsIdxPl[#1]{logischeSignatur}}
+
+\newcommand*    {\logischeSignatur}  [1][]{\glstext[#1]{logischeSignatur}}
+\newcommand*    {\logischeSignaturen}[1][]{\glstext[#1]{logischeSignatur}[en]}
+\newcommand*    {\logischenSignatur} [1][]{\glspl  [#1]{logischeSignatur}}
 %ToDo prüfen
 \newglossaryentry{logischeSignatur}{
+	name        =                {-, logische\addIdx[
 	name        =                {-, logische},
+	sort        =         {Signatur, logische}]{logischeSignatur}},
 	sort        =         {Signatur, logische},
 	text        ={logische Signatur},
 	plural      ={logischen Signatur},% Dativ
 	description ={
-		Abweichend von der Definition von \Signatur\ in \Wikipedia\ ist eine \defFt{logische Signatur} eine Teilmenge von \FrmJun, ausreichend um damit und mit \FrmVar\ und Klammerung alle anderen Elemente aus \FrmJun\ zu definieren.
+		Abweichend von der Definition von \Signatur\ in \Wikipedia\ ist eine \defFt{logische Signatur} eine Teilmenge von \OjkJun, ausreichend um damit und mit \OjkVar\ und Klammerung alle anderen Elemente aus \OjkJun\ zu definieren.
 	}
 }
-\newcommand*    {\Sprache} [1][hyperTxt]{\glsIdx  [#1]{Sprache}}
-\newcommand*    {\Sprachen}[1][hyperTxt]{\glsIdxPl[#1]{Sprache}}
+
+\newcommand*    {\Sprache} [1][]{\glstext[#1]{Sprache}}
+\newcommand*    {\Sprachen}[1][]{\glspl  [#1]{Sprache}}
 %ToDo prüfen
 \newglossaryentry{Sprache}{
-	name        ={Sprache},
+	name        ={Sprache\addIdx{Sprache}},
 	plural      ={Sprachen},
 	description ={
 		--- Siehe \Formelmenge.
 	}
 }
-\newcommand*    {\Stelligkeit}  [1][hyperTxt]{\glsIdx  [#1]{Stelligkeit}}
-\newcommand*    {\Stelligkeiten}[1][hyperTxt]{\glsIdxPl[#1]{Stelligkeit}}
+
+\newcommand*      {\aussagenlogischeSprache}[1][]{\glstext[#1]{aussagenlogischeSprache}}
+\newcommand*     {\aussagenlogischenSprache}[1][]{\glspl  [#1]{aussagenlogischeSprache}}
+%ToDo prüfen
+\newglossaryentry  {aussagenlogischeSprache}{
+	name        =                        {-, aussagenlogische\addIdx[
+	name        =                        {-, aussagenlogische},
+	sort        =                  {Sprache, aussagenlogische}]{aussagenlogischeSprache}},
+	sort        =                  {Sprache, aussagenlogische},
+	text        ={aussagenlogische  Sprache}
+	plural      ={aussagenlogischen Sprache},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=aussagenlogische Sprache
+	}
+}
+
+\newcommand*    {\Sprachebene} [1][]{\glstext[#1]{Sprachebene}}
+\newcommand*    {\Sprachebenen}[1][]{\glspl  [#1]{Sprachebene}}
+%ToDo prüfen
+\newglossaryentry{Sprachebene}{
+	name        ={Sprachebene\addIdx{Sprachebene}},
+	plural      ={Sprachebenen},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Sprachebene
+	}
+}
+
+\newcommand*    {\Stelligkeit}  [1][]{\glstext[#1]{Stelligkeit}}
+\newcommand*    {\Stelligkeiten}[1][]{\glspl  [#1]{Stelligkeit}}
 %ToDo prüfen
 \newglossaryentry{Stelligkeit}{
-	name        ={Stelligkeit},
+	name        ={Stelligkeit\addIdx{Stelligkeit}},
 	plural      ={Stelligkeiten},
 	see         ={MtsStelF,MtsStelR},
 	description ={
 		einer \Funktion\ oder \Relation.
 	}
 }
-\newcommand*    {\Symbol}  [1][hyperTxt]{\glsIdx  [#1]{Symbol}}
-\newcommand*    {\Symbols} [1][hyperTxt]{\glsIdx  [#1]{Symbol}[s]}
-\newcommand*    {\Symbole} [1][hyperTxt]{\glsIdxPl[#1]{Symbol}}
-\newcommand*    {\Symbolen}[1][hyperTxt]{\glsIdxPl[#1]{Symbol}[n]}
+
+\newcommand*    {\Symbol}  [1][]{\glstext[#1]{Symbol}}
+\newcommand*    {\Symbols} [1][]{\glstext[#1]{Symbol}[s]}
+\newcommand*    {\Symbole} [1][]{\glspl  [#1]{Symbol}}
+\newcommand*    {\Symbolen}[1][]{\glspl  [#1]{Symbol}[n]}
 %ToDo prüfen
 \newglossaryentry{Symbol}{
-	name        ={Symbol},
+	name        ={Symbol\addIdx{Symbol}},
 	plural      ={Symbole},
+	see         ={Metasymbol,Objektsymbol},
 	description ={
-		Ein \defFt{einfaches} \Symbol\ ist ein druckbares typographisches Zeichen.
+		Ein \defFt{einfaches} \Symbol\ ist ein druckbares typographisches Zeichen, das als Einheit angesehen wird.
 		Ein \defFt{zusammengesetztes} \Symbol\ besteht aus mehreren einfachen \Symbolen.
-		In beiden Fällen wird ein \Symbol\ als \unzerlegbar\ angesehen.
+		Im Einzelfall muss für ein Symbol definiert werden, ob es als \atomar\ gilt oder in welche \atomaren\ \Symbole\ es \defFt{zerlegt} werden kann und somit als \zerlegbar\ gilt.
+	}
+}
+
+\newcommand*     {\zusammengesetztesSymbol} [1][]{\glstext[#1]{zusammengesetztesSymbol}}
+\newcommand*      {\zusammengesetzteSymbole}[1][]{\glspl  [#1]{zusammengesetztesSymbol}}
+%ToDo prüfen
+\newglossaryentry {zusammengesetztesSymbol}{
+	name        =                       {-, zusammengesetztes\addIdx[
+	name        =                       {-, zusammengesetztes},
+	sort        =                  {Symbol, zusammengesetztes}]{zusammengesetztesSymbol}},
+	sort        =                  {Symbol, zusammengesetztes},
+	text        ={zusammengesetztes Symbol}
+	plural      ={zusammengesetzte  Symbole},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=zusammengesetztes Symbol
 	}
 }
 
 %T === T === T === T === T === T === T === T === T === T === T === T === T === T
 
-\newcommand*    {\Traegermenge} [1][hyperTxt]{\glsIdx  [#1]{Traegermenge}}
-\newcommand*    {\Traegermengen}[1][hyperTxt]{\glsIdxPl[#1]{Traegermenge}}
+\newcommand*    {\Traegermenge} [1][]{\glstext[#1]{Traegermenge}}
+\newcommand*    {\Traegermengen}[1][]{\glspl  [#1]{Traegermenge}}
 %ToDo prüfen
 \newglossaryentry{Traegermenge}{
-	name        ={Trägermenge},
+	name        ={Trägermenge\addIdx[name={Trägermenge}]{Traegermenge}},
 	plural      ={Trägermengen},
 	symbol  ={\MtsTraeger},
 	see         ={MtsTraeger},
@@ -2593,21 +3266,23 @@
 		einer \Relation.
 	}
 }
-\newcommand*    {\Tupel} [1][hyperTxt]{\glsIdx  [#1]{Tupel}}
-\newcommand*    {\Tupels}[1][hyperTxt]{\glsIdx  [#1]{Tupel}[s]}
+
+\newcommand*    {\Tupel} [1][]{\glstext[#1]{Tupel}}
+\newcommand*    {\Tupels}[1][]{\glstext[#1]{Tupel}[s]}
 %ToDo prüfen
 \newglossaryentry{Tupel}{
-	name        ={Tupel},
+	name        ={Tupel\addIdx{Tupel}},
 	description ={
 		Ein $n$-\Tupel\alternativ{Vektor} $\vec{a}$ ist eine endliche Folge\alternativ{Sequenz} $(a_1, \dots, a_n)$ \defFt{von} seinen \defFt{Komponenten} $a_i$.
 		Sind alle Komponenten Elemente einer Menge $M$, so heißt $\vec{a}$ ein $n$-\Tupel\ \defFt{auf} $M$.
 	}
 }
-\newcommand*    {\Tupelmenge} [1][hyperTxt]{\glsIdx  [#1]{Tupelmenge}}
-\newcommand*    {\Tupelmengen}[1][hyperTxt]{\glsIdxPl[#1]{Tupelmenge}}
+
+\newcommand*    {\Tupelmenge} [1][]{\glstext[#1]{Tupelmenge}}
+\newcommand*    {\Tupelmengen}[1][]{\glspl  [#1]{Tupelmenge}}
 %ToDo prüfen
 \newglossaryentry{Tupelmenge}{
-	name        ={Tupelmenge},
+	name        ={Tupelmenge\addIdx{Tupelmenge}},
 	plural      ={Tupelmengen},
 	description ={
 		Die \Tupelmenge\ $\MtsTup(M)$ einer Menge $M$ ist die Menge aller $n$-Tupel aus $M^n$ für alle $n \in \MtsINo$.
@@ -2616,37 +3291,41 @@
 
 %U === U === U === U === U === U === U === U === U === U === U === U === U === U
 
-\newcommand*    {\Umkehrrelation}  [1][hyperTxt]{\glsIdx  [#1]{Umkehrrelation}}
-\newcommand*    {\Umkehrrelationen}[1][hyperTxt]{\glsIdxPl[#1]{Umkehrrelation}}
+\newcommand*    {\Umkehrrelation}  [1][]{\glstext[#1]{Umkehrrelation}}
+\newcommand*    {\Umkehrrelationen}[1][]{\glspl  [#1]{Umkehrrelation}}
 %ToDo prüfen
 \newglossaryentry{Umkehrrelation}{
-	name        ={Umkehrrelation},
+	name        ={Umkehrrelation\addIdx{Umkehrrelation}},
 	plural      ={Umkehrrelationen},
 	description ={
 		Die \Umkehrrelation\ zu einer binären \Relation\ $(G,A,B)$ ist die \Relation\ $(H,B,A)$ mit $H = \{(b,a)|(a,b) \in G\}$.
 		Üblicherweise wird das zugehörige Relationssymbol gespiegelt.
 	}
 }
-\newcommand*    {\Umwandlung}  [1][hyperTxt]{\glsIdx  [#1]{Umwandlung}}
-\newcommand*    {\Umwandlungen}[1][hyperTxt]{\glsIdxPl[#1]{Umwandlung}}
+
+\newcommand*    {\Umwandlung}  [1][]{\glstext[#1]{Umwandlung}}
+\newcommand*    {\Umwandlungen}[1][]{\glspl  [#1]{Umwandlung}}
 %ToDo prüfen
 \newglossaryentry{Umwandlung}{
-	name        ={Umwandlung},
+	name        ={Umwandlung\addIdx{Umwandlung}},
 	plural      ={Umwandlungen},
 	see         ={MtsUmwandlung,MtsUmwandlungTup,zulaessigeUmwandlung},
 	description ={
 		Eine Umformung oder Erzeugung einer \Formel\ aus einer vorgegebenen Menge von \Formeln, \textdh\ die Anwendung einer \Schlussregel.
 	}
 }
-\newcommand*    {\zulaessigeUmwandlung}   [1][hyperTxt]{\glsIdx  [#1]{zulaessigeUmwandlung}}
-\newcommand*    {\zulaessigeUmwandlungen} [1][hyperTxt]{\glsIdx  [#1]{zulaessigeUmwandlung}[en]}
-\newcommand*    {\zulaessigerUmwandlungen}[1][hyperTxt]{\glsIdxI [#1]{zulaessigeUmwandlung}[en]}
-\newcommand*    {\zulaessigenUmwandlung}  [1][hyperTxt]{\glsIdxPl[#1]{zulaessigeUmwandlung}}
-\newcommand*    {\zulaessigenUmwandlungen}[1][hyperTxt]{\glsIdxPl[#1]{zulaessigeUmwandlung}[en]}
+
+\newcommand*    {\zulaessigeUmwandlung}   [1][]{\glstext [#1]{zulaessigeUmwandlung}}
+\newcommand*    {\zulaessigeUmwandlungen} [1][]{\glstext [#1]{zulaessigeUmwandlung}[en]}
+\newcommand*    {\zulaessigerUmwandlungen}[1][]{\glsuseri[#1]{zulaessigeUmwandlung}[en]}
+\newcommand*    {\zulaessigenUmwandlung}  [1][]{\glspl   [#1]{zulaessigeUmwandlung}}
+\newcommand*    {\zulaessigenUmwandlungen}[1][]{\glspl   [#1]{zulaessigeUmwandlung}[en]}
 %ToDo prüfen
 \newglossaryentry{zulaessigeUmwandlung}{
-	name        =                    {-, zulässig},
-	sort        =           {Umwandlung, zulässig},
+	name        =                    {-, zulässige\addIdx[
+	name        =                    {-, zulässige},
+	sort        =           {Umwandlung, zulässige}]{zulaessigeUmwandlung}},
+	sort        =           {Umwandlung, zulässige},
 	text        ={zulässige  Umwandlung},
 	user1       ={zulässiger Umwandlung},% Singular Genitiv
 	plural      ={zulässigen Umwandlung},% Singular Dativ
@@ -2655,79 +3334,105 @@
 		Eine \Umwandlung\ heißt \defFt{zulässig}, wenn sie Element einer vorgegebenen Menge von \Umwandlungen\ oder eine daraus zulässigerweise abgeleitete \Umwandlung\ ist.
 	}
 }
-\newcommand*    {\Umwandlungsfolge} [1][hyperTxt]{\glsIdx  [#1]{Umwandlungsfolge}}
-\newcommand*    {\Umwandlungsfolgen}[1][hyperTxt]{\glsIdxPl[#1]{Umwandlungsfolge}}
+
+\newcommand*    {\Umwandlungsfolge} [1][]{\glstext[#1]{Umwandlungsfolge}}
+\newcommand*    {\Umwandlungsfolgen}[1][]{\glspl  [#1]{Umwandlungsfolge}}
 %ToDo prüfen
 \newglossaryentry{Umwandlungsfolge}{
-	name        ={Umwandlungsfolge},
+	name        ={Umwandlungsfolge\addIdx{Umwandlungsfolge}},
 	plural      ={Umwandlungsfolgen},
 	see         ={MtsUmwandlung,MtsUmwandlungTup,Umwandlung},
 	description ={
 		Eine Folge von \Umwandlungen.
 	}
 }
-\newcommand*    {\Ungleichheit}[1][hyperTxt]{\glsIdx[#1]{Ungleichheit}}
+
+\newcommand*    {\Umwandlungsregel} [1][]{\glstext[#1]{Umwandlungsregel}}
+\newcommand*    {\Umwandlungsregeln}[1][]{\glspl  [#1]{Umwandlungsregel}}
+%ToDo prüfen
+\newglossaryentry{Umwandlungsregel}{
+	name        ={Umwandlungsregel\addIdx{Umwandlungsregel}},
+	plural      ={Umwandlungsregeln},
+	description ={
+		\todo{Beschreibung fehlt noch}% TODO=Umwandlungsregel
+	}
+}
+
+\newcommand*    {\unaer} [1][]{\glstext[#1]{unaer}}
+\newcommand*    {\unaere}[1][]{\glspl  [#1]{unaer}}
+%ToDo prüfen
+\newglossaryentry{unaer}{
+	name        ={unär\addIdx[name={unär}]{unaer}},
+	plural      ={unäre},
+	see         ={binaer},
+	description ={
+		Eine \Operation, \Funktion\ oder \Relation\ heißt \defFt{unär}, wenn ihre \Stelligkeit\ gleich 1 ist.
+	}
+}
+
+\newcommand*    {\Ungleichheit}[1][]{\glstext[#1]{Ungleichheit}}
 %ToDo prüfen
 \newglossaryentry{Ungleichheit}{
-	name        ={Ungleichheit},
+	name        ={Ungleichheit\addIdx{Ungleichheit}},
 	description ={
 		Eine \Gleichheitsrelation:
 		Zwei Objekte $A$ und $B$ sind \emph{nicht gleich} (nicht dasselbe; nicht identisch), $A \MtsEqN B$, wenn sie in mindestens einer \interessierendenEigenschaft\ für \MtsEq\ nicht übereinstimmen.
 	}
 }
-\newcommand*    {\unaer} [1][hyperTxt]{\glsIdx  [#1]{unaer}}
-\newcommand*    {\unaere}[1][hyperTxt]{\glsIdxPl[#1]{unaer}}
-%ToDo prüfen
-\newglossaryentry{unaer}{
-	name        ={unär},
-	plural      ={unäre},
-	see         ={binaer},
-	description ={
-		Eine \Operation\, \Funktion\ oder \Relation\ heißt \defFt{unär}, wenn ihre \Stelligkeit\ gleich 1 ist.
-	}
-}
-\newcommand*    {\unzerlegbar} [1][hyperTxt]{\glsIdx  [#1]{unzerlegbar}}
-\newcommand*    {\unzerlegbare}[1][hyperTxt]{\glsIdxPl[#1]{unzerlegbar}}
-%ToDo prüfen
-\newglossaryentry{unzerlegbar}{
-	name        ={unzerlegbar},
-	plural      ={unzerlegbare},
-	see         ={zerlegbar},
-	description ={
-		Synonym: \atomar\ ---
-		Eine \Aussage, die keine \Metaoperation, \textbzw\ eine \Formel, die keine \Operation\ und keine \Relation\ enthält, heißt \defFt{unzerlegbar}.
-	}
-}
+
+\newcommand*{\Unteraussage}[1][]{\likehyperTxt{Unteraussage}}% TODO=Unteraussage
+
+\newcommand*{\echteUnteraussage}[1][]{\likehyperTxt{echteUnteraussage}}% TODO=echte Unteraussage
+
+\newcommand*{\Unterformel}[1][]{\likehyperTxt{Unterformel}}% TODO=Unterformel
+
+\newcommand*{\echteUnterformel}[1][]{\likehyperTxt\likehyperTxt}% TODO=echte Unterformel
+
+\newcommand*{\Untermenge}[1][]{\likehyperTxt{Untermenge}}% TODO=Untermenge
+
+\newcommand*{\echteUntermenge}[1][]{\likehyperTxt{echteUntermenge}}% TODO=echte Untermenge
+
+\newcommand*{\Unterobjekt} [1][]{\likehyperTxt{Unterobjekt}}%  TODO=Unterobjekt
+\newcommand*{\Unterobjekte}[1][]{\likehyperTxt{Unterobjekte}}% TODO=Unterobjekte
+
+\newcommand*{\echtesUnterobjekt} [1][]{\likehyperTxt{echtesUnterobjekt}}% TODO=echtes Unterobjekt
+
+\newcommand*{\Untersymbol}[1][]{\likehyperTxt{Untersymbol}}% TODO=Untersymbol
+
+\newcommand*{\echtesUntersymbol}[1][]{\likehyperTxt{echtesUntersymbol}}% TODO=echtes Untersymbol
 
 %V === V === V === V === V === V === V === V === V === V === V === V === V === V
 
-\newcommand*        {\Variable} [1][hyperTxt]{\glsIdx  [#1]{Variable}}
-\newcommand*        {\Variablen}[1][hyperTxt]{\glsIdxPl[#1]{Variable}}
+\newcommand*        {\Variable} [1][]{\glstext[#1]{Variable}}
+\newcommand*        {\Variablen}[1][]{\glspl  [#1]{Variable}}
 \longnewglossaryentry{Variable}{
-	name            ={Variable},
-	plural          ={Variablen}
+	name            ={Variable\addIdx{Variable}},
+	plural          ={Variablen},
+	see             ={Konstante}
 }{
-	\Wikipedia~\cite{bib:Variable} schreibt dazu (Zitat ohne Fußnoten und Verweise ins Internet):
-
-	Eine \textbf{Variable} ist ein Name für eine Leerstelle in einem logischen oder mathematischen Ausdruck.[1] Der Begriff leitet sich vom lateinischen Adjektiv \textit{variabilis} (veränderlich) ab. Gleichwertig werden auch die Begriffe \textit{Platzhalter} oder \textit{Veränderliche} benutzt. Als „Variable“ dienten früher Wörter oder Symbole, heute verwendet man zur mathematischen Notation in der Regel Buchstaben als Zeichen. Wird anstelle der Variablen ein konkretes Objekt eingesetzt, so ist darauf zu achten, dass überall dort, wo die Variable auftritt, auch dasselbe Objekt benutzt wird.\par
+	\begin{citeWiki}{bib:Variable}{ ohne Fußnoten und Verweise ins Internet}
+		Eine \textbf{Variable} ist ein Name für eine Leerstelle in einem logischen oder mathematischen Ausdruck.[1] Der Begriff leitet sich vom lateinischen Adjektiv \textit{variabilis} (veränderlich) ab. Gleichwertig werden auch die Begriffe \textit{Platzhalter} oder \textit{Veränderliche} benutzt. Als „Variable“ dienten früher Wörter oder Symbole, heute verwendet man zur mathematischen Notation in der Regel Buchstaben als Zeichen. Wird anstelle der Variablen ein konkretes Objekt eingesetzt, so ist darauf zu achten, dass überall dort, wo die Variable auftritt, auch dasselbe Objekt benutzt wird.
+	\end{citeWiki}
 }
-\newcommand*    {\vergleichbar} [1][hyperTxt]{\glsIdx  [#1]{vergleichbar}}
-\newcommand*    {\Vergleichbar} [1][hyperTxt]{\GlsIdx  [#1]{vergleichbar}}
-\newcommand*    {\vergleichbare}[1][hyperTxt]{\glsIdxPl[#1]{vergleichbar}}
+
+\newcommand*    {\vergleichbar} [1][]{\glstext[#1]{vergleichbar}}
+\newcommand*    {\Vergleichbar} [1][]{\Glstext [#1]{vergleichbar}}
+\newcommand*    {\vergleichbare}[1][]{\glspl  [#1]{vergleichbar}}
 %ToDo prüfen
 \newglossaryentry{vergleichbar}{
-	name        ={vergleichbar},
+	name        ={vergleichbar\addIdx{vergleichbar}},
 	plural      ={vergleichbare},
 	description ={
-		Zwei \Objekte\ $A$ und $B$ sind \vergleichbar, wenn beide von derselben Art sind, \textdh\ wenn beide \textzB\ jeweils Mengen, \Zeichenfolgen, Zahlen, \textusw\ sind.
+		Zwei \Objekte\ $A$ und $B$ sind \vergleichbar, wenn beide von derselben \Objektart\ sind, \textdh\ wenn beide \textzB\ jeweils Mengen, \Zeichenfolgen, Zahlen, \textusw\ sind.
 		Dabei muss bei \Formeln\ zwischen der \Formel\ an sich und ihrem \emph{Wert} oder \emph{Ergebnis} unterschieden werden.
 	}
 }
-\newcommand*    {\Vertauschung}  [1][hyperTxt]{\glsIdx  [#1]{Vertauschung}}
-\newcommand*    {\Vertauschungen}[1][hyperTxt]{\glsIdxPl[#1]{Vertauschung}}
+
+\newcommand*    {\Vertauschung}  [1][]{\glstext[#1]{Vertauschung}}
+\newcommand*    {\Vertauschungen}[1][]{\glspl  [#1]{Vertauschung}}
 %ToDo prüfen
 \newglossaryentry{Vertauschung}{
-	name        ={Vertauschung},
+	name        ={Vertauschung\addIdx{Vertauschung}},
 	plural      ={Vertauschungen},
 	description ={
 		Die \emph{Vertauschung} von zwei unabhängigen Teil-\Formeln\ ($\alpha$ und $\beta$) in einer anderen \Formel\ ($\gamma$)
@@ -2735,11 +3440,12 @@
 		Die \emph{Vertauschung} ist eine spezielle Form der \Ersetzung.
 	}
 }
-\newcommand*    {\Voraussetzung}  [1][hyperTxt]{\glsIdx  [#1]{Voraussetzung}}
-\newcommand*    {\Voraussetzungen}[1][hyperTxt]{\glsIdxPl[#1]{Voraussetzung}}
+
+\newcommand*    {\Voraussetzung}  [1][]{\glstext[#1]{Voraussetzung}}
+\newcommand*    {\Voraussetzungen}[1][]{\glspl  [#1]{Voraussetzung}}
 %ToDo prüfen
-\newglossaryentry{Voraussetzung}{
-	name        ={Voraussetzung},
+\newglossaryentry{Voraussetzung}{% TODO==> Prämisse
+	name        ={Voraussetzung\addIdx{Voraussetzung}},
 	plural      ={Voraussetzungen},
 	see         ={Schlussregel},
 	description ={
@@ -2748,11 +3454,12 @@
 		Die \Voraussetzungen\ werden normalerweise mit $\MtsVoraussetzung_i$ bezeichnet.
 	}
 }
-\newcommand*    {\Voraussetzungsmenge} [1][hyperTxt]{\glsIdx  [#1]{Voraussetzungsmenge}}
-\newcommand*    {\Voraussetzungsmengen}[1][hyperTxt]{\glsIdxPl[#1]{Voraussetzungsmenge}}
+
+\newcommand*    {\Voraussetzungsmenge} [1][]{\glstext[#1]{Voraussetzungsmenge}}
+\newcommand*    {\Voraussetzungsmengen}[1][]{\glspl  [#1]{Voraussetzungsmenge}}
 %ToDo prüfen
 \newglossaryentry{Voraussetzungsmenge}{
-	name        ={Voraussetzungsmenge},
+	name        ={Voraussetzungsmenge\addIdx{Voraussetzungsmenge}},
 	plural      ={Voraussetzungsmengen},
 	description ={
 		Eine \Ableitungsmenge:
@@ -2762,22 +3469,29 @@
 
 %W === W === W === W === W === W === W === W === W === W === W === W === W === W
 
-\newcommand*    {\Wahrheitswert}  [1][hyperTxt]{\glsIdx  [#1]{Wahrheitswert}}
-\newcommand*    {\Wahrheitswerte} [1][hyperTxt]{\glsIdxPl[#1]{Wahrheitswert}}
-\newcommand*    {\Wahrheitswerten}[1][hyperTxt]{\glsIdxPl[#1]{Wahrheitswert}n}
+\newcommand*        {\Wahrheitswert}  [1][]{\glstext[#1]{Wahrheitswert}}
+\newcommand*        {\Wahrheitswerte} [1][]{\glspl  [#1]{Wahrheitswert}}
+\newcommand*        {\Wahrheitswerten}[1][]{\glspl  [#1]{Wahrheitswert}n}
 %ToDo prüfen
-\newglossaryentry{Wahrheitswert}{
-	name        ={Wahrheitswert},
-	plural      ={Wahrheitswerte},
-	description ={
-		Die Werte \chrqt{\FrmTrue} und \chrqt{\FrmFalse}, oft auch mit \chrqt{\TxtTrue} und \chrqt{\TxtFalse}, \chrqt{$\RawMtsTrue$} und \chrqt{$\RawMtsFalse$} oder einfach \chrqt{$1$} und \chrqt{$0$} bezeichnet.
+\longnewglossaryentry{Wahrheitswert}{
+	name            ={Wahrheitswert\addIdx{Wahrheitswert}},
+	plural          ={Wahrheitswerte}
+}{
+	\begin{citeWiki}{bib:Wahrheitswert}{ ohne Verweise ins Internet}
+		Ein \textbf{Wahrheitswert} ist in Logik und Mathematik ein logischer Wert, den eine Aussage in Bezug auf Wahrheit annehmen kann.
+	\end{citeWiki}
+	\imGlossar{
+		Wir verwenden nur die beiden \defFt{Wahrheitswerte} der zweiwertigen klassischen \Logik, die wir (in der \Metasprache) mit \chrqt{\TxtTrue} und \chrqt{\TxtFalse} bezeichnen.
+		In der \formalenMetasprache\ hingegen verwenden wir \chrqt{\MtsTrue} und \chrqt{\MtsFalse} und in der \Objektsprache\ \chrqt{\OjkTrue} und \chrqt{\OjkFalse}.
+		In der Literatur findet man auch einfach \chrqt{$1$} und \chrqt{$0$}.
 	}
 }
-\newcommand*    {\Wertebereich} [1][hyperTxt]{\glsIdx  [#1]{Wertebereich}}
-\newcommand*    {\Wertebereiche}[1][hyperTxt]{\glsIdxPl[#1]{Wertebereich}}
+
+\newcommand*    {\Wertebereich} [1][]{\glstext[#1]{Wertebereich}}
+\newcommand*    {\Wertebereiche}[1][]{\glspl  [#1]{Wertebereich}}
 %ToDo prüfen
 \newglossaryentry{Wertebereich}{
-	name        ={Wertebereich},
+	name        ={Wertebereich\addIdx{Wertebereich}},
 	plural      ={Wertebereiche},
 	symbol      ={\MtsWb},
 	see         = {MtsWb,Zielbereich,Funktion},
@@ -2785,19 +3499,22 @@
 		einer \Funktion.
 	}
 }
-\newcommand*    {\Wikipedia}[1][hyperTxt]{\glsIdx[#1]{Wikipedia}}
-\newglossaryentry{Wikipedia}{
-	name        ={Wikipedia},
-	description ={
-		\Wikipedia~\cite{bib:Wikipedia} schreibt dazu (Zitat): "`Wikipedia ist ein Projekt zum Aufbau einer [Internet-\nobreak]Enzyklopädie aus freien Inhalten."'
-	}
+
+\newcommand*        {\Wikipedia}[1][]{\glstext[#1]{Wikipedia}}
+\longnewglossaryentry{Wikipedia}{
+	name            ={Wikipedia\addIdx{Wikipedia}}
+}{
+	\begin{citeWiki}{bib:Wikipedia}{}
+		Wikipedia ist ein Projekt zum Aufbau einer [Internet-\nobreak]Enzyklopädie aus freien Inhalten.
+	\end{citeWiki}
 }
-\newcommand*    {\Wort}   [1][hyperTxt]{\glsIdx  [#1]{Wort}}
-\newcommand*    {\Worte}  [1][hyperTxt]{\glsIdxPl[#1]{Wort}}
-\newcommand*    {\Woerter}[1][hyperTxt]{\glsIdxPl[#1]{Wort}}
+
+\newcommand*    {\Wort}   [1][]{\glstext[#1]{Wort}}
+\newcommand*    {\Worte}  [1][]{\glspl  [#1]{Wort}}
+\newcommand*    {\Woerter}[1][]{\glspl  [#1]{Wort}}
 %ToDo prüfen
 \newglossaryentry{Wort}{
-	name        ={Wort},
+	name        ={Wort\addIdx{Wort}},
 	plural      ={Wörter},
 	see         ={Formelmenge},
 	description ={
@@ -2808,11 +3525,11 @@
 
 %Z === Z === Z === Z === Z === Z === Z === Z === Z === Z === Z === Z === Z === Z
 
-\newcommand*    {\Zeichenfolge} [1][hyperTxt]{\glsIdx  [#1]{Zeichenfolge}}
-\newcommand*    {\Zeichenfolgen}[1][hyperTxt]{\glsIdxPl[#1]{Zeichenfolge}}
+\newcommand*    {\Zeichenfolge} [1][]{\glstext[#1]{Zeichenfolge}}
+\newcommand*    {\Zeichenfolgen}[1][]{\glspl  [#1]{Zeichenfolge}}
 %ToDo prüfen
 \newglossaryentry{Zeichenfolge}{
-	name        ={Zeichenfolge},
+	name        ={Zeichenfolge\addIdx{Zeichenfolge}},
 	plural      ={Zeichenfolgen},
 	see         ={Zeichenkette},
 	description ={
@@ -2822,44 +3539,49 @@
 		\Formeln\ werden immer als \Zeichenfolgen\ aufgefasst.
 	}
 }
-\newcommand*    {\Zeichenkette} [1][hyperTxt]{\glsIdx  [#1]{Zeichenkette}}
-\newcommand*    {\Zeichenketten}[1][hyperTxt]{\glsIdxPl[#1]{Zeichenkette}}
+
+\newcommand*    {\Zeichenkette} [1][]{\glstext[#1]{Zeichenkette}}
+\newcommand*    {\Zeichenketten}[1][]{\glspl  [#1]{Zeichenkette}}
 %ToDo prüfen
 \newglossaryentry{Zeichenkette}{
-	name        ={Zeichenkette},
+	name        ={Zeichenkette\addIdx{Zeichenkette}},
 	plural      ={Zeichenketten},
 	see         ={Zeichenfolge},
 	description ={
 		Eine Folge von (typographischen) Zeichen, auch Leerstellen und sonstigem Zwischenraum.
 	}
 }
-\newcommand*    {\zerlegbar} [1][hyperTxt]{\glsIdx  [#1]{zerlegbar}}
-\newcommand*    {\zerlegbare}[1][hyperTxt]{\glsIdxPl[#1]{zerlegbar}}
-\newcommand*    {\Zerlegbare}[1][hyperTxt]{\GlsIdxPl[#1]{zerlegbar}}
+
+\newcommand*    {\zerlegbar}  [1][]{\glstext[#1]{zerlegbar}}
+\newcommand*    {\zerlegbares}[1][]{\glstext[#1]{zerlegbar}[es]}
+\newcommand*    {\zerlegbare} [1][]{\glspl  [#1]{zerlegbar}}
+\newcommand*    {\Zerlegbare} [1][]{\Glspl  [#1]{zerlegbar}}
 %ToDo prüfen
 \newglossaryentry{zerlegbar}{
-	name        ={zerlegbar},
+	name        ={zerlegbar\addIdx{zerlegbar}},
 	plural      ={zerlegbare},
-	see         ={unzerlegbar},
+	see         ={atomar},
 	description ={
-		Eine \Aussage, die eine \Metaoperation, \textbzw\ eine \Formel, die eine \Operation\ oder eine \Relation\ enthält, heißen \zerlegbar.
+		Eine \Aussage, \Formel oder \Symbol, die eine \echte\ \Unteraussage, \Unterformel\ \textbzw. \Untersymbol\ enthalten, heißt \defFt{zerlegbar}.
 	}
 }
-\newcommand*    {\Ziel} [1][hyperTxt]{\glsIdx  [#1]{Ziel}}
-\newcommand*    {\Ziele}[1][hyperTxt]{\glsIdxPl[#1]{Ziel}}
+
+\newcommand*    {\Ziel} [1][]{\glstext[#1]{Ziel}}
+\newcommand*    {\Ziele}[1][]{\glspl  [#1]{Ziel}}
 %ToDo prüfen
 \newglossaryentry{Ziel}{
-	name        ={Ziel},
+	name        ={Ziel\addIdx{Ziel}},
 	plural      ={Ziele},
 	description ={
 		Ein \defFt{Ziel} ist in diesem Dokument eine Anforderungen an \ASBA.
 	}
 }
-\newcommand*    {\Zielbereich} [1][hyperTxt]{\glsIdx  [#1]{Zielbereich}}
-\newcommand*    {\Zielbereiche}[1][hyperTxt]{\glsIdxPl[#1]{Zielbereich}}
+
+\newcommand*    {\Zielbereich} [1][]{\glstext[#1]{Zielbereich}}
+\newcommand*    {\Zielbereiche}[1][]{\glspl  [#1]{Zielbereich}}
 %ToDo prüfen
 \newglossaryentry{Zielbereich}{
-	name        ={Zielbereich},
+	name        ={Zielbereich\addIdx{Zielbereich}},
 	plural      ={Zielbereiche},
 	symbol      ={\MtsZb},
 	see         = {MtsZb,Wertebereich,Funktion},
@@ -2867,16 +3589,19 @@
 		einer \Funktion.
 	}
 }
-\newcommand*    {\zulaessig}  [1][hyperTxt]{\glsIdx  [#1]{zulaessig}}
-\newcommand*    {\zulaessige} [1][hyperTxt]{\glsIdxPl[#1]{zulaessig}}
-\newcommand*    {\zulaessigen}[1][hyperTxt]{\glsIdx  [#1]{zulaessig}en}
-\newcommand*    {\zulaessiger}[1][hyperTxt]{\glsIdxPl[#1]{zulaessig}r}
+
+\newcommand*    {\zulaessig}  [1][]{\glstext[#1]{zulaessig}}
+\newcommand*    {\zulaessige} [1][]{\glspl  [#1]{zulaessig}}
+\newcommand*    {\zulaessigen}[1][]{\glstext[#1]{zulaessig}en}
+\newcommand*    {\zulaessiger}[1][]{\glspl  [#1]{zulaessig}r}
 %ToDo prüfen
 \newglossaryentry{zulaessig}{
-	name        ={zulässig},
+	name        ={zulässig\addIdx[name={zulässig}]{zulaessig}},
 	plural      ={zulässige},
 	see         ={Formel,Umwandlung,Ersetzung},
 	description ={
 		Eine Eigenschaft von \Formel, \Umwandlung\ und \Ersetzung.
 	}
 }
+
+\imGlossarFlgfalse% Ende der Glossareinträge ===================================

@@ -31,24 +31,41 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = de_DE
 
-% Testroutinen #################################################################
+% Schalter (...Flag...) und davon abhängige Makros #############################
 
-% Schalter zum Testen
-\newif\ifWPTtest% Schalter zum Testen; noch AUS
-\WPTtesttrue%      allgemeiner Test         EIN
+\newif\iftestFlg%       Schalter: Testmode AUS --> \show...Flg AUS   ; noch AUS
+\newif\ifshowframeFlg%  Schalter: Gebrauch vom Parameter 'showframe' ; noch AUS
+\newif\ifshowidxFlg%    Schalter: Gebrauch vom Paket     'showidx'   ; noch AUS
+\newif\ifindexFlg%      Schalter: Gebrauch vom Paket  '[split]index' ; noch AUS
+\newif\ifsplitindexFlg% Schalter: Gebrauch vom Paket    'splitindex' ; noch AUS
+\newif\ifmakeindexFlg%  Schalter: Gebrauch vom Programm  'makeindex' ; noch AUS
+\newif\ifhyperrefFlg%   Schalter: Gebrauch vom Paket     'hyperref'  ; noch AUS
 
-\newcommand*{\WPTerrorIfDefined}[1]{% Testen, ob '\#1' schon definiert ist. Wenn ja, Fehlerausgabe
-	\ifWPTtest
-		\ifx#1\WPTundefined
-		\else
-			\errmessage{WPT: Schon definiert \string#1 : \meaning#1}
+\testFlgtrue%                            	Testmode ein
+\showframeFlgtrue% (nur mit \testFlgtrue)	Parameter 'showframe' nutzen
+\showidxFlgtrue%   (nur mit \testFlgtrue)	Paket     'showidx'   nutzen
+%\indexFlgtrue%                           	Paket  '[split]index' nutzen
+%\splitindexFlgtrue%                      	Paket    'splitindex' nutzen
+%\makeindexFlgtrue%                       	Programm  'makeindex' nutzen
+\hyperrefFlgtrue%                        	Paket     'hyperref'  nutzen
+
+\iftestFlg
+	\newcommand*{\errorIfDefined}[1]{% Fehler wenn das Makro '#1' schon definiert ist.
+		\def\ASBAundefined{}
+		\ifx#1\ASBAundefined \else
+			\errmessage{ASBA: Schon definiert \string#1 : \meaning#1}
 		\fi
-	\else
-	\fi
-}
-%\ifWPTtest
-%\else
-%\fi
+	}
+\else
+	\showframeFlgfalse
+	\showidxFlgfalse
+	\newcommand*{\errorIfDefined}[1]{}% Dummy
+\fi
+\ifsplitindexFlg
+	\indexFlgtrue
+\else
+	\showidxFlgfalse
+\fi%
 
 % ##############################################################################
 
@@ -65,7 +82,7 @@
 \usepackage[english,ngerman]{babel}% Neue deutsche Rechtschreibung mit [ngerman]
 %\usepackage{multicol}%      Verwende <n> Spalten: \begin{multicols}{<n>}
 \usepackage[fleqn]{amsmath}% Erweiterung für LaTeX-Mathe; fleqn=einrücken
-\usepackage{amssymb}%        Zusätzliche Mathesymbole (z.B. IR)
+\usepackage{amssymb}%        Zusätzliche Mathesymbole (z.B. IR); vor graphicx?
 \usepackage{graphicx}%       Bilder einbinden:\includegraphics[width=<x>]{build}
 \usepackage{textcomp}%       Zusätzliche Symbole z.B. \textmu
 %\usepackage{upgreek}%       Aufrechte griechische Symbole
@@ -73,7 +90,9 @@
 %\usepackage{subcaption}%    Teilabbildungen in \begin{figure} mit
 %                            \begin{subfigure}[b]{<Weite>} und \hfill
 %\usepackage{pdfpages}%      \includepdf[<pages=1-2>]{<Anhang.pdf>}
-%\usepackage{url}%     URLs einfügen: \url{http://...}; ersetzt durch 'hyperref'
+\ifhyperrefFlg \else
+	usepackage{url}%         URLs einfügen: \url{http://...};nur ohne 'hyperref'
+\fi
 % weiter empfohlen -------------------------------------------------------------
 \usepackage{lmodern}%        Ersetzt 'Computer Modern' durch 'Latin Modern'
 \usepackage{mathtools}%      Mathematical tools to use with asmmath
@@ -90,8 +109,7 @@
 \usepackage{amsopn}%         Provides a command \DeclareMathOperator.
 \usepackage{mathabx}%        Three series of mathematical symbols.
 \usepackage{mathpazo}%       Fonts to typeset mathematics to match palatino.
-%\usepackage{stix}%          OpenType Unicode maths fonts.
-%%                           führt zu: To many symbol fonts declared
+%\usepackage{stix}%          OpenType Unicode maths fonts. - Fehler: To many symbol fonts declared
 %\usepackage{cancel}%        Place lines through mathematical formulae.
 
 % Tabellen =====================================================================
@@ -116,23 +134,33 @@
 
 % Verzeichnisse ================================================================
 %TODO 'minitoc' anwenden
-\usepackage[germanb]{minitoc}%     Unterverzeichnisse
-\usepackage[protected]{splitidx}%  mehrere Indizes - Nur statt 'makeidx'
-%\usepackage{makeidx}%             Indexing - Entweder 'makeidx' oder 'splitidx'
-%\usepackage{hvindex}%             Support for 'makeidx' - after 'babel
+\usepackage[germanb]{minitoc}%        Unterverzeichnisse
+\ifindexFlg
+	\ifsplitindexFlg
+		\usepackage[protected]{splitidx}%  mehrere Indizes - Nur statt 'makeidx'
+	\else
+		\usepackage{makeidx}%              ein Index    - Nur statt 'splitindex'
+		\usepackage{hvindex}%              Support for 'makeidx' - after 'babel
+	\fi
+\else
+\fi
 
 % Verschiedenes ================================================================
 
-\geometry{textwidth=170mm,textheight=256mm,twoside}% optional Option 'showframe'
-%TODO ausprobieren
-%%%\geometry{showframe}
-
-\ifWPTtest % Start: Nur für Entwicklung und Test ===============================
-\usepackage{srcltx}%            Klick im Viewer öffnet Editor und umgekehrt
-\setlength{\overfullrule}{5pt}% Breite des schwarzen Balkens rechts von Overfull
-%\usepackage{showidx}%          Index auf Seitenrand; nicht mit splitidx
-%\setlength{\marginparwidth}{2cm}% Breite des Seitenrandes für 'showidx'
-\else \fi %  Ende:  Nur für Entwicklung und Test -------------------------------
+\iftestFlg% Nur für Entwicklung und Test ---------------------------------------
+	\usepackage{srcltx}%            Klick im Viewer öffnet Editor und umgekehrt
+	\setlength{\overfullrule}{5pt}% Breite des schwarzen Balkens rechts von Overfull
+	\ifindexFlg
+		\ifsplitindexFlg \else
+			\usepackage{showidx}%          Index auf Seitenrand; nicht mit splitidx
+		\fi
+	\else \fi
+\else \fi
+\ifshowframeFlg
+	\geometry{textwidth=170mm,textheight=256mm,twoside,showframe}
+\else % Für das fertige Dokument -----------------------------------------------
+	\geometry{textwidth=170mm,textheight=256mm,twoside}
+\fi
 
 % Vwerweise ====================================================================
 \usepackage{varioref}%             \vref...
@@ -159,21 +187,25 @@
 %%%	\def\subsectionautorefname{\subsectionname}%
 %%%	\def\subsubsectionautorefname{\subsubsectionname}%
 %%%}
+\newcommand*{\linkcolor}[1]{\textcolor{blue}{#1}}
 
 % --- glossaries --- Create glossaries and lists of acronyms -------------------
-\usepackage[nopostdot,section=section,toc,xindy={glsnumbers=false}]{glossaries}
-%%%\usepackage[...,index,nohypertypes={index},...]{glossaries}
-% Paket 'glossaries': 
+\usepackage[index,nohypertypes={index},nopostdot,section=section,toc,xindy={glsnumbers=false}]{glossaries}
+% Paket 'glossaries':
 % - nach 'hyperref'
 % - läd  'glossaries-german'
-% Optionen:         ('glossaries' erfordert 1. zusätzlichen Lauf von pdflatex)
+% Optionen: ('glossaries' erfordert 1. zusätzlichen Lauf von pdflatex)
+% index        - mit gesondertem Index: \newterm statt \newglossaryentry
+% nohypertypes={index} - Keinen Link in den Index
+% nopostdot    - keinen zusätzlichen Punkt am Ende der Einträge
 % toc          - in den Inhalt (erfordert 2. zusätzlichen Lauf von pdflatex)
-% index
-% nohypertypes - ={index} -
-% nopostdot    - Keinen zusätzlichen Punkt am Ende der Einträge.
 % xindy        - Verwendung von 'xindy' für die Sortierung
 % lädt {glossaries-german}% German language module for glossaries package
-%\GlsSetQuote{+}% nur für 'makeindex' - siehe 'User Manual for glossaries' S. 31
+\usepackage{glossary-mcols}% mehrspaltiges Glossar (für den Index)
+
+\ifmakeindexFlg
+	\GlsSetQuote{+}% siehe 'User Manual for glossaries' S. 31
+\else \fi
 
 % Einstellung von globalen Werten und Makro-Redefinitionen #####################
 
@@ -476,8 +508,8 @@
 
 \newcommand*{\citesee}       [1]{\seename~\cite                {#1}}
 \newcommand*{\citenote}      [1]{\footnote{\citesee            {#1}}}
-\newcommand*{\alternativ}    [1]{\footnote{alternativ:    \defFt{#1}}}
-\newcommand*{\alternativen}  [2]{\footnote{alternativ:    \defFt{#1} oder \defFt{#2}}}
+\newcommand*{\synonym}     [2][]{\footnote{synonym:      \defFt{#2}#1}}
+\newcommand*{\alternativ}  [2][]{\footnote{alternativ:   \defFt{#2}#1}}
 
 % Abkürzungen mit Punkten; zur Unterscheidung vom Satzende ---------------------
 
@@ -498,7 +530,18 @@
 % Weitere Abkürzungen
 \newcommand*{\textdots}{…}
 
+% Text-Fonts
+\newcommand*{\citeFt}[1]{\textsf{#1}}% Zitate
+\newcommand*{\defFt} [1]{\textbf{#1}}% Definitionen
+\newenvironment{citeWiki}[3][\Wikipedia]{%
+	#1 \cite{#2} schreibt dazu (Zitat#3):
+	\begin{quote}
+		\sffamily
+}{%
+	\end{quote}
+}
 % Index ########################################################################
-
-\makeindex
-\newindex[Index]{idx}
+\ifindexFlg
+	\makeindex
+	\newindex[Index]{idx}
+\else \fi
