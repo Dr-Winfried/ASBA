@@ -36,18 +36,20 @@
 \newif\iftestFlg%       Schalter: Testmode AUS --> \show...Flg AUS   ; noch AUS
 \newif\ifshowframeFlg%  Schalter: Gebrauch vom Parameter 'showframe' ; noch AUS
 \newif\ifshowidxFlg%    Schalter: Gebrauch vom Paket     'showidx'   ; noch AUS
+\newif\ifminitocFlg%    Schalter: Gebrauch vom Paket     'minitoc'   ; noch AUS
 \newif\ifindexFlg%      Schalter: Gebrauch vom Paket  '[split]index' ; noch AUS
 \newif\ifsplitindexFlg% Schalter: Gebrauch vom Paket    'splitindex' ; noch AUS
 \newif\ifmakeindexFlg%  Schalter: Gebrauch vom Programm  'makeindex' ; noch AUS
 \newif\ifhyperrefFlg%   Schalter: Gebrauch vom Paket     'hyperref'  ; noch AUS
 
-\testFlgtrue%                            	Testmode ein
-\showframeFlgtrue% (nur mit \testFlgtrue)	Parameter 'showframe' nutzen
-\showidxFlgtrue%   (nur mit \testFlgtrue)	Paket     'showidx'   nutzen
-%\indexFlgtrue%                           	Paket  '[split]index' nutzen
-%\splitindexFlgtrue%                      	Paket    'splitindex' nutzen
-%\makeindexFlgtrue%                       	Programm  'makeindex' nutzen
-\hyperrefFlgtrue%                        	Paket     'hyperref'  nutzen
+\testFlgtrue%                           	Testmode ein
+\showframeFlgtrue%(nur mit \testFlgtrue)	Parameter 'showframe' nutzen
+%\showidxFlgtrue%  (nur mit \testFlgtrue)	Paket     'showidx'   nutzen
+%\minitocFlgtrue%                        	Paket     'minitoc'   nutzen
+%\indexFlgtrue%                          	Paket  '[split]index' nutzen
+%\splitindexFlgtrue%                     	Paket    'splitindex' nutzen
+%\makeindexFlgtrue%                      	Programm  'makeindex' nutzen
+\hyperrefFlgtrue%                       	Paket     'hyperref'  nutzen
 
 \iftestFlg
 	\newcommand*{\errorIfDefined}[1]{% Fehler wenn das Makro '#1' schon definiert ist.
@@ -63,9 +65,8 @@
 \fi
 \ifsplitindexFlg
 	\indexFlgtrue
-\else
-	\showidxFlgfalse
-\fi%
+	\showidxFlgfalse% nicht mit 'splitidx'
+\else \fi
 
 % ##############################################################################
 
@@ -133,17 +134,18 @@
 \usepackage{caption}%        Customizing captions in floating environments.
 
 % Verzeichnisse ================================================================
-%TODO 'minitoc' anwenden
-\usepackage[germanb]{minitoc}%        Unterverzeichnisse
+
+\ifminitocFlg
+	\usepackage[germanb]{minitoc}%        Unterverzeichnisse
+\else \fi
 \ifindexFlg
 	\ifsplitindexFlg
-		\usepackage[protected]{splitidx}%  mehrere Indizes - Nur statt 'makeidx'
+		\usepackage[protected]{splitidx}% mehrere Indizes - Nur statt 'makeidx'
 	\else
-		\usepackage{makeidx}%              ein Index    - Nur statt 'splitindex'
-		\usepackage{hvindex}%              Support for 'makeidx' - after 'babel
+		\usepackage{makeidx}%             ein Index    - Nur statt 'splitindex'
+		\usepackage{hvindex}%             Support for 'makeidx' - after 'babel
 	\fi
-\else
-\fi
+\else \fi
 
 % Verschiedenes ================================================================
 
@@ -182,12 +184,10 @@
 % pdfauthor   - Author   im PDF-Dokument
 % pdfsubject  - Subject  im PDF-Dokument
 % pdfkeywords - Keywords im PDF-Dokument
-%%% ggf. noch \autoref u.a. von 'hyperref' nutzen; dazu:
-%%%\addto\extrasngerman{% siehe manual for 'hyperref' Seite 17
-%%%	\def\subsectionautorefname{\subsectionname}%
-%%%	\def\subsubsectionautorefname{\subsubsectionname}%
-%%%}
-\newcommand*{\linkcolor}[1]{\textcolor{blue}{#1}}
+\newcommand*{\linkcolor}[1]{\textcolor{blue}{#1}}% Farbe der internen Links
+\newcommand*{\wikilink} [1]{\textcolor{blue}{#1}}% Farbe der Links in Wikipedia
+\newcommand*{\wikibf}   [1]{\textbf         {#1}}% Bold font in Wikipedia
+\newcommand*{\wikiit}   [1]{\textit         {#1}}% Italic font in Wikipedia
 
 % --- glossaries --- Create glossaries and lists of acronyms -------------------
 \usepackage[index,nohypertypes={index},nopostdot,section=section,toc,xindy={glsnumbers=false}]{glossaries}
@@ -508,8 +508,10 @@
 
 \newcommand*{\citesee}       [1]{\seename~\cite                {#1}}
 \newcommand*{\citenote}      [1]{\footnote{\citesee            {#1}}}
-\newcommand*{\synonym}     [2][]{\footnote{synonym:      \defFt{#2}#1}}
-\newcommand*{\alternativ}  [2][]{\footnote{alternativ:   \defFt{#2}#1}}
+\newcommand*{\synonym}       [2][]{\footnote{synonym:          {#2}#1}}
+\newcommand*{\alternativi}   [2][]{\footnote{alternativ: \defFt{#2}#1}}
+\newcommand*{\alternativii}  [3][]{\footnote{alternativ: \defFt{#2}             oder \defFt{#3}#1}}
+\newcommand*{\alternativiii} [4][]{\footnote{alternativ: \defFt{#2}, \defFt{#3} oder \defFt{#4}#1}}
 
 % Abkürzungen mit Punkten; zur Unterscheidung vom Satzende ---------------------
 
@@ -533,8 +535,9 @@
 % Text-Fonts
 \newcommand*{\citeFt}[1]{\textsf{#1}}% Zitate
 \newcommand*{\defFt} [1]{\textbf{#1}}% Definitionen
-\newenvironment{citeWiki}[3][\Wikipedia]{%
-	#1 \cite{#2} schreibt dazu (Zitat#3):
+\newcommand*{\gloFt} [1]{\textsf{#1}}% Wenn ein zu beschreibender Begriff in seiner Beschreibung mehr als einmal auftaucht
+\newenvironment{wikicite}[2][\Wikipedia]{%
+	#1 \cite{#2} schreibt dazu:
 	\begin{quote}
 		\sffamily
 }{%

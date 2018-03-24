@@ -50,7 +50,7 @@ Für die reine Entwicklung sollte das auch gelten, muss es aber nicht.
 \begin{enumerate}
 
 	\item\label{Werkzeug:LaTeX}
-	Ein Übersetzer für \LaTeX Quellcode (*.tex).
+	Ein Übersetzer für \LaTeX\ Quellcode (*.tex).
 	--- Verwendet wird \emph{MiK\TeX}.
 
 	\item\label{Werkzeug:Cpp}
@@ -101,7 +101,7 @@ Nicht unbedingt nötig, aber sinnvoll:
 	\tourl{https://www.visualstudio.com/downloads/}
 	--- Lizenz \citesee{bib:EULA}
 
-	\item\label{Werkzeug:VSC DB}angedacht: In \emph{Visual Studio Community 2015} integrierte Datenbank für \Ausgabeschemata, \Saetze, \Beweise, \Fachbegriffe\ und \Fachgebiete.
+	\item\label{Werkzeug:VSC DB}angedacht: In \emph{Visual Studio Community 2015} integrierte Datenbank für \Ausgabeschemata, \Saetze, \Beweise, \Fachbegriffe\ und \Teilgebiete.
 	--- Lizenz \citesee{bib:EULA}
 
 	\item\label{Werkzeug:RapidXml}angedacht: \emph{RapidXml} für Ein- und Ausgabe in XML.
@@ -195,6 +195,173 @@ Nicht unbedingt nötig, aber sinnvoll:
 \end{itemize}
 \color{black}%%% Ende  grauer Text ---------------------------------------------
 
+\section     {Die Struktur ausgewählter Begriffe}% =============================
+\beginsection{Die Struktur ausgewählter Begriffe}
+\label   {sec-Begriffsstruktur}
+
+%TODO Tabelle mit Begriffen und Symbolen dazu
+\begin{table}[H]
+	\centering
+	\begin{threeparttable}
+		\setlength\extrarowheight{3pt}
+		\begin{tabularx}{\linewidth}{c@{\extracolsep{\fill}}|c|c|c|c|}
+			\hline% ------------------------------------------------------------
+			\multicolumn{3}{c|}{\textbf{\Metasprache}}&
+			\multicolumn{2}{c|}{\textbf{\Objektsprache}}
+			\\
+			\textbf{natürliche Sprache} & \multicolumn{2}{c|}{\textbf{\formaleMetasprache}}
+			& \textbf{\Aussagenlogik} & \textbf{\Praedikatenlogik}
+			\\
+			\hline% ------------------------------------------------------------
+			& \multicolumn{4}{c|}{\Symbole}
+			\\
+			& \multicolumn{2}{c|}{\Metasymbol}
+			& \multicolumn{2}{c|}{\Objektsymbol}
+			\\
+			\hline% ------------------------------------------------------------
+			& \multicolumn{4}{c|}{Beispielsymbole}
+			\\
+			\unaere\  \Operation
+			& \multicolumn{4}{c|}{\BspOpU}
+			\\
+			\binaere\ \Operation
+			& \multicolumn{4}{c|}{\BspOpB}
+			\\
+			\binaere\ \Relationen
+			& \multicolumn{4}{c|}{\BspRel  \quad \BspRelEq  \quad \BspRelBck  \quad \BspRelBckEq \quad \BspRelN \quad \BspRelEqN \quad \BspRelBckN \quad \BspRelBckEqN}
+			\\
+			\hline% ------------------------------------------------------------
+			\multicolumn{5}{c|}{\Wahrheitswerte}
+			\\
+			~                    \TxtTrue \quad \TxtFalse
+			&\multicolumn{2}{c|}{\MtsTrue \quad \MtsFalse}
+			&\multicolumn{2}{c|}{\OjkTrue \quad \OjkFalse}
+			\\
+			\hline% ------------------------------------------------------------
+			& \multicolumn{4}{c|}{\Operation \quad \Relation \quad \Umkehrrelation \quad \Negation}
+			\\
+			& \multicolumn{2}{c|}{\Metaoperation \quad \Metarelation}
+			& \multicolumn{2}{c|}{\Junktor}
+			\\
+			\hline% ------------------------------------------------------------
+			~                       nicht
+			& \multicolumn{2}{c|}{\MtsNot}
+			& \multicolumn{2}{c|}{\OjkNot}
+			\\
+			~                         und \quad   oder \quad    dann
+			& \multicolumn{2}{c|}{\MtsAnd \quad \MtsOr \quad \MtsImp}
+			& \multicolumn{2}{c|}{\OjkAnd \quad \OjkOr \quad \OjkImp}
+			\\
+			~                     dann wenn \quad    wenn
+			& \multicolumn{2}{c|}{\MtsEquiv \quad \MtsRep}
+			& \multicolumn{2}{c|}{\OjkEquiv \quad \OjkRep}
+			\\
+			~                         und\Tnote{1} \quad entweder oder
+			& \multicolumn{2}{c|}{\MtsUnd}
+			& \multicolumn{2}{c|}{                             \OjkXor}
+			\\
+			~                    nicht und \quad nicht oder
+			& \multicolumn{2}{c|}{ }
+			& \multicolumn{2}{c|}{\OjkNand \quad \OjkNor}
+			\\
+			\hline% ------------------------------------------------------------
+			~                     gleich \quad ungleich
+			& \multicolumn{2}{c|}{\MtsEq \quad \MtsEqN}
+			& \multicolumn{2}{c|}{\OjkEq \quad \OjkEqN}
+			\\
+			definitionsgemäß            gleich
+			& \multicolumn{2}{c|}{\MtsDefEquiv}
+			& \multicolumn{2}{c|}{ }
+			\\
+			definitionsgemäß         gleich
+			& \multicolumn{2}{c|}{\MtsDefEq}
+			& \multicolumn{2}{c|}{ }
+			\\
+			\hline% ------------------------------------------------------------
+			\Quantoren
+			& \multicolumn{2}{c|}{$\MtsForall \quad \MtsExists \quad \MtsExione$}
+			&                   & $\OjkForall \quad \OjkExists \quad \OjkExione$
+			\\
+			\hline% ------------------------------------------------------------
+			\Ersetzung \quad \Vertauschung
+			& \multicolumn{2}{c|}{\MtsSubst \quad \MtsSwap}
+			& \multicolumn{2}{c|}{ }
+			\\
+			\Ableitungsrelationen:
+			& \multicolumn{2}{c|}{\MtsDerive \quad \MtsDeriveR \quad \MtsPraemisseRel \quad \MtsKonklusionRel \quad \MtsErgebnisRel}
+			& \multicolumn{2}{c|}{ }
+			\\
+			\hline% ------------------------------------------------------------
+			\Elementrelationen:
+			& \multicolumn{2}{c|}{\MtsIn \quad \MtsNi \quad \MtsInN \quad \MtsNiN}
+			& \multicolumn{2}{c|}{ }
+			\\
+			\Mengenrelationen:
+			& \multicolumn{2}{c|}{\MtsSubset \quad \MtsSubsetEq \quad \MtsSubsetN \quad \MtsSubsetEqN \quad \MtsSupset \quad \MtsSupsetEq \quad \MtsSupsetN \quad \MtsSupsetEqN}
+			& \multicolumn{2}{c|}{ }
+			\\
+			\Komponentenrelationen:
+			& \multicolumn{2}{c|}{\MtsSeqIn \quad \MtsSeqNi \quad \MtsSeqInN \quad \MtsSeqNiN}
+			& \multicolumn{2}{c|}{ }
+			\\
+			\Folgenrelationen:
+			& \multicolumn{2}{c|}{\MtsSubseq \quad \MtsSubseqEq \quad \MtsSubseqN \quad \MtsSubseqEqN \quad \MtsSupseq \quad \MtsSupseqEq \quad \MtsSupseqN \quad \MtsSupseqEqN}
+			& \multicolumn{2}{c|}{ }
+			\\
+			\hline% ------------------------------------------------------------
+			& \textbf{\unaer} & \textbf{\binaer}
+			& \multicolumn{2}{c|}{ }
+			\\
+			\Mengenoperationen
+			& \MtsPot \quad \MtsPotf \quad \MtsRel \quad \MtsRelf & \MtsCap \quad \MtsCup \quad \MtsSetminus \quad \MtsTimes
+			& \multicolumn{2}{c|}{ }
+			\\
+			\hline% ------------------------------------------------------------
+			\unaere\ \Operationen\ auf:
+			& \textbf{\Relationen} & \textbf{\Funktionen}
+			& \multicolumn{2}{c|}{ }
+			\\
+			& \MtsStelR            & \MtsStelF
+			& \multicolumn{2}{c|}{ }
+			\\
+			\DefinitionsB- \quad \Zielbereich
+			&                      & \MtsDb \quad \MtsZb
+			& \multicolumn{2}{c|}{ }
+			\\
+			\QuellB- \quad \Wertebereich
+			&                      & \MtsQb \quad \MtsWb
+			& \multicolumn{2}{c|}{ }
+			\\
+			\Traegermenge
+			& \multicolumn{2}{c|}{$\MtsTraeger \quad \MtsTraeger_i$}
+			& \multicolumn{2}{c|}{ }
+			\\
+			\Graph
+			& \multicolumn{2}{c|}{ \MtsGraph }
+			& \multicolumn{2}{c|}{ }
+			\\
+			\hline% ------------------------------------------------------------
+			\unaere\ \Operationen\ auf:
+			& \multicolumn{2}{c|}{ \Folgen \quad \Tupel }
+			& \multicolumn{2}{c|}{ }
+			\\
+			& \multicolumn{2}{c|}{ \MtsLen \quad \MtsSet }
+			& \multicolumn{2}{c|}{ }
+			\\
+			\hline% ------------------------------------------------------------
+		\end{tabularx}
+		\begin{tablenotes}
+			\footnotesize
+			\item[] Die erste Spalte beschreibt die anderen Spalten.
+			Die \textbf{fettgedruckten} Teile, und nur diese, gelten als Überschriften.
+	 		\item[1] nur in Schlussregeln
+		\end{tablenotes}
+	\end{threeparttable}
+	\caption{Die Struktur ausgewählter Begriffe und zugehörige Symbole}
+	\label{tab-Begriffsstruktur}% Erst nach '\caption'!
+\end{table}
+
+
 \section     {Offene Aufgaben}% ================================================
 \beginsection{Offene Aufgaben}
 \label   {sec-OffeneAufgaben}
@@ -206,10 +373,10 @@ Nicht unbedingt nötig, aber sinnvoll:
 	\item Ausgabeprogramm erstellen (schreibt XML).
 	\item Formelausgabe erstellen (erzeugt \LaTeX{} aus XML).
 	\item \Axiome\ sammeln und eingeben.
-	\item Sätze sammeln und eingeben.
+	\item \Saetze\ sammeln und eingeben.
 	\item \Beweise\ sammeln und eingeben.
 	\item \Fachbegriffe\ und Symbole sammeln und eingeben.
-	\item \Fachgebiete\ sammeln und eingeben.
+	\item \Teilgebiete\ sammeln und eingeben.
 	\item \Ausgabeschemata\ sammeln und eingeben.
 \end{enumerate}
 

@@ -1,0 +1,2790 @@
+%%############################################################################%%
+%%                                                                            %%
+%% Datei:  ASBA-Glossar-Texte.tex                                             %%
+%% Inhalt: Vorspann Glossareinträge für ASBA                                  %%
+%%                                                                            %%
+%% Copyright (C) 2017  Winfried Teschers                                      %%
+%%                                                                            %%
+%% This program is free software: you can redistribute it and/or modify       %%
+%% it under the terms of the GNU Affero General Public License as published   %%
+%% by the Free Software Foundation, either version 3 of the License, or       %%
+%% (at your option) any later version.                                        %%
+%%                                                                            %%
+%% This program is distributed in the hope that it will be useful,            %%
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of             %%
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              %%
+%% GNU Affero General Public License for more details.                        %%
+%%                                                                            %%
+%% You should have received a copy of the GNU Affero General Public License   %%
+%% along with this program.  If not, see <http://www.gnu.org/licenses/>.      %%
+%%                                                                            %%
+%% Dr. Winfried Teschers                                                      %%
+%% Anton-Günther-Straße 26c                                                   %%
+%% 91083 Baiersdorf                                                           %%
+%% Germany                                                                    %%
+%%                                                                            %%
+%% e-mail: winfried.teschers@t-online.de                                      %%
+%%                                                                            %%
+%%############################################################################%%
+
+% !TeX root = ASBA.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+
+% ### Glossar und Index ########################################################
+
+% ==============================================================================
+% \Txt* - Ausgabe als formatierter Text und Eintrag und Verweis ins Glossar
+% Wahrheitswerte ===============================================================
+
+\newcommand*             {\StrTxtFalse}            {falsch}
+\newcommand*                {\TxtFalse}[1][]{\glstext[#1]{TxtFalse}}
+\newglossaryentry            {TxtFalse}{
+	text       =         {\RawTxtFalse},
+	name       =         {\RawTxtFalse \addIdx[
+		name   =         {\RawTxtFalse},
+		sort   ={falsch}]    {TxtFalse}},
+	sort       ={falsch},%\StrTxtFalse
+	see        ={TxtTrue,MtsFalse,OjkFalse},
+	description={
+		Ein \metasprachlicherWahrheitswert\ in Textform.
+	}
+}
+
+\newcommand*               {\StrTxtTrue}           {wahr}
+\newcommand*                  {\TxtTrue}[1][]{\glstext[#1]{TxtTrue}}
+\newglossaryentry              {TxtTrue}{
+	text       =           {\RawTxtTrue},
+	name       =           {\RawTxtTrue \addIdx[
+		name   =           {\RawTxtTrue},
+		sort   ={wahr}]      {TxtTrue}},
+	sort       ={wahr},%  \StrTxtTrue
+	see        ={TxtFalse,MtsTrue,OjkTrue},
+	description={
+		Ein \metasprachlicherWahrheitswert\ in Textform.
+	}
+}
+
+% ==============================================================================
+% \* - Ausgabe als Text und Eintrag und Verweis ins Glossar
+% Fachbegriffe =================================================================
+
+\iftestFlg
+
+\newcommand*    {\Dummy} [1][]{\glstext[#1]{Dummy}}
+\newglossaryentry{Dummy}{
+	name        ={Dummy \addIdx            {Dummy}},
+	text        ={Dummy},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Dummy
+	}
+}
+
+\newcommand*    {\dummyDummy} [1][]{\glstext[#1]{dummyDummy}}
+\newglossaryentry{dummyDummy}{
+	name       =        {---, dummy \addIdx[
+		name   =        {---, dummy},
+		sort   =      {Dummy, dummy}]           {dummyDummy}},
+	sort       =      {Dummy, dummy},
+	text       ={dummy Dummy},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=dummy Dummy
+	}
+}
+
+\else \fi
+
+%A === A === A === A === A === A === A === A === A === A === A === A === A === A
+
+\newsynonym{\Abbildung}{Abbildung}{\Funktion}
+
+\newcommand*    {\ableitbar} [1][]{\glstext[#1]{ableitbar}}
+\newcommand*    {\ableitbare}[1][]{\glstext[#1]{ableitbar}[e]}
+%ToDo prüfen
+\newglossaryentry{ableitbar}{
+	name        ={ableitbar \addIdx            {ableitbar}},
+	text        ={ableitbar},
+	see         ={Ableitungsrelation},
+	description ={
+		Wenn sich eine \Formel\ $\beta$ aus einer anderen \Formel\ $\alpha$ mittels \zulaessiger\ \Transformationen\ ableiten lässt, heißt $\beta$ \defFt{\ableitbar} aus $\alpha$.
+		Sprechweise: $\alpha$ \defFt{\ableitbar}\synonym{\beweisbar} $\beta $.
+		Eine oder beide \Formeln\ $\alpha$ \textbzw\ $\beta$ dürfen dabei durch \Formelmengen\ ersetzt werden.
+	}
+}
+
+\newcommand*        {\Ableitung}  [1][]{\glstext[#1]{Ableitung}}
+\newcommand*        {\Ableitungen}[1][]{\glstext[#1]{Ableitung}[en]}
+%ToDo prüfen
+\longnewglossaryentry{Ableitung}{
+	name            ={Ableitung \addIdx             {Ableitung}},
+	text            ={Ableitung},
+	see             ={Ableitungsmenge,Ableitungsrelation,Aussage,Konklusion,Logik,Praemisse,Schlussregel}
+}{
+	\begin{wikicite}{bib:Ableitung}
+		Eine \wikibf{Ableitung}, \wikibf{Herleitung}, oder \wikilink{Deduktion} ist in der \wikilink{Logik} die Gewinnung von \wikilink{Aussagen} aus anderen Aussagen. Dabei werden \wikilink{Schlussregeln} auf \wikilink{Prämissen} angewandt, um zu \wikilink{Konklusionen} zu gelangen. Welche Schlussregeln dabei erlaubt sind, wird durch das verwendete \wikilink{Kalkül} bestimmt.
+
+		Die Ableitung ist zusammen mit der \wikilink{semantischen Konklusion} einer der zwei logischen Methoden, um auf die Konklusion zu kommen.
+	\end{wikicite}
+	Eine \Aussage\ $A \MtsDerive B$ \textbzw\ allgemeiner $A \MtsDeriveR B$ mit $A,B \MtsSubsetEq \MtsSprache$.
+	Dies entspricht einem Element $(A,B)$ einer \Ableitungsrelation\ \MtsDerive\ \textbzw\ \MtsDeriveR (\textdh\ $(A,B) \in R$.
+	Die semantische Aussage ist die, das die \Formeln\ aus $B$ aus den \Formeln\ aus $A$ abgeleitet werden können.
+}
+
+\newcommand*    {\Ableitungsmenge} [1][]{\glstext[#1]{Ableitungsmenge}}
+\newcommand*    {\Ableitungsmengen}[1][]{\glstext[#1]{Ableitungsmenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Ableitungsmenge}{
+	name        ={Ableitungsmenge \addIdx            {Ableitungsmenge}},
+	text        ={Ableitungsmenge},
+	description ={
+		Eine \Menge\ von \Ableitungen, letztlich nichts anderes als eine \Ableitungsrelation.
+	}
+}
+
+\newcommand*    {\Ableitungsrelation}  [1][]{\glstext[#1]{Ableitungsrelation}}
+\newcommand*    {\Ableitungsrelationen}[1][]{\glstext[#1]{Ableitungsrelation}[en]}
+%ToDo prüfen
+\newglossaryentry{Ableitungsrelation}{
+	name        ={Ableitungsrelation \addIdx             {Ableitungsrelation}},
+	text        ={Ableitungsrelation},
+	see         ={Ableitung},
+	description ={
+		Eine \binaere\ \Relation\ \MtsDerive\ aus \MtsAllDerive.
+		Für $R \in \MtsAllDerive$ auch mit \MtsDeriveR\ bezeichnet.
+	}
+}
+
+\newcommand*    {\Abtrennungsregel}[1][]{\glstext[#1]{Abtrennungsregel}}
+%ToDo prüfen
+\newglossaryentry{Abtrennungsregel}{
+	name        ={Abtrennungsregel \addIdx           {Abtrennungsregel}},
+	text        ={Abtrennungsregel},
+	see         ={TR},
+	description ={
+		Eine \Schlussregel.
+	}
+}
+
+\newcommand*    {\Aequivalenz}  [1][]{\glstext[#1]{Aequivalenz}}
+\newcommand*    {\Aequivalenzen}[1][]{\glstext[#1]{Aequivalenz}[en]}
+%ToDo prüfen
+\newglossaryentry{Aequivalenz}{
+	name        ={Äquivalenz \addIdx[
+		name    ={Äquivalenz}]                    {Aequivalenz}},
+	text        ={Äquivalenz},
+	see         ={MtsAequiv},
+	description ={
+		Eine \Gleichheitsrelation:
+		Zwei Objekte $A$ und $B$ sind \gloFt{äquivalent}\alternativi{ähnlich}, $A \MtsAequiv B$, wenn sie in den \interessierendenEigenschaften\ für \MtsAequiv\ übereinstimmen.
+	}
+}
+
+\newcommand*        {\Aequivalenzrelation}  [1][]{\glstext[#1]{Aequivalenzrelation}}
+\newcommand*        {\Aequivalenzrelationen}[1][]{\glstext[#1]{Aequivalenzrelation}[en]}
+%ToDo prüfen
+\longnewglossaryentry{Aequivalenzrelation}{
+	name            ={Äquivalenzrelation \addIdx[
+		name        ={Äquivalenzrelation}]                    {Aequivalenzrelation}},
+	text            ={Äquivalenzrelation},
+}{
+	Eine \gloFt{Äquivalenzrelation} ist eine \binaere\ \Relation\ auf einer \Menge\ $M$ mit folgenden Eigenschaften
+	(dabei sei $\sim$ die \gloFt{Äquivalenzrelation}):
+	\begin{align}
+		&\text{\textbf{reflexiv }}   &:&&\qquad  &a \sim a \\
+		&\text{\textbf{transitiv }}  &:&&\qquad((&a \sim b) \MtsAnd (b \sim c)) \MtsImp (a \sim c)\\
+		&\text{\textbf{symmetrisch }}&:&&\qquad (&a \sim b) \MtsImp (b \sim a)
+		\formulatoleft \formulatoleft \formulatoleft
+	\end{align}
+	jeweils für alle Elemente $a$, $b$ und $c$ aus $M$.
+}
+
+\newcommand*    {\Alphabet} [1][]{\glstext[#1]{Alphabet}}
+\newcommand*    {\Alphabets}[1][]{\glstext[#1]{Alphabet}[s]}
+%ToDo prüfen
+\newglossaryentry{Alphabet}{
+	name        ={Alphabet \addIdx            {Alphabet}},
+	text        ={Alphabet},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Alphabet
+	}
+}
+
+\newcommand*    {\Anfangsregel}[1][]{\glstext[#1]{Anfangsregel}}
+%ToDo prüfen
+\newglossaryentry{Anfangsregel}{
+	name        ={Anfangsregel \addIdx           {Anfangsregel}},
+	text        ={Anfangsregel},
+	description ={
+		Die \Schlussregel\ \glsAR\ um anfangen zu können.
+	}
+}
+
+\newcommand*    {\ASBA}[1][]{\glstext[#1]{ASBA}}
+\newglossaryentry{ASBA}{
+	name        ={ASBA \addIdx           {ASBA}},
+	text        ={ASBA},
+	description ={
+		ist ein Akronym für „\textbf{A}xiome, \textbf{S}ätze, \textbf{B}eweise und \textbf{A}uswertungen“.
+		Es bezeichnet das in diesem Dokument beschriebene Programmsystem, das zu eingegebenen \Axiomen, \Saetzen\ und \Beweisen\ letztere prüft, Auswertungen generiert und unter Zuhilfenahme gegebener \Ausgabeschemata\ eine Ausgabe im \LaTeX-Format in mathematisch üblicher Schreibweise mit \Formeln\ erstellt.
+	}
+}
+
+\newcommand*    {\atomar}  [1][]{\glstext[#1]{atomar}}
+\newcommand*    {\Atomar}  [1][]{\Glstext[#1]{atomar}}
+\newcommand*    {\atomare} [1][]{\glstext[#1]{atomar}[e]}
+\newcommand*    {\Atomare} [1][]{\glstext[#1]{atomar}[e]}
+\newcommand*    {\atomaren}[1][]{\glstext[#1]{atomar}[en]}
+\newcommand*    {\atomares}[1][]{\glstext[#1]{atomar}[es]}
+\newglossaryentry{atomar}{
+	name        ={atomar \addIdx             {atomar}},
+	text        ={atomar},
+	see         ={zerlegbar},
+	description ={
+		Das Attribut \gloFt{\atomar} kann auf \Aussagen, \Formeln\ und \Symbole\ angewendet werden.
+		\Atomar\ sind solche, die keine echten \Teilobjekte\ gleicher \Objektart\ enthalten.
+	}
+}
+
+\newcommand*{\logischenAusdruecke} [1][]{\linkcolor{logischen Ausdrücke}}% ToDo=logischer Ausdruck
+\newcommand*{\logischenAusdruecken}[1][]{\linkcolor{logischen Ausdrücken}}% ToDo=logischer Ausdruck
+
+\newcommand*{\metasprachlichenAusdruecken}[1][]{\linkcolor{metasprachlichen Ausdrücken}}% ToDo=metasprachlicher Ausdruck
+
+\newcommand*    {\Ausgabeschema}  [1][]{\glstext[#1]{Ausgabeschema}}
+\newcommand*    {\Ausgabeschemata}[1][]{\glstext[#1]{Ausgabeschema}[ta]}
+%ToDo prüfen
+\newglossaryentry{Ausgabeschema}{
+	name        ={Ausgabeschema \addIdx             {Ausgabeschema}},
+	text        ={Ausgabeschema},
+	description ={
+		Ein Schema, mit dem bestimmte mathematische \Objekte\ ausgegeben werden sollen.
+	}
+}
+
+\newcommand*        {\Aussage} [1][]{\glstext[#1]{Aussage}}
+\newcommand*        {\Aussagen}[1][]{\glstext[#1]{Aussage}[n]}
+\longnewglossaryentry{Aussage}{
+	name            ={Aussage \addIdx            {Aussage}},
+	text            ={Aussage},
+}{
+	\begin{wikicite}{bib:Aussage}
+		Eine \wikibf{Aussage} im Sinn der \wikilink{aristotelischen Logik} ist ein sprachliches Gebilde, von dem es sinnvoll ist zu \wikiit{fragen}, ob es \wikilink{wahr} oder falsch ist (so genanntes Aristotelisches \wikilink{Zweiwertigkeitsprinzip}). Es ist nicht erforderlich, \wikiit{sagen} zu können, ob das Gebilde wahr oder falsch ist. Es genügt, dass die Frage nach Wahrheit („Zutreffen“) oder Falschheit („Nicht-Zutreffen“) sinnvoll ist, – was zum Beispiel bei Fragesätzen, Ausrufen und Wünschen nicht der Fall ist. Aussagen sind somit Sätze, die \wikilink{Sachverhalte} beschreiben und denen man einen \wikilink{Wahrheitswert} zuordnen kann.
+	\end{wikicite}
+	\GlossarZusatz{
+		Das entscheidende Kriterium ist, dass man einer \Aussage\ zumindest im Prinzip einen \Wahrheitswert\ zuordnen kann, \textggf\ nach Ersetzung von Parametern durch konkrete Argumente.
+		Dies gilt natürlich auch, wenn \metasprachlicheSymbole\ verwendet werden, weswegen sie in \gloFt{Aussagen} verwendet werden können.
+		Da man \logischenAusdruecken\ und \Relationen\ mit Argumenten ebenfalls einen \Wahrheitswert\ zuordnen kann%
+		\footnote{%
+			Zumindest prinzipiell nach Ersetzung von \Variablen\ durch konkrete \Wahrheitswerte.
+		},
+		können wir sie ebenfalls als \Aussagen\ behandeln.
+		Es handelt sich dann um \logischeA, im Gegensatz zu \metasprachlichenAussagen.
+	}
+}
+
+\newcommand*     {\metasprachlicheAussage} [1][]{\glstext [#1]{metasprachlicheAussage}}
+\newcommand*    {\metasprachlichenAussagen}[1][]{\glsuseri[#1]{metasprachlicheAussage}[n]}
+\newglossaryentry {metasprachlicheAussage}{
+	name       =                     {---, metasprachliche \addIdx[
+		name   =                     {---, metasprachliche},
+		sort   =                 {Aussage, metasprachliche}] {metasprachlicheAussage}},
+	sort       =                 {Aussage, metasprachliche},
+	text       ={metasprachliche  Aussage},
+	user1      ={metasprachlichen Aussage},
+	description={
+		Die \defFt{metasprachlichen} \Aussagen\ sind ...% ToDo=metasprachliche Aussage
+	}
+}
+
+\newcommand*    {\logischeAussage} [1][]{\glstext [#1]{logischeAussage}}
+\newcommand*    {\logischeAussagen}[1][]{\glstext [#1]{logischeAussage}[n]}
+\newcommand*    {\logischeA}       [1][]{\glsuseri[#1]{logischeAussage}}
+\newglossaryentry{logischeAussage}{
+	name       =             {---, logische \addIdx[
+		name   =             {---, logische},
+		sort   =         {Aussage, logische}]        {logischeAussage}},
+	sort       =         {Aussage, logische},
+	text       ={logische Aussage},
+	user1      ={logische},
+	description={
+		Die \defFt{logischen} \Aussagen\ sind ...% ToDo=logische Aussage
+	}
+}
+
+\newcommand*        {\Aussagenlogik}[1][]{\glstext [#1]{Aussagenlogik}}
+\newcommand*        {\AussagenL}    [1][]{\glsuseri[#1]{Aussagenlogik}}
+\longnewglossaryentry{Aussagenlogik}{
+	name            ={Aussagenlogik \addIdx            {Aussagenlogik}},
+	text            ={Aussagenlogik},
+	user1           ={Aussagen-},
+	see             ={Aussage,Junktor,Logik,Praedikatenlogik,Wahrheitswert}
+}{
+	\begin{wikicite}{bib:Aussagenlogik}
+		Die \wikibf{Aussagenlogik} ist ein Teilgebiet der \wikilink{Logik}, das sich mit Aussagen und deren Verknüpfung durch \wikilink{Junktoren} befasst, ausgehend von strukturlosen \wikilink{Elementaraussagen} (Atomen), denen ein \wikilink{Wahrheitswert} zugeordnet wird. In der \wikiit{klassischen Aussagenlogik} wird jeder Aussage genau einer der zwei Wahrheitswerte „wahr“ und „falsch“ zugeordnet. Der Wahrheitswert einer zusammengesetzten Aussage lässt sich ohne zusätzliche Informationen aus den Wahrheitswerten ihrer Teilaussagen bestimmen.
+	\end{wikicite}
+}
+
+\newcommand*    {\Auswertung}  [1][]{\glstext[#1]{Auswertung}}
+\newcommand*    {\Auswertungen}[1][]{\glstext[#1]{Auswertung}[en]}
+\newglossaryentry{Auswertung}{
+	name        ={Auswertung \addIdx             {Auswertung}},
+	text        ={Auswertung},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Auswertung
+	}
+}
+
+\newcommand*    {\Axiom}  [1][]{\glstext[#1]{Axiom}}
+\newcommand*    {\Axiome} [1][]{\glstext[#1]{Axiom}[e]}
+\newcommand*    {\Axiomen}[1][]{\glstext[#1]{Axiom}[en]}
+%ToDo prüfen
+\newglossaryentry{Axiom}{
+	name        ={Axiom \addIdx             {Axiom}},
+	text        ={Axiom},
+	see         ={MtsAxiom,MtsAxiomSet},
+	description ={
+		Eine \Formel, die unbewiesen als wahr angesehen wird.
+	}
+}
+
+\newcommand*    {\Axiomensystem} [1][]{\glstext[#1]{Axiomensystem}}
+\newcommand*    {\Axiomensysteme}[1][]{\glstext[#1]{Axiomensystem}[e]}
+%ToDo prüfen
+\newglossaryentry{Axiomensystem}{
+	name        ={Axiomensystem \addIdx            {Axiomensystem}},
+	text        ={Axiomensysteme},
+	description ={
+		Eine \Menge\ von \Axiomen.
+	}
+}
+
+%B === B === B === B === B === B === B === B === B === B === B === B === B === B
+
+\newcommand*    {\Basisregel} [1][]{\glstext[#1]{Basisregel}}
+\newcommand*    {\Basisregeln}[1][]{\glstext[#1]{Basisregel}[n]}
+%ToDo prüfen
+\newglossaryentry{Basisregel}{
+	name        ={Basisregel \addIdx            {Basisregel}},
+	text        ={Basisregel},
+	description ={
+		Eine \Schlussregel, die nicht mehr auf andere zurückgeführt wird.
+		Obwohl das auch auf die \Identitaetsregeln\ zutrifft, werden diese hier aber nicht dazu gezählt.
+	}
+}
+
+\newcommand*    {\Baustein} [1][]{\glstext[#1]{Baustein}}
+\newcommand*    {\Bausteine}[1][]{\glstext[#1]{Baustein}[e]}
+%ToDo prüfen
+\newglossaryentry{Baustein}{
+	name        ={Baustein \addIdx            {Baustein}},
+	text        ={Baustein},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Baustein
+	}
+}
+
+\newcommand*    {\Beispielsymbol}[1][]{\glstext[#1]{Beispielsymbol}}
+%ToDo prüfen
+\newglossaryentry{Beispielsymbol}{
+	name        ={Beispielsymbol \addIdx           {Beispielsymbol}},
+	text        ={Beispielsymbol},
+	see         ={Symbol},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Beispielsymbol
+	}
+}
+
+\newcommand*    {\beschraenkt}  [1][]{\glstext[#1]{beschraenkt}}
+\newcommand*    {\beschraenkte} [1][]{\glstext[#1]{beschraenkt}[e]}
+\newcommand*    {\beschraenkten}[1][]{\glstext[#1]{beschraenkt}[en]}
+%ToDo prüfen
+\newglossaryentry{beschraenkt}{
+	name        ={beschränkt \addIdx[
+		name    ={beschränkt}]                    {beschraenkt}},
+	text        ={beschränkt},
+	description ={
+		Eine \Schlussregel\ heißt \beschraenkt, wenn sie nur endlich viele Prämissen und Konklusionen hat.
+	}
+}
+
+\newcommand*    {\Beweis}  [1][]{\glstext[#1]{Beweis}}
+\newcommand*    {\Beweise} [1][]{\glstext[#1]{Beweis}[e]}
+\newcommand*    {\Beweises}[1][]{\glstext[#1]{Beweis}[es]}
+\newcommand*    {\Beweisen}[1][]{\glstext[#1]{Beweis}[en]}
+%ToDo prüfen
+\newglossaryentry{Beweis}{
+	name        ={Beweis \addIdx             {Beweis}},
+	text        ={Beweis},
+	description ={
+		Eine zulässige Ableitung von \Konklusionen\ aus gegebenen \Praemissen.
+	}
+}
+
+\newsynonym{\beweisbar}{beweisbar}{\ableitbar}
+
+\newcommand*    {\Beweisschritt}  [1][]{\glstext[#1]{Beweisschritt}}
+\newcommand*    {\Beweisschritte} [1][]{\glstext[#1]{Beweisschritt}[e]}
+\newcommand*    {\Beweisschritten}[1][]{\glstext[#1]{Beweisschritt}[en]}
+%ToDo prüfen
+\newglossaryentry{Beweisschritt}{
+	name        ={Beweisschritt \addIdx             {Beweisschritt}},
+	text        ={Beweisschritt},
+	see         ={MtsBeweisschritt,MtsBeweisschrittSet,MtsBeweisschrittTup},
+	description ={
+		Eine Vorschrift, wie aus vorgegebenen \Aussagen\ (den \Praemissen) weitere (die \Konklusionen) folgen.
+	}
+}
+
+\newcommand*    {\Beweisschrittfolge} [1][]{\glstext[#1]{Beweisschrittfolge}}
+\newcommand*    {\Beweisschrittfolgen}[1][]{\glstext[#1]{Beweisschrittfolge}[n]}
+%ToDo prüfen
+\newglossaryentry{Beweisschrittfolge}{
+	name        ={Beweisschrittfolge \addIdx            {Beweisschrittfolge}},
+	text        ={Beweisschrittfolge},
+	description ={
+		Eine Folge von \Beweisschritten.
+	}
+}
+
+\newcommand*    {\Beweisschrittmenge} [1][]{\glstext[#1]{Beweisschrittmenge}}
+\newcommand*    {\Beweisschrittmengen}[1][]{\glstext[#1]{Beweisschrittmenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Beweisschrittmenge}{
+	name        ={Beweisschrittmenge \addIdx            {Beweisschrittmenge}},
+	text        ={Beweisschrittmenge},
+	description ={
+		Eine \Menge\ von \Beweisschritten, insbesondere die \Menge\ der Glieder einer \Beweisschrittfolge.
+	}
+}
+
+\newcommand*    {\binaer}  [1][]{\glstext[#1]{binaer}}
+\newcommand*    {\binaere} [1][]{\glstext[#1]{binaer}[e]}
+\newcommand*    {\binaeren}[1][]{\glstext[#1]{binaer}[en]}
+%ToDo prüfen
+\newglossaryentry{binaer}{
+	name        ={binär \addIdx[
+		name    ={binär}]                   {binaer}},
+	text        ={binär},
+	see         ={unaer},
+	description ={
+		Eine \Operation, \Funktion\ oder \Relation\ heißt \gloFt{binär}, wenn ihre \Stelligkeit\ gleich 2 ist.
+	}
+}
+
+%D === D === D === D === D === D === D === D === D === D === D === D === D === D
+
+\newcommand*    {\Darstellung}  [1][]{\glstext[#1]{Darstellung}}
+\newcommand*    {\Darstellungen}[1][]{\glstext[#1]{Darstellung}[en]}
+%ToDo prüfen
+\newglossaryentry{Darstellung}{
+	name        ={Darstellung \addIdx             {Darstellung}},
+	text        ={Darstellung},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Darstellung (quasi Name) im Gegensatz zum Objekt an sich
+	}
+}
+
+\newcommand*    {\interneDarstellung}[1][]{\glstext [#1]{interneDarstellung}}
+%ToDo prüfen
+\newglossaryentry{interneDarstellung}{
+	name       =                 {---, interne \addIdx[
+		name   =                 {---, interne},
+		sort   =         {Darstellung, interne}]        {interneDarstellung}},
+	sort       =         {Darstellung, interne},
+	text       ={interne Darstellung},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=interne Darstellung
+	}
+}
+
+\newcommand*    {\logischeDarstellung}[1][]{\glstext [#1]{logischeDarstellung}}
+\newcommand*   {\logischenD}          [1][]{\glsuseri[#1]{logischeDarstellung}}
+%ToDo prüfen
+\newglossaryentry{logischeDarstellung}{
+	name       =                 {---, logische \addIdx[
+		name   =                 {---, logische},
+		sort   =         {Darstellung, logische}]        {logischeDarstellung}},
+	sort       =         {Darstellung, logische},
+	text       ={logische Darstellung},
+	user1      ={logischen},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=logische Darstellung
+	}
+}
+
+\newcommand*    {\Darstellungsweise} [1][]{\glstext[#1]{Darstellungsweise}}
+\newcommand*    {\Darstellungsweisen}[1][]{\glstext[#1]{Darstellungsweise}[n]}
+\newglossaryentry{Darstellungsweise}{
+	name        ={Darstellungsweise \addIdx            {Darstellungsweise}},
+	text        ={Darstellungsweise},
+	description ={
+		Die Art der \Darstellung\ mathematischer \Objekte.
+	}
+}
+
+\newcommand*    {\Definition}  [1][]{\glstext[#1]{Definition}}
+\newcommand*    {\Definitionen}[1][]{\glstext[#1]{Definition}[en]}
+%ToDo prüfen
+\newglossaryentry{Definition}{
+	name        ={Definition \addIdx             {Definition}},
+	text        ={Definition},
+	see         ={Metadefinition},
+	description ={
+		Eine Definition mit Hilfe des Symbols \chrqt{\MtsDefEq}.
+		\seqqt{$A \MtsDefEq B$} steht für \standsfor{$A$ ist \defFt{definitionsgemäß gleich} $B$} für \Objekte\ $A$ und $B$.
+		Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
+	}
+}
+
+\newcommand*    {\Definitionsbereich} [1][]{\glstext [#1]{Definitionsbereich}}
+\newcommand*    {\Definitionsbereiche}[1][]{\glstext [#1]{Definitionsbereich}[e]}
+\newcommand*    {\DefinitionsB}       [1][]{\glsuseri[#1]{Definitionsbereich}}
+%ToDo prüfen
+\newglossaryentry{Definitionsbereich}{
+	name        ={Definitionsbereich \addIdx            {Definitionsbereich}},
+	text        ={Definitionsbereich},
+	user1       ={Definitions},
+	see         ={MtsDb,Quellbereich,Funktion},
+	description ={
+		Für eine \Funktion\ \FunktionDef{f}{A}{B} ist $\MtsDb(f)A$ ihr \Definitionsbereich\ (domain).
+	}
+}
+
+\newcommand*    {\Differenz} [1][]{\glstext[#1]{Differenz}}
+\newglossaryentry{Differenz}{
+	name        ={Differenz \addIdx            {Differenz}},
+	text        ={Differenz},
+	description ={
+		Eine \Mengenoperation: \todo{Beschreibung fehlt noch}% ToDo=Differenz von Mengen
+	}
+}
+
+\newcommand*    {\Durchschnitt} [1][]{\glstext[#1]{Durchschnitt}}
+\newglossaryentry{Durchschnitt}{
+	name        ={Durchschnitt \addIdx            {Durchschnitt}},
+	text        ={Durchschnitt},
+	description ={
+		Eine \Mengenoperation: \todo{Beschreibung fehlt noch}% ToDo=Durchschnitt von Mengen
+	}
+}
+
+%E === E === E === E === E === E === E === E === E === E === E === E === E === E
+
+\newcommand*    {\echt} [1][]{\glstext[#1]{echt}}
+\newcommand*    {\echte}[1][]{\glstext[#1]{echt}[e]}
+%ToDo prüfen
+\newglossaryentry{echt}{
+	name        ={echt \addIdx            {echt}},
+	text        ={echt},
+	description ={
+		Attribut für ???% ToDo=echt
+	}
+}
+
+\newcommand*     {\interessierendeEigenschaft}  [1][]{\glstext [#1]{interessierendeEigenschaft}}
+\newcommand*    {\interessierendenEigenschaft}  [1][]{\glsuseri[#1]{interessierendeEigenschaft}}
+\newcommand*    {\interessierendenEigenschaften}[1][]{\glsuseri[#1]{interessierendeEigenschaft}[en]}
+%ToDo prüfen
+\newglossaryentry {interessierendeEigenschaft}{
+	name       =                 {Eigenschaft, interessierende \addIdx[
+		name   =                 {Eigenschaft, interessierende},
+		sort   =                 {Eigenschaft, interessierende}]   {interessierendeEigenschaft}},
+	sort       =                 {Eigenschaft, interessierende},
+	text       ={interessierende  Eigenschaft},
+	user1      ={interessierenden Eigenschaft},
+	description={
+		Solche Eigenschaften von \Objekten, die im aktuellen Zusammenhang von Interesse sind, \textzB\ einen bestimmten Wert zu haben, Element einer bestimmten \Menge\ zu sein, ein bestimmtes \Objekt\ zu bezeichnen, usw.
+	}
+}
+
+\newcommand*        {\Element} [1][]{\glstext[#1]{Element}}
+\newcommand*        {\Elemente}[1][]{\glstext[#1]{Element}[e]}
+\longnewglossaryentry{Element}{
+	name            ={Element \addIdx            {Element}},
+	text            ={Element},
+	see             ={Element,Menge,Mengenlehre,Relation},
+}{
+	\begin{wikicite}{bib:Element}
+		Ein \wikibf{Element} in der \wikilink{Mathematik} ist immer im Rahmen der \wikilink{Mengenlehre} oder \wikilink{Klassenlogik} zu verstehen. Die grundlegende \wikilink{Relation}, wenn $x$ ein Element ist und $M$ eine \wikilink{Menge} oder \wikilink{Klasse} ist, lautet:
+		\begin{quote}
+			„$x$ ist Element von $M$“ oder mit Hilfe des \wikilink{Elementzeichens} „x \MtsIn\ M“.
+		\end{quote}
+		Die Mengendefinition von \wikilink{Georg Cantor} beschreibt anschaulich, was unter einem Element im Zusammenhang mit einer Menge zu verstehen ist:
+		\begin{quote}
+			„Unter einer ‚Menge‘ verstehen wir jede Zusammenfassung $M$ von bestimmten wohlunterschiedenen Objekten $m$ unserer Anschauung oder unseres Denkens (welche die ‚Elemente‘ von $M$ genannt werden) zu einem Ganzen.“
+		\end{quote}
+		Diese anschauliche Mengenauffassung der \wikilink{naiven Mengenlehre} erwies sich als nicht widerspruchsfrei. Heute wird daher eine \wikilink{axiomatische} Mengenlehre benutzt, meist die \wikilink{Zermelo-Fraenkel-Mengenlehre}, teilweise auch eine allgemeinere \wikilink{Klassenlogik}.
+	\end{wikicite}
+}
+
+\newcommand*    {\Elementoperation}  [1][]{\glstext[#1]{Elementoperation}}
+\newcommand*    {\Elementoperationen}[1][]{\glstext[#1]{Elementoperation}[en]}
+%ToDo prüfen
+\newglossaryentry{Elementoperation}{
+	name        ={Elementoperation \addIdx             {Elementoperation}},
+	text        ={Elementoperation},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Elementoperation
+	}
+}
+
+\newcommand*    {\Elementrelation}  [1][]{\glstext[#1]{Elementrelation}}
+\newcommand*    {\Elementrelationen}[1][]{\glstext[#1]{Elementrelation}[en]}
+%ToDo prüfen
+\newglossaryentry{Elementrelation}{
+	name        ={Elementrelation \addIdx             {Elementrelation}},
+	text        ={Elementrelation},
+	see         ={Komponentenrelation},
+	description ={
+		Eine \gloFt{Elementrelation} ist eine Relation zwischen einem \Element\ und einer \Menge: \MtsIn, \MtsNi, \MtsInN und \MtsNiN
+	}
+}
+
+\newcommand*    {\Ergebnis}   [1][]{\glstext[#1]{Ergebnis}}
+\newcommand*    {\Ergebnisse} [1][]{\glstext[#1]{Ergebnis}[se]}
+\newcommand*    {\Ergebnissen}[1][]{\glstext[#1]{Ergebnis}[sen]}
+%ToDo prüfen
+\newglossaryentry{Ergebnis}{
+	name        ={Ergebnis \addIdx              {Ergebnis}},
+	text        ={Ergebnis},
+	see         ={MtsErgebnis,MtsErgebnisSet,MtsErgebnisRel},
+	description ={
+		Eine \Ableitung:
+		Ein \Ergebnis\ eines \Beweises.
+	}
+}
+
+\newcommand*    {\Ergebnismenge} [1][]{\glstext[#1]{Ergebnismenge}}
+\newcommand*    {\Ergebnismengen}[1][]{\glstext[#1]{Ergebnismenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Ergebnismenge}{
+	name        ={Ergebnismenge \addIdx            {Ergebnismenge}},
+	text        ={Ergebnismenge},
+	description ={
+		Eine \Ableitungsmenge:
+		Die \Menge\ \MtsErgebnisSet\ der \Ergebnisse\ eines \Beweises.
+	}
+}
+
+\newcommand*    {\Ersetzung}  [1][]{\glstext[#1]{Ersetzung}}
+\newcommand*    {\Ersetzungen}[1][]{\glstext[#1]{Ersetzung}[en]}
+%ToDo prüfen
+\newglossaryentry{Ersetzung}{
+	name        ={Ersetzung \addIdx             {Ersetzung}},
+	text        ={Ersetzung},
+	description ={
+		Eine \Funktion\ zur \Transformation\ einer \Formel\ mittels \Ersetzung\ in eine gleichwertige.
+		Die \Ersetzung\ heißt \zulaessig, wenn sie vorgegebene Regeln erfüllt.
+	}
+}
+
+\newcommand*    {\Ersetzungsmenge} [1][]{\glstext[#1]{Ersetzungsmenge}}
+\newcommand*    {\Ersetzungsmengen}[1][]{\glstext[#1]{Ersetzungsmenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Ersetzungsmenge}{
+	name        ={Ersetzungsmenge \addIdx            {Ersetzungsmenge}},
+	text        ={Ersetzungsmenge},
+	description ={
+		Eine \Menge\ von \Ersetzungen, meistens mit \MtsErsetzungSet\ bezeichnet.
+	}
+}
+
+%F === F === F === F === F === F === F === F === F === F === F === F === F === F
+
+\newcommand*    {\Fachbegriff}  [1][]{\glstext[#1]{Fachbegriff}}
+\newcommand*    {\Fachbegriffe} [1][]{\glstext[#1]{Fachbegriff}[e]}
+\newcommand*    {\Fachbegriffen}[1][]{\glstext[#1]{Fachbegriff}[en]}
+%ToDo prüfen
+\newglossaryentry{Fachbegriff}{
+	name        ={Fachbegriff \addIdx             {Fachbegriff}},
+	text        ={Fachbegriff},
+	description ={
+		Ein Name für einen mathematischen Begriff.
+	}
+}
+
+\newcommand*    {\Folge} [1][]{\glstext[#1]{Folge}}
+\newcommand*    {\Folgen}[1][]{\glstext[#1]{Folge}[n]}
+%ToDo prüfen
+\newglossaryentry{Folge}{
+	name        ={Folge \addIdx            {Folge}},
+	text        ={Folge},
+	see         ={MtsLen,leereFolge,Tupel},
+	description ={
+		Ein \gloFt{Folge}\alternativi{Sequenz} $\vec{a}$ ist eine Aneinanderreihung von \defFt{\Komponenten} $a_i$, $i \in \MtsINo$, geschrieben $(a_1, a_2, \dots)$.
+		Sind alle \Komponenten\ Elemente einer \Menge\ $M$, so heißt $\vec{a}$ ein \Folge\ \defFt{auf} $M$.
+		Bricht die \Folge\ ab, \textdh\ gibt es ein $n \in \MtsINo$ mit $\vec{a} = (a_1, \dots, a_n)$, so heißt die \Folge\ \defFt{endlich} von der \defFt{Länge} $n$.
+		Ist die Länge $n = 0$, so sprechen wir von der \defFt{\leerenFolge} und bezeichnen sie mit \seqqt{$()$}.
+		Eine endliche \Folge\ der Länge $n$ heißt auch \defFt{$n$-\Tupel} und die leere \Folge\ demnach \defFt{$0$-\Tupel}.
+	}
+}
+
+\newcommand*     {\leereFolge} [1][]{\glstext [#1]{leereFolge}}
+\newcommand*     {\leereFolgen}[1][]{\glstext [#1]{leereFolge}[n]}
+\newcommand*    {\leerenFolge} [1][]{\glsuseri[#1]{leereFolge}}
+%ToDo prüfen
+\newglossaryentry {leereFolge}{
+	name       =         {---, leere \addIdx[
+		name   =         {---, leere},
+		sort   =       {Folge, leere}]           {leereFolge}},
+	sort       =       {Folge, leere},
+	text       ={leere  Folge},
+	user1      ={leeren Folge},
+	see        ={MtsLen,Folge,Tupel},
+	description={
+		Eine \Folge\ heißt \defFt{leer}, wenn ihre Länge $0$ ist, \textdh\ wenn sie keine \Komponenten\ besitzt.
+	}
+}
+
+\newcommand*    {\Folgenrelation}  [1][]{\glstext[#1]{Folgenrelation}}
+\newcommand*    {\Folgenrelationen}[1][]{\glstext[#1]{Folgenrelation}[en]}
+%ToDo prüfen
+\newglossaryentry{Folgenrelation}{
+	name        ={Folgenrelation \addIdx             {Folgenrelation}},
+	text        ={Folgenrelation},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Folgenrelation
+	}
+}
+
+\newcommand*{\Folgerungen}[1][]{\glstext[#1]{Folgerung}[en]}
+\newsynonym{\Folgerung}{Folgerung}{\Konklusion}
+
+\newsynonym{\Folgerungsmenge}{Folgerungsmenge}{\Konklusionsmenge}
+
+\newcommand*    {\Formationsregel} [1][]{\glstext[#1]{Formationsregel}}
+\newcommand*    {\Formationsregeln}[1][]{\glstext[#1]{Formationsregel}[n]}
+%ToDo prüfen
+\newglossaryentry{Formationsregel}{
+	name        ={Formationsregel \addIdx            {Formationsregel}},
+	text        ={Formationsregel},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Formationsregel
+	}
+}
+
+\newcommand*    {\Formel} [1][]{\glstext[#1]{Formel}}
+\newcommand*    {\Formeln}[1][]{\glstext[#1]{Formel}[n]}
+%ToDo prüfen - besser: Formel = Element einer Sprache?
+\newglossaryentry{Formel}{
+	name        ={Formel \addIdx            {Formel}},
+	text        ={Formel},
+	description ={
+		Unter einer \Formel\ verstehen wir stets eine mathematische \Formel.
+		Diese kann aus einem einzigen \Symbol\ bestehen (\atomare\ \Formel), andererseits aber auch mehrdimensional sein, lässt sich dann aber mittels geeigneter \Definitionen\ immer eindeutig als eine \Zeichenfolge\ schreiben.
+	}
+}
+
+\newcommand*    {\allgemeingueltigeFormel} [1][]{\glstext[#1]{allgemeingueltigeFormel}}
+\newcommand*   {\allgemeingueltigenFormel} [1][]{\glsuseri[#1]{allgemeingueltigeFormel}}
+%ToDo prüfen
+\newglossaryentry{allgemeingueltigeFormel}{
+	name       =                     {---, allgemeingültige \addIdx[
+		name   =                     {---, allgemeingültige},
+		sort   =                  {Formel, allgemeingültige}]{allgemeingueltigeFormel}},
+	sort       =                  {Formel, allgemeingültige},
+	text       ={allgemeingültige  Formel},
+	user1      ={allgemeingültigen Formel},
+	description={
+		Eine \Formel\ heißt \defFt{allgemeingültig}, wenn sie aus den \Axiomen\ und \allgemeingueltigenSchlussregeln\ abgeleitet werden kann.
+	}
+}
+
+\newcommand*     {\aussagenlogischeFormel} [1][]{\glstext  [#1]{aussagenlogischeFormel}}
+\newcommand*     {\aussagenlogischeFormeln}[1][]{\glstext  [#1]{aussagenlogischeFormel}[n]}
+\newcommand*    {\aussagenlogischenFormel} [1][]{\glsuseri [#1]{aussagenlogischeFormel}}
+\newcommand*    {\aussagenlogischenFormeln}[1][]{\glsuseri [#1]{aussagenlogischeFormel}[n]}
+\newcommand*     {\aussagenlogischeF}      [1][]{\glsuserii[#1]{aussagenlogischeFormel}}
+%ToDo prüfen
+\newglossaryentry {aussagenlogischeFormel}{
+	name       =                     {---, aussagenlogische \addIdx[
+		name   =                     {---, aussagenlogische},
+		sort   =                  {Formel, aussagenlogische}]  {aussagenlogischeFormel}},
+	sort       =                  {Formel, aussagenlogische},
+	text       ={aussagenlogische  Formel},
+	user1      ={aussagenlogischen Formel},
+	user2      ={aussagenlogische},
+	description={
+		Eine \Formel\ heißt \defFt{aussagenlogisch}, wenn sie ein Element von \OjkFor\ ist.
+	}
+}
+
+\newcommand*    {\Formelmenge} [1][]{\glstext[#1]{Formelmenge}}
+\newcommand*    {\Formelmengen}[1][]{\glstext[#1]{Formelmenge}n[]}
+%ToDo prüfen
+\newglossaryentry{Formelmenge}{
+	name        ={Formelmenge \addIdx            {Formelmenge}},
+	text        ={Formelmenge},
+	description ={
+		Eine \Menge\ von \Formeln, oft mit \MtsSprache\ bezeichnet.
+		Man nennt \MtsSprache\ auch eine \Sprache\ und ihre Elemente \Woerter, insbesondere dann, wenn es eindeutige Regeln zur Konstruktion von \MtsSprache\ gibt.
+		Wir bevorzugen „\Formel“ und „\Formelmenge“.
+	}
+}
+
+\newcommand*        {\Funktion}  [1][]{\glstext  [#1]{Funktion}}
+\newcommand*        {\Funktionen}[1][]{\glstext  [#1]{Funktion}[en]}
+\newcommand*     {\MtsFktSep}    [1][]{\glsuservi[#1]{Funktion}}
+\newcommand*     {\MtsFktArrow}  [1][]{\glssymbol[#1]{Funktion}}
+%ToDo prüfen
+\longnewglossaryentry{Funktion}{
+	name            ={Funktion \addIdx               {Funktion}},
+	text            ={Funktion},
+	user6           ={:},
+	symbol          ={\ensuremath{\RawMtsFktArrow}},
+	see             ={Abbildung,Element,Menge,Objekt,Relation},
+}{
+	\begin{wikicite}{bib:Funktion}
+		In der \wikilink{Mathematik} ist eine \wikibf{Funktion} (lateinisch \wikiit{functio}) oder \wikibf{Abbildung} eine Beziehung (\wikilink{Relation}) zwischen zwei \wikilink{Mengen}, die jedem Element der einen Menge (Funktionsargument, unabhängige Variable, $x$-Wert) genau ein Element der anderen Menge (Funktionswert, abhängige Variable, $y$-Wert) zuordnet. Der Funktionsbegriff wird in der Literatur unterschiedlich definiert, jedoch geht man generell von der Vorstellung aus, dass Funktionen \wikilink{mathematischen Objekten} mathematische Objekte zuordnen, zum Beispiel jeder reellen Zahl deren Quadrat.  Das Konzept der Funktion oder Abbildung nimmt in der modernen Mathematik eine zentrale Stellung ein; es enthält als Spezialfälle unter anderem \wikilink{parametrische Kurven}, Skalar- und \wikilink{Vektorfelder}, \wikilink{Transformationen}, \wikilink{Operationen}, \wikilink{Operatoren} und vieles mehr.
+	\end{wikicite}
+
+	Eine \defFt{$n$-\stellige\ Funktion} $f$ von einer \Menge\ $A = A_1 \MtsTimes \dots \MtsTimes A_n$, dem \Definitionsbereich, in eine \Menge\ $B$, den \Zielbereich, ist eine ($n$+1)-\stellige\ \Relation\ $(G,A_1,\dots,A_n,B)$ derart, dass es für jedes $\vec{a} = (a_1,\dots,a_n)$ mit $a_i \in A_i$ genau ein $b \in B$ gibt mit $(a_1,\dots,a_n,b) \in f$.
+	Dieses $b$ wird auch mit \seqqt{$f(a_1,\dots,a_n)$} , \seqqt{$f a_1 \dots a_n$} , \seqqt{$f(\vec{a})$} oder \seqqt{$f\vec{a}$} bezeichnet.
+	\\Schreibweise: \seqqt{\FunktionDef{f}{A}{B}} \textbzw\ \seqqt{$\FunktionDef{f}{A_1 \MtsTimes \dots \MtsTimes A_n}{B}$}
+}
+
+\newcommand*    {\Funktionssymbol}  [1][]{\glstext[#1]{Funktionssymbol}}
+\newcommand*    {\Funktionssymbole} [1][]{\glstext[#1]{Funktionssymbol}[e]}
+\newcommand*    {\Funktionssymbolen}[1][]{\glstext[#1]{Funktionssymbol}[en]}
+%ToDo prüfen
+\newglossaryentry{Funktionssymbol}{
+	name        ={Funktionssymbol \addIdx             {Funktionssymbol}},
+	text        ={Funktionssymbol},
+	description ={
+		Ein \Symbol\ für eine \Funktion.
+	}
+}
+
+\newcommand*    {\Funktionswert} [1][]{\glstext[#1]{Funktionswert}}
+\newcommand*    {\Funktionswerte}[1][]{\glstext[#1]{Funktionswert}[e]}
+%ToDo prüfen
+\newglossaryentry{Funktionswert}{
+	name        ={Funktionswert \addIdx            {Funktionswert}},
+	text        ={Funktionswert},
+	description ={
+		einer \Funktion.
+	}
+}
+
+%G === G === G === G === G === G === G === G === G === G === G === G === G === G
+
+\newcommand*    {\Gleichheit}[1][]{\glstext[#1]{Gleichheit}}
+%ToDo prüfen
+\newglossaryentry{Gleichheit}{
+	name        ={Gleichheit \addIdx           {Gleichheit}},
+	text        ={Gleichheit},
+	description ={
+		Eine \Gleichheitsrelation:
+		Zwei Objekte $A$ und $B$ sind \defFt{gleich} (dasselbe; identisch), $A \MtsEq B$, wenn sie in den \interessierendenEigenschaften\ für \MtsEq\ übereinstimmen.
+	}
+}
+
+\newcommand*    {\Gleichheitsrelation}  [1][]{\glstext[#1]{Gleichheitsrelation}}
+\newcommand*    {\Gleichheitsrelationen}[1][]{\glstext[#1]{Gleichheitsrelation}[en]}
+%ToDo prüfen
+\newglossaryentry{Gleichheitsrelation}{
+	name        ={Gleichheitsrelation \addIdx             {Gleichheitsrelation}},
+	text        ={Gleichheitsrelation},
+	description ={
+		Eine mit \Gleichheit\ verwandte \Relation: \MtsEq, \MtsEqN, \MtsAequiv\ und \MtsAequivN.
+	}
+}
+
+\newcommand*    {\Gliederungszeichen}  [1][]{\glstext[#1]{Gliederungszeichen}}
+%ToDo prüfen
+\newglossaryentry{Gliederungszeichen}{
+	name        ={Gliederungszeichen \addIdx             {Gliederungszeichen}},
+	text        ={Gliederungszeichen},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Gliederungszeichen
+	}
+}
+
+\newcommand*    {\Graph}  [1][]{\glstext[#1]{Graph}}
+\newcommand*    {\Graphen}[1][]{\glstext[#1]{Graph}[en]}
+%ToDo prüfen
+\newglossaryentry{Graph}{
+	name        ={Graph \addIdx             {Graph}},
+	text        ={Graph},
+	see      ={MtsGraph},
+	description ={
+		einer \Funktion\ oder \Relation.
+	}
+}
+
+%I === I === I === I === I === I === I === I === I === I === I === I === I === I
+
+\newcommand*    {\Identitaetsregel} [1][]{\glstext[#1]{Identitaetsregel}}
+\newcommand*    {\Identitaetsregeln}[1][]{\glstext[#1]{Identitaetsregel}[n]}
+%ToDo prüfen
+\newglossaryentry{Identitaetsregel}{
+	name        ={Identitätsregel \addIdx[
+		name    ={Identitätsregel}]                   {Identitaetsregel}},
+	text        ={Identitätsregel},
+	description ={
+		Eigentlich eine \Basisregel\ zur Identität.
+		Da die \Identitaetsregeln\ nur zur Rechtfertigung der \Ersetzung\ verwendet werden, werden sie hier nicht zu den \Basisregeln\ gezählt.
+	}
+}
+
+%J === J === J === J === J === J === J === J === J === J === J === J === J === J
+
+\newcommand*        {\Junktor}  [1][]{\glstext[#1]{Junktor}}
+\newcommand*        {\Junktoren}[1][]{\glstext[#1]{Junktor}[en]}
+%ToDo prüfen
+\longnewglossaryentry{Junktor}{
+	name            ={Junktor \addIdx             {Junktor}},
+	text            ={Junktor},
+	see             ={Metajunktor},
+}{
+	\begin{wikicite}{bib:Junktor}
+		Ein \wikibf{Junktor} (von \wikilink{lat.} \wikiit{iungere} „verknüpfen, verbinden“) ist eine \wikilink{logische Verknüpfung} zwischen Aussagen innerhalb der \wikilink{Aussagenlogik}, also ein logischer \wikilink{Operator}. Junktoren werden auch Konnektive, Konnektoren, Satzoperatoren, Satzverknüpfer, Satzverknüpfungen, Aussagenverknüpfer, logische Bindewörter, Verknüpfungszeichen oder Funktoren genannt und als \wikilink{logische Partikel} klassifiziert.
+
+		Sprachlich wird zwischen der jeweiligen Verknüpfung selbst (zum Beispiel der \wikilink{Konjunktion}) und dem sie bezeichnenden Wort beziehungsweise Sprachzeichen (zum Beispiel dem Wort „und“ beziehungsweise dem Zeichen „\OjkAnd“) oft nicht unterschieden.
+
+		[\textdots]
+	\end{wikicite}
+
+	Ein \gloFt{Junktor} ist eine \aussagenlogischeOperation\ oder -\aRelation.
+	Da die Werte einer aussagenlogischen \Operation\ \Wahrheitswerte\ sind, kann man einen \Junktor\ auch stets als \Relation\ verstehen.
+}
+
+\newcommand*    {\binaererJunktor}  [1][]{\glstext [#1]{binaererJunktor}}
+\newcommand*    {\binaerenJunktoren}[1][]{\glsuseri[#1]{binaererJunktor}[en]}
+%ToDo prüfen
+\newglossaryentry{binaererJunktor}{
+	name        =            {---, binärer \addIdx[
+		name    =            {---, binärer},
+		sort    =        {Junktor, binärer}]           {binaererJunktor}},
+	sort        =        {Junktor, binärer},
+	text        ={binärer Junktor},
+	user1       ={binären Junktor},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=binärer Junktor
+	}
+}
+
+\newcommand*    {\unaererJunktor}  [1][]{\glstext [#1]{unaererJunktor}}
+\newcommand*    {\unaerenJunktoren}[1][]{\glsuseri[#1]{unaererJunktor}[en]}
+%ToDo prüfen
+\newglossaryentry{unaererJunktor}{
+	name        =           {---, unärer \addIdx[
+		name    =           {---, unärer},
+		sort    =       {Junktor, unärer}]            {unaererJunktor}},
+	sort        =       {Junktor, unärer},
+	text        ={unärer Junktor},
+	user1       ={unären Junktor},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=unärer Junktor
+	}
+}
+
+\newcommand*    {\Junktorsymbol} [1][]{\glstext[#1]{Junktorsymbol}}
+\newcommand*    {\Junktorsymbole}[1][]{\glstext[#1]{Junktorsymbol}[e]}
+%ToDo prüfen
+\newglossaryentry{Junktorsymbol}{
+	name        ={Junktorsymbol \addIdx            {Junktorsymbol}},
+	text        ={Junktorsymbol},
+	description ={
+		Ein \Symbol\ für einen \Junktor.
+	}
+}
+
+%K === K === K === K === K === K === K === K === K === K === K === K === K === K
+
+\newcommand*    {\Klammerung}[1][]{\glstext[#1]{Klammerung}}
+%ToDo prüfen
+\newglossaryentry{Klammerung}{
+	name        ={Klammerung \addIdx           {Klammerung}},
+	text        ={Klammerung},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Klammerung
+	}
+}
+
+\newcommand*    {\Komponente} [1][]{\glstext[#1]{Komponente}}
+\newcommand*    {\Komponenten}[1][]{\glstext[#1]{Komponente}[n]}
+%ToDo prüfen
+\newglossaryentry{Komponente}{
+	name        ={Komponente \addIdx            {Komponente}},
+	text        ={Komponente},
+	see         ={Folge,Tupel},
+	description ={
+		Die \Komponenten\ einer \Folge\ $\vec{a} = (a_1, a_2, \dots)$ sind die $a_i$.
+		$a_i$ heißt die \defFt{$i$-te \Komponente} von $\vec{a}$.
+	}
+}
+
+\newcommand*    {\Komponentenmenge}  [1][]{\glstext[#1]{Komponentenmenge}}
+\newglossaryentry{Komponentenmenge}{
+	name        ={Komponentenmenge \addIdx             {Komponentenmenge}},
+	text        ={Komponentenmenge},
+	description ={
+		$\MtsSet(\vec{a}) \MtsDefEq \MengeDef{a}{a \MtsSeqIn \vec{a}}$ ist die \gloFt{Komponentenmenge} einer \Folge\ \textbzw\ eines \Tupels\ $\vec{a}$.
+	}
+}
+
+\newcommand*    {\Komponentenrelation}  [1][]{\glstext[#1]{Komponentenrelation}}
+\newcommand*    {\Komponentenrelationen}[1][]{\glstext[#1]{Komponentenrelation}[en]}
+%ToDo prüfen
+\newglossaryentry{Komponentenrelation}{
+	name        ={Komponentenrelation \addIdx             {Komponentenrelation}},
+	text        ={Komponentenrelation},
+	see         ={Elementrelation},
+	description ={
+		Eine \gloFt{Komponentenrelation} ist eine Relation zwischen einer (möglichen) \Komponente\ und einer \Folge: \MtsSeqIn, \MtsSeqNi, \MtsSeqInN und \MtsSeqNiN
+	}
+}
+
+\newcommand*    {\Konklusion}  [1][]{\glstext[#1]{Konklusion}}
+\newcommand*    {\Konklusionen}[1][]{\glstext[#1]{Konklusion}[en]}
+\newglossaryentry{Konklusion}{
+	name        ={Konklusion \addIdx             {Konklusion}},
+	text        ={Konklusion},
+	see         ={Schlussregel},
+	description ={
+		Eine \Ableitung:
+		Die \Konklusionen\ einer \Schlussregel\ $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ \textbzw\ $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ sind die Elemente aus \MtsKonklusionSet\ \textbzw\ \MtsKonklusionRel.
+		Die \Konklusionen\ werden normalerweise mit $\MtsKonklusion_i$ bezeichnet.
+	}
+}
+
+\newcommand*    {\Konklusionsmenge} [1][]{\glstext[#1]{Konklusionsmenge}}
+\newcommand*    {\Konklusionsmengen}[1][]{\glstext[#1]{Konklusionsmenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Konklusionsmenge}{
+	name        ={Konklusionsmenge \addIdx            {Konklusionsmenge}},
+	text        ={Konklusionsmenge},
+	description ={
+		Eine \Ableitungsmenge:
+		Die \Menge\ \MtsKonklusionSet\ der \Konklusionen\ einer \Schlussregel\ \textbzw\ eines \Beweises.
+	}
+}
+
+\newcommand*        {\Konstante} [1][]{\glstext[#1]{Konstante}}
+\newcommand*        {\Konstanten}[1][]{\glstext[#1]{Konstante}[n]}
+%ToDo prüfen
+\longnewglossaryentry{Konstante}{
+	name            ={Konstante \addIdx            {Konstante}},
+	text            ={Konstante},
+	see             ={Symbol,Variable},
+}{
+	\begin{wikicite}{bib:Konstante}
+		Allgemein ist eine \wikibf{Konstante} (von \wikilink{lateinisch} \wikiit{constans} „feststehend“) ein Zeichen beziehungsweise ein Sprachausdruck mit einer „genau bestimmte[n] Bedeutung, die im Laufe der Überlegungen unverändert bleibt“[1]. Die Konstante ist damit ein Gegenbegriff zur \wikilink{Variablen}.
+	\end{wikicite}
+}
+
+\newcommand*     {\aussagenlogischeKonstante} [1][]{\glstext [#1]{aussagenlogischeKonstante}}
+\newcommand*    {\aussagenlogischenKonstante} [1][]{\glsuseri[#1]{aussagenlogischeKonstante}}
+\newcommand*    {\aussagenlogischenKonstanten}[1][]{\glsuseri[#1]{aussagenlogischeKonstante}[n]}
+%ToDo prüfen
+\newglossaryentry {aussagenlogischeKonstante}{
+	name       =                        {---, aussagenlogische \addIdx[
+		name   =                        {---, aussagenlogische},
+		sort   =                  {Konstante, aussagenlogische}] {aussagenlogischeKonstante}},
+	sort       =                  {Konstante, aussagenlogische},
+	text       ={aussagenlogische  Konstante},
+	user1      ={aussagenlogischen Konstante},
+	description={
+		Eine \Konstante\ heißt \defFt{aussagenlogisch}, wenn sie ein Element von \OjkCon\ ist.
+	}
+}
+
+\newcommand*    {\Kontraposition}[1][]{\glstext[#1]{Kontraposition}}
+%ToDo prüfen
+\newglossaryentry{Kontraposition}{
+	name        ={Kontraposition \addIdx           {Kontraposition}},
+	text        ={Kontraposition},
+	description ={
+		Die allgemeingültige \Aussage: $ (\alpha \OjkImp \beta) \OjkImp (\OjkNot\beta \OjkImp \OjkNot\alpha) $.
+	}
+}
+
+\newcommand*    {\Kontravalenz}[1][]{\glstext[#1]{Kontravalenz}}
+%ToDo prüfen
+\newglossaryentry{Kontravalenz}{
+	name        ={Kontravalenz \addIdx           {Kontravalenz}},
+	text        ={Kontravalenz},
+	description ={
+		Eine \Gleichheitsrelation:
+		Zwei Objekte $A$ und $B$ sind \defFt{nicht äquivalent} (nicht ähnlich), $A \MtsAequivN B$, wenn sie in mindestens einer \interessierendenEigenschaft\ für \MtsAequiv\ nicht übereinstimmen.
+	}
+}
+
+%L === L === L === L === L === L === L === L === L === L === L === L === L === L
+
+\newcommand*        {\Logik}[1][]{\glstext[#1]{Logik}}
+\longnewglossaryentry{Logik}{
+	name            ={Logik \addIdx           {Logik}},
+	text            ={Logik},
+	see             ={atomar,Aussage,Aussagenlogik,Praedikatenlogik,Schlussregel},
+}{
+	\begin{wikicite}{bib:Logik}
+		Mit \wikibf{Logik} (von \wikilink{altgriechisch}
+
+		[\textdots]‚denkende Kunst‘, ‚Vorgehensweise‘) oder auch \wikibf{Folgerichtigkeit} wird im Allgemeinen das \wikilink{vernünftige Schlussfolgern} und im Besonderen dessen Lehre – die \wikibf{Schlussfolgerungslehre} oder auch \wikibf{Denklehre} – bezeichnet. In der Logik wird die Struktur von \wikilink{Argumenten} im Hinblick auf ihre \wikilink{Gültigkeit} untersucht, unabhängig vom Inhalt der \wikilink{Aussagen}. Bereits in diesem Sinne spricht man auch von „formaler“ Logik. Traditionell ist die Logik ein Teil der \wikilink{Philosophie}. Ursprünglich hat sich die traditionelle Logik in Nachbarschaft zur \wikilink{Rhetorik} entwickelt. Seit dem 20. Jahrhundert versteht man unter Logik überwiegend {symbolische Logik}, die auch als grundlegende \wikilink{Strukturwissenschaft}, z. B. innerhalb der \wikilink{Mathematik} und der \wikilink{theoretischen Informatik}, behandelt wird.
+
+		Die moderne symbolische Logik verwendet statt der \wikilink{natürlichen Sprache} eine \wikilink{künstliche Sprache} (Ein Satz wie \wikiit{Der Apfel ist rot} wird z. B. in der \wikilink{Prädikatenlogik} als $f(a)$ formalisiert, wobei $a$ für \wikiit{Der Apfel} und $f$ für \wikiit{ist rot} steht) und verwendet streng \wikilink{definierte Schlussregeln}. Ein einfaches Beispiel für ein solches \wikilink{formales System} ist die \wikilink{Aussagenlogik} (dabei werden sogenannte \wikilink{atomare Aussagen} durch Buchstaben ersetzt). Die symbolische Logik nennt man auch \wikilink{mathematische Logik} oder formale Logik im engeren Sinn.
+	\end{wikicite}
+}
+
+\newcommand*        {\mathematischeLogik}[1][]{\glstext[#1]{mathematischeLogik}}
+\longnewglossaryentry{mathematischeLogik}{
+	name            =                {---, mathematische \addIdx[
+		name        =                {---, mathematische},
+		sort        =              {Logik, mathematische}] {mathematischeLogik}},
+	sort            =              {Logik, mathematische},
+	text            ={mathematische Logik},
+	see             ={Mengenlehre,Teilgebiet},
+}{
+	\begin{wikicite}{bib:mathematischeLogik}
+		Die \wikibf{mathematische Logik}, auch \wikibf{symbolische Logik}, (alternativer Sprachgebrauch auch \wikiit{Logistik}), ist ein Teilgebiet der \wikilink{Mathematik}, insbesondere als Methode der \wikilink{Metamathematik} und eine Anwendung der modernen \wikilink{formalen Logik}. Oft wird sie wiederum in die Teilgebiete \wikilink{Modelltheorie}, \wikilink{Beweistheorie}, \wikilink{Mengenlehre} und \wikilink{Rekursionstheorie} aufgeteilt. Forschung im Bereich der mathematischen Logik hat zum Studium der \wikilink{Grundlagen der Mathematik} beigetragen und wurde auch durch dieses motiviert. Infolgedessen wurde sie auch unter dem Begriff \wikiit{Metamathematik} bekannt.
+
+		Ein Aspekt der Untersuchungen der mathematischen Logik ist das Studium der Ausdrucksstärke von formalen Logiken und formalen \wikilink{Beweissystemen}. Eine Möglichkeit, die \wikilink{Komplexität} solcher Systeme zu messen, besteht darin, festzustellen, was damit bewiesen oder definiert werden kann.
+
+		Früher wurde die mathematische Logik auch \wikiit{symbolische Logik} (als Gegensatz zur \wikilink{philosophischen Logik}) genannt, wobei jener Name mittlerweile nur noch für gewisse Aspekte der \wikilink{Beweistheorie} verwendet wird.
+	\end{wikicite}
+}
+
+%M === M === M === M === M === M === M === M === M === M === M === M === M === M
+
+\newcommand*        {\Menge} [1][]{\glstext[#1]{Menge}}
+\newcommand*        {\Mengen}[1][]{\glstext[#1]{Menge}[n]}
+\newcommand*{\MtsSetSep}{\mid}
+%ToDo prüfen
+\longnewglossaryentry{Menge}{
+	name            ={Menge \addIdx            {Menge}},
+	text            ={Menge},
+	see             ={Element,Folge,leereMenge,Mengenlehre,Tupel},
+}{
+	\begin{wikicite}{bib:Menge}
+		Eine \wikibf{Menge} ist ein Verbund, eine Zusammenfassung von einzelnen \wikilink{Elementen}. Die \wikiit{Menge} ist eines der wichtigsten und grundlegenden Konzepte der Mathematik, mit ihrer Betrachtung beschäftigt sich die \wikilink{Mengenlehre}.
+
+		Bei der Beschreibung einer Menge geht es ausschließlich um die Frage, welche Elemente in ihr enthalten sind. Es wird nicht danach gefragt, ob ein Element mehrmals enthalten ist oder ob es eine Reihenfolge unter den Elementen gibt. Eine Menge muss kein Element enthalten – es gibt genau eine Menge ohne Elemente, die „\wikilink{leere Menge}“. In der Mathematik sind die Elemente einer Menge häufig Zahlen, Punkte eines \wikilink{Raumes} oder ihrerseits Mengen. Das Konzept ist jedoch auf beliebige Objekte anwendbar: z. B. in der \wikilink{Statistik} auf Stichproben, in der Medizin auf Patientenakten, am Marktstand auf eine Tüte mit Früchten.
+
+		Ist die Reihenfolge der Elemente von Bedeutung, dann spricht man von einer endlichen oder unendlichen \wikilink{Folge}, wenn sich die Folgenglieder mit den natürlichen Zahlen aufzählen lassen (das erste, das zweite, usw.). Endliche Folgen heißen auch \wikilink{Tupel}. In einem Tupel oder einer Folge können Elemente auch mehrfach vorkommen. Ein Gebilde, das wie eine Menge Elemente enthält, wobei es zusätzlich auf die Anzahl der Exemplare jedes Elements ankommt, jedoch nicht auf die Reihenfolge, heißt \wikilink{Multimenge}.
+	\end{wikicite}
+}
+
+\newcommand*    {\leereMenge}[1][]{\glstext[#1]{leereMenge}}
+\newglossaryentry{leereMenge}{
+	name       =        {---, leere \addIdx[
+		name   =        {---, leere},
+		sort   =      {Menge, leere}]         {leereMenge}},
+	sort       =      {Menge, leere},
+	text       ={leere Menge},
+	description={
+		\MtsEmptyset, die \defFt{leere Menge}, ist die einzige \Menge\ ohne \Elemente.
+		Sie wird auch mit \seqqt{$\{\}$} bezeichnet.
+	}
+}
+
+\newcommand*        {\Mengenlehre}[1][]{\glstext[#1]{Mengenlehre}}
+%ToDo prüfen
+\longnewglossaryentry{Mengenlehre}{
+	name            ={Mengenlehre \addIdx           {Mengenlehre}},
+	text            ={Mengenlehre},
+	see             ={Axiom,Objekt,Menge,Teilgebiet},
+}{
+	\begin{wikicite}{bib:Mengenlehre}
+		Die \wikibf{Mengenlehre} ist ein grundlegendes \wikilink{Teilgebiet der Mathematik}, das sich mit der Untersuchung von \wikilink{Mengen}, also von Zusammenfassungen von \wikilink{Objekten}, beschäftigt. Die gesamte Mathematik, wie sie heute üblicherweise gelehrt wird, ist in der Sprache der Mengenlehre formuliert und baut auf den \wikilink{Axiomen der Mengenlehre} auf. Die meisten mathematischen Objekte, die in Teilbereichen wie \wikilink{Algebra}, \wikilink{Analysis}, \wikilink{Geometrie}, \wikilink{Stochastik} oder \wikilink{Topologie} behandelt werden, um nur einige wenige zu nennen, lassen sich als Mengen definieren. Gemessen daran ist die Mengenlehre eine recht junge Wissenschaft; erst nach der Überwindung der \wikilink{Grundlagenkrise der Mathematik} im frühen 20. Jahrhundert konnte die Mengenlehre ihren heutigen, zentralen und grundlegenden Platz in der Mathematik einnehmen.
+	\end{wikicite}
+}
+
+\newcommand*    {\Mengenoperation}  [1][]{\glstext[#1]{Mengenoperation}}
+\newcommand*    {\Mengenoperationen}[1][]{\glstext[#1]{Mengenoperation}[en]}
+%ToDo prüfen
+\newglossaryentry{Mengenoperation}{
+	name        ={Mengenoperation \addIdx             {Mengenoperation}},
+	text        ={Mengenoperation},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Mengenoperation
+	}
+}
+
+\newsynonym{\Mengenprodukt}{Mengenprodukt}{\kartesischesProdukt}
+
+\newcommand*    {\Mengenrelation}  [1][]{\glstext[#1]{Mengenrelation}}
+\newcommand*    {\Mengenrelationen}[1][]{\glstext[#1]{Mengenrelation}[en]}
+%ToDo prüfen
+\newglossaryentry{Mengenrelation}{
+	name        ={Mengenrelation \addIdx             {Mengenrelation}},
+	text        ={Mengenrelation},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Mengenrelation
+	}
+}
+
+\newcommand*    {\Metadefinition}  [1][]{\glstext[#1]{Metadefinition}}
+\newcommand*    {\Metadefinitionen}[1][]{\glstext[#1]{Metadefinition}[en]}
+%ToDo prüfen
+\newglossaryentry{Metadefinition}{
+	name        ={Metadefinition \addIdx             {Metadefinition}},
+	text        ={Metadefinition},
+	see         ={Definition},
+	description ={
+		Eine \Definition\ in \Metasprache\ mit Hilfe des \Symbols\ für die  \Metadefinition\ \chrqt{\MtsDefEquiv}.
+		\seqqt{$A \MtsDefEquiv B$} steht für \standsfor{$A$ ist \defFt{definitionsgemäß äquivalent zu} $B$} für \Aussagen\ $A$ und $B$.
+		Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
+	}
+}
+
+\newcommand*    {\Metaformel} [1][]{\glstext[#1]{Metaformel}}
+\newcommand*    {\Metaformeln}[1][]{\glstext[#1]{Metaformel}[n]}
+\newglossaryentry{Metaformel}{
+	name        ={Metaformel \addIdx            {Metaformel}},
+	text        ={Metaformel},
+	description ={
+		Eine \Formel\ der \formalenMetasprache.
+	}
+}
+
+\newcommand*    {\Metajunktor}  [1][]{\glstext[#1]{Metajunktor}}
+\newcommand*    {\Metajunktoren}[1][]{\glstext[#1]{Metajunktor}[en]}
+%ToDo prüfen
+\newglossaryentry{Metajunktor}{
+	name        ={Metajunktor \addIdx              {Metajunktor}},
+	text        ={Metajunktor},
+	see         ={Junktor},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Metajunktor
+	}
+}
+
+\newcommand*    {\Metaoperation}  [1][]{\glstext [#1]{Metaoperation}}
+\newcommand*    {\Metaoperationen}[1][]{\glstext [#1]{Metaoperation}[en]}
+\newcommand*       {\Moperationen}[1][]{\glsuseri[#1]{Metaoperation}[en]}
+%ToDo prüfen
+\newglossaryentry{Metaoperation}{
+	name        ={Metaoperation \addIdx              {Metaoperation}},
+	text        ={Metaoperation},
+	user1       =    {operation},
+	see         ={Objektoperation},
+	description ={
+		Eine \Operation\ der \Metasprache: \MtsAnd, \MtsOr\ oder \MtsUnd.
+	}
+}
+
+\newcommand*    {\Metarelation}  [1][]{\glstext [#1]{Metarelation}}
+\newcommand*    {\Metarelationen}[1][]{\glstext [#1]{Metarelation}[en]}
+\newcommand*       {\Mrelationen}[1][]{\glsuseri[#1]{Metarelation}[en]}
+%ToDo prüfen
+\newglossaryentry{Metarelation}{
+	name        ={Metarelation \addIdx              {Metarelation}},
+	text        ={Metarelation},
+	user1       =    {relation},
+	see         ={Objektrelation},
+	description ={
+		Eine \Relation\ der \Metasprache: \MtsImp, \MtsRep\ oder \MtsEquiv.
+	}
+}
+
+\newcommand*    {\Metasprache} [1][]{\glstext[#1]{Metasprache}}
+\newcommand*    {\Metasprachen}[1][]{\glstext[#1]{Metasprache}[n]}
+%ToDo prüfen
+\newglossaryentry{Metasprache}{
+	name        ={Metasprache \addIdx            {Metasprache}},
+	text        ={Metasprache},
+	see         ={Objektsprache},
+	description ={
+		Eine \Sprache, in der \Aussagen\ über Elemente einer anderen \Sprache\ getroffen werden können.
+		In diesem Dokument ist dies immer die normale Umgangssprache.
+	}
+}
+
+\newcommand*     {\formaleMetasprache}[1][]{\glstext [#1]{formaleMetasprache}}
+\newcommand*    {\formalenMetasprache}[1][]{\glsuseri[#1]{formaleMetasprache}}
+%ToDo prüfen
+\newglossaryentry {formaleMetasprache}{
+	name       =                 {---, formale \addIdx[
+		name   =                 {---, formale},
+		sort   =         {Metasprache, formale}]         {formaleMetasprache}},
+	sort       =         {Metasprache, formale},
+	text       ={formale  Metasprache},
+	user1      ={formalen Metasprache},
+	description={
+		Eine \Metasprache, deren Ausdrucksmittel \Formeln\ sind.
+		In diesem Dokument gehören die meisten \Formeln\ dazu und werden daher als \Metaformeln\ bezeichnet.
+		Die Definition der Bedeutung der \Metaformeln\ ist mehr beschreibend und nicht so exakt wie bei den \Formeln\ der Mathematik, den hier sogenannten \Objektformeln.
+	}
+}
+
+\newcommand*    {\Metasymbol} [1][]{\glstext[#1]{Metasymbol}}
+\newcommand*    {\Metasymbole}[1][]{\glstext[#1]{Metasymbol}[e]}
+%ToDo prüfen
+\newglossaryentry{Metasymbol}{
+	name        ={Metasymbol \addIdx            {Metasymbol}},
+	text        ={Metasymbol},
+	see         ={Objektsymbol},
+	description ={
+		Ein \Symbol\ der \formalenMetasprache.
+	}
+}
+
+\newcommand*    {\Metavariable} [1][]{\glstext [#1]{Metavariable}}
+\newcommand*       {\Mvariablen}[1][]{\glsuseri[#1]{Metavariable}[n]}
+%ToDo prüfen
+\newglossaryentry{Metavariable}{
+	name        ={Metavariable \addIdx             {Metavariable}},
+	text        ={Metavariable},
+	user1       =    {variable},
+	description ={
+		Eine \Variable\ der \formalenMetasprache.
+	}
+}
+
+\newcommand*    {\Monotonieregel}[1][]{\glstext[#1]{Monotonieregel}}
+%ToDo prüfen
+\newglossaryentry{Monotonieregel}{
+	name        ={Monotonieregel \addIdx           {Monotonieregel}},
+	text        ={Monotonieregel},
+	see         ={MR},
+	description ={
+		Eine \Schlussregel.
+	}
+}
+
+%N === N === N === N === N === N === N === N === N === N === N === N === N === N
+
+\newcommand*    {\natuerlicheZahl}  [1][]{\glstext [#1]{natuerlicheZahl}}
+\newcommand*   {\natuerlichenZahlen}[1][]{\glsuseri[#1]{natuerlicheZahl}[en]}
+%ToDo prüfen
+\newglossaryentry{natuerlicheZahl}{
+	name       =            {Zahl, natürliche \addIdx[
+		name   =            {Zahl, natürliche}]        {natuerlicheZahl}},
+	text       ={natürliche  Zahl},
+	user1      ={natürlichen Zahl},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=natürliche Zahl
+	}
+}
+
+\newcommand*    {\Negation}  [1][]{\glstext[#1]{Negation}}
+\newcommand*    {\Negationen}[1][]{\glstext[#1]{Negation}[en]}
+%ToDo prüfen
+\newglossaryentry{Negation}{
+	name        ={Negation \addIdx             {Negation}},
+	text        ={Negation},
+	description ={
+		Die \defFt{Negation} (zu) einer \binaeren\ \Relation\ $(G,A,B)$ ist die \Relation\ $(H,A,B)$ mit $H = (A \MtsTimes B) \MtsSetminus G\}$.
+		Üblicherweise wird das zugehörige \Relationssymbol\ mit einem schrägen oder vertikalen Strich durchgestrichen.
+		--- Die \gloFt{Negation} der \gloFt{Negation} einer \Relation\ ist wieder die ursprüngliche \Relation.
+		Die \gloFt{Negation} der \Umkehrrelation\ einer \Relation\ ist gleich der \Umkehrrelation\ ihrer \gloFt{Negation}.
+	}
+}
+
+%O === O === O === O === O === O === O === O === O === O === O === O === O === O
+
+\newcommand*    {\Oberaussage} [1][]{\glstext[#1]{Oberaussage}}
+\newcommand*    {\Oberaussagen}[1][]{\glstext[#1]{Oberaussage}[n]}
+%ToDo prüfen
+\newglossaryentry{Oberaussage}{
+	name        ={Oberaussage \addIdx            {Oberaussage}},
+	text        ={Oberaussage},
+	description ={
+		Eine \Aussage\ $A$ ist genau dann eine \defFt{Oberaussage} einer \Aussage\ $B$, wenn $B$ eine \Teilaussage\ von $A$ ist.
+	}
+}
+
+\newcommand*     {\echteOberaussage}[1][]{\glstext [#1]{echteOberaussage}}
+\newcommand*    {\echtenOberaussage}[1][]{\glsuseri[#1]{echteOberaussage}}
+%ToDo prüfen
+\newglossaryentry {echteOberaussage}{
+	name       =               {---, echte \addIdx[
+		name   =               {---, echte},
+		sort   =       {Oberaussage, echte}]           {echteOberaussage}},
+	sort       =       {Oberaussage, echte},
+	text       ={echte  Oberaussage},
+	user1      ={echten Oberaussage},
+	description={
+		Eine \Aussage\ $A$ ist genau dann eine \defFt{echte Oberaussage} einer \Aussage\ $B$, wenn $B$ eine \echteTeilaussage\ von $A$ ist.
+	}
+}
+
+\newcommand*    {\Oberfolge} [1][]{\glstext[#1]{Oberfolge}}
+\newcommand*    {\Oberfolgen}[1][]{\glstext[#1]{Oberfolge}[n]}
+%ToDo prüfen
+\newglossaryentry{Oberfolge}{
+	name        ={Oberfolge \addIdx            {Oberfolge}},
+	text        ={Oberfolge},
+	description ={
+		Eine \Formel\ $A$ ist genau dann eine \defFt{Oberfolge} einer \Formel\ $B$, wenn $B$ eine \Teilfolge\ von $A$ ist.
+	}
+}
+
+\newcommand*     {\echteOberfolge}[1][]{\glstext [#1]{echteOberfolge}}
+\newcommand*    {\echtenOberfolge}[1][]{\glsuseri[#1]{echteOberfolge}}
+%ToDo prüfen
+\newglossaryentry {echteOberfolge}{
+	name       =              {---, echte \addIdx[
+		name   =              {---, echte},
+		sort   =       {Oberfolge, echte}]           {echteOberfolge}},
+	sort       =       {Oberfolge, echte},
+	text       ={echte  Oberfolge},
+	user1      ={echten Oberfolge},
+	description={
+		Eine \Formel\ $A$ ist genau dann eine \defFt{echte Oberfolge} einer \Formel\ $B$, wenn $B$ eine \echteTeilfolge\ von $A$ ist.
+	}
+}
+
+\newcommand*    {\Oberformel} [1][]{\glstext[#1]{Oberformel}}
+\newcommand*    {\Oberformeln}[1][]{\glstext[#1]{Oberformel}[n]}
+%ToDo prüfen
+\newglossaryentry{Oberformel}{
+	name        ={Oberformel \addIdx            {Oberformel}},
+	text        ={Oberformel},
+	description ={
+		Eine \Formel\ $A$ ist genau dann eine \defFt{Oberformel} einer \Formel\ $B$, wenn $B$ eine \Teilformel\ von $A$ ist.
+	}
+}
+
+\newcommand*     {\echteOberformel}[1][]{\glstext [#1]{echteOberformel}}
+\newcommand*    {\echtenOberformel}[1][]{\glsuseri[#1]{echteOberformel}}
+%ToDo prüfen
+\newglossaryentry {echteOberformel}{
+	name       =              {---, echte \addIdx[
+		name   =              {---, echte},
+		sort   =       {Oberformel, echte}]           {echteOberformel}},
+	sort       =       {Oberformel, echte},
+	text       ={echte  Oberformel},
+	user1      ={echten Oberformel},
+	description={
+		Eine \Formel\ $A$ ist genau dann eine \defFt{echte Oberformel} einer \Formel\ $B$, wenn $B$ eine \echteTeilformel\ von $A$ ist.
+	}
+}
+
+\newcommand*    {\Obermenge} [1][]{\glstext[#1]{Obermenge}}
+\newcommand*    {\Obermengen}[1][]{\glstext[#1]{Obermenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Obermenge}{
+	name        ={Obermenge \addIdx            {Obermenge}},
+	text        ={Obermenge},
+	description ={
+		Eine \Menge\ $A$ ist genau dann eine \defFt{\Obermenge} einer \Menge\ $B$, wenn $B$ eine \Teilmenge\ von $A$ ist.
+	}
+}
+
+\newcommand*     {\echteObermenge}[1][]{\glstext [#1]{echteObermenge}}
+\newcommand*    {\echtenObermenge}[1][]{\glsuseri[#1]{echteObermenge}}
+%ToDo prüfen
+\newglossaryentry {echteObermenge}{
+	name       =             {---, echte \addIdx[
+		name   =             {---, echte},
+		sort   =       {Obermenge, echte}]           {echteObermenge}},
+	sort       =       {Obermenge, echte},
+	text       ={echte  Obermenge},
+	user1      ={echten Obermenge},
+	description={
+		Eine \Menge\ $A$ ist genau dann eine \defFt{\echteObermenge} einer \Menge\ $B$, wenn $B$ eine \echteTeilmenge\ von $A$ ist.
+	}
+}
+
+\newcommand*    {\Oberobjekt} [1][]{\glstext[#1]{Oberobjekt}}
+\newcommand*    {\Oberobjekte}[1][]{\glstext[#1]{Oberobjekt}[e]}
+%ToDo prüfen
+\newglossaryentry{Oberobjekt}{
+	name        ={Oberobjekt \addIdx            {Oberobjekt}},
+	text        ={Oberobjekt},
+	description ={
+		Eine \Objekt\ $A$ ist genau dann ein \defFt{Oberobjekt} eines \Objekts\ $B$, wenn $B$ ein \Teilobjekt\ von $A$ ist.
+	}
+}
+
+\newcommand*    {\echtesOberobjekt}[1][]{\glstext [#1]{echtesOberobjekt}}
+\newcommand*    {\echtenOberobjekt}[1][]{\glsuseri[#1]{echtesOberobjekt}}
+%ToDo prüfen
+\newglossaryentry{echtesOberobjekt}{
+	name       =              {---, echtes \addIdx[
+		name   =              {---, echtes},
+		sort   =       {Oberobjekt, echtes}]          {echtesOberobjekt}},
+	sort       =       {Oberobjekt, echtes},
+	text       ={echtes Oberobjekt},
+	user1      ={echten Oberobjekt},
+	description={
+		Eine \Objekt\ $A$ ist genau dann ein \defFt{echtes Oberobjekt} eines \Objekts\ $B$, wenn $B$ ein \echtesTeilobjekt\ von $A$ ist.
+	}
+}
+
+\newcommand*    {\Obersymbol} [1][]{\glstext[#1]{Obersymbol}}
+\newcommand*    {\Obersymbole}[1][]{\glstext[#1]{Obersymbol}[e]}
+%ToDo prüfen
+\newglossaryentry{Obersymbol}{
+	name        ={Obersymbol \addIdx            {Obersymbol}},
+	text        ={Obersymbol},
+	description ={
+		Eine \Symbol\ $A$ ist genau dann ein \defFt{Obersymbol} eines \Symbols\ $B$, wenn $B$ ein \Teilsymbol\ von $A$ ist.
+	}
+}
+
+\newcommand*    {\echtesObersymbol}[1][]{\glstext [#1]{echtesObersymbol}}
+\newcommand*    {\echtenObersymbol}[1][]{\glsuseri[#1]{echtesObersymbol}}
+%ToDo prüfen
+\newglossaryentry{echtesObersymbol}{
+	name       =              {---, echtes \addIdx[
+		name   =              {---, echtes},
+		sort   =       {Obersymbol, echtes}]          {echtesObersymbol}},
+	sort       =       {Obersymbol, echtes},
+	text       ={echtes Obersymbol},
+	user1      ={echten Obersymbol},
+	description={
+		Eine \Symbol\ $A$ ist genau dann ein \defFt{echtes Obersymbol} eines \Symbols\ $B$, wenn $B$ ein \echtesTeilsymbol\ von $A$ ist.
+	}
+}
+
+\newcommand*    {\Objekt}  [1][]{\glstext[#1]{Objekt}}
+\newcommand*    {\Objekte} [1][]{\glstext[#1]{Objekt}[e]}
+\newcommand*    {\Objekts} [1][]{\glstext[#1]{Objekt}[s]}
+\newcommand*    {\Objekten}[1][]{\glstext[#1]{Objekt}[en]}
+%ToDo prüfen
+\newglossaryentry{Objekt}{
+	name        ={Objekt \addIdx             {Objekt}},
+	text        ={Objekt},
+	description ={
+		\Symbole, \Formeln\ und \Aussagen\ sowie Mengen, \Zeichenfolgen, Zahlen; ganz allgemein reale oder gedachte Dinge an sich.
+	}
+}
+
+\newcommand*    {\metasprachlichesObjekt}  [1][]{\glstext[#1]{metasprachlichesObjekt}}
+%ToDo prüfen
+\newglossaryentry{metasprachlichesObjekt}{
+	name       = {metasprachlichesObjekt \addIdx             {metasprachlichesObjekt}},
+	name       =                    {---, metasprachliches \addIdx[
+		name   =                    {---, metasprachliches},
+		sort   =                 {Objekt, metasprachliches}]{metasprachlichesObjekt}},
+	sort       =                 {Objekt, metasprachliches},
+	text       ={metasprachliches Objekt},
+	description={
+		Ein \Objekt\ der \Metasprache.
+	}
+}
+
+\newcommand*    {\Objektart}  [1][]{\glstext[#1]{Objektart}}
+\newcommand*    {\Objektarten}[1][]{\glstext[#1]{Objektart}[en]}
+%ToDo prüfen
+\newglossaryentry{Objektart}{
+	name        ={Objektart \addIdx             {Objektart}},
+	text        ={Objektart},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Objektart
+	}
+}
+
+\newcommand*    {\Objektformel} [1][]{\glstext[#1]{Objektformel}}
+\newcommand*    {\Objektformeln}[1][]{\glstext[#1]{Objektformel}[n]}
+\newglossaryentry{Objektformel}{
+	name        ={Objektformel \addIdx            {Objektformel}},
+	text        ={Objektformel},
+	description ={
+		Eine \Formel\ der \Objektsprache.
+	}
+}
+
+\newcommand*    {\Objektkonstante} [1][]{\glstext[#1]{Objektkonstante}}
+\newcommand*    {\Objektkonstanten}[1][]{\glstext[#1]{Objektkonstante}[n]}
+\newglossaryentry{Objektkonstante}{
+	name        ={Objektkonstante \addIdx            {Objektkonstante}},
+	text        ={Objektkonstante},
+	description ={
+		Eine \Konstante\ der \Objektsprache.
+	}
+}
+
+\newcommand*    {\Objektoperation}  [1][]{\glstext [#1]{Objektoperation}}
+\newcommand*    {\Objektoperationen}[1][]{\glstext [#1]{Objektoperation}[en]}
+\newcommand*         {\Ooperationen}[1][]{\glsuseri[#1]{Objektoperation}[en]}
+%ToDo prüfen
+\newglossaryentry{Objektoperation}{
+	name        ={Objektoperation \addIdx              {Objektoperation}},
+	text        ={Objektoperation},
+	user1       =      {operation}
+	see         ={Metaoperation},
+	description ={
+		Eine \Operation\ der \Objektsprache: \OjkAnd, \OjkOr.
+	}
+}
+
+\newcommand*    {\Objektrelation}  [1][]{\glstext [#1]{Objektrelation}}
+\newcommand*    {\Objektrelationen}[1][]{\glstext [#1]{Objektrelation}en[]}
+\newcommand*         {\Orelationen}[1][]{\glsuseri[#1]{Objektrelation}[en]}
+%ToDo prüfen
+\newglossaryentry{Objektrelation}{
+	name        ={Objektrelation \addIdx              {Objektrelation}},
+	text        ={Objektrelation},
+	user1       =      {relation},
+	see         ={Metarelation},
+	description ={
+		Eine \Relation\ der \Objektsprache: \OjkImp, \OjkRep\ oder \OjkEquiv.
+	}
+}
+
+\newcommand*    {\Objektsprache} [1][]{\glstext[#1]{Objektsprache}}
+\newcommand*    {\Objektsprachen}[1][]{\glstext[#1]{Objektsprache}[n]}
+%ToDo prüfen
+\newglossaryentry{Objektsprache}{
+	name        ={Objektsprache \addIdx            {Objektsprache}},
+	text        ={Objektsprache},
+	description ={
+		Je nach der aktuellen (mathematischen) Umgebung die \Formeln\ der \Aussagenlogik, der \Praedikatenlogik, der \Mengenlehre\ oder eines anderen \Teilgebiets.
+	}
+}
+
+\newcommand*    {\Objektsymbol} [1][]{\glstext[#1]{Objektsymbol}}
+\newcommand*    {\Objektsymbole}[1][]{\glstext[#1]{Objektsymbol}[e]}
+%ToDo prüfen
+\newglossaryentry{Objektsymbol}{
+	name        ={Objektsymbol \addIdx            {Objektsymbol}},
+	text        ={Objektsymbol},
+	see         ={Metasymbol},
+	description ={
+		Ein \Symbol\ der \Objektsprache.
+	}
+}
+
+\newcommand*    {\Operation}  [1][]{\glstext[#1]{Operation}}
+\newcommand*    {\Operationen}[1][]{\glstext[#1]{Operation}[en]}
+%ToDo prüfen
+\newglossaryentry{Operation}{
+	name        ={Operation \addIdx             {Operation}},
+	text        ={Operation},
+	description ={
+		Eine \gloFt{Operation} ist eine --- meistens \binaere, \textdh\ zweiwertige --- \Funktion\ $M^n \MtsFktArrow M$.
+		Für eine \binaere \Operation\ $\FunktionDef{\BspOpB}{M \MtsTimes M}{M}$ schreibt man meistens $x \BspOpB y$ statt $\BspOpB(x,y)$.
+	}
+}
+
+\newcommand*     {\aussagenlogischeOperation}  [1][]{\glstext  [#1]{aussagenlogischeOperation}}
+\newcommand*     {\aussagenlogischeOperationen}[1][]{\glstext  [#1]{aussagenlogischeOperation}[en]}
+\newcommand*    {\aussagenlogischenOperationen}[1][]{\glsuseri [#1]{aussagenlogischeOperation}[en]}
+\newcommand*                    {\aOperationen}[1][]{\glsuserii[#1]{aussagenlogischeOperation}[en]}
+\newglossaryentry {aussagenlogischeOperation}{
+	name       =                       {---, aussagenlogische \addIdx[
+		name   =                       {---, aussagenlogische},
+		sort   =                  {Operation, aussagenlogische}]   {aussagenlogischeOperation}},
+	sort       =                  {Operation, aussagenlogische},
+	text       ={aussagenlogische  Operation},
+	user1      ={aussagenlogischen Operation},
+	user2      =                  {Operation},
+	description={
+		Die \defFt{aussagenlogischen} \Operationen\ sind ...%ToDo=aussagenlogische Operationen
+	}
+}
+
+\newcommand*    {\Operationssymbol} [1][]{\glstext[#1]{Operationssymbol}}
+\newcommand*    {\Operationssymbole}[1][]{\glstext[#1]{Operationssymbol}[e]}
+%ToDo prüfen
+\newglossaryentry{Operationssymbol}{
+	name        ={Operationssymbol \addIdx            {Operationssymbol}},
+	text        ={Operationssymbol},
+	description ={
+		Ein \Symbol\ für eine \Operation.
+	}
+}
+
+\newcommand*        {\Ordnungsrelation}  [1][]{\glstext[#1]{Ordnungrelation}}
+\newcommand*        {\Ordnungsrelationen}[1][]{\glstext[#1]{Ordnungrelation}[en]}
+%ToDo prüfen
+\longnewglossaryentry{Ordnungsrelation}{
+	name            ={Ordnungsrelation \addIdx[
+		name        ={Ordnungsrelation}]                   {Ordnungsrelation}},
+	text            ={Ordnungsrelation},
+}{
+	Eine \gloFt{Ordnungsrelation} ist ein \binaere\ \Relation\ auf einer \Menge\ $M$ mit der folgenden Eigenschaft
+	(dabei sei $\preceq$ die \gloFt{Ordnungsrelation}):
+	\begin{align}
+		&\text{\textbf{transitiv }}:\qquad ((a \preceq b) \MtsAnd (b \preceq c)) \MtsImp (a \preceq c) \formulatoleft \formulatoleft \formulatoleft
+	\end{align}
+	jeweils für alle Elemente $a$, $b$ und $c$ aus $M$.
+}
+
+%P === P === P === P === P === P === P === P === P === P === P === P === P === P
+
+\newcommand*    {\geordnetesPaar} [1][]{\glstext [#1]{geordnetesPaar}}
+\newcommand*    {\geordnetenPaare}[1][]{\glsuseri[#1]{geordnetesPaar}[e]}
+\newglossaryentry{geordnetesPaar}{
+	name       =           {Paar, geordnetes \addIdx[
+		name   =           {Paar, geordnetes}]       {geordnetesPaar}},
+	text       ={geordnetes Paar},
+	user1      ={geordneten Paar},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=geordnetes Paar
+	}
+}
+
+\newcommand*     {\PolnischeNotation}  [1][]{\glstext  [#1]{PolnischeNotation}}
+\newcommand*     {\PolnischeNotationen}[1][]{\glstext  [#1]{PolnischeNotation}[en]}
+\newcommand*     {\PolnischenNotation} [1][]{\glsuseri [#1]{PolnischeNotation}}
+\newcommand*     {\PolnischerNotation} [1][]{\glsuserii[#1]{PolnischeNotation}}
+%ToDo prüfen
+\newglossaryentry{PolnischeNotation}{
+	name        =           {Notation, Polnische \addIdx[
+		name    =           {Notation, Polnische},
+		text    ={Polnische  Notation}]                    {PolnischeNotation}},
+	text        ={Polnische  Notation},
+	user1       ={Polnischen Notation},
+	user2       ={Polnischer Notation},
+	description ={
+		Bei der \gloFt{Polnischen Notation} stehen die Argumente von \Relationen\ und \Funktionen\ stets rechts von den \RelationsS- und \Funktionssymbolen.
+		Dadurch kann auf \Gliederungszeichen\ wie Klammern und Kommata verzichtet werden.
+		Noch einfacher für Computer ist die \defFt{umgekehrte} \gloFt{Polnische Notation}, bei der die Argumente immer links stehen.
+	}
+}
+
+\newcommand*    {\Potenzmenge} [1][]{\glstext[#1]{Potenzmenge}}
+\newcommand*    {\Potenzmengen}[1][]{\glstext[#1]{Potenzmenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Potenzmenge}{
+	name        ={Potenzmenge \addIdx            {Potenzmenge}},
+	text        ={Potenzmenge},
+	description ={
+		Die \Potenzmenge\ $\MtsPot(M)$ einer \Menge\ $M$ ist die \Menge\ ihrer \Teilmengen.
+	}
+}
+
+\newcommand*    {\Praedikat} [1][]{\glstext[#1]{Praedikat}}
+\newcommand*    {\Praedikate}[1][]{\glstext[#1]{Praedikat}[e]}
+\newcommand*    {\Praedikats}[1][]{\glstext[#1]{Praedikat}[s]}
+%ToDo prüfen
+\newglossaryentry{Praedikat}{
+	name        ={Prädikat \addIdx[
+		name    ={Prädikat}]                   {Praedikat}},
+	text        ={Prädikat},
+	description ={
+		Ein Element der \Praedikatenlogik. ---
+		\textZB\ kann man eine Gruppe als ein zwei\stelliges\ \Praedikat\ $\mathrm{Gruppe}(G,+)$ definieren, in dem $G$ eine \Menge\ und $+$ eine \Operation, \textdh\ eine \binaere\ (zwei\stellige) \Funktion\ $ +: G \MtsTimes G \rightarrow G $ ist, so dass die Gruppenaxiome erfüllt sind.
+	}
+}
+
+\newcommand*        {\Praedikatenlogik}[1][]{\glstext[#1]{Praedikatenlogik}}
+\longnewglossaryentry{Praedikatenlogik}{
+	name            ={Prädikatenlogik \addIdx[
+		name        ={Prädikatenlogik}]                  {Praedikatenlogik}},
+	text            ={Prädikatenlogik},
+	see             ={Aussagenlogik,Logik},
+}{
+	\begin{wikicite}{bib:Praedikatenlogik}
+		Die \wikibf{Prädikatenlogiken} (auch \wikibf{Quantorenlogiken}) bilden eine Familie \wikilink{logischer} Systeme, die es erlauben, einen weiten und in der Praxis vieler Wissenschaften und deren Anwendungen wichtigen Bereich von Argumenten zu formalisieren und auf ihre Gültigkeit zu überprüfen. Auf Grund dieser Eigenschaft spielt die Prädikatenlogik eine große Rolle in der \wikilink{Logik} sowie in \wikilink{Mathematik}, \wikilink{Informatik}, \wikilink{Linguistik} und \wikilink{Philosophie}.
+
+		[\textdots]
+	\end{wikicite}
+}
+
+\newcommand*    {\Praemisse}  [1][]{\glstext[#1]{Praemisse}}
+\newcommand*    {\Praemissen}[1][]{\glstext[#1]{Praemisse}[n]}
+%ToDo prüfen
+\newglossaryentry{Praemisse}{
+	name        ={Prämisse \addIdx              {Praemisse}},
+	text        ={Prämisse},
+	see         ={Schlussregel},
+	description ={
+		Eine \Ableitung:
+		Die \Praemissen\ einer \Schlussregel\ $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ \textbzw\ $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ sind die Elemente aus \MtsPraemisseSet\ \textbzw\ \MtsPraemisseRel.
+		Die \Praemissen\ werden normalerweise mit $\MtsPraemisse_i$ bezeichnet.
+	}
+}
+
+\newcommand*    {\Praemissenmenge} [1][]{\glstext[#1]{Praemissenmenge}}
+\newcommand*    {\Praemissenmengen}[1][]{\glstext[#1]{Praemissenmenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Praemissenmenge}{
+	name        = {Prämissenmenge \addIdx            {Praemissenmenge}},
+	text        = {Prämissenmenge},
+	description ={
+		Eine \Ableitungsmenge:
+		Die \Menge\ \MtsPraemisseSet\ der \Praemissen\ einer \Schlussregel\ \textbzw\ eines \Beweises.
+	}
+}
+
+\newcommand*        {\kartesischesProdukt}[1][]{\glstext [#1]{kartesischesProdukt}}
+\newcommand*         {\kartesischeProdukt}[1][]{\glsuseri[#1]{kartesischesProdukt}}
+\longnewglossaryentry{kartesischesProdukt}{
+	name            =             {Produkt, kartesisches \addIdx[
+		name        =             {Produkt, kartesisches}]   {kartesischesProdukt}},
+	text            ={kartesisches Produkt},
+	user1           ={kartesische  Produkt},
+}{
+	\begin{wikicite}{bib:kartesischesProdukt}
+		Das \wikibf{kartesische Produkt} oder \wikibf{Mengenprodukt} ist in der Mengenlehre eine grundlegende Konstruktion, aus gegebenen Mengen eine neue Menge zu erzeugen. [\textdots] Das kartesische Produkt zweier Mengen ist die Menge aller geordneten Paare von Elementen der beiden Mengen, wobei die erste Komponente ein Element der ersten Menge und die zweite Komponente ein Element der zweiten Menge ist. Allgemeiner besteht das kartesische Produkt mehrerer Mengen aus der Menge aller Tupel von Elementen der Mengen, wobei die Reihenfolge der Mengen und damit der entsprechenden Elemente fest vorgegeben ist. Die Ergebnismenge des kartesischen Produkts wird auch \wikibf{Produktmenge}, \wikibf{Kreuzmenge} oder \wikibf{Verbindungsmenge} genannt. [\textdots]
+	\end{wikicite}
+}
+
+%Q === Q === Q === Q === Q === Q === Q === Q === Q === Q === Q === Q === Q === Q
+
+\newcommand*    {\Quantoren}[1][]{\glstext[#1]{Quantor}[en]}
+\newcommand*    {\Quantor}  [1][]{\glstext[#1]{Quantor}}
+\newglossaryentry{Quantor}{
+	name        ={Quantor \addIdx            {Quantor}},
+	text        ={Quantor},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Quantor
+	}
+}
+
+\newcommand*    {\logischerQuantor} [1][]{\glstext[#1]{logischerQuantor}}
+\newglossaryentry{logischerQuantor}{
+	name       =              {---, logischer \addIdx[
+		name   =              {---, logischer},
+		sort   =          {Quantor, logischer}]       {logischerQuantor}},
+	sort       =          {Quantor, logischer},
+	text       ={logischer Quantor},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=logischer Quantor
+	}
+}
+
+\newcommand*    {\metasprachlicherQuantor} [1][]{\glstext[#1]{metasprachlicherQuantor}}
+\newglossaryentry{metasprachlicherQuantor}{
+	name       =                     {---, metasprachlicher \addIdx[
+		name   =                     {---, metasprachlicher},
+		sort   =                 {Quantor, metasprachlicher}]{metasprachlicherQuantor}},
+	sort       =                 {Quantor, metasprachlicher},
+	text       ={metasprachlicher Quantor},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=metasprachlicher Quantor
+	}
+}
+
+\newcommand*    {\Quellbereich} [1][]{\glstext [#1]{Quellbereich}}
+\newcommand*    {\Quellbereiche}[1][]{\glstext [#1]{Quellbereich}[e]}
+\newcommand*    {\QuellB}       [1][]{\glsuseri[#1]{Quellbereich}}
+\newglossaryentry{Quellbereich}{
+	name        ={Quellbereich \addIdx            {Quellbereich}},
+	text        ={Quellbereich},
+	user1       ={Quell},
+	see         ={Definitionsbereich},
+	description ={
+		Für die \Funktion%
+		\footnote{%
+			Der \Quellbereich\ $\MtsQb(f)$ unterscheidet sich nur bei \defFt{partiellen} \Funktionen\ vom \Definitionsbereich\ $\MtsDb(f)$, \textdh\ solchen \Funktionen, für die $f(a)$ nicht für alle $a \MtsIn A$ definiert ist.
+		}
+		\FunktionDef{f}{A}{B} ist die \Menge\ $\MtsQb(f) \MtsDefEq \MengeDef{a \in A}{f(a) \text{ existiert}}$ ihr \Quellbereich\ (source).
+	}
+}
+
+%R === R === R === R === R === R === R === R === R === R === R === R === R === R
+
+\newcommand*        {\Relation}  [1][]{\glstext[#1]{Relation}}
+\newcommand*        {\Relationen}[1][]{\glstext[#1]{Relation}[en]}
+%ToDo prüfen
+\longnewglossaryentry{Relation}{
+	name            ={Relation \addIdx             {Relation}},
+	text            ={Relation},
+	see             ={Aequivalenzrelation,Ordnungsrelation},
+}{
+	\begin{wikicite}{bib:Relation}
+		Eine \wikibf{Relation} (\wikilink{lateinisch} \wikiit{relatio} „Beziehung“, „Verhältnis“) ist allgemein eine Beziehung, die zwischen Dingen bestehen kann. Relationen im Sinne der \wikilink{Mathematik} sind ausschließlich diejenigen Beziehungen, bei denen stets klar ist, ob sie bestehen oder nicht; Objekte können also nicht „bis zu einem gewissen Grade“ in einer Relation zueinander stehen. Damit ist eine einfache \wikilink{mengentheoretische} Definition des Begriffs möglich: Eine Relation $R$ ist eine Menge von $n$-\wikilink{Tupeln}. In der Relation $R$ zueinander stehende Dinge bilden $n$-Tupel, die Element von $R$ sind.
+
+		Wird nicht ausdrücklich etwas anderes angegeben, versteht man unter einer Relation gemeinhin eine zweistellige oder binäre Relation. Bei einer solchen Beziehung bilden dann jeweils zwei Elemente $a$ und $b$ ein \wikilink{geordnetes Paar} $(a,b)$. Stammen dabei $a$ und $b$ aus verschiedenen Grundmengen $A$ und $B$, so heißt die Relation \wikiit{heterogen} oder „Relation \wikiit{zwischen} den Mengen $A$ und $B$.“ Stimmen die Grundmengen überein ($A = B$), dann heißt die Relation \wikiit{homogen} oder „Relation \wikiit{in} bzw. \wikiit{auf} der Menge $A$.“
+
+		Wichtige Spezialfälle, zum Beispiel \wikilink{Äquivalenzrelationen} und \wikilink{Ordnungsrelationen}, sind Relationen \wikiit{auf} einer Menge.
+
+		Heute sehen manche Autoren den Begriff Relation nicht unbedingt als auf Mengen beschränkt an, sondern lassen jede aus geordneten Paaren bestehende \wikilink{Klasse} als Relation gelten.
+	\end{wikicite}
+
+	Eine \defFt{$n$-\stellige} \gloFt{Relation} $R$ ist ein (1+$n$)-\Tupel\ $(G,A_1,\dots,A_n)$ mit $G \MtsSubsetEq A_1 \MtsTimes \dots \MtsTimes A_n)$.
+}
+
+\newcommand*     {\aussagenlogischeRelation}  [1][]{\glstext  [#1]{aussagenlogischeRelation}}
+\newcommand*     {\aussagenlogischeRelationen}[1][]{\glstext  [#1]{aussagenlogischeRelation}[en]}
+\newcommand*    {\aussagenlogischenRelationen}[1][]{\glsuseri [#1]{aussagenlogischeRelation}[en]}
+\newcommand*                    {\aRelation}  [1][]{\glsuserii[#1]{aussagenlogischeRelation}}
+\newcommand*                    {\aRelationen}[1][]{\glsuserii[#1]{aussagenlogischeRelation}[en]}
+\newglossaryentry {aussagenlogischeRelation}{
+	name       =                       {---, aussagenlogische \addIdx[
+		name   =                       {---, aussagenlogische},
+		sort   =                  {Relation, aussagenlogische}] {aussagenlogischeRelation}},
+	sort       =                  {Relation, aussagenlogische},
+	text       ={aussagenlogische  Relation},
+	user1      ={aussagenlogischen Relation},
+	user2      =                  {Relation},
+	description={
+		Die \defFt{aussagenlogischen} \Relationen\ sind ...%ToDo=aussagenlogische Relationen
+	}
+}
+
+\newcommand*    {\Relationssymbol} [1][]{\glstext [#1]{Relationssymbol}}
+\newcommand*    {\Relationssymbole}[1][]{\glstext [#1]{Relationssymbol}[e]}
+\newcommand*    {\RelationsS}      [1][]{\glsuseri[#1]{Relationssymbol}}
+%ToDo prüfen
+\newglossaryentry{Relationssymbol}{
+	name        ={Relationssymbol \addIdx             {Relationssymbol}},
+	text        ={Relationssymbol},
+	user1       ={Relations},
+	description ={
+		Ein \Symbol\ für eine \Relation.
+	}
+}
+
+%S === S === S === S === S === S === S === S === S === S === S === S === S === S
+
+\newcommand*    {\Satz}   [1][]{\glstext[#1]{Satz}}
+\newcommand*    {\Satzes} [1][]{\glstext[#1]{Satz}[es]}
+\newcommand*    {\Saetze} [1][]{\glspl  [#1]{Satz}}
+\newcommand*    {\Saetzen}[1][]{\glspl  [#1]{Satz}[n]}
+%ToDo prüfen
+\newglossaryentry{Satz}{
+	name        ={Satz \addIdx              {Satz}},
+	text        ={Satz},
+	plural      ={Sätze},
+	description ={
+		Eine mathematische \Aussage, dass bestimmte \Konklusionen\ aus gegebenen \Praemissen\ abgeleitet werden können.
+	}
+}
+
+\newcommand*    {\formalerSatz} [1][]{\glstext [#1]{formalerSatz}}
+\newcommand*    {\formalenSatz} [1][]{\glsuseri[#1]{formalerSatz}}
+%ToDo prüfen
+\newglossaryentry{formalerSatz}{
+	name       =          {---, formaler \addIdx[
+		name   =          {---, formaler},
+		sort   =         {Satz, formaler}]         {formalerSatz}},
+	sort       =         {Satz, formaler},
+	text       ={formaler Satz},
+	user1      ={formalen Satz},
+	see        ={FS},
+	description={
+		Formale \Darstellung\ eines mathematischen \Satzes.
+	}
+}
+
+\newcommand*    {\Schlussregel} [1][]{\glstext[#1]{Schlussregel}}
+\newcommand*    {\Schlussregeln}[1][]{\glstext[#1]{Schlussregel}[n]}
+%ToDo prüfen
+\longnewglossaryentry{Schlussregel}{
+	name            ={Schlussregel \addIdx            {Schlussregel}},
+	text            ={Schlussregel},
+	see             ={MtsSchlussregel,MtsSchlussregelSet},
+}{
+	\begin{wikicite}{bib:Schlussregel}
+		Eine \wikibf{Schlussregel} (oder \wikiit{Inferenzregel}) bezeichnet eine Transformationsregel (Umformungsregel) in einem \wikilink{Kalkül} der \wikilink{formalen Logik}, d. h. eine \wikilink{syntaktische} Regel, nach der es erlaubt ist, von bestehenden Ausdrücken einer formalen Sprache zu neuen Ausdrücken überzugehen. Dieser regelgeleitete Übergang stellt eine \wikilink{Schlussfolgerung} dar.
+	\end{wikicite}
+
+	Eine \Schlussregel\ $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ entspricht der \Aussage:
+	\begin{quote}
+		Wenn alle \Praemissen\ $\MtsPraemisse \MtsIn \MtsPraemisseSet$ zutreffen, dann auch alle \Konklusionen\ $\MtsKonklusion \MtsIn \MtsKonklusionSet$.
+	\end{quote}
+	Wenn diese \Aussage\ zutrifft, kann die Schlussregel zur \zulaessigen\ \Transformation\ von \Formeln\ dienen.
+}
+
+\newcommand*   {\allgemeingueltigeSchlussregel}  [1][]{\glstext [#1]{allgemeingueltigeSchlussregel}}
+\newcommand*   {\allgemeingueltigeSchlussregeln} [1][]{\glstext [#1]{allgemeingueltigeSchlussregel}[n]}
+\newcommand*   {\allgemeingueltigenSchlussregel} [1][]{\glsuseri[#1]{allgemeingueltigeSchlussregel}}
+\newcommand*   {\allgemeingueltigenSchlussregeln}[1][]{\glsuseri[#1]{allgemeingueltigeSchlussregel}[n]}
+%ToDo prüfen
+\newglossaryentry{allgemeingueltigeSchlussregel}{
+	name       =                           {---, allgemeingültige \addIdx[
+		name   =                           {---, allgemeingültige},
+		sort   =                  {Schlussregel, allgemeingültige}] {allgemeingueltigeSchlussregel}},
+	sort       =                  {Schlussregel, allgemeingültige},
+	text       ={allgemeingültige  Schlussregel},
+	user1      ={allgemeingültigen Schlussregel},
+	description={
+		Eine \Schlussregel\ heißt \defFt{allgemeingültig}, wenn sie aus den \Basisregeln\ und schon bekannten \allgemeingueltigenSchlussregeln\ abgeleitet werden kann.
+	}
+}
+
+\newcommand*    {\Schlussregelmenge} [1][]{\glstext[#1]{Schlussregelmenge}}
+\newcommand*    {\Schlussregelmengen}[1][]{\glstext[#1]{Schlussregelmenge}n[]}
+%ToDo prüfen
+\newglossaryentry{Schlussregelmenge}{
+	name        ={Schlussregelmenge \addIdx            {Schlussregelmenge}},
+	text        ={Schlussregelmenge},
+	see         ={MtsSchlussregelSet},
+	description ={
+		Eine \Menge\ von \Schlussregeln, meistens mit \MtsSchlussregelSet\ bezeichnet.
+	}
+}
+
+\newcommand*    {\Schnittregel}[1][]{\glstext[#1]{Schnittregel}}
+%ToDo prüfen
+\newglossaryentry{Schnittregel}{
+	name        ={Schnittregel \addIdx           {Schnittregel}},
+	text        ={Schnittregel},
+	see         ={SR},
+	description ={
+		Eine \allgemeingueltigeSchlussregel.
+	}
+}
+
+\newcommand*        {\Signatur}[1][]{\glstext[#1]{Signatur}}
+%ToDo prüfen
+\longnewglossaryentry{Signatur}{
+	name            ={Signatur \addIdx           {Signatur}},
+	text            ={Signatur},
+	see             ={Abbildung,Logik,Praedikatenlogik,Sprache,Stelligkeit,Symbol},
+}{
+	\begin{wikicite}{bib:Signatur}
+		In der \wikilink{mathematischen Logik} besteht eine \wikibf{Signatur} aus der \wikilink{Menge} der \wikilink{Symbole}, die in der betrachteten \wikilink{Sprache} zu den üblichen, rein logischen Symbolen hinzukommt, und einer \wikilink{Abbildung}, die jedem Symbol der Signatur eine \wikilink{Stelligkeit} eindeutig zuordnet. Während die logischen Symbole wie  $\forall ,\exists ,\land ,\lor ,\rightarrow ,\leftrightarrow ,\neg$ stets als „für alle“, „es gibt ein“, „und“, „oder“, „folgt“, „äquivalent zu“ bzw. „nicht“ interpretiert werden, können durch die semantische \wikilink{Interpretation} der Symbole der Signatur verschiedene \wikilink{Strukturen} (insbesondere Modelle von Aussagen der Logik) unterschieden werden. Die Signatur ist der spezifische Teil einer \wikilink{elementaren Sprache}.
+
+		Beispielsweise lässt sich die gesamte \wikilink{Zermelo-Fraenkel-Mengenlehre} in der Sprache der \wikilink{Prädikatenlogik erster Stufe} und dem einzigen Symbol \MtsIn (neben den rein logischen Symbolen) formulieren; in diesem Fall ist die Symbolmenge der Signatur gleich $\{\MtsIn\}$.
+	\end{wikicite}
+}
+
+\newcommand*     {\BoolescheSignatur}[1][]{\glstext [#1]{BoolescheSignatur}}
+\newcommand*    {\BooleschenSignatur}[1][]{\glsuseri[#1]{BoolescheSignatur}}
+%ToDo prüfen
+\newglossaryentry {BoolescheSignatur}{
+	name       =                {---, Boolesche \addIdx[
+		name   =                {---, Boolesche},
+		sort   =           {Signatur, Boolesche}]       {BoolescheSignatur}},
+	sort       =           {Signatur, Boolesche},
+	text       ={Boolesche  Signatur},
+	user1      ={Booleschen Signatur},
+	description={
+		Die \logischeSignatur\ $\{\OjkNot, \OjkAnd, \OjkOr\}$.
+	}
+}
+
+\newcommand*     {\logischeSignatur}  [1][]{\glstext [#1]{logischeSignatur}}
+\newcommand*     {\logischeSignaturen}[1][]{\glstext [#1]{logischeSignatur}[en]}
+\newcommand*    {\logischenSignatur}  [1][]{\glsuseri[#1]{logischeSignatur}}
+%ToDo prüfen
+\newglossaryentry {logischeSignatur}{
+	name       =               {---, logische \addIdx[
+		name   =               {---, logische},
+		sort   =          {Signatur, logische}]          {logischeSignatur}},
+	sort       =          {Signatur, logische},
+	text       ={logische  Signatur},
+	user1      ={logischen Signatur},
+	description={
+		Abweichend von der Definition von \Signatur\ in \Wikipedia\ ist eine \defFt{logische Signatur} eine \Teilmenge\ von \OjkJun, ausreichend um damit und mit \OjkVar\ und Klammerung alle anderen Elemente aus \OjkJun\ zu definieren.
+	}
+}
+
+\newcommand*    {\Sprache} [1][]{\glstext[#1]{Sprache}}
+\newcommand*    {\Sprachen}[1][]{\glstext[#1]{Sprache}[n]}
+%ToDo prüfen
+\newglossaryentry{Sprache}{
+	name        ={Sprache \addIdx            {Sprache}},
+	text        ={Sprache},
+	description ={
+		--- Siehe \Formelmenge.
+	}
+}
+
+\newcommand*     {\aussagenlogischeSprache}[1][]{\glstext [#1]{aussagenlogischeSprache}}
+\newcommand*    {\aussagenlogischenSprache}[1][]{\glsuseri[#1]{aussagenlogischeSprache}}
+%ToDo prüfen
+\newglossaryentry {aussagenlogischeSprache}{
+	name       =                      {---, aussagenlogische \addIdx[
+		name   =                      {---, aussagenlogische},
+		sort   =                  {Sprache, aussagenlogische}]{aussagenlogischeSprache}},
+	sort       =                  {Sprache, aussagenlogische},
+	text       ={aussagenlogische  Sprache},
+	user1      ={aussagenlogischen Sprache},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=aussagenlogische Sprache
+	}
+}
+
+\newcommand*    {\Sprachebene} [1][]{\glstext[#1]{Sprachebene}}
+\newcommand*    {\Sprachebenen}[1][]{\glstext[#1]{Sprachebene}[n]}
+%ToDo prüfen
+\newglossaryentry{Sprachebene}{
+	name        ={Sprachebene \addIdx            {Sprachebene}},
+	text        ={Sprachebene},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Sprachebene
+	}
+}
+
+\newcommand*    {\stellig}  [1][]{\glstext[#1]{stellig}}
+\newcommand*    {\stellige} [1][]{\glstext[#1]{stellig}[e]}
+\newcommand*    {\stelliges}[1][]{\glstext[#1]{stellig}[es]}
+\newcommand*    {\stelliger}[1][]{\glstext[#1]{stellig}[er]}
+\newglossaryentry{stellig}{
+	name        ={$n$-stellig \addIdx[
+		name    ={$n$-stellig},
+		sort    ={stellig}]                   {stellig}},
+	sort        ={stellig},
+	text        ={stellig},
+	see         ={MtsStelF,MtsStelR},
+	description ={
+		Eine \Funktion, \Relation\ oder ein \Praedikat\ mit der \Stelligkeit\ $n \MtsIn \MtsINo$ nennt man \defFt{$n$-stellig}.
+	}
+}
+
+\newcommand*    {\Stelligkeit}  [1][]{\glstext[#1]{Stelligkeit}}
+\newcommand*    {\Stelligkeiten}[1][]{\glstext[#1]{Stelligkeit}[en]}
+%ToDo prüfen
+\newglossaryentry{Stelligkeit}{
+	name        ={Stelligkeit \addIdx             {Stelligkeit}},
+	text        ={Stelligkeit},
+	see         ={MtsStelF,MtsStelR},
+	description ={
+		einer \Funktion, \Relation\ oder eines \Praedikats.
+	}
+}
+
+\newcommand*    {\Symbol}  [1][]{\glstext [#1]{Symbol}}
+\newcommand*    {\Symbole} [1][]{\glstext [#1]{Symbol}[e]}
+\newcommand*    {\Symbols} [1][]{\glstext [#1]{Symbol}[s]}
+\newcommand*    {\Symbolen}[1][]{\glstext [#1]{Symbol}[en]}
+%ToDo prüfen
+\newglossaryentry{Symbol}{
+	name        ={Symbol \addIdx              {Symbol}},
+	text        ={Symbol},
+	see         ={Beispielsymbol,Metasymbol,Objektsymbol},
+	description ={
+		Ein \defFt{einfaches} \gloFt{Symbol} ist ein druckbares typographisches Zeichen, das als Einheit angesehen wird.
+		Ein \defFt{zusammengesetztes} \gloFt{Symbol} besteht aus mehreren einfachen \Symbolen.
+		Wird ein \gloFt{Symbol}, das kann auch ein zusammengesetztes \gloFt{Symbol} sein, stets als Einheit angesehen, nennen wir es \defTxt{\atomar}\alternativi{unzerlegbar}, andernfalls \defTxt{\zerlegbar}.
+		Im Einzelfall muss für ein Symbol definiert werden, ob es zerlegt werden kann oder nicht.
+		Ein \emph{einfaches} \gloFt{Symbol} ist offensichtlich immer \atomar.
+	}
+}
+
+\newcommand*    {\aussagenlogischesSymbol}  [1][]{\glstext[#1]{aussagenlogischesSymbol}}
+\newcommand*    {\aussagenlogischenSymbolen}[1][]{\glstext[#1]{aussagenlogischesSymbol}[en]}
+\newglossaryentry{aussagenlogischesSymbol}{
+	name       =                       {---, aussagenlogisches \addIdx[
+		name   =                       {---, aussagenlogisches},
+		sort   =                  {Symbol, aussagenlogische}] {aussagenlogischesSymbol}},
+	sort       =                  {Symbol, aussagenlogische},
+	text       ={aussagenlogisches Symbol},
+	user1      ={aussagenlogischen Symbol},
+	description={
+		Die \defFt{aussagenlogischen} \Symbole\ sind ...%ToDo=aussagenlogisches Symbol
+	}
+}
+
+\newcommand*    {\metasprachlichesSymbol} [1][]{\glstext [#1]{metasprachlichesSymbol}}
+\newcommand*     {\metasprachlicheSymbole}[1][]{\glsuseri[#1]{metasprachlichesSymbol}}
+\newglossaryentry{metasprachlichesSymbol}{
+	name       =                     {---, metasprachliches \addIdx[
+		name   =                     {---, metasprachliches},
+		sort   =                  {Symbol, metasprachliches}]{metasprachlichesSymbol}},
+	sort       =                  {Symbol, metasprachliches},
+	text       ={metasprachliches Symbol},
+	user1      ={metasprachliche  Symbole},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=metasprachliches Symbol
+	}
+}
+
+\newcommand*    {\zusammengesetztesSymbol} [1][]{\glstext [#1]{zusammengesetztesSymbol}}
+\newcommand*     {\zusammengesetzteSymbole}[1][]{\glsuseri[#1]{zusammengesetztesSymbol}}
+%ToDo prüfen
+\newglossaryentry{zusammengesetztesSymbol}{
+	name       =                     {---, zusammengesetztes \addIdx[
+		name   =                     {---, zusammengesetztes},
+		sort   =                  {Symbol, zusammengesetztes}]{zusammengesetztesSymbol}},
+	sort       =                  {Symbol, zusammengesetztes},
+	text       ={zusammengesetztes Symbol},
+	user1      ={zusammengesetzte  Symbole},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=zusammengesetztes Symbol
+	}
+}
+
+%T === T === T === T === T === T === T === T === T === T === T === T === T === T
+
+\newcommand*    {\Teilaussage} [1][]{\glstext [#1]{Teilaussage}}
+\newcommand*       {\Taussage} [1][]{\glsuseri[#1]{Teilaussage}}
+\newcommand*    {\Teilaussagen}[1][]{\glstext [#1]{Teilaussage}[n]}
+%ToDo prüfen
+\newglossaryentry{Teilaussage}{
+	name        ={Teilaussage \addIdx             {Teilaussage}},
+	text        ={Teilaussage},
+	user1       =    {aussage},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Teilaussage
+	}
+}
+
+\newcommand*     {\echteTeilaussage}[1][]{\glstext  [#1]{echteTeilaussage}}
+\newcommand*    {\echtenTeilaussage}[1][]{\glsuseri [#1]{echteTeilaussage}}
+\newcommand*            {\eTaussage}[1][]{\glsuserii[#1]{echteTeilaussage}}
+%ToDo prüfen
+\newglossaryentry {echteTeilaussage}{
+	name       =               {---, echte \addIdx[
+		name   =               {---, echte},
+		sort   =       {Teilaussage, echte}]            {echteTeilaussage}},
+	sort       =       {Teilaussage, echte},
+	text       ={echte  Teilaussage},
+	user1      ={echten Teilaussage},
+	user2      =           {aussage},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=echte Teilaussage
+	}
+}
+
+\newcommand*    {\Teilfolge} [1][]{\glstext [#1]{Teilfolge}}
+\newcommand*       {\Tfolge} [1][]{\glsuseri[#1]{Teilfolge}}
+\newcommand*    {\Teilfolgen}[1][]{\glstext [#1]{Teilfolge}[n]}
+%ToDo prüfen
+\newglossaryentry{Teilfolge}{
+	name        ={Teilfolge \addIdx             {Teilfolge}},
+	text        ={Teilfolge},
+	user1       =    {folge},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Teilfolge
+	}
+}
+
+\newcommand*     {\echteTeilfolge}[1][]{\glstext  [#1]{echteTeilfolge}}
+\newcommand*    {\echtenTeilfolge}[1][]{\glsuseri [#1]{echteTeilfolge}}
+\newcommand*            {\eTfolge}[1][]{\glsuserii[#1]{echteTeilfolge}}
+%ToDo prüfen
+\newglossaryentry {echteTeilfolge}{
+	name       =              {---, echte \addIdx[
+		name   =              {---, echte},
+		sort   =       {Teilfolge, echte}]            {echteTeilfolge}},
+	sort       =       {Teilfolge, echte},
+	text       ={echte  Teilfolge},
+	user1      ={echten Teilfolge},
+	user2      =           {folge},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=echte Teilfolge
+	}
+}
+
+\newcommand*    {\Teilformel} [1][]{\glstext [#1]{Teilformel}}
+\newcommand*    {\Teilformeln}[1][]{\glstext [#1]{Teilformel}[n]}
+\newcommand*       {\Tformel} [1][]{\glsuseri[#1]{Teilformel}}
+%ToDo prüfen
+\newglossaryentry{Teilformel}{
+	name        ={Teilformel \addIdx             {Teilformel}},
+	text        ={Teilformel},
+	user1       =    {formel},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Teilformel
+	}
+}
+
+\newcommand*     {\echteTeilformel}[1][]{\glstext  [#1]{echteTeilformel}}
+\newcommand*    {\echtenTeilformel}[1][]{\glsuseri [#1]{echteTeilformel}}
+\newcommand*            {\eTformel}[1][]{\glsuserii[#1]{echteTeilformel}}
+%ToDo prüfen
+\newglossaryentry {echteTeilformel}{
+	name       =              {---, echte \addIdx[
+		name   =              {---, echte},
+		sort   =       {Teilformel, echte}]            {echteTeilformel}},
+	sort       =       {Teilformel, echte},
+	text       ={echte  Teilformel},
+	user1      ={echten Teilformel},
+	user2      =           {formel},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=echte Teilformel
+	}
+}
+
+\newcommand*    {\Teilgebiet}  [1][]{\glstext[#1]{Teilgebiet}}
+\newcommand*    {\Teilgebiets} [1][]{\glstext[#1]{Teilgebiet}[s]}
+\newcommand*    {\Teilgebiete} [1][]{\glstext[#1]{Teilgebiet}[e]}
+\newcommand*    {\Teilgebieten}[1][]{\glstext[#1]{Teilgebiet}[en]}
+%ToDo prüfen
+\newglossaryentry{Teilgebiet}{
+	name        ={Teilgebiet \addIdx             {Teilgebiet}},
+	text        ={Teilgebiet},
+	description ={
+		Ein Teil der Mathematik mit einer zugehörigen Basis aus \Axiomen, \Saetzen, \Fachbegriffen\ und \Darstellungsweisen.
+	}
+}
+
+\newcommand*    {\Teilmenge} [1][]{\glstext [#1]{Teilmenge}}
+\newcommand*       {\Tmenge} [1][]{\glsuseri[#1]{Teilmenge}}
+\newcommand*    {\Teilmengen}[1][]{\glstext [#1]{Teilmenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Teilmenge}{
+	name        ={Teilmenge \addIdx             {Teilmenge}},
+	text        ={Teilmenge},
+	user1       =    {menge},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Teilmenge
+	}
+}
+
+\newcommand*     {\echteTeilmenge}[1][]{\glstext  [#1]{echteTeilmenge}}
+\newcommand*    {\echtenTeilmenge}[1][]{\glsuseri [#1]{echteTeilmenge}}
+\newcommand*             {\eTmenge}[1][]{\glsuserii[#1]{echteTeilmenge}}
+%ToDo prüfen
+\newglossaryentry {echteTeilmenge}{
+	name       =             {---, echte \addIdx[
+		name   =             {---, echte},
+		sort   =       {Teilmenge, echte}]            {echteTeilmenge}},
+	sort       =       {Teilmenge, echte},
+	text       ={echte  Teilmenge},
+	user1      ={echten Teilmenge},
+	user2      =           {menge},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=echte Teilmenge
+	}
+}
+
+\newcommand*    {\Teilobjekt} [1][]{\glstext [#1]{Teilobjekt}}
+\newcommand*       {\Tobjekt} [1][]{\glsuseri[#1]{Teilobjekt}}
+\newcommand*    {\Teilobjekte}[1][]{\glstext [#1]{Teilobjekt}[e]}
+%ToDo prüfen
+\newglossaryentry{Teilobjekt}{
+	name        ={Teilobjekt \addIdx             {Teilobjekt}},
+	text        ={Teilobjekt},
+	user1       =    {objekt},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Teilobjekt
+	}
+}
+
+\newcommand*    {\echtesTeilobjekt}[1][]{\glstext  [#1]{echtesTeilobjekt}}
+\newcommand*    {\echtenTeilobjekt}[1][]{\glsuseri [#1]{echtesTeilobjekt}}
+\newcommand*            {\eTobjekt}[1][]{\glsuserii[#1]{echtesTeilobjekt}}
+%ToDo prüfen
+\newglossaryentry{echtesTeilobjekt}{
+	name        =              {---, echtes \addIdx[
+		name    =              {---, echtes},
+		sort    =       {Teilobjekt, echtes}]           {echtesTeilobjekt}},
+	sort        =       {Teilobjekt, echtes},
+	text        ={echtes Teilobjekt},
+	user1       ={echten Teilobjekt},
+	user2       =           {objekt},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=echtes Teilobjekt
+	}
+}
+
+\newcommand*    {\Teilsymbol} [1][]{\glstext [#1]{Teilsymbol}}
+\newcommand*       {\Tsymbol} [1][]{\glsuseri[#1]{Teilsymbol}}
+\newcommand*    {\Teilsymbole}[1][]{\glstext [#1]{Teilsymbol}[e]}
+%ToDo prüfen
+\newglossaryentry{Teilsymbol}{
+	name        ={Teilsymbol \addIdx             {Teilsymbol}},
+	text        ={Teilsymbol},
+	user1       =    {symbol},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Teilsymbol
+	}
+}
+
+\newcommand*    {\echtesTeilsymbol}[1][]{\glstext  [#1]{echtesTeilsymbol}}
+\newcommand*    {\echtenTeilsymbol}[1][]{\glsuseri [#1]{echtesTeilsymbol}}
+\newcommand*            {\eTsymbol}[1][]{\glsuserii[#1]{echtesTeilsymbol}}
+%ToDo prüfen
+\newglossaryentry{echtesTeilsymbol}{
+	name       =              {---, echtes \addIdx[
+		name   =              {---, echtes},
+		sort   =       {Teilsymbol, echtes}]           {echtesTeilsymbol}},
+	sort       =       {Teilsymbol, echtes},
+	text       ={echtes Teilsymbol},
+	user1      ={echten Teilsymbol},
+	user2      =           {symbol},
+	description={
+		\todo{Beschreibung fehlt noch}% ToDo=echtes Teilsymbol
+	}
+}
+
+\newcommand*    {\Traegermenge} [1][]{\glstext[#1]{Traegermenge}}
+\newcommand*    {\Traegermengen}[1][]{\glstext[#1]{Traegermenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Traegermenge}{
+	name        ={Trägermenge \addIdx[
+		name    ={Trägermenge}]                   {Traegermenge}},
+	text        ={Trägermenge},
+	see         ={MtsTraeger},
+	description ={
+		einer \Relation.
+	}
+}
+
+\newcommand*    {\Transformation}  [1][]{\glstext[#1]{Transformation}}
+\newcommand*    {\Transformationen}[1][]{\glstext[#1]{Transformation}[en]}
+%ToDo prüfen
+\newglossaryentry{Transformation}{
+	name        ={Transformation \addIdx             {Transformation}},
+	text        ={Transformation},
+	see         ={MtsTransformation,MtsTransformationTup,zulaessigeTransformation},
+	description ={
+		Eine Umformung oder Erzeugung einer \Formel\ aus einer vorgegebenen \Menge\ von \Formeln, \textdh\ die Anwendung einer \Schlussregel.
+	}
+}
+
+\newcommand*     {\zulaessigeTransformation}  [1][]{\glstext  [#1]{zulaessigeTransformation}}
+\newcommand*     {\zulaessigeTransformationen}[1][]{\glstext  [#1]{zulaessigeTransformation}[en]}
+\newcommand*    {\zulaessigenTransformation}  [1][]{\glsuseri [#1]{zulaessigeTransformation}}
+\newcommand*    {\zulaessigenTransformationen}[1][]{\glsuseri [#1]{zulaessigeTransformation}[en]}
+\newcommand*    {\zulaessigerTransformationen}[1][]{\glsuserii[#1]{zulaessigeTransformation}[en]}
+%ToDo prüfen
+\newglossaryentry{zulaessigeTransformation}{
+	name        =                      {---, zulässige \addIdx[
+		name    =                      {---, zulässige},
+		sort    =           {Transformation, zulässige}]          {zulaessigeTransformation}},
+	sort        =           {Transformation, zulässige},
+	text        ={zulässige  Transformation},
+	user1       ={zulässigen Transformation},
+	user2       ={zulässiger Transformation},
+	description ={
+		Eine \Transformation\ heißt \defFt{zulässig}, wenn sie Element einer vorgegebenen \Menge\ von \Transformationen\ oder eine daraus zulässigerweise abgeleitete \Transformation\ ist.
+	}
+}
+
+\newcommand*    {\Transformationsfolge} [1][]{\glstext[#1]{Transformationsfolge}}
+\newcommand*    {\Transformationsfolgen}[1][]{\glstext[#1]{Transformationsfolge}[n]}
+%ToDo prüfen
+\newglossaryentry{Transformationsfolge}{
+	name        ={Transformationsfolge \addIdx            {Transformationsfolge}},
+	text        ={Transformationsfolge},
+	see         ={MtsTransformation,MtsTransformationTup,Transformation},
+	description ={
+		Eine Folge von \Transformationen.
+	}
+}
+
+\newcommand*    {\Transformationsregel} [1][]{\glstext[#1]{Transformationsregel}}
+\newcommand*    {\Transformationsregeln}[1][]{\glstext[#1]{Transformationsregel}[n]}
+%ToDo prüfen
+\newglossaryentry{Transformationsregel}{
+	name        ={Transformationsregel \addIdx            {Transformationsregel}},
+	text        ={Transformationsregel},
+	description ={
+		\todo{Beschreibung fehlt noch}% ToDo=Transformationsregel
+	}
+}
+
+\newcommand*    {\Tupel} [1][]{\glstext[#1]{Tupel}}
+\newcommand*    {\Tupels}[1][]{\glstext[#1]{Tupel}[s]}
+%ToDo prüfen
+\longnewglossaryentry{Tupel}{
+	name            ={Tupel \addIdx            {Tupel}},
+	text            ={Tupel},
+	see             ={Folge,Komponente,Menge,Objekt,Zeichenfolge,Zeichenkette}
+}{
+	\begin{wikicite}{bib:Tupel}
+		\wikibf{Tupel} (abgetrennt von \wikilink{mittellat.} \wikiit{quintuplus} ‚fünffach‘, \wikiit{septuplus} ‚siebenfach‘, \wikiit{centuplus} ‚hundertfach‘ etc.) sind in der \wikilink{Mathematik} neben \wikilink{Mengen} eine wichtige Art und Weise, \wikilink{mathematische Objekte} zusammenzufassen. Ein Tupel besteht aus einer \wikilink{Liste} endlich vieler, nicht notwendigerweise voneinander verschiedener Objekte. Dabei spielt, im Gegensatz zu Mengen, die Reihenfolge der Objekte eine Rolle. Es gibt verschiedene Möglichkeiten, Tupel formal als Mengen darzustellen. Tupel finden in vielen Bereichen der Mathematik Verwendung, zum Beispiel als \wikilink{Koordinaten} von Punkten oder als \wikilink{Vektoren} in mehrdimensionalen \wikilink{Vektorräumen}.
+
+		Von Tupeln unabhängig von ihrer Länge ist selten die Rede. Vielmehr verwendet man das Wort \wikibf{$n$-Tupel} und die im nächsten Abschnitt genannten Spezialfälle davon dann, wenn sich aus dem Zusammenhang die Länge als feste Zahl oder als benannte Konstante wie $n$ ergibt. Betrachtet man dagegen viele endliche Folgen unterschiedlicher Längen von Elementen einer Grundmenge, spricht man von endlichen Folgen oder definiert einen neuen Begriff, der oft mit „Kette“ zusammengesetzt ist, z. B. \wikilink{Zeichenkette}, \wikilink{Additionskette}.
+
+		[\textdots]
+	\end{wikicite}
+
+	Ein $n$-\Tupel\alternativi{Vektor} $\vec{a}$ ist eine endliche \Folge\alternativi{Sequenz} $(a_1, \dots, a_n)$ \defFt{von} seinen \defFt{Komponenten} $a_i$.
+	Sind alle Komponenten Elemente derselben \Menge\ $M$, so heißt $\vec{a}$ ein $n$-\Tupel\ \defFt{auf} $M$.
+}
+
+\newcommand*    {\Tupelmenge} [1][]{\glstext[#1]{Tupelmenge}}
+\newcommand*    {\Tupelmengen}[1][]{\glstext[#1]{Tupelmenge}[n]}
+%ToDo prüfen
+\newglossaryentry{Tupelmenge}{
+	name        ={Tupelmenge \addIdx            {Tupelmenge}},
+	text        ={Tupelmenge},
+	description ={
+		Die \Tupelmenge\ $\MtsTup(M)$ einer \Menge\ $M$ ist die \Menge\ aller $n$-Tupel aus $M^n$ für alle $n \in \MtsINo$.
+	}
+}
+
+%U === U === U === U === U === U === U === U === U === U === U === U === U === U
+
+\newcommand*    {\Umkehrrelation}  [1][]{\glstext[#1]{Umkehrrelation}}
+\newcommand*    {\Umkehrrelationen}[1][]{\glstext[#1]{Umkehrrelation}[en]}
+%ToDo prüfen
+\newglossaryentry{Umkehrrelation}{
+	name        ={Umkehrrelation \addIdx             {Umkehrrelation}},
+	text        ={Umkehrrelation},
+	description ={
+		Die \Umkehrrelation\ von einer \binaeren\ \Relation\ $(G,A,B)$ ist die \Relation\ $(H,B,A)$ mit $H = \MengeDef{(b,a)}{(a,b) \in G}$.
+		Üblicherweise wird das zugehörige \Relationssymbol\ gespiegelt.
+		--- Die \gloFt{Umkehrrelation} der \gloFt{Umkehrrelation} einer \Relation\ ist wieder die ursprüngliche \Relation.
+		Die \gloFt{Umkehrrelation} der \Negation\ einer \Relation\ ist gleich der \Negation\ ihrer \gloFt{Umkehrrelation}.
+	}
+}
+
+\newcommand*    {\unaer}  [1][]{\glstext[#1]{unaer}}
+\newcommand*    {\unaere} [1][]{\glstext[#1]{unaer}[e]}
+\newcommand*    {\unaeren}[1][]{\glstext[#1]{unaer}[en]}
+\newcommand*    {\unaerer}[1][]{\glstext[#1]{unaer}[er]}
+%ToDo prüfen
+\newglossaryentry{unaer}{
+	name        ={unär \addIdx[
+		name    ={unär}]                   {unaer}},
+	text        ={unär},
+	see         ={binaer},
+	description ={
+		Eine \Operation, \Funktion\ oder \Relation\ heißt \defFt{unär}, wenn ihre \Stelligkeit\ gleich 1 ist.
+	}
+}
+
+\newcommand*    {\Ungleichheit}[1][]{\glstext[#1]{Ungleichheit}}
+%ToDo prüfen
+\newglossaryentry{Ungleichheit}{
+	name        ={Ungleichheit \addIdx           {Ungleichheit}},
+	text        ={Ungleichheit},
+	description ={
+		Eine \Gleichheitsrelation:
+		Zwei Objekte $A$ und $B$ sind \defFt{nicht gleich}\alternativii{nicht dasselbe}{nicht identisch} $A \MtsEqN B$, wenn sie in mindestens einer \interessierendenEigenschaft\ für \MtsEq\ nicht übereinstimmen.
+	}
+}
+
+\newsynonym{\Unteraussage}{Unteraussage}{\Teilaussage}
+\newsynonym{\Unterformel} {Unterformel} {\Teilformel}
+\newsynonym{\Untermenge}  {Untermenge}  {\Teilmenge}
+\newsynonym{\Unterobjekt} {Unterobjekt} {\Teilobjekt}
+\newsynonym{\Untersymbol} {Untersymbol} {\Teilsymbol}
+
+\newsynonym{\unzerlegbar} {unzerlegbar} {\atomar}
+
+%V === V === V === V === V === V === V === V === V === V === V === V === V === V
+
+\newcommand*        {\Variable} [1][]{\glstext[#1]{Variable}}
+\newcommand*        {\Variablen}[1][]{\glstext[#1]{Variable}[n]}
+\longnewglossaryentry{Variable}{
+	name            ={Variable \addIdx            {Variable}},
+	text            ={Variable},
+	see             ={Konstante},
+}{
+	\begin{wikicite}{bib:Variable}
+		Eine \wikibf{Variable} ist ein Name für eine Leerstelle in einem logischen oder mathematischen Ausdruck.[1] Der Begriff leitet sich vom lateinischen \wikilink{Adjektiv} \wikiit{variabilis} (veränderlich) ab. Gleichwertig werden auch die Begriffe \wikiit{Platzhalter} oder \wikiit{Veränderliche} benutzt. Als „Variable“ dienten früher Wörter oder Symbole, heute verwendet man zur \wikilink{mathematischen Notation} in der Regel Buchstaben als Zeichen. Wird anstelle der Variablen ein konkretes Objekt eingesetzt, so ist darauf zu achten, dass überall dort, wo die Variable auftritt, auch dasselbe Objekt benutzt wird.
+
+		[\textdots]
+	\end{wikicite}
+}
+
+\newcommand*     {\aussagenlogischeVariable} [1][]{\glstext  [#1]{aussagenlogischeVariable}}
+\newcommand*    {\aussagenlogischenVariablen}[1][]{\glsuseri [#1]{aussagenlogischeVariable}[n]}
+\newcommand*    {\aussagenlogischenV}        [1][]{\glsuserii[#1]{aussagenlogischeVariable}}
+\newglossaryentry {aussagenlogischeVariable}{
+	name       =                       {---, aussagenlogische \addIdx[
+		name   =                       {---, aussagenlogische},
+		sort   =                  {Variable, aussagenlogische}]  {aussagenlogischeVariable}},
+	sort       =                  {Variable, aussagenlogische},
+	text       ={aussagenlogische  Variable},
+	user1      ={aussagenlogischen Variable},
+	user2      ={aussagenlogischen},
+	description={
+		Die \defFt{aussagenlogischen} \Variablen\ sind die \Elemente\ von \OjkVar.
+	}
+}
+
+\newcommand*     {\logischeVariable} [1][]{\glstext [#1]{logischeVariable}}
+\newcommand*     {\logischeV}        [1][]{\glsuseri[#1]{logischeVariable}}
+\newglossaryentry {logischeVariable}{
+	name       =               {---, logische \addIdx[
+		name   =               {---, logische},
+		sort   =          {Variable, logische}]         {logischeVariable}},
+	sort       =          {Variable, logische},
+	text       ={logische  Variable},
+	user1      ={logische},
+	description={
+		Die \defFt{logischen} \Variablen\ entsprechen den \aussagenlogischenV.
+	}
+}
+
+\newcommand*    {\metasprachlicheVariable}[1][]{\glstext [#1]{metasprachlicheVariable}}
+\newcommand*    {\metasprachlicheV}       [1][]{\glsuseri[#1]{metasprachlicheVariable}}
+\newglossaryentry{metasprachlicheVariable}{
+	name       =                     {---, metasprachliche \addIdx[
+		name   =                     {---, metasprachliche},
+		sort   =                {Variable, metasprachliche}] {metasprachlicheVariable}},
+	sort       =                {Variable, metasprachliche},
+	text       ={metasprachliche Variable},
+	user1      ={metasprachliche},
+	description={
+		Die \defFt{metasprachlichen} \Variablen\ sind die \Elemente\ von% ToDo=metasprachliche Variable
+	}
+}
+
+\newcommand*    {\Vereinigung} [1][]{\glstext[#1]{Vereinigung}}
+\newglossaryentry{Vereinigung}{
+	name        ={Vereinigung \addIdx             {Vereinigung}},
+	text        ={Vereinigung},
+	description ={
+		Eine \Mengenoperation: \todo{Beschreibung fehlt noch}% ToDo=Vereinigung von Mengen
+	}
+}
+
+\newcommand*    {\vergleichbar} [1][]{\glstext[#1]{vergleichbar}}
+\newcommand*    {\Vergleichbar} [1][]{\Glstext[#1]{vergleichbar}}
+\newcommand*    {\vergleichbare}[1][]{\glstext[#1]{vergleichbar}[e]}
+%ToDo prüfen -  Wert und Ergebnis definieren?
+\newglossaryentry{vergleichbar}{
+	name        ={vergleichbar \addIdx            {vergleichbar}},
+	text        ={vergleichbar},
+	description ={
+		Zwei \Objekte\ $A$ und $B$ sind \vergleichbar, wenn beide von derselben \Objektart\ sind, \textdh\ wenn beide \textzB\ jeweils Mengen, \Zeichenfolgen, Zahlen, \textusw\ sind.
+		Dabei muss bei \Formeln\ zwischen der \Formel\ an sich und ihrem \emph{Wert} oder \emph{Ergebnis} unterschieden werden.
+	}
+}
+
+\newcommand*    {\Vertauschung}  [1][]{\glstext[#1]{Vertauschung}}
+\newcommand*    {\Vertauschungen}[1][]{\glstext[#1]{Vertauschung}[en]}
+%ToDo prüfen
+\newglossaryentry{Vertauschung}{
+	name        ={Vertauschung \addIdx             {Vertauschung}},
+	text        ={Vertauschung},
+	description ={
+		Die \defFt{Vertauschung} von zwei unabhängigen Teil-\Formeln\ ($\alpha$ und $\beta$) in einer anderen \Formel\ ($\gamma$)
+		\\--- Formal: $\gamma(\alpha \MtsSwap \beta)$.
+		Die \gloFt{Vertauschung} ist eine spezielle Form der \Ersetzung.
+	}
+}
+
+\newsynonym{\Voraussetzung}{Voraussetzung}{\Praemisse}
+
+%W === W === W === W === W === W === W === W === W === W === W === W === W === W
+
+\newcommand*        {\Wahrheitswert}  [1][]{\glstext[#1]{Wahrheitswert}}
+\newcommand*        {\Wahrheitswerte} [1][]{\glstext[#1]{Wahrheitswert}[e]}
+\newcommand*        {\Wahrheitswerten}[1][]{\glstext[#1]{Wahrheitswert}[en]}
+%ToDo prüfen
+\longnewglossaryentry{Wahrheitswert}{
+	name            ={Wahrheitswert \addIdx             {Wahrheitswert}},
+	text            ={Wahrheitswert},
+	see             ={atomar,Aussage,Element,Junktor,Teilaussage,Logik},
+}{
+	\begin{wikicite}{bib:Wahrheitswert}
+		Ein \wikibf{Wahrheitswert} ist in \wikilink{Logik} und \wikilink{Mathematik} ein \wikiit{logischer Wert}, den eine Aussage in Bezug auf Wahrheit annehmen kann.
+
+		In der zweiwertigen \wikilink{klassischen Logik} kann eine Aussage nur entweder \wikiit{wahr} oder \wikiit{falsch} sein, die Menge der Wahrheitswerte $\{W, F\}$ hat so zwei Elemente. In \wikilink{mehrwertigen Logiken} enthält die \wikilink{Wahrheitswertemenge} mehr als zwei Elemente, z. B. in einer \wikilink{dreiwertigen Logik} oder einer \wikilink{Fuzzy-Logik}, die damit zu den \wikilink{nichtklassischen} zählen. Hier wird dann auch neben Wahrheitswerten von \wikiit{Quasiwahrheitswerten}, \wikiit{Pseudowahrheitswerten} oder \wikiit{Geltungswerten} gesprochen.
+
+		Die Abbildung der Menge von Aussagen einer (meist formalen) Sprache auf die Wahrheitswertemenge wird \wikilink{Wahrheitswertzuordnung}  genannt und ist eine aussagenlogisch spezifische \wikilink{Bewertungsfunktion}. In der klassischen Logik kann auch explizit die Klasse aller wahren Aussagen beziehungsweise die Klasse aller falschen Aussagen definiert werden. Die Abbildung von Wahrheitswerten der (\wikilink{atomaren}) Teilaussagen einer zusammengesetzten Aussage auf die Wahrheitswertemenge heißt \wikilink{Wahrheitswertefunktion} oder Wahrheitsfunktion. Die Wertetabelle dieser \wikilink{Funktion} im mathematischen Sinn wird auch als \wikilink{Wahrheitstafel} bezeichnet und häufig dazu verwendet, die Bedeutung wahrheitsfunktionaler \wikilink{Junktoren} anzugeben.
+	\end{wikicite}
+	\GlossarZusatz{
+		Wir verwenden nur die beiden \defFt{Wahrheitswerte} der zweiwertigen klassischen \Logik, die wir (in der \Metasprache) mit \chrqt{\TxtTrue} und \chrqt{\TxtFalse} bezeichnen.
+		In der \formalenMetasprache\ hingegen verwenden wir \chrqt{\MtsTrue} und \chrqt{\MtsFalse} und in der \Objektsprache\ \chrqt{\OjkTrue} und \chrqt{\OjkFalse}.
+		In der Literatur findet man auch einfach \chrqt{$1$} und \chrqt{$0$}.
+	}
+}
+
+\newcommand*    {\aussagenlogischerWahrheitswert}   [1][]{\glstext[#1]{aussagenlogischerWahrheitswert}}
+%ToDo prüfen
+\newglossaryentry{aussagenlogischerWahrheitswert}{
+	name       = {aussagenlogischerWahrheitswert \addIdx              {aussagenlogischerWahrheitswert}},
+	name       =                            {---, aussagenlogischer \addIdx[
+		name   =                            {---, aussagenlogischer},
+		sort   =                  {Wahrheitswert, aussagenlogischer}] {aussagenlogischerWahrheitswert}},
+	sort       =                  {Wahrheitswert, aussagenlogischer},
+	text       ={aussagenlogischer Wahrheitswert},
+	description={
+		Es gib die beiden \gloFt{aussagenlogischen Wahrheitswerte} \OjkTrue\ und \OjkFalse.
+	}
+}
+
+\newcommand*    {\metasprachlicherWahrheitswert} [1][]{\glstext [#1]{metasprachlicherWahrheitswert}}
+\newcommand*     {\metasprachlicheWahrheitswert} [1][]{\glsuseri[#1]{metasprachlicherWahrheitswert}}
+%ToDo prüfen
+\newglossaryentry{metasprachlicherWahrheitswert}{
+	name       = {metasprachlicherWahrheitswert \addIdx             {metasprachlicherWahrheitswert}},
+	name       =                           {---, metasprachlicher \addIdx[
+		name   =                           {---, metasprachlicher},
+		sort   =                 {Wahrheitswert, metasprachlicher}] {metasprachlicherWahrheitswert}},
+	sort       =                 {Wahrheitswert, metasprachlicher},
+	text       ={metasprachlicher Wahrheitswert},
+	user1      ={metasprachliche  Wahrheitswert},
+	description={
+		Es gib die beiden \gloFt{metasprachlichen Wahrheitswerte} in Textform (\TxtTrue, \TxtFalse) und in der \formalenMetasprache\ (\MtsTrue, \MtsFalse).
+	}
+}
+
+\newcommand*    {\Wertebereich} [1][]{\glstext[#1]{Wertebereich}}
+\newcommand*    {\Wertebereiche}[1][]{\glstext[#1]{Wertebereich}[e]}
+%ToDo prüfen
+\newglossaryentry{Wertebereich}{
+	name        ={Wertebereich \addIdx            {Wertebereich}},
+	text        ={Wertebereich},
+	see         ={MtsWb,Zielbereich,Funktion},
+	description ={
+		einer \Funktion.
+	}
+}
+
+\newcommand*        {\Wikipedia}[1][]{\glstext[#1]{Wikipedia}}
+\longnewglossaryentry{Wikipedia}{
+	name            ={Wikipedia \addIdx           {Wikipedia}},
+	text            ={Wikipedia},
+}{
+	\begin{wikicite}{bib:Wikipedia}
+		Wikipedia ist ein Projekt zum Aufbau einer [Internet-\nobreak]Enzyklopädie aus freien Inhalten.
+	\end{wikicite}
+}
+
+\newcommand*    {\Wort}   [1][]{\glstext[#1]{Wort}}
+\newcommand*    {\Worte}  [1][]{\glstext[#1]{Wort}[e]}
+\newcommand*    {\Woerter}[1][]{\glspl  [#1]{Wort}}
+%ToDo prüfen
+\newglossaryentry{Wort}{
+	name        ={Wort \addIdx              {Wort}},
+	text        ={Wort},
+	plural      ={Wörter},
+	see         ={Formelmenge},
+	description ={
+		Synonym: \Formel\ ---
+		Ein Element einer \Sprache.
+	}
+}
+
+%Z === Z === Z === Z === Z === Z === Z === Z === Z === Z === Z === Z === Z === Z
+
+\newcommand*    {\Zeichenfolge} [1][]{\glstext[#1]{Zeichenfolge}}
+\newcommand*    {\Zeichenfolgen}[1][]{\glstext[#1]{Zeichenfolge}[n]}
+%ToDo prüfen
+\newglossaryentry{Zeichenfolge}{
+	name        ={Zeichenfolge \addIdx            {Zeichenfolge}},
+	text        ={Zeichenfolge},
+	see         ={Zeichenkette},
+	description ={
+		Eine Folge von \atomaren\ \Symbolen, wobei Leerstellen und sonstiger Zwischenraum nicht zählen und nur zur besseren \Darstellung\ dienen.
+		Dabei sind als spezielle \Symbole\ auch \Zeichenketten\ erlaubt, solange die Zerlegung eindeutig bleibt.
+		\textZB\ kann \chrqt{sin} als ein einzelnes \Symbol\ --- für die Sinusfunktion --- aufgefasst werden, aber auch als Folge von den Buchstaben \chrqt{s}, \chrqt{i} und \chrqt{n}.
+		\Formeln\ werden immer als \Zeichenfolgen\ aufgefasst.
+	}
+}
+
+\newcommand*    {\Zeichenkette} [1][]{\glstext[#1]{Zeichenkette}}
+\newcommand*    {\Zeichenketten}[1][]{\glstext[#1]{Zeichenkette}[n]}
+%ToDo prüfen
+\newglossaryentry{Zeichenkette}{
+	name        ={Zeichenkette \addIdx            {Zeichenkette}},
+	text        ={Zeichenkette},
+	see         ={Zeichenfolge},
+	description ={
+		Eine Folge von (typographischen) Zeichen, auch Leerstellen und sonstigem Zwischenraum.
+	}
+}
+
+\newcommand*    {\zerlegbar}  [1][]{\glstext[#1]{zerlegbar}}
+\newcommand*    {\zerlegbare} [1][]{\glstext[#1]{zerlegbar}[e]}
+\newcommand*    {\Zerlegbare} [1][]{\Glstext[#1]{zerlegbar}[e]}
+\newcommand*    {\zerlegbares}[1][]{\glstext[#1]{zerlegbar}[es]}
+%ToDo prüfen
+\newglossaryentry{zerlegbar}{
+	name        ={zerlegbar \addIdx             {zerlegbar}},
+	text        ={zerlegbar},
+	see         ={atomar},
+	description ={
+		Eine \Aussage, \Formel, \Folge\ oder \Symbol, die eine \echteTeilaussage,  -\eTfolge, -\eTformel\ \textbzw. -\eTsymbol\ enthalten, heißt \defFt{zerlegbar}.
+	}
+}
+
+\newcommand*    {\Ziel} [1][]{\glstext[#1]{Ziel}}
+\newcommand*    {\Ziele}[1][]{\glstext[#1]{Ziel}[e]}
+%ToDo prüfen
+\newglossaryentry{Ziel}{
+	name        ={Ziel \addIdx            {Ziel}},
+	text        ={Ziel},
+	description ={
+		Ein \defFt{Ziel} ist in diesem Dokument eine Anforderungen an \ASBA.
+	}
+}
+
+\newcommand*    {\Zielbereich} [1][]{\glstext[#1]{Zielbereich}}
+\newcommand*    {\Zielbereiche}[1][]{\glstext[#1]{Zielbereich}[e]}
+%ToDo prüfen
+\newglossaryentry{Zielbereich}{
+	name        ={Zielbereich \addIdx            {Zielbereich}},
+	text        ={Zielbereich},
+	see         ={MtsZb,Wertebereich,Funktion},
+	description ={
+		einer \Funktion.
+	}
+}
+
+\newcommand*    {\zulaessig}  [1][]{\glstext[#1]{zulaessig}}
+\newcommand*    {\zulaessige} [1][]{\glstext[#1]{zulaessig}[e]}
+\newcommand*    {\zulaessigen}[1][]{\glstext[#1]{zulaessig}[en]}
+\newcommand*    {\zulaessiger}[1][]{\glstext[#1]{zulaessig}[er]}
+%ToDo prüfen
+\newglossaryentry{zulaessig}{
+	name        ={zulässig \addIdx[
+		name    ={zulässig}]                    {zulaessig}},
+	text        ={zulässig},
+	see         ={Formel,Transformation,Ersetzung},
+	description ={
+		Eine Eigenschaft von \Formel, \Transformation\ und \Ersetzung.
+	}
+}

@@ -39,7 +39,7 @@
 \beginsection          {\Schlussregeln}
 \label              {sec-Schlussregeln}
 
-In diesem \sectionname\ geht es um \zulaessigeUmwandlungen, \textdh\ \allgemeingueltigeSchlussregeln.
+In diesem \sectionname\ geht es um \zulaessigeTransformationen, \textdh\ \allgemeingueltigeSchlussregeln.
 Dazu gehören zunächst die \Basisregeln.
 Dann aber auch alle aus den \Basisregeln\ und den bis dahin \allgemeingueltigenSchlussregeln\ korrekt abgeleiteten neuen \Schlussregeln.
 Die \Schlussregeln\ haben die Form eines Formalen \Satzes.
@@ -50,9 +50,9 @@ Die \Schlussregeln\ haben die Form eines Formalen \Satzes.
 Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \Basisregeln\ definiert. Zuvor werden aber noch einige \Definitionen\ gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \Formeln\, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \Formeln\ und
 \begin{align}
 	%
-	&X&&\MtsDefEq&&X_1\cup X_2\cup...\cup X_n\cup\{\alpha_1,\alpha_2,...,\alpha_m\}
+	&X&&\MtsDefEq&&X_1\MtsCup X_2\MtsCup...\MtsCup X_n\MtsCup\{\alpha_1,...,\alpha_m\}
 	\\
-	&Y&&\MtsDefEq&&Y_1\cup Y_2\cup...\cup Y_k\cup\{\beta_1, \beta_2, ...,\beta_l \}
+	&Y&&\MtsDefEq&&Y_1\MtsCup Y_2\MtsCup...\MtsCup Y_k\MtsCup\{\beta_1, ...,\beta_l \}
 	\formulatoleft\formulatoleft
 \end{align}
 
@@ -60,14 +60,14 @@ $X$ und $Y$ können auch die \leereMenge\ sein. Damit wird definiert:
 \begin{align}
 	& \alpha \defSymBin{\MtsDerive} \beta \quad \MtsDefEquiv \quad
 	\parbox[t]{11cm}{%
-	$\beta$ ist mittels schrittweiser Anwendung \emph{\zulaessigerUmwandlungen} (siehe weiter unten) aus $\alpha$ \ableitbar.
+	$\beta$ ist mittels schrittweiser Anwendung \emph{\zulaessigerTransformationen} (siehe weiter unten) aus $\alpha$ \ableitbar.
 	Sprechweise: Aus $\alpha$ ist $\beta$ \defTxt{\ableitbar} oder \defTxt{\beweisbar};
 	kurz: \standsfor{$\alpha$ \emph{\ableitbar} $\beta$} \textbzw\ \standsfor{$\alpha$ \emph{\beweisbar} $\beta$}
 	--- Es kann auch \chrqt{$\alpha$} durch \chrqt{$X$} und/oder \chrqt{$\beta$} durch \chrqt{$Y$} ersetzt werden.
 	}
 	\label{def-ableitbar}
 	\\
-	& \defSymUna{\MtsDerive} \beta \quad \MtsDefEquiv \quad \emptyset \MtsDerive \beta \qquad \text{(\chrqt{\MtsDerive} kann dann auch ganz entfallen)}
+	& \defSymUna{\MtsDerive} \beta \quad \MtsDefEquiv \quad \MtsEmptyset \MtsDerive \beta \qquad \text{(\chrqt{\MtsDerive} kann dann auch ganz entfallen)}
 	\\
 	& X_1,X_2,...,X_n,\alpha_1,\alpha_2,...,\alpha_m\quad
 	\defSym{\MtsDerive}\quad Y_1,Y_2,...,Y_n, \beta_1, \beta_2,..., \beta_m\quad
@@ -76,7 +76,7 @@ $X$ und $Y$ können auch die \leereMenge\ sein. Damit wird definiert:
 	\formulatoleft
 \end{align}
 
-Eine \defTxt{\zulaessigeUmwandlung} ist die Anwendung einer \emph{\Ersetzung}{\vrefnotesub{sub-Identitaetsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub-Schlussregeln}.
+Eine \defTxt{\zulaessigeTransformation} ist die Anwendung einer \emph{\Ersetzung}{\vrefnotesub{sub-Identitaetsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub-Schlussregeln}.
 Bei den \Schlussregeln\ und der \Ersetzung\ \chrqt{\MtsSubst} soll das Komma stärker binden als \chrqt{\MtsDerive}, \chrqt{\MtsSubst} und \chrqt{\MtsUnd}, wobei \chrqt{\MtsUnd} für \standsfor{und} \textbzw\ \chrqt{\MtsAnd}\vrefnotesub{sub-AussagenUndMetaoperationen} steht und schwächer bindet als \chrqt{\MtsDerive} und \chrqt{\MtsSubst}.%
 \footnote{siehe Fußnote~3 \vrefvontab{tab-Prioritaeten}}
 
@@ -120,15 +120,15 @@ Bei den weiteren \Schlussregeln\ wird noch \chrqt{\OjkImp} gemäß der Definitio
 
 In einer \Schlussregel\ werden die \Formeln%
 \footnote{hier: \Aussagen\ in einer formalen Form.}
-über dem Querstrich als \defTxt{\Voraussetzungen} und die unter dem Querstrich als \defTxt{\Folgerungen} der Regel bezeichnet.
-Eine \Schlussregel\ steht für die \Aussage, dass mit ihren \Voraussetzungen\ auch auch ihre \Folgerungen\ gelten.
+über dem Querstrich als \defTxt{\Praemissen} und die unter dem Querstrich als \defTxt{\Konklusionen} der Regel bezeichnet.
+Eine \Schlussregel\ steht für die \Aussage, dass mit ihren \Praemissen\ auch auch ihre \Konklusionen\ gelten.
 -- Im Gegensatz zu den weiteren \Schlussregeln\ werden die oben aufgelisteten \Basisregeln\ nicht weiter hinterfragt, \textdh\ sie gelten quasi als \Axiome.
 
 \subsection[Identitätsregeln]{\Identitaetsregeln}% -----------------------------
 \label                    {sub-Identitaetsregeln}
 
 %TODO Durch Ersetzung ersetzen?
-Die \zulaessigenUmwandlungen, \textdh\ die Anwendung der \Schlussregeln, erfordern \zulaessige\ \Ersetzungen.
+Die \zulaessigenTransformationen, \textdh\ die Anwendung der \Schlussregeln, erfordern \zulaessige\ \Ersetzungen.
 Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{\MtsEq} mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
 \footnote{\citesee{bib:NatuerlichesSchliessen}}
 Dazu seien $\alpha$, $\beta$ und $\gamma$ \vergleichbare\footnote{siehe Ende \vrefvonsub{sub-AussagenUndMetaoperationen}}\Formeln.
@@ -154,7 +154,7 @@ Zunächst wird definiert:
 Dann wird definiert:
 \begin{align}
 	\gamma(S) & \quad \MtsDefEq \quad \gamma(s_1)(s_2)... \label{def-ErsetzungenAlt}\\
-	\gamma(\emptyset) & \quad \; = \quad \gamma & \text{(nur zur Verdeutlichung)}\\
+	\gamma(\MtsEmptyset) & \quad \; = \quad \gamma & \text{(nur zur Verdeutlichung)}\\
 	\gamma(s_1,s_2,...) & \quad \MtsDefEq \quad \gamma(S)
 \end{align}
 
@@ -176,10 +176,10 @@ Folgende Sprechweisen werden verwendet:
 	\item [$\gamma(S)$ :] $S$ wird auf $\gamma$ angewendet.
 \end{itemize}
 %
-Bei obiger Definition der \Ersetzung\ bleibt noch offen, unter welchen \Voraussetzungen\ sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \Vertauschung\ und vollständige \Ersetzung\ verwendet werden.
+Bei obiger Definition der \Ersetzung\ bleibt noch offen, unter welchen \Praemissen\ sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \Vertauschung\ und vollständige \Ersetzung\ verwendet werden.
 In diesen Fällen sind beliebige \Ersetzungen\ von Variablen durch \Formeln\ erlaubt.
 
-Ist $\gamma$ wie oben und $S$ eine Menge von \Ersetzungen.
+Ist $\gamma$ wie oben und $S$ eine \Menge\ von \Ersetzungen.
 
 Nun können die beiden \Identitaetsregeln\ definiert werden:
 \begin{align}
@@ -200,7 +200,7 @@ Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \Basisre
 \subsection[Weitere Schlussregeln]{Weitere \Schlussregeln}% --------------------
 \label                          {sub-weitereSchlussregeln}
 
-In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessiger\ \Umwandlungen\ weitere \Schlussregeln\ abgeleitet.%
+In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessiger\ \Transformationen\ weitere \Schlussregeln\ abgeleitet.%
 %TODO Identitätsregeln kommen bei Rautenberg später vor. ???
 \footnote{%
 	In~\cite{bib:Rautenberg} werden die \Identitaetsregeln\ zwar weder aufgeführt noch angewandt, ohne \Ersetzung\ geht es aber nicht.
@@ -264,15 +264,13 @@ Für die ausgefüllten Felder wird nun definiert:%
 }
 \begin{align}
 	R_i & \MtsDefEq
-	\left\{
-		\begin{array}{l}
-			\text{- \strqt{\Voraussetzung} = Die \Aussage\ $A_i$ ist eine \Voraussetzung.}\\
-			\text{- \strqt{\Folgerung} = Die \Aussage\ $A_i$ ist eine \Folgerung.}\\
-			\text{- \strqt{Annahme} = Die \Aussage\ $A_i$ wird vorübergehend als zutreffend angenommen.}\\
-			\text{- $j$ = Verweis auf die \Schlussregel\ $\overline{R}_j$ für ein $j < i$.}\\
-			\text{- Verweis (ohne Klammern) auf eine \allgemeingueltigeSchlussregel.}
-		\end{array}
-	\right.
+	\begin{cases}
+		\text{\strqt{\Praemisse}  = Die \Aussage\ $A_i$ ist eine \Praemisse.}\\
+		\text{\strqt{\Konklusion} = Die \Aussage\ $A_i$ ist eine \Konklusion.}\\
+		\text{\strqt{Annahme}     = Die \Aussage\ $A_i$ wird vorübergehend als zutreffend angenommen.}\\
+		\text{$j$                 = Verweis auf die \Schlussregel\ $\overline{R}_j$ für ein $j < i$.}\\
+		\text{                      Verweis (ohne Klammern) auf eine \allgemeingueltigeSchlussregel.}
+	\end{cases}
 	\\
 	S_i & \MtsDefEq \text{Die Folge von den anzuwendenden \Ersetzungen.}
 	\\
@@ -280,9 +278,9 @@ Für die ausgefüllten Felder wird nun definiert:%
 	& \quad\;\; \text{\Ersetzungen\ aus $S_i$ auf die \Schlussregel\ $R_i$}
 	\\
 	Z_i & \MtsDefEq \text{Die Indizes $j$ (mit $j < i$) als Verweise auf eine oder mehrere \Aussagen\ $A_j$,}\\
-	& \quad\;\;\text{ welche zusammen genau die \Voraussetzungen\ der \Schnittregel\ } \overline{R}_i \text{ erfüllen.}
+	& \quad\;\;\text{ welche zusammen genau die \Praemissen\ der \Schnittregel\ } \overline{R}_i \text{ erfüllen.}
 	\\
-	A_i & \MtsDefEq \text{\Folgerung(en) der \Schlussregel\ $\overline{R}_i$ ---}\\
+	A_i & \MtsDefEq \text{\Konklusion(en) der \Schlussregel\ $\overline{R}_i$ ---}\\
 	& \quad\;\; \text{auch in Form der Indizes von einem oder mehreren von $Aj$ (mit $j < i$).}\\
 	& \quad\;\; \text{In der Ergebniszeile kann hier auch die bewiesene \Aussage\ als \Schlussregel\ stehen.}
 	\\
@@ -294,15 +292,13 @@ Bis zur Zeile $i$ hat man die folgende \Schlussregel\ bewiesen:
 Sei nun
 \[
 	\Gamma_i \MtsDefEq
-	\left\{
-		\begin{array}{ll}
-			\text{leer}    & \text{ für } R_i = \text{\strqt{\Voraussetzung}} \\
-			\text{leer}    & \text{ für } R_i = \text{\strqt{\Folgerung}}     \\
-			\text{leer}    & \text{ für } R_i = \text{\strqt{Annahme}}        \\
-			\overline{R_j} & \text{ für } R_i = j \quad \text{(eine \defFt{interne} \Schlussregel)} \\
-			\text{die \Schlussregel} & \text{ für } R_i = \text{Verweis auf eine \defFt{externe} \Schlussregel}
-		\end{array}
-	\right.
+	\begin{cases}
+		\text{leer}    & \text{ für } R_i = \text{\strqt{\Praemisse}} \\
+		\text{leer}    & \text{ für } R_i = \text{\strqt{\Konklusion}}     \\
+		\text{leer}    & \text{ für } R_i = \text{\strqt{Annahme}}        \\
+		\overline{R_j} & \text{ für } R_i = j \quad \text{(eine \defFt{interne} \Schlussregel)} \\
+		\text{die \Schlussregel} & \text{ für } R_i = \text{Verweis auf eine \defFt{externe} \Schlussregel}
+	\end{cases}
 \]
 Damit gilt für die Einträge in einer Zeile $i$:
 \begin{itemize}
@@ -374,18 +370,18 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 %
 \begin{enumerate}
 	%
-	\item Am Anfang der Tabelle werden zuerst \Voraussetzungen, dann zu beweisende \Folgerungen\ und schließlich Annahmen aufgeführt.%
+	\item Am Anfang der Tabelle werden zuerst \Praemissen, dann zu beweisende \Konklusionen\ und schließlich Annahmen aufgeführt.%
 	\footnote{%
 		Die Angabe ist dann erforderlich, wenn darauf verwiesen wird.
-		Durch die Auflistung hat man aber einen vollständigen Überblick über die \Voraussetzungen\ und \Folgerungen\ eines \Beweises\ und die Zwischenannahmen.
-		Auf jede nötige \Voraussetzung\ und jede verwendete Zwischenannahme wird in der Spalte $(Z_n$) mindestens einmal verwiesen, so dass sie auch aufgeführt werden müssen.
-		Die Angabe der \Folgerungen\ erleichtert die Erstellung einer \emph{Ergebniszeile} (\seename Punkt~\ref{item-Ergebniszeile}).
+		Durch die Auflistung hat man aber einen vollständigen Überblick über die \Praemissen\ und \Konklusionen\ eines \Beweises\ und die Zwischenannahmen.
+		Auf jede nötige \Praemisse\ und jede verwendete Zwischenannahme wird in der Spalte $(Z_n$) mindestens einmal verwiesen, so dass sie auch aufgeführt werden müssen.
+		Die Angabe der \Konklusionen\ erleichtert die Erstellung einer \emph{Ergebniszeile} (\seename\ Punkt~\ref{item-Ergebniszeile}).
 	}
 	Jede der drei Gruppen kann auch leer sein und es ist auch möglich, die Zeilen an anderen Stellen der Tabelle anzugeben, spätestens aber, wenn darauf verwiesen wird.
-	Für jede \Voraussetzung, \Folgerung\ und Annahme gibt es eine Zeile:
+	Für jede \Praemisse, \Konklusion\ und Annahme gibt es eine Zeile:
 	\begin{enumerate}
-		\item $R_i =$ \strqt{\Voraussetzung}, \strqt{\Folgerung} oder \strqt{Annahme}.
-		\item $A_i =$ Die aktuelle \Voraussetzung, \Folgerung\ oder Annahme.
+		\item $R_i =$ \strqt{\Praemisse}, \strqt{\Konklusion} oder \strqt{Annahme}.
+		\item $A_i =$ Die aktuelle \Praemisse, \Konklusion\ oder Annahme.
 		\item $D_i =$ $i$ \quad (ein Verweis auf $A_i$).
 	\end{enumerate}
 	%
@@ -417,18 +413,18 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	Nun kann die Zeile beendet werden, oder es geht weiter mit:
 	\begin{enumerate}
 		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
-		\item \label{item-Anwendung} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine \Voraussetzung\ der \Schlussregel\ $\overline{R}_i$ sind, möglichst in der verwendeten Reihenfolge.
+		\item \label{item-Anwendung} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine \Praemisse\ der \Schlussregel\ $\overline{R}_i$ sind, möglichst in der verwendeten Reihenfolge.
 		--- Für jedes angegebene $j$ werden noch die Abhängigkeiten $D_j$ den Abhängigkeiten $D_i$ hinzugefügt.
 		%
-		\item $A_i =$ \Folgerung(en) der \Schlussregel\ $\overline{R}_i$.
-		--- Wenn diese \Folgerungen\ schon als \Aussagen\ $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
+		\item $A_i =$ \Konklusion(en) der \Schlussregel\ $\overline{R}_i$.
+		--- Wenn diese \Konklusionen\ schon als \Aussagen\ $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
 		Damit werden die Zusammenhänge und der Abschluss des \Beweises\ besser ersichtlich.
 		%
 		\item $D_i =$ Die Verweise wurden schon in (\ref{item-Anwendung}) eingetragen.%
 		\footnote{Wenn $D_n$ leer ist, dann ist $A_n$ allgemeingültig.}
 		%
 	\end{enumerate}
-	Der \Beweis\ muss so lange fortgeführt werden, bis alle \Folgerungen\ als \Aussagen\ in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \Voraussetzungen\ abhängig sind.
+	Der \Beweis\ muss so lange fortgeführt werden, bis alle \Konklusionen\ als \Aussagen\ in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \Praemissen\ abhängig sind.
 	%
 	\item \label{item-Ergebniszeile} In einer \defFt{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \Schlussregel\ formuliert und in einer passenden Spalte notiert werden.
 	Zusätzlich können dort auch noch alle verwendeten \Schlussregeln\ gesammelt werden.
@@ -437,13 +433,13 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		%
 		\item $(R_n) =$ Verweise auf alle verwendeten externen \Schlussregeln.
 		%
-		\item $(\overline{R}_n) =$ Die bewiesene Behauptung als \Schlussregeln, wobei alle $A_i$, die \Voraussetzungen\ sind, als \Voraussetzung\ und alle $A_j$, die \Folgerungen\ sind, als \Folgerung\ eingesetzt werden.
+		\item $(\overline{R}_n) =$ Die bewiesene Behauptung als \Schlussregeln, wobei alle $A_i$, die \Praemissen\ sind, als \Praemisse\ und alle $A_j$, die \Konklusionen\ sind, als \Konklusion\ eingesetzt werden.
 		Das ergibt dann:
 		\[ \frac{A_{i_1} \MtsUnd A_{i_2} \MtsUnd ...}{A_{j_1} \MtsUnd A_{j_2} \MtsUnd ...} \]
 		%
-		\item $(A_n) =$ $\overline{R}_i$, wobei die \Voraussetzungen\ und \Folgerungen\ aufgelöst werden.
+		\item $(A_n) =$ $\overline{R}_i$, wobei die \Praemissen\ und \Konklusionen\ aufgelöst werden.
 		%
-		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der \Folgerungen, vermindert um die \Voraussetzungen.
+		\item $(D_n) =$ Die Vereinigung aller Abhängigkeiten der \Konklusionen, vermindert um die \Praemissen.
 		--- Wenn das Feld dabei nicht leer bleibt, ist der \Beweis\ missglückt!
 		%
 	\end{enumerate}
@@ -480,15 +476,15 @@ Ein weiteres Beispiel \vrefintab{tab-AbleitungKontraposition} soll verdeutlichen
 		\\\hline
 		5 & \impB & & $\dfrac{X \MtsDerive \alpha\OjkImp\beta}{X,\alpha \MtsDerive \beta}$ & & &
 		\\\hline
-		6 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha\OjkImp\beta}{\alpha \MtsDerive \beta}$ & 2 & $\alpha \MtsDerive \beta $ & 2
+		6 & -1 & $X \MtsSubst \MtsEmptyset$ & $\dfrac{\alpha\OjkImp\beta}{\alpha \MtsDerive \beta}$ & 2 & $\alpha \MtsDerive \beta $ & 2
 		\\\hline
 		7 & \SR & & $\dfrac{X \MtsDerive \alpha \MtsUnd X,\alpha \MtsDerive \beta}{X \MtsDerive \beta}$ & & &
 		\\\hline
-		8 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \alpha \MtsDerive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
+		8 & -1 & $X \MtsSubst \MtsEmptyset$ & $\dfrac{\alpha \MtsUnd \alpha \MtsDerive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
 		\\\hline
 		9' & \ref{def-andE} & & $\dfrac{X \MtsDerive \alpha, \beta}{X \MtsDerive \alpha \OjkAnd \beta}$ & & &
 		\\\hline
-		10' & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \beta}{\alpha \OjkAnd \beta}$ & & &
+		10' & -1 & $X \MtsSubst \MtsEmptyset$ & $\dfrac{\alpha \MtsUnd \beta}{\alpha \OjkAnd \beta}$ & & &
 		\\\hline
 		11' & -1 &\SnCell{
 			$\alpha \MtsSwap \beta$\\
@@ -497,7 +493,7 @@ Ein weiteres Beispiel \vrefintab{tab-AbleitungKontraposition} soll verdeutlichen
 		\\\hline
 		9 & \ref{def-nota} & & $\dfrac{X \MtsDerive \alpha, \OjkNot\alpha}{X \MtsDerive \beta}$ & & &
 		\\\hline
-		10 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsUnd \OjkNot\alpha}{\beta}$ & & &
+		10 & -1 & $X \MtsSubst \MtsEmptyset$ & $\dfrac{\alpha \MtsUnd \OjkNot\alpha}{\beta}$ & & &
 		\\\hline
 		11 & -1 & \SnCell{
 			$\alpha \MtsSwap \beta$\\
@@ -506,7 +502,7 @@ Ein weiteres Beispiel \vrefintab{tab-AbleitungKontraposition} soll verdeutlichen
 		\\\hline
 		12 & \impE & & $\dfrac{X, \alpha \MtsDerive \beta}{X \MtsDerive \alpha\OjkImp\beta}$ & & &
 		\\\hline
-		13 & -1 & $X \MtsSubst \emptyset$ & $\dfrac{\alpha \MtsDerive \beta}{\alpha\OjkImp\beta}$ & & &
+		13 & -1 & $X \MtsSubst \MtsEmptyset$ & $\dfrac{\alpha \MtsDerive \beta}{\alpha\OjkImp\beta}$ & & &
 		\\\hline
 		14 & -1 & \SnCell{
 			$\alpha \MtsSwap \beta$\\

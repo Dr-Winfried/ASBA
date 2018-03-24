@@ -37,20 +37,20 @@
 
 In der Mathematik gibt es eine unüberschaubare Menge an \Axiomen, \Saetzen, \Beweisen, \emph{\Fachbegriffen}%
 \footnote{%
-	\defTxt{\Fachbegriffe} sind Namen für mathematische Elemente und Konstruktionen, \textzB\ \Axiomen, \Saetze, \Beweise\ und \Fachgebiete.
+	\defTxt{\Fachbegriffe} sind Namen für mathematische Elemente und Konstruktionen, \textzB\ \Axiomen, \Saetze, \Beweise\ und \Teilgebiete.
 	\Symbole\ können als spezielle \Fachbegriffe\ aufgefasst werden.
 }
-und \emph{\Fachgebieten}%
+und \emph{\Teilgebieten}%
 \footnote{%
-	Ein \defTxt{\Fachgebiet} ist ein Teil der Mathematik mit einer zugehörigen Basis an \Axiomen, \Saetzen, \Fachbegriffen\ und Darstellungen, \textzB\ \Logik\ und \Mengenlehre.
-	Ein \Fachgebiet\ kann sehr klein sein und im Extremfall bei \ASBA\ kein einziges Element enthalten.
-	\emph{Umgebung} wäre eine bessere Bezeichnung, ist aber schon ein verbreiteter \Fachbegriff, so dass hier die Bezeichnung \Fachgebiet\ verwendet wird.
+	Ein \defTxt{\Teilgebiet} ist ein Teil der Mathematik mit einer zugehörigen Basis an \Axiomen, \Saetzen, \Fachbegriffen\ und Darstellungen, \textzB\ \Logik\ und \Mengenlehre.
+	Ein \Teilgebiet\ kann sehr klein sein und im Extremfall bei \ASBA\ kein einziges Element enthalten.
+	\emph{Umgebung} wäre eine bessere Bezeichnung, ist aber schon ein verbreiteter \Fachbegriff, so dass hier die Bezeichnung \Teilgebiet\ verwendet wird.
 
-	Statt "`\Fachgebiet"' könnte man auch "`Theorie"' nehmen.
+	Statt "`\Teilgebiet"' könnte man auch "`Theorie"' nehmen.
 	An \emph{Theorien} (\citesee{bib:Rautenberg} Kapitel~2.5, Seite~64) werden jedoch bestimmte Anforderungen gestellt, die vom hier behandelten Programmsystem aber nicht notwendigerweise überprüft werden sollen.
-	Theorien sind allerdings \textiAlg\ auch \Fachgebiete.
+	Theorien sind allerdings \textiAlg\ auch \Teilgebiete.
 }.
-Zu den meisten \Fachgebieten\ gibt es noch ungelöste Probleme.
+Zu den meisten \Teilgebieten\ gibt es noch ungelöste Probleme.
 
 Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, \Beweise\ automatisch zu überprüfen.
 Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
@@ -72,7 +72,7 @@ werden nun formuliert:
 	\textZB\ welche \Logik\ und welche \Mengenlehre.
 	%
 	\item \label{Frage-Basis} \defFt{Basis}:
-	Welche wichtigen \Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Fachgebiete\ gibt es?
+	Welche wichtigen \Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Teilgebiete\ gibt es?
 	Welche davon sind Standard?
 	%
 	\item \label{Frage-Axiome} \defFt{\Axiome}:
@@ -98,13 +98,13 @@ werden nun formuliert:
 	\item \label{Frage-Abhaengigkeiten} \defFt{Abhängigkeiten}:
 	Wie heißt ein \Fachbegriff\ in einer anderen Sprache?
 	Ist wirklich dasselbe gemeint?
-	Was ist mit \Fachbegriffen\ in verschiedenen \Fachgebieten?
+	Was ist mit \Fachbegriffen\ in verschiedenen \Teilgebieten?
 	%
 	\item \label{Frage-Ueberblick} \defFt{Überblick}:
 	Ist ein \Axiom, \Satz, \Beweis\ oder \Fachbegriff\ schon einmal --- \textggf\ abweichend --- definiert, formuliert oder bewiesen worden?
 	%
-	\item \label{Frage-Darstellung} \defFt{Darstellung}:
-	Wie kann man einen \Satz\ und den zugehörigen \Beweis\ --- \textggf\ auch spezifisch für ein \Fachgebiet\ --- darstellen?
+	\item \label{Frage-Darstellung} \defFt{\Darstellung}:
+	Wie kann man einen \Satz\ und den zugehörigen \Beweis\ --- \textggf\ auch spezifisch für ein \Teilgebiet\ --- darstellen?
 	%
 	\item \label{Frage-Forschung} \defFt{Forschung}:
 	Welche Probleme gibt es noch zu erforschen.
@@ -119,18 +119,18 @@ werden nun formuliert:
 \begin{enumerate}
 	%
 	\item \label{Eigenschaft-Daten} \defFt{Daten}:
-	\Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Fachgebiete\ können in formaler Form gespeichert werden --- auch (noch) nicht oder unvollständig bewiesene \Saetze.
+	\Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Teilgebiete\ können in formaler Form gespeichert werden --- auch (noch) nicht oder unvollständig bewiesene \Saetze.
 	Dabei soll die übliche mathematische Schreibweise verwendet werden können.
 	%
 	\item \label{Eigenschaft-Definitionen} \defFt{Definitionen}:
-	Es können \Fachbegriffe\ für \Axiome, \Saetze, \Beweise\ und \Fachgebiete\ --- letztere mit eigenen \Axiomen, \Saetzen, \Beweisen, \Fachbegriffen\ und über- oder untergeordneten \Fachgebieten\ --- definiert werden.
-	Die Definitionen dürfen wiederum an dieser Stelle schon bekannte \Fachbegriffe\ und \Fachgebiete\ verwenden.
+	Es können \Fachbegriffe\ für \Axiome, \Saetze, \Beweise\ und \Teilgebiete\ --- letztere mit eigenen \Axiomen, \Saetzen, \Beweisen, \Fachbegriffen\ und über- oder untergeordneten \Teilgebieten\ --- definiert werden.
+	Die Definitionen dürfen wiederum an dieser Stelle schon bekannte \Fachbegriffe\ und \Teilgebiete\ verwenden.
 	%
 	\item \label{Eigenschaft-Pruefung} \defFt{Prüfung}:
 	Vorhandene \Beweise\ können automatisch geprüft werden.
 	%
 	\item \label{Eigenschaft-Ausgaben} \defFt{Ausgaben}:
-	Die \Axiome, \Saetze\ und \Beweise\ können in üblicher Schreibweise --- abhängig von Sprache und \Fachgebiet\ --- ausgegeben werden.
+	Die \Axiome, \Saetze\ und \Beweise\ können in üblicher Schreibweise --- abhängig von Sprache und \Teilgebiet\ --- ausgegeben werden.
 	%
 	\item \label{Eigenschaft-Auswertungen} \defFt{Auswertungen}:
 	Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \vrefsec{sec-Fragen} behandelten Fragen.
@@ -199,7 +199,7 @@ Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellt
 		\ref{Frage-Ueberblick}      & Überblick
 		& X & - & - & - & X & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage-Darstellung}     & Darstellung
+		\ref{Frage-Darstellung}     & \Darstellung
 		& - & X & - & X & - & - & - \\
 		\ref{Frage-Forschung}       & Forschung
 		& X & - & - & - & X & - & - \\
@@ -224,7 +224,7 @@ gesetzt:
 \begin{enumerate}
 	%
 	\item \label{Ziel-Daten} \defFt{Daten}:
-	Die verteilte Datenbank von \ASBA\ enthält möglichst viele wichtige \Axiome, \Saetze, \Beweise, \Fachbegriffe, \Fachgebiete\ und \Ausgabeschemata%
+	Die verteilte Datenbank von \ASBA\ enthält möglichst viele wichtige \Axiome, \Saetze, \Beweise, \Fachbegriffe, \Teilgebiete\ und \Ausgabeschemata%
 	\footnote{%
 		Um den Punkt~\ref{Eigenschaft-Ausgaben} \vrefvonsec{sec-Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \Ausgabeschemata\ benötigt, welche die Art der Ausgaben beschreiben.
 	}.
@@ -253,7 +253,7 @@ gesetzt:
 	er benötigt.
 	%
 	\item \label{Ziel-Anpassbarkeit} \defFt{Anpassbarkeit}:
-	\Fachbegriffe\ und die Darstellung bei der Ausgabe können mit Hilfe von --- gegebenenfalls unbenannten --- untergeordneten \Fachgebieten\ angepasst werden.
+	\Fachbegriffe\ und die \Darstellung\ bei der Ausgabe können mit Hilfe von --- gegebenenfalls unbenannten --- untergeordneten \Teilgebieten\ angepasst werden.
 	%
 	\item \label{Ziel-Individualitaet} \defFt{Individualität}:
 	\Axiome\ und \Saetze\ können für jeden \Beweis\ individuell vorausgesetzt werden.
@@ -264,7 +264,7 @@ gesetzt:
 	Ein Teil davon --- oder sogar alle --- können im Internet liegen.
 	%
 	\item \label{Ziel-Kommunikation} \defFt{Kommunikation}:
-	Die Kommunikation mit \ASBA\ kann mit den \Fachbegriffen\ der einzelnen \Fachgebiete\ erfolgen.
+	Die Kommunikation mit \ASBA\ kann mit den \Fachbegriffen\ der einzelnen \Teilgebiete\ erfolgen.
 	%
 	\item \label{Ziel-Zugriff} \defFt{Zugriff}:
 	Der Zugriff auf \ASBA\ kann lokal und über das Internet erfolgen.
@@ -427,7 +427,7 @@ Idealerweise sollte durch Erreichen aller aufgestellten Ziele \ASBA\ alle angege
 		\ref{Frage-Ueberblick}      & Überblick%
 		& X & X & X & - & - & X & x & - & - & - & - & - & - & - & - & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage-Darstellung}     & Darstellung%
+		\ref{Frage-Darstellung}     & \Darstellung%
 		& X & - & X & - & X & - & x & - & - & - & - & - & - & - & - & - & - \\
 		\ref{Frage-Forschung}       & Forschung%
 		& X & X & X & - & - & X & x & - & - & - & - & - & - & - & - & - & - \\
@@ -628,20 +628,20 @@ Zudem enthält die Datenbank \textiAlg\ sehr viel mehr Daten. Es handelt sich da
 	%
 	\item[\Axiome]          \label{Daten-Axiom}
 	Ein \defTxt{\Axiom} ist eine \Aussage, die nicht aus anderen \Aussagen\ abgeleitet werden kann.
-	Es können wie bei \Saetzen\ \Voraussetzungen\ vorhanden sein, aber keine \Beweise.
+	Es können wie bei \Saetzen\ \Praemissen\ vorhanden sein, aber keine \Beweise.
 	%
 	\item[\Saetze]          \label{Daten-Satz}
-	Ein \defTxt{\Satz} besteht aus einer Anzahl von \Voraussetzungen\ und \Folgerungen\ und einem \Beweis, der die \Folgerungen\ aus den \Voraussetzungen\ ableitet.
+	Ein \defTxt{\Satz} besteht aus einer Anzahl von \Praemissen\ und \Konklusionen\ und einem \Beweis, der die \Konklusionen\ aus den \Praemissen\ ableitet.
 	Letztere können \Axiome\ und andere \Saetze\ sein, auf die dann verwiesen wird.
 	%
 	\item[\Beweise]         \label{Daten-Beweis}
-	Ein \defTxt{\Beweis} besteht aus einer Folge von \Beweisschritten, die aus gegebenen \Voraussetzungen\ \Folgerungen\ ableitet.
+	Ein \defTxt{\Beweis} besteht aus einer Folge von \Beweisschritten, die aus gegebenen \Praemissen\ \Konklusionen\ ableitet.
 	%
 	\item[\Fachbegriffe]    \label{Daten-Fachbegriff}
-	Ein \defTxt{\Fachbegriff} ist ein Name für ein Objekt \textbzw\ eine Eigenschaft in einem bestimmten \Fachgebiet.
+	Ein \defTxt{\Fachbegriff} ist ein Name für ein Objekt \textbzw\ eine Eigenschaft in einem bestimmten \Teilgebiet.
 	%
-	\item[\Fachgebiete]     \label{Daten-Fachgebiet}
-	Ein \defTxt{\Fachgebiet} ist ein Teil der Mathematik mit einer zugehörigen Basis aus \Axiomen, \Saetzen, \Fachbegriffen\ und \Ausgabeschemata, quasi eine untergeordnete Datenbank.
+	\item[\Teilgebiete]     \label{Daten-Teilgebiet}
+	Ein \defTxt{\Teilgebiet} ist ein Teil der Mathematik mit einer zugehörigen Basis aus \Axiomen, \Saetzen, \Fachbegriffen\ und \Ausgabeschemata, quasi eine untergeordnete Datenbank.
 	%
 	\item[\Ausgabeschemata] \label{Daten-Ausgabeschema}
 	Eine \defTxt{\Ausgabeschema} ist eine Beschreibung, wie ein bestimmtes mathematisches Objekt ausgegeben werden soll.
@@ -665,7 +665,7 @@ Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehe
 	%
 	\item[Die \logischeDarstellung] von mathematischen \Aussagen, wozu auch \Axiome\ und \Saetze\ gehören, erfolgt, da es sich immer um \Formeln\ handelt, an besten mit \Zeichenfolgen%
 	\footnote{%
-		Die interne Darstellung der \Zeichenfolgen\ kann zur Optimierung des Programms von der logischen abweichen.
+		Die \interneDarstellung\ der \Zeichenfolgen\ kann zur Optimierung des Programms von der \logischenD\ abweichen.
 	},
 	\textdh\ Folgen von Zeichen und Symbolen, in denen Zwischenraum --- insbesondere Leerstellen --- nicht zählen.
 	Mehrdimensionale \Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenfolgen dargestellt werden.%
@@ -673,20 +673,20 @@ Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehe
 		\textZB\ könnte man eine 2$\times$2-Matrix
 		$\begin{bmatrix} a & b \\ c & d \end{bmatrix}$
 		auch darstellen als Folge von Zeilen: \seqqt{$[(a,b),(c,d)]$}, oder noch einfacher: \seqqt{$[a,b;c,d]$}.
-		In \ASBA wird die \LaTeX-Syntax verwendet.
+		In \ASBA\ wird die \LaTeX-Syntax verwendet.
 		Damit wird die soeben angegebene Matrix codiert durch \seqqt{\$\textbackslash begin\{bmatrix\}a\&b\textbackslash\textbackslash c\&d\textbackslash end\{bmatrix\}\$}.
 	}
-	\Beweise\ sind letztendlich nichts anderes, als erlaubte \Umwandlungen\ dieser \Zeichenfolgen.
+	\Beweise\ sind letztendlich nichts anderes, als erlaubte \Transformationen\ dieser \Zeichenfolgen.
 	%
 	\item[\Bausteine] sind Grundelemente, auch \defFt{Zeichen} oder \defFt{(Satz-)Buchstaben} genannt, aus denen die Zeichenfolgen bestehen dürfen, und müssen definiert werden.
 	%
 	\item[\Formationsregeln] dienen zur Festlegung, wie man aus den Bausteinen Ausdrücke erzeugen kann, und müssen ebenfalls definiert werden.
 	%
-	\item[\Saetze] lassen sich als eine Menge von \Formeln, den \Voraussetzungen, wozu auch \Axiome\ und andere \Saetze\ gehören können, einer weiteren Menge von \Formeln\ (\Zeichenfolgen), den \Folgerungen, und der Angabe eines \Beweises\ darstellen.
+	\item[\Saetze] lassen sich als eine \Menge\ von \Formeln, den \Praemissen, wozu auch \Axiome\ und andere \Saetze\ gehören können, einer weiteren \Menge\ von \Formeln\ (\Zeichenfolgen), den \Konklusionen, und der Angabe eines \Beweises\ darstellen.
 	%
-	\item[\Beweise] zu gegebenen \Voraussetzungen\ und \Folgerungen\ lassen sich als \Folge\ von \Umwandlungen, beginnend mit den \Voraussetzungen\ und endend mit den \Folgerungen, darstellen.
+	\item[\Beweise] zu gegebenen \Praemissen\ und \Konklusionen\ lassen sich als \Folge\ von \Transformationen, beginnend mit den \Praemissen\ und endend mit den \Konklusionen, darstellen.
 	%
-	\item[\Umwandlungsregeln] definieren, welche \Umwandlungen\ mit gegebenen \Formelmengen\ zulässig sind.%
+	\item[\Transformationsregeln] definieren, welche \Transformationen\ mit gegebenen \Formelmengen\ zulässig sind.%
 	\footnote{\seename~\cite{bib:Rautenberg,bib:Schlussregel,bib:NatuerlichesSchliessen}}
 	%
 \end{description}

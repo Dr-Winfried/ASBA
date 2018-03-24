@@ -34,6 +34,7 @@
 \input{ASBA-Vorspann}
 \input{ASBA-Vorspann-Mathematik.tex}
 \input{ASBA-Vorspann-Glossar.tex}
+\input{ASBA-Glossar-Texte.tex}
 
 % Titelseite ###################################################################
 
@@ -103,26 +104,40 @@
 	% Glossar ==================================================================
 	% Optionen -> TeXstudio konfigurieren -> Erzeugen -> Standardcompiler:
 	%     txs:///pdflatex|txs:///makeglossaries|txs:///pdflatex
-	\newcommand{\glopreambel}{
-%%%		Mit Seitenzahlen \likehyperDef{in dieser} Schriftart wird auf die Definition oder sonstige wichtige Stellen verwiesen.
-%%%%%%		--- Aus dem Author nicht bekannten Gründen sind die angegebenen Seitenzahlen manchmal um eins zu klein.
-%%%		\vskip 1cm
+	\newcommand{\glopreambelEinordnung}{
+		Die Einordnung von einem Substantiv mit Adjektiven erfolgt stets unter dem Substantiv.
+		Ist das Substantiv und \textggf\ ein oder mehrere Adjektive schon vorher aufgelistet worden, werden diese Worte durch je ein "`---"' ersetzt.
+		\par
+	}
+	\newcommand{\glopreambelSeitenzahl}{
+		Mit Seitenzahlen \likehyperDef{in dieser} Schriftart wird auf die Definition oder sonstige wichtige Stellen verwiesen.
+		%%%--- Aus dem Author nicht bekannten Gründen sind die angegebenen Seitenzahlen manchmal um eins zu klein.
+		\par
+	}
+	\newcommand{\glopreambelWikipedia}{
+		Vielfach ist hier der erste Abschnitt%
+		\footnote{%
+			Der Teil zwischen Überschrift und Inhaltsverzeichnis.
+		} aus dem entsprechenden \Wikipedia-Artikel zitiert, manchmal gekürzt und immer ohne die originalen Fußnoten und ohne Verweise auf andere \Wikipedia-Artikel.
+		Letztere werden allerdings noch, wie im Original, in \wikilink{blau} angegeben.
+		\par
 	}
 	\iftestFlg \glsaddallunused[symbols,main] \else \fi
 	% --------------------------------------------------------------------------
 	\renewcommand{\glossarypreamble}{%  am Beginn des Index
 		\beginchapter[Verzeichnisse]{Index}
 		\label                  {dic-Index}
+		\glopreambelEinordnung
 	}
 	\renewcommand*{\glsnamefont}[1]{\textmd{#1}}
-	\printindex[style=mcolindexgroup]
+	\printindex[style=mcolindexspannav]
 	\Chead{Index}%                      Kopfzeile Mitte
 	\Endchapter
 	\newpage% ------------------------------------------------------------------
 	\renewcommand{\glossarypreamble}{%  am Beginn des Symbolverzeichnisses
 		\beginchapter[Verzeichnisse]{Symbolverzeichnis}
 		\label                  {dic-Symbolverzeichnis}
-		\glopreambel
+		\glopreambelSeitenzahl
 	}
 	\renewcommand*{\glsnamefont}[1]{#1}
 	\printglossary[type=symbols,style=list]
@@ -132,7 +147,9 @@
 	\renewcommand{\glossarypreamble}{%  am Beginn des Glossars
 		\beginchapter[Verzeichnisse]{Glossar}
 		\label                  {dic-Glossar}
-		\glopreambel
+		\glopreambelEinordnung
+		\glopreambelSeitenzahl
+		\glopreambelWikipedia
 	}
 	\renewcommand*{\glsnamefont}[1]{\textbf{#1}}
 	\printglossary[type=main,style=listhypergroup]

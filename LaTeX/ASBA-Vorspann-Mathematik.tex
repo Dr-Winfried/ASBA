@@ -54,7 +54,7 @@
 % Folgende Makros sind alles "eigene"
 %   \Ltr...    - nur Zeichen für (die Menge)     ...       (für       Textmodus)
 %   \Str...    - nur Text    für (die Operation) ...       (für       Textmodus)
-%   \Inx...    - Text für einen Index für        ...       (für Mathematikmodus)
+%   \StrMtsIdx...    - Text für einen Index für        ...       (für Mathematikmodus)
 %   \Raw...    - Symbol/Text ohne Verweis;erfordert bei Symbolen Mathematikmodus
 %   \...Bsp... - Beispielsymbol für Formel- oder Metasprache (f.Mathematikmodus)
 %   \Bsp...    -                          mit Verweis ins Symbolverzeichnis
@@ -67,26 +67,7 @@
 %
 % Weitere "eigene" Kombinationen: OpU, OpB, Bck, Idx, Ltr, Txt
 
-% Metasprachliche Symbole ######################################################
-% \RawMts*
-\newcommand*{\RawMtsNot}     {\mathbin{\thicksim}}%               ... gilt nicht
-\newcommand*{\RawMtsAnd}     {\mathbin{\&}}%                        ... und  ...
-\newcommand*{\RawMtsUnd}     {\mathbin{\mid}}%nur in Schlussregeln: ... und  ...
-\newcommand*{\RawMtsOr}      {\mathbin{\parallel}}%                 ... oder ...
-\newcommand*{\RawMtsDerive}  {\mathrel{\vdash}}%          ... ableitbar      ...
-\newcommand*{\RawMtsImp}     {\mathrel{\Rightarrow}}% von ... folgt          ...
-\newcommand*{\RawMtsRep}     {\mathrel{\Leftarrow}}%      ... folgt von      ...
-\newcommand*{\RawMtsEquiv}   {\mathrel{\Leftrightarrow}}% .. genau dann, wenn ..
-\newcommand*{\RawMtsDefEquiv}{\mathrel{:\mkern-2mu\RawMtsEquiv}}% def.gemäß -"-
-\newcommand*{\RawMtsEq}      {\mathrel{=\mkern-10mu=}}%          ...  gleich ...
-\newcommand*{\RawMtsEqN}     {\mathrel{=\mkern-16mu/\mkern-16mu=}}% . ungleich .
-\newcommand*{\RawMtsDefEq}   {\mathrel{:\mkern-2mu\RawMtsEq}}% def.gemäß gleich
-\newcommand*{\RawMtsAequiv}  {\mathrel{\equiv}}%     ...       äquivalent zu ...
-\newcommand*{\RawMtsNAequiv} {\mathrel{\nequiv}}%    ... nicht äquivalent zu ...
-\newcommand*{\RawMtsSwap}    {\mathbin{\leftrightarrows}}% .. vertauscht mit ...
-\newcommand*{\RawMtsSubst}   {\mathbin{\leftarrowtail}}%.. substituiert durch ..
-
-% Beispieloperationen ==========================================================
+% Beispielsymbole für Operationen und Relationen ===============================
 % \RawBsp*; OpU=unär, OpB=binär, Rel=Relation, Bck=Umkehr-; N=nicht, Eq=gleich
 \newcommand*{\RawBspOpU}      {\mathbin{\circleddash}}
 \newcommand*{\RawBspOpB}      {\mathbin{\circledast}}
@@ -99,37 +80,31 @@
 \newcommand*{\RawBspRelBckN}  {\mathrel{\nsucc}}
 \newcommand*{\RawBspRelBckEqN}{\mathrel{\nsucceq}}
 
-% Definitionen für die Tabelle der Junktoren ===================================
-% Konstante (Wahrheitswete) ----------------------------------------------------
-\newcommand*{\RawMtsFalse}    {\mathord{\mathrm{\StrMtsFalse}}}%F - falsch (Sym)
-\newcommand*{\RawMtsTrue}     {\mathord{\mathrm{\StrMtsTrue}}}% W - wahr   (Sym)
-\newcommand*{\RawOjkFalse}    {\mathord{\bot}}%                         (Symbol)
-\newcommand*{\RawOjkTrue}     {\mathord{\top}}%                         (Symbol)
-\newcommand*{\RawTxtFalse}    {\emph{\StrTxtFalse}}%                      (Text)
-\newcommand*{\RawTxtTrue}     {\emph{\StrTxtTrue}}%                       (Text)
-% unäre Operationen ------------------------------------------------------------
-% Wahrheitswert von A                            W F
-\newcommand*{\RawOjkNot}      {\lnot}%           F W     - nicht A
-% binäre Operationen -----------------------------------------------------------
-% Wahrheitswert von A                            W W F F
-% Wahrheitswert von B                            W F W F
-\newcommand*{\RawOjkOr}       {\lor}%            W W W F - A oder B
-\newcommand*{\RawOjkRep}      {\leftarrow}%      W W F W - A folgt von B
-\newcommand*{\RawOjkImp}      {\rightarrow}%     W F W W - von A folgt B
-\newcommand*{\RawOjkEquiv}    {\leftrightarrow}% W F F W - A genau dann wenn B
-\newcommand*{\RawOjkAnd}      {\land}%           W F F F - A und B
-\newcommand*{\RawOjkNand}     {\uparrow}%        F W W W - nicht   (A und  B)
-\newcommand*{\RawOjkXor}      {+}%               F W W F - entweder A oder B
-\newcommand*{\RawOjkNor}      {\downarrow}%      F F F W - weder    A noch B
-% außerhalb der Tabelle --------------------------------------------------------
-\newcommand*{\RawOjkEq}       {=}%          Gleichheit   in Formeln
-\newcommand*{\RawOjkEqN}      {\ne}%        Ungleichheit in Formeln
-% Elementrelationen
+% Metasymbole ==================================================================
+% \RawMts*
+% Metaoperationen, -relationen u.a. (für Aussagen) -----------------------------
+\newcommand*{\RawMtsNot}     {\mathbin{\thicksim}}%               ... gilt nicht
+\newcommand*{\RawMtsAnd}     {\mathbin{\&}}%                        ... und  ...
+\newcommand*{\RawMtsOr}      {\mathbin{\parallel}}%                 ... oder ...
+\newcommand*{\RawMtsImp}     {\mathrel{\Rightarrow}}% von ... folgt          ...
+\newcommand*{\RawMtsRep}     {\mathrel{\Leftarrow}}%      ... folgt von      ...
+\newcommand*{\RawMtsEquiv}   {\mathrel{\Leftrightarrow}}% .. genau dann, wenn ..
+\newcommand*{\RawMtsEq}      {\mathrel{=\mkern-10mu=}}%          ...  gleich ...
+\newcommand*{\RawMtsEqN}     {\mathrel{=\mkern-16mu/\mkern-16mu=}}% . ungleich .
+\newcommand*{\RawMtsAequiv}  {\mathrel{\equiv}}%     ...       äquivalent zu ...
+\newcommand*{\RawMtsNAequiv} {\mathrel{\nequiv}}%    ... nicht äquivalent zu ...
+\newcommand*{\RawMtsDefEquiv}{\mathrel{:\mkern-2mu\RawMtsEquiv}}% def.gemäß -"-
+\newcommand*{\RawMtsDefEq}   {\mathrel{:\mkern-2mu\RawMtsEq}}% def.gemäß gleich
+\newcommand*{\RawMtsUnd}     {\mathbin{\mid}}%nur in Schlussregeln: ... und  ...
+\newcommand*{\RawMtsDerive}  {\mathrel{\vdash}}%          ... ableitbar      ...
+\newcommand*{\RawMtsSwap}    {\mathbin{\leftrightarrows}}% .. vertauscht mit ...
+\newcommand*{\RawMtsSubst}   {\mathbin{\leftarrowtail}}%.. substituiert durch ..
+% Elementrelationen (für Elemente und Mengen) ----------------------------------
 \newcommand*{\RawMtsIn}       {\in}%        ist  Element aus (der Menge)
 \newcommand*{\RawMtsNi}       {\ni}%       (die Menge) enthält nicht das Element
 \newcommand*{\RawMtsInN}      {\notin}%     ist  Element aus (der Menge)
 \newcommand*{\RawMtsNiN}      {\notni}%    (die Menge) enthält nicht das Element
-% Mengenrelationen
+% Mengenrelationen (für Mengen) ------------------------------------------------
 \newcommand*{\RawMtsSubset}   {\subset}%    ist        echte  Teilmenge von
 \newcommand*{\RawMtsSubsetEq} {\subseteq}%  ist (gleich oder) Teilmenge von
 \newcommand*{\RawMtsSubsetN}  {\nsubset}%   ist  keine echte  Teilmenge von
@@ -138,14 +113,67 @@
 \newcommand*{\RawMtsSupsetEq} {\supseteq}%  ist (gleich oder) Obermenge von
 \newcommand*{\RawMtsSupsetN}  {\nsupset}%   ist  keine echte  Obermenge von
 \newcommand*{\RawMtsSupsetEqN}{\nsupseteq}% ist  keine        Obermenge von
-% Mengenoperationen
+% Mengenoperationen (für Mengen) -----------------------------------------------
 \newcommand*{\RawMtsCap}      {\cap}%       Durchschnitt          von Mengen
 \newcommand*{\RawMtsCup}      {\cup}%       Vereinigung           von Mengen
 \newcommand*{\RawMtsSetminus} {\setminus}%  Differenz             von Mengen
 \newcommand*{\RawMtsTimes}    {\times}%     karthesisches Produkt von Mengen
 \newcommand*{\RawMtsEmptyset} {\emptyset}%  die leere Menge
+% Komponentenrelationen (für Komponenten und Folgen) ---------------------------
+\newcommand*{\RawMtsSeqIn}    {\sqsubset\mkern-19mu-}%  ist  Komponente (der Folge)
+\newcommand*{\RawMtsSeqNi}    {\sqsupset\mkern-19mu-}%  (die Folge) enthält nicht das Symbol
+\newcommand*{\RawMtsSeqInN}   {\nsqsubset\mkern-19mu-}% ist  Komponente (der Folge)
+\newcommand*{\RawMtsSeqNiN}   {\nsqsupset\mkern-19mu-}% (die Folge) enthält nicht das Symbol
+% Folgenrelationen (für Folgen) ------------------------------------------------
+\newcommand*{\RawMtsSubseq}   {\sqsubset}%    ist        echte  Teilmenge von
+\newcommand*{\RawMtsSubseqEq} {\sqsubseteq}%  ist (gleich oder) Teilmenge von
+\newcommand*{\RawMtsSubseqN}  {\nsqsubset}%   ist  keine echte  Teilmenge von
+\newcommand*{\RawMtsSubseqEqN}{\nsqsubseteq}% ist  keine        Teilmenge von
+\newcommand*{\RawMtsSupseq}   {\sqsupset}%    ist        echte  Obermenge von
+\newcommand*{\RawMtsSupseqEq} {\sqsupseteq}%  ist (gleich oder) Obermenge von
+\newcommand*{\RawMtsSupseqN}  {\nsqsupset}%   ist  keine echte  Obermenge von
+\newcommand*{\RawMtsSupseqEqN}{\nsqsupseteq}% ist  keine        Obermenge von
 
-% Neue Operationen
+% Text-, Meta- und Objekt-Wahrheitswerte
+\newcommand*{\RawTxtFalse}    {\emph{\StrTxtFalse}}%                      (Text)
+\newcommand*{\RawTxtTrue}     {\emph{\StrTxtTrue}}%                       (Text)
+\newcommand*{\RawMtsFalse}    {\mathord{\mathrm{\StrMtsFalse}}}%F - falsch (Sym)
+\newcommand*{\RawMtsTrue}     {\mathord{\mathrm{\StrMtsTrue}}}% W - wahr   (Sym)
+\newcommand*{\RawOjkFalse}    {\mathord{\bot}}%                         (Symbol)
+\newcommand*{\RawOjkTrue}     {\mathord{\top}}%                         (Symbol)
+
+% Definitionen für die Tabelle der Junktoren -----------------------------------
+% \RawOjk*
+% Wahrheitswert von A                            W W F F
+% Wahrheitswert von B                            W F W F
+% unäre Operationen ------------------------------------------------------------
+\newcommand*{\RawOjkNot}      {\lnot}%           F W - - - nicht A
+% binäre Operationen -----------------------------------------------------------
+\newcommand*{\RawOjkAnd}      {\land}%           W F F F - A und B
+\newcommand*{\RawOjkOr}       {\lor}%            W W W F - A oder B
+\newcommand*{\RawOjkImp}      {\rightarrow}%     W F W W - von A folgt B
+\newcommand*{\RawOjkRep}      {\leftarrow}%      W W F W - A folgt von B
+\newcommand*{\RawOjkEquiv}    {\leftrightarrow}% W F F W - A genau dann wenn B
+\newcommand*{\RawOjkNand}     {\uparrow}%        F W W W - nicht   (A und  B)
+\newcommand*{\RawOjkNor}      {\downarrow}%      F F F W - weder    A noch B
+\newcommand*{\RawOjkXor}      {\dot\lor}%        F W W F - entweder A oder B
+
+% außerhalb der Tabelle --------------------------------------------------------
+\newcommand*{\RawOjkEq}       {=}%          Gleichheit   in Formeln
+\newcommand*{\RawOjkEqN}      {\ne}%        Ungleichheit in Formeln
+% Quantoren --------------------------------------------------------------------
+\newcommand*{\RawMtsForall}   {\forall}%   für alle          <x>         gilt:
+\newcommand*{\RawMtsExists}   {\exists}%     es gibt       ein <x> für das gilt:
+\newcommand*{\RawMtsExione}   {\dot\exists}% es gibt genau ein <x> für das gilt:
+\newcommand*{\RawOjkForall}   {\bigwedge}%   für alle          <x>         gilt:
+\newcommand*{\RawOjkExists}   {\bigvee}%     es gibt       ein <x> für das gilt:
+\newcommand*{\RawOjkExione}   {\dot\bigvee}% es gibt genau ein <x> für das gilt:
+
+% weitere Symbole --------------------------------------------------------------
+\newcommand*{\RawMtsFktSep}   {:}%                 f \MtsFktSep A \MtsFktArrow B
+\newcommand*{\RawMtsFktArrow} {\rightarrow}
+
+% Neue Metaoperationen ---------------------------------------------------------
 \DeclareMathOperator{\RawMtsGraph}  {\StrMtsGraph}% Graph von        Funktion/Relation
 \DeclareMathOperator{\RawMtsTraeger}{\StrMtsTraeger}% Trägermenge einer       Relation
 \DeclareMathOperator{\RawMtsStel}   {\StrMtsStel}% Stelligkeit einer Funktion/Relation
@@ -168,34 +196,33 @@
 \newcommand*{\SetOp}[1]{\mathfrak{#1}}% Mengenoperation                   (Text)
 
 % spezielle Indizes (rechts oben)
-\newcommand*{\InxEndlich} {e}%    nur die endlichen Elemente
-\newcommand*{\InxLogisch} {A}%    die Logik betreffend
-\newcommand*{\InxPolnisch}{p}%    in Polnischer Notation
+\newcommand*{\LtrMtsIdxLogisch} {A}%    die Logik betreffend
 % spezielle Indizes für Teilmengen (rechts unten)
-\newcommand*{\InxBin}     {b}%    binär
-\newcommand*{\InxCon}     {c}%    constant; konstant
-\newcommand*{\InxUna}     {u}%    unär
-\newcommand*{\InxAnd}     {and}%  Signatur not, and
-\newcommand*{\InxBool}    {bool}% Signatur not, and, or
-\newcommand*{\InxImp}     {imp}%  Signatur not, imp
-\newcommand*{\InxNand}    {nand}% Signatur      nand
-\newcommand*{\InxNor}     {nor}%  Signatur      nor
-\newcommand*{\InxOr}      {or}%   Signatur not, or
-\newcommand*{\InxRep}     {rep}%  Signatur not, rep
+\newcommand*{\StrMtsIdxBin}     {b}%    binär
+\newcommand*{\StrMtsIdxCon}     {c}%    constant; konstant
+\newcommand*{\StrMtsIdxUna}     {u}%    unär
+\newcommand*{\StrMtsIdxAnd}     {and}%  Signatur not, and
+\newcommand*{\StrMtsIdxBool}    {bool}% Signatur not, and, or
+\newcommand*{\StrMtsIdxImp}     {imp}%  Signatur not, imp
+\newcommand*{\StrMtsIdxNand}    {nand}% Signatur      nand
+\newcommand*{\StrMtsIdxNor}     {nor}%  Signatur      nor
+\newcommand*{\StrMtsIdxOr}      {or}%   Signatur not, or
+\newcommand*{\StrMtsIdxRep}     {rep}%  Signatur not, rep
 % spezielle Indizes mit Schriftart
-\newcommand*{\IdxEndlich} {\IdxFt{\InxEndlich}}
-\newcommand*{\IdxLogisch} {\IdxFt{\InxLogisch}}
-\newcommand*{\IdxPolnisch}{\IdxFt{\InxPolnisch}}
-\newcommand*{\IdxBin}     {\IdxFt{\InxBin}}
-\newcommand*{\IdxCon}     {\IdxFt{\InxCon}}
-\newcommand*{\IdxUna}     {\IdxFt{\InxUna}}
-\newcommand*{\IdxAnd}     {\IdxFt{\InxAnd}}
-\newcommand*{\IdxBool}    {\IdxFt{\InxBool}}
-\newcommand*{\IdxImp}     {\IdxFt{\InxImp}}
-\newcommand*{\IdxNand}    {\IdxFt{\InxNand}}
-\newcommand*{\IdxNor}     {\IdxFt{\InxNor}}
-\newcommand*{\IdxOr}      {\IdxFt{\InxOr}}
-\newcommand*{\IdxRep}     {\IdxFt{\InxRep}}
+\newcommand*{\RawMtsIdxPolnisch}{\IdxFt{\LtrMtsIdxPolnisch}}% ^
+\newcommand*{\RawMtsIdxLogisch} {\IdxFt{\LtrMtsIdxLogisch}}%  ^
+\newcommand*{\RawMtsIdxEndlich} {\IdxFt{\LtrMtsIdxEndlich}}%  _
+\newcommand*{\RawMtsIdxGraph}   {\IdxFt{\LtrMtsIdxGraph}}%    _
+\newcommand*{\RawMtsIdxBin}     {\IdxFt{\StrMtsIdxBin}}
+\newcommand*{\RawMtsIdxCon}     {\IdxFt{\StrMtsIdxCon}}
+\newcommand*{\RawMtsIdxUna}     {\IdxFt{\StrMtsIdxUna}}
+\newcommand*{\RawMtsIdxAnd}     {\IdxFt{\StrMtsIdxAnd}}
+\newcommand*{\RawMtsIdxBool}    {\IdxFt{\StrMtsIdxBool}}
+\newcommand*{\RawMtsIdxImp}     {\IdxFt{\StrMtsIdxImp}}
+\newcommand*{\RawMtsIdxNand}    {\IdxFt{\StrMtsIdxNand}}
+\newcommand*{\RawMtsIdxNor}     {\IdxFt{\StrMtsIdxNor}}
+\newcommand*{\RawMtsIdxOr}      {\IdxFt{\StrMtsIdxOr}}
+\newcommand*{\RawMtsIdxRep}     {\IdxFt{\StrMtsIdxRep}}
 
 % Indexoperationenen
 \newcommand*{\links} [1] {#1^{\scriptscriptstyle <}}% linkes  Element vom Paar
@@ -203,67 +230,71 @@
 
 % abgeleitete Mengen - ohne Verweis ins Glossar
 \newcommand*{\RawMtsFol} {\SetOp{\LtrMtsFol}}%  Menge der Folgen             auf
-\newcommand*{\RawMtsFolf}{\RawMtsFol_{\IdxEndlich}}% ... nur die endlichen Folgen
-%TODO \MtsTup durch \MtsFolf ersetzen
+\newcommand*{\RawMtsFolf}{\RawMtsFol_{\RawMtsIdxEndlich}}% ... nur die endlichen Folgen
 \newcommand*{\RawMtsTup} {\SetOp{\LtrMtsTup}}%  Menge der Tupel              auf
 \newcommand*{\RawMtsPot} {\SetOp{\LtrMtsPot}}%  Menge der Teilmengen         von
-\newcommand*{\RawMtsPotf}{\RawMtsPot_{\IdxEndlich}}%... nur die endlichen Teilmengen
+\newcommand*{\RawMtsPotf}{\RawMtsPot_{\RawMtsIdxEndlich}}%... nur die endlichen Teilmengen
 \newcommand*{\RawMtsRel} {\SetOp{\LtrMtsRel}}%  Menge der binären Relationen auf
-\newcommand*{\RawMtsRelf}{\RawMtsRel_{\IdxEndlich}}%... nur die endlichen Relationen
+\newcommand*{\RawMtsRelf}{\RawMtsRel_{\RawMtsIdxEndlich}}%... nur die endlichen Relationen
 
 % natürliche Zahlen u.a. - ohne Verweis ins Glossar
 % alternativ: '{\fam5' statt '\mathbb{'
-\newcommand*{\RawMtsIN}   {{\fam5\LtrMtsIN}}% Menge der natürlichen Zahlen ohne 0
-%\newcommand*{\RawMtsIN}{\mathbb{\LtrMtsIN}}% Menge der natürlichen Zahlen ohne 0
-\newcommand*{\RawMtsINo}     {\RawMtsIN_0}%   Menge der natürlichen Zahlen mit  0
-\newcommand*{\RawMtsMo}              {M^0}
-\newcommand*{\RawMtsMn}              {M^n}
+\newcommand*{\RawMtsIN}   {{\fam5\LtrMtsIN}}%  Menge der natürlichen Zahlen ohne 0
+%\newcommand*{\RawMtsIN}{\mathbb{\LtrMtsIN}}%  Menge der natürlichen Zahlen ohne 0
+\newcommand*{\RawMtsINo}        {\RawMtsIN_0}% Menge der natürlichen Zahlen mit  0
+\newcommand*{\RawMtsMo}               {M^0}
+\newcommand*{\RawMtsMn}               {M^n}
 
 % weitere Mengen
-\newcommand*{\RawMtsSprache}         {\SetFt{\LtrMtsSprache}}% Formel-Sprache
+\newcommand*{\RawMtsSprache}          {\SetFt{\LtrMtsSprache}}% Formel-Sprache
 % ... - mit Verweis ins Glossar
-\newcommand*{\MtsPotSprache}         {\ensuremath{\MtsPot(\MtsSprache)}}%        P(L)
-\newcommand*{\MtsPotfSprache}        {\ensuremath{\MtsPotf(\MtsSprache)}}%      Pe(L)
-\newcommand*{\MtsAllDerive}          {\ensuremath{\MtsPotSprache^2}}%            P(L)^2
-\newcommand*{\MtsPotAllDerive}       {\ensuremath{\MtsPot(\MtsAllDerive)}}%    P(P(L)^2)
-\newcommand*{\MtsRelAllDerive}       {\ensuremath{\MtsRel(\MtsPotSprache)}}%   R(P(L))
-\newcommand*{\MtsAllSchlussregel}    {\ensuremath{\MtsPotAllDerive^2}}%        P(P(L)^2)^2
-\newcommand*{\MtsRelSchlussregel}    {\ensuremath{\MtsRel(\MtsRelAllDerive)}}% R(P(L)^2)
-\newcommand*{\MtsPotfAllDerive}      {\ensuremath{\MtsPotf(\MtsAllDerive)}}%  Pe(P(L)^2)
-\newcommand*{\MtsRelfAllDerive}      {\ensuremath{\MtsRelf(\MtsPotSprache)}}% Re(P(L))
+\newcommand*{\MtsPotSprache}          {\ensuremath{\MtsPot(\MtsSprache)}}%        P(L)
+\newcommand*{\MtsPotfSprache}         {\ensuremath{\MtsPotf(\MtsSprache)}}%      Pe(L)
+\newcommand*{\MtsAllDerive}           {\ensuremath{\MtsPotSprache^2}}%            P(L)^2
+\newcommand*{\MtsPotAllDerive}        {\ensuremath{\MtsPot(\MtsAllDerive)}}%    P(P(L)^2)
+\newcommand*{\MtsRelAllDerive}        {\ensuremath{\MtsRel(\MtsPotSprache)}}%   R(P(L))
+\newcommand*{\MtsAllSchlussregel}     {\ensuremath{\MtsPotAllDerive^2}}%        P(P(L)^2)^2
+\newcommand*{\MtsRelSchlussregel}     {\ensuremath{\MtsRel(\MtsRelAllDerive)}}% R(P(L)^2)
+\newcommand*{\MtsPotfAllDerive}       {\ensuremath{\MtsPotf(\MtsAllDerive)}}%  Pe(P(L)^2)
+\newcommand*{\MtsRelfAllDerive}       {\ensuremath{\MtsRelf(\MtsPotSprache)}}% Re(P(L))
 
 % Elemente und Mengen für Beweise - ohne Verweis ins Glossar
-\newcommand*{\RawMtsVoraussetzung}   {\drvFt{\LtrMtsVoraussetzung}}%    eine      Voraussetzung
-\newcommand*{\RawMtsVoraussetzungSet}{\SetFt{\LtrMtsVoraussetzungSet}}% Menge der Voraussetzungen
-\newcommand*{\RawMtsVoraussetzungRel}{\RawMtsDerive_{\RawMtsVoraussetzungSet}}%... als Relation
-\newcommand*{\RawMtsFolgerung}       {\drvFt{\LtrMtsFolgerung}}%        eine      Folgerung
-\newcommand*{\RawMtsFolgerungSet}    {\SetFt{\LtrMtsFolgerungSet}}%     Menge der Folgerungen
-\newcommand*{\RawMtsFolgerungRel}    {\RawMtsDerive_{\RawMtsFolgerungSet}}% ... als Relation
-\newcommand*{\RawMtsErgebnis}        {\drvFt{\LtrMtsErgebnis}}%         ein       Ergebnis
-\newcommand*{\RawMtsErgebnisSet}     {\SetFt{\LtrMtsErgebnisSet}}%      Menge von Ergebnissen
-\newcommand*{\RawMtsErgebnisRel}     {\RawMtsDerive_{\RawMtsErgebnisSet}}% ... als Relation
-\newcommand*{\RawMtsBeweisschritt}   {\ElmFt{\LtrMtsBeweisschritt}}%    ein       Beweisschritt
-\newcommand*{\RawMtsBeweisschrittTup}{\vec{\RawMtsBeweisschritt}}%      Folge der Beweisschritte
-\newcommand*{\RawMtsBeweisschrittSet}{\SetFt{\LtrMtsBeweisschrittSet}}% Menge der Beweisschritte
-\newcommand*{\RawMtsUmwandlung}      {\ElmFt{\LtrMtsUmwandlung}}%       eine      Umwandlung
-\newcommand*{\RawMtsUmwandlungTup}   {\SetFt{\LtrMtsUmwandlung}}%       Folge von Umwandlungen
-\newcommand*{\RawMtsSchlussregel}    {\ElmFt{\LtrMtsSchlussregel}}%     eine      Schlussregel
-\newcommand*{\RawMtsSchlussregelSet} {\SetFt{\RawMtsSchlussregel}}%     Menge von Schlussregeln
-\newcommand*{\RawMtsErsetzung}       {\ElmFt{\LtrMtsErsetzung}}%        eine      Ersetzung
-\newcommand*{\RawMtsErsetzungSet}    {\SetFt{\LtrMtsErsetzung}}%        Menge von Ersetzungen
-\newcommand*{\RawMtsAxiom}           {\ElmFt{\LtrMtsAxiom}}%            ein       Axiom
-\newcommand*{\RawMtsAxiomSet}        {\SetFt{\LtrMtsAxiom}}%            Menge von Axiomen
+\newcommand*{\RawMtsPraemisse}        {\drvFt{\LtrMtsPraemisse}}%         eine      Prämisse
+\newcommand*{\RawMtsPraemisseSet}     {\SetFt{\LtrMtsPraemisseSet}}%      Menge der Prämissen
+\newcommand*{\RawMtsPraemisseRel}     {\RawMtsDerive_{\RawMtsPraemisseSet}}%... als Relation
+\newcommand*{\RawMtsKonklusion}       {\drvFt{\LtrMtsKonklusion}}%        eine      Konklusion
+\newcommand*{\RawMtsKonklusionSet}    {\SetFt{\LtrMtsKonklusionSet}}%     Menge der Konklusionen
+\newcommand*{\RawMtsKonklusionRel}    {\RawMtsDerive_{\RawMtsKonklusionSet}}%.. als Relation
+\newcommand*{\RawMtsErgebnis}         {\drvFt{\LtrMtsErgebnis}}%          ein       Ergebnis
+\newcommand*{\RawMtsErgebnisSet}      {\SetFt{\LtrMtsErgebnisSet}}%       Menge von Ergebnissen
+\newcommand*{\RawMtsErgebnisRel}      {\RawMtsDerive_{\RawMtsErgebnisSet}}% ... als Relation
+\newcommand*{\RawMtsBeweisschritt}    {\ElmFt{\LtrMtsBeweisschritt}}%     ein       Beweisschritt
+\newcommand*{\RawMtsBeweisschrittTup} {\vec{\RawMtsBeweisschritt}}%       Folge der Beweisschritte
+\newcommand*{\RawMtsBeweisschrittSet} {\SetFt{\LtrMtsBeweisschrittSet}}%  Menge der Beweisschritte
+\newcommand*{\RawMtsTransformation}   {\ElmFt{\LtrMtsTransformation}}%    eine      Transformation
+\newcommand*{\RawMtsTransformationTup}{\SetFt{\LtrMtsTransformation}}%    Folge von Transformationen
+\newcommand*{\RawMtsSchlussregel}     {\ElmFt{\LtrMtsSchlussregel}}%      eine      Schlussregel
+\newcommand*{\RawMtsSchlussregelSet}  {\SetFt{\RawMtsSchlussregel}}%      Menge von Schlussregeln
+\newcommand*{\RawMtsErsetzung}        {\ElmFt{\LtrMtsErsetzung}}%         eine      Ersetzung
+\newcommand*{\RawMtsErsetzungSet}     {\SetFt{\LtrMtsErsetzung}}%         Menge von Ersetzungen
+\newcommand*{\RawMtsAxiom}            {\ElmFt{\LtrMtsAxiom}}%             ein       Axiom
+\newcommand*{\RawMtsAxiomSet}         {\SetFt{\LtrMtsAxiom}}%             Menge von Axiomen
 
 % Mengen der Aussagenlogik - ohne Verweis ins Glossar
 \newcommand*{\RawOjkvar} {\varFt{\LtrOjkvar}}% Variablensymbol
 \newcommand*{\RawOjkVar} {\SetFt{\LtrOjkVar}}% Menge der Variablensymbole
 \newcommand*{\RawOjkABC} {\SetFt{\LtrOjkABC}}% Menge der Buchstaben (Alphabet) der aussagenlogischen Sprache
 \newcommand*{\RawOjkJun} {\SetFt{\LtrOjkJun}}% Menge der Junktoren
-\newcommand*{\RawOjkCon} {\RawOjkJun_\IdxCon}% Menge der         Konstantensymbole
-\newcommand*{\RawOjkUna} {\RawOjkJun_\IdxUna}% Menge der unären  Operationssymbole
-\newcommand*{\RawOjkBin} {\RawOjkJun_\IdxBin}% Menge der binären Operationssymbole
-\newcommand*{\RawOjkFor} {\SetFt{\LtrOjkFor}^{\IdxLogisch}}% Menge der aussagenlogischen Formeln
-\newcommand*{\RawOjkForp}{\SetFt{\LtrOjkFor}^{\IdxLogisch\IdxPolnisch}}% ...in Polnischer Notation
+\newcommand*{\RawOjkCon} {\RawOjkJun_{\RawMtsIdxCon}}% Menge der         Konstantensymbole
+\newcommand*{\RawOjkUna} {\RawOjkJun_{\RawMtsIdxUna}}% Menge der unären  Operationssymbole
+\newcommand*{\RawOjkBin} {\RawOjkJun_{\RawMtsIdxBin}}% Menge der binären Operationssymbole
+\newcommand*{\RawOjkFor} {\SetFt{\LtrOjkFor}^{\RawMtsIdxLogisch}}% Menge der aussagenlogischen Formeln
+\newcommand*{\RawOjkForp}{\SetFt{\LtrOjkFor}^{\RawMtsIdxLogisch\RawMtsIdxPolnisch}}% ...in Polnischer Notation
+
+% Prädikate und praedikatähnliche Makros =======================================
+
+\newcommand*{\FunktionDef}[3]{\ensuremath{   #1 \MtsFktSep #2 \MtsFktArrow #3 }}
+\newcommand*   {\MengeDef}[2]{\ensuremath{\{ #1 \MtsSetSep #2               \}}}
 
 % sonstige Makro für den Mathematiksatz ########################################
 
