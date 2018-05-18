@@ -32,7 +32,7 @@
 % !TeX spellcheck = de_DE
 
 \input{ASBA-Vorspann}
-\input{ASBA-Vorspann-Mathematik.tex}
+\input{ASBA-Vorspann-Logik.tex}
 \input{ASBA-Vorspann-Glossar.tex}
 \input{ASBA-Glossar-Texte.tex}
 
@@ -49,7 +49,7 @@
 \author{Winfried Teschers}
 \date{\today}
 \publishers{\vspace{1cm}\normalsize
-	Es wird ein Programmsystem beschrieben, das zu eingegebenen \Axiomen, \Saetzen\ und \Beweisen\ letztere prüft, Auswertungen generiert und unter Zuhilfenahme gegebener \Ausgabeschemata\ eine Ausgabe im \LaTeX-Format in mathematisch üblicher Schreibweise mit \Formeln\ erstellt.
+	Es wird ein Programmsystem beschrieben, das zu eingegebenen \Axiomen, \Saetzen\ und \Beweisen\ letztere prüft, \Auswertungen\ generiert und unter Zuhilfenahme gegebener \Ausgabeschemata\ eine Ausgabe im \LaTeX-Format in mathematisch üblicher Schreibweise mit \Formeln\ erstellt.
 }
 
 % Dokument #####################################################################
@@ -70,7 +70,7 @@
 
 	\include{ASBA-Vorwort}
 	\include{ASBA-Analyse}
-	\include{ASBA-Mathematik}
+	\include{ASBA-Logik}
 	\color{gray}%%% Anfang grauer Text
 	\include{ASBA-Ideen}
 	\color{black}%%% Ende grauer Text
@@ -83,7 +83,7 @@
 
 	%section{Tabellenverzeichnis}% =============================================
 	\phantomsection% sichert korrekten Link im Inhaltsverzeichnis
-	\label{cha-Tabellenverzeichnis}
+	\label{cha:Tabellenverzeichnis}
 	\likesection{\listtablename}
 	\begin{minipage}{\linewidth-10.95pt}
 		\listoftables
@@ -92,7 +92,7 @@
 
 	%section{Abbildungsverzeichnis}% ===========================================
 	\phantomsection% sichert korrekten Link im Inhaltsverzeichnis
-	\label{cha-Abbildungsverzeichnis}
+	\label{cha:Abbildungsverzeichnis}
 	\likesection{\listfigurename}
 	\begin{minipage}{\linewidth-10.95pt}
 		\listoffigures
@@ -103,15 +103,23 @@
 
 	% Glossar ==================================================================
 	% Optionen -> TeXstudio konfigurieren -> Erzeugen -> Standardcompiler:
-	%     txs:///pdflatex|txs:///makeglossaries|txs:///pdflatex
+	%     "txs:///pdflatex|txs:///makeglossaries|txs:///pdflatex"
 	\newcommand{\glopreambelEinordnung}{
 		Die Einordnung von einem Substantiv mit Adjektiven erfolgt stets unter dem Substantiv.
 		Ist das Substantiv und \textggf\ ein oder mehrere Adjektive schon vorher aufgelistet worden, werden diese Worte durch je ein "`---"' ersetzt.
 		\par
 	}
-	\newcommand{\glopreambelSeitenzahl}{
+	\newcommand{\glopreambelSchriftarten}{
 		Mit Seitenzahlen \likehyperDef{in dieser} Schriftart wird auf die Definition oder sonstige wichtige Stellen verwiesen.
-		%%%--- Aus dem Author nicht bekannten Gründen sind die angegebenen Seitenzahlen manchmal um eins zu klein.
+		Verweise in einer Beschreibung an andere Stellen ins Glossar werden \gloFt{in dieser} Schriftart, aber ohne Link, markiert.
+		Den Link findet man hinter "`siehe"' am Ende der Seitenzahlen.
+		Selbstverweise sind \GloFt{in dieser} Schriftart angegeben.
+		%%%--- Aus dem Autor nicht bekannten Gründen sind die angegebenen Seitenzahlen manchmal um eins zu klein.
+		\par
+	}
+	\newcommand{\glopreambelSymbolbeschreibung}{
+		In eckigen Klammern wird wird, sofern vorhanden, die \Benennung\ für das jeweilige \Symbol\ angegeben, für \Funktionen\ und \Relationen\ auch mittels eines Aufrufs.
+		Die Wörter \manFt{in dieser} Schrift sind notwendig für die Definition, solche \optFt{in dieser} Schrift können auch weggelassen werden.
 		\par
 	}
 	\newcommand{\glopreambelWikipedia}{
@@ -122,11 +130,11 @@
 		Letztere werden allerdings noch, wie im Original, in \wikilink{blau} angegeben.
 		\par
 	}
-	\iftestFlg \glsaddallunused[symbols,main] \else \fi
+	\iftestFlg \glsaddallunused[symbols,main]\else\fi
 	% --------------------------------------------------------------------------
 	\renewcommand{\glossarypreamble}{%  am Beginn des Index
 		\beginchapter[Verzeichnisse]{Index}
-		\label                  {dic-Index}
+		\label                  {dic:Index}
 		\glopreambelEinordnung
 	}
 	\renewcommand*{\glsnamefont}[1]{\textmd{#1}}
@@ -136,8 +144,9 @@
 	\newpage% ------------------------------------------------------------------
 	\renewcommand{\glossarypreamble}{%  am Beginn des Symbolverzeichnisses
 		\beginchapter[Verzeichnisse]{Symbolverzeichnis}
-		\label                  {dic-Symbolverzeichnis}
-		\glopreambelSeitenzahl
+		\label                  {dic:Symbolverzeichnis}
+		\glopreambelSchriftarten
+		\glopreambelSymbolbeschreibung
 	}
 	\renewcommand*{\glsnamefont}[1]{#1}
 	\printglossary[type=symbols,style=list]
@@ -146,9 +155,9 @@
 	\newpage% ------------------------------------------------------------------
 	\renewcommand{\glossarypreamble}{%  am Beginn des Glossars
 		\beginchapter[Verzeichnisse]{Glossar}
-		\label                  {dic-Glossar}
+		\label                  {dic:Glossar}
 		\glopreambelEinordnung
-		\glopreambelSeitenzahl
+		\glopreambelSchriftarten
 		\glopreambelWikipedia
 	}
 	\renewcommand*{\glsnamefont}[1]{\textbf{#1}}

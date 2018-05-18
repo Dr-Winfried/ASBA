@@ -33,11 +33,11 @@
 
 \chapter     {Ideen}% ##########################################################
 \beginchapter{Ideen}
-\label   {cha-Ideen}
+\label   {cha:Ideen}
 
 \section[Schlussregeln]{\Schlussregeln}% =======================================
 \beginsection          {\Schlussregeln}
-\label              {sec-Schlussregeln}
+\label              {sec:Schlussregeln}
 
 In diesem \sectionname\ geht es um \zulaessigeTransformationen, \textdh\ \allgemeingueltigeSchlussregeln.
 Dazu gehören zunächst die \Basisregeln.
@@ -45,9 +45,9 @@ Dann aber auch alle aus den \Basisregeln\ und den bis dahin \allgemeingueltigenS
 Die \Schlussregeln\ haben die Form eines Formalen \Satzes.
 
 \subsection[Basisregeln]{\Basisregeln}% ----------------------------------------
-\label               {sub-Basisregeln}
+\label               {sub:Basisregeln}
 
-Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \Basisregeln\ definiert. Zuvor werden aber noch einige \Definitionen\ gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \Formeln\, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \Formeln\ und
+Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \Basisregeln\ definiert. Zuvor werden aber noch einige Definitionen gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \Formeln\, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \Formeln\ und
 \begin{align}
 	%
 	&X&&\MtsDefEq&&X_1\MtsCup X_2\MtsCup...\MtsCup X_n\MtsCup\{\alpha_1,...,\alpha_m\}
@@ -65,56 +65,56 @@ $X$ und $Y$ können auch die \leereMenge\ sein. Damit wird definiert:
 	kurz: \standsfor{$\alpha$ \emph{\ableitbar} $\beta$} \textbzw\ \standsfor{$\alpha$ \emph{\beweisbar} $\beta$}
 	--- Es kann auch \chrqt{$\alpha$} durch \chrqt{$X$} und/oder \chrqt{$\beta$} durch \chrqt{$Y$} ersetzt werden.
 	}
-	\label{def-ableitbar}
+	\label{def:ableitbar}
 	\\
 	& \defSymUna{\MtsDerive} \beta \quad \MtsDefEquiv \quad \MtsEmptyset \MtsDerive \beta \qquad \text{(\chrqt{\MtsDerive} kann dann auch ganz entfallen)}
 	\\
 	& X_1,X_2,...,X_n,\alpha_1,\alpha_2,...,\alpha_m\quad
 	\defSym{\MtsDerive}\quad Y_1,Y_2,...,Y_n, \beta_1, \beta_2,..., \beta_m\quad
 	\MtsDefEquiv \quad X \MtsDerive Y
-	\label{def-ableitbarKurz}
+	\label{def:ableitbarKurz}
 	\formulatoleft
 \end{align}
 
-Eine \defTxt{\zulaessigeTransformation} ist die Anwendung einer \emph{\Ersetzung}{\vrefnotesub{sub-Identitaetsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub-Schlussregeln}.
-Bei den \Schlussregeln\ und der \Ersetzung\ \chrqt{\MtsSubst} soll das Komma stärker binden als \chrqt{\MtsDerive}, \chrqt{\MtsSubst} und \chrqt{\MtsUnd}, wobei \chrqt{\MtsUnd} für \standsfor{und} \textbzw\ \chrqt{\MtsAnd}\vrefnotesub{sub-AussagenUndMetaoperationen} steht und schwächer bindet als \chrqt{\MtsDerive} und \chrqt{\MtsSubst}.%
-\footnote{siehe Fußnote~3 \vrefvontab{tab-Prioritaeten}}
+Eine \defTxt{\zulaessigeTransformation} ist die Anwendung einer \emph{\Ersetzung}{\vrefnotesub{sub:Identitaetsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
+Bei den \Schlussregeln\ und der \Ersetzung\ \chrqt{\MtsSubst} soll das Komma stärker binden als \chrqt{\MtsDerive}, \chrqt{\MtsSubst} und \chrqt{\MtsUnd}, wobei \chrqt{\MtsUnd} für \standsfor{und} \textbzw\ \chrqt{\MtsAnd}\vrefnotesub{sub:AussagenUndMetaoperationen} steht und schwächer bindet als \chrqt{\MtsDerive} und \chrqt{\MtsSubst}.%
+\footnote{siehe Fußnote~3 \vrefvontab{tab:Prioritaeten}}
 
-Zur der Auswahl der \Basisregeln, der Formulierung und der Bezeichnungen wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
+Zur der Auswahl der \Basisregeln, der Formulierung und der \Bezeichnungen\ wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
 Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$\mathrm{E}$} für "`-Einführung"' und \chrqt{$\mathrm{B}$} für "`-Beseitigung"' (oder "`-Elimination"') von \Junktoren.%
 \footnote{%
 	In der \Monotonieregel\ wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \MtsSupsetEq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \MtsSupsetEq X $}.
-	Außerdem werden bei den Bezeichnungen \seqqt{$(\OjkAnd 1)$} und \seqqt{$(\OjkAnd 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
+	Außerdem werden bei den \Bezeichnungen\ \seqqt{$(\OjkAnd 1)$} und \seqqt{$(\OjkAnd 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
 }
 
 Im Folgenden seien $\alpha$ und $\beta$ \Formeln\ und $X$ und $Y$ Mengen von \Formeln.
 Für die sechs \Basisregeln\ werden dann nur noch die \Junktoren \chrqt{\OjkNot} und \chrqt{\OjkAnd} benötigt.
-Bei den weiteren \Schlussregeln\ wird noch \chrqt{\OjkImp} gemäß der Definition~\vref{def-imp} verwendet.
+Bei den weiteren \Schlussregeln\ wird noch \chrqt{\OjkImp} gemäß der Definition~\vref{def:imp} verwendet.
 
 \begin{align}
 	& \frac{}{\alpha\MtsDerive\alpha}
 	& & (\text{\defTxt{\Anfangsregel}})
-	\tagAR \label{def-AR}
+	\tagAR \label{def:AR}
 	\\\\
 	& \frac{X\MtsDerive\alpha}{X,Y\MtsDerive\alpha}
 	& & (\text{\defTxt{\Monotonieregel}})
-	\tagMR \label{def-MR}
+	\tagMR \label{def:MR}
 	\\\\
 	& \frac{X\MtsDerive\alpha,\OjkNot\alpha}{X\MtsDerive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 1})
-	\tagnota \label{def-nota}
+	\tagnota \label{def:nota}
 	\\\\
 	& \frac{X,\alpha\MtsDerive\beta \MtsUnd X,\OjkNot\alpha\MtsDerive\beta}{X\MtsDerive\beta}
 	& & (\text{Einführung/Beseitigung der Negation Teil 2})
-	\tagnotb \label{def-notb}
+	\tagnotb \label{def:notb}
 	\\\\
 	& \frac{X\MtsDerive\alpha,\beta}{X\MtsDerive\alpha\OjkAnd\beta}
 	& & (\text{Einführung der Konjunktion})
-	\tagandE \label{def-andE}
+	\tagandE \label{def:andE}
 	\\\\
 	& \frac{X\MtsDerive\alpha\OjkAnd\beta}{X\MtsDerive\alpha,\beta}
 	& & (\text{Beseitigung der Konjunktion})
-	\tagandB \label{def-andB}
+	\tagandB \label{def:andB}
 	\formulatoleft
 \end{align}
 
@@ -125,13 +125,13 @@ Eine \Schlussregel\ steht für die \Aussage, dass mit ihren \Praemissen\ auch au
 -- Im Gegensatz zu den weiteren \Schlussregeln\ werden die oben aufgelisteten \Basisregeln\ nicht weiter hinterfragt, \textdh\ sie gelten quasi als \Axiome.
 
 \subsection[Identitätsregeln]{\Identitaetsregeln}% -----------------------------
-\label                    {sub-Identitaetsregeln}
+\label                    {sub:Identitaetsregeln}
 
 %TODO Durch Ersetzung ersetzen?
 Die \zulaessigenTransformationen, \textdh\ die Anwendung der \Schlussregeln, erfordern \zulaessige\ \Ersetzungen.
 Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{\MtsEq} mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
 \footnote{\citesee{bib:NatuerlichesSchliessen}}
-Dazu seien $\alpha$, $\beta$ und $\gamma$ \vergleichbare\footnote{siehe Ende \vrefvonsub{sub-AussagenUndMetaoperationen}}\Formeln.
+Dazu seien $\alpha$, $\beta$ und $\gamma$ \vergleichbare\footnote{siehe Ende \vrefvonsub{sub:AussagenUndMetaoperationen}}\Formeln.
 
 Zunächst wird definiert:
 \begin{align}
@@ -140,12 +140,12 @@ Zunächst wird definiert:
 		Die \Formel, die man erhält, wenn in $\gamma$ alle oder nur einige Vorkommen von $\alpha$ durch $\beta$ ersetzt werden.
 		--- Gegebenenfalls muss noch die Auswahl der Ersetzungen angegeben werden, andernfalls werden alle Vorkommen ersetzt.
 		Letzteres heißt dann \defFt{vollständige} \Ersetzung.
-	} \label{def-ErsetzungAlt}\\
+	} \label{def:ErsetzungAlt}\\
 	\gamma(\alpha \defSymBin{\MtsSwap} \beta) \quad \MtsDefEq \quad
 	\parbox[t]{11cm}{%
 		Die \Formel, die man erhält, wenn in $\gamma$ alle $\alpha$ und $\beta$ miteinander vertauscht werden.
 		Dazu ist es nötig, das $\alpha$ und $\beta$ voneinander unabhängig sind, vorzugsweise zwei verschiedene Variable.
-	} \label{def-Vertauschung}
+	} \label{def:Vertauschung}
 \end{align}
 
 \seqqt{$ \alpha \MtsSubst \beta $} heißt \defTxt{\Ersetzung} und \seqqt{$ \alpha \MtsSwap \beta $} \defFt{\Vertauschung} oder kurz \defFt{Tausch}.
@@ -153,7 +153,7 @@ Zunächst wird definiert:
 
 Dann wird definiert:
 \begin{align}
-	\gamma(S) & \quad \MtsDefEq \quad \gamma(s_1)(s_2)... \label{def-ErsetzungenAlt}\\
+	\gamma(S) & \quad \MtsDefEq \quad \gamma(s_1)(s_2)... \label{def:ErsetzungenAlt}\\
 	\gamma(\MtsEmptyset) & \quad \; = \quad \gamma & \text{(nur zur Verdeutlichung)}\\
 	\gamma(s_1,s_2,...) & \quad \MtsDefEq \quad \gamma(S)
 \end{align}
@@ -185,11 +185,11 @@ Nun können die beiden \Identitaetsregeln\ definiert werden:
 \begin{align}
 	& \frac{}{\alpha\MtsEq\alpha}
 	& & (\text{Einführung der Identität})
-	\tageqE \label{def-eqE}
+	\tageqE \label{def:eqE}
 	\\\\
 	& \frac{\alpha\MtsEq\beta \MtsUnd \gamma}{\gamma(\alpha\MtsSubst\beta)}
 	& & (\text{Beseitigung der Identität})
-	\tageqB \label{def-eqB}
+	\tageqB \label{def:eqB}
 	\formulatoleft
 \end{align}
 
@@ -198,7 +198,7 @@ Wie die \Basisregeln\ gelten sie als \Axiome, würden also eigentlich dazu gehö
 Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \Basisregeln\ gezählt.
 
 \subsection[Weitere Schlussregeln]{Weitere \Schlussregeln}% --------------------
-\label                          {sub-weitereSchlussregeln}
+\label                          {sub:weitereSchlussregeln}
 
 In~\cite{bib:Rautenberg} werden aus den \Basisregeln\ mittels \zulaessiger\ \Transformationen\ weitere \Schlussregeln\ abgeleitet.%
 %TODO Identitätsregeln kommen bei Rautenberg später vor. ???
@@ -210,27 +210,27 @@ Man vergleiche auch mit~\cite{bib:NatuerlichesSchliessen}.
 \begin{align}
 	& \frac{X,\OjkNot\alpha\MtsDerive\alpha}{X\MtsDerive\alpha}
 	& & (\text{Beseitigung der Negation; Indirekter \Beweis})
-	\tagnotc \label{def-notc}
+	\tagnotc \label{def:notc}
 	\\\\
 	& \frac{X,\OjkNot\alpha\MtsDerive\beta,\OjkNot\beta}{X\MtsDerive\alpha}
 	& & (\text{Reductio ad absurdum})
-	\tagnotd \label{def-notd}
+	\tagnotd \label{def:notd}
 	\\\\
 	& \frac{X,\alpha\MtsDerive\beta}{X\MtsDerive\alpha\OjkImp\beta}
 	& & (\text{Einführung der Implikation})
-	\tagimpE \label{def-impE}
+	\tagimpE \label{def:impE}
 	\\\\
 	& \frac{X\MtsDerive\alpha\OjkImp\beta}{X,\alpha\MtsDerive\beta}
 	& & (\text{Beseitigung der Implikation})
-	\tagimpB \label{def-impB}
+	\tagimpB \label{def:impB}
 	\\\\
 	& \frac{X\MtsDerive\alpha \MtsUnd X,\alpha\MtsDerive\beta}{X\MtsDerive\beta}
 	& & (\text{\defTxt{\Schnittregel}})
-	\tagSR \label{def-SR}
+	\tagSR \label{def:SR}
 	\\\\
 	& \frac{X\MtsDerive\alpha \MtsUnd \alpha\OjkImp\beta}{X\MtsDerive\beta}
 	& & (\text{\defTxt{\Abtrennungsregel} --- \emph{Modus ponens}})
-	\tagTR \label{def-TR}
+	\tagTR \label{def:TR}
 	\formulatoleft
 \end{align}
 
@@ -239,22 +239,22 @@ Dabei werden zum \Beweis\ der \Schlussregeln\ in~\cite{bib:Rautenberg} folgende 
 	\renewcommand*{\itemindent}{3cm}
 	\renewcommand*{\labelsep}{5pt}
 	\item[\Schlussregel\ ~:] verwendete \Basisregeln
-	\item[\ref{def-notc} ~:] \ref{def-AR}, \ref{def-MR}, \ref{def-notb}
-	\item[\ref{def-notd} ~:] \ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}
-	\item[\ref{def-impE} ~:] \ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}, \ref{def-andE}
-	\item[\ref{def-impB} ~:] \ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}, \ref{def-andB}
-	\item[\ref{def-SR}   ~:] \ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}
-	\item[\ref{def-TR}   ~:] \ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}, \ref{def-andE}
+	\item[\ref{def:notc} ~:] \ref{def:AR}, \ref{def:MR}, \ref{def:notb}
+	\item[\ref{def:notd} ~:] \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}
+	\item[\ref{def:impE} ~:] \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}, \ref{def:andE}
+	\item[\ref{def:impB} ~:] \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}, \ref{def:andB}
+	\item[\ref{def:SR}   ~:] \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}
+	\item[\ref{def:TR}   ~:] \ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}, \ref{def:andE}
 \end{itemize}
 %
 \subsection[Beispiel einer Ableitung]{Beispiel einer \Ableitung}% --------------
-\label                           {sub-BeispielAbleitung}
+\label                           {sub:BeispielAbleitung}
 
 Als Beispiel wird hier die \Schnittregel\ aus den \Basisregeln\ abgeleitet.%
 \footnote{%
 	Die Form der Tabelle ist angelehnt an~\cite{bib:NatuerlichesSchliessen} Kapitel~2.2.4 \emph{Eine Beispielableitung}.
 }
-Dazu wird verabredet, dass \vrefintab{tab-AbleitungSchnittregel} der Inhalt der Zelle in der Zeile $i$ und der Spalte $(X_n)$ mit $X_i$ bezeichnet wird.
+Dazu wird verabredet, dass \vrefintab{tab:AbleitungSchnittregel} der Inhalt der Zelle in der Zeile $i$ und der Spalte $(X_n)$ mit $X_i$ bezeichnet wird.
 Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschriften nur auf die dort notierten $(X_n)$ verwiesen. Dass in der Spalte $(n)$ stets die Zeilennummer steht, wird im folgenden nicht mehr extra erwähnt.
 
 Für die ausgefüllten Felder wird nun definiert:%
@@ -304,8 +304,8 @@ Damit gilt für die Einträge in einer Zeile $i$:
 \begin{itemize}
 	\item Wenn $\Gamma_i$ nicht leer ist, ist $R_i$ eine \Schlussregel\ mit $R_i = \Gamma_i(S_i)$%
 	\footnote{%
-	    %TODO Makro für Verweis benutzen
-		siehe Definition~\eqref{def-ErsetzungenAlt} \vrefvonsub{sub-Identitaetsregeln}
+		%TODO Makro für Verweis benutzen
+		siehe Definition~\eqref{def:ErsetzungenAlt} \vrefvonsub{sub:Identitaetsregeln}
 	}.
 	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \MtsUnd A_{z_2} \MtsUnd ...}{A_i}$ (alle $z_j \in Z_i$).
 	\item Wenn $A_i$ nicht leer ist, ist bis jetzt die \Schlussregel\ $\dfrac{A_{d_1} \MtsUnd A_{d_2} \MtsUnd ...}{A_i}$ (alle $d_j \in D_i$) schon bewiesen.
@@ -335,11 +335,11 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 		\\\hline
 		3 & \centerParbox{1.00cm}{Folge"=rung} & & & & $X \MtsDerive \beta$ & 3
 		\\\hline
-		4 & \ref{def-MR} & & $\dfrac{X \MtsDerive \alpha}{X, Y \MtsDerive \alpha}$ & & &
+		4 & \ref{def:MR} & & $\dfrac{X \MtsDerive \alpha}{X, Y \MtsDerive \alpha}$ & & &
 		\\\hline
 		5 & 4 & $Y \MtsSubst \OjkNot\alpha$ & $\dfrac{X \MtsDerive \alpha}{X, \OjkNot\alpha \MtsDerive \alpha}$ & 1 & $X, \OjkNot\alpha \MtsDerive \alpha$ & 1
 		\\\hline
-		6 & \ref{def-AR} & & $ \dfrac{}{\alpha \MtsDerive \alpha} $ & & &
+		6 & \ref{def:AR} & & $ \dfrac{}{\alpha \MtsDerive \alpha} $ & & &
 		\\\hline
 		7 & 6 & $\alpha \MtsSubst \OjkNot\alpha$ & $\dfrac{}{\OjkNot\alpha \MtsDerive \OjkNot\alpha}$ & & $\OjkNot\alpha \MtsDerive \OjkNot\alpha$ &
 		\\\hline
@@ -349,20 +349,20 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 			$Y \MtsSubst X$
 		} & $\dfrac{\OjkNot\alpha \MtsDerive \OjkNot\alpha}{X,\OjkNot\alpha \MtsDerive \OjkNot\alpha}$ & 7 & $X,\OjkNot\alpha \MtsDerive \OjkNot\alpha$ &
 		\\\hline
-		9 & \ref{def-nota} & & $\dfrac{X \MtsDerive \alpha, \OjkNot\alpha}{X \MtsDerive \beta}$ & & &
+		9 & \ref{def:nota} & & $\dfrac{X \MtsDerive \alpha, \OjkNot\alpha}{X \MtsDerive \beta}$ & & &
 		\\\hline
 		10 & 9 & $X \MtsSubst X, \OjkNot\alpha$ & $\dfrac{X,\OjkNot\alpha \MtsDerive \alpha, \OjkNot\alpha}{X,\OjkNot\alpha \MtsDerive \beta}$ & 5, 8 & $X,\OjkNot\alpha \MtsDerive \beta$ & 1
 		\\\hline
-		11 & \ref{def-notb} & & $\dfrac{X,\alpha \MtsDerive \beta \MtsUnd X,\OjkNot\alpha \MtsDerive \beta}{X \MtsDerive \beta}$ & 2, 10 & 3 & 1, 2
+		11 & \ref{def:notb} & & $\dfrac{X,\alpha \MtsDerive \beta \MtsUnd X,\OjkNot\alpha \MtsDerive \beta}{X \MtsDerive \beta}$ & 2, 10 & 3 & 1, 2
 		\\\hline\hline
-		12 & \centerParbox{1.4cm}{\ref{def-AR}, \ref{def-MR}, \ref{def-nota}, \ref{def-notb}} & & $\dfrac{A_1 \MtsUnd A_2}{A_3}$ & & $\dfrac{X \MtsDerive \alpha \MtsUnd X, \alpha \MtsDerive \beta}{X \MtsDerive \beta}$ &
+		12 & \centerParbox{1.4cm}{\ref{def:AR}, \ref{def:MR}, \ref{def:nota}, \ref{def:notb}} & & $\dfrac{A_1 \MtsUnd A_2}{A_3}$ & & $\dfrac{X \MtsDerive \alpha \MtsUnd X, \alpha \MtsDerive \beta}{X \MtsDerive \beta}$ &
 		\\\hline
 	\end{tabular}
 	\caption{\Ableitung\ der \Schnittregel\ aus den \Basisregeln}
-	\label{tab-AbleitungSchnittregel}
+	\label{tab:AbleitungSchnittregel}
 \end{table}
 
-Die Erzeugung einer Tabelle analog zu~\vref{tab-AbleitungSchnittregel} wird im folgenden beschrieben.
+Die Erzeugung einer Tabelle analog zu~\vref{tab:AbleitungSchnittregel} wird im folgenden beschrieben.
 Zellen, für die kein Inhalt angegeben wird, bleiben leer.
 Rückwärts-Referenzen auf schon ausgefüllte Zellinhalte sind jederzeit möglich.
 Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
@@ -375,7 +375,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		Die Angabe ist dann erforderlich, wenn darauf verwiesen wird.
 		Durch die Auflistung hat man aber einen vollständigen Überblick über die \Praemissen\ und \Konklusionen\ eines \Beweises\ und die Zwischenannahmen.
 		Auf jede nötige \Praemisse\ und jede verwendete Zwischenannahme wird in der Spalte $(Z_n$) mindestens einmal verwiesen, so dass sie auch aufgeführt werden müssen.
-		Die Angabe der \Konklusionen\ erleichtert die Erstellung einer \emph{Ergebniszeile} (\seename\ Punkt~\ref{item-Ergebniszeile}).
+		Die Angabe der \Konklusionen\ erleichtert die Erstellung einer \emph{Ergebniszeile} (\seename\ Punkt~\ref{item:Ergebniszeile}).
 	}
 	Jede der drei Gruppen kann auch leer sein und es ist auch möglich, die Zeilen an anderen Stellen der Tabelle anzugeben, spätestens aber, wenn darauf verwiesen wird.
 	Für jede \Praemisse, \Konklusion\ und Annahme gibt es eine Zeile:
@@ -413,20 +413,20 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	Nun kann die Zeile beendet werden, oder es geht weiter mit:
 	\begin{enumerate}
 		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
-		\item \label{item-Anwendung} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine \Praemisse\ der \Schlussregel\ $\overline{R}_i$ sind, möglichst in der verwendeten Reihenfolge.
+		\item \label{item:Anwendung} $Z_n =$ Die Indizes aller $A_j$ (mit $j < i$), die eine \Praemisse\ der \Schlussregel\ $\overline{R}_i$ sind, möglichst in der verwendeten Reihenfolge.
 		--- Für jedes angegebene $j$ werden noch die Abhängigkeiten $D_j$ den Abhängigkeiten $D_i$ hinzugefügt.
 		%
 		\item $A_i =$ \Konklusion(en) der \Schlussregel\ $\overline{R}_i$.
 		--- Wenn diese \Konklusionen\ schon als \Aussagen\ $A_j$ (mit $j < i$) vorhanden sind, können auch einfach deren Indizes eingetragen werden.
 		Damit werden die Zusammenhänge und der Abschluss des \Beweises\ besser ersichtlich.
 		%
-		\item $D_i =$ Die Verweise wurden schon in (\ref{item-Anwendung}) eingetragen.%
+		\item $D_i =$ Die Verweise wurden schon in (\ref{item:Anwendung}) eingetragen.%
 		\footnote{Wenn $D_n$ leer ist, dann ist $A_n$ allgemeingültig.}
 		%
 	\end{enumerate}
 	Der \Beweis\ muss so lange fortgeführt werden, bis alle \Konklusionen\ als \Aussagen\ in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \Praemissen\ abhängig sind.
 	%
-	\item \label{item-Ergebniszeile} In einer \defFt{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \Schlussregel\ formuliert und in einer passenden Spalte notiert werden.
+	\item \label{item:Ergebniszeile} In einer \defFt{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \Schlussregel\ formuliert und in einer passenden Spalte notiert werden.
 	Zusätzlich können dort auch noch alle verwendeten \Schlussregeln\ gesammelt werden.
 	Dies kann \textzB\ folgendermaßen geschehen:
 	\begin{enumerate}
@@ -446,7 +446,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	%
 \end{enumerate}
 %
-Ein weiteres Beispiel \vrefintab{tab-AbleitungKontraposition} soll verdeutlichen, wie Abhängigkeiten von Zwischenannahmen wieder beseitigt werden können.%
+Ein weiteres Beispiel \vrefintab{tab:AbleitungKontraposition} soll verdeutlichen, wie Abhängigkeiten von Zwischenannahmen wieder beseitigt werden können.%
 \footnote{\citesee{bib:NatuerlichesSchliessen}, Kapitel 2.2.4 \emph{Eine Beispielableitung}}
 
 \begin{table}[!htb]
@@ -482,7 +482,7 @@ Ein weiteres Beispiel \vrefintab{tab-AbleitungKontraposition} soll verdeutlichen
 		\\\hline
 		8 & -1 & $X \MtsSubst \MtsEmptyset$ & $\dfrac{\alpha \MtsUnd \alpha \MtsDerive \beta}{\beta}$ & 4, 6 & $\beta $ & 4, 6
 		\\\hline
-		9' & \ref{def-andE} & & $\dfrac{X \MtsDerive \alpha, \beta}{X \MtsDerive \alpha \OjkAnd \beta}$ & & &
+		9' & \ref{def:andE} & & $\dfrac{X \MtsDerive \alpha, \beta}{X \MtsDerive \alpha \OjkAnd \beta}$ & & &
 		\\\hline
 		10' & -1 & $X \MtsSubst \MtsEmptyset$ & $\dfrac{\alpha \MtsUnd \beta}{\alpha \OjkAnd \beta}$ & & &
 		\\\hline
@@ -491,7 +491,7 @@ Ein weiteres Beispiel \vrefintab{tab-AbleitungKontraposition} soll verdeutlichen
 			$\alpha \MtsSubst \OjkNot\beta$
 		}  & $\dfrac{\beta \MtsUnd \OjkNot\beta}{\beta \OjkAnd \OjkNot\beta}$ & 8, 3 & $\beta \OjkAnd \OjkNot\beta$ &
 		\\\hline
-		9 & \ref{def-nota} & & $\dfrac{X \MtsDerive \alpha, \OjkNot\alpha}{X \MtsDerive \beta}$ & & &
+		9 & \ref{def:nota} & & $\dfrac{X \MtsDerive \alpha, \OjkNot\alpha}{X \MtsDerive \beta}$ & & &
 		\\\hline
 		10 & -1 & $X \MtsSubst \MtsEmptyset$ & $\dfrac{\alpha \MtsUnd \OjkNot\alpha}{\beta}$ & & &
 		\\\hline
@@ -523,10 +523,553 @@ Ein weiteres Beispiel \vrefintab{tab-AbleitungKontraposition} soll verdeutlichen
 		\\\hline
 	\end{tabular}
 	\caption{\Ableitung\ der \Kontraposition\ aus \allgemeingueltigenSchlussregeln}
-	\label{tab-AbleitungKontraposition}
+	\label{tab:AbleitungKontraposition}
 \end{table}
 
 \todo{Beispielableitung der Kontraposition vervollständigen}
 %TODO Beispielableitung der Kontraposition vervollständigen
+
+Bevor die \Schlussregeln\ weiter behandelt werden, werden noch Elemente der \emph{\Aussagenlogik} und der \emph{\Praedikatenlogik} behandelt.
+Wir stützen uns dabei weitgehend auf~\cite{bib:Rautenberg}, ohne das jedes Mal anzugeben.
+
+\section[Aussagenlogik]{\Aussagenlogik}% =======================================
+\beginsection          {\Aussagenlogik}
+\label              {sec:Aussagenlogik}
+
+\subsection[Konstante und Operationen]{Konstante und \Operationen}% ------------
+\label               {sub:Operationen}
+
+\vrefDtab{tab:Symbole}%
+\footnote{%
+	Die \tablename\ basiert auf den Wahrheitstafeln in~\cite{bib:JunktorMoeglich} Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.
+}
+definiert für die zweiwertige Logik Konstante und \Junktoren\ über die \Wahrheitswerte\ ihrer Anwendung.
+So ergeben sich, abhängig von den \Wahrheitswerten\ der Operanden $A$ und $B$,%
+\footnote{%
+	$A$ und $B$ können hier beliebige \Aussagen\ sein --- auch \Formeln\ ---, die jeweils genau einen \Wahrheitswert\ repräsentieren.
+}
+die in der \tablename\ angegebenen \Wahrheitswerte\ für die \Operationen.
+Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen \Junktoren, \textdh\ für die Konstanten, die \unaeren\ und die \binaeren\ \Junktoren\ ausgefüllt.
+Dabei werden die Konstanten als 0-stellige \Junktoren\ angesehen.
+Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein Wert bekannt, so bleibt sie leer.
+
+\newcommand{\alleMoeglichenJunktoren}{
+	Um vollständig zu sein, \textdh\ alle 22 möglichen Kombinationen von \Wahrheitswerten\ für höchstens zwei Variable zu berücksichtigen, enthält die \tablename\ auch viele ungebräuchliche \Symbole\ und \Operationen.
+	\Junktoren\ ohne Angabe einer Priorität sind in diesem Dokument nicht weiter von Interesse.
+	--- Im Folgenden werden von den in der Tabelle aufgeführten \Junktoren\ nur noch \defSym{\OjkFalse}, \defSym{\OjkTrue}, \defSym{\OjkNot}, \defSym{\OjkAnd}, \defSym{\OjkOr}, \defSym{\OjkImp}, \defSym{\OjkRep}, \defSym{\OjkEquiv}, \defSym{\OjkNand}, \defSym{\OjkNor} und \defSym{\OjkXor} verwendet.
+}
+
+\begin{table}[p]
+	% Wahrheitswerte
+	\newcommand*{\texttrue} {W}%            in einem Kommentar stets 'W'
+	\newcommand*{\textfalse}{F}%            in einem Kommentar stets 'F'
+	% Zähler für Prioritäten ---------------------------------------------------
+	\newcounter{prio}    \setcounter{prio}    {1}
+	\newcounter{pnot}    \setcounter{pnot}    {\value{prio}}
+	\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
+	\newcounter{pand}    \setcounter{pand}    {\value{prio}}
+	\newcounter{pnand}   \setcounter{pnand}   {\value{prio}}
+	\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
+	\newcounter{por}     \setcounter{por}     {\value{prio}}
+	\newcounter{pnor}    \setcounter{pnor}    {\value{prio}}
+	\newcounter{pxor}    \setcounter{pxor}    {\value{prio}}
+	\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
+	\newcounter{pimp}    \setcounter{pimp}    {\value{prio}}
+	\newcounter{prep}    \setcounter{prep}    {\value{prio}}
+	\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
+	\newcounter{pequiv}  \setcounter{pequiv}  {\value{prio}}
+	% Trennlinien
+	\newcommand*{\tablegroup}{\hdashline[6pt/3pt]}
+	\newcommand*{\tableline} {\hdashline[3pt/3pt]}
+	\newcommand*{\gapline}   {\cdashline{1-1}[1pt/3pt]\cdashline{9-11}[1pt/3pt]}
+	\begin{threeparttable}
+		\setlength\tabcolsep{3pt}
+		\setlength\extrarowheight{1.5pt}
+		\small
+		\begin{tabularx}{\linewidth}{|c||c:cc:cccc|X:X|c|}
+			\hline% -- Tabellenanfang --------------------------------------
+			$A$ & - & \texttrue & \textfalse &%
+			\texttrue  & \texttrue  & \textfalse & \textfalse &
+			- & \Aussage\ $A$ & - \\
+			\tableline%.................................................
+			B & - & -       & -        &%
+			\texttrue  & \textfalse & \texttrue  & \textfalse &
+			- & \Aussage\ $B$ & - \\
+			\hline% -- Überschrift -----------------------------------------
+			\textbf{\Junktor}\Tnote{1} &
+			\textbf{0}\Tnote{2} &
+			\multicolumn{2}{c:}{\textbf{1}} &
+			\multicolumn{4}{c|}{\textbf{2}} &
+			\textbf{Name}\Tnote{3} &
+			\textbf{Sprechweise} &
+			\textbf{Prio}\Tnote{4} \\
+			\hline\hline% == Konstante =====================================
+			\defSym{\OjkTrue}
+			& \texttrue  & - & - & - & - & - & -
+			& Verum
+			& \defFt{\TxtTrue} & - \\
+			\tableline%.................................................
+			\defSym{\OjkFalse}
+			& \textfalse & - & - & - & - & - & -
+			& Falsum
+			& \defFt{\TxtFalse} & - \\
+			\hline\hline% == unäre Junktoren ===============================
+			& - & \texttrue & \texttrue  & - & - & - & - & & & - \\
+			\tableline%.................................................
+			$(\dots)$
+			& - & \texttrue & \textfalse & - & - & - & -
+			& Klammerung
+			& $A$ \defFt{ist geklammert} & -\Tnote{5} \\
+			\tableline%.................................................
+			\defSym{\OjkNot}
+			& - & \textfalse & \texttrue  & - & - & - & -
+			& Negation
+			& \defFt{Nicht} $A$ & \thepnot\Tnote{6} \\
+			\tableline%.................................................
+			& - & \textfalse & \textfalse & - & - & - & - & & & -  \\
+			\hline\hline% == binäre Junktoren ==============================
+			& - & - & - &\texttrue&\texttrue&\texttrue&\texttrue
+			& Tautologie
+			& & - \\
+			\tableline%.................................................
+			\defSym{\OjkOr}
+			& - & - & - &\texttrue&\texttrue&\texttrue&\textfalse
+			& Disjunktion; Adjunktion;\newline Alternative
+			& $A$ \defFt{oder} $B$ & \thepor \\
+			\tableline%.................................................
+			\defSym{\OjkRep} $\Leftarrow$ $\subset$
+			& - & - & - &\texttrue&\texttrue&\textfalse&\texttrue
+			& Replikation; Konversion;\newline konverse Implikation
+			& $A$ \defFt{folgt aus} $B$ & \theprep \\
+			\tableline%.................................................
+			$\rfloor$
+			& - & - & - &\texttrue&\texttrue&\textfalse&\textfalse
+			& Präpendenz
+			& Identität von $A$ & - \\
+			\tablegroup% -----------------------------------------------
+			\defSym{\OjkImp} $\Rightarrow$ $\supset$
+			& - & - & - &\texttrue&\textfalse&\texttrue&\texttrue
+			& Implikation; Subjunktion;\newline Konditional
+			& \defFt{Aus} $A$ \defFt{folgt} $B$; Wenn $A$ dann $B$;\newline
+			$A$ nur dann wenn $B$ & \thepimp \\
+			\tableline%.................................................
+			$\lfloor$
+			& - & - & - &\texttrue&\textfalse&\texttrue&\textfalse
+			& Postpendenz
+			& Identität von $B$ & - \\
+			\tableline%.................................................
+			\defSym{\OjkEquiv} $\Leftrightarrow$
+			& - & - & - &\texttrue&\textfalse&\textfalse&\texttrue
+			& ~\Aequivalenz; Bijunktion;\newline Bikonditional
+			& $A$ \defFt{genau dann wenn} $B$;\newline
+			$A$ dann und nur dann wenn $B$
+			& \thepequiv \\
+			\tableline%.................................................
+			\defSym{\OjkAnd} $\&$ $\cdot$
+			& - & - & - &\texttrue&\textfalse&\textfalse&\textfalse
+			& Konjunktion
+			& $A$ \defFt{und} $B$; Sowohl $A$ als auch $B$ & \thepand \\
+			\tablegroup% -----------------------------------------------
+			\defSym{\OjkNand} $\barwedge$ $\mid$
+			& - & - & - &\textfalse&\texttrue&\texttrue&\texttrue
+			& NAND; Unverträglichkeit;\newline Sheffer-Funktion
+			& \defFt{Nicht zugleich} $A$ \defFt{und} $B$ & \thepnand \\
+			\tableline%.................................................
+			\defSym{\OjkXor} $\veebar$ $+$ $\oplus$
+			& - & - & - &\textfalse&\texttrue&\texttrue&\textfalse
+			& XOR; Antivalenz;\newline ausschließende Disjunktion
+			& \defFt{Entweder} $A$ \defFt{oder} $B$ & \thepxor \\
+			\gapline%. . . . . . . . . . . . . . . . . . . . . . . . . .
+			$\nleftrightarrow$ $\nLeftrightarrow$ $\nequiv$
+			& - & - & - &"&"&"&"
+			& ~\Kontravalenz
+			& & - \\
+			\tableline%.................................................
+			$\lceil$
+			& - & - & - &\textfalse&\texttrue&\textfalse&\texttrue
+			& Postnonpendenz
+			& Negation von $B$ & - \\
+			\tableline%.................................................
+			$\nrightarrow$ $\nRightarrow$ $\nsupset$
+			& - & - & - &\textfalse&\texttrue&\textfalse&\textfalse
+			& Postsektion
+			& & - \\
+			\tablegroup% -----------------------------------------------
+			$\rceil$
+			& - & - & - &\textfalse&\textfalse&\texttrue&\texttrue
+			& Pränonpendenz
+			& Negation von $A$ & - \\
+			\tableline%.................................................
+			$\nleftarrow$ $\nLeftarrow$ $\nsubset$
+			& - & - & - &\textfalse&\textfalse&\texttrue&\textfalse
+			& Präsektion
+			& & - \\
+			\tableline%.................................................
+			\defSym{\OjkNor} $\overline\lor$
+			& - & - & - &\textfalse&\textfalse&\textfalse&\texttrue
+			& NOR; Nihilation;\newline Peirce-Funktion
+			& \defFt{Weder} $A$ \defFt{noch} $B$ & \thepnor \\
+			\tableline%.................................................
+			& - & - & - &\textfalse&\textfalse&\textfalse&\textfalse
+			& Kontradiktion
+			& & - \\
+			\hline% -- Tabellenende ----------------------------------------
+			\ifmarginparFlg\else
+			\multicolumn{11}{l}{~} \\
+			\multicolumn{11}{l}{\parbox{\linewidth-6pt}{\alleMoeglichenJunktoren}} \\
+			\fi
+			\multicolumn{11}{l}{~} \\
+			\hline% -- Fußnoten --------------------------------------------
+		\end{tabularx}
+		\begin{tablenotes}
+			\footnotesize
+			%
+			\item[1] Die \Junktoren\ \chrqt{$\subset$}, \chrqt{$\supset$}, \chrqt{$\nsubset$} und \chrqt{$nsupset$} haben hier nicht die Bedeutung der entsprechenden \Operationen\ der \Mengenlehre\ und dürfen nicht damit verwechselt werden; entsprechendes gilt für \chrqt{$+$} und \chrqt{$\cdot$} mit Addition und Multiplikation.
+			%
+			\item[2] 0-stellige \Junktoren\ sind Konstante, hier \emph{\Wahrheitswerte}.
+			%
+			\item[3] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle \binaeren\ \Junktoren\ aufzuführen.
+			%
+			\item[4] Je kleiner die Zahl, je höher die Priorität.
+			%
+			\item[5] Klammerung ist genau genommen keine \Operation\ und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet. Ihre Priorität - sofern man überhaupt davon sprechen kann - kann nur höher als die aller \Junktoren\ sein.
+			%
+			\item[6] Die Priorität der \unaeren\ \Operationen\ muss höher sein als die aller mehrwertigen, also auch der \binaeren\ \Operationen.
+			Wenn die Symbole aller \unaeren\ \Operationen\ auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
+			Nur wenn es sowohl links-, als auch rechtsseitige \unaere\ \Operationen\ gibt, muss man für diese Prioritäten definieren.
+			%
+		\end{tablenotes}
+	\end{threeparttable}
+	\caption{Definition von \aussagenlogischenSymbolen.}
+	\label{tab:Symbole}% Erst nach '\caption'!
+\end{table}
+\ifmarginparFlg\alleMoeglichenJunktoren\else\fi
+
+Für einige \Junktorsymbole%
+\footnote{%
+	Symbole, die für \Junktoren\ verwendet werden.
+},
+Namen und Sprechweisen sind auch Alternativen angegeben.
+Die durchgestrichenen (\textdh\ negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt.
+Wenn für eine bestimmte Kombination von \Wahrheitswerten\ mehr als eine Zeile angegeben ist, so können die zugehörigen \Junktoren\ zwar formal verschieden sein, liefern in der zweiwertigen \Aussagenlogik\ jedoch dieselben Ergebnisse.
+
+Die zur Einsparung von Klammern definierten Prioritäten sind \vrefintab{tab:Prioritaeten} angegeben.%
+\footnote{Zur Erinnerung: Es gilt Rechtsklammerung. \vrefseesub{sub:Prioritaeten}}
+
+\subsection{Formalisierung}% ---------------------------------------------------
+\label {sub:Formalisierung}
+
+Da sie die Grundlage --- quasi das Fundament --- des mathematischen Inhalts von \ASBA\ sind, müssen die \Axiome, \Saetze, \Beweise, \textusw\ der \Aussagenlogik\ (und später der \Praedikatenlogik) in streng formaler Form vorliegen.%
+\footnote{%
+	Die Formalisierung stützt sich auf~\cite{bib:AussagenlogikFormalerZugang}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
+}
+Da Computerprogramme mit der \emph{\PolnischenNotation}%
+\footnote{%
+	Bei der \defTxt{\PolnischenNotation} stehen die Operanden \textbzw\ Argumente von \Relationen\ und \Funktionen\ stets rechts von den Relations- und Funktionssymbolen.
+	Dadurch kann auf Gliederungszeichen wie Klammern und Kommata verzichtet werden.
+	Noch einfacher für Computer ist die \defFt{umgekehrte Polnische Notation}, bei der die Operanden und Argumente links von den Symbolen stehen.
+}
+besser umgehen können und Klammern dort überflüssig sind, werden viele \Formeln\ auch parallel in der Polnischen Notation angegeben.
+Dies wird auf Wunsch auch bei Ausgaben von \ASBA\ so gehandhabt.
+
+\subsubsection[Bausteine der aussagenlogischen Sprache]{\Bausteine\ der \aussagenlogischenSprache}% - - -
+\label {subsub:Bausteine}
+
+%TODO * hier bei der Aussagenlogik weitermachen
+Zur Einteilung der \Junktoren\ werden die folgenden Mengen definiert:
+\begin{align}
+& \defSym{\OjkCon} & \MtsDefEq \quad & \{ \OjkTrue, \OjkFalse \}
+&& \text {, \Menge\ der \defTxt{\aussagenlogischenKonstanten}} \label{def:C}
+\\
+& \defSym{\OjkUna} & \MtsDefEq \quad & \{ \OjkNot \}
+&& \text{, \Menge\ der \defTxt{\unaerenJunktoren}}             \label{def:U}
+\\
+& \defSym{\OjkBin} & \MtsDefEq \quad &
+\{ \OjkAnd, \OjkOr, \OjkXor, \OjkImp, \OjkEquiv, \OjkRep, \OjkNand, \OjkNor \}
+&& \text{, \Menge\ der \defTxt{\binaerenJunktoren}}            \label{def:B}
+\end{align}
+
+Um damit \Formeln\ zu bilden, werden noch Variable gebraucht:
+\begin{align}
+& \defSym{\OjkVar}  & \MtsDefEq \quad & \MengeDef{\Ojkvar_n}{n \in \MtsINo}
+&&&&
+&& \text{, \Menge\ der \defFt{\aussagenlogischenVariablen}} \label{def:OjkVar}
+&&
+\end{align}
+
+Die Mengen \OjkCon, \OjkUna, \OjkBin\ und \OjkVar\ müssen paarweise disjunkt sein.
+-- Damit können die folgende Mengen definiert werden:
+\begin{align}
+& \defSym{\OjkJun}  & \MtsDefEq      \qquad & \OjkCon \MtsCup \OjkUna \MtsCup \OjkBin
+&& \text{, \Menge\ der \defTxt{\Junktorsymbole}}
+\label{def:OjkJun}
+\\
+& \defSym{\OjkABC}  & \MtsDefEq      \qquad & \OjkVar \MtsCup \OjkJun
+&& \text{, \Alphabet\ der \aussagenlogischenSprache\ für } \OjkJun
+\label{def:OjkABC}
+\\
+& \defSym{\OjkJunx} & \MtsSubsetEq\; \qquad & \OjkJun
+&& \text{, eine \Teilmenge\ von } \OjkJun \text{ für eine Indexvariable } x
+\label{def:OjkJunx}
+\\
+& \defSym{\OjkABCx} & \MtsDefEq      \qquad & \OjkVar \MtsCup \OjkJunx \quad
+&& \text{, \Alphabet\ der \aussagenlogischenSprache\ für } \OjkJunx
+\label{def:OjkABCx}
+\end{align}
+
+Für Elemente aus \OjkVar\ verwenden wir normalerweise die kleinen, lateinischen Buchstaben $a$, $b$, $c$, usw.
+
+\subsubsection{Aussagenlogische Formeln}%  - - - - - - - - - - - - - - - - - - -
+\label                  {subsub:Formeln}
+
+Neben dem Alphabet \OjkABC\ \textbzw\ \OjkABCx\ werden noch Klammern als Gliederungszeichen verwendet.
+Damit können nun rekursiv für jede \Teilmenge\ $\OjkJun_x$ von \OjkJun\ zwei Mengen von \aussagenlogischenFormeln\ definiert werden, wobei wir für diese \Formeln\ die kleinen, griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwenden.
+
+\defSym{\OjkForx} sei die \Menge\ der auf folgende Weise definierten \defTxt{\aussagenlogischenFormel}\ mit \defTxt{\Klammerung} zum Alphabet \defSym{\OjkABCx}:
+\begin{align}
+&                    & \OjkVar                    \MtsSubset \OjkForx
+&&& \text{, die Variablen}  \label{def:ForQ}
+\\
+&                    & \OjkJun_x \MtsCap \OjkCon   \MtsSubset \OjkForx
+&&& \text{, die Konstanten} \label{def:ForJK}
+\\
+\alpha \in\OjkForx & \quad\MtsImp & (\BspOpU\alpha)\in\OjkForx
+&&& \text{, für} \quad \BspOpU \in \OjkUna \MtsCap \OjkJunx
+\label{def:ForU}
+\\
+\alpha,\beta\in\OjkForx & \quad\MtsImp & (\alpha\BspOpB\beta) \in\OjkForx
+&&& \text{, für} \quad \BspOpB  \in \OjkBin \MtsCap \OjkJunx
+\label{def:ForB}
+\formulatoleft
+\end{align}
+
+Nur die auf diese Weise konstruierten \Formeln\ sind Elemente aus \OjkForx.
+-- Für \OjkJunx\ = \OjkJun\ sei noch $\defSym{\OjkFor} \MtsDefEq \OjkForx$.
+
+$\defSym{\OjkForpx}$ sei die \Menge\ der auf folgende Weise definierten \defTxt{\aussagenlogischenFormeln} in \defTxt{\PolnischerNotation}:
+\begin{align}
+&                          & \OjkVar                   \MtsSubset \OjkForpx
+&&& \text{, die Variablen}  \label{def:ForQp}
+\\
+&                          & \OjkJunx \MtsCap \OjkCon   \MtsSubset \OjkForpx
+&&& \text{, die Konstanten} \label{def:ForJKp}
+\\
+\alpha      \in\OjkForpx & \quad\MtsImp & \BspOpU\alpha \in\OjkForpx
+&&& \text{, für}  \quad \BspOpU \in \OjkUna  \MtsCap \OjkJunx
+\label{def:ForUp}
+\\
+\alpha,\beta\in\OjkForpx & \quad\MtsImp & \BspOpB\alpha\beta\in\OjkForpx
+&&& \text{, für}  \quad \BspOpB  \in \OjkBin  \MtsCap \OjkJunx
+\label{def:ForBp} \formulatoleft
+\end{align}
+
+Nur die auf diese Weise konstruierten \Formeln\ sind Elemente aus \OjkForpx.
+-- Für \OjkJunx\ = \OjkJun\ sei noch $\defSym{\OjkForp} \MtsDefEq \OjkForpx$.
+
+Wie man leicht sieht, gilt
+\begin{equation}
+\OjkJunx      \: \MtsSubset \: \OjkJun_y  \: \MtsSubsetEq \: \OjkJun \MtsImp
+\begin{cases}
+\OjkABCx  \: \MtsSubset \: \OjkABC_y  \: \MtsSubsetEq \: \OjkABC \\
+\OjkForx  \; \MtsSubset \: \OjkFor_y  \; \MtsSubsetEq \: \OjkFor \\
+\OjkForpx \, \MtsSubset \: \OjkForp_y \, \MtsSubsetEq \: \OjkForp
+\end{cases}
+\end{equation}
+und weiterhin gibt es eine bijektive Abbildung von \OjkFor\ nach \OjkForp. Auf einen \Beweis\ verzichten wir.
+%
+Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der \Formeln\ aus \OjkForx\ einsparen.
+Die \Formeln\ aus \OjkForpx\ sind frei von Klammern.
+Die Namen der \Junktoren\ finden sich \vrefintab{tab:Symbole}.
+
+Die \Formeln, die nach einer der Regeln \eqref{def:ForU}, \eqref{def:ForB}, \eqref{def:ForUp} oder \eqref{def:ForBp} gebildet wurden, sind offensichtlich \zerlegbar, die anderen, \textdh\ Variablen und Konstanten (aus \OjkVar\ \textbzw\ \OjkCon), sind nicht \zerlegbar. Letztere bezeichnet man auch als \defFt{\atomare\ \Formeln}.
+
+\subsection[Definition von Junktoren durch andere]{Definition\ von \Junktoren\ durch andere}
+\label                    {sub:JunktorDef}
+
+Im folgenden gelte für zwei \aussagenlogischeFormeln\ $\alpha$ und $\beta$:
+\begin{itemize}
+	\item[] $\alpha \defSymBin{\MtsEq}    \beta \quad \MtsDefEquiv$ \quad $\alpha$ und $\beta$
+	stimmen als \Zeichenkette\ überein.
+	%
+	\item[] $\alpha \defSymBin{\MtsEquiv} \beta \quad \MtsDefEquiv$ \quad
+	\parbox[t]{13cm}{$\alpha$ und $\beta$ können mit Hilfe erlaubter \Ersetzungen\ und geltender \Axiome\ --- \vrefseesub{sub:Axiome} --- ineinander überführt werden.}
+\end{itemize}
+%TODO === Verweise auf Definitionen prüfen und hinzufügen
+
+Es werden verschiedene \Teilmengen\ von \OjkJun\ eingeführt, die jeweils ausreichen um alle anderen Elemente aus \OjkJun\ zu definieren:
+\begin{align}
+&\OjkJun_{\RawMtsIdxBool}&\MtsDefEq\quad&\{\OjkNot,\OjkAnd,\OjkOr\}\label{def:Jbool}
+\qquad \text{(\defTxt{\BoolescheSignatur})}
+\\
+&\OjkJun_{\RawMtsIdxAnd} &\MtsDefEq\quad&\{\OjkNot,\OjkAnd \}\label{def:Jand}
+\\
+&\OjkJun_{\RawMtsIdxOr}  &\MtsDefEq\quad&\{\OjkNot,\OjkOr  \}\label{def:Jor}
+\\
+&\OjkJun_{\RawMtsIdxImp} &\MtsDefEq\quad&\{\OjkNot,\OjkImp \}\label{def:Jimp}
+\\
+&\OjkJun_{\RawMtsIdxRep} &\MtsDefEq\quad&\{\OjkNot,\OjkRep \}\label{def:Jrep}
+\\
+&\OjkJun_{\RawMtsIdxNand}&\MtsDefEq\quad&\{\OjkNand        \}\label{def:Jnand}
+\\
+&\OjkJun_{\RawMtsIdxNor} &\MtsDefEq\quad&\{\OjkNor         \}\label{def:Jnor}
+\formulatoleft\formulatoleft\formulatoleft
+\end{align}
+Solche \Teilmengen\ heißen \logischeSignatur.
+
+Im Folgenden stehen jeweils links die \Formeln\ in üblicher Schreibweise vollständig geklammert und rechts in Polnischer Notation (ohne Klammern).
+Ferner seien $\alpha$ und $\beta$ beliebige, nicht notwendig verschiedene \Formeln\ aus der passenden \Menge\ \OjkForx\ \textbzgl\ der um die mit Hilfe der Definitionen erweiterten \Formelmenge.
+
+Ausgehend von den \Junktoren\ aus der \BooleschenSignatur\ $\OjkJun_{\RawMtsIdxBool}$ werden die restlichen \Junktoren\ aus \OjkJun\ definiert.
+Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den \Junktoren\ aus $\OjkJun_{\RawMtsIdxAnd}$:
+\begin{align}
+% folgt ------------------------
+(\alpha \defSymBin{\OjkImp}   \beta) &\;\MtsDefEq\; (\OjkNot (\alpha \OjkAnd  (\OjkNot \beta))) &
+\defSymBin{\OjkImp}  \alpha   \beta  &\;\MtsDefEq\;  \OjkNot    \OjkAnd \alpha \OjkNot \beta
+\label{def:imp}
+\\
+% sofern -----------------------
+(\alpha \defSymBin{\OjkRep}   \beta) &\;\MtsDefEq\; (\OjkNot (\beta \OjkAnd  (\OjkNot \alpha))) &
+\defSymBin{\OjkRep}   \beta  \alpha  &\;\MtsDefEq\;  \OjkNot    \OjkAnd \beta \OjkNot \alpha
+\label{def:rep}
+\\
+% genau dann -------------------
+(\alpha \defSymBin{\OjkEquiv} \beta) &\;\MtsDefEq\; ((\alpha \OjkImp \beta) \OjkAnd (\alpha \OjkRep \beta)) &
+\defSymBin{\OjkEquiv} \alpha  \beta  &\;\MtsDefEq\; \OjkAnd \OjkImp \alpha \beta \OjkRep \alpha \beta
+\label{def:equiv}
+\\
+%falsch ------------------------
+\defSym{\OjkFalse}                   &\;\MtsDefEq\; (\Ojkvar_0 \OjkAnd (\OjkNot \Ojkvar_0)) &
+\defSym{\OjkFalse}                   &\;\MtsDefEq\;  \OjkAnd \Ojkvar_0  \OjkNot \Ojkvar_0   \label{def:false}
+\\
+% NAND -------------------------
+(\alpha \defSymBin{\OjkNand}  \beta) &\;\MtsDefEq\; (\OjkNot (\alpha \OjkAnd \beta )) &
+\defSymBin{\OjkNand}  \alpha  \beta  &\;\MtsDefEq\;  \OjkNot  \OjkAnd \alpha \beta \label{def:nand}
+\end{align}
+und die mit den \Junktoren\ aus $\OjkJun_{\RawMtsIdxOr}$:
+\begin{align}
+% NOR --------------------------
+(\alpha \defSymBin{\OjkNor}   \beta) & \;\MtsDefEq\; (\OjkNot (\alpha \OjkOr \beta))   &
+\defSymBin{\OjkNor}   \alpha  \beta  & \;\MtsDefEq\;  \OjkNot  \OjkOr \alpha \beta \label{def:nor}
+\\
+% plus -------------------------
+(\alpha \defSymBin{\OjkXor}   \beta) & \;\MtsDefEq\; ((\alpha \OjkOr \beta) \OjkAnd (\OjkNot (\alpha \OjkAnd \beta)))&
+\defSymBin{\OjkXor}   \alpha  \beta  & \;\MtsDefEq\;  \OjkAnd \OjkOr\alpha\beta \OjkNot \OjkAnd \alpha \beta
+\label{def:add}
+\\
+% wahr -------------------------
+\defSym{\OjkTrue} & \;\MtsDefEq\; (\Ojkvar_0 \OjkOr (\OjkNot \Ojkvar_0)) &
+\defSym{\OjkTrue} & \;\MtsDefEq\;  \OjkOr \Ojkvar_0  \OjkNot \Ojkvar_0
+\label{def:true}
+\end{align}
+
+Ist \chrqt{\OjkOr} oder \chrqt{\OjkAnd} nicht vorgegeben, \textdh\ wird von den Elementen aus $\OjkJun_{\RawMtsIdxAnd}$ \textbzgl\ $\OjkJun_{\RawMtsIdxOr}$ statt von denen aus $\OjkJun_\RawMtsIdxBool$ ausgegangen, so muss man den fehlenden \Junktor\ mittels der passenden der beiden folgenden Definitionen einführen:
+\begin{align}
+% and --> or -------------------
+(\alpha \OjkOr \beta)  & \;\MtsDefEq\; (\OjkNot((\OjkNot\alpha)\OjkAnd(\OjkNot\beta))) &
+\OjkOr \alpha  \beta   & \;\MtsDefEq\;  \OjkNot \OjkAnd \OjkNot \alpha \OjkNot \beta
+\label{def:orand} \\
+% or --> and -------------------
+(\alpha \OjkAnd \beta) & \;\MtsDefEq\; (\OjkNot((\OjkNot\alpha)\OjkOr(\OjkNot\beta)))  &
+\OjkAnd \alpha  \beta  & \;\MtsDefEq\;  \OjkNot \OjkOr \OjkNot \alpha \OjkNot \beta
+\label{def:andor}
+\end{align}
+Nun sind wieder alle \Junktoren\ definiert.
+
+Entsprechend wird bei Vorgabe von $\OjkJun_{\RawMtsIdxImp}$ \textbzgl\ $\OjkJun_{\RawMtsIdxRep}$ die passende der beiden folgenden Definitionen ausgewählt:
+\begin{align}
+% imp --> or -------------------
+(\alpha \OjkOr  \beta) & \;\MtsDefEq\; ((\OjkNot \alpha) \OjkImp \beta)         &
+\OjkOr \alpha   \beta  & \;\MtsDefEq\;   \OjkImp \OjkNot \alpha \beta
+\label{def:orrep}
+\\
+% rep --> and ------------------
+(\alpha \OjkAnd \beta) & \;\MtsDefEq\; (\OjkNot ((\OjkNot \beta) \OjkRep \alpha)) &
+\OjkAnd \alpha  \beta  & \;\MtsDefEq\;  \OjkNot \OjkRep \OjkNot \beta \alpha
+\label{def:andrep}
+\end{align}
+woraufhin dann \eqref{def:imp} \textbzgl\ \eqref{def:rep} als Gleichung nachzuweisen ist.
+Da aus \eqref{def:rep} durch \Vertauschung\ der Variablen unmittelbar
+\begin{align}
+(\alpha \OjkRep \beta) & \;\MtsEquiv\; (\beta \OjkImp \alpha) &
+\OjkRep \alpha  \beta  & \;\MtsEquiv\;  \OjkImp \beta \alpha  \label{eq:repimp}
+\end{align}
+folgt, vermindert sich der Aufwand dazu erheblich.
+
+Bei Vorgabe von $\OjkJun_{\RawMtsIdxNand}$ \textbzgl\ $\OjkJun_{\RawMtsIdxNor}$ schließlich werden die passenden Definition aus
+\begin{align}
+% nor --> not ------------------
+(\OjkNot \alpha) & \;\MtsDefEq\; (\alpha \OjkNor \alpha)  &
+\OjkNot  \alpha  & \;\MtsDefEq\;  \OjkNor \alpha \alpha   \label{def:notnor} \\
+% nand --> not -----------------
+(\OjkNot \alpha) & \;\MtsDefEq\; (\alpha \OjkNand \alpha) &
+\OjkNot  \alpha  & \;\MtsDefEq\;  \OjkNand \alpha \alpha  \label{def:notnand}
+\end{align}
+und, da \chrqt{\OjkNot} jetzt definiert ist, aus
+\begin{align}
+% nor --> or -------------------
+(\alpha \OjkOr \beta)  & \;\MtsDefEq\; (\OjkNot(\alpha \OjkNor \beta))  &
+\OjkOr \alpha  \beta   & \;\MtsDefEq\;  \OjkNot \OjkNor \alpha \beta
+\label{def:ornor} \\
+% nand --> and -----------------
+(\alpha \OjkAnd \beta) & \;\MtsDefEq\; (\OjkNot(\alpha \OjkNand \beta)) &
+\OjkAnd \alpha  \beta  & \;\MtsDefEq\;  \OjkNot \OjkNand \alpha \beta
+\label{def:andnand}
+\end{align}
+ausgewählt und es ist \eqref{def:nand} \textbzgl\ \eqref{def:nor} als Gleichung nachzuweisen.
+
+Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der Definitionen \eqref{def:imp} bis \eqref{def:andnand}, ausgehend vom jeweils passenden \OjkForx, genau die gesamte \Formelmenge\ \OjkFor\ erzeugt werden kann.
+
+\subsection[Aussagenlogisches Axiomensystem]{Aussagenlogisches \Axiomensystem}%
+\label                   {sub:Axiome}
+
+Ausgehend von der \logischenSignatur\ $\OjkJun_{\RawMtsIdxAnd} = \{\OjkNot, \OjkAnd\}$ und der \vrefdef{def:imp} von \chrqt{\OjkImp} werden die folgenden vier logischen \Axiome\ definiert:
+\begin{align}
+&
+(\alpha\OjkImp\beta\OjkImp\gamma)\OjkImp(\alpha\OjkImp\beta)\OjkImp(\alpha\OjkImp\gamma)
+\formulaspace &
+& \OjkImp\OjkImp\alpha\OjkImp\beta\gamma\OjkImp\OjkImp\alpha\beta\OjkImp\alpha\gamma \\
+%
+& \alpha \OjkImp \beta \OjkImp \alpha \OjkAnd \beta
+\formulaspace &
+& \OjkImp \alpha \OjkImp \beta \OjkAnd \alpha \beta \\
+%
+& \alpha \OjkAnd \beta \OjkImp \alpha \;; \quad \alpha \OjkAnd \beta \OjkImp \beta
+\formulaspace &
+& \OjkImp \OjkAnd \alpha \beta \alpha \;; \quad \OjkImp \OjkAnd \alpha \beta \beta\\
+%
+&(\alpha \OjkImp \OjkNot \beta) \OjkImp (\beta \OjkImp \OjkNot \alpha)
+\formulaspace &
+& \OjkImp \OjkImp \alpha \OjkNot \beta \OjkImp \beta \OjkNot \alpha
+\formulatoleft
+%
+\end{align}
+\todo{Aussagenlogik weiter bearbeiten.}
+%TODO Aussagenlogik weiter bearbeiten.
+
+Siehe \defTxt{\Aussagenlogik} im Glossar.
+
+\glsentrydesc{Aussagenlogik}
+
+\section[Prädikatenlogik]{\Praedikatenlogik}% ==================================
+\beginsection            {\Praedikatenlogik}
+\label                {sec:Praedikatenlogik}
+
+\todo{Prädikatenlogik bearbeiten.}
+%TODO Prädikatenlogik bearbeiten.
+
+Siehe \defTxt{\Praedikatenlogik} im Glossar.
+
+\glsentrydesc{Praedikatenlogik}
+
+\section[Mengenlehre]{\Mengenlehre}% ===========================================
+\beginsection        {\Mengenlehre}
+\label            {sec:Mengenlehre}
+
+\todo{Mengenlehre bearbeiten.}
+%TODO Mengenlehre bearbeiten.
+
+Siehe \defTxt{\Mengenlehre} im Glossar.
+
+\glsentrydesc{Mengenlehre}
 
 \Endchapter

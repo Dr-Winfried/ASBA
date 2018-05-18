@@ -1,7 +1,7 @@
 %%############################################################################%%
 %%                                                                            %%
-%% Datei:  ASBA-Mathematik.tex                                                %%
-%% Inhalt: Kapitel "Mathematische Grundlagen"                                 %%
+%% Datei:  ASBA-Logik.tex                                                     %%
+%% Inhalt: Kapitel "Logische Grundlagen"                                      %%
 %%                                                                            %%
 %% Copyright (C) 2017  Winfried Teschers                                      %%
 %%                                                                            %%
@@ -33,87 +33,80 @@
 
 \chapter     {Mathematische Grundlagen}% #######################################
 \beginchapter{Mathematische Grundlagen}
-\label                 {cha-Grundlagen}
+\label                 {cha:Grundlagen}
 
-Die mathematischen Grundlagen werden einerseits gebraucht, um die erlaubten \Beweisschritte\vrefnotesec{sub-Beweisschritte} zu definieren, andererseits dienen sie auch zum Testen von \ASBA.
-Daher werden sie in \datcha{cha-Grundlagen} ausführlicher behandelt, als für die Erstellung von \ASBA\ erforderlich ist.
-Alle hier\footnote{Mit \defFt{hier} ist immer speziell dieses Dokument gemeint.}aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und die \Beweise\ dann von \ASBA\ verifiziert werden.
+Die mathematischen Grundlagen werden einerseits gebraucht, um die erlaubten \Beweisschritte\vrefnotesec{sub:Beweisschritte} zu definieren, andererseits dienen sie auch zum Testen von \ASBA.
+Daher werden sie in \datcha{cha:Grundlagen} ausführlicher behandelt, als für die Erstellung von \ASBA\ erforderlich ist.
+Alle hier\footnote{Mit \defFt{hier} ist immer dieses Dokument gemeint.} aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und die \Beweise\ dann von \ASBA\ verifiziert werden.
 
-Speziell in \datcha{cha-Grundlagen} wollen wir mit möglichst exakt definierten Notationen%
-\footnote{%
-	Dazu zählen wir auch Begriffe und \Symbole.
-}
-operieren.
-Wenn sie \likehyperTxt{in dieser} Schriftart erscheinen, gibt es eine Definition im Symbolverzeichnis oder Glossar%
+Speziell in \datcha{cha:Grundlagen} wollen wir mit möglichst exakt definierten \defGlo{\Begriffen} und den zugehörigen einheitlichen, systematischen \defGlo{\Bezeichnungen} (\textdh\ \defGlo{\Benennungen} und \Symbolen) arbeiten.
+Wenn sie \likehyperTxt{in dieser} Schriftart erscheinen, gibt es eine Definition im Symbolverzeichnis (ab \Pageref{dic:Symbolverzeichnis}) oder Glossar (ab \Pageref{dic:Glossar})%
 \footnote{%
 	Möglicherweise steht dort statt einer Definition auch nur eine Referenz zur Definition im laufenden Text.
 },
 und diese Bedeutung ist dann gemeint.
 Gleichzeitig ist damit im PDF-Dokument ein Link dorthin verbunden.
-An Stellen, wo eine Notation definiert wird, wird sie \likehyperDef{in dieser}\footnote{%
-	Für Symbole gilt dies leider nur für die Schriftfarbe.
-}
-Schriftart ausgegeben.
-Wird normale, schwarze Schrift verwendet, ist die alltägliche Bedeutung gemeint, die manchmal recht ungenau ist.
+An Stellen, wo eine \Benennung\footnote{Für Symbole gilt kann leider nur die Farbe geändert werden.} definiert wird, wird sie \likehyperDef{in dieser} Schriftart ausgegeben.
+Wenn an die \Benennung\ noch ein "`\GD"' angehängt ist, steht die vollständige Definition nur im Glossar und nicht im laufenden Text.
+Eine vertiefende Beschreibung im Glossar und Symbolverzeichnis ist allerdings immer möglich.
 
-Sätze mit "`wir"' bestimmen Notationen, die \textevtl\ nur für dieses Dokument gelten.
+\begin{center}
+	\begin{tabular}{|l|c|c|}
+		\hline
+		Die Sache an sich:  & \multicolumn{2}{c|}{\Begriff}     \\
+		\hline
+		Darstellung:        & \multicolumn{2}{c|}{\Bezeichnung} \\
+		Darstellungsmittel: & \Benennung      & \Symbol         \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Sätze mit "`wir"' bestimmen \Begriffe\ und \Bezeichnungen, die \textevtl\ nur für dieses Dokument gelten.
 Bei allgemein bekannten Notationen wird "`wir"' nicht verwendet.
 Die Verwendung von "`wir"' ist allerdings möglicherweise nicht konsistent und soll nur als Hinweis dienen.
 
-Wenn die genaue Bedeutung einer Notation bei ihrer Verwendung noch nicht definiert ist,
-ist sie an der entsprechenden Stelle noch nicht notwendig oder so bekannt und eindeutig,
-dass auf eine Definition verzichtet wird.
-In letzterem Fall findet sich aber oft dennoch eine Definition im Symbolverzeichnis ab \pagename~\pageref{dic-Symbolverzeichnis} oder Glossar ab \pagename~\pageref{dic-Glossar}.
-
-%TODO Bis hier Korrektur gelesen
 \section     {Metasprache}% ====================================================
 \beginsection{Metasprache}
-\label   {sec-Metasprache}
+\label   {sec:Metasprache}
 
-Wenn man über eine Sprache, die sogenannte \defTxt{\Objektsprache}, spricht, braucht man eine zweite Sprache, die sogenannte \defTxt{\Metasprache}, in der \Aussagen\ über erstere getroffen werden können.%
+Wenn man über eine Sprache, die sogenannte \Objektsprache, spricht, braucht man eine zweite Sprache, die sogenannte \Metasprache, in der \Aussagen\ über erstere getroffen werden können.%
 \footnote{%
 	Die beiden Sprachen können auch übereinstimmen, \textzB\ wenn man über die natürliche Sprache spricht.
 }
 Wenn die \Objektsprache\ die der Mathematik ist, wählt man üblicherweise die natürliche Sprache als \Metasprache.
 Leider ist diese oft ungenau, nicht immer eindeutig und abhängig vom Zusammenhang, in dem sie gesprochen wird.%
 \footnote{%
-	Man betrachte die beiden \Aussagen\ \statement{Studenten und Rentner zahlen die Hälfte.} und \statement{Studenten oder Rentner zahlen die Hälfte.}, die beide das gleiche meinen.
+	Man betrachte die beiden formal verschiedenen \Aussagen\ \statement{Studenten und Rentner zahlen die Hälfte.} und \statement{Studenten oder Rentner zahlen die Hälfte.}, die beide das gleiche meinen.
 	--- Entnommen aus \cite{bib:Rautenberg} \sectionname~1.2 Bemerkung 1.
-
-	Ein weiteres Problem ist, dass man unauflösbare Widersprüche formulieren kann, \textzB\ \statement{Der Barbier ist der Mann im Ort, der genau die Männer im Ort rasiert, die sich nicht selbst rasieren.}.
-	Und der Barbier?
-	Wenn er sich selbst rasiert, dann rasiert er sich nicht selbst, und wenn er sich nicht selbst rasiert, dann rasiert er sich selbst.
-	Was denn nun?
-	--- Quelle unbekannt) --
-	Das Problem ist verwandt mit dem Problem der \statement{\Menge\ aller Mengen, die sich nicht selbst enthalten}.
 }
 Um diese Probleme in den Griff zu bekommen, kann die \Metasprache\ auch formalisiert werden.
 Durch diese Formalisierung erinnert sie dann schon an mathematische \Formeln.
-Die Sprachebenen sollten aber sorgfältig unterschieden werden.
-
-Wir unterscheiden hier drei \Sprachebenen:
+Die \defTxt{\Sprachebenen} sollten aber sorgfältig unterschieden werden:
 \begin{description}
-	\item[\Metasprache] Die normale Umgangssprache.
-	\item[\formaleMetasprache] Eine \Sprache, die als Ausdrucksmittel nur \Metasymbole\ verwendet.
-	Die meisten der hier auftretenden \Formeln\ sind in dieser Sprache formuliert, weswegen wir sie dann konsequenterweise als \defFt{\Metaformeln} bezeichnen.
-	\item[\Objektsprache] Unser Objekt ist die Mathematik, genauer mathematische \Formeln, die wir dann entsprechend als \Objektformeln\ bezeichnen.
+	\item[\defTxt{\Metasprache}] Hier die obere \Sprachebene: \MetaspracheDescription
+	Ihre \Syntax\ und \Semantik\ wird nicht behandelt.
+
+	\item[\defTxt{\formaleMetasprache}] Hier die mittlere \Sprachebene: \formaleMetaspracheDescription
+	Ihre \Syntax\ und \Semantik\ werden im Folgenden noch entwickelt.
+
+	\item[\defTxt{\Objektsprache}] Hier die untere \Sprachebene: \ObjektspracheDescription
+	Die entsprechende \Syntax\ wird im Folgenden noch entwickelt.
+	Die \Semantik\ kann bis zu einem gewissen Grad offen bleiben, um so auch Raum für alternative \Logiken\ zu lassen.
 \end{description}
-Die genaue Definition der \formalenMetasprache\ und der \Objektsprache\footnote{Es wird sogar verschiedene \Objektsprachen\ geben.} folgt noch.
 
 \subsection[Aussagen]{\Aussagen}% ----------------------------------------------
-\label  {sub-Aussagen}
+\label  {sub:Aussagen}
 
-Wir definieren jetzt einige Begriffe.
+Wir definieren zunächst noch einige \Begriffe.
 \begin{description}
-	\item[\defTxt{\Wahrheitswert}] \glsdeskOhneZusatz{Wahrheitswert}%
-	Für die \Darstellung\ der \Wahrheitswerte\ abhängig von der Sprachebene und dem logischen Wert der Aussage definieren wir:
+	\item[\defTxt{\Wahrheitswert}] Für die \Darstellung\ der \Wahrheitswerte\ abhängig von der \Sprachebene\ und dem logischen Wert der Aussage definieren wir:
 	\begin{table}[H]
 		\centering
 		\begin{threeparttable}
 			\setlength\extrarowheight{3pt}
 			\begin{tabularx}{10cm}{l@{\extracolsep{\fill}}|cc|c|}
 				& \multicolumn{2}{c|}{ Aussagewert } & \\
-				\textbf{Sprachebene}    & \textbf{wahr} & \textbf{falsch} & \textbf{Symbolart} \\
+				\textbf{\Sprachebene} & \textbf{wahr} & \textbf{falsch} & \textbf{Symbolart} \\
 				\hline
 				\Metasprache          & \TxtTrue & \TxtFalse & normaler Text \\
 				\formaleMetasprache~~ & \MtsTrue & \MtsFalse & \Metasymbol   \\
@@ -122,7 +115,7 @@ Wir definieren jetzt einige Begriffe.
 			\end{tabularx}
 		\end{threeparttable}
 		\caption{\Darstellung\ der \Wahrheitswerte}
-		\label{tab-Wahrheitswerte}% Erst nach '\caption'!
+		\label{tab:Wahrheitswerte}% Erst nach '\caption'!
 	\end{table}
 	%
 	\item[\defTxt{\Aussage}] \glsdeskOhneZusatz{Aussage}%
@@ -134,15 +127,18 @@ Beispiele für \Aussagen\ in \Metasprache\ sind
 Wie Beispiel (c) zeigt, kann eine \Aussage\ auch aus anderen \Aussagen\ zusammengesetzt sein.
 Wir definieren daher:
 \begin{description}
-	\item[\Teilaussage] Eine \Aussage\ $A$ heißt eine \defTxt{\Teilaussage}\synonym{\defTxt{\Unteraussage}} \defFt{von} einer \Aussage\ $B$, wenn sie Teil von $A$ ist.
-	Man sagt dann auch, dass $B$ die \Teilaussage\ $A$ enthält.
-	\item[\echteTeilaussage] Eine \Teilaussage\ $A$ von $B$ heißt \defTxt{\echte} \Teilaussage\ von $B$, wenn $A$ verschieden von $B$ ist.
+	\item[\Teilaussage] \TeilaussageDescription\ Umgekehrt ist $B$ dann eine \defTxt{\Oberaussage} von $A$ und man sagt dann auch, dass $B$ die \Teilaussage\ $A$ enthält.
+	%
+	\item[\echteTeilaussage] \echteTeilaussageDescription\ Entsprechend \defTxt{\echteOberaussage}.
+	%
+%TODO Bis hier Korrektur gelesen
 	\item[\zerlegbare\ \Aussage] Eine \Aussage\ heißt \defTxt{\zerlegbar}%
 	\alternativi[
-		--- wir unterscheiden allerdings die beiden Begriffe.
+		--- wir unterscheiden allerdings die beiden \Begriffe.
 		Aus \zerlegbar\ folgt zusammengesetzt, aber nicht immer umgekehrt.
 	]{zusammengesetzt}
 	wenn sie mindestens eine \echteTeilaussage\ enthält.
+	%
 	\item[\atomare\ \Aussage] Eine \Aussage\ heißt \defTxt{\atomar}\synonym{\defTxt{\unzerlegbar}}, wenn sie nicht \zerlegbar\ ist, \textdh\ wenn sie keine \echteTeilaussage\ enthält.
 \end{description}
 Während die Beispiele (a) und (b) \atomare\ \Aussagen\ sind, ist Beispiel (c) \zerlegbar.
@@ -152,13 +148,13 @@ Offensichtlich muss manchmal der Zusammenhang, in dem eine \Aussage\ formuliert 
 \textZB\ ist die Bedeutung von "`Ich"' nur dann bekannt, wenn man weiss, von wem die \Aussage\ ist.
 
 \subsection[Aussagen und Metaoperationen]{\Aussagen\ und \Metaoperationen}% ----
-\label  {sub-AussagenUndMetaoperationen}
+\label  {sub:AussagenUndMetaoperationen}
 
 \Zerlegbare\ \Aussagen\ wie (c) können zum Teil formalisiert werden.
 Dies wird mit den folgenden Definitionen erreicht:%
 \footnote{%
 	Damit es nicht zu Verwechslungen führt, verwenden wir für die metasprachliche Negation nicht das logische Symbol \chrqt{\OjkNot}.
-	Wegen \eqref{def-relback} \pagename~\pageref{def-relback} ist die Definition von \chrqt{\MtsRep} überflüssig, wird wegen der angegebenen Sprechweise aber dennoch angegeben.
+	Wegen \eqref{def:relback} \Pageref{def:relback} ist die Definition von \chrqt{\MtsRep} überflüssig, wird wegen der angegebenen Sprechweise aber dennoch angegeben.
 }
 \begin{align}
 	%
@@ -190,10 +186,10 @@ Offensichtlich sind das alles ebenfalls \Aussagen, jetzt aber teilweise formalis
 
 Wir nennen \MtsAnd\ und \MtsOr\ \defTxt{\Metaoperationen} und \MtsImp, \MtsRep\ und \MtsEquiv\ \defTxt{\Metarelationen}%
 \footnote{%
-	Man könnte \Metaoperationen\ und \Metarelationen\ auch als \defFt{Metajunktoren} bezeichnen. Zur Unterscheidung von \Operationen\ und \Relationen\ vergleiche aber auch die Fußnote~\ref{def-Junktor} auf Seite~\pageref{def-Junktor}.
+	Man könnte \Metaoperationen\ und \Metarelationen\ auch als \defFt{Metajunktoren} bezeichnen. Zur Unterscheidung von \Operationen\ und \Relationen\ vergleiche aber auch die Fußnote~\ref{def:Junktor} auf \Pageref{def:Junktor}.
 }.
 Die damit gebildeten \Aussagen\ können natürlich auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
-Für den Fall fehlender Klammern sind ihre Prioritäten \vrefintab{tab-Prioritaeten} angegeben.
+Für den Fall fehlender Klammern sind ihre Prioritäten \vrefintab{tab:Prioritaeten} angegeben.
 
 Um Verwechslungen mit den \Junktoren\ zu vermeiden, verwenden wir für die metasprachlichen \Operationen\ "`und"' und "`oder"' die Symbole \chrqt{\MtsAnd} und \chrqt{\MtsOr}.
 $A$ und $B$ können als Operanden von \chrqt{\MtsEquiv}, \chrqt{\MtsAnd} und \chrqt{\MtsOr} vertauscht werden, ohne das Ergebnis zu ändern.%
@@ -209,19 +205,19 @@ Wird in einer (Teil"~)\Aussage\ nur eine der \Operationen\ \MtsAnd\ oder \MtsOr\
 Zusammengefasst ist die Reihenfolge der \Operationen\ und der Auswertung dort beliebig.
 
 \subsection[Mit Gleichheit verwandte Relationen]{Mit \Gleichheit\ verwandte \Relationen}
-\label     {sub-Gleichheit}
+\label     {sub:Gleichheit}
 
 \subsubsection[Vergleichbar]{\Vergleichbar}% - - - - - - - - - - - - - - - - - -
-\label {subsub-Vergleichbar}
+\label {subsub:Vergleichbar}
 
-Zwei \Objekte\ $A$ und $B$ sind \defTxt{\vergleichbar}, wenn beide von derselben \Objektart\ sind, \textdh\ wenn \textzB\ jeweils beide Mengen, \Zeichenfolgen, Zahlen, \textusw\ sind.
+Zwei \Objekte\ $A$ und $B$ sind \defTxt{\vergleichbar}, wenn beide von derselben \Objektart\ sind, \textdh\ wenn \textzB\ jeweils beide Mengen, \Symbolfolgen, Zahlen, \textusw\ sind.
 Dabei muss bei \Formeln\ zwischen der \Formel\ an sich und dem Ergebnis der \Formel\ unterschieden werden. Siehe Beispiel (a).
 
 Intuitiv scheint klar zu sein, was damit  gemeint ist.
 Wenn aber entschieden werden muss, ob \textzB\ (a) "`1+1"' gleich "`2"' oder (b) "`1+1"' gleich "`1 + 1"' ist, muss man erst entscheiden, von welcher \Objektart\ die beiden zu vergleichenden Ausdrücke sind, \textdh\ \emph{wie} verglichen wird.
 Wenn sie als jeweiliges Ergebnis der beiden \Formeln, verglichen werden, dann ist (a) richtig.
-Wenn sie als \Formeln, \textdh\ als \Zeichenfolgen, verglichen werden, ist (a) falsch.
-Wenn die Ausdrücke in (b) als \Zeichenfolgen\ verglichen werden, dann ist (b) richtig.
+Wenn sie als \Formeln, \textdh\ als \Symbolfolgen, verglichen werden, ist (a) falsch.
+Wenn die Ausdrücke in (b) als \Symbolfolgen\ verglichen werden, dann ist (b) richtig.
 Wenn sie als \Zeichenketten\ verglichen werden, ist (b) falsch.
 
 Die folgende Tabelle fasst dass zusammen:
@@ -233,40 +229,40 @@ Die folgende Tabelle fasst dass zusammen:
 		\hline
 		$       1+1$  &        $2$        & \Objekt       & richtig \\
 		\seqqt{$1+1$} & \seqqt{$2$}       & \Formel       & falsch  \\
-		\seqqt{$1+1$} & \seqqt{$1\;+\;1$} & \Zeichenfolge & richtig \\
+		\seqqt{$1+1$} & \seqqt{$1\;+\;1$} & \Symbolfolge & richtig \\
 		\strqt{1+1}   & \strqt{1 + 1}     & \Zeichenkette & falsch  \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \subsubsection{Vergleiche}%- - - - - - - - - - - - - - - - - - - - - - - - - - -
-\label {subsub-Vergleiche}
+\label {subsub:Vergleiche}
 
 $A$ und $B$ seien \Objekte.
 Dann definieren wir:
 
 \begin{description}
 	%
-	\item[$\defSym{\MtsEq}$] \defTxt{\Gleichheit} \label{def-Gleichheit}
+	\item[$\defSym{\MtsEq}$] \defTxt{\Gleichheit} \label{def:Gleichheit}
 	\seqqt{$A \MtsEq B$} heißt, dass $A$ und $B$ in den \interessierendenEigenschaften\ für \MtsEq\ übereinstimmen.%
 	\footnote{%
 		\textZB\ sind zwei \Junktoren\ üblicherweise dann gleich, wenn sie stets denselben \emph{\Wahrheitswert} liefern.
-		Ihre Bezeichnungen oder \Symbole\ können dabei durchaus verschieden sein, interessieren bei der Feststellung der \Gleichheit\ aber nicht.
-		\textZB\ bezeichnen \chrqt{\MtsAnd} und \chrqt{\MtsUnd} dieselbe \Operation, haben aber verschiedene Priorität. --- \vrefseetab{tab-Prioritaeten}
+		Ihre \Bezeichnungen\ können dabei durchaus verschieden sein, interessieren bei der Feststellung der \Gleichheit\ aber nicht.
+		\textZB\ bezeichnen \chrqt{\MtsAnd} und \chrqt{\MtsUnd} dieselbe \Operation, haben aber verschiedene Priorität. --- \vrefseetab{tab:Prioritaeten}
 	}
 	Sprechweisen: \standsfor{$A$ ist \emph{dasselbe} wie $B$} oder \standsfor{$A$ ist \emph{identisch} zu $B$}
-	--- Inwieweit die Begriffe \emph{Gleichheit} und \emph{Identität} korrelieren, wird hier nicht erörtert.\citenote{bib:Identitaet}
+	--- Inwieweit die \Begriffe\ \emph{Gleichheit} und \emph{Identität} korrelieren, wird hier nicht erörtert.\citenote{bib:Identitaet}
 	%
-	\item[$\defSym{\MtsEqN}$] \defTxt{\Ungleichheit} \label{def-Ungleichheit}
+	\item[$\defSym{\MtsEqN}$] \defTxt{\Ungleichheit} \label{def:Ungleichheit}
 	\seqqt{$A \MtsEqN B$} heißt, dass $A$ und $B$ in mindestens einer \interessierendenEigenschaft\ für \MtsEq\ nicht übereinstimmen.
 	Sprechweisen: \standsfor{$A$ ist \emph{nicht dasselbe} wie $B$} (aber vielleicht das gleiche; siehe \MtsEquiv) oder \standsfor{$A$ ist \emph{nicht identisch} zu $B$}.
 	%
-	\item[$\defSym{\MtsAequiv}$] \defTxt{\Aequivalenz} \label{def-Aequivalenz}
+	\item[$\defSym{\MtsAequiv}$] \defTxt{\Aequivalenz} \label{def:Aequivalenz}
 	\seqqt{$A \MtsAequiv B$} heißt, dass $A$ und $B$ in den \interessierendenEigenschaften\ für \MtsAequiv\ übereinstimmen.
 	Sprechweisen: \standsfor{$A$ ist \emph{das gleiche} wie $B$} (aber nicht unbedingt dasselbe; siehe \MtsEq) oder \standsfor{$A$ ist \emph{so wie} $B$}.
-	--- Es kann auch verschiedene Äquivalenzen geben, für die dann verschiedene Bezeichnungen verwendet werden.
+	--- Es kann auch verschiedene Äquivalenzen geben, für die dann verschiedene \Bezeichnungen\ verwendet werden.
 	%
-	\item[$\defSym{\MtsAequivN}$] \defTxt{\Kontravalenz} \label{def-Kontravalenz}
+	\item[$\defSym{\MtsAequivN}$] \defTxt{\Kontravalenz} \label{def:Kontravalenz}
 	\seqqt{$A \MtsAequivN B$} heißt, dass $A$ und $B$ in mindestens einer \interessierendenEigenschaft\ für \MtsAequivN\ nicht übereinstimmen.
 	Sprechweisen: \standsfor{$A$ ist \emph{nicht das gleiche} wie $B$} oder \standsfor{$A$ ist \emph{nicht so wie} $B$}.
 	%
@@ -279,8 +275,8 @@ Dann definieren wir:
 Jede \interessierendeEigenschaft\ für \MtsAequiv\ oder eine andere \Aequivalenz\ muss auch eine für \MtsEq\ sein.
 Daraus folgt insbesondere, dass mit $(A \MtsEq B)$ auch $(A \MtsAequiv B)$ und mit $(A \MtsAequivN B)$ auch $(A \MtsEqN B)$ gilt.
 
-\subsubsection[Definitionen]{\Definitionen}% - - - - - - - - - - - - - - - - - -
-\label {subsub-Definitionen}
+\subsubsection[Metadefinitionen]{\Metadefinitionen}% - - - - - - - - - - - - - -
+\label {subsub:Metadefinitionen}
 
 Seien $A$ und $B$ \Aussagen\ \textbzw\ \Objekte%
 \footnote{%
@@ -289,12 +285,12 @@ Seien $A$ und $B$ \Aussagen\ \textbzw\ \Objekte%
 }.
 \begin{description}
 	%
-	\item[$\defSym{\MtsDefEquiv}$] \defTxt{\Metadefinition} \label{def-Metadefinition}
+	\item[$\defSym{\MtsDefEquiv}$] \defTxt{\Aussagedefinition} \label{def:Aussagedefinition}
 	\seqqt{$A \MtsDefEquiv B$} heißt, dass die \Aussage\ $A$ \emph{definitionsgemäß gleich} der \Aussage\ $B$ ist.
 	Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
 	\standsfor{$A$ \emph{steht für} $B$}; $A$ und $B$ können sich gegenseitig ersetzten.
 	%
-	\item[$\defSym{\MtsDefEq}$] \defTxt{\Definition} \label{def-Definition}
+	\item[$\defSym{\MtsDefEq}$] \defTxt{\Objektdefinition} \label{def:Objektdefinition}
 	\seqqt{$A \MtsDefEq B$} heißt, dass das \Objekt\ $A$ \emph{definitionsgemäß gleich} dem \Objekt\ $B$ ist.
 	Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
 	\standsfor{$A$ \emph{steht für} $B$}; $A$ und $B$ können sich gegenseitig ersetzten.%
@@ -302,13 +298,13 @@ Seien $A$ und $B$ \Aussagen\ \textbzw\ \Objekte%
 		Nach den Definitionen von \MtsDefEquiv\ und \MtsDefEq\ sind zwei Ausdrücke $P$ und $Q$ schon dann gleich, wenn nach der Ersetzung aller Vorkommen von $A$ durch $B$ sowohl in $P$ als auch in $Q$ die resultierenden Ausdrücke $\overline{P}$ und $\overline{Q}$ gleich sind.
 	}
 \end{description}
-Man beachte, dass \MtsDefEquiv\ und \MtsDefEq\ verschiedene Sprachebenen sind.
+Man beachte, dass \MtsDefEquiv\ und \MtsDefEq\ verschiedene \Sprachebenen\ sind.
 
 \section     {Notationen}% =====================================================
 \beginsection{Notationen}
-\label   {sec-Notationen}
+\label   {sec:Notationen}
 
-%%%%Im Vorgriff auf \vrefsubsub{subsub-Definitionen} stehen \seqqt{$A \defSym{\MtsDefEquiv} B$} und \seqqt{$A \defSym{\MtsDefEq} B$} für \standsfor{$A$ \emph{ist definitionsgemäß gleich} $B$}, \seqqt{$A \defSym{\MtsAnd} B$} für \standsfor{$A$ \emph{und} $B$} und \seqqt{$A \defSym{\MtsOr} B$} für \standsfor{$A$ \emph{oder} $B$}.
+%%%%Im Vorgriff auf \vrefsubsub{subsub:Metadefinitionen} stehen \seqqt{$A \defSym{\MtsDefEquiv} B$} und \seqqt{$A \defSym{\MtsDefEq} B$} für \standsfor{$A$ \emph{ist definitionsgemäß gleich} $B$}, \seqqt{$A \defSym{\MtsAnd} B$} für \standsfor{$A$ \emph{und} $B$} und \seqqt{$A \defSym{\MtsOr} B$} für \standsfor{$A$ \emph{oder} $B$}.
 Damit definieren wir für Elemente $a$ und Mengen $A$ und $B$%
 \footnote{%
 	In der Literatur wird \chrqt{\MtsSubset} oft in der Bedeutung von \chrqt{\MtsSubsetEq} verwendet.
@@ -317,30 +313,30 @@ Damit definieren wir für Elemente $a$ und Mengen $A$ und $B$%
 \begin{align}
 	&   \defSym{\MtsIN}           & \MtsDefEq    \quad &
 	\text{die \Menge\ der \defFt{natürlichen Zahlen}  ohne           $0$}
-	\label{def-MtsIN}   \\
+	\label{def:MtsIN}   \\
 	&   \defSym{\MtsINo}          & \MtsDefEq    \quad &
 	\text{die \Menge\ der \defFt{natürlichen Zahlen} (einschließlich $0$)}
-	\label{def-MtsINo}  \\
+	\label{def:MtsINo}  \\
 	%
 	& a \defSymBin{\MtsIn}       A & \MtsDefEquiv \quad &
 	\text{$a$ ist         \defFt{Element aus} $A$}
-	\label{def-MtsIn} \\
+	\label{def:MtsIn} \\
 	& A \defSymBin{\MtsSubset}   B & \MtsDefEquiv \quad &
 	\text{$A$ ist \defFt{\echteTeilmenge\ von} $B$}
-	\label{def-MtsSub}   \\
+	\label{def:MtsSub}   \\
 	& A \defSymBin{\MtsSubsetEq} B & \MtsDefEquiv \quad &
 	\text{$A$ ist  \defFt     {\Teilmenge\ von} $B$}
-	\label{def-MtsSubeq} \formulatoleft
+	\label{def:MtsSubeq} \formulatoleft
 \end{align}
 \MtsIn, \MtsSubset\ und \MtsSubsetEq\ sind \Relationen, genauer \defTxt{\Mengenrelationen}.
-Gemäß~\eqref{def-relback} \pagename~\pageref{def-relback} sind \defSymBin{\MtsNi}, \defSymBin{\MtsSupset} und \defSymBin{\MtsSupsetEq} die \Umkehrrelationen\ dazu (Sprechweisen: \emph{\dots\ enthält als Element \dots} und \emph{ist [echte] \Obermenge\ von}).
-Es gelten entsprechende Gleichungen wie~\eqref{def-releq} und~\eqref{def-relbsp} \pagename~\pageref{def-releq}.
-Schließlich sind \defSymBin{\MtsInN}, \defSymBin{\MtsSubsetN}, \defSymBin{\MtsSubsetEqN}, \defSymBin{\MtsNiN}, \defSymBin{\MtsSupsetN} und \defSymBin{\MtsSupsetEqN} gemäß~\eqref{def-relnot} \pagename~\pageref{def-relnot} noch die zugehörigen \Negationen.
+Gemäß~\eqref{def:relback} \Pageref{def:relback} sind \defSymBin{\MtsNi}, \defSymBin{\MtsSupset} und \defSymBin{\MtsSupsetEq} die \Umkehrrelationen\ dazu (Sprechweisen: \emph{\dots\ enthält als Element \dots} und \emph{ist [echte] \Obermenge\ von}).
+Es gelten entsprechende Gleichungen wie~\eqref{def:releq} und~\eqref{def:relbsp} \Pageref{def:releq}.
+Schließlich sind \defSymBin{\MtsInN}, \defSymBin{\MtsSubsetN}, \defSymBin{\MtsSubsetEqN}, \defSymBin{\MtsNiN}, \defSymBin{\MtsSupsetN} und \defSymBin{\MtsSupsetEqN} gemäß~\eqref{def:relnot} \Pageref{def:relnot} noch die zugehörigen \Negationen.
 
 Wenn wir von einer \defFt{natürlichen Zahl} sprechen, meinen wir immer ein Element aus \MtsINo.
 
-\subsection{Bezeichnungen}% ----------------------------------------------------
-\label {sub-Bezeichnungen}
+\subsection[Bezeichnungen]{\Bezeichnungen}% ------------------------------------
+\label {sub:Bezeichnungen}
 
 \begin{description}
 
@@ -351,7 +347,7 @@ Wenn wir von einer \defFt{natürlichen Zahl} sprechen, meinen wir immer ein Elem
 	Wir nennen sie dann \defFt{zusammengesetzte Symbole}, im Gegensatz zu den \defFt{einfachen Symbolen}.
 	Charakteristisch für ein Symbol ist, dass es ohne Bedeutungsverlust nicht zerlegt werden kann.
 	Ein \zusammengesetztesSymbol\ ist \textiAlg\ \zerlegbar, kann aber auch als \atomar, \textdh\ \unzerlegbar, definiert werden, wie \textzB\ $\sin$ als \Symbol\ für die Sinusfunktion.
-	\Symbole\ werden \chrqt{so} quotiert; \zerlegbare\ können aber auch wie \Zeichenfolgen\ quotiert werden.
+	\Symbole\ werden \chrqt{so} quotiert; \zerlegbare\ können aber auch wie \Symbolfolgen\ quotiert werden.
 	--- Die Quotierung ist kein Bestandteil des \Symbols!
 
 	Wird für bestimmte \Objekte\ ein \Symbol\ verwendet, so nennen wir dies ein \defFt{\Objektsymbol}.
@@ -366,32 +362,32 @@ Wenn wir von einer \defFt{natürlichen Zahl} sprechen, meinen wir immer ein Elem
 	werden \Zeichenketten\ stets \strqt{in dieser} Schriftart und Quotierung dargestellt.
 	--- Die Quotierung ist kein Bestandteil der \Zeichenkette!
 
-	% ----- Zeichenfolge -------------------------------------------------------
-	\item [\Zeichenfolgen] sind ähnlich wie \Zeichenketten, außer das sie als Bausteine neben einfachen auch zusammengesetzte, aber \atomare\ \Symbole\ enthalten können und Leerzeichen und andere Zwischenraumzeichen nicht zählen.
+	% ----- Symbolfolge -------------------------------------------------------
+	\item [\Symbolfolgen] sind ähnlich wie \Zeichenketten, außer das sie als Bausteine neben einfachen auch zusammengesetzte, aber \atomare\ \Symbole\ enthalten können und Leerzeichen und andere Zwischenraumzeichen nicht zählen.
 	Letztere dienen nur der optischen Trennung der \Symbole\ und der besseren Lesbarkeit.
-	\Zeichenfolgen\ werden stets \seqqt{in dieser} Quotierung dargestellt.
-	--- Die Quotierung ist kein Bestandteil der \Zeichenfolge!
+	\Symbolfolgen\ werden stets \seqqt{in dieser} Quotierung dargestellt.
+	--- Die Quotierung ist kein Bestandteil der \Symbolfolge!
 
 	% ----- Formel -------------------------------------------------------------
-	\item [\Formeln] \label{def-Formel} sind in diesem Dokument immer nach vorgegebenen Regeln aufgebaute \Zeichenfolgen%
+	\item [\Formeln] \label{def:Formel} sind in diesem Dokument immer nach vorgegebenen Regeln aufgebaute \Symbolfolgen%
 	\footnote{%
 		Es kann verschiedene Arten von \Formeln\ geben, \textzB\ \aussagenlogischeF, prädikatenlogische und solche, die ein Taschenrechner auswerten kann.
 	}.
-	Daher werden sie wie \Zeichenfolgen\ quotiert.
-	--- Die Quotierung ist kein Bestandteil der \Zeichenfolge!
+	Daher werden sie wie \Symbolfolgen\ quotiert.
+	--- Die Quotierung ist kein Bestandteil der \Symbolfolge!
 
-	Man kann eine \Formel\ auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen \Menge\ \MtsSprache\ von \Zeichenfolgen\ ist.%
+	Man kann eine \Formel\ auch dadurch charakterisieren, dass sie ein Element einer vorgegebenen \Menge\ \MtsSprache\ von \Symbolfolgen\ ist.%
 	\footnote{%
-		Die \Formel\ wird dann auch \defTxt{\Wort} der \defTxt{\Sprache} \MtsSprache\ genannt - besonders, wenn die Elemente aus \MtsSprache\ \Zeichenketten\ statt \Zeichenfolgen\ sind.
+		Die \Formel\ wird dann auch \defTxt{\Wort} der \defTxt{\Sprache} \MtsSprache\ genannt - besonders, wenn die Elemente aus \MtsSprache\ \Zeichenketten\ statt \Symbolfolgen\ sind.
 		Wir bleiben der Klarheit willen bei "`\Formel"'.
 	}
 	Das ist dann so ziemlich die einfachste Regel.
 
-	Wenn eine \Zeichenfolge\ nicht korrekt nach den vorgegebenen Regeln aufgebaut ist \textbzw\ kein Element der vorgegebenen \Menge\ \MtsSprache\ ist, werden wir sie \emph{nicht} als \Formel\ bezeichnen, auch nicht als "`fehlerhafte Formel"' oder ähnlich.
+	Wenn eine \Symbolfolge\ nicht korrekt nach den vorgegebenen Regeln aufgebaut ist \textbzw\ kein Element der vorgegebenen \Menge\ \MtsSprache\ ist, werden wir sie \emph{nicht} als \Formel\ bezeichnen, auch nicht als "`fehlerhafte Formel"' oder ähnlich.
 	Sie ist dann einfach keine \Formel.
 
 	% ----- Objekt -------------------------------------------------------------
-	\item [\Objekte] sind \textzB\ \Symbole, \Zeichenketten, \Zeichenfolgen\ und \Formeln, oder auch \Aussagen, Mengen, Zahlen, \textusw\ --- ganz allgemein reale oder gedachte Dinge an sich.
+	\item [\Objekte] sind \textzB\ \Symbole, \Zeichenketten, \Symbolfolgen\ und \Formeln, oder auch \Aussagen, Mengen, Zahlen, \textusw\ --- ganz allgemein reale oder gedachte Dinge an sich.
 	Eine \Formel, die nicht quotiert ist, steht für den Wert dieser \Formel, der dann wieder ein \Objekt\ ist.
 	Entsprechend steht ein \Symbol, das nicht quotiert ist, für das dadurch bezeichnete \Objekt.
 	\textZB\ bezeichnet das \Symbol\ \chrqt{\MtsIN} die \Menge\ \MtsIN der natürlichen Zahlen ohne 0.
@@ -399,7 +395,7 @@ Wenn wir von einer \defFt{natürlichen Zahl} sprechen, meinen wir immer ein Elem
 \end{description}
 
 \subsection{Quotierung}% -------------------------------------------------------
-\label {sub-Quotierung}
+\label {sub:Quotierung}
 
 Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:\footnote{%
 	Was \atomare\ und was \zerlegbare\ \Symbole\ sind, muss jeweils definiert werden, \textbzw\ ergibt sich aus dem Zusammenhang.
@@ -409,23 +405,23 @@ Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:\footnote{%
 	&        $\sin$  & \Objekt
 	& die Sinusfunktion
 	\\
-	& \chrqt{$\sin$} & \Symbol\ (Bezeichnung)
+	& \chrqt{$\sin$} & \Bezeichnung
 	& für das \Objekt
 	\\
-	& \seqqt{$\sin$} & \Zeichenfolge\ (\Formel)
+	& \seqqt{$\sin$} & \Symbolfolge\ (\Formel)
 	& aus dem zusammengesetzten, \atomaren\ \Symbol\ \chrqt{$\sin$}
 	\\
-	& \seqqt {$sin$} & \Zeichenfolge\ (\Formel)
+	& \seqqt {$sin$} & \Symbolfolge\ (\Formel)
 	& aus den einfachen \Symbolen\ \chrqt{$s$}, \chrqt{$i$} und \chrqt{$n$}
 	\\
 	& \strqt  {sin}  & \Zeichenkette
 	& aus den einfachen \Symbolen\ \chrqt{\charf{s}}, \chrqt{\charf{i}} und \chrqt{\charf{n}}
 \end{tabular}
 
-Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textdh\ einer \Zeichenfolge\ oder sogar einer ganzen \Formel; \textzB\ ist die Bezeichnung für das indizierte \Objekt\ $a_i$ gleich \seqqt{$a_i$}.
+Die \Bezeichnung\ eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textdh\ einer \Symbolfolge\ oder sogar einer ganzen \Formel; \textzB\ ist die Bezeichnung für das indizierte \Objekt\ $a_i$ gleich \seqqt{$a_i$}.
 
-\subsection{Weitere Bezeichnungen}% --------------------------------------------
-\label  {sub-weitereBezeichnungen}
+\subsection[Weitere Bezeichnungen]{Weitere \Bezeichnungen}% --------------------
+\label  {sub:weitereBezeichnungen}
 
 \begin{description}
 
@@ -478,7 +474,7 @@ Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textd
 	Ist $|G|$ endlich, so nennen wir auch $R$ \defFt{endlich}.
 
 	% ----- Umkehrrelation -----------------------------------------------------
-	\item [\Umkehrrelation] Die \defTxt{\Umkehrrelation} einer \binaeren\ Relation $(G,A,B)$ ist die Relation $(G',B,A)$ mit $G' \MtsDefEq \{(b,a)\mid(a,b) \in G\}$.
+	\item [\Umkehrrelation] Die \defTxt{\Umkehrrelation} \defFt{von}\alternativi{für} einer \binaeren\ Relation $(G,A,B)$ ist die Relation $(G',B,A)$ mit $G' \MtsDefEq \MengeDef{(b,a)}{(a,b) \in G}$.
 	Üblicherweise wird das zugehörige Relationssymbol gespiegelt.
 
 	% ----- Funktion -----------------------------------------------------------
@@ -524,63 +520,74 @@ Die Bezeichnung eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textd
 	Wenn nicht anders angegeben, sind \Operationen\ stets \binaer.
 	0-stellige \Operationen\ können wieder als Konstante aufgefasst werden.
 
-	Um Missverständnisse zu vermeiden, werden wir den Begriff "`Operator"' nicht verwenden.
+	Um Missverständnisse zu vermeiden, werden wir die \Bezeichnung\ "`Operator"' nicht verwenden.
 
 	% ----- Junktor ------------------------------------------------------------
 	\item [\Junktoren] sind \aussagenlogischeRelationen\ und \aOperationen.%
-	\footnote{\label{def-Junktor}%
+	\footnote{\label{def:Junktor}%
 		Ein $n$-stelliger \Junktor\ $J$ sei eine \Operation\ und somit eine \Funktion.
 		Wegen $M = \{\MtsTrue,\MtsFalse\}$ kann er auch als eine $n$-stellige \Relation\ $J'$ aufgefasst werden:
 		$J' \MtsDefEq \MengeDef{\vec{a} \in \MtsMn}{J(\vec{a}) = \MtsTrue}$.
 
 		~~Umgekehrt kann eine $n$-stellige \aussagenlogischeRelation\ $J'$ mittels:
-		$J''(\vec{a}) \MtsDefEq \MtsTrue \text{ für } \vec{a} \in J', \MtsFalse \text{ sonst}$, für $\vec{a} \in \MtsMn$, als $n$-stellige Operation aufgefasst werden.
+		$J''(\vec{a}) \MtsDefEq \MtsTrue \text{ für } \vec{a} \in J', \MtsFalse \text{ sonst}$, für $\vec{a} \in \MtsMn$, auch als $n$-stellige Operation aufgefasst werden.
 
 		~~Falls $J(\vec{a})=\MtsTrue$ ist $\vec{a} \in J'$ und somit $J''(\vec{a})=\MtsTrue$.
 		Für $J(\vec{a})=\MtsFalse$ ist $\vec{a} \notin J'$ und somit $J''(\vec{a})=\MtsFalse$.
 		Also ist $J=J''$ und so können die $n$-stelligen \aussagenlogischenRelationen\ und \Operationen\ einander eineindeutig zugeordnet werden.
 
 		~~Daher sind in der Aussagenlogik \Relationen\ und \Operationen\ nicht von vornherein unterscheidbar.
-		Wegen der Verabredungen in \vrefsub{sub-Beispielsymbole} muss für die verwendeten \Junktoren\ daher jeweils wohl definiert sein, ob sie als \Relation\ und \Operation\ zu verstehen sind.
+		%TODO zusätzlichen Unterabschnitt für Kombinationen von Operationen und Relationen einfügen.
+		Wegen der Verabredungen in \vrefsub{sub:Beispielsymbole} muss für die verwendeten \Junktoren\ daher jeweils wohl definiert sein, ob sie als \Relation\ und \Operation\ zu verstehen sind.
 	}
 \end{description}
 
 \subsection[Relationen und Operationen]{\Relationen\ und \Operationen}% --------
-\label{sub-Beispielsymbole}
+\label{sub:Beispielsymbole}
 
 Als Beispielsymbol für \unaere\ \Operationen\ wird \chrqt{\defSym{\BspOpU}} und für \binaere\ \Operationen\ \chrqt{\defSym{\BspOpB}} verwendet.
 Beispielsymbole für \binaere\ Relationen sind \chrqt{\defSym{\BspRel}} und \chrqt{\defSym{\BspRelEq}}, für ihre \Umkehrrelationen\ \chrqt{\defSym{\BspRelBck}} \textbzw\ \chrqt{\defSym{\BspRelBckEq}} sowie für ihre \defFt{Negationen} \chrqt{\defSym{\BspRelN}} \textbzw\ \chrqt{\defSym{\BspRelEqN}}.%
 \footnote{%
 	Die Relationen brauchen keine Ordnungsrelationen sein, auch wenn die angegebenen Symbole dies nahe legen.
 	Wenn eine der Relationen \BspRel, \BspRelEq, \BspRelBck\ oder \BspRelBckEq\ definiert ist,
-	sind wegen \eqref{def-relback}, \eqref{def-releq} und \eqref{def-relbsp} auch die anderen drei Relationen definiert sowie wegen \eqref{def-relnot} auch \BspRelN, \BspRelEqN, \defSym{\BspRelBckN} und \defSym{\BspRelBckEqN}.
+	sind wegen \eqref{def:relback}, \eqref{def:releq} und \eqref{def:relbsp} auch die anderen drei Relationen definiert sowie wegen \eqref{def:relnot} auch \BspRelN, \BspRelEqN, \defSym{\BspRelBckN} und \defSym{\BspRelBckEqN}.
 	Der senkrechte Strich bei den Negationen kann auch schräg sein, wie \textzB\ bei \MtsEqN.
 }
-Wenn nichts anderes gesagt wird, gelte mit diesen Symbolen bei gegebenem \chrqt{\BspRel} stets:
+Wenn nichts anderes gesagt wird, gelte mit diesen Symbolen bei gegebenem \chrqt{\BspRel}%
+\footnote{%
+	entsprechend mit \chrqt{\BspRelBck}, \chrqt{\BspRelEq}, \chrqt{\BspRelBckEq} und anderen, nicht horizontal symmetrischen \Symbolen.
+} stets:
 \begin{align}
 	& (A \defSymBin{\BspRelBck} B) & \MtsDefEquiv \quad &  (B \BspRel A)
 	& \quad \text{, die \defTxt{\Umkehrrelation} von } \BspRel
-	\label{def-relback} \\
+	\label{def:relback} \\
 	& (A \defSymBin{\BspRelN}    B) & \MtsDefEquiv \quad & \MtsNot (A \BspRel B)
 	& \quad \text{, die \defTxt{\Negation}       von } \BspRel
-	\label{def-relnot}  \formulatoleft
+	\label{def:relnot}  \formulatoleft
 \end{align}
 Dabei ist \chrqt{\BspRelBck} ist die waagerechte Spiegelung von \chrqt{\BspRel} und statt des senkrechten kann auch ein schräger Strich genommen werden.
 
-Ist \chrqt{\BspRelBck}, \chrqt{\BspRelEq} oder \chrqt{\BspRelBckEq}, statt \chrqt{\BspRel} gegeben, so müssen die Symbole entsprechend ausgetauscht werden.
-Entsprechend für die nächsten beiden Definitionen.
+Sei nun \BspRel\ gegeben und  \BspRelBckN\ die \Umkehrrelation\ der \Negation\ von \BspRel.
+Dann gilt \[(A \BspRelBckN B) \MtsDefEquiv (B \BspRelN A) \MtsDefEquiv \MtsNot (B \BspRel A)\]
+Sei nun umgekehrt \BspRelBckN\ die \Negation\ der \Umkehrrelation\ von \BspRel.
+Dann gilt \[(A \BspRelBckN B) \MtsDefEquiv \MtsNot (A \BspRelBck B) \MtsEquiv \MtsNot (B \BspRel A) \text{ wegen } (A \BspRelBck B) \MtsDefEquiv (B \BspRel A)\]
+Also stimmt die \Umkehrrelation\ der \Negation\ mit der \Negation\ der \Umkehrrelation\ überein und wir brauchen keine verschiedenen Symbole dafür.
 
-Je nachdem ob \BspRel\ oder \BspRelEq\ gegeben ist gelte ferner:
+Je nachdem ob \BspRel\ oder \BspRelEq\ gegeben ist%
+\footnote{%
+	entsprechend mit \BspRelBck\ oder \BspRelBckEq oder anderen nicht horizontal symmetrischen Paaren von \Symbolen.
+}
+gelte ferner:
 \begin{align}
 	& (A \defSymBin{\BspRelEq}   B) & \MtsDefEquiv \quad & ((A \BspRel   B) \MtsOr  (A \MtsEq B))
-	\label{def-releq} \\
+	\label{def:releq} \\
 	& (A \defSymBin{\BspRel}     B) & \MtsDefEquiv \quad & ((A \BspRelEq B) \MtsAnd (A \MtsEqN B))
-	\label{def-relbsp}   \formulatoleft\formulatoleft\formulatoleft
+	\label{def:relbsp}   \formulatoleft\formulatoleft\formulatoleft
 \end{align}
 
-Man beachte, dass, wenn man \chrqt{\MtsDefEquiv} durch \chrqt{\MtsEquiv} ersetzt, weder \eqref{def-releq} aus \eqref{def-relbsp} folgt noch umgekehrt.
-\eqref{def-releq} und \eqref{def-relbsp} folgen aber dann auseinander, wenn aus \chrqt{\BspRel} die Ungleichheit \textbzw\ aus der Gleichheit \chrqt{\BspRelEq} folgt.
-Beispiele dazu sind \vrefintab{tab-Gegenbeispiel} angegeben.
+Man beachte, dass, wenn man \chrqt{\MtsDefEquiv} durch \chrqt{\MtsEquiv} ersetzt, weder \eqref{def:releq} aus \eqref{def:relbsp} folgt noch umgekehrt.
+\eqref{def:releq} und \eqref{def:relbsp} folgen aber dann auseinander, wenn aus \chrqt{\BspRel} die Ungleichheit \textbzw\ aus der Gleichheit \chrqt{\BspRelEq} folgt.
+Beispiele dazu sind \vrefintab{tab:Gegenbeispiel} angegeben.
 %
 \begin{table}[H]
 	\centering
@@ -594,29 +601,29 @@ Beispiele dazu sind \vrefintab{tab-Gegenbeispiel} angegeben.
 		\\
 		\hline
 		~\BspRel  &                 &$A\BspRel   B$&       &                 &
-		\text{Es gilt \eqref{def-releq}}
+		\text{Es gilt \eqref{def:releq}}
 		\\
 		~\BspRelEq&$A\BspRelEq A$&$A\BspRelEq B$&       &$B\BspRelEq B$&
-		\text{und \eqref{def-relbsp}}
+		\text{und \eqref{def:relbsp}}
 		\\
 		\hline
 		~\BspRel  &                 &$A\BspRel   B$&       &$B\BspRel   B$&
-		\text{Es gilt \eqref{def-releq}}
+		\text{Es gilt \eqref{def:releq}}
 		\\
 		~\BspRelEq&$A\BspRelEq A$&$A\BspRelEq B$&       &$B\BspRelEq B$&
-		\text{aber nicht \eqref{def-relbsp}}
+		\text{aber nicht \eqref{def:relbsp}}
 		\\
 		\hline
 		~\BspRel  &                 &$A\BspRel   B$&       &                 &
-		\text{Es gilt \eqref{def-relbsp}}
+		\text{Es gilt \eqref{def:relbsp}}
 		\\
 		~\BspRelEq&$A\BspRelEq A$&$A\BspRelEq B$&       &                 &
-		\text{aber nicht \eqref{def-releq}}
+		\text{aber nicht \eqref{def:releq}}
 		\\
 		\hline
 	\end{tabularx}
 	\caption{Beispiele für \BspRel\ und \BspRelEq}
-	\label{tab-Gegenbeispiel}% Erst nach '\caption'!
+	\label{tab:Gegenbeispiel}% Erst nach '\caption'!
 \end{table}
 %
 Wird eine \binaere\ \Relation\ \BspRel\ zusammen mit einer \binaeren\ \Operation\ \BspOpB\ oder einer weiteren \binaeren\ \Relation\ $\approx$ verwendet wird, treffen wir folgende Vereinbarung:%
@@ -633,22 +640,22 @@ Wird eine \binaere\ \Relation\ \BspRel\ zusammen mit einer \binaeren\ \Operation
 \end{align}
 Besondere Vereinbarungen für die \unaere\ \Operation\ \chrqt{\BspOpU} treffen wir nicht.
 
-Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab-Prioritaeten} angegeben.
-Damit wären dann alle Klammern in \datsub{sub-Beispielsymbole} überflüssig.
+Für den Fall fehlender Klammern sind die Prioritäten \vrefintab{tab:Prioritaeten} angegeben.
+Damit wären dann alle Klammern in \datsub{sub:Beispielsymbole} überflüssig.
 
 \subsection{Prioritäten}% ------------------------------------------------------
-\label {sub-Prioritaeten}
+\label {sub:Prioritaeten}
 
-\vrefDtab{tab-Prioritaeten} listet zur Vermeidung von Klammern die Prioritäten der in diesem Dokument verwendeten \Operationen, \Relationen, \Junktoren\ und \Definitionen\ in absteigender Folge von höherer zu niedrigerer Priorität, \textdh\ von starker zu schwacher Bindung auf.%
+\vrefDtab{tab:Prioritaeten} listet zur Vermeidung von Klammern die Prioritäten der in diesem Dokument verwendeten \Operationen, \Relationen, \Junktoren\ und \Metadefinitionen\ in absteigender Folge von höherer zu niedrigerer Priorität, \textdh\ von starker zu schwacher Bindung auf.%
 \footnote{Priorität 1 ist höher und bindet damit stärker als Priorität 2, usw.}
-Das Weglassen redundanter Klammern wird in \datcha{cha-Grundlagen} nicht weiter thematisiert.%
+Das Weglassen redundanter Klammern wird in \datcha{cha:Grundlagen} nicht weiter thematisiert.%
 \footnote{%
-	Gesetzt den Fall, dass \ASBA\ die \Praemissen\ und \Konklusionen\ eines mathematischen Satzes richtig und die \Beweisschritte, \textzB\ durch fehlerhafte Interpretation einer \Formel, falsch einliest, ansonsten aber richtig arbeitet.
+	Gesetzt den Fall, dass \ASBA\ die \Praemissen\ und \Konklusionen\ eines mathematischen \Satzes\ richtig und die \Beweisschritte, \textzB\ durch fehlerhafte Interpretation einer \Formel, falsch einliest, ansonsten aber richtig arbeitet.
 	Dann kann man folgende Fälle unterscheiden:\\
-	--- Ein falscher Satz kann dadurch nicht als richtig bewertet werden.\\
-	--- Ein richtiger Satz wird wahrscheinlich auch bei eigentlich richtigem \Beweis\ als nicht bewiesen gelten, was natürlich unbefriedigend ist.\\
+	--- Ein falscher \Satz\ kann dadurch nicht als richtig bewertet werden.\\
+	--- Ein richtiger \Satz\ wird wahrscheinlich auch bei eigentlich richtigem \Beweis\ als nicht bewiesen gelten, was natürlich unbefriedigend ist.\\
 	--- In äußerst unwahrscheinlichen Fällen kann dabei auch ein eigentlich falscher \Beweis\ in einen richtigen verwandelt werden, was zwar schön ist, aber leider steht in der Dokumentation dann ein falscher \Beweis.\\
-	In keinem Fall wird durch diesen Fehler die \Menge\ der richtigen Sätze durch einen falschen Satz "`verunreinigt"'.
+	In keinem Fall wird durch diesen Fehler die \Menge\ der richtigen \Saetze\ durch einen falschen \Satz\ "`verunreinigt"'.
 }
 Zur besseren Verständlichkeit werden aber gelegentlich auch redundante Klammern verwendet, insbesondere wenn Prioritäten unklar oder in der Literatur auch anders definiert sind.
 Die Prioritäten der \Junktoren\ wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Seite~5 entnommen und ergänzt und die der \Metaoperationen\ daran angeglichen.
@@ -706,7 +713,7 @@ Die Prioritäten der \Junktoren\ wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Se
 			\hline\hline
 			\multicolumn{2}{|c|}{Sonstige \binaere\ Verknüpfungen haben unterschiedliche Priorität.} \\
 			\hline
-			\Definition\ \Tnote{6} & $ \MtsDefEq $ \\
+			\Objektdefinition\ \Tnote{6} & $ \MtsDefEq $ \\
 			\hline
 			Binäre \Metaoperationen\ \Tnote{7} \Tnote{8} &
 			\begin{tabular}{@{\extracolsep{\fill}}l}
@@ -719,7 +726,7 @@ Die Prioritäten der \Junktoren\ wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Se
 				$ \MtsRep \quad \MtsEquiv \quad \MtsImp $
 			\end{tabular}     \\
 			\hline
-			\Metadefinition\ \Tnote{6} & $ \MtsDefEquiv $ \\
+			\Aussagedefinition\ \Tnote{6} & $ \MtsDefEquiv $ \\
 			\hline\hline
 			\multicolumn{2}{|c|}{Natürliche Sprache} \\
 			\hline
@@ -731,20 +738,20 @@ Die Prioritäten der \Junktoren\ wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Se
 		\end{tabularx}
 		\begin{tablenotes}
 			\footnotesize
-			\item[1] \vrefseesub{sub-Beispielsymbole}
-			\item[2] \vrefseetab{tab-Symbole}
-			\item[3] \vrefseesub{sub-Bezeichnungen}
-			\item[4] \vrefseesubsub{subsub-Vergleiche}
-			\item[5] \vrefseesub{sub-Basisregeln}
-			\item[6] \vrefseesubsub{subsub-Definitionen}
-			\item[7] \vrefseesub{sub-AussagenUndMetaoperationen}
-			\item[8] \chrqt{\MtsUnd} wird nur bei den \Schlussregeln\ (\vrefseesub{sub-Schlussregeln}) verwendet.
+			\item[1] \vrefseesub{sub:Beispielsymbole}
+			\item[2] \vrefseetab{tab:Symbole}
+			\item[3] \vrefseesub{sub:Bezeichnungen}
+			\item[4] \vrefseesubsub{subsub:Vergleiche}
+			\item[5] \vrefseesub{sub:Basisregeln}
+			\item[6] \vrefseesubsub{subsub:Metadefinitionen}
+			\item[7] \vrefseesub{sub:AussagenUndMetaoperationen}
+			\item[8] \chrqt{\MtsUnd} wird nur bei den \Schlussregeln\ (\vrefseesub{sub:Schlussregeln}) verwendet.
 			Zwar bezeichnen \chrqt{\MtsAnd} und \chrqt{\MtsUnd} dieselbe \Operation, aber je nach verwendetem Symbol hat sie eine unterschiedliche Priorität.
 			\item[9] Innerhalb von \Formeln\ können Satzzeichen eine andere Bedeutung und Priorität haben.
 		\end{tablenotes}
 	\end{threeparttable}
 	\caption{Prioritäten in abnehmender Reihenfolge}
-	\label{tab-Prioritaeten}% Erst nach '\caption'!
+	\label{tab:Prioritaeten}% Erst nach '\caption'!
 \end{table}
 
 Für \Operationen\ derselben Priorität wählen wir in diesem Dokument Rechtsklammerung%
@@ -758,7 +765,7 @@ Für \Operationen\ derselben Priorität wählen wir in diesem Dokument Rechtskla
 
 \section[Beweise in ASBA]{\Beweise\ in \ASBA}% ================================0
 \beginsection            {\Beweise\ in \ASBA}
-\label                {sec-BeweiseASBA}
+\label                {sec:BeweiseASBA}
 
 Die Regeln zur Formulierung und Prüfung der \Beweise\ müssen in \ASBA\ fest codiert werden.
 Sie sind quasi die \Axiome\ von \ASBA\ und sollten daher möglichst wenig voraussetzen.
@@ -766,97 +773,97 @@ In \ASBA\ wird dazu ein \emph{Genzen-Kalkül}%
 \footnote{%
 	\citesee{bib:Rautenberg} Kapitel~1.4 und~\cite{bib:Schlussregel,bib:NatuerlichesSchliessen}
 } verwendet.
-Die Definition von \emph{\Schlussregel} und \emph{\Beweis} ist in diesem Dokument \ASBA-spezifisch, um später eine leichtere Umsetzung in ein Programm zu erreichen.
+Die Definition von \emph{\Schlussregel} und \emph{\Beweis} ist in diesem Dokument \ASBA-spezifisch, um später eine leichtere Programmierung zu erreichen.
 Insbesondere müssen alle abzuspeichernden Mengen endlich sein.
 Dies berücksichtigen wir in den Beispielen, fordern zunächst aber nicht notwendig Beschränktheit.
 Zuerst brauchen wir aber noch ein paar Definitionen.
 
 \subsection{Definitionen und Verabredungen}% -----------------------------------
-\label                  {sub-Verabredungen}
+\label                  {sub:Verabredungen}
 
-Zu \chrqt{\MtsLen} und \chrqt{\MtsSet} Vergleiche die Definition von \emph{$n$-\Tupel} \vrefinsub{sub-weitereBezeichnungen}.
+Zu \chrqt{\MtsLen} und \chrqt{\MtsSet} Vergleiche die Definition von \emph{$n$-\Tupel} \vrefinsub{sub:weitereBezeichnungen}.
 
 \begin{align}
 	& |M|                          & \MtsDefEq \quad & \text{Kardinalität von } M
 	&&\text{, die \defFt{Anzahl der Elemente} aus } M
-	\label{def-Anzahl}
+	\label{def:Anzahl}
 	\\
 	& \defSym{\MtsMn}     & \MtsDefEq \quad & M \MtsTimes \dots \MtsTimes M \quad \text{ , für } n \in \MtsINo
 	&&\text{, das \defFt{kartesische Produkt} aus $n$ Mengen } M
-	\label{def-kartesischesProdukt}
+	\label{def:kartesischesProdukt}
 	\\
 	& \MtsMo                  &    \MtsEq \quad & \{()\}
 	&&\text{, wobei $()$ das \defFt{0-\Tupel} ist}
-	\label{def-Mo}
+	\label{def:Mo}
 	\\
 	& \defSym{\MtsTup}(M) & \MtsDefEq \quad & \MengeDef{\vec{a} \in \MtsMn}{n \in \MtsINo}
 	&&\text{, die \Menge\ der \defTxt{\Tupel} \defFt{über} $M$ (\defTxt{\Tupelmenge})}
-	\label{def-Tupelmenge}
+	\label{def:Tupelmenge}
 	\\
 	& \links{(A,B)}                & \MtsDefEq \quad & A
 	&& \text{, die \defFt{linke Seite} eines geordneten Paares.}
-	\label{def-links}
+	\label{def:links}
 	\\
 	& \rechts{(A,B)}               & \MtsDefEq \quad & B
 	&& \text{, die \defFt{rechte Seite} eines geordneten Paares.}
-	\label{def-rechts}
+	\label{def:rechts}
 	\\
 	& \defSym{\MtsPot}(M)      & \MtsDefEq \quad & \MengeDef{A}{A \MtsSubsetEq M}
 	&&\text{, die \defTxt{\Potenzmenge} der \Menge\ } M
-	\label{def-Potenzmenge}
+	\label{def:Potenzmenge}
 	\\
 	& \defSym{\MtsPotf}(M)     & \MtsDefEq \quad & \MengeDef{A \MtsSubsetEq M}{|A| \in \MtsINo}
 	&& \text{, die \defFt{endlichen \Teilmengen} von } M
-	\label{def-endlichePotenzmenge}
+	\label{def:endlichePotenzmenge}
 	\\
 	& \defSym{\MtsRel}(M)      & \MtsDefEq \quad & \MengeDef{R}{R \MtsSubsetEq M \MtsTimes M}
-	&& \text{, die \Menge\ der \defFt{\binaeren\ \Relationen} in } M
-	\label{def-Relationsmenge}
+	&& \text{, die \Menge\ der \defFt{\binaeren\ \Relationen\ in} } M
+	\label{def:Relationsmenge}
 	\\
 	& \defSym{\MtsRelf}(M)     & \MtsDefEq \quad & \MengeDef{R \MtsSubsetEq M \MtsTimes M}{|R| \in \MtsINo}
-	&& \text{, die \defFt{endlichen \binaeren\ \Relationen} in } M
-	\label{def-endlicheRelationsmenge}
+	&& \text{, die \defFt{endlichen \binaeren\ \Relationen\ in} } M
+	\label{def:endlicheRelationsmenge}
 	\\
 	& \defSym{\MtsDeriveR}     & \MtsDefEq \quad & R
 	&& \text{, für Relationen } R \in \MtsRelAllDerive
-	\label{def-Ableitung}
+	\label{def:Ableitung}
 \end{align}
 Offensichtlich gilt für Mengen $M$ und $N$:
 \begin{align}
 	& \MtsPotf(M) \MtsSubsetEq \MtsPot          (M)
 	& ,          \qquad
 	& \MtsRelf(M) \MtsSubsetEq \MtsRel          (M)
-	\label{eq-Setf} \\
+	\label{eq:Setf} \\
 	& \MtsRel (M) =            \MtsPot (M \MtsTimes M)=\MtsPot (M^2)
 	& ,          \qquad
 	& \MtsRelf(M) =            \MtsPotf(M \MtsTimes M)=\MtsPotf(M^2)
-	\label{eq-relPot} \\
+	\label{eq:relPot} \\
 	& \MtsPot (M) \MtsSubset   \MtsPot          (N)
 	& \MtsEquiv \qquad
 	& \MtsPotf(M) \MtsSubset   \MtsPotf         (N)
 	& \MtsEquiv \qquad
 	&               M  \MtsSubset                          N
-	\label{eq-potPot} \\
+	\label{eq:potPot} \\
 	& \MtsRel (M) \MtsSubset   \MtsRel          (N)
 	& \MtsEquiv \qquad
 	& \MtsRelf(M) \MtsSubset   \MtsRelf         (N)
 	& \MtsEquiv \qquad
 	&               M  \MtsSubset                          N
-	\label{eq-relRel} \\
+	\label{eq:relRel} \\
 	&                                 \vec{a}  \in \MtsTup(M^2)
 	& \MtsEquiv \qquad  & \MtsSet(\vec{a}) \in \MtsRelf    (M)
-	\label{eq-vecrel}
+	\label{eq:vecrel}
 \end{align}
 
 \subsection[Formeln und Ableitungen]{\Formeln\ und \Ableitungen}% --------------
-\label             {sub-Ableitungen}
+\label             {sub:Ableitungen}
 
 Im Folgenden sei \MtsSprache\ stets eine gegebene \Menge\ von \Formeln, \textzB\ alle korrekten \Formeln\ der \Aussagenlogik\ oder der \Praedikatenlogik.
-Für die folgenden Betrachtungen ist aber nur nötig, dass die Elemente aus \MtsSprache\ \Zeichenfolgen\ sind.
+Für die folgenden Betrachtungen ist aber nur nötig, dass die Elemente aus \MtsSprache\ \Symbolfolgen\ sind.
 Die \Teilmengen\ von \MtsSprache\ nennen wir \defTxt{\Formelmengen}.
 Es sind genau die Elemente aus \MtsPotSprache.
 
-Bei einem Beweis werden aus einer \Formelmenge\ $\Gamma$ von \Axiomen\ und schon bewiesenen \Formeln\ mittels zulässiger
+Bei einem \Beweis\ werden aus einer \Formelmenge\ $\Gamma$ von \Axiomen\ und schon bewiesenen \Formeln\ mittels zulässiger
 \footnote{%
 	Was \emph{zulässig} heißt, muss im entsprechenden Kontext jeweils definiert sein.
 	Üblicherweise sind das bestimmte Ableitungsregeln und Ersetzungen.
@@ -880,7 +887,8 @@ Zur Vereinfachung der Darstellung und besseren Lesbarkeit treffen wir noch folge
 	\item Eine Aufzählung von \Formelmengen\ und einzelnen \Formeln\ steht für die Vereinigung der \Formelmengen\ mit der \Menge\ der einzeln angegebenen \Formeln.
 	\textZB\ steht \seqqt{$\Gamma, \alpha \MtsDerive \beta$} für \seqqt{$(\Gamma \MtsCup \{\alpha\}) \MtsDerive \{\beta\}$}.
 	%
-	\item Diese Aufzählungen können auch leer sein und stehen dann für die \leereMenge. \textZB\ steht \seqqt{$\MtsDerive\; \alpha \OjkImp (\beta \OjkImp \alpha)$} für \seqqt{$\MtsEmptyset \MtsDerive \{\alpha \OjkImp (\beta \OjkImp \alpha)\}$}.
+	\item Diese Aufzählungen können auch leer sein und stehen dann für die \leereMenge.
+	\\\textZB\ steht \seqqt{$\MtsDerive\; \alpha \OjkImp (\beta \OjkImp \alpha)$} für \seqqt{$\MtsEmptyset \MtsDerive \{\alpha \OjkImp (\beta \OjkImp \alpha)\}$}.
 	%
 	\item Ist die Aufzählung links vom Relationssymbol \chrqt{\MtsDerive} leer, kann auch das Relationssymbol wegfallen.
 	Im letzten Beispiel also einfach \seqqt{$\{\alpha \OjkImp (\beta \OjkImp \alpha)\}$}.
@@ -888,7 +896,7 @@ Zur Vereinfachung der Darstellung und besseren Lesbarkeit treffen wir noch folge
 \end{itemize}
 %
 Im Folgenden halten wir uns bei der Verwendung von Buchstaben so weit wie möglich an folgende Vereinbarungen:%
-\footnote{Die letzte Gleichung ergibt sich aus \vreffor{eq-relPot}.}
+\footnote{Die letzte Gleichung ergibt sich aus \vreffor{eq:relPot}.}
 \begin{align}
 	&  \text{griechisch, klein:}       && \alpha, \beta, \gamma, \dots
 	&& \text{\Formel}                  && \in \qquad \; \; \MtsSprache
@@ -907,17 +915,17 @@ Damit definieren wir folgende Aussagen:
 	\frac{\; \DrvFt{A}  \;}{\; \DrvFt{B} \;}
 	& \quad \MtsDefEquiv \quad
 	\text{ Mit den \Ableitungen\ aus $\DrvFt{A}$ lassen sich die aus $\DrvFt{B}$ ableiten.}
-	\label{def-AB}
+	\label{def:AB}
 	\\
 	\frac{\; \vec{\drvFt{a}} \;}{\; \vec{\drvFt{b}} \;} \qquad
 	& \quad \MtsDefEquiv \quad
 	\text{ Mit den Komponenten aus $\vec{\drvFt{a}}$ lassen sich die aus $\vec{\drvFt{b}}$ ableiten.}
-	\label{def-ab}
+	\label{def:ab}
 	\\
 	\frac{\drvFt{a}_1 \MtsUnd \dots \MtsUnd \drvFt{a}_n}{\drvFt{b}_1 \MtsUnd \dots \MtsUnd \drvFt{b}_m}
 	& \quad \MtsDefEquiv \quad
 	\text{ Mit den \Ableitungen\ $\drvFt{a}_i$ lassen sich die $\drvFt{b}_j$ ableiten.}
-	\label{def-aabb}
+	\label{def:aabb}
 \end{align}
 wobei in der letzten Definition $1 \le i \le n$ und $1 \le j \le m$ sei und die $\drvFt{a}_i$ und die $\drvFt{b}_j$ dabei jeweils beliebig permutiert werden können.
 \chrqt{\defSym{\MtsUnd}} und Bruchstrich stehen für die \Metaoperationen\ \chrqt{\MtsAnd} und \chrqt{\MtsImp}.%
@@ -929,16 +937,16 @@ wobei in der letzten Definition $1 \le i \le n$ und $1 \le j \le m$ sei und die 
 Wir nennen alle drei Formen \defTxt{\Schlussregeln}%
 \footnote{%
 	Genau genommen nur um die \Darstellung\ einer Schlussregel.
-	Die Exakte Definition erfolgt \vrefinsub{sub-Schlussregeln}.
+	Die Exakte Definition erfolgt \vrefinsub{sub:Schlussregeln}.
 }.
 Die Elemente aus $A$ \textbzw\ die Komponenten $a_i$ nennen wir die \defTxt{\Praemissen} und die Elemente aus $B$ \textbzw\ die Komponenten $b_j$ die \defTxt{\Konklusionen}\synonym{\defTxt{\Folgerungen}} der \Schlussregel.
 Offensichtlich gilt:
 \begin{align}
-	& \frac{a_1 \MtsUnd \dots \MtsUnd a_n}{b_1 \MtsUnd \dots \MtsUnd b_m} \; \MtsEquiv \; \frac{\; \vec{a} \;}{\; \vec{b} \;} \; \MtsEquiv \; \frac{\MtsSet(\vec{a})}{\MtsSet(\vec{b})} \label{eq-AB}
+	& \frac{a_1 \MtsUnd \dots \MtsUnd a_n}{b_1 \MtsUnd \dots \MtsUnd b_m} \; \MtsEquiv \; \frac{\; \vec{a} \;}{\; \vec{b} \;} \; \MtsEquiv \; \frac{\MtsSet(\vec{a})}{\MtsSet(\vec{b})} \label{eq:AB}
 \end{align}
 Wir nennen eine \Schlussregel\ auch einen \defTxt{\formalenSatz} und nennen sie \defTxt{\beschraenkt}, wenn sie nur endlich viele \Praemissen\ und \Konklusionen\ hat.
-Die \Schlussregeln\ nach \eqref{def-ab} und \eqref{def-aabb} sind per se beschränkt.
-Die nach \eqref{def-AB} genau dann, wenn $\DrvFt{A}$ und $\DrvFt{B}$ endliche Mengen sind, \textdh\ wenn sie Elemente aus%TODO Text fehlt
+Die \Schlussregeln\ nach \eqref{def:ab} und \eqref{def:aabb} sind per se beschränkt.
+Die nach \eqref{def:AB} genau dann, wenn $\DrvFt{A}$ und $\DrvFt{B}$ endliche Mengen sind, \textdh\ wenn sie Elemente aus%TODO Text fehlt
 
 Die Mengen der \Praemissen\ und \Konklusionen\ dürfen auch leer sein.
 Dies führt zu den folgenden Spezialfällen:
@@ -949,11 +957,11 @@ Dies führt zu den folgenden Spezialfällen:
 \end{itemize}
 
 \subsection[Schlussregeln]{\Schlussregeln}% ------------------------------------
-\label {sub-Schlussregeln}
+\label {sub:Schlussregeln}
 
-Wir betrachten zuerst noch die \Menge\ der \binaeren\ Relationen\vrefnotesub{sub-weitereBezeichnungen} in \MtsPotSprache.
+Wir betrachten zuerst noch die \Menge\ der \binaeren\ Relationen\vrefnotesub{sub:weitereBezeichnungen} in \MtsPotSprache.
 Sei also $R$ eine solche \binaere\ Relation und $A \in R$.
-Dann gilt wegen~\eqref{def-links}, \eqref{def-rechts}, \eqref{def-Potenzmenge}, \eqref{def-Relationsmenge} und~\vreffor{def-Ableitung}:
+Dann gilt wegen~\eqref{def:links}, \eqref{def:rechts}, \eqref{def:Potenzmenge}, \eqref{def:Relationsmenge} und~\vreffor{def:Ableitung}:
 \begin{align}
 	&  A \in R \in \MtsRelAllDerive   \\
 	&  A = (\links{A},\rechts{A})
@@ -976,12 +984,12 @@ Ein geordnetes Paar $(\MtsPraemisseSet, \MtsKonklusionSet) \in \MtsPotAllDerive^
 	& \MtsPraemisseSet \in \MtsRelAllDerive
 	&& \text{, die \defTxt{\Praemissen}}
 	&& \text{, eine \Menge\ von \defFt{\MtsPraemisseSet-\Ableitungen}.}
-	\label{def-ruleRelationPraemissen}
+	\label{def:ruleRelationPraemissen}
 	\\
 	& \MtsKonklusionSet   \in \MtsRelAllDerive
 	&& \text{, die \defTxt{\Konklusionen}}
 	&& \text{, eine \Menge\ von   \defFt{\MtsKonklusionSet-\Ableitungen}.}
-	\label{def-ruleRelationKonklusionen}
+	\label{def:ruleRelationKonklusionen}
 	\\
 	& \drvFt{a} \in \MtsPraemisseSet \quad \MtsImp
 	&& \drvFt{a} = (\Gamma, \Delta) \; \MtsAnd \; \Gamma, \Delta \in \MtsPotSprache
@@ -1015,47 +1023,47 @@ Dies führt zu den folgenden semantischen Spezialfällen:
 	\item Ein \Menge\ $B$ von \Formeln, die als allgemeingültig zu beweisen sind, kann durch eine \Konklusion\ $(\MtsEmptyset,B)$ repräsentiert werden.
 \end{itemize}
 %
-Wenn eine Schlussregel $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ beschränkt ist, sind \MtsPraemisseSet\ und \MtsKonklusionSet\ endliche Mengen und es gibt wegen~\vreffor{eq-vecrel} zwei \Tupel\ $\vec{\MtsPraemisse}, \vec{\MtsKonklusion} \in \MtsTup(\MtsAllDerive)$, so dass gilt:
+Wenn eine Schlussregel $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ beschränkt ist, sind \MtsPraemisseSet\ und \MtsKonklusionSet\ endliche Mengen und es gibt wegen~\vreffor{eq:vecrel} zwei \Tupel\ $\vec{\MtsPraemisse}, \vec{\MtsKonklusion} \in \MtsTup(\MtsAllDerive)$, so dass gilt:
 \footnote{%
-	Statt $\ge$ könnte in \eqref{eq-SRTb} auch \MtsEq\ genommen werden.
+	Statt $\ge$ könnte in \eqref{eq:SRTb} auch \MtsEq\ genommen werden.
 	Dann müssten die $\MtsPraemisse_n$ und die $\MtsKonklusion_m$ jeweils paarweise verschieden sein, was wir nicht voraussetzen wollen.
 }
 \begin{align}
 	&     \MtsPraemisseSet    & \MtsEq \quad & \MtsSet(\vec{\MtsPraemisse})
 	&,\;& \MtsKonklusionSet        & \MtsEq \quad & \MtsSet(\vec{\MtsKonklusion})
-	\label{eq-SRTa}          \\
+	\label{eq:SRTa}          \\
 	&     N                       &    \ge \quad & |\MtsPraemisseSet|
 	&,\;& M                       &    \ge \quad & |\MtsKonklusionSet|
 	&,\;& \text{mit } N, M \in \MtsINo
-	\label{eq-SRTb}          \\
+	\label{eq:SRTb}          \\
 	& \vec{\MtsPraemisse}     & \MtsEq \quad & \{\MtsPraemisse_1,\dots,\MtsPraemisse_N \}
 	&,\;& \vec{\MtsKonklusion}     & \MtsEq \quad & \{\MtsKonklusion_1,\dots,\MtsKonklusion_M\}
-	\label{eq-SRTc}          \\
+	\label{eq:SRTc}          \\
 	&       \MtsPraemisse_n   & \MtsEq \quad & ( \links{\MtsPraemisse}_n, \rechts{\MtsPraemisse}_n )
 	&,\;& \MtsKonklusion_m         & \MtsEq \quad & ( \links{\MtsKonklusion}_m, \rechts{\MtsKonklusion}_m )
 	&,\;& \text{für } 1 \le n \le N \text{ , } 1 \le m \le M
-	\label{eq-SRTd}          \\
+	\label{eq:SRTd}          \\
 	& \links{\MtsPraemisse}_n & \MtsDerive_{\MtsPraemisseSet} \quad & \rechts{\MtsPraemisse}_n
 	&,\;& \links{\MtsKonklusion}_m & \MtsDerive_{\MtsKonklusionSet}     \quad & \rechts{\MtsKonklusion}_m
 	&,\;& \text{für } 1 \le n \le N \text{ , } 1 \le m \le M
-	\label{eq-SRTe}          \formulatoleft
+	\label{eq:SRTe}          \formulatoleft
 \end{align}
 also
 \begin{align}
 	&  \vec{\MtsPraemisse}  & = \quad & \MengeDef{(\links{\MtsPraemisse}_n,
 	\rechts{\MtsPraemisse}_n)}{1 \le n \le N}
-	\label {def-Praemissen}
+	\label {def:Praemissen}
 	\\
 	&  \vec{\MtsKonklusion} & = \quad & \MengeDef{(\links{\MtsKonklusion}_m,
 	\rechts{\MtsKonklusion}_m)}{1 \le m \le M }
-	\label {def-Konklusionen} \formulatoleft\formulatoleft
+	\label {def:Konklusionen} \formulatoleft\formulatoleft
 \end{align}
 und wir nennen auch das Paar $(\vec{\MtsPraemisse}, \vec{\MtsKonklusion})$ \Schlussregel.
 Diese ist per se \beschraenkt\ und ein Element aus $\MtsTup(\MtsAllDerive)^2$.
 Nun haben wir alternative Schreibweisen für \beschraenkte\ \Schlussregeln:%
 \footnote{%
-	Nach \eqref{def-AB}, \eqref{def-ab} und \vreffor{def-aabb} sind die "`Brüche"' \Aussagen, und keine Paare mehr.
-	Die Äquivalenz der Aussagen steht schon in \vreffor{eq-AB}
+	Nach \eqref{def:AB}, \eqref{def:ab} und \vreffor{def:aabb} sind die "`Brüche"' \Aussagen, und keine Paare mehr.
+	Die Äquivalenz der Aussagen steht schon in \vreffor{eq:AB}
 }
 \[
 	\frac{             \MtsPraemisseSet}{             \MtsKonklusionSet} \; \MtsEquiv \;
@@ -1070,11 +1078,11 @@ Nun haben wir alternative Schreibweisen für \beschraenkte\ \Schlussregeln:%
 		\links{\MtsKonklusion}_M     \MtsDerive_{\MtsKonklusionSet}     \rechts{\MtsKonklusion}_M
 	}
 	\quad \text{\defFt{, \defTxt{\Schlussregel}} oder \defTxt{\formalerSatz}}
-	\tagFS \label{def-FS}
+	\tagFS \label{def:FS}
 \]
 
 \subsection[Beweise]{\Beweise}% ------------------------------------------------
-\label {sub-Beweise}
+\label {sub:Beweise}
 
 Für einen \defTxt{\Beweis} in \ASBA\ ist stets gegeben:%
 \footnote{%
@@ -1084,31 +1092,31 @@ Für einen \defTxt{\Beweis} in \ASBA\ ist stets gegeben:%
 \begin{align}
 	& \MtsSprache     &           \quad &
 	&& \text{, eine \Menge\ von \Formeln, die zugrundeliegende \defTxt{\Sprache}.}
-	\label{def-Sprache}      \\
+	\label{def:Sprache}      \\
 	& \MtsErsetzungSet   & \MtsSubsetEq \quad & \MengeDef{\MtsErsetzung}{\FunktionDef{\MtsErsetzung}{\MtsSprache}{\MtsSprache}}
 	&& \text{, eine \Menge\ von \Funktionen, die \defTxt{\Ersetzungen}.}
-	\label{def-Ersetzung} \\
+	\label{def:Ersetzung} \\
 	& \MtsSchlussregelSet & \in       \quad & \MtsRelSchlussregel
 	&& \text{, eine \Menge\ von \defTxt{\Schlussregeln}.}
-	\label{def-Schlussregel} \\
+	\label{def:Schlussregel} \\
 	& \MtsErgebnisSet        & \in       \quad & \MtsRelAllDerive
 	&& \text{, eine \Menge\ von \Ableitungen, die \defTxt{\Ergebnisse}.}
-	\label{def-Konklusion} &&
+	\label{def:Konklusion} &&
 \end{align}
 %
 Die \emph{\Ersetzungen} sorgen \textzB\ dafür, dass aus einer \allgemeingueltigenFormel\ wie  \seqqt{$\alpha \OjkImp (\beta \OjkImp \alpha)$} \textzB\ die \allgemeingueltigeFormel\ \seqqt{$\gamma \OjkImp (\delta \OjkImp \gamma)$} abgeleitet werden kann.
 %
-Die \emph{\Schlussregeln} geben erlaubte Schlussfolgerungen aus gegebenen Elementen an und umfassen auch die Prämissen eines Satzes.
-Die \emph{\Ergebnisse} schließlich sind das, was mittels eines Beweises aus den gegebenen Prämissen \MtsSprache, \MtsErsetzungSet\ und \MtsSchlussregelSet\ gefolgert werden soll.
+Die \emph{\Schlussregeln} geben erlaubte Schlussfolgerungen aus gegebenen Elementen an und umfassen auch die Prämissen eines \Satzes.
+Die \emph{\Ergebnisse} schließlich sind das, was mittels eines \Beweises\ aus den gegebenen Prämissen \MtsSprache, \MtsErsetzungSet\ und \MtsSchlussregelSet\ gefolgert werden soll.
 
 Im Fall von \beschraenkten\ \Schlussregeln\ können statt \MtsSchlussregelSet\ und \MtsErgebnisSet\ auch
 \begin{align}
 	& \vec{\MtsSchlussregel} & \in \quad & \MtsTup(\MtsTup(\MtsAllDerive)^2)
 	&& \text{, ein \Tupel\ aus \defTxt{\Schlussregeln}.}
-	\label{def-Schlussregelvector} \\
+	\label{def:Schlussregelvector} \\
 	& \vec{\MtsErgebnis}        & \in \quad & \quad \; \MtsTup(\MtsAllDerive)
 	&& \text{, ein \Tupel\ aus \defTxt{\Ableitungen}, die \defTxt{\Ergebnisse}.}
-	\label{def-Konklusionsvector}    \formulatoleft
+	\label{def:Konklusionsvector}    \formulatoleft
 \end{align}
 gegeben sein. Mit
 \begin{align}
@@ -1116,10 +1124,10 @@ gegeben sein. Mit
 	\\
 	& \MtsErgebnisSet \MtsDefEq \MtsSet(\vec{\MtsErgebnis})
 \end{align}
-ergibt sich wegen \eqref{eq-Setf} und \vreffor{eq-vecrel} wieder die erste Form.
+ergibt sich wegen \eqref{eq:Setf} und \vreffor{eq:vecrel} wieder die erste Form.
 
 \subsection[Beispiel für einen Beweis]{Beispiel für einen \Beweis}% ------------
-\label {sub-Beispielbeweis}
+\label {sub:Beispielbeweis}
 
 \todo{Nacharbeiten}     %TODO *** Nacharbeiten ***
 
@@ -1143,7 +1151,7 @@ Zur Veranschaulichung ein Beispiel:\citenote{bib:HilbertKalkuelModusPonens}
 %TODO Beispiel vervollständigen
 
 \subsection[Beweisschritte]{\Beweisschritte}% ----------------------------------
-\label {sub-Beweisschritte}
+\label {sub:Beweisschritte}
 
 %TODO Elimination von Prämissen behandeln!
 Ein \Beweis%
@@ -1155,20 +1163,20 @@ in \ASBA\ besteht aus
 	& \text{einer Folge} && \MtsBeweisschrittTup = (\MtsBeweisschritt_1, \MtsBeweisschritt_2, ..., \MtsBeweisschritt_K)
 	&& \text{von \emph{\Beweisschritten} } \MtsBeweisschritt_k
 	&& \text{, die \defTxt{\Beweisschrittfolge}}
-	\label{def-Beweisschrittfolge}
+	\label{def:Beweisschrittfolge}
 	\\
 	& \text{einer Folge} && \MtsTransformationTup = (\MtsTransformation_1, \MtsTransformation_2, ..., \MtsTransformation_K)
 	&& \text{von \emph{\Transformationen} } \MtsTransformation_k
 	&& \text{, die \defTxt{\Transformationsfolge}}
-	\label{def-Transformationsfolge}
+	\label{def:Transformationsfolge}
 \end{align}
 Dabei ist $K$ ein Element aus \MtsINo, $0 \le k \le K$, die \defTxt{\Beweisschritte} $\MtsBeweisschritt_k$ sind \Schlussregeln\ und die \Transformationen\ $\MtsTransformation_k$ werden später definiert.
 %TODO Verweis auf Definition der Transformationen fehlt
 Wir definieren noch:
 \begin{align}
 	& \MtsBeweisschrittSet_k & \MtsDefEq \quad & \{\MtsBeweisschritt_1, \dots, \MtsBeweisschritt_k\} & \quad \text{, für~~} 0 \le k \le K
-	\label{def-Beweisschrittebis} \\
-	& \MtsBeweisschrittSet   & \MtsDefEq \quad & \MtsBeweisschrittSet_K \label{def-Beweisschrittmenge}
+	\label{def:Beweisschrittebis} \\
+	& \MtsBeweisschrittSet   & \MtsDefEq \quad & \MtsBeweisschrittSet_K \label{def:Beweisschrittmenge}
 	\formulatoleft\formulatoleft\formulatoleft
 \end{align}
 und nennen \MtsBeweisschrittSet\ die \defTxt{\Beweisschrittmenge} der \Beweisschrittfolge\ \MtsBeweisschrittTup.
@@ -1184,544 +1192,4 @@ sein, da jede \Konklusion\ aus \MtsKonklusionSet\ in der Folge \MtsBeweisschritt
 ========================================================================
 %TODO ==================================================================
 
-Bevor die \Schlussregeln\ weiter behandelt werden, werden noch Elemente der \emph{\Aussagenlogik} und der \emph{\Praedikatenlogik} behandelt.
-Wir stützen uns dabei weitgehend auf~\cite{bib:Rautenberg}, ohne das jedes Mal anzugeben.
-
-\section[Aussagenlogik]{\Aussagenlogik}% =======================================
-\beginsection          {\Aussagenlogik}
-\label              {sec-Aussagenlogik}
-
-\color{gray}%%% Anfang grauer Text
-\subsection[Konstante und Operationen]{Konstante und \Operationen}% ------------
-\label               {sub-Operationen}
-
-\vrefDtab{tab-Symbole}%
-\footnote{%
-	Die \tablename\ basiert auf den Wahrheitstafeln in~\cite{bib:JunktorMoeglich} Kapitel~2.2 und~\cite{bib:Rautenberg} Kapitel~1.1 Seite~3.
-}
-definiert für die zweiwertige Logik Konstante und \Junktoren\ über die \Wahrheitswerte\ ihrer Anwendung.
-So ergeben sich, abhängig von den \Wahrheitswerten\ der Operanden $A$ und $B$,%
-\footnote{%
-	$A$ und $B$ können hier beliebige \Aussagen\ sein --- auch \Formeln\ ---, die jeweils genau einen \Wahrheitswert\ repräsentieren.
-}
-die in der \tablename\ angegebenen \Wahrheitswerte\ für die \Operationen.
-Die mit 0, 1 und 2 benannten Spalten werden jeweils nur für die 0-, 1- und 2-stelligen \Junktoren, \textdh\ für die Konstanten, die \unaeren\ und die \binaeren\ \Junktoren\ ausgefüllt.
-Dabei werden die Konstanten als 0-stellige \Junktoren\ angesehen.
-Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein Wert bekannt, so bleibt sie leer.
-
-\begin{table}[p]
-	% Wahrheitswerte
-	\newcommand*{\texttrue} {W}%            in einem Kommentar stets 'W'
-	\newcommand*{\textfalse}{F}%            in einem Kommentar stets 'F'
-	% Zähler für Prioritäten ---------------------------------------------------
-	\newcounter{prio}    \setcounter{prio}    {1}
-	\newcounter{pnot}    \setcounter{pnot}    {\value{prio}}
-	\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
-	\newcounter{pand}    \setcounter{pand}    {\value{prio}}
-	\newcounter{pnand}   \setcounter{pnand}   {\value{prio}}
-	\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
-	\newcounter{por}     \setcounter{por}     {\value{prio}}
-	\newcounter{pnor}    \setcounter{pnor}    {\value{prio}}
-	\newcounter{pxor}    \setcounter{pxor}    {\value{prio}}
-	\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
-	\newcounter{pimp}    \setcounter{pimp}    {\value{prio}}
-	\newcounter{prep}    \setcounter{prep}    {\value{prio}}
-	\stepcounter{prio}% - - - - - - - - - - - - - - - - - -
-	\newcounter{pequiv}  \setcounter{pequiv}  {\value{prio}}
-	% Trennlinien
-	\newcommand*{\tablegroup}{\hdashline[6pt/3pt]}
-	\newcommand*{\tableline} {\hdashline[3pt/3pt]}
-	\newcommand*{\gapline}   {\cdashline{1-1}[1pt/3pt]\cdashline{9-11}[1pt/3pt]}
-	\begin{threeparttable}
-		\setlength\tabcolsep{3pt}
-		\setlength\extrarowheight{1.5pt}
-		\small
-		\begin{tabularx}{\linewidth}{|c||c:cc:cccc|X:X|c|}
-			\hline% -- Tabellenanfang --------------------------------------
-			$A$ & - & \texttrue & \textfalse &%
-			\texttrue  & \texttrue  & \textfalse & \textfalse &
-			- & \Aussage\ $A$ & - \\
-			\tableline%.................................................
-			B & - & -       & -        &%
-			\texttrue  & \textfalse & \texttrue  & \textfalse &
-			- & \Aussage\ $B$ & - \\
-			\hline% -- Überschrift -----------------------------------------
-			\textbf{\Junktor}\Tnote{1} &
-			\textbf{0}\Tnote{2} &
-			\multicolumn{2}{c:}{\textbf{1}} &
-			\multicolumn{4}{c|}{\textbf{2}} &
-			\textbf{Name}\Tnote{3} &
-			\textbf{Sprechweise} &
-			\textbf{Prio}\Tnote{4} \\
-			\hline\hline% == Konstante =====================================
-			\defSym{\OjkTrue}
-			& \texttrue  & - & - & - & - & - & -
-			& Verum
-			& \defFt{\TxtTrue} & - \\
-			\tableline%.................................................
-			\defSym{\OjkFalse}
-			& \textfalse & - & - & - & - & - & -
-			& Falsum
-			& \defFt{\TxtFalse} & - \\
-			\hline\hline% == unäre Junktoren ===============================
-			& - & \texttrue & \texttrue  & - & - & - & - & & & - \\
-			\tableline%.................................................
-			$(\dots)$
-			& - & \texttrue & \textfalse & - & - & - & -
-			& Klammerung
-			& $A$ \defFt{ist geklammert} & -\Tnote{5} \\
-			\tableline%.................................................
-			\defSym{\OjkNot}
-			& - & \textfalse & \texttrue  & - & - & - & -
-			& Negation
-			& \defFt{Nicht} $A$ & \thepnot\Tnote{6} \\
-			\tableline%.................................................
-			& - & \textfalse & \textfalse & - & - & - & - & & & -  \\
-			\hline\hline% == binäre Junktoren ==============================
-			& - & - & - &\texttrue&\texttrue&\texttrue&\texttrue
-			& Tautologie
-			& & - \\
-			\tableline%.................................................
-			\defSym{\OjkOr}
-			& - & - & - &\texttrue&\texttrue&\texttrue&\textfalse
-			& Disjunktion; Adjunktion;\newline Alternative
-			& $A$ \defFt{oder} $B$ & \thepor \\
-			\tableline%.................................................
-			\defSym{\OjkRep} $\Leftarrow$ $\subset$
-			& - & - & - &\texttrue&\texttrue&\textfalse&\texttrue
-			& Replikation; Konversion;\newline konverse Implikation
-			& $A$ \defFt{folgt aus} $B$ & \theprep \\
-			\tableline%.................................................
-			$\rfloor$
-			& - & - & - &\texttrue&\texttrue&\textfalse&\textfalse
-			& Präpendenz
-			& Identität von $A$ & - \\
-			\tablegroup% -----------------------------------------------
-			\defSym{\OjkImp} $\Rightarrow$ $\supset$
-			& - & - & - &\texttrue&\textfalse&\texttrue&\texttrue
-			& Implikation; Subjunktion;\newline Konditional
-			& \defFt{Aus} $A$ \defFt{folgt} $B$; Wenn $A$ dann $B$;\newline
-			$A$ nur dann wenn $B$ & \thepimp \\
-			\tableline%.................................................
-			$\lfloor$
-			& - & - & - &\texttrue&\textfalse&\texttrue&\textfalse
-			& Postpendenz
-			& Identität von $B$ & - \\
-			\tableline%.................................................
-			\defSym{\OjkEquiv} $\Leftrightarrow$
-			& - & - & - &\texttrue&\textfalse&\textfalse&\texttrue
-			& ~\Aequivalenz; Bijunktion;\newline Bikonditional
-			& $A$ \defFt{genau dann wenn} $B$;\newline
-			$A$ dann und nur dann wenn $B$
-			& \thepequiv \\
-			\tableline%.................................................
-			\defSym{\OjkAnd} $\&$ $\cdot$
-			& - & - & - &\texttrue&\textfalse&\textfalse&\textfalse
-			& Konjunktion
-			& $A$ \defFt{und} $B$; Sowohl $A$ als auch $B$ & \thepand \\
-			\tablegroup% -----------------------------------------------
-			\defSym{\OjkNand} $\barwedge$ $\mid$
-			& - & - & - &\textfalse&\texttrue&\texttrue&\texttrue
-			& NAND; Unverträglichkeit;\newline Sheffer-Funktion
-			& \defFt{Nicht zugleich} $A$ \defFt{und} $B$ & \thepnand \\
-			\tableline%.................................................
-			\defSym{\OjkXor} $\veebar$ $+$ $\oplus$
-			& - & - & - &\textfalse&\texttrue&\texttrue&\textfalse
-			& XOR; Antivalenz;\newline ausschließende Disjunktion
-			& \defFt{Entweder} $A$ \defFt{oder} $B$ & \thepxor \\
-			\gapline%. . . . . . . . . . . . . . . . . . . . . . . . . .
-			$\nleftrightarrow$ $\nLeftrightarrow$ $\nequiv$
-			& - & - & - &"&"&"&"
-			& ~\Kontravalenz
-			& & - \\
-			\tableline%.................................................
-			$\lceil$
-			& - & - & - &\textfalse&\texttrue&\textfalse&\texttrue
-			& Postnonpendenz
-			& Negation von $B$ & - \\
-			\tableline%.................................................
-			$\nrightarrow$ $\nRightarrow$ $\nsupset$
-			& - & - & - &\textfalse&\texttrue&\textfalse&\textfalse
-			& Postsektion
-			& & - \\
-			\tablegroup% -----------------------------------------------
-			$\rceil$
-			& - & - & - &\textfalse&\textfalse&\texttrue&\texttrue
-			& Pränonpendenz
-			& Negation von $A$ & - \\
-			\tableline%.................................................
-			$\nleftarrow$ $\nLeftarrow$ $\nsubset$
-			& - & - & - &\textfalse&\textfalse&\texttrue&\textfalse
-			& Präsektion
-			& & - \\
-			\tableline%.................................................
-			\defSym{\OjkNor} $\overline\lor$
-			& - & - & - &\textfalse&\textfalse&\textfalse&\texttrue
-			& NOR; Nihilation;\newline Peirce-Funktion
-			& \defFt{Weder} $A$ \defFt{noch} $B$ & \thepnor \\
-			\tableline%.................................................
-			& - & - & - &\textfalse&\textfalse&\textfalse&\textfalse
-			& Kontradiktion
-			& & - \\
-			\hline% -- Tabellenende ----------------------------------------
-			\multicolumn{11}{l}{~} \\
-			\multicolumn{11}{l}{\parbox{\linewidth-6pt}{
-				Um vollständig zu sein, \textdh\ alle 22 möglichen Kombinationen von \Wahrheitswerten\ für höchstens zwei Variable zu berücksichtigen, enthält die \tablename\ auch viele ungebräuchliche \Symbole\ und \Operationen.
-				\Junktoren\ ohne Angabe einer Priorität sind in diesem Dokument nicht weiter von Interesse.
-				--- Im Folgenden werden von den in der Tabelle aufgeführten \Junktoren\ nur noch \defSym{\OjkFalse}, \defSym{\OjkTrue}, \defSym{\OjkNot}, \defSym{\OjkAnd}, \defSym{\OjkOr}, \defSym{\OjkImp}, \defSym{\OjkRep}, \defSym{\OjkEquiv}, \defSym{\OjkNand}, \defSym{\OjkNor} und \defSym{\OjkXor} verwendet.
-			}} \\
-			\multicolumn{11}{l}{~} \\
-			\hline% -- Fußnoten --------------------------------------------
-		\end{tabularx}
-		\begin{tablenotes}
-			\footnotesize
-			%
-			\item[1] Die \Junktoren\ \chrqt{$\subset$}, \chrqt{$\supset$}, \chrqt{$\nsubset$} und \chrqt{$nsupset$} haben hier nicht die Bedeutung der entsprechenden \Operationen\ der \Mengenlehre\ und dürfen nicht damit verwechselt werden; entsprechendes gilt für \chrqt{$+$} und \chrqt{$\cdot$} mit Addition und Multiplikation.
-			%
-			\item[2] 0-stellige \Junktoren\ sind Konstante, hier \emph{\Wahrheitswerte}.
-			%
-			\item[3] Ist eine Zelle in dieser Spalte leer, so ist die zugehörige Zeile nur vorhanden, um alle \binaeren\ \Junktoren\ aufzuführen.
-			%
-			\item[4] Je kleiner die Zahl, je höher die Priorität.
-			%
-			\item[5] Klammerung ist genau genommen keine \Operation\ und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet. Ihre Priorität - sofern man überhaupt davon sprechen kann - kann nur höher als die aller \Junktoren\ sein.
-			%
-			\item[6] Die Priorität der \unaeren\ \Operationen\ muss höher sein als die aller mehrwertigen, also auch der \binaeren\ \Operationen.
-			Wenn die Symbole aller \unaeren\ \Operationen\ auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
-			Nur wenn es sowohl links-, als auch rechtsseitige \unaere\ \Operationen\ gibt, muss man für diese Prioritäten definieren.
-			%
-		\end{tablenotes}
-	\end{threeparttable}
-	\caption{Definition von \aussagenlogischenSymbolen.}
-	\label{tab-Symbole}% Erst nach '\caption'!
-\end{table}
-
-Für einige \Junktorsymbole%
-\footnote{%
-	Symbole, die für \Junktoren\ verwendet werden.
-},
-Namen und Sprechweisen sind auch Alternativen angegeben.
-Die durchgestrichenen (\textdh\ negierten) Symbole sind ungebräuchlich und nur aus formalen Gründen aufgeführt.
-Wenn für eine bestimmte Kombination von \Wahrheitswerten\ mehr als eine Zeile angegeben ist, so können die zugehörigen \Junktoren\ zwar formal verschieden sein, liefern in der zweiwertigen \Aussagenlogik\ jedoch dieselben Ergebnisse.
-
-Die zur Einsparung von Klammern definierten Prioritäten sind \vrefintab{tab-Prioritaeten} angegeben.%
-\footnote{Zur Erinnerung: Es gilt Rechtsklammerung. \vrefseesub{sub-Prioritaeten}}
-
-\subsection{Formalisierung}% ---------------------------------------------------
-\label {sub-Formalisierung}
-
-Da sie die Grundlage --- quasi das Fundament --- des mathematischen Inhalts von \ASBA\ sind, müssen die \Axiome, \Saetze, \Beweise, \textusw\ der \Aussagenlogik\ (und später der \Praedikatenlogik) in streng formaler Form vorliegen.%
-\footnote{%
-	Die Formalisierung stützt sich auf~\cite{bib:AussagenlogikFormalerZugang}; \alsoname~\cite{bib:LogikDe, bib:LogikEn}.
-}
-Da Computerprogramme mit der \emph{\PolnischenNotation}%
-\footnote{%
-	Bei der \defTxt{\PolnischenNotation} stehen die Operanden \textbzw\ Argumente von \Relationen\ und \Funktionen\ stets rechts von den Relations- und Funktionssymbolen.
-	Dadurch kann auf Gliederungszeichen wie Klammern und Kommata verzichtet werden.
-	Noch einfacher für Computer ist die \defFt{umgekehrte Polnische Notation}, bei der die Operanden und Argumente links von den Symbolen stehen.
-}
-besser umgehen können und Klammern dort überflüssig sind, werden viele \Formeln\ auch parallel in der Polnischen Notation angegeben.
-Dies wird auf Wunsch auch bei Ausgaben von \ASBA\ so gehandhabt.
-
-\subsubsection[Bausteine der aussagenlogischen Sprache]{\Bausteine\ der \aussagenlogischenSprache}% - - -
-\label {subsub-Bausteine}
-
-%TODO * hier bei der Aussagenlogik weitermachen
-Zur Einteilung der \Junktoren\ werden die folgenden Mengen definiert:
-\begin{align}
-	& \defSym{\OjkCon} & \MtsDefEq \quad & \{ \OjkTrue, \OjkFalse \}
-	&& \text {, \Menge\ der \defTxt{\aussagenlogischenKonstanten}} \label{def-C}
-	\\
-	& \defSym{\OjkUna} & \MtsDefEq \quad & \{ \OjkNot \}
-	&& \text{, \Menge\ der \defTxt{\unaerenJunktoren}}             \label{def-U}
-	\\
-	& \defSym{\OjkBin} & \MtsDefEq \quad &
-	\{ \OjkAnd, \OjkOr, \OjkXor, \OjkImp, \OjkEquiv, \OjkRep, \OjkNand, \OjkNor \}
-	&& \text{, \Menge\ der \defTxt{\binaerenJunktoren}}            \label{def-B}
-\end{align}
-
-Um damit \Formeln\ zu bilden, werden noch Variable gebraucht:
-\begin{align}
-	& \defSym{\OjkVar}  & \MtsDefEq \quad & \MengeDef{\Ojkvar_n}{n \in \MtsINo}
-	&&&&
-	&& \text{, \Menge\ der \defFt{\aussagenlogischenVariablen}} \label{def-OjkVar}
-	&&
-\end{align}
-
-Die Mengen \OjkCon, \OjkUna, \OjkBin\ und \OjkVar\ müssen paarweise disjunkt sein.
--- Damit können die folgende Mengen definiert werden:
-\begin{align}
-	& \defSym{\OjkJun}  & \MtsDefEq      \qquad & \OjkCon \MtsCup \OjkUna \MtsCup \OjkBin
-	&& \text{, \Menge\ der \defTxt{\Junktorsymbole}}
-	\label{def-OjkJun}
-	\\
-	& \defSym{\OjkABC}  & \MtsDefEq      \qquad & \OjkVar \MtsCup \OjkJun
-	&& \text{, \Alphabet\ der \aussagenlogischenSprache\ für } \OjkJun
-	\label{def-OjkABC}
-	\\
-	& \defSym{\OjkJunx} & \MtsSubsetEq\; \qquad & \OjkJun
-	&& \text{, eine \Teilmenge\ von } \OjkJun \text{ für eine Indexvariable } x
-	\label{def-OjkJunx}
-	\\
-	& \defSym{\OjkABCx} & \MtsDefEq      \qquad & \OjkVar \MtsCup \OjkJunx \quad
-	&& \text{, \Alphabet\ der \aussagenlogischenSprache\ für } \OjkJunx
-	\label{def-OjkABCx}
-\end{align}
-
-Für Elemente aus \OjkVar\ verwenden wir normalerweise die kleinen, lateinischen Buchstaben $a$, $b$, $c$, usw.
-
-\subsubsection{Aussagenlogische Formeln}%  - - - - - - - - - - - - - - - - - - -
-\label                  {subsub-Formeln}
-
-Neben dem Alphabet \OjkABC\ \textbzw\ \OjkABCx\ werden noch Klammern als Gliederungszeichen verwendet.
-Damit können nun rekursiv für jede \Teilmenge\ $\OjkJun_x$ von \OjkJun\ zwei Mengen von \aussagenlogischenFormeln\ definiert werden, wobei wir für diese \Formeln\ die kleinen, griechischen Buchstaben $\alpha$, $\beta$, $\gamma$, \textusw\ verwenden.
-
-\defSym{\OjkForx} sei die \Menge\ der auf folgende Weise definierten \defTxt{\aussagenlogischenFormel}\ mit \defTxt{\Klammerung} zum Alphabet \defSym{\OjkABCx}:
-\begin{align}
-	&                    & \OjkVar                    \MtsSubset \OjkForx
-	&&& \text{, die Variablen}  \label{def-ForQ}
-	\\
-	&                    & \OjkJun_x \MtsCap \OjkCon   \MtsSubset \OjkForx
-	&&& \text{, die Konstanten} \label{def-ForJK}
-	\\
-	\alpha \in\OjkForx & \quad\MtsImp & (\BspOpU\alpha)\in\OjkForx
-	&&& \text{, für} \quad \BspOpU \in \OjkUna \MtsCap \OjkJunx
-	\label{def-ForU}
-	\\
-	\alpha,\beta\in\OjkForx & \quad\MtsImp & (\alpha\BspOpB\beta) \in\OjkForx
-	&&& \text{, für} \quad \BspOpB  \in \OjkBin \MtsCap \OjkJunx
-	\label{def-ForB}
-	\formulatoleft
-\end{align}
-
-Nur die auf diese Weise konstruierten \Formeln\ sind Elemente aus \OjkForx.
--- Für \OjkJunx\ = \OjkJun\ sei noch $\defSym{\OjkFor} \MtsDefEq \OjkForx$.
-
-$\defSym{\OjkForpx}$ sei die \Menge\ der auf folgende Weise definierten \defTxt{\aussagenlogischenFormeln} in \defTxt{\PolnischerNotation}:
-\begin{align}
-	&                          & \OjkVar                   \MtsSubset \OjkForpx
-	&&& \text{, die Variablen}  \label{def-ForQp}
-	\\
-	&                          & \OjkJunx \MtsCap \OjkCon   \MtsSubset \OjkForpx
-	&&& \text{, die Konstanten} \label{def-ForJKp}
-	\\
-	\alpha      \in\OjkForpx & \quad\MtsImp & \BspOpU\alpha \in\OjkForpx
-	&&& \text{, für}  \quad \BspOpU \in \OjkUna  \MtsCap \OjkJunx
-	\label{def-ForUp}
-	\\
-	\alpha,\beta\in\OjkForpx & \quad\MtsImp & \BspOpB\alpha\beta\in\OjkForpx
-	&&& \text{, für}  \quad \BspOpB  \in \OjkBin  \MtsCap \OjkJunx
-	\label{def-ForBp} \formulatoleft
-\end{align}
-
-Nur die auf diese Weise konstruierten \Formeln\ sind Elemente aus \OjkForpx.
--- Für \OjkJunx\ = \OjkJun\ sei noch $\defSym{\OjkForp} \MtsDefEq \OjkForpx$.
-
-Wie man leicht sieht, gilt
-\begin{equation}
-	\OjkJunx      \: \MtsSubset \: \OjkJun_y  \: \MtsSubsetEq \: \OjkJun \MtsImp
-	\begin{cases}
-		\OjkABCx  \: \MtsSubset \: \OjkABC_y  \: \MtsSubsetEq \: \OjkABC \\
-		\OjkForx  \; \MtsSubset \: \OjkFor_y  \; \MtsSubsetEq \: \OjkFor \\
-		\OjkForpx \, \MtsSubset \: \OjkForp_y \, \MtsSubsetEq \: \OjkForp
-	\end{cases}
-\end{equation}
-und weiterhin gibt es eine bijektive Abbildung von \OjkFor\ nach \OjkForp. Auf einen \Beweis\ verzichten wir.
-%
-Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub-Bausteine} lassen sich in der Regel noch viele Klammern der \Formeln\ aus \OjkForx\ einsparen.
-Die \Formeln\ aus \OjkForpx\ sind frei von Klammern.
-Die Namen der \Junktoren\ finden sich \vrefintab{tab-Symbole}.
-
-Die \Formeln, die nach einer der Regeln \eqref{def-ForU}, \eqref{def-ForB}, \eqref{def-ForUp} oder \eqref{def-ForBp} gebildet wurden, sind offensichtlich \zerlegbar, die anderen, \textdh\ Variablen und Konstanten (aus \OjkVar\ \textbzw\ \OjkCon), sind nicht \zerlegbar. Letztere bezeichnet man auch als \defFt{\atomare\ \Formeln}.
-
-\subsection[Definition von Junktoren durch andere]{\Definition\ von \Junktoren\ durch andere}
-\label                {sub-JunktorDef}
-
-Im folgenden gelte für zwei \aussagenlogischeFormeln\ $\alpha$ und $\beta$:
-\begin{itemize}
-	\item[] $\alpha \defSymBin{\MtsEq}    \beta \quad \MtsDefEquiv$ \quad $\alpha$ und $\beta$
-	stimmen als \Zeichenkette\ überein.
-	%
-	\item[] $\alpha \defSymBin{\MtsEquiv} \beta \quad \MtsDefEquiv$ \quad
-	\parbox[t]{13cm}{$\alpha$ und $\beta$ können mit Hilfe erlaubter \Ersetzungen\ und geltender \Axiome\ --- \vrefseesub{sub-Axiome} --- ineinander überführt werden.}
-\end{itemize}
-%TODO === Verweise auf Definitionen prüfen und hinzufügen
-
-Es werden verschiedene \Teilmengen\ von \OjkJun\ eingeführt, die jeweils ausreichen um alle anderen Elemente aus \OjkJun\ zu definieren:
-\begin{align}
-	&\OjkJun_{\RawMtsIdxBool}&\MtsDefEq\quad&\{\OjkNot,\OjkAnd,\OjkOr\}\label{def-Jbool}
-	\qquad \text{(\defTxt{\BoolescheSignatur})}
-	\\
-	&\OjkJun_{\RawMtsIdxAnd} &\MtsDefEq\quad&\{\OjkNot,\OjkAnd \}\label{def-Jand}
-	\\
-	&\OjkJun_{\RawMtsIdxOr}  &\MtsDefEq\quad&\{\OjkNot,\OjkOr  \}\label{def-Jor}
-	\\
-	&\OjkJun_{\RawMtsIdxImp} &\MtsDefEq\quad&\{\OjkNot,\OjkImp \}\label{def-Jimp}
-	\\
-	&\OjkJun_{\RawMtsIdxRep} &\MtsDefEq\quad&\{\OjkNot,\OjkRep \}\label{def-Jrep}
-	\\
-	&\OjkJun_{\RawMtsIdxNand}&\MtsDefEq\quad&\{\OjkNand        \}\label{def-Jnand}
-	\\
-	&\OjkJun_{\RawMtsIdxNor} &\MtsDefEq\quad&\{\OjkNor         \}\label{def-Jnor}
-	\formulatoleft\formulatoleft\formulatoleft
-\end{align}
-Solche \Teilmengen\ heißen \logischeSignatur.
-
-Im Folgenden stehen jeweils links die \Formeln\ in üblicher Schreibweise vollständig geklammert und rechts in Polnischer Notation (ohne Klammern).
-Ferner seien $\alpha$ und $\beta$ beliebige, nicht notwendig verschiedene \Formeln\ aus der passenden \Menge\ \OjkForx\ \textbzgl\ der um die mit Hilfe der Definitionen erweiterten \Formelmenge.
-
-Ausgehend von den \Junktoren\ aus der \BooleschenSignatur\ $\OjkJun_{\RawMtsIdxBool}$ werden die restlichen \Junktoren\ aus \OjkJun\ definiert.
-Die Definitionen sind in zwei Gruppen eingeteilt, und zwar die mit den \Junktoren\ aus $\OjkJun_{\RawMtsIdxAnd}$:
-\begin{align}
-	% folgt ------------------------
-	(\alpha \defSymBin{\OjkImp}   \beta) &\;\MtsDefEq\; (\OjkNot (\alpha \OjkAnd  (\OjkNot \beta))) &
-	\defSymBin{\OjkImp}  \alpha   \beta  &\;\MtsDefEq\;  \OjkNot    \OjkAnd \alpha \OjkNot \beta
-	\label{def-imp}
-	\\
-	% sofern -----------------------
-	(\alpha \defSymBin{\OjkRep}   \beta) &\;\MtsDefEq\; (\OjkNot (\beta \OjkAnd  (\OjkNot \alpha))) &
-	\defSymBin{\OjkRep}   \beta  \alpha  &\;\MtsDefEq\;  \OjkNot    \OjkAnd \beta \OjkNot \alpha
-	\label{def-rep}
-	\\
-	% genau dann -------------------
-	(\alpha \defSymBin{\OjkEquiv} \beta) &\;\MtsDefEq\; ((\alpha \OjkImp \beta) \OjkAnd (\alpha \OjkRep \beta)) &
-	\defSymBin{\OjkEquiv} \alpha  \beta  &\;\MtsDefEq\; \OjkAnd \OjkImp \alpha \beta \OjkRep \alpha \beta
-	\label{def-equiv}
-	\\
-	%falsch ------------------------
-	\defSym{\OjkFalse}                   &\;\MtsDefEq\; (\Ojkvar_0 \OjkAnd (\OjkNot \Ojkvar_0)) &
-	\defSym{\OjkFalse}                   &\;\MtsDefEq\;  \OjkAnd \Ojkvar_0  \OjkNot \Ojkvar_0   \label{def-false}
-	\\
-	% NAND -------------------------
-	(\alpha \defSymBin{\OjkNand}  \beta) &\;\MtsDefEq\; (\OjkNot (\alpha \OjkAnd \beta )) &
-	\defSymBin{\OjkNand}  \alpha  \beta  &\;\MtsDefEq\;  \OjkNot  \OjkAnd \alpha \beta \label{def-nand}
-\end{align}
-und die mit den \Junktoren\ aus $\OjkJun_{\RawMtsIdxOr}$:
-\begin{align}
-	% NOR --------------------------
-	(\alpha \defSymBin{\OjkNor}   \beta) & \;\MtsDefEq\; (\OjkNot (\alpha \OjkOr \beta))   &
-	\defSymBin{\OjkNor}   \alpha  \beta  & \;\MtsDefEq\;  \OjkNot  \OjkOr \alpha \beta \label{def-nor}
-	\\
-	% plus -------------------------
-	(\alpha \defSymBin{\OjkXor}   \beta) & \;\MtsDefEq\; ((\alpha \OjkOr \beta) \OjkAnd (\OjkNot (\alpha \OjkAnd \beta)))&
-	\defSymBin{\OjkXor}   \alpha  \beta  & \;\MtsDefEq\;  \OjkAnd \OjkOr\alpha\beta \OjkNot \OjkAnd \alpha \beta
-	\label{def-add}
-	\\
-	% wahr -------------------------
-	\defSym{\OjkTrue} & \;\MtsDefEq\; (\Ojkvar_0 \OjkOr (\OjkNot \Ojkvar_0)) &
-	\defSym{\OjkTrue} & \;\MtsDefEq\;  \OjkOr \Ojkvar_0  \OjkNot \Ojkvar_0
-	\label{def-true}
-\end{align}
-
-Ist \chrqt{\OjkOr} oder \chrqt{\OjkAnd} nicht vorgegeben, \textdh\ wird von den Elementen aus $\OjkJun_{\RawMtsIdxAnd}$ \textbzgl\ $\OjkJun_{\RawMtsIdxOr}$ statt von denen aus $\OjkJun_\RawMtsIdxBool$ ausgegangen, so muss man den fehlenden \Junktor\ mittels der passenden der beiden folgenden Definitionen einführen:
-\begin{align}
-	% and --> or -------------------
-	(\alpha \OjkOr \beta)  & \;\MtsDefEq\; (\OjkNot((\OjkNot\alpha)\OjkAnd(\OjkNot\beta))) &
-	\OjkOr \alpha  \beta   & \;\MtsDefEq\;  \OjkNot \OjkAnd \OjkNot \alpha \OjkNot \beta
-	\label{def-orand} \\
-	% or --> and -------------------
-	(\alpha \OjkAnd \beta) & \;\MtsDefEq\; (\OjkNot((\OjkNot\alpha)\OjkOr(\OjkNot\beta)))  &
-	\OjkAnd \alpha  \beta  & \;\MtsDefEq\;  \OjkNot \OjkOr \OjkNot \alpha \OjkNot \beta
-	\label{def-andor}
-\end{align}
-Nun sind wieder alle \Junktoren\ definiert.
-
-Entsprechend wird bei Vorgabe von $\OjkJun_{\RawMtsIdxImp}$ \textbzgl\ $\OjkJun_{\RawMtsIdxRep}$ die passende der beiden folgenden Definitionen ausgewählt:
-\begin{align}
-	% imp --> or -------------------
-	(\alpha \OjkOr  \beta) & \;\MtsDefEq\; ((\OjkNot \alpha) \OjkImp \beta)         &
-	\OjkOr \alpha   \beta  & \;\MtsDefEq\;   \OjkImp \OjkNot \alpha \beta
-	\label{def-orrep}
-	\\
-	% rep --> and ------------------
-	(\alpha \OjkAnd \beta) & \;\MtsDefEq\; (\OjkNot ((\OjkNot \beta) \OjkRep \alpha)) &
-	\OjkAnd \alpha  \beta  & \;\MtsDefEq\;  \OjkNot \OjkRep \OjkNot \beta \alpha
-	\label{def-andrep}
-\end{align}
-woraufhin dann \eqref{def-imp} \textbzgl\ \eqref{def-rep} als Gleichung nachzuweisen ist.
-Da aus \eqref{def-rep} durch \Vertauschung\ der Variablen unmittelbar
-\begin{align}
-	(\alpha \OjkRep \beta) & \;\MtsEquiv\; (\beta \OjkImp \alpha) &
-	\OjkRep \alpha  \beta  & \;\MtsEquiv\;  \OjkImp \beta \alpha  \label{eq-repimp}
-\end{align}
-folgt, vermindert sich der Aufwand dazu erheblich.
-
-Bei Vorgabe von $\OjkJun_{\RawMtsIdxNand}$ \textbzgl\ $\OjkJun_{\RawMtsIdxNor}$ schließlich werden die passenden Definition aus
-\begin{align}
-	% nor --> not ------------------
-	(\OjkNot \alpha) & \;\MtsDefEq\; (\alpha \OjkNor \alpha)  &
-	\OjkNot  \alpha  & \;\MtsDefEq\;  \OjkNor \alpha \alpha   \label{def-notnor} \\
-	% nand --> not -----------------
-	(\OjkNot \alpha) & \;\MtsDefEq\; (\alpha \OjkNand \alpha) &
-	\OjkNot  \alpha  & \;\MtsDefEq\;  \OjkNand \alpha \alpha  \label{def-notnand}
-\end{align}
-und, da \chrqt{\OjkNot} jetzt definiert ist, aus
-\begin{align}
-	% nor --> or -------------------
-	(\alpha \OjkOr \beta)  & \;\MtsDefEq\; (\OjkNot(\alpha \OjkNor \beta))  &
-	\OjkOr \alpha  \beta   & \;\MtsDefEq\;  \OjkNot \OjkNor \alpha \beta
-	\label{def-ornor} \\
-	% nand --> and -----------------
-	(\alpha \OjkAnd \beta) & \;\MtsDefEq\; (\OjkNot(\alpha \OjkNand \beta)) &
-	\OjkAnd \alpha  \beta  & \;\MtsDefEq\;  \OjkNot \OjkNand \alpha \beta
-	\label{def-andnand}
-\end{align}
-ausgewählt und es ist \eqref{def-nand} \textbzgl\ \eqref{def-nor} als Gleichung nachzuweisen.
-
-Abschließend ist noch nachzuweisen, dass mit Hilfe der jeweils passenden der Definitionen \eqref{def-imp} bis \eqref{def-andnand}, ausgehend vom jeweils passenden \OjkForx, genau die gesamte \Formelmenge\ \OjkFor\ erzeugt werden kann.
-
-\subsection[Aussagenlogisches Axiomensystem]{Aussagenlogisches \Axiomensystem}%
-\label                   {sub-Axiome}
-
-Ausgehend von der \logischenSignatur\ $\OjkJun_{\RawMtsIdxAnd} = \{\OjkNot, \OjkAnd\}$ und der \vrefdef{def-imp} von \chrqt{\OjkImp} werden die folgenden vier logischen \Axiome\ definiert:
-\begin{align}
-	&
-	(\alpha\OjkImp\beta\OjkImp\gamma)\OjkImp(\alpha\OjkImp\beta)\OjkImp(\alpha\OjkImp\gamma)
-	\formulaspace &
-	& \OjkImp\OjkImp\alpha\OjkImp\beta\gamma\OjkImp\OjkImp\alpha\beta\OjkImp\alpha\gamma \\
-	%
-	& \alpha \OjkImp \beta \OjkImp \alpha \OjkAnd \beta
-	\formulaspace &
-	& \OjkImp \alpha \OjkImp \beta \OjkAnd \alpha \beta \\
-	%
-	& \alpha \OjkAnd \beta \OjkImp \alpha \;; \quad \alpha \OjkAnd \beta \OjkImp \beta
-	\formulaspace &
-	& \OjkImp \OjkAnd \alpha \beta \alpha \;; \quad \OjkImp \OjkAnd \alpha \beta \beta\\
-	%
-	&(\alpha \OjkImp \OjkNot \beta) \OjkImp (\beta \OjkImp \OjkNot \alpha)
-	\formulaspace &
-	& \OjkImp \OjkImp \alpha \OjkNot \beta \OjkImp \beta \OjkNot \alpha
-	\formulatoleft
-	%
-\end{align}
-\todo{Aussagenlogik weiter bearbeiten.}
-%TODO Aussagenlogik weiter bearbeiten.
-
-Siehe \defTxt{\Aussagenlogik} im Glossar.
-
-\glsdesc{Aussagenlogik}
-
-\section[Prädikatenlogik]{\Praedikatenlogik}% ==================================
-\beginsection            {\Praedikatenlogik}
-\label                {sec-Praedikatenlogik}
-
-\todo{Prädikatenlogik bearbeiten.}
-%TODO Prädikatenlogik bearbeiten.
-
-Siehe \defTxt{\Praedikatenlogik} im Glossar.
-
-\glsdesc{Praedikatenlogik}
-
-\section[Mengenlehre]{\Mengenlehre}% ===========================================
-\beginsection        {\Mengenlehre}
-\label            {sec-Mengenlehre}
-
-\todo{Mengenlehre bearbeiten.}
-%TODO Mengenlehre bearbeiten.
-
-Siehe \defTxt{\Mengenlehre} im Glossar.
-
-\glsdesc{Mengenlehre}
-
 \Endchapter
-\color{black}%%% Ende grauer Text

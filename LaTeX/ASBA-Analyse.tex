@@ -33,24 +33,10 @@
 
 \chapter     {Analyse}% ########################################################
 \beginchapter{Analyse}
-\label   {cha-Analyse}
+\label   {cha:Analyse}
 
-In der Mathematik gibt es eine unüberschaubare Menge an \Axiomen, \Saetzen, \Beweisen, \emph{\Fachbegriffen}%
-\footnote{%
-	\defTxt{\Fachbegriffe} sind Namen für mathematische Elemente und Konstruktionen, \textzB\ \Axiomen, \Saetze, \Beweise\ und \Teilgebiete.
-	\Symbole\ können als spezielle \Fachbegriffe\ aufgefasst werden.
-}
-und \emph{\Teilgebieten}%
-\footnote{%
-	Ein \defTxt{\Teilgebiet} ist ein Teil der Mathematik mit einer zugehörigen Basis an \Axiomen, \Saetzen, \Fachbegriffen\ und Darstellungen, \textzB\ \Logik\ und \Mengenlehre.
-	Ein \Teilgebiet\ kann sehr klein sein und im Extremfall bei \ASBA\ kein einziges Element enthalten.
-	\emph{Umgebung} wäre eine bessere Bezeichnung, ist aber schon ein verbreiteter \Fachbegriff, so dass hier die Bezeichnung \Teilgebiet\ verwendet wird.
-
-	Statt "`\Teilgebiet"' könnte man auch "`Theorie"' nehmen.
-	An \emph{Theorien} (\citesee{bib:Rautenberg} Kapitel~2.5, Seite~64) werden jedoch bestimmte Anforderungen gestellt, die vom hier behandelten Programmsystem aber nicht notwendigerweise überprüft werden sollen.
-	Theorien sind allerdings \textiAlg\ auch \Teilgebiete.
-}.
-Zu den meisten \Teilgebieten\ gibt es noch ungelöste Probleme.
+In der Mathematik gibt es eine unüberschaubare Menge an \Axiomen, \Saetzen, \Beweisen, \Fachbegriffen\ und \Fachgebieten.
+Zu den meisten \Fachgebieten\ gibt es noch ungelöste Probleme.
 
 Es fehlt ein System, das einen Überblick bietet und die Möglichkeit, \Beweise\ automatisch zu überprüfen.
 Außerdem sollte all dies in üblicher mathematischer Schreibweise ein- und ausgegeben werden können.
@@ -61,79 +47,79 @@ Einige Ideen sind von dort übernommen worden.
 
 \section     {Fragen}% =========================================================
 \beginsection{Fragen}
-\label   {sec-Fragen}
+\label   {sec:Fragen}
 
 Einige der Fragen, die in diesem Zusammenhang auftauchen,
 werden nun formuliert:
 \begin{enumerate}
 	%
-	\item \label{Frage-Grundlagen} \defFt{Grundlagen}:
+	\item \label{Frage:Grundlagen} \defFt{Grundlagen}:
 	Was sind die Grundlagen?
 	\textZB\ welche \Logik\ und welche \Mengenlehre.
 	%
-	\item \label{Frage-Basis} \defFt{Basis}:
-	Welche wichtigen \Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Teilgebiete\ gibt es?
+	\item \label{Frage:Basis} \defFt{Basis}:
+	Welche wichtigen \Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Fachgebiete\ gibt es?
 	Welche davon sind Standard?
 	%
-	\item \label{Frage-Axiome} \defFt{\Axiome}:
+	\item \label{Frage:Axiome} \defFt{\Axiome}:
 	Welche \Axiome\ werden bei einem \Satz\ oder \Beweis\ vorausgesetzt?
 	Allgemein anerkannte oder auch strittige, wie \textzB\ den \emph{\Satz\ vom ausgeschlossenen Dritten} (\emph{tertium non datur}) oder das \emph{Auswahlaxiom}.
 	%
-	\item \label{Frage-Beweis} \defFt{\Beweis}:
+	\item \label{Frage:Beweis} \defFt{\Beweis}:
 	Ist ein \Beweis\ fehlerfrei?
 	%
-	\item \label{Frage-Konstruktion} \defFt{Konstruktion}:
+	\item \label{Frage:Konstruktion} \defFt{Konstruktion}:
 	Gibt es einen konstruktiven \Beweis?
 	%
-	\item \label{Frage-Vergleiche} \defFt{Vergleiche}:
+	\item \label{Frage:Vergleiche} \defFt{Vergleiche}:
 	Welcher \Beweis\ ist besser?
 	Nach welchem Kriterium?
 	\textZB\ elegant, kurz, einsichtig oder wenige \Axiome.
 	Was heißt eigentlich \emph{elegant}?
 	%
-	\item \label{Frage-Definitionen} \defFt{Definitionen}:
+	\item \label{Frage:Definitionen} \defFt{Definitionen}:
 	Was ist mit einem \Fachbegriff\ jeweils genau gemeint?
 	\textZB\ \emph{Stetigkeit}, \emph{Integral} und \emph{Analysis}.
 	%
-	\item \label{Frage-Abhaengigkeiten} \defFt{Abhängigkeiten}:
+	\item \label{Frage:Abhaengigkeiten} \defFt{Abhängigkeiten}:
 	Wie heißt ein \Fachbegriff\ in einer anderen Sprache?
 	Ist wirklich dasselbe gemeint?
-	Was ist mit \Fachbegriffen\ in verschiedenen \Teilgebieten?
+	Was ist mit \Fachbegriffen\ in verschiedenen \Fachgebieten?
 	%
-	\item \label{Frage-Ueberblick} \defFt{Überblick}:
+	\item \label{Frage:Ueberblick} \defFt{Überblick}:
 	Ist ein \Axiom, \Satz, \Beweis\ oder \Fachbegriff\ schon einmal --- \textggf\ abweichend --- definiert, formuliert oder bewiesen worden?
 	%
-	\item \label{Frage-Darstellung} \defFt{\Darstellung}:
-	Wie kann man einen \Satz\ und den zugehörigen \Beweis\ --- \textggf\ auch spezifisch für ein \Teilgebiet\ --- darstellen?
+	\item \label{Frage:Darstellung} \defFt{\Darstellung}:
+	Wie kann man einen \Satz\ und den zugehörigen \Beweis\ --- \textggf\ auch spezifisch für ein \Fachgebiet\ --- darstellen?
 	%
-	\item \label{Frage-Forschung} \defFt{Forschung}:
+	\item \label{Frage:Forschung} \defFt{Forschung}:
 	Welche Probleme gibt es noch zu erforschen.
 	%
 \end{enumerate}
 
 \section     {Eigenschaften}% ==================================================
 \beginsection{Eigenschaften}
-\label   {sec-Eigenschaften}
+\label   {sec:Eigenschaften}
 
-\ASBA\ soll ausgehend von den Fragen in \vrefsec{sec-Fragen} entwickelt werden, und die folgenden Eigenschaften haben:
+\ASBA\ soll ausgehend von den Fragen in \vrefsec{sec:Fragen} entwickelt werden, und die folgenden Eigenschaften haben:
 \begin{enumerate}
 	%
-	\item \label{Eigenschaft-Daten} \defFt{Daten}:
-	\Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Teilgebiete\ können in formaler Form gespeichert werden --- auch (noch) nicht oder unvollständig bewiesene \Saetze.
+	\item \label{Eigenschaft:Daten} \defFt{Daten}:
+	\Axiome, \Saetze, \Beweise, \Fachbegriffe\ und \Fachgebiete\ können in formaler Form gespeichert werden --- auch (noch) nicht oder unvollständig bewiesene \Saetze.
 	Dabei soll die übliche mathematische Schreibweise verwendet werden können.
 	%
-	\item \label{Eigenschaft-Definitionen} \defFt{Definitionen}:
-	Es können \Fachbegriffe\ für \Axiome, \Saetze, \Beweise\ und \Teilgebiete\ --- letztere mit eigenen \Axiomen, \Saetzen, \Beweisen, \Fachbegriffen\ und über- oder untergeordneten \Teilgebieten\ --- definiert werden.
-	Die Definitionen dürfen wiederum an dieser Stelle schon bekannte \Fachbegriffe\ und \Teilgebiete\ verwenden.
+	\item \label{Eigenschaft:Definitionen} \defFt{Definitionen}:
+	Es können \Fachbegriffe\ für \Axiome, \Saetze, \Beweise\ und \Fachgebiete\ --- letztere mit eigenen \Axiomen, \Saetzen, \Beweisen, \Fachbegriffen\ und über- oder untergeordneten \Fachgebieten\ --- definiert werden.
+	Die Definitionen dürfen wiederum an dieser Stelle schon bekannte \Fachbegriffe\ und \Fachgebiete\ verwenden.
 	%
-	\item \label{Eigenschaft-Pruefung} \defFt{Prüfung}:
+	\item \label{Eigenschaft:Pruefung} \defFt{Prüfung}:
 	Vorhandene \Beweise\ können automatisch geprüft werden.
 	%
-	\item \label{Eigenschaft-Ausgaben} \defFt{Ausgaben}:
-	Die \Axiome, \Saetze\ und \Beweise\ können in üblicher Schreibweise --- abhängig von Sprache und \Teilgebiet\ --- ausgegeben werden.
+	\item \label{Eigenschaft:Ausgaben} \defFt{Ausgaben}:
+	Die \Axiome, \Saetze\ und \Beweise\ können in üblicher Schreibweise --- abhängig von Sprache und \Fachgebiet\ --- ausgegeben werden.
 	%
-	\item \label{Eigenschaft-Auswertungen} \defFt{Auswertungen}:
-	Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \vrefsec{sec-Fragen} behandelten Fragen.
+	\item \label{Eigenschaft:Auswertungen} \defFt{Auswertungen}:
+	Zusätzlich zur Ausgabe der gespeicherten Daten sind verschiedene Auswertungen möglich, unter anderem für die meisten der unter \vrefsec{sec:Fragen} behandelten Fragen.
 	%
 	\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 \end{enumerate}
@@ -142,14 +128,14 @@ Damit \ASBA\ nicht umsonst erstellt wird und möglichst breite Verwendung findet
 \begin{enumerate}
 	\setcounter{enumi}{\value{Enumi}}% Nummerierung wird fortgesetzt.
 	%
-	\item \label{Eigenschaft-Lizenz} \defFt{Lizenz}:
+	\item \label{Eigenschaft:Lizenz} \defFt{Lizenz}:
 	Die Software ist \emph{Open Source}.
 	%
-	\item \label{Eigenschaft-Akzeptanz} \defFt{Akzeptanz}:
+	\item \label{Eigenschaft:Akzeptanz} \defFt{Akzeptanz}:
 	\ASBA\ wird von Mathematikern akzeptiert und verwendet.
 \end{enumerate}
 %
-\vreftab{tab-Fragen2Eigenschaften} zeigt, wie sich die Eigenschaften zu den Fragen \vrefinsec{sec-Fragen} verhalten.
+\vreftab{tab:Fragen2Eigenschaften} zeigt, wie sich die Eigenschaften zu den Fragen \vrefinsec{sec:Fragen} verhalten.
 Mit einem X werden die Spalten einer Zeile markiert, deren zugehörige Eigenschaften zur Beantwortung der entsprechenden Frage beitragen sollen.
 Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellten Fragen beantworten, was allerdings illusorisch ist.
 %
@@ -164,87 +150,87 @@ Idealerweise sollte die Erfüllung aller angegebenen Eigenschaften alle gestellt
 		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.5cm]%
 			{\textbf{Frage}\\~}{\\\textbf{Eigenschaft}}}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Eigenschaft-Daten}        \vsc Daten        }}
+			\mbox{\vsL\ref{Eigenschaft:Daten}        \vsc Daten        }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Eigenschaft-Definitionen} \vsc Definitionen }}
+			\mbox{\vsL\ref{Eigenschaft:Definitionen} \vsc Definitionen }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Eigenschaft-Pruefung}     \vsc Prüfung      }}
+			\mbox{\vsL\ref{Eigenschaft:Pruefung}     \vsc Prüfung      }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Eigenschaft-Ausgaben}     \vsc Ausgaben     }}
+			\mbox{\vsL\ref{Eigenschaft:Ausgaben}     \vsc Ausgaben     }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Eigenschaft-Auswertungen} \vsc Auswertungen }}
+			\mbox{\vsL\ref{Eigenschaft:Auswertungen} \vsc Auswertungen }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Eigenschaft-Lizenz}       \vsc Lizenz       }}
+			\mbox{\vsL\ref{Eigenschaft:Lizenz}       \vsc Lizenz       }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Eigenschaft-Akzeptanz}    \vsc Akzeptanz    }}
+			\mbox{\vsL\ref{Eigenschaft:Akzeptanz}    \vsc Akzeptanz    }}
 		\\\hline
-		\ref{Frage-Grundlagen}      & Grundlagen
+		\ref{Frage:Grundlagen}      & Grundlagen
 		& X & X & - & X & X & - & - \\
-		\ref{Frage-Basis}           & Basis
+		\ref{Frage:Basis}           & Basis
 		& X & X & - & X & X & - & - \\
-		\ref{Frage-Axiome}          & \Axiome
+		\ref{Frage:Axiome}          & \Axiome
 		& X & X & - & X & X & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage-Beweis}          & \Beweis
+		\ref{Frage:Beweis}          & \Beweis
 		& X & - & X & X & - & - & - \\
-		\ref{Frage-Konstruktion}    & Konstruktion
+		\ref{Frage:Konstruktion}    & Konstruktion
 		& X & - & - & X & - & - & - \\
-		\ref{Frage-Vergleiche}      & Vergleiche
+		\ref{Frage:Vergleiche}      & Vergleiche
 		& X & - & - & - & X & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage-Definitionen}    & Definitionen
+		\ref{Frage:Definitionen}    & Definitionen
 		& X & X & - & X & - & - & - \\
-		\ref{Frage-Abhaengigkeiten} & Abhängigkeiten
+		\ref{Frage:Abhaengigkeiten} & Abhängigkeiten
 		& X & - & - & X & - & - & - \\
-		\ref{Frage-Ueberblick}      & Überblick
+		\ref{Frage:Ueberblick}      & Überblick
 		& X & - & - & - & X & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage-Darstellung}     & \Darstellung
+		\ref{Frage:Darstellung}     & \Darstellung
 		& - & X & - & X & - & - & - \\
-		\ref{Frage-Forschung}       & Forschung
+		\ref{Frage:Forschung}       & Forschung
 		& X & - & - & - & X & - & - \\
 		\hline
 	\end{tabularx}
 	\caption{%
-		Fragen (\ref{sec-Fragen}) $\to$ Eigenschaften (\ref{sec-Eigenschaften})
+		Fragen (\ref{sec:Fragen}) $\to$ Eigenschaften (\ref{sec:Eigenschaften})
 	}
-	\label{tab-Fragen2Eigenschaften}% Erst nach '\caption'!
+	\label{tab:Fragen2Eigenschaften}% Erst nach '\caption'!
 \end{table}
 
 \section[Ziele]{\Ziele}% =======================================================
 \beginsection  {\Ziele}
-\label      {sec-Ziele}
+\label      {sec:Ziele}
 
-Um die Eigenschaften von \vrefsec{sec-Eigenschaften} zu erreichen, werden für \ASBA\ die folgenden \Ziele%
+Um die Eigenschaften von \vrefsec{sec:Eigenschaften} zu erreichen, werden für \ASBA\ die folgenden \Ziele%
 \footnote{%
 	Es sind eigentlich Anforderungen.
-	Dieser Begriff wird aber schon \vrefincha{cha-Design} verwendet.
+	Diese \Bezeichnung\ wird aber schon \vrefincha{cha:Design} verwendet.
 }
 gesetzt:
 \begin{enumerate}
 	%
-	\item \label{Ziel-Daten} \defFt{Daten}:
-	Die verteilte Datenbank von \ASBA\ enthält möglichst viele wichtige \Axiome, \Saetze, \Beweise, \Fachbegriffe, \Teilgebiete\ und \Ausgabeschemata%
+	\item \label{Ziel:Daten} \defFt{Daten}:
+	Die verteilte Datenbank von \ASBA\ enthält möglichst viele wichtige \Axiome, \Saetze, \Beweise, \Fachbegriffe, \Fachgebiete\ und \Ausgabeschemata%
 	\footnote{%
-		Um den Punkt~\ref{Eigenschaft-Ausgaben} \vrefvonsec{sec-Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \Ausgabeschemata\ benötigt, welche die Art der Ausgaben beschreiben.
+		Um den Punkt~\ref{Eigenschaft:Ausgaben} \vrefvonsec{sec:Eigenschaften} erfüllen zu können, werden noch fachgebietsspezifische \Ausgabeschemata\ benötigt, welche die Art der Ausgaben beschreiben.
 	}.
 	%
-	\item \label{Ziel-Form} \defFt{Form}:
+	\item \label{Ziel:Form} \defFt{Form}:
 	Die Daten liegen in formaler, geprüfter Form vor.
 	%
-	\item \label{Ziel-Eingaben} \defFt{Eingaben}:
-	Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise.
+	\item \label{Ziel:Eingaben} \defFt{Eingaben}:
+	Die Eingabe von Daten erfolgt in einer formalen \Syntax\ unter Verwendung der üblichen mathematischen Schreibweise.
 	%
-	\item \label{Ziel-Pruefung} \defFt{Prüfung}:
+	\item \label{Ziel:Pruefung} \defFt{Prüfung}:
 	\Beweise\ können automatisch geprüft\footnote{%
-		Hier soll \ASBA\ soll keine \Beweise\ finden --- das ist \Ziel\ von Punkt \ref{Ziel-Beweisunterstuetzung}, sondern nur vorhandene prüfen.
+		An dieser Stelle soll \ASBA\ soll keine \Beweise\ finden --- das ist \Ziel\ von Punkt \ref{Ziel:Beweisunterstuetzung}, sondern nur vorhandene prüfen.
 	}
 	werden.
 	%
-	\item \label{Ziel-Ausgaben} \defFt{Ausgaben}:
-	Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener \Ausgabeschemata\ erfolgen.
+	\item \label{Ziel:Ausgaben} \defFt{Ausgaben}:
+	Die Ausgabe kann in einer eindeutigen, formalen \Syntax\ gemäß vorhandener \Ausgabeschemata\ erfolgen.
 	%
-	\item \label{Ziel-Auswertungen} \defFt{Auswertungen}:
+	\item \label{Ziel:Auswertungen} \defFt{Auswertungen}:
 	Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
 	Insbesondere kann zu jedem \Beweis\ angegeben werden, wie lang er ist und welche \Axiome\ und \Saetze%
 	\footnote{%
@@ -252,49 +238,49 @@ gesetzt:
 	}
 	er benötigt.
 	%
-	\item \label{Ziel-Anpassbarkeit} \defFt{Anpassbarkeit}:
-	\Fachbegriffe\ und die \Darstellung\ bei der Ausgabe können mit Hilfe von --- gegebenenfalls unbenannten --- untergeordneten \Teilgebieten\ angepasst werden.
+	\item \label{Ziel:Anpassbarkeit} \defFt{Anpassbarkeit}:
+	\Fachbegriffe\ und die \Darstellung\ bei der Ausgabe können mit Hilfe von --- gegebenenfalls unbenannten --- untergeordneten \Fachgebieten\ angepasst werden.
 	%
-	\item \label{Ziel-Individualitaet} \defFt{Individualität}:
+	\item \label{Ziel:Individualitaet} \defFt{Individualität}:
 	\Axiome\ und \Saetze\ können für jeden \Beweis\ individuell vorausgesetzt werden.
 	Dabei sind fachgebietsspezifische \Fachbegriffe\ erlaubt.
 	%
-	\item \label{Ziel-Internet} \defFt{Internet}:
+	\item \label{Ziel:Internet} \defFt{Internet}:
 	Die Daten können auf mehrere Dateien verteilt sein.
 	Ein Teil davon --- oder sogar alle --- können im Internet liegen.
 	%
-	\item \label{Ziel-Kommunikation} \defFt{Kommunikation}:
-	Die Kommunikation mit \ASBA\ kann mit den \Fachbegriffen\ der einzelnen \Teilgebiete\ erfolgen.
+	\item \label{Ziel:Kommunikation} \defFt{Kommunikation}:
+	Die Kommunikation mit \ASBA\ kann mit den \Fachbegriffen\ der einzelnen \Fachgebiete\ erfolgen.
 	%
-	\item \label{Ziel-Zugriff} \defFt{Zugriff}:
+	\item \label{Ziel:Zugriff} \defFt{Zugriff}:
 	Der Zugriff auf \ASBA\ kann lokal und über das Internet erfolgen.
 	%
-	\item \label{Ziel-Unabhaengigkeit} \defFt{Unabhängigkeit}:
+	\item \label{Ziel:Unabhaengigkeit} \defFt{Unabhängigkeit}:
 	\ASBA\ kann online und offline arbeiten.
 	%
-	\item \label{Ziel-Rekursion} \defFt{Rekursion}:
+	\item \label{Ziel:Rekursion} \defFt{Rekursion}:
 	Es kann rekursiv über alle verwendeten Dateien --- auch solchen, die im Internet liegen --- ausgewertet werden.
 	%
-	\item \label{Ziel-Bedienbarkeit} \defFt{Bedienbarkeit}:
+	\item \label{Ziel:Bedienbarkeit} \defFt{Bedienbarkeit}:
 	\ASBA\ ist einfach zu bedienen.
 	%
-	\item \label{Ziel-Lizenz} \defFt{Lizenz}:
+	\item \label{Ziel:Lizenz} \defFt{Lizenz}:
 	Die Software ist \emph{Open Source}.
 	%
-	\item \label{Ziel-Zwischenspeicher} \defFt{Zwischenspeicher}:
+	\item \label{Ziel:Zwischenspeicher} \defFt{Zwischenspeicher}:
 	Wichtige Auswertungen können an vorhandenen Dateien angehängt oder separat in eigenen Dateien gespeichert werden.
 	%
-	\item \label{Ziel-Beweisunterstuetzung} \defFt{Beweisunterstützung}:
+	\item \label{Ziel:Beweisunterstuetzung} \defFt{Beweisunterstützung}:
 	\ASBA\ hilft bei der Erstellung von \Beweisen.
 	%
 \end{enumerate}
 %
-Punkt \ref{Ziel-Zwischenspeicher} wurde noch angefügt, damit \ASBA\ effizient arbeiten kann und um die Akzeptanz zu erhöhen.
-Um letzteres zu erreichen, dafür ist auch Punkt \ref{Ziel-Beweisunterstuetzung} nützlich.
+Punkt \ref{Ziel:Zwischenspeicher} wurde noch angefügt, damit \ASBA\ effizient arbeiten kann und um die Akzeptanz zu erhöhen.
+Um letzteres zu erreichen, dafür ist auch Punkt \ref{Ziel:Beweisunterstuetzung} nützlich.
 Es bietet sich ja auch an, die Fähigkeiten, die \ASBA\ mit der Prüfung von Beweisen haben wird, auch auf die Erstellung von Beweisen anzuwenden.
 Die Reihenfolge der \Ziele\ stellt noch keine Priorisierung fest.
 
-\vrefDtab{tab-Eigenschaften2Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften \vrefinsec{sec-Eigenschaften} verhalten.
+\vrefDtab{tab:Eigenschaften2Ziele} zeigt wieder, wie sich die Ziele zu den Eigenschaften \vrefinsec{sec:Eigenschaften} verhalten.
 Mit einem X werden wieder die Spalten einer Zeile markiert, deren zugehörige Ziele zur Sicherstellung der entsprechenden Eigenschaft beitragen sollen.
 Idealerweise sollte durch Erreichen aller aufgestellten Ziele \ASBA\ alle angegebenen Eigenschaften aufweisen, was wahrscheinlich ebenfalls illusorisch ist.
 %
@@ -304,67 +290,67 @@ Idealerweise sollte durch Erreichen aller aufgestellten Ziele \ASBA\ alle angege
 		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=3.6cm]%
 			{\textbf{Eigenschaft}\\~}{\\\\\textbf{Ziel}}}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Daten}                \vsc Daten              }}
+			\mbox{\vsL\ref{Ziel:Daten}                \vsc Daten              }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Form}                 \vsc Form               }}
+			\mbox{\vsL\ref{Ziel:Form}                 \vsc Form               }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Eingaben}             \vsc Eingaben           }}
+			\mbox{\vsL\ref{Ziel:Eingaben}             \vsc Eingaben           }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Pruefung}             \vsc Prüfung            }}
+			\mbox{\vsL\ref{Ziel:Pruefung}             \vsc Prüfung            }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Ausgaben}             \vsc Ausgaben           }}
+			\mbox{\vsL\ref{Ziel:Ausgaben}             \vsc Ausgaben           }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Auswertungen}         \vsc Auswertungen       }}
+			\mbox{\vsL\ref{Ziel:Auswertungen}         \vsc Auswertungen       }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Anpassbarkeit}        \vsc Anpassbarkeit      }}
+			\mbox{\vsL\ref{Ziel:Anpassbarkeit}        \vsc Anpassbarkeit      }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Individualitaet}      \vsc Individualität     }}
+			\mbox{\vsL\ref{Ziel:Individualitaet}      \vsc Individualität     }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Internet}             \vsc Internet           }}
+			\mbox{\vsL\ref{Ziel:Internet}             \vsc Internet           }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Kommunikation}        \vsc Kommunikation      }}
+			\mbox{\vsl\ref{Ziel:Kommunikation}        \vsc Kommunikation      }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Zugriff}              \vsc Zugriff            }}
+			\mbox{\vsl\ref{Ziel:Zugriff}              \vsc Zugriff            }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Unabhaengigkeit}      \vsc Unabhängigkeit     }}
+			\mbox{\vsl\ref{Ziel:Unabhaengigkeit}      \vsc Unabhängigkeit     }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Rekursion}            \vsc Rekursion          }}
+			\mbox{\vsl\ref{Ziel:Rekursion}            \vsc Rekursion          }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Bedienbarkeit}        \vsc Bedienbarkeit      }}
+			\mbox{\vsl\ref{Ziel:Bedienbarkeit}        \vsc Bedienbarkeit      }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Lizenz}               \vsc Lizenz             }}
+			\mbox{\vsl\ref{Ziel:Lizenz}               \vsc Lizenz             }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Zwischenspeicher}     \vsc Zwischenspeicher   }}
+			\mbox{\vsl\ref{Ziel:Zwischenspeicher}     \vsc Zwischenspeicher   }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Beweisunterstuetzung} \vsc Beweisunterstützung}}
+			\mbox{\vsl\ref{Ziel:Beweisunterstuetzung} \vsc Beweisunterstützung}}
 		\\\hline
-		\ref{Eigenschaft-Daten}         & Daten%
+		\ref{Eigenschaft:Daten}         & Daten%
 		& X & X & X & - & - & - & - & - & - & - & - & - & - & - & - & - & - \\
-		\ref{Eigenschaft-Definitionen}  & Definitionen%
+		\ref{Eigenschaft:Definitionen}  & Definitionen%
 		& X & - & X & - & - & - & - & - & - & - & - & - & - & - & - & - & - \\
-		\ref{Eigenschaft-Pruefung}      & Prüfung
+		\ref{Eigenschaft:Pruefung}      & Prüfung
 		& - & - & - & X & - & - & - & - & - & - & - & - & - & - & - & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Eigenschaft-Ausgaben}      & Ausgaben%
+		\ref{Eigenschaft:Ausgaben}      & Ausgaben%
 		& - & - & - & - & X & - & - & - & - & - & - & - & - & - & - & - & - \\
-		\ref{Eigenschaft-Auswertungen}  & Auswertungen%
+		\ref{Eigenschaft:Auswertungen}  & Auswertungen%
 		& - & - & - & - & - & X & - & - & - & - & - & - & - & - & - & - & - \\
-		\ref{Eigenschaft-Lizenz}        & Lizenz%
+		\ref{Eigenschaft:Lizenz}        & Lizenz%
 		& - & - & - & - & - & - & - & - & - & - & - & - & - & - & X & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Eigenschaft-Akzeptanz}     & Akzeptanz%
+		\ref{Eigenschaft:Akzeptanz}     & Akzeptanz%
 		& X & X & X & X & X & X & X & X & X & X & X & X & X & X & X & X & X \\
 		\hline
 	\end{tabularx}
 	\caption{%
-		Eigenschaften (\ref{sec-Eigenschaften}) $\to$ Ziele (\ref{sec-Ziele})
+		Eigenschaften (\ref{sec:Eigenschaften}) $\to$ Ziele (\ref{sec:Ziele})
 	}
-	\label{tab-Eigenschaften2Ziele}% Erst nach '\caption'!
+	\label{tab:Eigenschaften2Ziele}% Erst nach '\caption'!
 \end{table}
 
 \section     {Zusammenfassung}% ================================================
 \beginsection{Zusammenfassung}
-\label   {sec-Zusammenfassung}
+\label   {sec:Zusammenfassung}
 
 \begin{table}[H]
 	\begin{tabularx}{\linewidth}
@@ -372,80 +358,80 @@ Idealerweise sollte durch Erreichen aller aufgestellten Ziele \ASBA\ alle angege
 		\multicolumn{2}{l|}{\diagbox[height=3.0cm,width=4.0cm]%
 			{\textbf{Frage}\\~}{\\\\\textbf{Ziel}}}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Daten}                \vsc Daten              }}
+			\mbox{\vsL\ref{Ziel:Daten}                \vsc Daten              }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Form}                 \vsc Form               }}
+			\mbox{\vsL\ref{Ziel:Form}                 \vsc Form               }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Eingaben}             \vsc Eingaben           }}
+			\mbox{\vsL\ref{Ziel:Eingaben}             \vsc Eingaben           }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Pruefung}             \vsc Prüfung            }}
+			\mbox{\vsL\ref{Ziel:Pruefung}             \vsc Prüfung            }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Ausgaben}             \vsc Ausgaben           }}
+			\mbox{\vsL\ref{Ziel:Ausgaben}             \vsc Ausgaben           }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Auswertungen}         \vsc Auswertungen       }}
+			\mbox{\vsL\ref{Ziel:Auswertungen}         \vsc Auswertungen       }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Anpassbarkeit}        \vsc Anpassbarkeit      }}
+			\mbox{\vsL\ref{Ziel:Anpassbarkeit}        \vsc Anpassbarkeit      }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Individualitaet}      \vsc Individualität     }}
+			\mbox{\vsL\ref{Ziel:Individualitaet}      \vsc Individualität     }}
 		&\rotatebox{90}{%
-			\mbox{\vsL\ref{Ziel-Internet}             \vsc Internet           }}
+			\mbox{\vsL\ref{Ziel:Internet}             \vsc Internet           }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Kommunikation}        \vsc Kommunikation      }}
+			\mbox{\vsl\ref{Ziel:Kommunikation}        \vsc Kommunikation      }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Zugriff}              \vsc Zugriff            }}
+			\mbox{\vsl\ref{Ziel:Zugriff}              \vsc Zugriff            }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Unabhaengigkeit}      \vsc Unabhängigkeit     }}
+			\mbox{\vsl\ref{Ziel:Unabhaengigkeit}      \vsc Unabhängigkeit     }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Rekursion}            \vsc Rekursion          }}
+			\mbox{\vsl\ref{Ziel:Rekursion}            \vsc Rekursion          }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Bedienbarkeit}        \vsc Bedienbarkeit      }}
+			\mbox{\vsl\ref{Ziel:Bedienbarkeit}        \vsc Bedienbarkeit      }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Lizenz}               \vsc Lizenz             }}
+			\mbox{\vsl\ref{Ziel:Lizenz}               \vsc Lizenz             }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Zwischenspeicher}     \vsc Zwischenspeicher   }}
+			\mbox{\vsl\ref{Ziel:Zwischenspeicher}     \vsc Zwischenspeicher   }}
 		&\rotatebox{90}{%
-			\mbox{\vsl\ref{Ziel-Beweisunterstuetzung} \vsc Beweisunterstützung}}
+			\mbox{\vsl\ref{Ziel:Beweisunterstuetzung} \vsc Beweisunterstützung}}
 		\\\hline
-		\ref{Frage-Grundlagen}      & Grundlagen%
+		\ref{Frage:Grundlagen}      & Grundlagen%
 		& X & X & X & - & X & X & x & - & - & - & - & - & - & - & - & - & - \\
-		\ref{Frage-Basis}           & Basis%
+		\ref{Frage:Basis}           & Basis%
 		& X & X & X & - & X & X & x & x & - & - & - & - & - & - & - & - & - \\
-		\ref{Frage-Axiome}          & \Axiome%
+		\ref{Frage:Axiome}          & \Axiome%
 		& X & X & X & - & X & X & x & - & - & - & - & - & - & - & - & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage-Beweis}          & \Beweis%
+		\ref{Frage:Beweis}          & \Beweis%
 		& X & X & X & X & X & - & - & x & - & - & - & - & - & - & - & - & - \\
-		\ref{Frage-Konstruktion}    & Konstruktion%
+		\ref{Frage:Konstruktion}    & Konstruktion%
 		& X & X & X & - & X & - & - & x & - & - & - & - & - & - & - & - & - \\
-		\ref{Frage-Vergleiche}      & Vergleiche%
+		\ref{Frage:Vergleiche}      & Vergleiche%
 		& X & X & X & - & - & X & - & x & - & - & - & - & - & - & - & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage-Definitionen}    & Definitionen%
+		\ref{Frage:Definitionen}    & Definitionen%
 		& X & X & X & - & X & - & x & - & - & - & - & - & - & - & - & - & - \\
-		\ref{Frage-Abhaengigkeiten} & Abhängigkeiten%
+		\ref{Frage:Abhaengigkeiten} & Abhängigkeiten%
 		& X & X & X & - & X & - & x & - & - & - & - & - & - & - & - & - & - \\
-		\ref{Frage-Ueberblick}      & Überblick%
+		\ref{Frage:Ueberblick}      & Überblick%
 		& X & X & X & - & - & X & x & - & - & - & - & - & - & - & - & - & - \\
 		\hdashline[2pt/2pt]
-		\ref{Frage-Darstellung}     & \Darstellung%
+		\ref{Frage:Darstellung}     & \Darstellung%
 		& X & - & X & - & X & - & x & - & - & - & - & - & - & - & - & - & - \\
-		\ref{Frage-Forschung}       & Forschung%
+		\ref{Frage:Forschung}       & Forschung%
 		& X & X & X & - & - & X & x & - & - & - & - & - & - & - & - & - & - \\
 		\hline
 		\multicolumn{19}{l|}{Die nächsten beiden Punkte
-			sind Eigenschaften aus \vrefsec{sec-Eigenschaften}:}\\
+			sind Eigenschaften aus \vrefsec{sec:Eigenschaften}:}\\
 		\hline
-		\ref{Eigenschaft-Lizenz}    & Lizenz%
+		\ref{Eigenschaft:Lizenz}    & Lizenz%
 		& - & - & - & - & - & - & - & - & - & - & - & - & - & - & X & - & - \\
-		\ref{Eigenschaft-Akzeptanz} & Akzeptanz%
+		\ref{Eigenschaft:Akzeptanz} & Akzeptanz%
 		& X & X & X & X & X & X & X & X & X & X & X & X & X & X & X & X & X \\
 		\hline
 	\end{tabularx}
-	\caption{Fragen (\ref{sec-Fragen}) $\to$ Ziele (\ref{sec-Ziele})}
-	\label{tab-Fragen2Ziele}% Erst nach '\caption'!
+	\caption{Fragen (\ref{sec:Fragen}) $\to$ Ziele (\ref{sec:Ziele})}
+	\label{tab:Fragen2Ziele}% Erst nach '\caption'!
 \end{table}
 %
-\vrefDtab{tab-Fragen2Ziele} ist eine Kombination der Tabellen~ \ref{tab-Fragen2Eigenschaften} und~\ref{tab-Eigenschaften2Ziele} und zeigt, wie sich die Ziele \vrefinsec{sec-Ziele} zu den Fragen \vrefinsec{sec-Fragen} verhalten.
+\vrefDtab{tab:Fragen2Ziele} ist eine Kombination der Tabellen~ \ref{tab:Fragen2Eigenschaften} und~\ref{tab:Eigenschaften2Ziele} und zeigt, wie sich die Ziele \vrefinsec{sec:Ziele} zu den Fragen \vrefinsec{sec:Fragen} verhalten.
 Auch hier werden mit einem X die Spalten einer Zeile markiert, deren zugehörige Ziele für die Beantwortung der entsprechenden Frage nötig sind.
 Mit einem kleinen x werden sie markiert, wenn sie zur Beantwortung der Fragen nicht nötig, aber von Interesse sind.
 Idealerweise sollte das Erreichen aller aufgestellten Ziele alle gestellten Fragen beantworten, was natürlich auch illusorisch ist.
@@ -454,9 +440,9 @@ Idealerweise sollte das Erreichen aller aufgestellten Ziele alle gestellten Frag
 
 \section[Die Umgebung von \glsentrytext{ASBA}]{Die Umgebung von \ASBA}%
 \beginsection                                 {Die Umgebung von \ASBA}
-\label                                        {sec-Umgebung}
+\label                                        {sec:Umgebung}
 
-\vrefInfig{fig-Umgebung} wird beschrieben, welche Interaktionen \ASBA\ mit der Umgebung hat, \textdh\ welche Ein- und Ausgaben existieren und woher sie kommen \textbzw\ wohin sie gehen.
+\vrefInfig{fig:Umgebung} wird beschrieben, welche Interaktionen \ASBA\ mit der Umgebung hat, \textdh\ welche Ein- und Ausgaben existieren und woher sie kommen \textbzw\ wohin sie gehen.
 
 \begin{figure}[H]
 	\setlength\unitlength{1cm}
@@ -469,7 +455,7 @@ Idealerweise sollte das Erreichen aller aufgestellten Ziele alle gestellten Frag
 		% Hintergrund (grau) ===============================================
 		\color{gray}
 		% rechts: externes ASBA mit Pfeilen --------------------------------
-		\put(+3.00,+0.50){\framebox(2.40,1.60){\huge\textbf{\ASBA}}}
+		\put(+3.00,+0.50){\framebox(2.40,1.60){\huge\textbild{\ASBA}}}
 		\put(+3.00,+0.50){\makebox(2.40,1.50)[t]{\textbild{externes}}}
 		\put(+4.00,+2.12){\vector(-1,+4){0.35}}% <--- externes ASBA
 		\put(+4.00,+3.55){\vector(+1,-4){0.36}}% ---> externes ASBA
@@ -498,12 +484,12 @@ Idealerweise sollte das Erreichen aller aufgestellten Ziele alle gestellten Frag
 		\put(+1.53,+1.53){\vector(+1,+3){0.75}}% <--- ASBA
 		\put(+1.55,+2.70){\Marker{1}}
 		% links oben: Datenbank mit Pfeilen --------------------------------
-		\put(-7.00,+3.50){\Datenbank{1.50}{0.50}{1.00}{\large Datenbank}{}}
+		\put(-7.00,+3.50){\Datenbank{1.50}{0.50}{1.00}{\large \ASBA}{\large Datenbank}}
 		\put(-5.50,+3.75){\vector(+7,-4){3.95}}% ---> ASBA
 		\put(-1.51,+1.10){\vector(-7,+4){4.00}}% <--- ASBA
 		\put(-3.70,+2.40){\Marker{2}}
 		% links Mitte: Datei mit Pfeilen -----------------------------------
-		\put(-7.00,-1.00){\Datei{3.00}{2.00}{Datei}}
+		\put(-7.00,-1.00){\Datei{3.00}{2.00}{\ASBA}{Datei}}
 		\put(-5.50,-0.80){\vector(+4,+1){3.95}}% ---> ASBA
 		\put(-1.51,-0.10){\vector(-4,-1){4.00}}% <--- ASBA
 		\put(-3.70,-0.45){\Marker{3}}
@@ -518,171 +504,152 @@ Idealerweise sollte das Erreichen aller aufgestellten Ziele alle gestellten Frag
 		\put(+1.15,-0.51){\vector(0,-1){2.00}}% <--- ASBA
 		\put(+0.80,-1.52){\Marker{5}}
 		% rechts unten: Papier mit Pfeil -----------------------------------
-		\put(+5.60,-4.20){\Papier{+2.00}{+0.30}{Ausgabe}}
+		\put(+5.60,-4.20){\Papier{+2.00}{+0.30}{\ASBA}{Ausgabe}}
 		\put(+1.51,-0.55){\vector(+2,-1){+4.10}}% <--- ASBA
 		\put(+3.25,-1.55){\Marker{6}}
 		% Mitte: ASBA ------------------------------------------------------
 		\linethickness{3pt}
-		\put(-1.5,-0.5){\framebox(3.0,2.0){\Huge\textbf{\ASBA}}}
+		\put(-1.5,-0.5){\framebox(3.0,2.0){\Huge\textbild{\ASBA}}}
 	\end{picture}
 	\caption{Die Umgebung von \ASBA}
-	\label{fig-Umgebung}% Erst nach '\caption'!
+	\label{fig:Umgebung}% Erst nach '\caption'!
 \end{figure}
 
-In den \vrefinfig{fig-Umgebung} abgebildeten Datenflüssen (1) bis (6) und (a) bis (e) werden die folgenden Daten übertragen:
+In den \vrefinfig{fig:Umgebung} abgebildeten Datenflüssen (1) bis (6) und (a) bis (e) werden die folgenden Daten übertragen:
 \begin{itemize}
 	\newcommand*{\vonnach}  [2]{#1 $\rightarrow$ #2}
 	\newcommand*{\nachvon}  [2]{\vonnach{#2}{#1}}
 	\newcommand*{\hinundher}[2]{#1 $\leftrightarrow$ #2}
 	%
-	\item[(1)]\label{dat-Internet}
+	\item[(1)]\label{dat:Internet}
 	\begin{description}
-		\item[\vonnach{\ASBA}{Internet}]\label{dat-ausInternet}
+		\item[\vonnach{\ASBA}{Internet}]\label{dat:ausInternet}
 		Inhalte der Datenbank.
-		\item[\nachvon{\ASBA}{Internet}]\label{dat-inInternet}
+		\item[\nachvon{\ASBA}{Internet}]\label{dat:inInternet}
 		Inhalte der externen Datenbank.
 	\end{description}
 	%
-	\item[(2)]\label{dat-Datenbank}
+	\item[(2)]\label{dat:Datenbank}
 	\begin{description}
-		\item[\vonnach{Datenbank}{\ASBA}]\label{dat-ausDatenbank}
+		\item[\vonnach{Datenbank}{\ASBA}]\label{dat:ausDatenbank}
 		Inhalte der Datenbank und Antworten auf Datenbankanweisungen.
-		\item[\nachvon{Datenbank}{\ASBA}]\label{dat-inDatenbank}
+		\item[\nachvon{Datenbank}{\ASBA}]\label{dat:inDatenbank}
 		Inhalte der Datei, der externen Datenbank und Datenbankanweisungen.
 	\end{description}
 	%
-	\item[(3)]\label{dat-Datei}
+	\item[(3)]\label{dat:Datei}
 	\begin{description}
-		\item[\vonnach{Datei}{\ASBA}]\label{dat-ausDatei}
+		\item[\vonnach{Datei}{\ASBA}]\label{dat:ausDatei}
 		Inhalte der Datei.
-		\item[\nachvon{Datei}{\ASBA}]\label{dat-inDatei}
+		\item[\nachvon{Datei}{\ASBA}]\label{dat:inDatei}
 		Die Datei wird um zusätzliche Auswertungen ergänzt, \textzB\ ob die \Beweise\ korrekt sind, welche \Axiome\ und \Saetze\ --- auch externe aus dem Internet --- verwendet wurden, Länge des \Beweises\ usw.
 	\end{description}
 	%
-	\item[(4)]\label{dat-Terminal}
+	\item[(4)]\label{dat:Terminal}
 	\begin{description}
-		\item[\vonnach{Terminal}{\ASBA}]\label{dat-ausTerminal}
+		\item[\vonnach{Terminal}{\ASBA}]\label{dat:ausTerminal}
 		Anweisungen, Daten und Batchprogramme.
-		\item[\nachvon{Terminal}{\ASBA}]\label{dat-inTerminal}
+		\item[\nachvon{Terminal}{\ASBA}]\label{dat:inTerminal}
 		Antworten auf Anweisungen, Auswertungen usw.
 	\end{description}
 	Außerdem interaktive Ein- und Ausgabe durch einen Anwender, wie in (5) beschrieben.
 	%
-	\item[(5)]\label{dat-Anwender}
+	\item[(5)]\label{dat:Anwender}
 	\begin{description}
-		\item[\hinundher{Anwender}{\ASBA}]\label{dat-mitAnwender}
+		\item[\hinundher{Anwender}{\ASBA}]\label{dat:mitAnwender}
 		Interaktive Ein- und Ausgaben durch einen Anwender mit Komponenten von (3), (4) und (6).
 		--- Die Kommunikation läuft \textiAlg\ über ein Terminal.
 	\end{description}
 	%
-	\item[(6)]\label{dat-Ausgabe}
+	\item[(6)]\label{dat:Ausgabe}
 	\begin{description}
-		\item[\nachvon{Ausgabe}{\ASBA}]\label{dat-inAusgabe}
+		\item[\nachvon{Ausgabe}{\ASBA}]\label{dat:inAusgabe}
 		Inhalte von Datei und Datenbank in lesbarer Form, \textua\ mit Hilfe von \Ausgabeschemata\ auch mit \Formeln.
 		Die Ausgabe kann auch in eine Datei erfolgen,
 		\textzB\ im \LaTeX-Format.
 	\end{description}
 	%
-	\item[(a)]\label{dat-extInternet}
+	\item[(a)]\label{dat:extInternet}
 	\begin{description}
-		\item[\vonnach{Internet}{externes \ASBA}]\label{dat-ausextInternet}
+		\item[\vonnach{Internet}{externes \ASBA}]\label{dat:ausextInternet}
 		Inhalte der Datenbank.
-		\item[\nachvon{Internet}{externes \ASBA}]\label{dat-inextInternet}
+		\item[\nachvon{Internet}{externes \ASBA}]\label{dat:inextInternet}
 		Inhalte der externen Datenbank.
 	\end{description}
 	%
-xiom	\item[(b)]\label{dat-extDatenbank}
+	\item[(b)]\label{dat:extDatenbank}
 	\begin{description}
 		\item[\vonnach{externe Datenbank}{externes \ASBA}]
-		\label{dat-ausextDatenbank} Inhalte der externen Datenbank.
+		\label{dat:ausextDatenbank} Inhalte der externen Datenbank.
 		\item[\nachvon{externe Datenbank}{externes \ASBA}]
-		\label{dat-inextDatenbank} Inhalte der Datenbank.
+		\label{dat:inextDatenbank} Inhalte der Datenbank.
 	\end{description}
 	%
-	\item[(c)]\label{dat-AusgabeAnwender}
+	\item[(c)]\label{dat:AusgabeAnwender}
 	\begin{description}
-		\item[\vonnach{Ausgabe}{Anwender}]\label{dat-Ausgabe2Anwender}
+		\item[\vonnach{Ausgabe}{Anwender}]\label{dat:Ausgabe2Anwender}
 		Alle Daten der Ausgabe.
 	\end{description}
 	%
-	\item[(d)] \label{dat-AnwenderTerminal}
+	\item[(d)] \label{dat:AnwenderTerminal}
 	\begin{description}
-		\item[\hinundher{Anwender}{Terminal}]\label{dat-Anwender22Terminal}
+		\item[\hinundher{Anwender}{Terminal}]\label{dat:Anwender22Terminal}
 		Interaktive Ein- und Ausgabe durch einen Anwender, wie in (5) beschrieben.
 	\end{description}
 	%
-	\item[(e)] \label{dat-TerminalDatei}
+	\item[(e)] \label{dat:TerminalDatei}
 	\begin{description}
-		\item[\hinundher{Terminal}{Datei}]\label{dat-Terminal22Datei}
+		\item[\hinundher{Terminal}{Datei}]\label{dat:Terminal22Datei}
 		Erstellen und Bearbeiten der Datei durch einen Anwender.
 		--- siehe (d)
 	\end{description}
 	%
 \end{itemize}
-Die Datenflüsse (a) bis (e) erfolgen außerhalb von \ASBA
-und werden nicht weiter behandelt.
+Die Datenflüsse (a) bis (e) erfolgen außerhalb von \ASBA\ und werden nicht weiter behandelt.
 
 Die Datenbank und die Datei enthalten im Prinzip die gleichen Daten, wobei sie in der Datei im Textformat in lesbarer Form und in der Datenbank in einem internen Format vorliegen.
 Zudem enthält die Datenbank \textiAlg\ sehr viel mehr Daten. Es handelt sich dabei jeweils um die folgenden Daten:
 \begin{description}
-	%
-	\item[\Axiome]          \label{Daten-Axiom}
-	Ein \defTxt{\Axiom} ist eine \Aussage, die nicht aus anderen \Aussagen\ abgeleitet werden kann.
-	Es können wie bei \Saetzen\ \Praemissen\ vorhanden sein, aber keine \Beweise.
-	%
-	\item[\Saetze]          \label{Daten-Satz}
-	Ein \defTxt{\Satz} besteht aus einer Anzahl von \Praemissen\ und \Konklusionen\ und einem \Beweis, der die \Konklusionen\ aus den \Praemissen\ ableitet.
-	Letztere können \Axiome\ und andere \Saetze\ sein, auf die dann verwiesen wird.
-	%
-	\item[\Beweise]         \label{Daten-Beweis}
-	Ein \defTxt{\Beweis} besteht aus einer Folge von \Beweisschritten, die aus gegebenen \Praemissen\ \Konklusionen\ ableitet.
-	%
-	\item[\Fachbegriffe]    \label{Daten-Fachbegriff}
-	Ein \defTxt{\Fachbegriff} ist ein Name für ein Objekt \textbzw\ eine Eigenschaft in einem bestimmten \Teilgebiet.
-	%
-	\item[\Teilgebiete]     \label{Daten-Teilgebiet}
-	Ein \defTxt{\Teilgebiet} ist ein Teil der Mathematik mit einer zugehörigen Basis aus \Axiomen, \Saetzen, \Fachbegriffen\ und \Ausgabeschemata, quasi eine untergeordnete Datenbank.
-	%
-	\item[\Ausgabeschemata] \label{Daten-Ausgabeschema}
-	Eine \defTxt{\Ausgabeschema} ist eine Beschreibung, wie ein bestimmtes mathematisches Objekt ausgegeben werden soll.
-	Dies kann \textzB\ ein Stück \LaTeX-Code mit entsprechenden Parametern sein.
-	%
-	\item[\Auswertungen]     \label{Daten-Auswertung}
-	Statistische und andere \Auswertungen, die bestimmten Elementen der Datei \textbzw\ Datenbank zugeordnet sind.
-	\textZB\ können zu einem \Satz\ alle für einen \Beweis\ notwendigen \Axiome\ angegeben werden --- als Verweise.
-	%
+	\item[\Axiome]         \label{Daten:Axiom}         \AxiomDescription
+	\item[\Saetze]         \label{Daten:Satz}          \SatzDescription
+	\item[\Beweise]        \label{Daten:Beweis}        \BeweisDescription
+	\item[\Fachbegriffe]   \label{Daten:Fachbegriff}   \FachbegriffDescription
+	\item[\Fachgebiete]    \label{Daten:Fachgebiet}    \FachgebietDescription
+	\item[\Ausgabeschemata]\label{Daten:Ausgabeschema} \AusgabeschemaDescription
+	\item[\Auswertungen]   \label{Daten:Auswertung}    \AuswertungDescription
 \end{description}
-Die Daten können interne und externe Verweise enthalten.
+Alle Daten können interne und externe Verweise enthalten.
 
+\color{gray}%%% Anfang grauer Text
 \section[Basis von Beweisen]{Basis von \Beweisen}% =============================
 \beginsection               {Basis von \Beweisen}
-\label                             {sec-BeweisBasis}
+\label                             {sec:BeweisBasis}
 
 Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehens bei \Beweisen\ definiert werden.%
 \footnote{\seename~\cite{bib:Kalkuel}}
 
 \begin{description}
 	%
-	\item[Die \logischeDarstellung] von mathematischen \Aussagen, wozu auch \Axiome\ und \Saetze\ gehören, erfolgt, da es sich immer um \Formeln\ handelt, an besten mit \Zeichenfolgen%
+	\item[Die \logischeDarstellung] von mathematischen \Aussagen, wozu auch \Axiome\ und \Saetze\ gehören, erfolgt, da es sich immer um \Formeln\ handelt, an besten mit \Symbolfolgen%
 	\footnote{%
-		Die \interneDarstellung\ der \Zeichenfolgen\ kann zur Optimierung des Programms von der \logischenD\ abweichen.
+		Die \interneDarstellung\ der \Symbolfolgen\ kann zur Optimierung von \ASBA\ von der \logischenD\ abweichen.
 	},
 	\textdh\ Folgen von Zeichen und Symbolen, in denen Zwischenraum --- insbesondere Leerstellen --- nicht zählen.
-	Mehrdimensionale \Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Zeichenfolgen dargestellt werden.%
+	Mehrdimensionale \Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Symbolfolgen dargestellt werden.%
 	\footnote{%
 		\textZB\ könnte man eine 2$\times$2-Matrix
 		$\begin{bmatrix} a & b \\ c & d \end{bmatrix}$
 		auch darstellen als Folge von Zeilen: \seqqt{$[(a,b),(c,d)]$}, oder noch einfacher: \seqqt{$[a,b;c,d]$}.
 		In \ASBA\ wird die \LaTeX-Syntax verwendet.
-		Damit wird die soeben angegebene Matrix codiert durch \seqqt{\$\textbackslash begin\{bmatrix\}a\&b\textbackslash\textbackslash c\&d\textbackslash end\{bmatrix\}\$}.
+		\\Damit wird die soeben angegebene Matrix codiert durch \seqqt{\$\textbackslash begin\{bmatrix\}a\&b\textbackslash\textbackslash c\&d\textbackslash end\{bmatrix\}\$}.
 	}
-	\Beweise\ sind letztendlich nichts anderes, als erlaubte \Transformationen\ dieser \Zeichenfolgen.
+	\Beweise\ sind letztendlich nichts anderes, als erlaubte \Transformationen\ dieser \Symbolfolgen.
 	%
-	\item[\Bausteine] sind Grundelemente, auch \defFt{Zeichen} oder \defFt{(Satz-)Buchstaben} genannt, aus denen die Zeichenfolgen bestehen dürfen, und müssen definiert werden.
+	\item[\Bausteine] sind Grundelemente, auch \defFt{Zeichen} oder \defFt{(Satz-)Buchstaben} genannt, aus denen die Symbolfolgen bestehen dürfen, und müssen definiert werden.
 	%
 	\item[\Formationsregeln] dienen zur Festlegung, wie man aus den Bausteinen Ausdrücke erzeugen kann, und müssen ebenfalls definiert werden.
 	%
-	\item[\Saetze] lassen sich als eine \Menge\ von \Formeln, den \Praemissen, wozu auch \Axiome\ und andere \Saetze\ gehören können, einer weiteren \Menge\ von \Formeln\ (\Zeichenfolgen), den \Konklusionen, und der Angabe eines \Beweises\ darstellen.
+	\item[\Saetze] lassen sich als eine \Menge\ von \Formeln, den \Praemissen, wozu auch \Axiome\ und andere \Saetze\ gehören können, einer weiteren \Menge\ von \Formeln\ (\Symbolfolgen), den \Konklusionen, und der Angabe eines \Beweises\ darstellen.
 	%
 	\item[\Beweise] zu gegebenen \Praemissen\ und \Konklusionen\ lassen sich als \Folge\ von \Transformationen, beginnend mit den \Praemissen\ und endend mit den \Konklusionen, darstellen.
 	%
@@ -690,5 +657,6 @@ Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehe
 	\footnote{\seename~\cite{bib:Rautenberg,bib:Schlussregel,bib:NatuerlichesSchliessen}}
 	%
 \end{description}
+\color{black}%%% Ende grauer Text
 
 \Endchapter

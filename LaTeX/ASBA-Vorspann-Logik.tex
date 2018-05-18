@@ -1,7 +1,7 @@
 %%############################################################################%%
 %%                                                                            %%
-%% Datei:  ASBA-Vorspann-Mathematik.tex                                       %%
-%% Inhalt: Vorspann Mathematik für ASBA                                       %%
+%% Datei:  ASBA-Vorspann-Logik.tex                                            %%
+%% Inhalt: Vorspann Logik für ASBA                                            %%
 %%                                                                            %%
 %% Copyright (C) 2017  Winfried Teschers                                      %%
 %%                                                                            %%
@@ -32,7 +32,7 @@
 % !TeX spellcheck = de_DE
 
 % Glossareinträge werden in "ASBA-Vorspann-Glossar" definiert.
-% Elemente, die in anderen Dateien als "ASBA-Mathematik.tex" verwendet werden, werden in "ASBA-Vorspann.tex" definiert.
+% Elemente, die in anderen Dateien als "ASBA-Logik.tex" verwendet werden, werden in "ASBA-Vorspann.tex" definiert.
 % Namensbestandteile mit besonderer Bedeutung:
 %   Bezeichnungen:
 %     <Name>Set     = Menge    von <Name>n (keine bis alle)
@@ -89,10 +89,10 @@
 \newcommand*{\RawMtsImp}     {\mathrel{\Rightarrow}}% von ... folgt          ...
 \newcommand*{\RawMtsRep}     {\mathrel{\Leftarrow}}%      ... folgt von      ...
 \newcommand*{\RawMtsEquiv}   {\mathrel{\Leftrightarrow}}% .. genau dann, wenn ..
-\newcommand*{\RawMtsEq}      {\mathrel{=\mkern-10mu=}}%          ...  gleich ...
-\newcommand*{\RawMtsEqN}     {\mathrel{=\mkern-16mu/\mkern-16mu=}}% . ungleich .
+\newcommand*{\RawMtsEq}      {\mathrel{=\mkern-8mu=}}%           ...  gleich ...
+\newcommand*{\RawMtsEqN}     {\mathrel{=\mkern-15mu/\mkern-15mu=}}% . ungleich .
 \newcommand*{\RawMtsAequiv}  {\mathrel{\equiv}}%     ...       äquivalent zu ...
-\newcommand*{\RawMtsNAequiv} {\mathrel{\nequiv}}%    ... nicht äquivalent zu ...
+\newcommand*{\RawMtsAequivN} {\mathrel{\nequiv}}%    ... nicht äquivalent zu ...
 \newcommand*{\RawMtsDefEquiv}{\mathrel{:\mkern-2mu\RawMtsEquiv}}% def.gemäß -"-
 \newcommand*{\RawMtsDefEq}   {\mathrel{:\mkern-2mu\RawMtsEq}}% def.gemäß gleich
 \newcommand*{\RawMtsUnd}     {\mathbin{\mid}}%nur in Schlussregeln: ... und  ...
@@ -104,6 +104,7 @@
 \newcommand*{\RawMtsNi}       {\ni}%       (die Menge) enthält nicht das Element
 \newcommand*{\RawMtsInN}      {\notin}%     ist  Element aus (der Menge)
 \newcommand*{\RawMtsNiN}      {\notni}%    (die Menge) enthält nicht das Element
+\newcommand*{\RawMtsSetSep}   {\mid}%  Der Trennstrich in einer Mengendefinition
 % Mengenrelationen (für Mengen) ------------------------------------------------
 \newcommand*{\RawMtsSubset}   {\subset}%    ist        echte  Teilmenge von
 \newcommand*{\RawMtsSubsetEq} {\subseteq}%  ist (gleich oder) Teilmenge von
@@ -124,6 +125,8 @@
 \newcommand*{\RawMtsSeqNi}    {\sqsupset\mkern-19mu-}%  (die Folge) enthält nicht das Symbol
 \newcommand*{\RawMtsSeqInN}   {\nsqsubset\mkern-19mu-}% ist  Komponente (der Folge)
 \newcommand*{\RawMtsSeqNiN}   {\nsqsupset\mkern-19mu-}% (die Folge) enthält nicht das Symbol
+% Folgenoperationen (für Folgen) -----------------------------------------------
+\newcommand*{\RawMtsCat}      {\sqcup}%       Verkettung           von Folgen
 % Folgenrelationen (für Folgen) ------------------------------------------------
 \newcommand*{\RawMtsSubseq}   {\sqsubset}%    ist        echte  Teilmenge von
 \newcommand*{\RawMtsSubseqEq} {\sqsubseteq}%  ist (gleich oder) Teilmenge von
@@ -162,9 +165,9 @@
 \newcommand*{\RawOjkEq}       {=}%          Gleichheit   in Formeln
 \newcommand*{\RawOjkEqN}      {\ne}%        Ungleichheit in Formeln
 % Quantoren --------------------------------------------------------------------
-\newcommand*{\RawMtsForall}   {\forall}%   für alle          <x>         gilt:
+\newcommand*{\RawMtsForall}   {\forall}%     für alle          <x>         gilt:
 \newcommand*{\RawMtsExists}   {\exists}%     es gibt       ein <x> für das gilt:
-\newcommand*{\RawMtsExione}   {\dot\exists}% es gibt genau ein <x> für das gilt:
+\newcommand*{\RawMtsExione}   {\exists!}%    es gibt genau ein <x> für das gilt:
 \newcommand*{\RawOjkForall}   {\bigwedge}%   für alle          <x>         gilt:
 \newcommand*{\RawOjkExists}   {\bigvee}%     es gibt       ein <x> für das gilt:
 \newcommand*{\RawOjkExione}   {\dot\bigvee}% es gibt genau ein <x> für das gilt:
@@ -174,7 +177,8 @@
 \newcommand*{\RawMtsFktArrow} {\rightarrow}
 
 % Neue Metaoperationen ---------------------------------------------------------
-\DeclareMathOperator{\RawMtsGraph}  {\StrMtsGraph}% Graph von        Funktion/Relation
+\DeclareMathOperator{\RawMtsValue}  {\StrMtsValue}% Wert  einer      Formel
+\DeclareMathOperator{\RawMtsGraph}  {\StrMtsGraph}% Graph einer      Funktion/Relation
 \DeclareMathOperator{\RawMtsTraeger}{\StrMtsTraeger}% Trägermenge einer       Relation
 \DeclareMathOperator{\RawMtsStel}   {\StrMtsStel}% Stelligkeit einer Funktion/Relation
 \DeclareMathOperator{\RawMtsStelF}  {\StrMtsStel_f}% Stelligkeit für [F]unktionen
@@ -246,7 +250,9 @@
 \newcommand*{\RawMtsMn}               {M^n}
 
 % weitere Mengen
+\newcommand*{\RawMtsUniversum}        {\SetOp{\LtrMtsUniversum}}%  Diskursuniversum
 \newcommand*{\RawMtsSprache}          {\SetFt{\LtrMtsSprache}}% Formel-Sprache
+\newcommand*{\RawMtsRelAllDerive}     {\ensuremath{\RawMtsRel(\RawMtsPot(\RawMtsSprache))}}%   R(P(L))
 % ... - mit Verweis ins Glossar
 \newcommand*{\MtsPotSprache}          {\ensuremath{\MtsPot(\MtsSprache)}}%        P(L)
 \newcommand*{\MtsPotfSprache}         {\ensuremath{\MtsPotf(\MtsSprache)}}%      Pe(L)
@@ -293,8 +299,9 @@
 
 % Prädikate und praedikatähnliche Makros =======================================
 
-\newcommand*{\FunktionDef}[3]{\ensuremath{   #1 \MtsFktSep #2 \MtsFktArrow #3 }}
-\newcommand*   {\MengeDef}[2]{\ensuremath{\{ #1 \MtsSetSep #2               \}}}
+\newcommand*{\FunktionDef}[3]{\ensuremath{   #1    \MtsFktSep #2 \MtsFktArrow #3 }}
+\newcommand*   {\MengeDef}[2]{\ensuremath{\{ #1    \MtsSetSep #2               \}}}% mit Verweis ins Glossar
+\newcommand*{\RawMengeDef}[2]{\ensuremath{\{ #1 \RawMtsSetSep #2               \}}}% ohne Verweis ins Glossar
 
 % sonstige Makro für den Mathematiksatz ########################################
 

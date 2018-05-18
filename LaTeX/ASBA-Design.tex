@@ -33,21 +33,21 @@
 
 \chapter     {Design}% #########################################################
 \beginchapter{Design}
-\label   {cha-Design}
+\label   {cha:Design}
 
 Dieses Projekt soll Open Source sein.
 Daher gilt für die Dokumente die \emph{GNU Free Documentation License (FDL)} und für die Software die \emph{GNU Affero General Public License (APGL)}.
-Die \emph{GNU General Public License (GPL)} reicht für die Software nicht aus, da das Programm auch mittels eines Servers betrieben werden kann und soll.
+Die \emph{GNU General Public License (GPL)} reicht für die Software nicht aus, da (ein Teil von) \ASBA\ auch mittels eines Servers betrieben werden kann und soll.
 Damit das Projekt gegebenenfalls durch verschiedene Entwickler gleichzeitig bearbeitet werden kann und wegen des Konfigurationsmanagements wurde es als ein GitHub Projekt erstellt (\citesee{bib:ASBA}).
 
 Wenn die Lizenzen nicht mitgeliefert wurden, können sie unter \url{http://www.gnu.org/licenses/} gefunden werden.
 
 \section     {Anforderungen}% ==================================================
 \beginsection{Anforderungen}
-\label   {sec-Anforderungen}
+\label   {sec:Anforderungen}
 
-Die Anforderungen ergeben sich zunächst aus den Zielen \vrefinsec{sec-Ziele}.
-Die beiden Ziele~\ref{Ziel-Daten}~\emph{Daten} und~\ref{Ziel-Lizenz}~\emph{Lizenz} sind für die Entwicklung von \ASBA\ von sekundärer Bedeutung und werden daher in diesem \sectionname\ nicht übernommen.
+Die Anforderungen ergeben sich zunächst aus den Zielen \vrefinsec{sec:Ziele}.
+Die beiden Ziele~\ref{Ziel:Daten}~\emph{Daten} und~\ref{Ziel:Lizenz}~\emph{Lizenz} sind für die Entwicklung von \ASBA\ von sekundärer Bedeutung und werden daher in diesem \sectionname\ nicht übernommen.
 Die anderen Ziele werden noch verfeinert.
 
 \todo{Ziele aus Abschnitt "'Ziele"' in Anforderungen umwandeln.}
@@ -55,105 +55,105 @@ Die anderen Ziele werden noch verfeinert.
 %
 \begin{enumerate}
 
-	\item \label{Anforderung-Form} \defFt{Form}:
+	\item \label{Anforderung:Form} \defFt{Form}:
 	Die Daten liegt in formaler, geprüfter Form vor.
-	--- \vrefseeziel{Ziel-Form}
+	--- \vrefseeziel{Ziel:Form}
 
-	\item \label{Anforderung-Eingaben} \defFt{Eingaben}:
-	Die Eingabe von Daten erfolgt in einer formalen Syntax unter Verwendung der üblichen mathematischen Schreibweise.
+	\item \label{Anforderung:Eingaben} \defFt{Eingaben}:
+	Die Eingabe von Daten erfolgt in einer formalen \Syntax\ unter Verwendung der üblichen mathematischen Schreibweise.
 	Folgende Daten können eingegeben werden:
 	\begin{enumerate}
 		\item \Axiome
 		\item \Saetze
 		\item \Beweise
 		\item \Fachbegriffe
-		\item \Teilgebiete
+		\item \Fachgebiete
 		\item \Ausgabeschemata
 	\end{enumerate}
-	Dabei sind alle Begriffe nur innerhalb eines Teilgebiets und seiner untergeordneten \Teilgebiete\ gültig, solange sie nicht umdefiniert werden.
-	Das oberste \Teilgebiet\ ist die ganze Mathematik.
-	--- \vrefseeziel{Ziel-Eingaben}
+	Dabei sind alle \Begriffe\ nur innerhalb eines \Fachgebiets\ und seiner untergeordneten \Fachgebiete\ gültig, solange sie nicht umdefiniert werden.
+	Das oberste \Fachgebiet\ ist die ganze Mathematik.
+	--- \vrefseeziel{Ziel:Eingaben}
 
-	\item \label{Anforderung-Pruefung} \defFt{Prüfung}:
+	\item \label{Anforderung:Pruefung} \defFt{Prüfung}:
 	Vorhandene \Beweise\ können automatisch geprüft werden.
-	--- \vrefseeziel{Ziel-Pruefung}
+	--- \vrefseeziel{Ziel:Pruefung}
 
-	\item \label{Anforderung-Ausgaben} \defFt{Ausgaben}:
+	\item \label{Anforderung:Ausgaben} \defFt{Ausgaben}:
 	Die Ausgabe kann in einer eindeutigen, formalen Syntax gemäß vorhandener \Ausgabeschemata\ erfolgen.
-	--- \vrefseeziel{Ziel-Ausgaben}
+	--- \vrefseeziel{Ziel:Ausgaben}
 
-	\item \label{Anforderung-Auswertungen} \defFt{Auswertungen}:
-	Zusätzlich zur Ausgabe der Daten sind verschiedene Auswertungen möglich.
+	\item \label{Anforderung:Auswertungen} \defFt{\Auswertungen}:
+	Zusätzlich zur Ausgabe der Daten sind verschiedene \Auswertungen\ möglich.
 	Insbesondere kann zu jedem \Beweis\ angegeben werden, wie lang er ist und welche \Axiome\ und \Saetze%
 	\footnote{\Saetze, die quasi als \Axiome\ verwendet werden.}
 	er benötigt.
-	--- \vrefseeziel{Ziel-Auswertungen}
+	--- \vrefseeziel{Ziel:Auswertungen}
 
-	\item \label{Anforderung-Anpassbarkeit} \defFt{Anpassbarkeit}:
-	\Fachbegriffe\ und die \Darstellung\ bei der Ausgabe können mit Hilfe von --- gegebenenfalls unbenannten --- untergeordneten \Teilgebieten\ angepasst werden.
-	--- \vrefseeziel{Ziel-Anpassbarkeit}
+	\item \label{Anforderung:Anpassbarkeit} \defFt{Anpassbarkeit}:
+	\Fachbegriffe\ und die \Darstellung\ bei der Ausgabe können mit Hilfe von --- gegebenenfalls unbenannten --- untergeordneten \Fachgebieten\ angepasst werden.
+	--- \vrefseeziel{Ziel:Anpassbarkeit}
 
-	\item \label{Anforderung-Individualitaet} \defFt{Individualität}:
+	\item \label{Anforderung:Individualitaet} \defFt{Individualität}:
 	\Axiome\ und \Saetze\ können für jeden \Beweis\ individuell vorausgesetzt werden.
 	Dabei sind fachgebietsspezifische \Fachbegriffe\ erlaubt.
-	--- \vrefseeziel{Ziel-Individualitaet})
+	--- \vrefseeziel{Ziel:Individualitaet})
 
-	\item \label{Anforderung-Internet} \defFt{Internet}:
+	\item \label{Anforderung:Internet} \defFt{Internet}:
 	Die Daten können auf mehrere Dateien verteilt sein.
 	Ein Teil davon --- oder sogar alle --- können im Internet liegen.
-	--- \vrefseeziel{Ziel-Internet}
+	--- \vrefseeziel{Ziel:Internet}
 
-	\item \label{Anforderung-Kommunikation} \defFt{Kommunikation}:
-	Die Kommunikation mit \ASBA\ kann mit den \Fachbegriffen\ der einzelnen \Teilgebiete\ erfolgen.
-	--- \vrefseeziel{Ziel-Kommunikation}
+	\item \label{Anforderung:Kommunikation} \defFt{Kommunikation}:
+	Die Kommunikation mit \ASBA\ kann mit den \Fachbegriffen\ der einzelnen \Fachgebiete\ erfolgen.
+	--- \vrefseeziel{Ziel:Kommunikation}
 
-	\item \label{Anforderung-Zugriff} \defFt{Zugriff}:
+	\item \label{Anforderung:Zugriff} \defFt{Zugriff}:
 	Der Zugriff auf \ASBA\ kann lokal und über das Internet erfolgen.
-	--- \vrefseeziel{Ziel-Zugriff}
+	--- \vrefseeziel{Ziel:Zugriff}
 
-	\item \label{Anforderung-Unabhaengigkeit} \defFt{Unabhängigkeit}:
+	\item \label{Anforderung:Unabhaengigkeit} \defFt{Unabhängigkeit}:
 	\ASBA\ kann offline und online arbeiten.
-	--- \vrefseeziel{Ziel-Unabhaengigkeit}
+	--- \vrefseeziel{Ziel:Unabhaengigkeit}
 
-	\item \label{Anforderung-Rekursion} \defFt{Rekursion}:
+	\item \label{Anforderung:Rekursion} \defFt{Rekursion}:
 	Es kann rekursiv über alle verwendeten Dateien --- auch solchen, die im Internet liegen --- ausgewertet werden.
-	--- \vrefseeziel{Ziel-Rekursion}
+	--- \vrefseeziel{Ziel:Rekursion}
 
-	\item \label{Anforderung-Bedienbarkeit} \defFt{Bedienbarkeit}:
+	\item \label{Anforderung:Bedienbarkeit} \defFt{Bedienbarkeit}:
 	\ASBA\ ist einfach zu bedienen.
-	--- \vrefseeziel{Ziel-Bedienbarkeit}
+	--- \vrefseeziel{Ziel:Bedienbarkeit}
 
-	\item \label{Anforderung-Zwischenspeicher} \defFt{Zwischenspeicher}:
-	Wichtige Auswertungen können an vorhandenen Dateien angehängt oder separat in eigenen Dateien gespeichert werden.
-	--- \vrefseeziel{Ziel-Zwischenspeicher}
+	\item \label{Anforderung:Zwischenspeicher} \defFt{Zwischenspeicher}:
+	Wichtige \Auswertungen\ können an vorhandenen Dateien angehängt oder separat in eigenen Dateien gespeichert werden.
+	--- \vrefseeziel{Ziel:Zwischenspeicher}
 
-	\item \label{Anforderung-Beweisunterstuetzung} \defFt{Beweisunterstützung}:
+	\item \label{Anforderung:Beweisunterstuetzung} \defFt{Beweisunterstützung}:
 	\ASBA\ hilft bei der Erstellung von \Beweisen.
-	--- \vrefseeziel{Ziel-Beweisunterstuetzung}
+	--- \vrefseeziel{Ziel:Beweisunterstuetzung}
 
 \end{enumerate}
 
 \section[Axiome]{\Axiome}% =====================================================
 \beginsection   {\Axiome}
-\label       {sec-Axiome}
+\label       {sec:Axiome}
 \todo{\Axiome\ auswählen und definieren.}
 %TODO Axiome auswählen und definieren.
 
 \section[Beweise]{\Beweise}% ===================================================
 \beginsection    {\Beweise}
-\label        {sec-Beweise}
-\todo{\Schlussregeln\ auswählen und Beweise definieren.}
+\label        {sec:Beweise}
+\todo{\Schlussregeln\ auswählen und \Beweise\ definieren.}
 %TODO Schlussregeln auswählen und Beweise definieren.
 
 \section     {Datenstruktur}% ==================================================
 \beginsection{Datenstruktur}
-\label   {sec-Datenstruktur}
+\label   {sec:Datenstruktur}
 \todo{Datenstruktur abstrakt und in XML definieren.}
 %TODO Datenstruktur abstrakt und in XML definieren.
 
 \section     {Bausteine}% ======================================================
 \beginsection{Bausteine}
-\label   {sec-Bausteine}
+\label   {sec:Bausteine}
 \todo{Bausteine? definieren.}
 %TODO Bausteine? definieren.
 

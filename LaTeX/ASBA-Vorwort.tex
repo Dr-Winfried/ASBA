@@ -33,7 +33,7 @@
 
 %\chapter                     {Vorwort}% #######################################
 \phantomsection% sichert korrekten Link im Inhaltsverzeichnis
-\label                    {cha-Vorwort}
+\label                    {cha:Vorwort}
 ~\vskip 1.6cm
 {\huge\textbf{\textsf         {Vorwort}}}
 \vskip 0.8cm
@@ -41,7 +41,7 @@
 \addcontentsline{toc}{chapter}{Vorwort}% Eintrag ins Inhaltsverzeichnis
 
 Schon während meiner aktiven Zeit habe ich davon geträumt, ein Programm zu erstellen, mit dem man mathematische \Saetze\ und \Beweise\ speichern und überprüfen kann.
-Es sollte auch statistische Auswertungen beherrschen und \textua\ Fragen beantworten können wie \textzB\
+Es sollte auch statistische \Auswertungen\ beherrschen und \textua\ Fragen beantworten können wie \textzB\
 "`Welche \Axiome\ sind zum \Beweis\ eines bestimmten \Satzes\ erforderlich?"' oder
 "`Wie viele \Beweisschritte\ erfordert ein bestimmter \Beweis?"'.
 Ein \Beweis\ mit weniger \Axiomen\ und weniger \Beweisschritten\ wäre dann vorzuziehen.
@@ -58,15 +58,18 @@ Dieses für mich neue Textsystem war eine große, spannende Herausforderung und 
 Hinzu kommt, dass ich keinen Termindruck habe und endlich mal 100\% versuchen kann -- in meinem Job wurde ich daran aus verständlichen Gründen gehindert.
 
 \ASBA\ soll eine Basis für die Überprüfung und Archivierung mathematischer \Saetze\ und \Beweise\ sein.
-Daher halte ich es für unerlässlich, alle verwendeten Begriffe eindeutig genug zu spezifizieren (100\%!).
+Daher halte ich es für unerlässlich, alle verwendeten \Begriffe\ und \Bezeichnungen\ (\textdh\ \Benennungen\ und \Symbole) eindeutig genug zu definieren (100\%!).
 Natürlich will ich mich dabei an die übliche Nomenklatur halten.
 Aber was ist üblich?
 Steht \chrqt{\MtsSubset} für "`\Teilmenge"' oder "`\echteTeilmenge"'?
 Ist $0$ ein Element aus \MtsIN\ oder nicht?
-Daher habe ich versucht, alle wichtigen, verwendeten Begriffe der Mathematik, aber auch der \formalenMetasprache\ streng zu definieren, normalerweise im Text, teilweise aber nur in einer Fußnote, auf jeden Fall aber im Glossar.
-Dort sind auch manche Begriffe aufgeführt, die im Text nicht definiert wurden.
+Daher habe ich versucht, alle wichtigen, verwendeten \Bezeichnungen\ der Mathematik, mit dem Schwerpunkt Logik, aber auch der \formalenMetasprache\ streng zu definieren, normalerweise im Text, teilweise aber nur in einer Fußnote, auf jeden Fall aber im Glossar.
+Dort sind auch manche \Bezeichnungen\ aufgeführt, die im Text nicht definiert wurden.
 
-Alle im Glossar und Symbolverzeichnis aufgeführten Begriffe werden bei der Definition \likehyperDef{in dieser} und bei der Verwendung \likehyperTxt{in dieser} Schriftart ausgegeben. Zusätzlich sind die Begriffe und Symbole im PDF-Dokument mit einem Link ins Glossar \textbzw\ Symbolverzeichnis versehen.
+Alle im Glossar (ab \Pageref{dic:Glossar}) und Symbolverzeichnis (ab \Pageref{dic:Symbolverzeichnis}) aufgeführten \Bezeichnungen\ werden bei der Definition \likehyperDef{in dieser} und bei der Verwendung \likehyperTxt{in dieser} Schriftart ausgegeben.
+Zusätzlich sind die \Bezeichnungen\ im PDF-Dokument mit einem Link ins Glossar \textbzw\ Symbolverzeichnis versehen.
+Wenn es keine Definition einer \Benennung\ gibt, wird dort, wo sie eigentlich stehen müsste, ein "`\GD"' an die \Benennung\ angefügt.
+Für \Symbole\ gilt das nicht!
 
 Fußnoten dienen nur zu weiteren Erläuterungen sowie Verweisen in dieses Dokument und in die Literatur.
 Daher können sie auch etwas "`lascher"' formuliert sein.
@@ -86,4 +89,4 @@ Winfried Teschers
 	\color{gray}%%% Anfang grauer Text -----------------------------------------
 	PS: Texte, deren Bearbeitung zurückgestellt ist, sind in dieser Schriftfarbe geschrieben.
 	\color{black}%%% Ende  grauer Text -----------------------------------------
-\else \fi
+\else\fi

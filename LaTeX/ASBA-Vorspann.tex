@@ -31,25 +31,35 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = de_DE
 
-% Schalter (...Flag...) und davon abhängige Makros #############################
+% Schalter (...Flg...) und davon abhängige Makros ##############################
 
-\newif\iftestFlg%       Schalter: Testmode AUS --> \show...Flg AUS   ; noch AUS
-\newif\ifshowframeFlg%  Schalter: Gebrauch vom Parameter 'showframe' ; noch AUS
-\newif\ifshowidxFlg%    Schalter: Gebrauch vom Paket     'showidx'   ; noch AUS
-\newif\ifminitocFlg%    Schalter: Gebrauch vom Paket     'minitoc'   ; noch AUS
-\newif\ifindexFlg%      Schalter: Gebrauch vom Paket  '[split]index' ; noch AUS
-\newif\ifsplitindexFlg% Schalter: Gebrauch vom Paket    'splitindex' ; noch AUS
-\newif\ifmakeindexFlg%  Schalter: Gebrauch vom Programm  'makeindex' ; noch AUS
-\newif\ifhyperrefFlg%   Schalter: Gebrauch vom Paket     'hyperref'  ; noch AUS
+\newif\ifReinschriftFlg% Schalter: Testmode AUS --> \show...Flg AUS   ; noch AUS
+\newif\iftestFlg%        Schalter: Testmode AUS --> \show...Flg AUS   ; noch AUS
+\newif\ifmarginparFlg%   Schalter: \marginpar verwenden (Randnotizen) ; noch AUS
+\newif\ifshowframeFlg%   Schalter: Gebrauch vom Parameter 'showframe' ; noch AUS
+\newif\ifminitocFlg%     Schalter: Gebrauch vom Paket     'minitoc'   ; noch AUS
+\newif\ifshowidxFlg%     Schalter: Gebrauch vom Paket     'showidx'   ; noch AUS
+\newif\ifindexFlg%       Schalter: Gebrauch vom Paket  '[split]index' ; noch AUS
+\newif\ifsplitindexFlg%  Schalter: Gebrauch vom Paket    'splitindex' ; noch AUS
+\newif\ifmakeindexFlg%   Schalter: Gebrauch vom Programm  'makeindex' ; noch AUS
+\newif\ifhyperrefFlg%    Schalter: Gebrauch vom Paket     'hyperref'  ; noch AUS
 
-\testFlgtrue%                           	Testmode ein
-\showframeFlgtrue%(nur mit \testFlgtrue)	Parameter 'showframe' nutzen
-%\showidxFlgtrue%  (nur mit \testFlgtrue)	Paket     'showidx'   nutzen
-%\minitocFlgtrue%                        	Paket     'minitoc'   nutzen
-%\indexFlgtrue%                          	Paket  '[split]index' nutzen
-%\splitindexFlgtrue%                     	Paket    'splitindex' nutzen
-%\makeindexFlgtrue%                      	Programm  'makeindex' nutzen
-\hyperrefFlgtrue%                       	Paket     'hyperref'  nutzen
+%\ReinschriftFlgtrue%                     Reinschrift ein
+\testFlgtrue%                             Testmode ein
+\marginparFlgtrue%                        \marginpar verwenden (Randnotizen)
+\showframeFlgtrue%                        Parameter 'showframe' nutzen
+%\minitocFlgtrue%                         Paket     'minitoc'   nutzen
+\showidxFlgtrue%nur mit \marginparFlgtrue Paket     'showidx'   nutzen
+%\indexFlgtrue%                           Paket  '[split]index' nutzen
+%\splitindexFlgtrue%nur mit \indexFlgtrue Paket    'splitindex' nutzen
+%\makeindexFlgtrue%                       Programm  'makeindex' nutzen
+\hyperrefFlgtrue%                         Paket     'hyperref'  nutzen
+
+\ifReinschriftFlg
+	\testFlgfalse
+	\marginparFlgfalse
+	\showframeFlgfalse
+\else\fi
 
 \iftestFlg
 	\newcommand*{\errorIfDefined}[1]{% Fehler wenn das Makro '#1' schon definiert ist.
@@ -59,18 +69,22 @@
 		\fi
 	}
 \else
-	\showframeFlgfalse
-	\showidxFlgfalse
 	\newcommand*{\errorIfDefined}[1]{}% Dummy
 \fi
+\ifmarginparFlg \else
+	\showidxFlgfalse% geht nicht, da kein Seitenrand
+\fi
+\ifindexFlg \else
+	\showidxFlgfalse% ohne Index keine Anzeige
+	\splitindexFlgfalse% AUS, da kein Index gewünscht
+\fi
 \ifsplitindexFlg
-	\indexFlgtrue
-	\showidxFlgfalse% nicht mit 'splitidx'
-\else \fi
+	\showidxFlgfalse% funktioniert nicht nicht mit 'splitidx'
+\else\fi
 
 % ##############################################################################
 
-% Elemente, die nur in 'ASBA-Mathematik.tex' verwendet werden, werden in 'ASBA-Vorspann-Mathematik.tex' definiert.
+% Elemente, die nur in 'ASBA-Logik.tex' verwendet werden, werden in 'ASBA-Vorspann-Logik.tex' definiert.
 % Glossareinträge werden in 'ASBA-Vorspann-Glossar' definiert.
 
 \documentclass[english, ngerman, parskip=half, headsepline, footsepline, fleqn, notitlepage]{scrreprt}
@@ -87,12 +101,12 @@
 \usepackage{graphicx}%       Bilder einbinden:\includegraphics[width=<x>]{build}
 \usepackage{textcomp}%       Zusätzliche Symbole z.B. \textmu
 %\usepackage{upgreek}%       Aufrechte griechische Symbole
-%\usepackage{wrapfig}%       Textumflossene Abbildungen
+%\usepackage{wrapfig}%       Text umflossene Abbildungen
 %\usepackage{subcaption}%    Teilabbildungen in \begin{figure} mit
 %                            \begin{subfigure}[b]{<Weite>} und \hfill
 %\usepackage{pdfpages}%      \includepdf[<pages=1-2>]{<Anhang.pdf>}
 \ifhyperrefFlg \else
-	usepackage{url}%         URLs einfügen: \url{http://...};nur ohne 'hyperref'
+	\usepackage{url}%        URLs einfügen: \url{http://...};nur ohne 'hyperref'
 \fi
 % weiter empfohlen -------------------------------------------------------------
 \usepackage{lmodern}%        Ersetzt 'Computer Modern' durch 'Latin Modern'
@@ -100,7 +114,7 @@
 
 % allgemein ====================================================================
 \usepackage{scrlayer-scrpage}% für Koma-Scripts
-\usepackage{geometry}%  Flexible and complete interface to document dimensions.
+\usepackage[a4paper,left=2cm,right=1cm,textheight=256mm,twoside]{geometry}%  Flexible and complete interface to document dimensions.
 \usepackage{microtype}% Subliminal refinements towards typographical perfection.
 \usepackage{pict2e}%    New implementation of picture commands.
 \usepackage[autostyle]{csquotes}% Contex sensitive quotation facilities
@@ -137,7 +151,7 @@
 
 \ifminitocFlg
 	\usepackage[germanb]{minitoc}%        Unterverzeichnisse
-\else \fi
+\else\fi
 \ifindexFlg
 	\ifsplitindexFlg
 		\usepackage[protected]{splitidx}% mehrere Indizes - Nur statt 'makeidx'
@@ -145,26 +159,35 @@
 		\usepackage{makeidx}%             ein Index    - Nur statt 'splitindex'
 		\usepackage{hvindex}%             Support for 'makeidx' - after 'babel
 	\fi
-\else \fi
+\else\fi
 
 % Verschiedenes ================================================================
 
 \iftestFlg% Nur für Entwicklung und Test ---------------------------------------
 	\usepackage{srcltx}%            Klick im Viewer öffnet Editor und umgekehrt
-	\setlength{\overfullrule}{5pt}% Breite des schwarzen Balkens rechts von Overfull
+	\setlength{\overfullrule}{5pt}% Breite des schwarzen Balkens neben Overfull
 	\ifindexFlg
-		\ifsplitindexFlg \else
-			\usepackage{showidx}%          Index auf Seitenrand; nicht mit splitidx
+		\ifsplitindexFlg\else
+			\usepackage{showidx}%   Index auf Seitenrand; nicht mit splitidx
 		\fi
-	\else \fi
-\else \fi
-\ifshowframeFlg
-	\geometry{textwidth=170mm,textheight=256mm,twoside,showframe}
-\else % Für das fertige Dokument -----------------------------------------------
-	\geometry{textwidth=170mm,textheight=256mm,twoside}
+	\else\fi
+\fi
+\ifmarginparFlg
+	\ifshowframeFlg
+		\geometry{right=4.5cm,marginparwidth=4cm,showframe}
+	\else
+		\geometry{right=4.5cm,marginparwidth=4cm}
+	\fi
+\else
+	\ifshowframeFlg
+		\geometry{showframe}
+	\else
+		\geometry{}
+	\fi
+	\renewcommand*{\marginpar}[2][]{\relax}
 \fi
 
-% Vwerweise ====================================================================
+% Verweise =====================================================================
 \usepackage{varioref}%             \vref...
 
 % --- hyperref --- Extensive support for hypertext in LaTeX --------------------
@@ -172,7 +195,7 @@
 	pdftitle   ={ASBA - Axiome, Sätze, Beweise und Auswertungen},
 	pdfauthor  ={Dr. Winfried Teschers},
 	pdfsubject ={Projektdokument},
-	pdfkeywords={Mathematik, automatisches Beweisen, Beweisunterstützung}
+	pdfkeywords={Logik, Mathematik, automatisches Beweisen, Beweisunterstützung}
 ]{hyperref}
 % colorlinks  - colors the links instead of using boxes
 % destlabel   - verwendet key von \label{key} nach Start von Kapiteln u.a.
@@ -193,7 +216,7 @@
 \usepackage[index,nohypertypes={index},nopostdot,section=section,toc,xindy={glsnumbers=false}]{glossaries}
 % Paket 'glossaries':
 % - nach 'hyperref'
-% - läd  'glossaries-german'
+% - lädt 'glossaries-german'
 % Optionen: ('glossaries' erfordert 1. zusätzlichen Lauf von pdflatex)
 % index        - mit gesondertem Index: \newterm statt \newglossaryentry
 % nohypertypes={index} - Keinen Link in den Index
@@ -205,7 +228,7 @@
 
 \ifmakeindexFlg
 	\GlsSetQuote{+}% siehe 'User Manual for glossaries' S. 31
-\else \fi
+\else\fi
 
 % Einstellung von globalen Werten und Makro-Redefinitionen #####################
 
@@ -295,15 +318,15 @@
 \newcounter{Enumiii}% für unterbrochene Listennummerierung
 
 % Bildelemente #################################################################
-
 \newcommand*{\textbild}[1]{\textbf{\textsf{#1}}}% Textauszeichnungen für Text im Bild
-\newcommand*{\Datei}[4][0.5]{% #2 x #3 = (-#2/2,-#3/2),(#2/2,#3/2)
-	% [Eck-Radius], Breite, Höhe, Name
+\newcommand*{\Datei}[5][0.5]{% #2 x #3 = (-#2/2,-#3/2),(#2/2,#3/2)
+	% [Eck-Radius], Breite, Höhe, Name1, Name2
 	\put(0,0){\oval[#1](#2,#3)}
-	\put(0,0){\makebox(0,0){\textbild{#4}}}
+	\put(0,+0.25){\makebox(0,0){\textbild{#4}}}
+	\put(0,-0.25){\makebox(0,0){\textbild{#5}}}
 }
 \newcommand*{\Datenbank}[5]{% 2(#1) x 2(#2+#3) = (-#1,-#2-#3),(+#1,+#2+#3)
-	% Halbmesser x, Halbmesser y, halbe Höhe, Name - Ursprung in der Mitte
+	% Halbmesser x, Halbmesser y, halbe Höhe, Name1, Name2 - Ursprung in der Mitte
 	\put(0.0,-#3){
 		\qbezier(-#1,0.0)(-#1,-#2)(0.0,-#2)
 		\qbezier(+#1,0.0)(+#1,-#2)(0.0,-#2)
@@ -316,7 +339,7 @@
 		\qbezier(-#1,0.0)(-#1, #2)(0.0, #2)
 		\qbezier( #1,0.0)( #1, #2)(0.0, #2)
 	}
-	\makebox(0,0){\textbild{#4}}
+	\makebox(0,  0){\textbild{#4}}
 	\makebox(0,-#3){\textbild{#5}}
 }
 % '\Männchen' (mit 'ä') führt zu Fehler
@@ -346,18 +369,18 @@
 		\put(0,0){\makebox(0,0){\small\textbild{#2}}}
 	}
 }
-\newcommand*{\Papier}[3]{% 3x#1+#2 = (0.0,-#2),(2.1,#1) Ursprung links unten
-	% Länge (Höhe), Länge Abschluss, Name
+\newcommand*{\Papier}[4]{% 3x#1+#2 = (0.0,-#2),(2.1,#1) Ursprung links unten
+	% Länge (Höhe), Länge Abschluss, Name1, Name2
 	\polyline(0.0,-0.01)(+0.0,+#1)(+2.8,+#1)(+2.8,-0.01)
 	\qbezier(+2.1,+#2)(+2.6,+#2)(+2.8,0.0)
 	\qbezier(+2.1,+#2)(+1.6,+#2)(+1.4,0.0)
 	\qbezier(+0.7,-#2)(+1.2,-#2)(+1.4,0.0)
 	\qbezier(+0.7,-#2)(+0.2,-#2)(+0.0,0.0)
-	\put(0,0){\makebox(+2.8,+#1){\textbild{#3}}}
+	\put(0,+0.25){\makebox(+2.8,+#1){\textbild{#3}}}
+	\put(0,-0.25){\makebox(+2.8,+#1){\textbild{#4}}}
 }
 \newcommand*{\Terminal}[1]{% 2x2 =(-1.0,-1.4),(+1.0,+0.6)Ursprung im Monitor
 	% Bildschirm
-	%		\put(0,0){\polygon(-1.0,-0.6)(+1.0,-0.6)(+1.0,+0.6)(-1.0,+0.6)}
 	\put(-1.0,-0.6){\framebox(2,1.2){#1}}
 	\put(0,0){\oval[0.1](1.65,0.85)}
 	% Hals
@@ -385,20 +408,20 @@
 
 % sonstige nützliche Makros ####################################################
 
-% Im Parameter von '\turl' muss vor jedem Zeichen aus '{}#&%$' ein '\' stehen
+% Im Parameter von '\turl' muss vor jedem Zeichen aus '_{}#&%$' ein '\' stehen
 % und '\' und '~' durch '\textbackslash' bzw. '\textasctilde' ersetzt werden.
 \newcommand*{\tourl}[1]{$\rightarrow$~\url{#1}}
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
 \newcommand*{\formulaspace} {&&&&}      %  Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
-% Quotierung von Zeichen [chr], Zeichenfolgen [seq] und Zeichenketten [str]
+% Quotierung von Zeichen [chr], Symbolfolgen [seq] und Zeichenketten [str]
 % Parameter im Textmodus
 \newcommand*{\chrqt}[1]{\ensuremath{\left<\text{#1}\right>}}% Zeichen/Symbol
-\newcommand*{\seqqt}[1]{\ensuremath{\left<\mkern-4mu\left<\text{#1}\right>\mkern-4mu\right>}}% Zeichenfolge/Formel
+\newcommand*{\seqqt}[1]{\ensuremath{\left<\mkern-4mu\left<\text{#1}\right>\mkern-4mu\right>}}% Symbolfolge/Formel
 \newcommand*{\charf}[1]{\textbf{\texttt{#1}}}%Schriftart für Zeichen
 \newcommand*{\strqt}[1]       {``\charf{#1}''}%              Zeichenkette
 % Sonstige Quotierungen:
-\newcommand*{\standsfor}[1]{\enquote{#1}}% Beschreibung eines Begriffs
+\newcommand*{\standsfor}[1]{\enquote{#1}}% Definition einer Bezeichnung
 \newcommand*{\statement}[1]{\enquote{#1}}% Aussage in natürlicher Sprache
 
 % Strukturbezeichnungen ergänzen und Verweise auf Strukturen vereinfachen
@@ -410,6 +433,8 @@
 \newcommand*{\subsubsectionnames}{Paragraphen}
 
 % Referenzen -------------------------------------------------------------------
+
+\newcommand*{\Pageref}[1]{\pagename~\pageref{#1}}
 
 % Nominativ
 \newcommand*{\nomcha}        [1]{dieses       \chaptername~\ref{#1}}
@@ -445,7 +470,7 @@
 \newcommand*{\vrefsub}       [1]         {\subsectionname~\vref{#1}}
 \newcommand*{\vrefsubsub}    [1]      {\subsubsectionname~\vref{#1}}
 \newcommand*{\vrefdef}       [1]              {Definition~\vref{#1}}
-\newcommand*{\vreffor}    [1]{\eqref{#1} auf \pagename~\pageref{#1}}
+\newcommand*{\vreffor}       [1]       {\eqref{#1} auf \Pageref{#1}}
 \newcommand*{\vrefziel}      [1]                    {Ziel~\vref{#1}}
 
 \newcommand*{\vrefausfig}    [1]{aus der   \vreffig            {#1}}
@@ -532,19 +557,10 @@
 % Weitere Abkürzungen
 \newcommand*{\textdots}{…}
 
-% Text-Fonts
-\newcommand*{\citeFt}[1]{\textsf{#1}}% Zitate
-\newcommand*{\defFt} [1]{\textbf{#1}}% Definitionen
-\newcommand*{\gloFt} [1]{\textsf{#1}}% Wenn ein zu beschreibender Begriff in seiner Beschreibung mehr als einmal auftaucht
-\newenvironment{wikicite}[2][\Wikipedia]{%
-	#1 \cite{#2} schreibt dazu:
-	\begin{quote}
-		\sffamily
-}{%
-	\end{quote}
-}
+% Text-Fonts in 'ASBA-Vorspann-Glossar.txt'
+
 % Index ########################################################################
 \ifindexFlg
 	\makeindex
 	\newindex[Index]{idx}
-\else \fi
+\else\fi
