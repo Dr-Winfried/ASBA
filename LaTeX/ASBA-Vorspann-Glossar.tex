@@ -53,7 +53,7 @@
 \newcommand*{\todoBeschreiben}{[Beschreibung fehlt noch ]}% Eintrag muss noch beschrieben werden
 \newcommand*{\todoErgaenzen}  {[Beschreibung ergänzen   ]}% Eintrag muss noch ergänzt werden
 \newcommand*{\todoPruefen}    {[?]  }% Eintrag muss noch geprüft werden
-\newcommand*{\todoGeprueft}   {[!]  }% Eintrag ist geprüft, Verweis oder Definition im Text noch nicht
+\newcommand*{\todoGeprueft}   {[!]  }% Eintrag ist geprüft, Link oder Definition im Text noch nicht
 \newcommand*{\todoOk}         {[ok] }% Eintrag ist geprüft und ok
 
 % Wikipedia-Einträge; normalerweise nur im Glossar
@@ -175,7 +175,7 @@
 % ### Symbolverzeichnis: Symbole ###############################################
 
 % ==============================================================================
-% \* - Ausgabe als Symbol und Eintrag (und Verweis) ins Symbolverzeichnis
+% \* - Ausgabe als Symbol und Eintrag (und Link) ins Symbolverzeichnis
 % Fachbegriffe =================================================================
 
 \iftestFlg% Definition von Dummy Smbolverzeichniseinträgen
@@ -196,7 +196,7 @@
 \else\fi
 
 % ==============================================================================
-% \Bsp* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Bsp* - Ausgabe als Symbol und Eintrag und Link ins Symbolverzeichnis
 \newglossaryentry{Glo-Beispielsymbole}{
 	name     ={\gloFt{Beispielsymbole} für \gloFt{Operationen} und \gloFt{Relationen}},% =====
 	sort     ={= 0 0 0},
@@ -320,7 +320,7 @@
 }
 
 % ==============================================================================
-% \Mts* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Mts* - Ausgabe als Symbol und Eintrag und Link ins Symbolverzeichnis
 % In 'symbol' steht die formale Definition, in 'user6' die Benennung, ggf.
 % in einer Formel: Wörter, die weggelassen werden können, kursiv
 \newglossaryentry{Glo-MetaAussagen}{
@@ -564,7 +564,7 @@
 }
 
 % ==============================================================================
-% \Mts* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Mts* - Ausgabe als Symbol und Eintrag und Link ins Symbolverzeichnis
 \newglossaryentry{Glo-Elementrelationen}{
 	name     ={\gloFt{Elementrelationen}},% ====================================
 	sort     ={= 3 0 0},
@@ -634,7 +634,7 @@
 }
 
 % ==============================================================================
-% \Mts* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Mts* - Ausgabe als Symbol und Eintrag und Link ins Symbolverzeichnis
 \newglossaryentry{Glo-Bereichsoperationen}{
 	name     ={\gloFt{Bereichsrelationen} und \gloFt{-operationen}},% ============
 	sort     ={= 4 0 0},
@@ -804,7 +804,7 @@
 \newcommand*{\synonymMtsTimes}{\synonym{\gloFt{Mengenprodukt}}}
 
 % ==============================================================================
-% \MtsSeq* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \MtsSeq* - Ausgabe als Symbol und Eintrag und Link ins Symbolverzeichnis
 \newglossaryentry{Glo-Komponentenrelationen}{
 	name     ={\gloFt{Komponentenrelationen}},% ================================
 	sort     ={= 5 0 0},
@@ -873,7 +873,7 @@
 }
 
 % ==============================================================================
-% \Mts* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Mts* - Ausgabe als Symbol und Eintrag und Link ins Symbolverzeichnis
 \newglossaryentry{Glo-Folgenrelationen}{
 	name     ={\gloFt{Folgenoperationen} und \gloFt{-relationen}},% ============
 	sort     ={= 6 0 0},
@@ -1011,7 +1011,7 @@
 }
 
 % ==============================================================================
-% \Ojk* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Ojk* - Ausgabe als Symbol und Eintrag und Link ins Symbolverzeichnis
 \newglossaryentry{Glo-Objektsymbole}{
 	name       ={\gloFt{Junktoren}},% ==========================================
 	sort       ={= 7 0 0},
@@ -1173,8 +1173,8 @@
 }
 
 % ==============================================================================
-% \Mts* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
-% \Ojk* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Mts* - Ausgabe als Symbol und Eintrag und Link ins Symbolverzeichnis
+% \Ojk* - Ausgabe als Symbol und Eintrag und Link ins Symbolverzeichnis
 \newglossaryentry{Glo-Quantoren}{
 	name     ={\gloFt{Quantoren}},% ============================================
 	sort     ={= 8 0 0},
@@ -1253,7 +1253,7 @@
 
 % ==============================================================================
 % \sym* - Ausgabe als geklammertes Symbol und Eintrag ins Symbolverzeichnis
-% \gls* - wie \sym*            und zusätzlich Verweis ins Symbolverzeichnis
+% \gls* - wie \sym*            und zusätzlich Link ins Symbolverzeichnis
 % \tag* - Tag in einer Formel setzen      und Eintrag ins Symbolverzeichnis
 % Verweise als geklammertes Symbol auf die Formel mit dem Tag:
 %   \ref    {def:*} -->  \*
@@ -1509,8 +1509,8 @@
 % ... xEl = Element (allgemein)
 
 % ==============================================================================
-% \StrMtsIdx* - Ausgabe als Text-Symbol und Eintrag und Verweis ins Symbolverzeichnis
-% \Mts* - Ausgabe als Text-Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \StrMtsIdx* - Ausgabe als Text-Symbol und Eintrag und Link ins Symbolverzeichnis
+% \Mts* - Ausgabe als Text-Symbol und Eintrag und Link ins Symbolverzeichnis
 % Operationen mit Namen (Buchstaben) ===========================================
 
 \newcommand*             {\StrMtsValue}            {val}% Definitionsbereich [domain]
@@ -1892,7 +1892,7 @@
 }
 
 % ==============================================================================
-% \Mts* - Ausgabe als Text-Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Mts* - Ausgabe als Text-Symbol und Eintrag und Link ins Symbolverzeichnis
 % Mengen und Elemente ==========================================================
 
 \newcommand*             {\LtrMtsAussagen}         {A}% Aussagen
@@ -2377,7 +2377,7 @@
 }
 
 % ==============================================================================
-% \Ojk* - Ausgabe als Text-Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Ojk* - Ausgabe als Text-Symbol und Eintrag und Link ins Symbolverzeichnis
 % Symbole für die Konstruktiuon von logischen Formeln ==========================
 
 \newcommand*             {\LtrOjkABC}              {A}
@@ -2595,7 +2595,7 @@
 }
 
 % ==============================================================================
-% \Mts* - Ausgabe als Text-Symbol und Eintrag und Verweis ins Symbolverzeichnis
+% \Mts* - Ausgabe als Text-Symbol und Eintrag und Link ins Symbolverzeichnis
 % Wahrheitswerte ===============================================================
 
 \newcommand*             {\StrMtsFalse}            {false}
@@ -2633,7 +2633,7 @@
 }
 
 % ==============================================================================
-% \Txt* - Ausgabe als formatierter Text und Eintrag und Verweis ins Glossar
+% \Txt* - Ausgabe als formatierter Text und Eintrag und Link ins Glossar
 % Wahrheitswerte ===============================================================
 
 \newcommand*             {\StrTxtFalse}            {falsch}

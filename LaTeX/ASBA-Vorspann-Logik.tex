@@ -52,18 +52,18 @@
 %     \Tag<Tag>     =
 %
 % Folgende Makros sind alles "eigene"
-%   \Ltr...    - nur Zeichen für (den Bereich)   ...       (für       Textmodus)
-%   \Str...    - nur Text    für (die Operation) ...       (für       Textmodus)
-%   \StrMtsIdx...  - Text    für einen Index für ...       (für Mathematikmodus)
-%   \Raw...    - Symbol/Text ohne Verweis;erfordert bei Symbolen Mathematikmodus
-%   \...Bsp... - Beispielsymbol für Formel- oder Metasprache (f.Mathematikmodus)
-%   \Bsp...    -                          mit Verweis ins Symbolverzeichnis
-%   \...Mts... - Symbol der Metasprache                    (für Mathematikmodus)
-%   \Mts...    -                          mit Verweis ins Symbolverzeichnis
-%   \...Ojk... - Symbol der Formelsprache                  (für Mathematikmodus)
-%   \Ojk...    -                          mit Verweis ins Symbolverzeichnis
-%   \...Txt... - individuelle Bezeichnung                  (für       Textmodus)
-%   \Txt...    -                          mit Verweis in  Glossar und Index
+%   \Ltr...    - nur Zeichen für (den Bereich)   ...       (im        Textmodus)
+%   \Str...    - nur Text    für (die Operation) ...       (im        Textmodus)
+%   \StrMtsIdx...  - Text    für einen Index für ...       (im  Mathematikmodus)
+%   \Raw...    - Symbol/Text ohne Link;erfordert bei Symbolen Mathematikmodus
+%   \...Bsp... - Beispielsymbol für Formel- oder Metasprache(im Mathematikmodus)
+%   \Bsp...    -                          mit Link ins Symbolverzeichnis
+%   \...Mts... - Symbol der Metasprache                    (im  Mathematikmodus)
+%   \Mts...    -                          mit Link ins Symbolverzeichnis
+%   \...Ojk... - Symbol der Formelsprache                  (im  Mathematikmodus)
+%   \Ojk...    -                          mit Link ins Symbolverzeichnis
+%   \...Txt... - individuelle Bezeichnung                  (im        Textmodus)
+%   \Txt...    -                          mit Link in  Glossar und Index
 %
 % Weitere "eigene" Kombinationen: OpU, OpB, Bck, Idx, Ltr, Txt
 
@@ -226,7 +226,7 @@
 \newcommand*{\links} [1] {#1^{\scriptscriptstyle <}}% linkes  Element vom Paar
 \newcommand*{\rechts}[1] {#1^{\scriptscriptstyle >}}% rechtes Element vom Paar
 
-% abgeleitete Bereiche - ohne Verweis ins Glossar
+% abgeleitete Bereiche - ohne Link ins Glossar
 \newcommand*{\RawMtsFol} {\Setft{\LtrMtsFol}}%  Bereich der Folgen             auf
 \newcommand*{\RawMtsFolf}{\RawMtsFol_{\RawMtsIdxEndlich}}% ... nur die endlichen Folgen
 \newcommand*{\RawMtsTup} {\Setft{\LtrMtsTup}}%  Bereich der Tupel              auf
@@ -235,7 +235,7 @@
 \newcommand*{\RawMtsRel} {\Setft{\LtrMtsRel}}%  Bereich der binären Relationen auf
 \newcommand*{\RawMtsRelf}{\RawMtsRel_{\RawMtsIdxEndlich}}%... nur die endlichen Relationen
 
-% natürliche Zahlen u.a. - ohne Verweis ins Glossar
+% natürliche Zahlen u.a. - ohne Link ins Glossar
 % alternativ: '{\fam5' statt '\mathbb{'
 \newcommand*{\RawMtsIN}   {{\fam5\LtrMtsIN}}%  Menge der natürlichen Zahlen ohne 0
 %\newcommand*{\RawMtsIN}{\mathbb{\LtrMtsIN}}%  Menge der natürlichen Zahlen ohne 0
@@ -249,7 +249,7 @@
 \newcommand*{\RawMtsAussagen}         {\Setft{\LtrMtsAussagen}}%  Bereich aller zulässigen Aussagen
 \newcommand*{\RawMtsSprache}          {\Setft{\LtrMtsSprache}}%   Formel-Sprache
 \newcommand*{\RawMtsRelAllDerive}     {\ensuremath{\RawMtsRel(\RawMtsPot(\RawMtsSprache))}}%   R(P(L))
-% ... - mit Verweis ins Glossar
+% ... - mit Link ins Glossar
 \newcommand*{\MtsPotSprache}          {\ensuremath{\MtsPot(\MtsSprache)}}%        P(L)
 \newcommand*{\MtsPotfSprache}         {\ensuremath{\MtsPotf(\MtsSprache)}}%      Pe(L)
 \newcommand*{\MtsAllDerive}           {\ensuremath{\MtsPotSprache^2}}%            P(L)^2
@@ -260,7 +260,7 @@
 \newcommand*{\MtsPotfAllDerive}       {\ensuremath{\MtsPotf(\MtsAllDerive)}}%  Pe(P(L)^2)
 \newcommand*{\MtsRelfAllDerive}       {\ensuremath{\MtsRelf(\MtsPotSprache)}}% Re(P(L))
 
-% Elemente und Mengen für Beweise - ohne Verweis ins Glossar
+% Elemente und Mengen für Beweise - ohne Link ins Glossar
 \newcommand*{\RawMtsPraemisse}        {\drvft{\LtrMtsPraemisse}}%         eine      Prämisse
 \newcommand*{\RawMtsPraemisseSet}     {\Setft{\LtrMtsPraemisseSet}}%      Menge der Prämissen
 \newcommand*{\RawMtsPraemisseRel}     {\RawMtsDerive_{\RawMtsPraemisseSet}}%... als Relation
@@ -282,7 +282,7 @@
 \newcommand*{\RawMtsAxiom}            {\Elmft{\LtrMtsAxiom}}%             ein       Axiom
 \newcommand*{\RawMtsAxiomSet}         {\Setft{\LtrMtsAxiom}}%             Menge von Axiomen
 
-% Mengen der Aussagenlogik - ohne Verweis ins Glossar
+% Mengen der Aussagenlogik - ohne Link ins Glossar
 \newcommand*{\RawOjkvar} {\varft{\LtrOjkvar}}% Variablensymbol
 \newcommand*{\RawOjkVar} {\Setft{\LtrOjkVar}}% Menge der Variablensymbole
 \newcommand*{\RawOjkABC} {\Setft{\LtrOjkABC}}% Menge der Buchstaben (Alphabet) der aussagenlogischen Sprache
@@ -296,8 +296,8 @@
 % Prädikate und praedikatähnliche Makros =======================================
 
 \newcommand*{\FunktionDef}[3]{\ensuremath{   #1    \MtsFktSep #2 \MtsFktArrow #3 }}
-\newcommand*   {\MengeDef}[2]{\ensuremath{\{ #1    \MtsSetSep #2               \}}}% mit Verweis ins Glossar
-\newcommand*{\RawMengeDef}[2]{\ensuremath{\{ #1 \RawMtsSetSep #2               \}}}% ohne Verweis ins Glossar
+\newcommand*   {\MengeDef}[2]{\ensuremath{\{ #1    \MtsSetSep #2               \}}}% mit  Link ins Glossar
+\newcommand*{\RawMengeDef}[2]{\ensuremath{\{ #1 \RawMtsSetSep #2               \}}}% ohne Link ins Glossar
 
 % sonstige Makro für den Mathematiksatz ########################################
 

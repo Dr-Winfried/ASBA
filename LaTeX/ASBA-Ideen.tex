@@ -268,8 +268,8 @@ Für die ausgefüllten Felder wird nun definiert:%
 		\text{\strqt{\Praemisse}  = Die \Aussage\ $A_i$ ist eine \Praemisse.}\\
 		\text{\strqt{\Konklusion} = Die \Aussage\ $A_i$ ist eine \Konklusion.}\\
 		\text{\strqt{Annahme}     = Die \Aussage\ $A_i$ wird vorübergehend als zutreffend angenommen.}\\
-		\text{$j$                 = Verweis auf die \Schlussregel\ $\overline{R}_j$ für ein $j < i$.}\\
-		\text{                      Verweis (ohne Klammern) auf eine \allgemeingueltigeSchlussregel.}
+		\text{$j$                 = Link auf die \Schlussregel\ $\overline{R}_j$ für ein $j < i$.}\\
+		\text{                      Link (ohne Klammern) auf eine \allgemeingueltigeSchlussregel.}
 	\end{cases}
 	\\
 	S_i & \MtsDefEq \text{Die Folge von den anzuwendenden \Ersetzungen.}
@@ -297,14 +297,14 @@ Sei nun
 		\text{leer}    & \text{ für } R_i = \text{\strqt{\Konklusion}}     \\
 		\text{leer}    & \text{ für } R_i = \text{\strqt{Annahme}}        \\
 		\overline{R_j} & \text{ für } R_i = j \quad \text{(eine \DefFt{interne} \Schlussregel)} \\
-		\text{die \Schlussregel} & \text{ für } R_i = \text{Verweis auf eine \DefFt{externe} \Schlussregel}
+		\text{die \Schlussregel} & \text{ für } R_i = \text{Link auf eine \DefFt{externe} \Schlussregel}
 	\end{cases}
 \]
 Damit gilt für die Einträge in einer Zeile $i$:
 \begin{itemize}
 	\item Wenn $\Gamma_i$ nicht leer ist, ist $R_i$ eine \Schlussregel\ mit $R_i = \Gamma_i(S_i)$%
 	\footnote{%
-		%TODO Makro für Verweis benutzen
+		%TODO Makro für Link benutzen
 		siehe Definition~\eqref{def:ErsetzungenAlt} \vrefvonsub{sub:Identitaetsregeln}
 	}.
 	\item Wenn $A_i$ nicht leer ist, ist $R_i = \dfrac{A_{z_1} \MtsUnd A_{z_2} \MtsUnd ...}{A_i}$ (alle $z_j \in Z_i$).
@@ -382,7 +382,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	\begin{enumerate}
 		\item $R_i =$ \strqt{\Praemisse}, \strqt{\Konklusion} oder \strqt{Annahme}.
 		\item $A_i =$ Die aktuelle \Praemisse, \Konklusion\ oder Annahme.
-		\item $D_i =$ $i$ \quad (ein Verweis auf $A_i$).
+		\item $D_i =$ $i$ \quad (ein Link auf $A_i$).
 	\end{enumerate}
 	%
 	\item In den nächsten Zeilen werden die \Beweisschritte\ aufgeführt, für jeden Schritt eine Zeile.
@@ -392,7 +392,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 		\setcounter{enumii}{\value{Enumii}}% Nummerierung wird fortgesetzt.
 		\item
 		\begin{enumerate}
-			\item $R_i =$ Verweis auf eine \allgemeingueltigeSchlussregel.
+			\item $R_i =$ Link auf eine \allgemeingueltigeSchlussregel.
 			\item $\overline{R}_i =$ Die \Schlussregel, auf die verwiesen wird.
 		\end{enumerate}
 		\setcounter{Enumii}{\value{enumii}}% Nummerierung wird fortgesetzt.

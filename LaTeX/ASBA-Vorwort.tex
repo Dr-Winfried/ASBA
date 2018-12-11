@@ -86,20 +86,55 @@ Winfried Teschers
 \addcontentsline{toc}{chapter}{Vereinbarungen}% Eintrag ins Inhaltsverzeichnis
 
 \Hier\ werden verschiedene Textauszeichnungen mit folgenden Bedeutungen verwendet:
-
 \begin{itemize}
-	\item []
+
+	\item In mathematischen Formeln:
+	\begin{itemize}
+		\item $\Varft      {Variable\ allgemein}$; normalerweise ein Buchstabe.
+		\item $\varft          {Variablensymbol}$; normalerweise ein Kleinbuchstabe.
+		\item $\Conft                {Konstante}$; normalerweise ein Wort.
+		\item $\Idxft        {Konstanter\ Index}$; normalerweise ein Buchstabe.
+		\item $\Setft  {VORGEGEBENE\ \ BEREICHE}$; normalerweise ein Großbuchstabe.%
+			\footnote{Kleinbuchstaben gibt es in dieser Schriftart nicht.}
+		\item $\Elmft          {Element\ daraus}$; normalerweise ein Großbuchstabe.
+		\item $\sOpft        {Bereichsoperation}$; normalerweise ein Wort.
+		\item $\Drvft{Bereich\ von\ Ableitungen}$; normalerweise ein Großbuchstabe.
+		\item $\drvft          {Element\ daraus}$; normalerweise ein Buchstabe.
+		\item $\Preft               {Pr\"adikat}$; normalerweise ein Wort.
+	\end{itemize}
+
+	\item In Zitaten aus \Wikipedia:
+	\begin{itemize}
+		\item \likeWikiFt  {Wie im Original.}
+		\item \wikiBoldFt  {Wie im Original.}
+		\item \wikiItalicFt{Wie im Original.}
+		\item \wikiLinkFt  {Wie im Original, aber ohne Link.}
+	\end{itemize}
+
+	\item In sonstigem Text (ohne Überschriften):
+	\begin{itemize}
+		\item \likeLinkFt{Interner Link.}; auch in Überschriften.
+			Die Farbe kann mit anderen Textauszeichnungen kombiniert werden.
+		\item \likeBibFt{Nummer als Link ins Literaturverzeichnis.}
+		\item \CharFt   {Zeichen [in Zeichenketten].}
+		\item \DefFt    {Definition.}
+		\item \OptFt    {Optionale  Teile von Sprechweisen.}
+		\item \ManFt    {Notwendige Teile von Sprechweisen.}
+		\item \GloFt    {Erstmalige Selbstreferenz (ohne Link).}
+		\item \gloFt               {Selbstreferenz (ohne Link).}
+		\item \likePreFt{Prädikat.}
+		\iftestFlg
+			\item
+			\begin{offen}
+				Teile, deren Bearbeitung zurückgestellt ist.
+			\end{offen}
+		\else\fi
+	\end{itemize}
+
 \end{itemize}
 
 Fußnoten dienen nur zu weiteren Erläuterungen sowie Verweisen in dieses Dokument und die Literatur.
 Daher können sie auch etwas "`lascher"' formuliert sein.
 Für das Verständnis des Textes sollten sie nicht nötig sein, es reichen Grundkenntnisse der Mathematik.
-
-\iftestFlg
-	\bigskip
-	\begin{offen}
-		PS: Texte, deren Bearbeitung zurückgestellt ist, sind in dieser Schriftfarbe geschrieben.
-	\end{offen}
-\else\fi
 
 \Endchapter

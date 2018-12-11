@@ -187,9 +187,7 @@
 	\renewcommand*{\marginpar}[2][]{\relax}
 \fi
 
-\newenvironment{offen}{\color{gray}}{\relax}% Passagen, die noch offen sind und ggf. entfallen.
-
-% Verweise =====================================================================
+% Links (Verweise) =============================================================
 \usepackage{varioref}%             \vref...
 
 % --- hyperref --- Extensive support for hypertext in LaTeX --------------------
@@ -229,6 +227,45 @@
 \else\fi
 
 % Einstellung von globalen Werten und Makro-Redefinitionen #####################
+
+\newenvironment{offen}{\color{gray}}{\relax}% Passagen, die noch offen sind und ggf. entfallen.
+
+% Text-Fonts - enden auf Ft ====================================================
+\newcommand*       {\HeFoFt}[1]{\textnormal{\textsf  {#1}}} % Kopf- und Fußzeile
+\newcommand*       {\HeadFt}[1]{\HeFoFt      {\textbf{#1}}} % Kopfzeile
+\newcommand*       {\FootFt}[1]{\HeFoFt              {#1}}  % Fußzeile
+\newcommand*       {\PageFt}[1]{\FootFt      {\textbf{#1}}} % Seitennummer
+\newcommand*{\likeChapterFt}[1]{{\huge\textsf{\textbf{#1}}}}% Kapitelüberschrift
+\newcommand*        {\TabFt}[1]              {\textbf{#1}}  % Spaltenüberschrift
+\newcommand*      {\ImageFt}[1]      {\textsf{\textbf{#1}}} % Text in Bildern
+% Text-Fonts im laufenden Text ------------------------------------------------
+\newcommand*   {\likeLinkFt}[1]{\textcolor{blue}     {#1}}  % Link-Farbe intern
+\newcommand*    {\likeBibFt}[1]{\textcolor{green}    {#1}}  % Link ins Literaturverzeichnis
+\newcommand*       {\CharFt}[1]{\texttt      {\textbf{#1}}} % Zeichen [in Zeichenketten]
+\newcommand*        {\DefFt}[1]      {\textsf{\textbf{#1}}} % Definition
+\newcommand*        {\OptFt}[1]              {\textit{#1}}  % optionale              Teile von Sprechweisen
+\newcommand*        {\ManFt}[1]              {\textbf{#1}}  % notwendige (mandatory) Teile von Sprechweisen
+\newcommand*        {\GloFt}[1]      {\textsf{\textbf{#1}}} % erstmalige Selbstreferenz ohne Link
+\newcommand*        {\gloFt}[1]      {\textsf        {#1}}  %            Selbstreferenz ohne Link
+\newcommand*    {\likePreFt}[1]                      {#1}   % Prädikat
+% angepasst an Wikipedia
+\newcommand*   {\wikiFamily}   {\sffamily}                  % serifenlos  in Wikipedia
+\newcommand*   {\likeWikiFt}[1]      {\textsf        {#1}}  % Zitat aus Wikipedia
+\newcommand*   {\wikiBoldFt}[1]              {\textbf{#1}}  % Bold   Font in Wikipedia
+\newcommand* {\wikiItalicFt}[1]{\textit              {#1}}  % Italic Font in Wikipedia
+\newcommand*   {\wikiLinkFt}[1]{\textcolor{blue}     {#1}}  % Link-Farbe  in Wikipedia
+
+% Mathematische Text-Fonts - enden auf ft ======================================
+\newcommand*        {\Varft}[1]                      {#1}   % Variable allgemein          (Buchstabe)
+\newcommand*        {\varft}[1]              {\mathbf{#1}}  % Variablensymbol        (Kleinbuchstabe)
+\newcommand*        {\Conft}[1]      {\mathrm        {#1}}  % Konstante                        (Wort)
+\newcommand*        {\Idxft}[1]      {\mathrm        {#1}}  % konstanter Index            (Buchstabe)
+\newcommand*        {\Setft}[1]{\mathcal             {#1}}  % vorgegebener Bereich    (Großbuchstabe)
+\newcommand*        {\Elmft}[1]                      {#1}   % Element daraus          (Großbuchstabe)
+\newcommand*        {\sOpft}[1]{\mathfrak            {#1}}  % Bereichsoperation                (Wort)
+\newcommand*        {\Drvft}[1]              {\mathbf{#1}}  % Bereich von Ableitungen (Großbuchstabe)
+\newcommand*        {\drvft}[1]              {\mathbf{#1}}  % Element daraus              (Buchstabe)
+\newcommand*        {\Preft}[1]      {\mathrm        {#1}}  % Prädikat                         (Wort)
 
 % Kopfzeilen und Fußzeilen =====================================================
 \newcommand*{\Lehead}[1]{\lehead{\HeadFt{#1}}}
@@ -553,40 +590,6 @@
 \newcommand*{\textdots}{…}
 \newcommand*{\hier}{in diesem Dokument}
 \newcommand*{\Hier}{In diesem Dokument}
-
-% Text-Fonts - enden auf Ft
-\newcommand*       {\HeFoFt}[1]{\textnormal{\textsf  {#1}}} % Kopf- und Fußzeile
-\newcommand*       {\HeadFt}[1]{\HeFoFt      {\textbf{#1}}} % Kopfzeile
-\newcommand*       {\FootFt}[1]{\HeFoFt              {#1}}  % Fußzeile
-\newcommand*       {\PageFt}[1]{\FootFt      {\textbf{#1}}} % Seitennummer
-\newcommand*{\likeChapterFt}[1]{{\huge\textsf{\textbf{#1}}}}% Kapitelüberschrift
-\newcommand*        {\TabFt}[1]              {\textbf{#1}}  % Spaltenüberschrift
-\newcommand*      {\ImageFt}[1]      {\textsf{\textbf{#1}}} % Text in Bildern
-\newcommand*   {\likeLinkFt}[1]{\textcolor{blue}     {#1}}  % Link-Farbe intern
-%%%\newcommand*    {\CiteFt}[1]      {\textsf        {#1}}  % Zitat
-\newcommand*       {\CharFt}[1]{\texttt      {\textbf{#1}}} % Zeichen [in Zeichenketten]
-\newcommand*        {\DefFt}[1]      {\textsf{\textbf{#1}}} % Definition
-\newcommand*        {\OptFt}[1]              {\textit{#1}}  % optionale              Teile von Sprechweisen
-\newcommand*        {\ManFt}[1]              {\textbf{#1}}  % notwendige (mandatory) Teile von Sprechweisen
-\newcommand*        {\GloFt}[1]      {\textsf{\textbf{#1}}} % erstmalige Selbstreferenz ohne Link
-\newcommand*        {\gloFt}[1]      {\textsf        {#1}}  %            Selbstreferenz ohne Link
-\newcommand*        {\PreFt}[1]                      {#1}   % Prädikat
-% angepasst an Wikipedia
-\newcommand*   {\wikiBoldFt}[1]{              \textbf{#1}}  % Bold   Font in Wikipedia
-\newcommand* {\wikiItalicFt}[1]{\textit              {#1}}  % Italic Font in Wikipedia
-\newcommand*   {\wikiFamily}    {sffamily}                  % serifenlos  in Wikipedia
-\newcommand*   {\wikiLinkFt}[1]{\textcolor{blue}     {#1}}  % Link-Farbe  in Wikipedia
-% Mathematische Text-Fonts - enden auf ft
-\newcommand*        {\Varft}[1]                      {#1}   % Variable allgemein           (Buchstabe)
-\newcommand*        {\varft}[1]              {\mathbf{#1}}  % Variablensymbol         (Kleinbuchstabe)
-\newcommand*        {\Conft}[1]      {\mathrm        {#1}}  % Konstante                         (Wort)
-\newcommand*        {\Drvft}[1]              {\mathbf{#1}}  % Bereiche von Ableitungen (Großbuchstabe)
-\newcommand*        {\drvft}[1]              {\mathbf{#1}}  % ein Element daraus           (Buchstabe)
-\newcommand*        {\Idxft}[1]      {\mathrm        {#1}}  % fester Index                 (Buchstabe)
-\newcommand*        {\Preft}[1]      {\mathrm        {#1}}  % Prädikat                          (Wort)
-\newcommand*        {\Setft}[1]{\mathcal             {#1}}  % vorgegebener Bereich     (Großbuchstabe)
-\newcommand*        {\Elmft}[1]                      {#1}   % ein Element daraus       (Großbuchstabe)
-\newcommand*        {\sOpft}[1]{\mathfrak            {#1}}  % Bereichsoperation                 (Text)
 
 % Index ########################################################################
 \ifindexFlg
