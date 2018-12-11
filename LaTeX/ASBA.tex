@@ -44,7 +44,7 @@
 	{\footnotesize winfried.teschers@t-online.de}
 }
 \subject{Projektdokument}
-\title{{\Huge \ASBA}\\\Axiome, \Saetze, \Beweise\ und Auswertungen}
+\title{{\Huge ASBA}\\Axiome, Sätze, Beweise und Auswertungen}
 \subtitle{Projekt zur maschinellen Überprüfung von mathematischen \Beweisen\ und deren Ausgabe in lesbarer Form}
 \author{Winfried Teschers}
 \date{\today}
@@ -71,9 +71,9 @@
 	\include{ASBA-Vorwort}
 	\include{ASBA-Analyse}
 	\include{ASBA-Logik}
-	\color{gray}%%% Anfang grauer Text
-	\include{ASBA-Ideen}
-	\color{black}%%% Ende grauer Text
+	\begin{offen}%%%
+		\include{ASBA-Ideen}
+	\end{offen}%%%
 	\include{ASBA-Design}
 	\include{ASBA-Anhang}
 
@@ -110,16 +110,13 @@
 		\par
 	}
 	\newcommand{\glopreambelSchriftarten}{
-		Mit Seitenzahlen \likehyperDef{in dieser} Schriftart wird auf die Definition oder sonstige wichtige Stellen verwiesen.
-		Verweise in einer Beschreibung an andere Stellen ins Glossar werden \gloFt{in dieser} Schriftart, aber ohne Link, markiert.
-		Den Link findet man hinter "`siehe"' am Ende der Seitenzahlen.
-		Selbstverweise sind \GloFt{in dieser} Schriftart angegeben.
+		Mit Seitenzahlen \likeHyperDef{in dieser} Schriftart wird auf die Definition oder sonstige wichtige Stellen verwiesen.
 		%%%--- Aus dem Autor nicht bekannten Gründen sind die angegebenen Seitenzahlen manchmal um eins zu klein.
 		\par
 	}
 	\newcommand{\glopreambelSymbolbeschreibung}{
 		In eckigen Klammern wird wird, sofern vorhanden, die \Benennung\ für das jeweilige \Symbol\ angegeben, für \Funktionen\ und \Relationen\ auch mittels eines Aufrufs.
-		Die Wörter \manFt{in dieser} Schrift sind notwendig für die Definition, solche \optFt{in dieser} Schrift können auch weggelassen werden.
+		Die Wörter \ManFt{in dieser} Schrift sind notwendig für die Definition, solche \OptFt{in dieser} Schrift können auch weggelassen werden.
 		\par
 	}
 	\newcommand{\glopreambelWikipedia}{
@@ -127,10 +124,10 @@
 		\footnote{%
 			Der Teil zwischen Überschrift und Inhaltsverzeichnis.
 		} aus dem entsprechenden \Wikipedia-Artikel zitiert, manchmal gekürzt und immer ohne die originalen Fußnoten und ohne Verweise auf andere \Wikipedia-Artikel.
-		Letztere werden allerdings noch, wie im Original, in \wikilink{blau} angegeben.
+		Letztere werden allerdings noch, wie im Original, in \wikiLinkFt{blau} angegeben.
 		\par
 	}
-	\iftestFlg \glsaddallunused[symbols,main]\else\fi
+	\iftestFlg \glsaddallunused[symbols,main]\else\fi% nicht verwendete Glossareinträge hinzufügen
 	% --------------------------------------------------------------------------
 	\renewcommand{\glossarypreamble}{%  am Beginn des Index
 		\beginchapter[Verzeichnisse]{Index}
@@ -160,7 +157,7 @@
 		\glopreambelSchriftarten
 		\glopreambelWikipedia
 	}
-	\renewcommand*{\glsnamefont}[1]{\textbf{#1}}
+	\renewcommand*{\glsnamefont}[1]{\DefFt{#1}}
 	\printglossary[type=main,style=listhypergroup]
 	\Chead{Glossar}%                    Kopfzeile Mitte
 	\Endchapter

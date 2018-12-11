@@ -76,14 +76,14 @@ $X$ und $Y$ können auch die \leereMenge\ sein. Damit wird definiert:
 	\formulatoleft
 \end{align}
 
-Eine \defTxt{\zulaessigeTransformation} ist die Anwendung einer \emph{\Ersetzung}{\vrefnotesub{sub:Identitaetsregeln} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
-Bei den \Schlussregeln\ und der \Ersetzung\ \chrqt{\MtsSubst} soll das Komma stärker binden als \chrqt{\MtsDerive}, \chrqt{\MtsSubst} und \chrqt{\MtsUnd}, wobei \chrqt{\MtsUnd} für \standsfor{und} \textbzw\ \chrqt{\MtsAnd}\vrefnotesub{sub:AussagenUndMetaoperationen} steht und schwächer bindet als \chrqt{\MtsDerive} und \chrqt{\MtsSubst}.%
+Eine \defTxt{\zulaessigeTransformation} ist die Anwendung einer \emph{\Ersetzung}{\vrefnotesub{sub:Identitaetsregeln}} (siehe unten), einer \emph{\Basisregel} (siehe unten) oder einer davon abgeleiteten sonstigen \emph{\Schlussregel}, \textzB\ aus \vrefsub{sub:Schlussregeln}.
+Bei den \Schlussregeln\ und der \Ersetzung\ \chrqt{\MtsSubst} soll das Komma stärker binden als \chrqt{\MtsDerive}, \chrqt{\MtsSubst} und \chrqt{\MtsUnd}, wobei \chrqt{\MtsUnd} für \standsfor{und} \textbzw\ \chrqt{\MtsAnd}\vrefnotesub{sub:Metaoperationen} steht und schwächer bindet als \chrqt{\MtsDerive} und \chrqt{\MtsSubst}.%
 \footnote{siehe Fußnote~3 \vrefvontab{tab:Prioritaeten}}
 
 Zur der Auswahl der \Basisregeln, der Formulierung und der \Bezeichnungen\ wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
-Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{$\mathrm{E}$} für "`-Einführung"' und \chrqt{$\mathrm{B}$} für "`-Beseitigung"' (oder "`-Elimination"') von \Junktoren.%
+Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{${E}$} für "`-Einführung"' und \chrqt{${B}$} für "`-Beseitigung"' (oder "`-Elimination"') von \Junktoren.%
 \footnote{%
-	In der \Monotonieregel\ wird hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \MtsSupsetEq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \MtsSupsetEq X $}.
+	In der \Monotonieregel\ wird \hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \MtsSupsetEq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \MtsSupsetEq X $}.
 	Außerdem werden bei den \Bezeichnungen\ \seqqt{$(\OjkAnd 1)$} und \seqqt{$(\OjkAnd 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
 }
 
@@ -131,7 +131,7 @@ Eine \Schlussregel\ steht für die \Aussage, dass mit ihren \Praemissen\ auch au
 Die \zulaessigenTransformationen, \textdh\ die Anwendung der \Schlussregeln, erfordern \zulaessige\ \Ersetzungen.
 Damit wird dem Gleichheits- oder Identitätszeichen \chrqt{\MtsEq} mittels Einführungs- und Beseitigungsregel eine Bedeutung verliehen.%
 \footnote{\citesee{bib:NatuerlichesSchliessen}}
-Dazu seien $\alpha$, $\beta$ und $\gamma$ \vergleichbare\footnote{siehe Ende \vrefvonsub{sub:AussagenUndMetaoperationen}}\Formeln.
+Dazu seien $\alpha$, $\beta$ und $\gamma$ \vergleichbare\footnote{siehe Ende \vrefvonsub{sub:Metaoperationen}}\Formeln.
 
 Zunächst wird definiert:
 \begin{align}
@@ -139,7 +139,7 @@ Zunächst wird definiert:
 	\parbox[t]{11cm}{%
 		Die \Formel, die man erhält, wenn in $\gamma$ alle oder nur einige Vorkommen von $\alpha$ durch $\beta$ ersetzt werden.
 		--- Gegebenenfalls muss noch die Auswahl der Ersetzungen angegeben werden, andernfalls werden alle Vorkommen ersetzt.
-		Letzteres heißt dann \defFt{vollständige} \Ersetzung.
+		Letzteres heißt dann \DefFt{vollständige} \Ersetzung.
 	} \label{def:ErsetzungAlt}\\
 	\gamma(\alpha \defSymBin{\MtsSwap} \beta) \quad \MtsDefEq \quad
 	\parbox[t]{11cm}{%
@@ -148,7 +148,7 @@ Zunächst wird definiert:
 	} \label{def:Vertauschung}
 \end{align}
 
-\seqqt{$ \alpha \MtsSubst \beta $} heißt \defTxt{\Ersetzung} und \seqqt{$ \alpha \MtsSwap \beta $} \defFt{\Vertauschung} oder kurz \defFt{Tausch}.
+\seqqt{$ \alpha \MtsSubst \beta $} heißt \defTxt{\Ersetzung} und \seqqt{$ \alpha \MtsSwap \beta $} \defTxt{\Vertauschung} oder kurz \DefFt{Tausch}.
 -- Sei noch $S = (s_1, s_2, ...)$ eine endliche Folge von \Ersetzungen, die auch \Vertauschungen\ enthalten und auch leer sein kann.
 
 Dann wird definiert:
@@ -169,9 +169,9 @@ Folgende Sprechweisen werden verwendet:
 \begin{itemize}
 	\renewcommand*{\itemindent}{1,5cm}
 	\renewcommand*{\labelsep}{5pt}
-	\item [$\gamma(\alpha \MtsSubst \beta)$ :] In $\gamma$ wird $\alpha$ (\defFt{vollständig}) \defFt{durch $\beta$ substituiert}.
-	\item [$\gamma(\alpha \MtsSwap  \beta)$ :] In $\gamma$ werden $\alpha$ und $\beta$ \defFt{vertauscht}.
-	\item [$\gamma(s)$ :] $s$ wird auf $\gamma$ \defFt{angewendet}.
+	\item [$\gamma(\alpha \MtsSubst \beta)$ :] In $\gamma$ wird $\alpha$ (\DefFt{vollständig}) \DefFt{durch $\beta$ substituiert}.
+	\item [$\gamma(\alpha \MtsSwap  \beta)$ :] In $\gamma$ werden $\alpha$ und $\beta$ \DefFt{vertauscht}.
+	\item [$\gamma(s)$ :] $s$ wird auf $\gamma$ \DefFt{angewendet}.
 	\item [$\gamma(S)$ :] Die \Ersetzungen\ aus S werden in der angegebenen Reihenfolge auf $\gamma$ angewendet.
 	\item [$\gamma(S)$ :] $S$ wird auf $\gamma$ angewendet.
 \end{itemize}
@@ -195,7 +195,7 @@ Nun können die beiden \Identitaetsregeln\ definiert werden:
 
 Die \Identitaetsregeln\ werden hier eingeführt, um die \Ersetzung\ zu rechtfertigen.
 Wie die \Basisregeln\ gelten sie als \Axiome, würden also eigentlich dazu gehören.
-Da sie aber nicht weiter verwendet werden, werden sie hier nicht zu den \Basisregeln\ gezählt.
+Da sie aber nicht weiter verwendet werden, werden sie \hier\ nicht zu den \Basisregeln\ gezählt.
 
 \subsection[Weitere Schlussregeln]{Weitere \Schlussregeln}% --------------------
 \label                          {sub:weitereSchlussregeln}
@@ -296,8 +296,8 @@ Sei nun
 		\text{leer}    & \text{ für } R_i = \text{\strqt{\Praemisse}} \\
 		\text{leer}    & \text{ für } R_i = \text{\strqt{\Konklusion}}     \\
 		\text{leer}    & \text{ für } R_i = \text{\strqt{Annahme}}        \\
-		\overline{R_j} & \text{ für } R_i = j \quad \text{(eine \defFt{interne} \Schlussregel)} \\
-		\text{die \Schlussregel} & \text{ für } R_i = \text{Verweis auf eine \defFt{externe} \Schlussregel}
+		\overline{R_j} & \text{ für } R_i = j \quad \text{(eine \DefFt{interne} \Schlussregel)} \\
+		\text{die \Schlussregel} & \text{ für } R_i = \text{Verweis auf eine \DefFt{externe} \Schlussregel}
 	\end{cases}
 \]
 Damit gilt für die Einträge in einer Zeile $i$:
@@ -316,7 +316,7 @@ $S_i$, $Z_i$ und $D_i$ dürfen dabei auch leer sein.
 	\setlength\tabcolsep{1pt}
 	\setlength\extrarowheight{7pt}
 	\newcommand*{\centerParbox}[2]{\parbox{#1}{\centering #2}}
-	\newcommand*{\titleCell}[3]{\centerParbox{#1}{\textbf{#2} (#3)}}
+	\newcommand*{\titleCell}[3]{\centerParbox{#1}{\TabFt{#2} (#3)}}
 	\newcommand*{\SnCell}[1]{\centerParbox{1.85cm}{#1}}
 	\newcommand*{\DnCell}[1]{\centerParbox{1.95cm}{#1}}
 	\begin{tabular}{|c||c|c|c|c|c|c|}
@@ -426,7 +426,7 @@ Das Eintragen der Zeilennummer $i$ wird nicht extra erwähnt.
 	\end{enumerate}
 	Der \Beweis\ muss so lange fortgeführt werden, bis alle \Konklusionen\ als \Aussagen\ in der Spalte $(A_n)$ erschienen und dort jeweils nur von den gegebenen \Praemissen\ abhängig sind.
 	%
-	\item \label{item:Ergebniszeile} In einer \defFt{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \Schlussregel\ formuliert und in einer passenden Spalte notiert werden.
+	\item \label{item:Ergebniszeile} In einer \DefFt{Ergebniszeile}, die dann die letzte ist, kann noch die bewiesene Behauptung in Form einer \Schlussregel\ formuliert und in einer passenden Spalte notiert werden.
 	Zusätzlich können dort auch noch alle verwendeten \Schlussregeln\ gesammelt werden.
 	Dies kann \textzB\ folgendermaßen geschehen:
 	\begin{enumerate}
@@ -453,7 +453,7 @@ Ein weiteres Beispiel \vrefintab{tab:AbleitungKontraposition} soll verdeutlichen
 	\setlength\tabcolsep{1pt}
 	\setlength\extrarowheight{7pt}
 	\newcommand*{\centerParbox}[2]{\parbox{#1}{\centering #2}}
-	\newcommand*{\titleCell}[3]{\centerParbox{#1}{\textbf{#2} (#3)}}
+	\newcommand*{\titleCell}[3]{\centerParbox{#1}{\TabFt{#2} (#3)}}
 	\newcommand*{\SnCell}[1]{\centerParbox{2.30cm}{#1}}
 	\newcommand*{\DnCell}[1]{\centerParbox{1.95cm}{#1}}
 	\begin{tabular}{|c||c|c|c|c|c|c|}
@@ -555,7 +555,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 
 \newcommand{\alleMoeglichenJunktoren}{
 	Um vollständig zu sein, \textdh\ alle 22 möglichen Kombinationen von \Wahrheitswerten\ für höchstens zwei Variable zu berücksichtigen, enthält die \tablename\ auch viele ungebräuchliche \Symbole\ und \Operationen.
-	\Junktoren\ ohne Angabe einer Priorität sind in diesem Dokument nicht weiter von Interesse.
+	\Junktoren\ ohne Angabe einer Priorität sind \hier\ nicht weiter von Interesse.
 	--- Im Folgenden werden von den in der Tabelle aufgeführten \Junktoren\ nur noch \defSym{\OjkFalse}, \defSym{\OjkTrue}, \defSym{\OjkNot}, \defSym{\OjkAnd}, \defSym{\OjkOr}, \defSym{\OjkImp}, \defSym{\OjkRep}, \defSym{\OjkEquiv}, \defSym{\OjkNand}, \defSym{\OjkNor} und \defSym{\OjkXor} verwendet.
 }
 
@@ -596,35 +596,35 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			\texttrue  & \textfalse & \texttrue  & \textfalse &
 			- & \Aussage\ $B$ & - \\
 			\hline% -- Überschrift -----------------------------------------
-			\textbf{\Junktor}\Tnote{1} &
-			\textbf{0}\Tnote{2} &
-			\multicolumn{2}{c:}{\textbf{1}} &
-			\multicolumn{4}{c|}{\textbf{2}} &
-			\textbf{Name}\Tnote{3} &
-			\textbf{Sprechweise} &
-			\textbf{Prio}\Tnote{4} \\
+			\TabFt{\Junktor}\Tnote{1} &
+			\TabFt{0}\Tnote{2} &
+			\multicolumn{2}{c:}{\TabFt{1}} &
+			\multicolumn{4}{c|}{\TabFt{2}} &
+			\TabFt{Name}\Tnote{3} &
+			\TabFt{Sprechweise} &
+			\TabFt{Prio}\Tnote{4} \\
 			\hline\hline% == Konstante =====================================
 			\defSym{\OjkTrue}
 			& \texttrue  & - & - & - & - & - & -
 			& Verum
-			& \defFt{\TxtTrue} & - \\
+			& \defTxt{\TxtTrue} & - \\
 			\tableline%.................................................
 			\defSym{\OjkFalse}
 			& \textfalse & - & - & - & - & - & -
 			& Falsum
-			& \defFt{\TxtFalse} & - \\
+			& \defTxt{\TxtFalse} & - \\
 			\hline\hline% == unäre Junktoren ===============================
 			& - & \texttrue & \texttrue  & - & - & - & - & & & - \\
 			\tableline%.................................................
 			$(\dots)$
 			& - & \texttrue & \textfalse & - & - & - & -
 			& Klammerung
-			& $A$ \defFt{ist geklammert} & -\Tnote{5} \\
+			& $A$ \DefFt{ist geklammert} & -\Tnote{5} \\
 			\tableline%.................................................
 			\defSym{\OjkNot}
 			& - & \textfalse & \texttrue  & - & - & - & -
 			& Negation
-			& \defFt{Nicht} $A$ & \thepnot\Tnote{6} \\
+			& \DefFt{Nicht} $A$ & \thepnot\Tnote{6} \\
 			\tableline%.................................................
 			& - & \textfalse & \textfalse & - & - & - & - & & & -  \\
 			\hline\hline% == binäre Junktoren ==============================
@@ -635,12 +635,12 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			\defSym{\OjkOr}
 			& - & - & - &\texttrue&\texttrue&\texttrue&\textfalse
 			& Disjunktion; Adjunktion;\newline Alternative
-			& $A$ \defFt{oder} $B$ & \thepor \\
+			& $A$ \DefFt{oder} $B$ & \thepor \\
 			\tableline%.................................................
 			\defSym{\OjkRep} $\Leftarrow$ $\subset$
 			& - & - & - &\texttrue&\texttrue&\textfalse&\texttrue
 			& Replikation; Konversion;\newline konverse Implikation
-			& $A$ \defFt{folgt aus} $B$ & \theprep \\
+			& $A$ \DefFt{folgt aus} $B$ & \theprep \\
 			\tableline%.................................................
 			$\rfloor$
 			& - & - & - &\texttrue&\texttrue&\textfalse&\textfalse
@@ -650,7 +650,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			\defSym{\OjkImp} $\Rightarrow$ $\supset$
 			& - & - & - &\texttrue&\textfalse&\texttrue&\texttrue
 			& Implikation; Subjunktion;\newline Konditional
-			& \defFt{Aus} $A$ \defFt{folgt} $B$; Wenn $A$ dann $B$;\newline
+			& \DefFt{Aus} $A$ \DefFt{folgt} $B$; Wenn $A$ dann $B$;\newline
 			$A$ nur dann wenn $B$ & \thepimp \\
 			\tableline%.................................................
 			$\lfloor$
@@ -660,29 +660,31 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			\tableline%.................................................
 			\defSym{\OjkEquiv} $\Leftrightarrow$
 			& - & - & - &\texttrue&\textfalse&\textfalse&\texttrue
-			& ~\Aequivalenz; Bijunktion;\newline Bikonditional
-			& $A$ \defFt{genau dann wenn} $B$;\newline
+%%%			& \Aequivalenz; Bijunktion;\newline Bikonditional
+			& Äquivalenz; Bijunktion;\newline Bikonditional
+			& $A$ \DefFt{genau dann wenn} $B$;\newline
 			$A$ dann und nur dann wenn $B$
 			& \thepequiv \\
 			\tableline%.................................................
 			\defSym{\OjkAnd} $\&$ $\cdot$
 			& - & - & - &\texttrue&\textfalse&\textfalse&\textfalse
 			& Konjunktion
-			& $A$ \defFt{und} $B$; Sowohl $A$ als auch $B$ & \thepand \\
+			& $A$ \DefFt{und} $B$; Sowohl $A$ als auch $B$ & \thepand \\
 			\tablegroup% -----------------------------------------------
 			\defSym{\OjkNand} $\barwedge$ $\mid$
 			& - & - & - &\textfalse&\texttrue&\texttrue&\texttrue
 			& NAND; Unverträglichkeit;\newline Sheffer-Funktion
-			& \defFt{Nicht zugleich} $A$ \defFt{und} $B$ & \thepnand \\
+			& \DefFt{Nicht zugleich} $A$ \DefFt{und} $B$ & \thepnand \\
 			\tableline%.................................................
 			\defSym{\OjkXor} $\veebar$ $+$ $\oplus$
 			& - & - & - &\textfalse&\texttrue&\texttrue&\textfalse
 			& XOR; Antivalenz;\newline ausschließende Disjunktion
-			& \defFt{Entweder} $A$ \defFt{oder} $B$ & \thepxor \\
+			& \DefFt{Entweder} $A$ \DefFt{oder} $B$ & \thepxor \\
 			\gapline%. . . . . . . . . . . . . . . . . . . . . . . . . .
 			$\nleftrightarrow$ $\nLeftrightarrow$ $\nequiv$
 			& - & - & - &"&"&"&"
-			& ~\Kontravalenz
+%%%			& \Kontravalenz
+			& Kontravalenz
 			& & - \\
 			\tableline%.................................................
 			$\lceil$
@@ -708,7 +710,7 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			\defSym{\OjkNor} $\overline\lor$
 			& - & - & - &\textfalse&\textfalse&\textfalse&\texttrue
 			& NOR; Nihilation;\newline Peirce-Funktion
-			& \defFt{Weder} $A$ \defFt{noch} $B$ & \thepnor \\
+			& \DefFt{Weder} $A$ \DefFt{noch} $B$ & \thepnor \\
 			\tableline%.................................................
 			& - & - & - &\textfalse&\textfalse&\textfalse&\textfalse
 			& Kontradiktion
@@ -767,7 +769,7 @@ Da Computerprogramme mit der \emph{\PolnischenNotation}%
 \footnote{%
 	Bei der \defTxt{\PolnischenNotation} stehen die Operanden \textbzw\ Argumente von \Relationen\ und \Funktionen\ stets rechts von den Relations- und Funktionssymbolen.
 	Dadurch kann auf Gliederungszeichen wie Klammern und Kommata verzichtet werden.
-	Noch einfacher für Computer ist die \defFt{umgekehrte Polnische Notation}, bei der die Operanden und Argumente links von den Symbolen stehen.
+	Noch einfacher für Computer ist die \DefFt{umgekehrte Polnische Notation}, bei der die Operanden und Argumente links von den Symbolen stehen.
 }
 besser umgehen können und Klammern dort überflüssig sind, werden viele \Formeln\ auch parallel in der Polnischen Notation angegeben.
 Dies wird auf Wunsch auch bei Ausgaben von \ASBA\ so gehandhabt.
@@ -793,7 +795,7 @@ Um damit \Formeln\ zu bilden, werden noch Variable gebraucht:
 \begin{align}
 & \defSym{\OjkVar}  & \MtsDefEq \quad & \MengeDef{\Ojkvar_n}{n \in \MtsINo}
 &&&&
-&& \text{, \Menge\ der \defFt{\aussagenlogischenVariablen}} \label{def:OjkVar}
+&& \text{, \Menge\ der \defTxt{\aussagenlogischenVariablen}} \label{def:OjkVar}
 &&
 \end{align}
 
@@ -817,7 +819,7 @@ Die Mengen \OjkCon, \OjkUna, \OjkBin\ und \OjkVar\ müssen paarweise disjunkt se
 \label{def:OjkABCx}
 \end{align}
 
-Für Elemente aus \OjkVar\ verwenden wir normalerweise die kleinen, lateinischen Buchstaben $a$, $b$, $c$, usw.
+Für \Elemente\ aus \OjkVar\ verwenden wir normalerweise die kleinen, lateinischen Buchstaben $a$, $b$, $c$, usw.
 
 \subsubsection{Aussagenlogische Formeln}%  - - - - - - - - - - - - - - - - - - -
 \label                  {subsub:Formeln}
@@ -843,7 +845,7 @@ Damit können nun rekursiv für jede \Teilmenge\ $\OjkJun_x$ von \OjkJun\ zwei M
 \formulatoleft
 \end{align}
 
-Nur die auf diese Weise konstruierten \Formeln\ sind Elemente aus \OjkForx.
+Nur die auf diese Weise konstruierten \Formeln\ sind \Elemente\ aus \OjkForx.
 -- Für \OjkJunx\ = \OjkJun\ sei noch $\defSym{\OjkFor} \MtsDefEq \OjkForx$.
 
 $\defSym{\OjkForpx}$ sei die \Menge\ der auf folgende Weise definierten \defTxt{\aussagenlogischenFormeln} in \defTxt{\PolnischerNotation}:
@@ -863,7 +865,7 @@ $\defSym{\OjkForpx}$ sei die \Menge\ der auf folgende Weise definierten \defTxt{
 \label{def:ForBp} \formulatoleft
 \end{align}
 
-Nur die auf diese Weise konstruierten \Formeln\ sind Elemente aus \OjkForpx.
+Nur die auf diese Weise konstruierten \Formeln\ sind \Elemente\ aus \OjkForpx.
 -- Für \OjkJunx\ = \OjkJun\ sei noch $\defSym{\OjkForp} \MtsDefEq \OjkForpx$.
 
 Wie man leicht sieht, gilt
@@ -881,7 +883,7 @@ Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich i
 Die \Formeln\ aus \OjkForpx\ sind frei von Klammern.
 Die Namen der \Junktoren\ finden sich \vrefintab{tab:Symbole}.
 
-Die \Formeln, die nach einer der Regeln \eqref{def:ForU}, \eqref{def:ForB}, \eqref{def:ForUp} oder \eqref{def:ForBp} gebildet wurden, sind offensichtlich \zerlegbar, die anderen, \textdh\ Variablen und Konstanten (aus \OjkVar\ \textbzw\ \OjkCon), sind nicht \zerlegbar. Letztere bezeichnet man auch als \defFt{\atomare\ \Formeln}.
+Die \Formeln, die nach einer der Regeln \eqref{def:ForU}, \eqref{def:ForB}, \eqref{def:ForUp} oder \eqref{def:ForBp} gebildet wurden, sind offensichtlich \zerlegbar, die anderen, \textdh\ Variablen und Konstanten (aus \OjkVar\ \textbzw\ \OjkCon), sind nicht \zerlegbar. Letztere bezeichnet man auch als \defTxt{\atomare\ \Formeln}.
 
 \subsection[Definition von Junktoren durch andere]{Definition\ von \Junktoren\ durch andere}
 \label                    {sub:JunktorDef}
@@ -896,7 +898,7 @@ Im folgenden gelte für zwei \aussagenlogischeFormeln\ $\alpha$ und $\beta$:
 \end{itemize}
 %TODO === Verweise auf Definitionen prüfen und hinzufügen
 
-Es werden verschiedene \Teilmengen\ von \OjkJun\ eingeführt, die jeweils ausreichen um alle anderen Elemente aus \OjkJun\ zu definieren:
+Es werden verschiedene \Teilmengen\ von \OjkJun\ eingeführt, die jeweils ausreichen um alle anderen \Elemente\ aus \OjkJun\ zu definieren:
 \begin{align}
 &\OjkJun_{\RawMtsIdxBool}&\MtsDefEq\quad&\{\OjkNot,\OjkAnd,\OjkOr\}\label{def:Jbool}
 \qquad \text{(\defTxt{\BoolescheSignatur})}
@@ -962,7 +964,7 @@ und die mit den \Junktoren\ aus $\OjkJun_{\RawMtsIdxOr}$:
 \label{def:true}
 \end{align}
 
-Ist \chrqt{\OjkOr} oder \chrqt{\OjkAnd} nicht vorgegeben, \textdh\ wird von den Elementen aus $\OjkJun_{\RawMtsIdxAnd}$ \textbzgl\ $\OjkJun_{\RawMtsIdxOr}$ statt von denen aus $\OjkJun_\RawMtsIdxBool$ ausgegangen, so muss man den fehlenden \Junktor\ mittels der passenden der beiden folgenden Definitionen einführen:
+Ist \chrqt{\OjkOr} oder \chrqt{\OjkAnd} nicht vorgegeben, \textdh\ wird von den \Elementen\ aus $\OjkJun_{\RawMtsIdxAnd}$ \textbzgl\ $\OjkJun_{\RawMtsIdxOr}$ statt von denen aus $\OjkJun_\RawMtsIdxBool$ ausgegangen, so muss man den fehlenden \Junktor\ mittels der passenden der beiden folgenden Definitionen einführen:
 \begin{align}
 % and --> or -------------------
 (\alpha \OjkOr \beta)  & \;\MtsDefEq\; (\OjkNot((\OjkNot\alpha)\OjkAnd(\OjkNot\beta))) &

@@ -6,40 +6,57 @@
 \phantomsection
 \url{URL}
 
+# nicht erkannte Makros von ASBA
+
 # nicht erkannte Schalter
-\hyperrefFlgfalse
-\hyperrefFlgtrue
+
 \ifhyperrefFlg
+  \hyperrefFlgfalse
+  \hyperrefFlgtrue
+
+\ifimGlossarFlg
+  \imGlossarFlgfalse
+  \imGlossarFlgtrue
+
 \ifindexFlg
+  \indexFlgfalse
+  \indexFlgtrue
+
 \ifmakeindexFlg
+  \makeindexFlgfalse
+  \makeindexFlgtrue
+
 \ifmarginparFlg
+  \marginparFlgfalse
+  \marginparFlgtrue
+
 \ifminitocFlg
-\ifmitGlossarZusatzFlg
+  \minitocFlgfalse
+  \minitocFlgtrue
+
+\ifmitWikiFlg
+  \mitWikiFlgfalse
+  \mitWikiFlgtrue
+
 \ifReinschriftFlg
+  \ReinschriftFlgfalse
+  \ReinschriftFlgtrue
+
 \ifshowframeFlg
+  \showframeFlgfalse
+  \showframeFlgtrue
+
 \ifshowidxFlg
+  \showidxFlgfalse
+  \showidxFlgtrue
+
 \ifsplitindexFlg
+  \splitindexFlgfalse
+  \splitindexFlgtrue
+
 \iftestFlg
-\indexFlgfalse
-\indexFlgtrue
-\makeindexFlgfalse
-\makeindexFlgtrue
-\marginparFlgfalse
-\marginparFlgtrue
-\minitocFlgfalse
-\minitocFlgtrue
-\mitGlossarZusatzFlgfalse
-\mitGlossarZusatzFlgtrue
-\ReinschriftFlgfalse
-\ReinschriftFlgtrue
-\showframeFlgfalse
-\showframeFlgtrue
-\showidxFlgfalse
-\showidxFlgtrue
-\splitindexFlgfalse
-\splitindexFlgtrue
-\testFlgfalse
-\testFlgtrue
+  \testFlgfalse
+  \testFlgtrue
 
 # unbekannte Parameter
 \begin{otherlanguage}{Sprache}
@@ -50,6 +67,7 @@
 \addIdx[gloKeys%keys]{gloLabel%key}
 \baueBeschreibung{gloLabel%Key}{Symbolart%text}
 \baueBeschreibung}[Zwischentext%text]{gloLabel%Key}{Symbolart%text}
+\begin{offen}
 \defSymBin{gloCmd%cmd}
 \defSymUna{gloCmd%cmd}
 \defSym{gloCmd%cmd}
@@ -58,8 +76,9 @@
 \dummyVerweis[ext]{newCmd%cmd}{oldCmd%cmd}{newLabel%key}#d
 \gloFt{text}#n
 \GloFt{text}#n
-\GlossarZusatz{gloLabel%key}
-\glsdeskOhneZusatz{gloLabel%key}
+\glsBeschreibung{gloLabel%key}
+\glsBeschreibungMitWiki{gloLabel%key}
+\glsBeschreibungOhneWiki{gloLabel%key}
 \glsTag{gloLabel%key}
 \idx{Eintrag%text}
 \idx[text]{Eintrag%text}
@@ -69,6 +88,8 @@
 \newsynonym[text]{cmd}{gloLabel%key}{Bezeichnung%cmd}#d
 \newVerweis{cmd}{glscmd%cmd}{gloLabel%key}#d
 \newVerweis[ext]{cmd}{glscmd%cmd}{gloLabel%key}#d
+\nichtImGlossar{gloLabel%key}
+\nurImGlossar{gloLabel%key}
 \SymbolAmRand}{gloLabel%key}
 \SymbolDescription{gloLabel%key}{text}#n
 \SymbolDescription[Zwischentext]{gloLabel%key}{text}#n
@@ -87,8 +108,6 @@
 \alternativii[Ergänzung]{alternativ1%text}{alternativ2%text}#n
 \alternativiii{alternativ1%text}{alternativ2%text}{alternativ3%text}#n
 \alternativiii[Ergänzung]{alternativ1%text}{alternativ2%text}{alternativ3%text}#n
-\begin{wikicite}{bib:%<Begriff%>%key}
-\begin{wikicite}[Quelle]{bib:%<Begriff%>%key}
 \beginchapter{chapter}#n
 \beginchapter[Kopf seitlich]{chapter}#n
 \beginsection{text}#n
@@ -184,4 +203,6 @@
 \vrefvonsub{sub:%<Label%>%key}#r
 \vrefvontab{tab:%<Label%>%key}#r
 \vrefziel{ziel:%<Label%>%key}#r
+\wikicite{bib:%<Begriff%>%key}{text}
+\wikicite[Quelle]{bib:%<Begriff%>%key}{text}
 \Wolke{Name}#n

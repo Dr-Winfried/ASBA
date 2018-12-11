@@ -1,7 +1,7 @@
 %%############################################################################%%
 %%                                                                            %%
-%% Datei:  ASBA-Test.tex                                                      %%
-%% Inhalt: Kapitel "Test"                                                     %%
+%% Datei:  ASBA-Vorwort.tex                                                   %%
+%% Inhalt: Kapitel "Vorwort" und "Vereinbarungen"                             %%
 %%                                                                            %%
 %% Copyright (C) 2017  Winfried Teschers                                      %%
 %%                                                                            %%
@@ -35,58 +35,71 @@
 \phantomsection% sichert korrekten Link im Inhaltsverzeichnis
 \label                    {cha:Vorwort}
 ~\vskip 1.6cm
-{\huge\textbf{\textsf         {Vorwort}}}
+\likeChapterFt                {Vorwort}
 \vskip 0.8cm
 \beginchapter[]               {Vorwort}
 \addcontentsline{toc}{chapter}{Vorwort}% Eintrag ins Inhaltsverzeichnis
 
-Schon während meiner aktiven Zeit habe ich davon geträumt, ein Programm zu erstellen, mit dem man mathematische \Saetze\ und \Beweise\ speichern und überprüfen kann.
-Es sollte auch statistische \Auswertungen\ beherrschen und \textua\ Fragen beantworten können wie \textzB\
-"`Welche \Axiome\ sind zum \Beweis\ eines bestimmten \Satzes\ erforderlich?"' oder
-"`Wie viele \Beweisschritte\ erfordert ein bestimmter \Beweis?"'.
-Ein \Beweis\ mit weniger \Axiomen\ und weniger \Beweisschritten\ wäre dann vorzuziehen.
+Schon während meiner aktiven Zeit habe ich davon geträumt, ein Programm zu erstellen, mit dem man mathematische Sätze und Beweise speichern und überprüfen kann.
+Es sollte auch statistische Auswertungen beherrschen und \textua\ Fragen beantworten können wie \textzB\
+"`Welche Axiome sind zum Beweis eines bestimmten Satzes erforderlich?"' oder
+"`Wie viele Beweisschritte erfordert ein bestimmter Beweis?"'.
+Ein Beweis mit weniger Axiomen und weniger Beweisschritten wäre dann vorzuziehen.
 
-Einige Jahre nach meiner Pensionierung habe ich Ende 2016 endlich damit angefangen, das Projekt \ASBA\ zu starten.
+Einige Jahre nach meiner Pensionierung habe ich Ende 2016 endlich damit angefangen, das Projekt ASBA zu starten.
 Im Internet habe ich das Projekt "`Hilbert II"' \cite{bib:HilbertII} gefunden, dass eine ähnliche Zielsetzung hat.
 Ich habe dann mit dem Projektleiter Michael Meyling Kontakt aufgenommen und war zuversichtlich, Synergien nutzen zu können.
 Leider hat sich dann herausgestellt, dass mein Ansatz viel umfangreicher und somit mit "`Hilbert II"' wohl nicht kompatibel ist.
-Daher betreibe ich \ASBA\ als ein Ein-Mann-Projekt und dies wird bis zur Fertigstellung der ersten Version dieses Dokuments wohl so bleiben müssen.
+Daher betreibe ich ASBA als ein Ein-Mann-Projekt und dies wird bis zur Fertigstellung der ersten Version dieses Dokuments wohl so bleiben müssen.
 Vielleicht ergibt sich dann ja eine Zusammenarbeit mit anderen Enthusiasten.
 
-Da in diesem Dokument viele mathematische \Formeln\ vorkommen und \ASBA\ auch \LaTeX-Code generieren soll, ist es in \LaTeX\ verfasst.
+Da \hier\ viele mathematische Formeln vorkommen und ASBA auch \LaTeX-Code generieren soll, ist es in \LaTeX\ verfasst.
 Dieses für mich neue Textsystem war eine große, spannende Herausforderung und ist einer der Gründe für die lange Dauer der Erstellung dieses Dokuments.
 Hinzu kommt, dass ich keinen Termindruck habe und endlich mal 100\% versuchen kann -- in meinem Job wurde ich daran aus verständlichen Gründen gehindert.
 
-\ASBA\ soll eine Basis für die Überprüfung und Archivierung mathematischer \Saetze\ und \Beweise\ sein.
-Daher halte ich es für unerlässlich, alle verwendeten \Begriffe\ und \Bezeichnungen\ (\textdh\ \Benennungen\ und \Symbole) eindeutig genug zu definieren (100\%!).
+ASBA soll eine Basis für die Überprüfung und Archivierung mathematischer Sätze und Beweise sein.
+Daher halte ich es für unerlässlich, alle verwendeten Begriffe und Bezeichnungen (\textdh\ Benennungen und Symbole) eindeutig genug zu definieren (100\%!).
 Natürlich will ich mich dabei an die übliche Nomenklatur halten.
 Aber was ist üblich?
-Steht \chrqt{\MtsSubset} für "`\Teilmenge"' oder "`\echteTeilmenge"'?
+Steht \MtsSubset\ für "`Teilmenge"' oder "`echteTeilmenge"'?
 Ist $0$ ein Element aus \MtsIN\ oder nicht?
-Daher habe ich versucht, alle wichtigen, verwendeten \Bezeichnungen\ der Mathematik, mit dem Schwerpunkt Logik, aber auch der \formalenMetasprache\ streng zu definieren, normalerweise im Text, teilweise aber nur in einer Fußnote, auf jeden Fall aber im Glossar.
-Dort sind auch manche \Bezeichnungen\ aufgeführt, die im Text nicht definiert wurden.
-
-Alle im Glossar (ab \Pageref{dic:Glossar}) und Symbolverzeichnis (ab \Pageref{dic:Symbolverzeichnis}) aufgeführten \Bezeichnungen\ werden bei der Definition \likehyperDef{in dieser} und bei der Verwendung \likehyperTxt{in dieser} Schriftart ausgegeben.
-Zusätzlich sind die \Bezeichnungen\ im PDF-Dokument mit einem Link ins Glossar \textbzw\ Symbolverzeichnis versehen.
-Wenn es keine Definition einer \Benennung\ gibt, wird dort, wo sie eigentlich stehen müsste, ein "`\GD"' an die \Benennung\ angefügt.
-Für \Symbole\ gilt das nicht!
-
-Fußnoten dienen nur zu weiteren Erläuterungen sowie Verweisen in dieses Dokument und in die Literatur.
-Daher können sie auch etwas "`lascher"' formuliert sein.
-Für das Verständnis des Textes sollten sie nicht nötig sein, es reichen Grundkenntnisse der Mathematik.
-
-Wenn im Text "`wir"' verwendet wird, geht es um Definitionen, die von allgemein bekannten möglicherweise abweichen.
-"`Wir"' und nicht "`ich"', da ich den Leser einschließe und außer an dieser Einleitung in Zukunft möglicherweise auch andere Autoren an diesem Dokument beteiligt sein werden.
+Daher habe ich versucht, alle wichtigen, verwendeten Bezeichnungen der Mathematik, mit dem Schwerpunkt Logik, aber auch der formalen Metasprache streng zu definieren, normalerweise im Text, teilweise aber nur in einer Fußnote, auf jeden Fall aber im Glossar.
+Dort sind auch manche Bezeichnungen aufgeführt, die im Text nicht definiert wurden.
 
 \bigskip
 
-Baiersdorf, den 03. März 2018
+Baiersdorf, den 07. Dezember 2018
 
 Winfried Teschers
 
+\Endchapter
+
+\newpage
+
+%\chapter                     {Vereinbarungen}% ################################
+\phantomsection% sichert korrekten Link im Inhaltsverzeichnis
+\label                    {cha:Vereinbarungen}
+~\vskip 1.6cm
+\likeChapterFt                {Vereinbarungen}
+\vskip 0.8cm
+\beginchapter[]               {Vereinbarungen}
+\addcontentsline{toc}{chapter}{Vereinbarungen}% Eintrag ins Inhaltsverzeichnis
+
+\Hier\ werden verschiedene Textauszeichnungen mit folgenden Bedeutungen verwendet:
+
+\begin{itemize}
+	\item []
+\end{itemize}
+
+Fußnoten dienen nur zu weiteren Erläuterungen sowie Verweisen in dieses Dokument und die Literatur.
+Daher können sie auch etwas "`lascher"' formuliert sein.
+Für das Verständnis des Textes sollten sie nicht nötig sein, es reichen Grundkenntnisse der Mathematik.
+
 \iftestFlg
 	\bigskip
-	\color{gray}%%% Anfang grauer Text -----------------------------------------
-	PS: Texte, deren Bearbeitung zurückgestellt ist, sind in dieser Schriftfarbe geschrieben.
-	\color{black}%%% Ende  grauer Text -----------------------------------------
+	\begin{offen}
+		PS: Texte, deren Bearbeitung zurückgestellt ist, sind in dieser Schriftfarbe geschrieben.
+	\end{offen}
 \else\fi
+
+\Endchapter

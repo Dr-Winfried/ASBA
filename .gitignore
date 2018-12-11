@@ -217,7 +217,9 @@ pip-log.txt
 ###############
 .mr.developer.cfg
 Externe Dokumente/
+fehlerbehaftet/
 nppBackup/
+Zwischensicherung/
 *.bak
 *.lnk
 *.url

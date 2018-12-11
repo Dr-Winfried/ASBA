@@ -125,6 +125,10 @@ Nicht unbedingt nötig, aber sinnvoll:
 	\\\tourl{http://www.graphviz.org/Home.php}
 	--- Lizenz \citesee{bib:EPL}
 
+	\item\label{Werkzeug:Qt}angedacht: Software Entwicklungsumgebung für C++.
+	\\\tourl{https://www.qt.io/developers/}
+--- Lizenz \citesee{bib:GPLiii} und \citesee{bib:LGPLiii}
+
 	\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 \end{enumerate}
 
@@ -153,7 +157,8 @@ Nicht unbedingt nötig, aber sinnvoll:
 	\setcounter{Enumi}{\value{enumi}}% Nummerierung wird fortgesetzt.
 \end{enumerate}
 
-\color{gray}%%% Anfang grauer Text ---------------------------------------------
+\begin{offen}%%%
+
 \paragraph{Im Projekt \emph{qedeq} verwendete Werkzeuge}% ----------------------
 
 \begin{itemize}
@@ -193,10 +198,12 @@ Nicht unbedingt nötig, aber sinnvoll:
 	\\\tourl{http://xerces.apache.org/xerces2-j/}
 	--- Lizenzen \citesee{bib:Apacheii, bib:SAX, bib:WDCDL, bib:WDCSNL}
 \end{itemize}
-\color{black}%%% Ende  grauer Text ---------------------------------------------
 
-\section     [Die Struktur ausgewählter Begriffe]{Die Struktur ausgewählter \Begriffe}
-\beginsection{Die Struktur ausgewählter Begriffe}
+\end{offen}%%%
+
+\section     [Die Struktur ausgewählter  Begriffe und  Bezeichnungen]
+             {Die Struktur ausgewählter \Begriffe und \Bezeichnungen}
+\beginsection{Die Struktur ausgewählter  Begriffe und  Bezeichnungen}
 \label   {sec:Begriffsstruktur}
 
 \begin{table}[H]
@@ -205,7 +212,7 @@ Nicht unbedingt nötig, aber sinnvoll:
 		\setlength\extrarowheight{3pt}
 		\begin{tabularx}{\linewidth}{c@{\extracolsep{\fill}}|c|c|c|c|}
 			\hline% ------------------------------------------------------------
-			\multicolumn{5}{c|}{\textbf{\Objekt}}\Tnote{1}
+			\multicolumn{5}{c|}{\TabFt{\Objekt}}\Tnote{1}
 			\\
 			\hline% ------------------------------------------------------------
 		\end{tabularx}
@@ -214,7 +221,7 @@ Nicht unbedingt nötig, aber sinnvoll:
 			\item[1] Fußnote zur Tabelle
 		\end{tablenotes}
 	\end{threeparttable}
-	\caption{\Bezeichnungen}
+	\caption{Ausgewählte \Begriffe}
 	\label{tab:Objekte}% Erst nach '\caption'!
 \end{table}
 
@@ -223,11 +230,11 @@ Nicht unbedingt nötig, aber sinnvoll:
 		\setlength\extrarowheight{3pt}
 		\begin{tabularx}{\linewidth}{c@{\extracolsep{\fill}}|c|c|c|c|}
 			\hline% ------------------------------------------------------------
-			\multicolumn{3}{c|}{\textbf{\Metasprache}}&
-			\multicolumn{2}{c|}{\textbf{\Objektsprache}}
+			\multicolumn{3}{c|}{\TabFt{\Metasprache}}&
+			\multicolumn{2}{c|}{\TabFt{\Objektsprache}}
 			\\
-			\textbf{natürliche Sprache} & \multicolumn{2}{c|}{\textbf{\formaleMetasprache}}
-			& \textbf{\Aussagenlogik} & \textbf{\Praedikatenlogik}
+			\TabFt{natürliche Sprache} & \multicolumn{2}{c|}{\TabFt{\formaleMetasprache}}
+			& \TabFt{\Aussagenlogik} & \TabFt{\Praedikatenlogik}
 			\\
 			\hline% ------------------------------------------------------------
 			& \multicolumn{4}{c|}{\Symbole}
@@ -297,7 +304,7 @@ Nicht unbedingt nötig, aber sinnvoll:
 			\hline% ------------------------------------------------------------
 			\Quantoren
 			& \multicolumn{2}{c|}{$\MtsForall \quad \MtsExists \quad \MtsExione$}
-			&                   & $\OjkForall \quad \OjkExists \quad \OjkExione$
+			& \multicolumn{2}{c|}{$\OjkForall \quad \OjkExists \quad \OjkExione$}
 			\\
 			\hline% ------------------------------------------------------------
 			\Ersetzung \quad \Vertauschung
@@ -313,8 +320,8 @@ Nicht unbedingt nötig, aber sinnvoll:
 			& \multicolumn{2}{c|}{\MtsIn \quad \MtsNi \quad \MtsInN \quad \MtsNiN}
 			& \multicolumn{2}{c|}{ }
 			\\
-			\Mengenrelationen:
-			& \multicolumn{2}{c|}{\MtsSubset \quad \MtsSubsetEq \quad \MtsSubsetN \quad \MtsSubsetEqN \quad \MtsSupset \quad \MtsSupsetEq \quad \MtsSupsetN \quad \MtsSupsetEqN}
+			\Bereichsrelationen:
+			& \multicolumn{2}{c|}{\MtsSubset \quad \MtsSubsetEq \quad \MtsSupset \quad \MtsSupsetEq \quad \MtsSubsetN \quad \MtsSubsetEqN \quad \MtsSupsetN \quad \MtsSupsetEqN}
 			& \multicolumn{2}{c|}{ }
 			\\
 			\Komponentenrelationen:
@@ -322,18 +329,18 @@ Nicht unbedingt nötig, aber sinnvoll:
 			& \multicolumn{2}{c|}{ }
 			\\
 			\Folgenrelationen:
-			& \multicolumn{2}{c|}{\MtsSubseq \quad \MtsSubseqEq \quad \MtsSubseqN \quad \MtsSubseqEqN \quad \MtsSupseq \quad \MtsSupseqEq \quad \MtsSupseqN \quad \MtsSupseqEqN}
+			& \multicolumn{2}{c|}{\MtsSubseq \quad \MtsSubseqEq \quad \MtsSupseq \quad \MtsSupseqEq \quad \MtsSubseqN \quad \MtsSubseqEqN \quad \MtsSupseqN \quad \MtsSupseqEqN}
 			& \multicolumn{2}{c|}{ }
 			\\
-			ausgewählte Mengen
-			& \multicolumn{2}{c|}{\MtsIN \quad \MtsINo \quad \MtsUniversum \quad \Sprache }
+			ausgewählte Bereiche
+			& \multicolumn{2}{c|}{\MtsIN \quad \MtsINo \quad \MtsUniversum \quad \MtsAussagen \quad \MtsObjekte \quad \MtsSprache }
 			& \multicolumn{2}{c|}{ }
 			\\
 			\hline% ------------------------------------------------------------
-			& \textbf{\unaer} & \textbf{\binaer}
+			& \TabFt{\unaer} & \TabFt{\binaer}
 			& \multicolumn{2}{c|}{ }
 			\\
-			\Mengenoperationen
+			\Bereichsoperationen
 			& \MtsPot \quad \MtsPotf \quad \MtsRel \quad \MtsRelf & \MtsCap \quad \MtsCup \quad \MtsSetminus \quad \MtsTimes
 			& \multicolumn{2}{c|}{ }
 			\\
@@ -342,7 +349,7 @@ Nicht unbedingt nötig, aber sinnvoll:
 			\\
 			\hline% ------------------------------------------------------------
 			\unaere\ \Operationen\ auf:
-			& \textbf{\Relationen} & \textbf{\Funktionen}
+			& \TabFt{\Relationen} & \TabFt{\Funktionen}
 			& \multicolumn{2}{c|}{ }
 			\\
 			& \MtsStelR            & \MtsStelF
@@ -377,7 +384,7 @@ Nicht unbedingt nötig, aber sinnvoll:
 		\begin{tablenotes}
 			\footnotesize
 			\item[] Die erste Spalte beschreibt die anderen Spalten.
-			Die \textbf{fettgedruckten} Teile, und nur diese, gelten als Überschriften.
+			Nur Teile \TabFt{in dieser Schriftart} gelten als Überschriften.
 			\item[1] nur in Schlussregeln
 		\end{tablenotes}
 	\end{threeparttable}

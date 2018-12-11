@@ -187,6 +187,8 @@
 	\renewcommand*{\marginpar}[2][]{\relax}
 \fi
 
+\newenvironment{offen}{\color{gray}}{\relax}% Passagen, die noch offen sind und ggf. entfallen.
+
 % Verweise =====================================================================
 \usepackage{varioref}%             \vref...
 
@@ -207,10 +209,6 @@
 % pdfauthor   - Author   im PDF-Dokument
 % pdfsubject  - Subject  im PDF-Dokument
 % pdfkeywords - Keywords im PDF-Dokument
-\newcommand*{\linkcolor}[1]{\textcolor{blue}{#1}}% Farbe der internen Links
-\newcommand*{\wikilink} [1]{\textcolor{blue}{#1}}% Farbe der Links in Wikipedia
-\newcommand*{\wikibf}   [1]{\textbf         {#1}}% Bold font in Wikipedia
-\newcommand*{\wikiit}   [1]{\textit         {#1}}% Italic font in Wikipedia
 
 % --- glossaries --- Create glossaries and lists of acronyms -------------------
 \usepackage[index,nohypertypes={index},nopostdot,section=section,toc,xindy={glsnumbers=false}]{glossaries}
@@ -232,20 +230,19 @@
 
 % Einstellung von globalen Werten und Makro-Redefinitionen #####################
 
-% Kopfzeilen ===================================================================
-\newcommand*{\texthead}[1]{\textnormal{\textsf{\textbf{#1}}}}% Schriftart
-\newcommand*{\Lehead}  [1]{\lehead{\texthead{#1}}}
-\newcommand*{\Cehead}  [1]{\cehead{\texthead{#1}}}
-\newcommand*{\Rehead}  [1]{\rehead{\texthead{#1}}}
-\newcommand*{\Lohead}  [1]{\lohead{\texthead{#1}}}
-\newcommand*{\Cohead}  [1]{\cohead{\texthead{#1}}}
-\newcommand*{\Rohead}  [1]{\rohead{\texthead{#1}}}
-\newcommand*{\Ohead}   [1]{\ohead {\texthead{#1}}}
-\newcommand*{\Chead}   [1]{\chead {\texthead{#1}}}
-\newcommand*{\Ihead}   [1]{\ihead {\texthead{#1}}}
-\newcommand*{\Ofoot}   [1]{\ofoot {\textnormal{\textbf{#1}}}}
-\newcommand*{\Cfoot}   [1]{\cfoot {\textnormal{#1}}}
-\newcommand*{\Ifoot}   [1]{\ifoot {\textnormal{#1}}}
+% Kopfzeilen und Fußzeilen =====================================================
+\newcommand*{\Lehead}[1]{\lehead{\HeadFt{#1}}}
+\newcommand*{\Cehead}[1]{\cehead{\HeadFt{#1}}}
+\newcommand*{\Rehead}[1]{\rehead{\HeadFt{#1}}}
+\newcommand*{\Lohead}[1]{\lohead{\HeadFt{#1}}}
+\newcommand*{\Cohead}[1]{\cohead{\HeadFt{#1}}}
+\newcommand*{\Rohead}[1]{\rohead{\HeadFt{#1}}}
+\newcommand*{\Ohead} [1]{\ohead {\HeadFt{#1}}}
+\newcommand*{\Chead} [1]{\chead {\HeadFt{#1}}}
+\newcommand*{\Ihead} [1]{\ihead {\HeadFt{#1}}}
+\newcommand*{\Ofoot} [1]{\ofoot {\PageFt{#1}}}
+\newcommand*{\Cfoot} [1]{\cfoot {\FootFt{#1}}}
+\newcommand*{\Ifoot} [1]{\ifoot {\FootFt{#1}}}
 \newcommand*{\Pagestyle}{\pagestyle{scrheadings}}
 \newcommand*{\Thispagestyle}{\thispagestyle{scrheadings}}
 
@@ -318,12 +315,11 @@
 \newcounter{Enumiii}% für unterbrochene Listennummerierung
 
 % Bildelemente #################################################################
-\newcommand*{\textbild}[1]{\textbf{\textsf{#1}}}% Textauszeichnungen für Text im Bild
 \newcommand*{\Datei}[5][0.5]{% #2 x #3 = (-#2/2,-#3/2),(#2/2,#3/2)
 	% [Eck-Radius], Breite, Höhe, Name1, Name2
 	\put(0,0){\oval[#1](#2,#3)}
-	\put(0,+0.25){\makebox(0,0){\textbild{#4}}}
-	\put(0,-0.25){\makebox(0,0){\textbild{#5}}}
+	\put(0,+0.25){\makebox(0,0){\ImageFt{#4}}}
+	\put(0,-0.25){\makebox(0,0){\ImageFt{#5}}}
 }
 \newcommand*{\Datenbank}[5]{% 2(#1) x 2(#2+#3) = (-#1,-#2-#3),(+#1,+#2+#3)
 	% Halbmesser x, Halbmesser y, halbe Höhe, Name1, Name2 - Ursprung in der Mitte
@@ -339,8 +335,8 @@
 		\qbezier(-#1,0.0)(-#1, #2)(0.0, #2)
 		\qbezier( #1,0.0)( #1, #2)(0.0, #2)
 	}
-	\makebox(0,  0){\textbild{#4}}
-	\makebox(0,-#3){\textbild{#5}}
+	\makebox(0,  0){\ImageFt{#4}}
+	\makebox(0,-#3){\ImageFt{#5}}
 }
 % '\Männchen' (mit 'ä') führt zu Fehler
 \newcommand*{\Maennchen}{% 1x2 = (-0.5,-1.7),(+0.5,+0.3) Ursprung im Kopf
@@ -356,7 +352,7 @@
 		\put(0,0){\circle*{#1}}
 		\color{black}
 		\put(0,0){\circle{#1}}
-		\put(0,0){\makebox(0,0){\small\textbild{#2}}}
+		\put(0,0){\makebox(0,0){\small\ImageFt{#2}}}
 	}
 }
 \newcommand*{\marker}[2][0.5]{% 2x#1 x 2x#1 - Kreis mit Text - grau
@@ -366,7 +362,7 @@
 		\put(0,0){\circle*{#1}}
 		\color{gray}
 		\put(0,0){\circle{#1}}
-		\put(0,0){\makebox(0,0){\small\textbild{#2}}}
+		\put(0,0){\makebox(0,0){\small\ImageFt{#2}}}
 	}
 }
 \newcommand*{\Papier}[4]{% 3x#1+#2 = (0.0,-#2),(2.1,#1) Ursprung links unten
@@ -376,8 +372,8 @@
 	\qbezier(+2.1,+#2)(+1.6,+#2)(+1.4,0.0)
 	\qbezier(+0.7,-#2)(+1.2,-#2)(+1.4,0.0)
 	\qbezier(+0.7,-#2)(+0.2,-#2)(+0.0,0.0)
-	\put(0,+0.25){\makebox(+2.8,+#1){\textbild{#3}}}
-	\put(0,-0.25){\makebox(+2.8,+#1){\textbild{#4}}}
+	\put(0,+0.25){\makebox(+2.8,+#1){\ImageFt{#3}}}
+	\put(0,-0.25){\makebox(+2.8,+#1){\ImageFt{#4}}}
 }
 \newcommand*{\Terminal}[1]{% 2x2 =(-1.0,-1.4),(+1.0,+0.6)Ursprung im Monitor
 	% Bildschirm
@@ -403,7 +399,7 @@
 	% oberer Bogen links
 	\qbezier(-0.3,+0.2)(-0.3,+0.5)(-0.8,+0.5)
 	\qbezier(-1.5,+0.0)(-1.5,+0.5)(-0.8,+0.5)
-	\put(-1.5,-1.0){\makebox(3.0,1.5){\textbild{#1}}}
+	\put(-1.5,-1.0){\makebox(3.0,1.5){\ImageFt{#1}}}
 }
 
 % sonstige nützliche Makros ####################################################
@@ -418,8 +414,7 @@
 % Parameter im Textmodus
 \newcommand*{\chrqt}[1]{\ensuremath{\left<\text{#1}\right>}}% Zeichen/Symbol
 \newcommand*{\seqqt}[1]{\ensuremath{\left<\mkern-4mu\left<\text{#1}\right>\mkern-4mu\right>}}% Symbolfolge/Formel
-\newcommand*{\charf}[1]{\textbf{\texttt{#1}}}%Schriftart für Zeichen
-\newcommand*{\strqt}[1]       {``\charf{#1}''}%              Zeichenkette
+\newcommand*{\strqt}[1]       {``\CharFt{#1}''}%              Zeichenkette
 % Sonstige Quotierungen:
 \newcommand*{\standsfor}[1]{\enquote{#1}}% Definition einer Bezeichnung
 \newcommand*{\statement}[1]{\enquote{#1}}% Aussage in natürlicher Sprache
@@ -534,9 +529,9 @@
 \newcommand*{\citesee}       [1]{\seename~\cite                {#1}}
 \newcommand*{\citenote}      [1]{\footnote{\citesee            {#1}}}
 \newcommand*{\synonym}       [2][]{\footnote{synonym:          {#2}#1}}
-\newcommand*{\alternativi}   [2][]{\footnote{alternativ: \defFt{#2}#1}}
-\newcommand*{\alternativii}  [3][]{\footnote{alternativ: \defFt{#2}             oder \defFt{#3}#1}}
-\newcommand*{\alternativiii} [4][]{\footnote{alternativ: \defFt{#2}, \defFt{#3} oder \defFt{#4}#1}}
+\newcommand*{\alternativi}   [2][]{\footnote{alternativ: \DefFt{#2}#1}}
+\newcommand*{\alternativii}  [3][]{\footnote{alternativ: \DefFt{#2}             oder \DefFt{#3}#1}}
+\newcommand*{\alternativiii} [4][]{\footnote{alternativ: \DefFt{#2}, \DefFt{#3} oder \DefFt{#4}#1}}
 
 % Abkürzungen mit Punkten; zur Unterscheidung vom Satzende ---------------------
 
@@ -556,8 +551,42 @@
 \newcommand*{\textZB}  {Z.\@\,B.\@}
 % Weitere Abkürzungen
 \newcommand*{\textdots}{…}
+\newcommand*{\hier}{in diesem Dokument}
+\newcommand*{\Hier}{In diesem Dokument}
 
-% Text-Fonts in 'ASBA-Vorspann-Glossar.txt'
+% Text-Fonts - enden auf Ft
+\newcommand*       {\HeFoFt}[1]{\textnormal{\textsf  {#1}}} % Kopf- und Fußzeile
+\newcommand*       {\HeadFt}[1]{\HeFoFt      {\textbf{#1}}} % Kopfzeile
+\newcommand*       {\FootFt}[1]{\HeFoFt              {#1}}  % Fußzeile
+\newcommand*       {\PageFt}[1]{\FootFt      {\textbf{#1}}} % Seitennummer
+\newcommand*{\likeChapterFt}[1]{{\huge\textsf{\textbf{#1}}}}% Kapitelüberschrift
+\newcommand*        {\TabFt}[1]              {\textbf{#1}}  % Spaltenüberschrift
+\newcommand*      {\ImageFt}[1]      {\textsf{\textbf{#1}}} % Text in Bildern
+\newcommand*   {\likeLinkFt}[1]{\textcolor{blue}     {#1}}  % Link-Farbe intern
+%%%\newcommand*    {\CiteFt}[1]      {\textsf        {#1}}  % Zitat
+\newcommand*       {\CharFt}[1]{\texttt      {\textbf{#1}}} % Zeichen [in Zeichenketten]
+\newcommand*        {\DefFt}[1]      {\textsf{\textbf{#1}}} % Definition
+\newcommand*        {\OptFt}[1]              {\textit{#1}}  % optionale              Teile von Sprechweisen
+\newcommand*        {\ManFt}[1]              {\textbf{#1}}  % notwendige (mandatory) Teile von Sprechweisen
+\newcommand*        {\GloFt}[1]      {\textsf{\textbf{#1}}} % erstmalige Selbstreferenz ohne Link
+\newcommand*        {\gloFt}[1]      {\textsf        {#1}}  %            Selbstreferenz ohne Link
+\newcommand*        {\PreFt}[1]                      {#1}   % Prädikat
+% angepasst an Wikipedia
+\newcommand*   {\wikiBoldFt}[1]{              \textbf{#1}}  % Bold   Font in Wikipedia
+\newcommand* {\wikiItalicFt}[1]{\textit              {#1}}  % Italic Font in Wikipedia
+\newcommand*   {\wikiFamily}    {sffamily}                  % serifenlos  in Wikipedia
+\newcommand*   {\wikiLinkFt}[1]{\textcolor{blue}     {#1}}  % Link-Farbe  in Wikipedia
+% Mathematische Text-Fonts - enden auf ft
+\newcommand*        {\Varft}[1]                      {#1}   % Variable allgemein           (Buchstabe)
+\newcommand*        {\varft}[1]              {\mathbf{#1}}  % Variablensymbol         (Kleinbuchstabe)
+\newcommand*        {\Conft}[1]      {\mathrm        {#1}}  % Konstante                         (Wort)
+\newcommand*        {\Drvft}[1]              {\mathbf{#1}}  % Bereiche von Ableitungen (Großbuchstabe)
+\newcommand*        {\drvft}[1]              {\mathbf{#1}}  % ein Element daraus           (Buchstabe)
+\newcommand*        {\Idxft}[1]      {\mathrm        {#1}}  % fester Index                 (Buchstabe)
+\newcommand*        {\Preft}[1]      {\mathrm        {#1}}  % Prädikat                          (Wort)
+\newcommand*        {\Setft}[1]{\mathcal             {#1}}  % vorgegebener Bereich     (Großbuchstabe)
+\newcommand*        {\Elmft}[1]                      {#1}   % ein Element daraus       (Großbuchstabe)
+\newcommand*        {\sOpft}[1]{\mathfrak            {#1}}  % Bereichsoperation                 (Text)
 
 % Index ########################################################################
 \ifindexFlg

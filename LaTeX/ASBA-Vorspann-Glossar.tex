@@ -26,7 +26,6 @@
 %% e-mail: winfried.teschers@t-online.de                                      %%
 %%                                                                            %%
 %%############################################################################%%
-{%%%%
 % !TeX root = ASBA.tex
 % !TeX encoding = UTF-8
 % !TeX spellcheck = de_DE
@@ -36,71 +35,101 @@
 % Elemente, die keine Glossareinträge sind und dafür nicht gebraucht werden,
 % werden in "ASBA-Vorspann.tex" und "ASBA-Vorspann-Logik.tex" definiert.
 
-\newif\ifmitGlossarZusatzFlg% Schalter ob Glossar zu berücksichtigen ist; AUS
-\mitGlossarZusatzFlgtrue% ... jetzt EIN
-\newcommand*{\glsdeskOhneZusatz}[1]{%
-	\mitGlossarZusatzFlgfalse%
-	\glsentrydesc{#1}%
-	\mitGlossarZusatzFlgtrue%
-}
-\newcommand{\GlossarZusatz}[1]{\ifmitGlossarZusatzFlg #1\else\fi}% ohne *!
-
 \newcommand*{\SymbolAmRand}[1]{\marginpar{\raggedright{\glsentrysymbol{#1}}}}
 
-\newcommand*{\baueBeschreibung}[3][\hspace{0.5em}]{% [Zwischentext]{glo-Label}{Symbolart}
-	#3:\hspace{0.5em}\glsentrysymbol{#2}#1%
-	\def\ArgumentEins{#1}%
-	\def\ASBAundefined{}% 'user6' nur mit Zwischentext
-	\ifx\ArgumentEins\ASBAundefined\else[\glsentryuservi{#2}]\fi%
-	\SymbolAmRand{#2}%
+\newcommand*{\formaleDefinition}[1]{\hspace{0.5em}\ensuremath{#1}}% Formel
+\newcommand*{\informelleDefinition}[1]{\hspace{0.5em}[#1]}%         Text
+
+\newcommand*{\baueBeschreibung}[2][]{% {glo-Label}% Konstruktion einer Beschreibung
+	\def\ArgumentEins{#1}
+	\def\ASBAundefined{}
+	\ifx\ArgumentEins\ASBAundefined\else #1: \fi%  wenn Text, dann Ausgabe
+	\glsentrysymbol{#2}%
+	\glsentryuservi{#2}%
+	\SymbolAmRand  {#2}%
 }
 
-\newenvironment{wikicite}[2][\Wikipedia]{%
-	#1 \cite{#2} schreibt dazu:
-	\begin{quote}\sffamily
-}    {\end{quote}}
+% Mögliche Einträge nach \[long]\]newglossary am Start von description:
+\newcommand*{\todoBeschreiben}{[Beschreibung fehlt noch ]}% Eintrag muss noch beschrieben werden
+\newcommand*{\todoErgaenzen}  {[Beschreibung ergänzen   ]}% Eintrag muss noch ergänzt werden
+\newcommand*{\todoPruefen}    {[?]  }% Eintrag muss noch geprüft werden
+\newcommand*{\todoGeprueft}   {[!]  }% Eintrag ist geprüft, Verweis oder Definition im Text noch nicht
+\newcommand*{\todoOk}         {[ok] }% Eintrag ist geprüft und ok
 
-% Text-Fonts
-\newcommand*{\citeFt}[1]{\textsf{#1}}% Zitate
-\newcommand*{\defFt} [1]{\textsf{\textbf{#1}}}% Definitionen
-\newcommand*{\optFt} [1]{\textit{#1}}% optionale Teile von Sprechweisen
-\newcommand*{\manFt} [1]{\textbf{#1}}% mandatory (notwendige) Teile von Sprechweisen
-\newcommand*{\GloFt} [1]{\textsf{\textbf{#1}}}% Nur im Glossar: Wenn eine Bezeichnung in ihrer Definition auftaucht
-\newcommand*{\gloFt} [1]{\textsf{#1}}% Nur im Glossar: Verweis ohne Link ins Glossar
-\newcommand*{\likehyperDef}[1]{\defFt{\linkcolor{#1}}}% simuliert Verweise bei Definitionen
-\newcommand*{\likehyperTxt}[1]       {\linkcolor{#1}}%  simuliert Verweise ins Glossar
+% Wikipedia-Einträge; normalerweise nur im Glossar
+\newif\ifmitWikiFlg% Schalter für mit "Wikipedia-Eintrag"; AUS
+        \mitWikiFlgtrue% ... jetzt EIN
+\newcommand{\wikicite}[3][\Wikipedia]{% Kommandoname ohne *!
+	\ifmitWikiFlg
+		#1 \cite{#2} schreibt dazu:
+		\begin{quote}\wikiFamily #3 \end{quote}
+	\else
+		(Ein Auszug aus #1 \cite{#2} steht im Glossar.)\newline
+	\fi
+}
+\newcommand{\wikiciteChapter}[4][\Wikipedia]{% Kommandoname ohne *!
+	\ifmitWikiFlg
+		#1 \cite{#2} Kapitel #3 schreibt dazu:
+		\begin{quote}\wikiFamily #4 \end{quote}
+	\else
+		(Ein Auszug aus #1 \cite{#2} Kapitel #3 steht im Glossar.)\par
+	\fi
+}
+% Glossar-Eintrag beinhaltet Teile, die nur für Text bzw. nur im Glossar gelten
+\newif\ifimGlossarFlg% Schalter für "im Glossar"; AUS
+        \imGlossarFlgtrue% ... jetzt EIN
+\newcommand  {\nurImGlossar}[1]{\ifimGlossarFlg #1\else\fi}% Kommandoname ohne *!
+\newcommand{\nichtImGlossar}[1]{\ifimGlossarFlg\else #1\fi}% Kommandoname ohne *!
+\newcommand*{\glsBeschreibungMitWiki}[1]{%
+	\imGlossarFlgfalse
+	\glsentrydesc{#1}
+	\imGlossarFlgtrue
+}
+\newcommand*{\glsBeschreibungOhneWiki}[1]{%
+	\mitWikiFlgfalse
+	\imGlossarFlgfalse
+	\glsentrydesc{#1}
+	\imGlossarFlgtrue
+	\mitWikiFlgtrue
+}
+\newcommand*{\glsBeschreibung}[1]{\glsBeschreibungOhneWiki{#1}}
 
 % Fonts für die Liste der Seitenangaben
-\newcommand*      {\hyperDef}[1]{\textsf{\hyperbf{#1}}}% für Seitenangaben bei Definitionen
-\newcommand*      {\hyperTxt}[1]        {\hyperrm{#1}}%  für Seitenangaben im Glossar
-\GlsAddXdyAttribute{hyperDef}% damit xindy damit umgehen kann
-\GlsAddXdyAttribute{hyperTxt}% damit xindy damit umgehen kann
+\newcommand*      {\HyperDef}[1]{\textsf{\hyperbf{#1}}}   % für Seitenangaben bei Definitionen
+\newcommand*      {\HyperTxt}[1]        {\hyperrm{#1}}    % für Seitenangaben im Glossar
+\newcommand*  {\likeHyperDef}[1]{\DefFt {\likeLinkFt{#1}}}% simuliert Verweise bei Definitionen
+\newcommand*  {\likeHyperTxt}[1]        {\likeLinkFt{#1}} % simuliert Verweise ins Glossar
+\GlsAddXdyAttribute{HyperDef}                             % damit xindy damit umgehen kann
+\GlsAddXdyAttribute{HyperTxt}                             % damit xindy damit umgehen kann
 
-\GlsSetXdyMinRangeLength{2}% Seitenbereiche ab ...
+% Seitenangaben mit 'f' und 'ff' (für xindy)
+\GlsSetXdyMinRangeLength{1}
+\glsSetSuffixF{f}
+\glsSetSuffixFF{ff}
+
 \makeglossaries
 \setacronymstyle{long-sc-short}
-\renewcommand*{\glsnumberformat}[1]{\hyperTxt{#1}}% Standardformat für Seitenliste
-\renewcommand*{\glsnumlistlastsep}{, }% Liste auch am Ende mit Komma trennen
+\renewcommand*{\glsnumberformat}[1]{\HyperTxt{#1}}% Standardformat für Seitenliste
 
 % Makros für neue Bezeichnungen ================================================
 % [<Anhang>]{<Makro>}{<gls-Makro>}{<glo-Label>}
 \newcommand*{\newVerweis}  [4][]{\newcommand*{#2}[1][]{#3[##1]{#4}[#1]}}
-\newcommand*{\dummyVerweis}[4][]{\newcommand*{#2}[1][]{\linkcolor{#4#1}}}
+\newcommand*{\dummyVerweis}[4][]{\newcommand*{#2}[1][]{\likeLinkFt{#4#1}}}% wenn <gls-Makro> noch fehlt
 
 % neue Benennungen -------------------------------------------------------------
 % Ausgabe und Aufnahme und Link ins Glossar mit Hervorhebung der Seitennummer
 % {<Makro>} - An <Makro> muss [format=<Font-Makro>] angehängt werden können
-\newcommand*{\defTxt}[1]{\defFt{#1[format=hyperDef]}}
-\newcommand*{\defGlo}[1]{\defFt{#1[format=hyperDef]}\GD}
-\newcommand*{\GD}{*}
+\newcommand*{\defTxt}[1]{\DefFt{#1[format=HyperDef]}}
+\newcommand*{\defGlo}[1]{\DefFt{#1[format=HyperDef]}\footnotemark[0]}
+\newcommand*{\footnoteForNotDefinedItem}{\footnotetext[0]{Die vollständige Definition steht nur im Glossar.}}% Fußnote für im Text nicht definierte Begriffe
 
 % neue Symbole -----------------------------------------------------------------
 % Ausgabe und Aufnahme ins Symbolverzeichnis, ohne Link, mit Hervorhebung der Seitennummer
 % {<Glossary Key>}
-\newcommand*{\glsTag}[1]{\tag{\gls*{#1}}\glsadd[format=hyperDef]{#1}}% ohne Link ins Symbolverzeichnis
+\newcommand*{\glsTag}[1]{\tag{\glsuseri{#1}}\glsadd[format=HyperDef]{#1}}	
 % Ausgabe und Aufnahme und Link ins Symbolverzeichnis mit Hervorhebung der Seitennummer
 % {<Makro>} - An <Makro> muss [<Font-Makro>] angehängt werden können
-\newcommand*{\defSym}   [1]          {#1[format=hyperDef]}
+\newcommand*{\defSym}   [1]          {#1[format=HyperDef]}
 \newcommand*{\defSymUna}[1]  {\defSym{#1}\;}%  unär: folgender  Abstand
 \newcommand*{\defSymBin}[1]{\;\defSym{#1}\;}% binär: umgebender Abstand
 
@@ -149,20 +178,19 @@
 % \* - Ausgabe als Symbol und Eintrag (und Verweis) ins Symbolverzeichnis
 % Fachbegriffe =================================================================
 
-\iftestFlg% Definition von Dummy Glossareinträgen
-	\newVerweis     {\dummy} {\glstext}{dummy}
+\iftestFlg% Definition von Dummy Smbolverzeichniseinträgen
+	\newVerweis     {\dummy}{\glstext}{dummy}
 	\newglossaryentry{dummy}{
-		text       ={\ensuremath{\#}},
-		name       ={\ensuremath{\#} \addIdx[
-			name   ={\ensuremath{dummy}},
-			sort   ={dummy}]           {dummy}},
-		sort       ={=},
-		type       ={symbols},
-		symbol     ={},
-		user6      ={},
-		see        ={},
-		description={
-			\todo{Beschreibung fehlt noch}% Todo=dummy
+		text        ={\ensuremath{\#}},%         Ausgabe     im Text
+		name        ={\ensuremath{\#} \addIdx[%  Ausgabe     im Smbolverzeichnis
+			name    ={\ensuremath{dummy}},%      Ausgabe     im Index
+			sort    ={dummy}]         {dummy}},% Reihenfolge im Index
+		sort        ={=},%                       Reihenfolge im Smbolverzeichnis
+		type        ={symbols},%                 gehört     zum Smbolverzeichnis
+		symbol      ={},%                        formale    Definition
+		user6       ={},%                        informelle Definition
+		see         ={},%             Verweise ins Symbolverzeichnis und Glossar
+		description ={\todoBeschreiben%
 		}
 	}
 \else\fi
@@ -171,10 +199,10 @@
 % \Bsp* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
 \newglossaryentry{Glo-Beispielsymbole}{
 	name     ={\gloFt{Beispielsymbole} für \gloFt{Operationen} und \gloFt{Relationen}},% =====
-	sort  ={= 0 0 0},
-	type  ={symbols},
-	see   ={Beispielsymbol,Objekt,Operation,Relation},
-	description={Im Folgenden seien $A$ und $B$ passende Objekte.}
+	sort     ={= 0 0 0},
+	type     ={symbols},
+	see      ={Beispielsymbol,Operation,Relation},
+	description={Im Folgenden seien $A$ und $B$ passende \Objekte.}
 }
 
 \newVerweis               {\BspOpU}{\glstext}{BspOpU}
@@ -182,11 +210,8 @@
 	name  ={\ensuremath{\RawBspOpU}},
 	sort  ={= 0 1 1},
 	type  ={symbols},
-	symbol={\ensuremath{\RawBspOpU A}},
-	see   ={Beispielsymbol,Operation,unaer},
-	description={
-		\baueBeschreibung[]{BspOpU}{\gloFt{Beispielsymbol} für eine \gloFt{unäre} \gloFt{Operation}}.
-	}
+	symbol={\formaleDefinition{\RawBspOpU A}},
+	description={\baueBeschreibung[\Beispielsymbol\ für eine \unaere\ \Operation]{BspOpU}.}
 }
 
 \newVerweis               {\BspOpB}{\glstext}{BspOpB}
@@ -194,11 +219,8 @@
 	name  ={\ensuremath{\RawBspOpB}},
 	sort  ={= 0 1 2},
 	type  ={symbols},
-	symbol={\ensuremath{A \RawBspOpB B}},
-	see   ={Beispielsymbol,binaer,Operation},
-	description={
-		\baueBeschreibung[]{BspOpB}{\gloFt{Beispielsymbol} für eine \gloFt{binäre} \gloFt{Operation}}.
-	}
+	symbol={\formaleDefinition{A \RawBspOpB B}},
+	description={\baueBeschreibung[\Beispielsymbol\ für eine \binaere\ \Operation]{BspOpB}.}
 }
 
 \newVerweis               {\BspRel}{\glstext}{BspRel}
@@ -206,11 +228,8 @@
 	name  ={\ensuremath{\RawBspRel}},
 	sort  ={= 0 2 1},
 	type  ={symbols},
-	symbol={\ensuremath{A \RawBspRel B}},
-	see   ={Beispielsymbol,binaer,Relation},
-	description={
-		\baueBeschreibung[]{BspRel}{\gloFt{Beispielsymbol} für eine \gloFt{binäre} \gloFt{Relation}}.
-	}
+	symbol={\formaleDefinition{A \RawBspRel B}},
+	description={\baueBeschreibung[\Beispielsymbol\ für eine \binaere\ \Relation]{BspRel}.}
 }
 
 \newVerweis               {\BspRelEq}{\glstext}{BspRelEq}
@@ -218,11 +237,8 @@
 	name  ={\ensuremath{\RawBspRelEq}},
 	sort  ={= 0 2 2},
 	type  ={symbols},
-	symbol={\ensuremath{A \RawBspRelEq B}},
-	see   ={Beispielsymbol,binaer,Relation},
-	description={
-		\baueBeschreibung[]{BspRelEq}{\gloFt{Beispielsymbol} für eine \gloFt{binäre} \gloFt{Relation}}.
-	}
+	symbol={\formaleDefinition{A \RawBspRelEq B}},
+	description={\baueBeschreibung[\Beispielsymbol\ für eine \binaere\ \Relation]{BspRelEq}.}
 }
 
 \newVerweis               {\BspRelBck}{\glstext}{BspRelBck}
@@ -230,11 +246,11 @@
 	name  ={\ensuremath{\RawBspRelBck}},
 	sort  ={= 0 2 3},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawBspRelBck B) \RawMtsDefEquiv (B \RawBspRel A)}},
-	see   ={BspRel,MtsDefEquiv,Beispielsymbol,binaer,Relation,Umkehrrelation},
+	symbol={\formaleDefinition{(A \RawBspRelBck B) \RawMtsDefEquiv (B \RawBspRel A)}},
+	see   ={MtsDefEquiv},
 	description={
-		\baueBeschreibung[]{BspRelBck}{\gloFt{Beispielsymbol} für eine \gloFt{binäre} \gloFt{Relation}}.
-		\\Die \gloFt{Umkehrrelation} von $\RawBspRel$.
+		\baueBeschreibung[\Beispielsymbol\ für eine \binaere\ \Relation]{BspRelBck}.
+		\\Die \Umkehrrelation\ von \BspRel.
 	}
 }
 
@@ -243,11 +259,11 @@
 	name  ={\ensuremath{\RawBspRelBckEq}},
 	sort  ={= 0 2 4},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawBspRelBckEq B) \RawMtsDefEquiv (B \RawBspRelEq A)}},
-	see   ={BspRelEq,MtsDefEquiv,Beispielsymbol,binaer,Relation,Umkehrrelation},
+	symbol={\formaleDefinition{(A \RawBspRelBckEq B) \RawMtsDefEquiv (B \RawBspRelEq A)}},
+	see   ={MtsDefEquiv},
 	description={
-		\baueBeschreibung[]{BspRelBckEq}{\gloFt{Beispielsymbol} für eine \gloFt{binäre} \gloFt{Relation}}.
-		\\Die \gloFt{Umkehrrelation} von $\RawBspRelEq$.
+		\baueBeschreibung[\Beispielsymbol\ für eine \binaere\ \Relation]{BspRelBckEq}.
+		\\Die \Umkehrrelation\ von \BspRelEq.
 	}
 }
 
@@ -256,11 +272,11 @@
 	name  ={\ensuremath{\RawBspRelN}},
 	sort  ={= 0 3 1},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawBspRelN B) \RawMtsDefEquiv \RawMtsNot (A \RawBspRel B)}},
-	see   ={BspRel,MtsNot,MtsDefEquiv,Beispielsymbol,binaer,Negation,Relation},
+	symbol={\formaleDefinition{(A \RawBspRelN B) \RawMtsDefEquiv \RawMtsNot (A \RawBspRel B)}},
+	see   ={MtsNot,MtsDefEquiv},
 	description={
-		\baueBeschreibung[]{BspRelN}{\gloFt{Beispielsymbol} für eine \gloFt{binäre} \gloFt{Relation}}.
-		\\Die \gloFt{Negation} von $\RawBspRel$.
+		\baueBeschreibung[\Beispielsymbol\ für eine \binaere\ \Relation]{BspRelN}.
+		\\Die \Negation\ von \BspRel.
 	}
 }
 
@@ -269,11 +285,11 @@
 	name  ={\ensuremath{\RawBspRelEqN}},
 	sort  ={= 0 3 2},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawBspRelEqN B) \RawMtsDefEquiv \RawMtsNot (A \RawBspRelEq B)}},
-	see   ={BspRelEq,MtsNot,MtsDefEquiv,Beispielsymbol,binaer,Negation,Relation},
+	symbol={\formaleDefinition{(A \RawBspRelEqN B) \RawMtsDefEquiv \RawMtsNot (A \RawBspRelEq B)}},
+	see   ={MtsNot,MtsDefEquiv},
 	description={
-		\baueBeschreibung[]{BspRelEqN}{\gloFt{Beispielsymbol} für eine \gloFt{binäre} \gloFt{Relation}}.
-		\\Die \gloFt{Negation} von $\RawBspRelEq$.
+		\baueBeschreibung[\Beispielsymbol\ für eine \binaere\ \Relation]{BspRelEqN}.
+		\\Die \Negation\ von \BspRelEq.
 	}
 }
 
@@ -282,11 +298,11 @@
 	name  ={\ensuremath{\RawBspRelBckN}},
 	sort  ={= 0 3 3},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawBspRelBckN B) \RawMtsDefEquiv \RawMtsNot (B \RawBspRel A)}},
-	see   ={BspRel,MtsNot,MtsDefEquiv,Beispielsymbol,binaer,Negation,Relation,Umkehrrelation},
+	symbol={\formaleDefinition{(A \RawBspRelBckN B) \RawMtsDefEquiv \RawMtsNot (B \RawBspRel A)}},
+	see   ={MtsNot,MtsDefEquiv},
 	description={
-		\baueBeschreibung[]{BspRelBckN}{\gloFt{Beispielsymbol} für eine \gloFt{binäre} \gloFt{Relation}}.
-		\\Die \gloFt{Negation} der \gloFt{Umkehrrelation} und gleichzeitig die \gloFt{Umkehrrelation} der \gloFt{Negation} von $\RawBspRel$.
+		\baueBeschreibung[\Beispielsymbol\ für eine \binaere\ \Relation]{BspRelBckN}.
+		\\Die \Negation\ der \Umkehrrelation\ und gleichzeitig die \Umkehrrelation\ der \Negation\ von \BspRel.
 	}
 }
 
@@ -295,11 +311,11 @@
 	name  ={\ensuremath{\RawBspRelBckEqN}},
 	sort  ={= 0 3 4},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawBspRelBckEqN B) \RawMtsDefEquiv \RawMtsNot (B \RawBspRelEq A)}},
-	see   ={BspRelEq,MtsNot,MtsDefEquiv,Beispielsymbol,binaer,Negation,Relation,Umkehrrelation},
+	symbol={\formaleDefinition{(A \RawBspRelBckEqN B) \RawMtsDefEquiv \RawMtsNot (B \RawBspRelEq A)}},
+	see   ={MtsNot,MtsDefEquiv},
 	description={
-		\baueBeschreibung[]{BspRelBckEqN}{\gloFt{Beispielsymbol} für eine \gloFt{binäre} \gloFt{Relation}}.
-		\\Die \gloFt{Negation} der \gloFt{Umkehrrelation} und gleichzeitig die \gloFt{Umkehrrelation} der \gloFt{Negation} von $\RawBspRelEq$.
+		\baueBeschreibung[\Beispielsymbol\ für eine \binaere\ \Relation]{BspRelBckEqN}.
+		\\Die \Negation\ der \Umkehrrelation\ und gleichzeitig die \Umkehrrelation\ der \Negation\ von \BspRelEq.
 	}
 }
 
@@ -308,11 +324,11 @@
 % In 'symbol' steht die formale Definition, in 'user6' die Benennung, ggf.
 % in einer Formel: Wörter, die weggelassen werden können, kursiv
 \newglossaryentry{Glo-MetaAussagen}{
-	name  ={\gloFt{Metaoperationen} und \gloFt{-relationen} mit \gloFt{Aussagen}},% =====
-	sort  ={= 1 0 0},
-	type  ={symbols},
-	see   ={metasprachlicheAussage,Metaoperation,Metarelation},
-	description={Im Folgenden seien $A$ und $B$ beliebige \gloFt{metasprachliche Aussagen}.}
+	name     ={\gloFt{Metaoperationen} und \gloFt{-relationen} mit \gloFt{Aussagen}},% =====
+	sort     ={= 1 0 0},
+	type     ={symbols},
+	see      ={Metaoperation,Metarelation},
+	description={Im Folgenden seien $A$ und $B$ beliebige \metasprachlicheAussagen.}
 }
 
 \newVerweis               {\MtsNot}{\glstext}{MtsNot}
@@ -320,10 +336,10 @@
 	name  ={\ensuremath{\RawMtsNot}},
 	sort  ={= 1 1 1},
 	type  ={symbols},
-	symbol={\ensuremath{\RawMtsNot A}},
-	user6 ={\optFt{es gilt} \manFt{nicht} $A$},
-	see   ={OjkNot,Metaoperation,unaer},
-	description={\baueBeschreibung{MtsNot}{Eine \gloFt{unäre} \gloFt{Metaoperation}}.}
+	symbol={\formaleDefinition{\RawMtsNot A}},
+	user6 ={\informelleDefinition{\OptFt{es gilt} \ManFt{nicht} $A$}},
+	see   ={OjkNot},
+	description={\baueBeschreibung[Eine \unaere\ \Metaoperation]{MtsNot}.}
 }
 
 \newVerweis               {\MtsAnd}{\glstext}{MtsAnd}
@@ -331,10 +347,10 @@
 	name  ={\ensuremath{\RawMtsAnd}},
 	sort  ={= 1 1 2},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsAnd B)}},
-	user6 ={\optFt{es gilt} $A$ \manFt{und} $B$},
-	see   ={MtsUnd,OjkAnd,binaer,Metaoperation},
-	description={\baueBeschreibung{MtsAnd}{Eine \gloFt{binäre} \gloFt{Metaoperation}}.}
+	symbol={\formaleDefinition{(A \RawMtsAnd B)}},
+	user6 ={\informelleDefinition{\OptFt{es gilt} $A$ \ManFt{und} $B$}},
+	see   ={MtsUnd,OjkAnd},
+	description={\baueBeschreibung[Eine \binaere\ \Metaoperation]{MtsAnd}.}
 }
 
 \newVerweis               {\MtsOr}{\glstext}{MtsOr}
@@ -342,10 +358,10 @@
 	name  ={\ensuremath{\RawMtsOr}},
 	sort  ={= 1 1 3},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsOr B)}},
-	user6 ={\optFt{es gilt} $A$ \manFt{oder} $B$},
-	see   ={OjkOr,binaer,Metaoperation},
-	description={\baueBeschreibung{MtsOr}{Eine \gloFt{binäre} \gloFt{Metaoperation}}.}
+	symbol={\formaleDefinition{(A \RawMtsOr B)}},
+	user6 ={\informelleDefinition{\OptFt{es gilt} $A$ \ManFt{oder} $B$}},
+	see   ={OjkOr},
+	description={\baueBeschreibung[Eine \binaere\ \Metaoperation]{MtsOr}.}
 }
 
 \newVerweis               {\MtsUnd}{\glstext}{MtsUnd}
@@ -353,12 +369,12 @@
 	name  ={\ensuremath{\RawMtsUnd}},
 	sort  ={= 1 2 1},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsUnd B) \RawMtsDefEquiv (A \RawMtsAnd B)}},
-	user6 ={\optFt{es gilt }$A$ \manFt{und} $B$},
-	see   ={MtsAnd,MtsDefEquiv,OjkAnd,binaer,Metaoperation,Schlussregel},
+	symbol={\formaleDefinition{(A \RawMtsUnd B) \RawMtsDefEquiv (A \RawMtsAnd B)}},
+	user6 ={\informelleDefinition{\OptFt{es gilt }$A$ \ManFt{und} $B$}},
+	see   ={MtsAnd,MtsDefEquiv,OjkAnd},
 	description={
-		\baueBeschreibung{MtsUnd}{Eine \gloFt{binäre} \gloFt{Metaoperation}}.
-		\\Nur in \gloFt{Schlussregeln}!
+		\baueBeschreibung[Eine \binaere\ \Metaoperation]{MtsUnd}.
+		\\Nur in \Schlussregeln!
 	}
 }
 
@@ -367,10 +383,10 @@
 	name  ={\ensuremath{\RawMtsImp}},
 	sort  ={= 1 3 1},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsImp B)}},
-	user6 ={\optFt{wenn} $A$ \optFt{gilt,} \manFt{dann} \optFt{gilt auch} $B$},
-	see   ={OjkImp,binaer,Metarelation},
-	description={\baueBeschreibung{MtsImp}{Eine \gloFt{binäre} \gloFt{Metarelation}}.}
+	symbol={\formaleDefinition{(A \RawMtsImp B)}},
+	user6 ={\informelleDefinition{\OptFt{wenn} $A$ \OptFt{gilt,} \ManFt{dann} \OptFt{gilt auch} $B$}},
+	see   ={OjkImp},
+	description={\baueBeschreibung[Eine \binaere\ \Metarelation]{MtsImp}.}
 }
 
 \newVerweis               {\MtsRep}{\glstext}{MtsRep}
@@ -378,12 +394,12 @@
 	name  ={\ensuremath{\RawMtsRep}},
 	sort  ={= 1 3 2},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsRep B) \RawMtsDefEquiv (B \RawMtsImp A)}},
-	user6 ={$A$ \optFt{gilt dann,} \manFt{wenn} $B$ \optFt{gilt}},
-	see   ={MtsImp,MtsDefEquiv,OjkRep,binaer,Metarelation,Umkehrrelation},
+	symbol={\formaleDefinition{(A \RawMtsRep B) \RawMtsDefEquiv (B \RawMtsImp A)}},
+	user6 ={\informelleDefinition{$A$ \OptFt{gilt dann,} \ManFt{wenn} $B$ \OptFt{gilt}}},
+	see   ={MtsDefEquiv,OjkRep},
 	description={
-		\baueBeschreibung{MtsRep}{Eine \gloFt{binäre} \gloFt{Metarelation}}.
-		\\Die \gloFt{Umkehrrelation} von $\RawMtsImp$.
+		\baueBeschreibung[Eine \binaere\ \Metarelation]{MtsRep}.
+		\\Die \Umkehrrelation\ von \MtsImp.
 	}
 }
 
@@ -392,40 +408,44 @@
 	name  ={\ensuremath{\RawMtsEquiv}},
 	sort  ={= 1 3 3},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsEquiv B) \RawMtsDefEquiv ((A \RawMtsImp B) \RawMtsAnd (B \RawMtsImp A))}},
-	user6 ={$A$ \optFt{gilt genau} \manFt{dann wenn} $B$ \optFt{gilt}},
-	see   ={MtsAnd,MtsImp,MtsDefEquiv,OjkEquiv,binaer,Metarelation},
-	description={\baueBeschreibung{MtsEquiv}{Eine \gloFt{binäre} \gloFt{Metarelation}}.}
+	symbol={\formaleDefinition{(A \RawMtsEquiv B) \RawMtsDefEquiv ((A \RawMtsImp B) \RawMtsAnd (B \RawMtsImp A))}},
+	user6 ={\informelleDefinition{$A$ \OptFt{gilt genau} \ManFt{dann wenn} $B$ \OptFt{gilt}}},
+	see   ={MtsAnd,MtsImp,MtsDefEquiv,OjkEquiv},
+	description={\baueBeschreibung[Eine \binaere\ \Metarelation]{MtsEquiv}.}
 }
 
 \newVerweis               {\MtsDefEquiv}{\glstext}{MtsDefEquiv}
 \newglossaryentry          {MtsDefEquiv}{
 	name  ={\ensuremath{\RawMtsDefEquiv}},
 	sort  ={= 1 4 1},
+	see   ={MtsDefEq,Objektdefinition},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsDefEquiv B)}},
-	user6 ={$A$ \optFt{gilt} \manFt{definitionsgemäß} \optFt{genau} \manFt{dann wenn} $B$ \optFt{gilt}},
-	see   ={Aussagedefinition,binaer,Metarelation},
-	description={\baueBeschreibung{MtsDefEquiv}{Die \GloFt{Aussagedefinition} (eine \gloFt{binäre} \gloFt{Metarelation})}.}
+	symbol={\formaleDefinition{(A \RawMtsDefEquiv B)}},
+	user6 ={\informelleDefinition{$A$ \OptFt{gilt} \ManFt{definitionsgemäß} \OptFt{genau} \ManFt{dann wenn} $B$ \OptFt{gilt}}},
+	description={\todoOk%
+		\baueBeschreibung[Die \DefFt{\Aussagedefinition} -- eine \binaere\ \Metarelation]{MtsDefEquiv}.
+	}
 }
 
 \newglossaryentry{Glo-MetaObjekte}{
-	name  ={\gloFt{Metaoperationen} und \gloFt{-relationen} mit \gloFt{Objekten}},% =====
-	sort  ={= 1 5 0},
-	type  ={symbols},
-	see   ={Metaoperation,Metarelation,metasprachlichesObjekt},
-	description={Im Folgenden seien $A$ und $B$ beliebige \gloFt{metasprachliche Objekte}.}
+	name     ={\gloFt{Metaoperationen} und \gloFt{-relationen} mit \gloFt{Objekten}},% =====
+	sort     ={= 1 5 0},
+	type     ={symbols},
+	see      ={Metaoperation,Metarelation},
+	description={Im Folgenden seien $A$ und $B$ beliebige \metasprachlicheObjekte.}
 }
 
 \newVerweis               {\MtsEq}{\glstext}{MtsEq}
 \newglossaryentry          {MtsEq}{
 	name  ={\ensuremath{\RawMtsEq}},
 	sort  ={= 1 6 1},
-	see   ={OjkEq,binaer,Gleichheit,Metarelation},
+	see   ={OjkEq},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsEq B)}},
-	user6 ={$A$ \optFt{ist} \manFt{gleich} $B$},
-	description={\baueBeschreibung{MtsEq}{Eine \gloFt{binäre} \gloFt{Metarelation}}\alternativMtsEq.}
+	symbol={\formaleDefinition{(A \RawMtsEq B)}},
+	user6 ={\informelleDefinition{$A$ \OptFt{ist} \ManFt{gleich} $B$}},
+	description={
+		\baueBeschreibung[\DefFt{Metasprachliche \Gleichheit} -- eine \binaere\ \Metarelation]{MtsEq}\alternativMtsEq.
+	}
 }
 \newcommand*{\alternativMtsEq}{\alternativii{dasselbe wie}{identisch zu}}
 
@@ -433,59 +453,64 @@
 \newglossaryentry          {MtsEqN}{
 	name  ={\ensuremath{\RawMtsEqN}},
 	sort  ={= 1 6 2},
-	see   ={MtsNot,MtsDefEquiv,MtsEq,OjkEqN,binaer,Metarelation,Negation,Ungleichheit},
+	see   ={MtsNot,MtsDefEquiv,MtsEq,OjkEqN},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsEqN B) \RawMtsDefEquiv \RawMtsNot (A \RawMtsEq B)}},
-	user6 ={$A$ \optFt{ist} \manFt{ungleich} $B$},
+	symbol={\formaleDefinition{(A \RawMtsEqN B) \RawMtsDefEquiv \RawMtsNot (A \RawMtsEq B)}},
+	user6 ={\informelleDefinition{$A$ \OptFt{ist} \ManFt{ungleich} $B$}},
 	description={
-		\baueBeschreibung{MtsEqN}{Eine \gloFt{binäre} \gloFt{Metarelation}}\alternativMtsEqN.
-		\\Die \gloFt{Negation} von $\RawMtsEq$.
+		\baueBeschreibung[Metasprachliche \DefFt{\Ungleichheit} -- eine \binaere\ \Metarelation]{MtsEqN}\alternativMtsEqN.
+		\\Die \Negation\ von \MtsEq.
 	}
 }
 \newcommand*{\alternativMtsEqN}{\alternativiii{nicht gleich}{nicht dasselbe wie}{nicht identisch zu}}
 
-\newVerweis               {\MtsAequiv}{\glstext}{MtsAequiv}
-\newglossaryentry          {MtsAequiv}{
-	name  ={\ensuremath{\RawMtsAequiv}},
-	sort  ={= 1 7 1},
-	see   ={Aequivalenz,binaer,Metarelation},
-	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsAequiv B)}},
-	user6 ={$A$ \optFt{ist} \manFt{äquivalent} \optFt{zu} $B$},
-	description={\baueBeschreibung{MtsAequiv}{Eine \gloFt{binäre} \gloFt{Metarelation}}\alternativMtsAequiv.}
-}
-\newcommand*{\alternativMtsAequiv}{\alternativii{so wie}{ähnlich}}
-
-\newVerweis               {\MtsAequivN}{\glstext}{MtsAequivN}
-\newglossaryentry          {MtsAequivN}{
-	name  ={\ensuremath{\RawMtsAequivN}},
-	sort  ={= 1 7 2},
-	see   ={MtsNot,MtsDefEquiv,MtsAequiv,Aequivalenz,binaer,Metarelation},
-	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsAequivN B) \RawMtsDefEquiv \RawMtsNot (A \RawMtsAequiv B)}},
-	user6 ={$A$ \optFt{ist} \manFt{nicht äquivalent} \optFt{zu} $B$},
-	description={\baueBeschreibung{MtsAequivN}{Eine \gloFt{binäre} \gloFt{Metarelation}}\alternativMtsAequivN}
-}
-\newcommand*{\alternativMtsAequivN}{\alternativii{nicht so wie}{nicht ähnlich}}
+%%%\newVerweis               {\MtsAequiv}{\glstext}{MtsAequiv}
+%%%\newglossaryentry          {MtsAequiv}{
+%%%	name  ={\ensuremath{\RawMtsAequiv}},
+%%%	sort  ={= 1 7 1},
+%%%	type  ={symbols},
+%%%	symbol={\formaleDefinition{(A \RawMtsAequiv B)}},
+%%%	user6 ={\informelleDefinition{$A$ \OptFt{ist} \ManFt{äquivalent} \OptFt{zu} $B$}},
+%%%	description={
+%%%		\baueBeschreibung[Die \DefFt{\Aequivalenz} -- eine \binaere\ \Metarelation]{MtsAequiv}\alternativMtsAequiv.
+%%%	}
+%%%}
+%%%\newcommand*{\alternativMtsAequiv}{\alternativii{so wie}{ähnlich}}
+%%%
+%%%\newVerweis               {\MtsAequivN}{\glstext}{MtsAequivN}
+%%%\newglossaryentry          {MtsAequivN}{
+%%%	name  ={\ensuremath{\RawMtsAequivN}},
+%%%	sort  ={= 1 7 2},
+%%%	see   ={MtsNot,MtsDefEquiv,Aequivalenz},
+%%%	type  ={symbols},
+%%%	symbol={\formaleDefinition{(A \RawMtsAequivN B) \RawMtsDefEquiv \RawMtsNot (A \RawMtsAequiv B)}},
+%%%	user6 ={\informelleDefinition{$A$ \OptFt{ist} \ManFt{nicht äquivalent} \OptFt{zu} $B$}},
+%%%	description={
+%%%		\baueBeschreibung[Eine \binaere\ \Metarelation]{MtsAequivN}\alternativMtsAequivN.
+%%%		\\Die \Negation\ von \MtsAequiv.
+%%%	}
+%%%}
+%%%\newcommand*{\alternativMtsAequivN}{\alternativii{nicht so wie}{nicht ähnlich}}
 
 \newVerweis               {\MtsDefEq}{\glstext}{MtsDefEq}
 \newglossaryentry          {MtsDefEq}{
 	name  ={\ensuremath{\RawMtsDefEq}},
 	sort  ={= 1 7 3},
+	see   ={MtsDefEquiv,Aussagedefinition}
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsDefEq B)}},
-	user6 ={$A$ \optFt{ist} \manFt{definitionsgemäß gleich} $B$},
-	see   ={binaer,Metarelation,Objektdefinition},
-	description={\baueBeschreibung{MtsDefEq}{Die \GloFt{Objektdefinition} (eine \gloFt{binäre} \gloFt{Metarelation})}\alternativMtsDefEq.}
+	symbol={\formaleDefinition{(A \RawMtsDefEq B)}},
+	user6 ={\informelleDefinition{$A$ \OptFt{ist} \ManFt{definitionsgemäß gleich} $B$}},
+	description={\todoOk%
+		\baueBeschreibung[Die \DefFt{\Objektdefinition} -- eine \binaere\ \Metarelation]{MtsDefEq}\alternativMtsDefEq.
+	}
 }
 \newcommand*{\alternativMtsDefEq}{\alternativii{dasselbe wie}{identisch zu}}
 
 \newglossaryentry{Glo-MetaSonstige}{
-	name  ={Sonstige \gloFt{Metaoperationen} und \gloFt{-relationen}},% =========
-	sort  ={= 1 8 0},
-	type  ={symbols},
-	see   ={metasprachlicheAussage,Menge},
-	description={Im Folgenden seien $A$ und $B$ \gloFt{metasprachliche Aussagen} oder \gloFt{Mengen} davon und $\alpha$ und $\beta$ ???.}
+	name       ={Sonstige \gloFt{Metaoperationen} und \gloFt{-relationen}},% =====
+	sort       ={= 1 8 0},
+	type       ={symbols},
+	description={Im Folgenden seien $A$ und $B$ \metasprachlicheAussagen\ oder \Bereichen\ davon und $\alpha$ und $\beta$ ???.}% Todo Was sind \alpha und \beta?
 }
 
 \newVerweis               {\MtsDerive}{\glstext}{MtsDerive}
@@ -493,11 +518,11 @@
 	name  ={\ensuremath{\RawMtsDerive}},
 	sort  ={= 1 8 1},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsDerive B)}},
-	user6 ={$A$ \optFt{ist} \manFt{ableitbar} \optFt{aus} $B$},
-	see   ={ableitbar,Ableitung,Ableitungsrelation,binaer,Darstellung,Metarelation,Relation},
+	symbol={\formaleDefinition{(A \RawMtsDerive B)}},
+	user6 ={\informelleDefinition{$A$ \OptFt{ist} \ManFt{ableitbar} \OptFt{aus} $B$}},
+	see   ={ableitbar},
 	description={
-		\baueBeschreibung{MtsDerive}{Die \GloFt{Ableitungsrelation} (eine \gloFt{binäre} \gloFt{Metarelation})}\alternativMtsDerive.
+		\baueBeschreibung[Die \DefFt{\Ableitungsrelation} -- eine \binaere\ \Metarelation]{MtsDerive}\alternativMtsDerive.
 	}
 }
 \newcommand*{\alternativMtsDerive}{\synonym{\beweisbar}}
@@ -507,12 +532,12 @@
 	name  ={\ensuremath{\RawMtsDerive_R}},
 	sort  ={= 1 8 2},
 	type  ={symbols},
-	symbol={\ensuremath{(A \RawMtsDerive_R B) \RawMtsDefEquiv ((A,B) \RawMtsIn R_{\RawMtsIdxGraph})}},
-	user6 ={$A$ \optFt{ist} \manFt{$R$-ableitbar} \optFt{aus} $B$},
-	see   ={MtsDefEquiv,MtsIn,MtsIdxGraph,MtsSprache,MtsPot,MtsRel,ableitbar,Ableitung,Ableitungsrelation,beweisbar,binaer,Metarelation,Relation},
+	symbol={\formaleDefinition{(A \RawMtsDerive_R B) \RawMtsDefEquiv ((A,B) \RawMtsIn R_{\RawMtsIdxGraph})}},
+	user6 ={\informelleDefinition{$A$ \OptFt{ist} \ManFt{$R$-ableitbar} \OptFt{aus} $B$}},
+	see   ={MtsDerive,MtsDefEquiv,MtsIn,MtsIdxGraph,ableitbar},
 	description={
-		\baueBeschreibung{MtsDeriveR}{Die $R$\GloFt{-Ableitungsrelation} (eine \gloFt{binäre} \gloFt{Metarelation})}\alternativMtsDeriveR.
-		\\Die Darstellung einer \gloFt{Relation} $R \RawMtsIn \RawMtsRelAllDerive$ als \gloFt{Ableitungsrelation}.
+		\baueBeschreibung[Die \DefFt{$R$-\Ableitungsrelation} -- eine \binaere\ \Metarelation]{MtsDeriveR}\alternativMtsDeriveR.
+		\\Die \Darstellung\ einer \Relation\ $R \MtsIn \MtsRelAllDerive$ als \Ableitungsrelation.
 	}
 }
 \newcommand*{\alternativMtsDeriveR}{\synonym{$R$-\gloFt{beweisbar}}}
@@ -522,12 +547,9 @@
 	name  ={\ensuremath{\RawMtsSubst}},
 	sort  ={= 1 8 3},
 	type  ={symbols},
-	symbol={\ensuremath{(\alpha \RawMtsSubst \beta)}},
-	user6 ={$\alpha$ \optFt{wird} \manFt{ersetzt durch} $\beta$},
-	see   ={Ersetzung},
-	description={
-		\baueBeschreibung{MtsSubst}{Die \GloFt{Ersetzung}}.\alternativMtsSubst
-	}
+	symbol={\formaleDefinition{(\alpha \RawMtsSubst \beta)}},
+	user6 ={\informelleDefinition{$\alpha$ \OptFt{wird} \ManFt{ersetzt durch} $\beta$}},
+	description={\baueBeschreibung[Die \DefFt{\Ersetzung}]{MtsSubst}\alternativMtsSubst.}
 }
 \newcommand*{\alternativMtsSubst}{\alternativi{substituiert durch}}
 
@@ -536,20 +558,18 @@
 	name  ={\ensuremath{\RawMtsSwap}},
 	sort  ={= 1 8 4},
 	type  ={symbols},
-	symbol={\ensuremath{(\alpha \RawMtsSwap \beta)}},
-	user6 ={$\alpha$ \optFt{wird} \manFt{vertauscht mit} $\beta$},
-	see   ={Vertauschung},
-	description={\baueBeschreibung{MtsSwap}{Die \GloFt{Vertauschung}}.}
+	symbol={\formaleDefinition{(\alpha \RawMtsSwap \beta)}},
+	user6 ={\informelleDefinition{$\alpha$ \OptFt{wird} \ManFt{vertauscht mit} $\beta$}},
+	description={\baueBeschreibung[Die \DefFt{\Vertauschung}]{MtsSwap}.}
 }
 
 % ==============================================================================
 % \Mts* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
 \newglossaryentry{Glo-Elementrelationen}{
-	name     ={\gloFt{Elementrelationen}},% =============================
-	sort            ={= 3 0 0},
-	type            ={symbols},
-	see             ={Element,Menge},
-	description     ={Im Folgenden sei $x$ ein beliebiges \gloFt{Element} und $M$ eine beliebige \gloFt{Menge}.}
+	name     ={\gloFt{Elementrelationen}},% ====================================
+	sort     ={= 3 0 0},
+	type     ={symbols},
+	description={\todoOk Im Folgenden sei $x$ ein beliebiges \Element\ und $M$ eine beliebige \Menge.}
 }
 
 \newVerweis               {\MtsIn}{\glstext}{MtsIn}
@@ -557,17 +577,17 @@
 	name  ={\ensuremath{\RawMtsIn}},
 	sort  ={= 3 1 1},
 	type  ={symbols},
-	symbol={\ensuremath{(x \RawMtsIn M)}},
-	user6 ={$x$ \optFt{ist ein Element} \manFt{aus} $M$},
-	see   ={Element,Elementrelation,Komponente,Mengenlehre,Relation},
-	description={
-		\baueBeschreibung{MtsIn}{Eine \gloFt{Elementrelation}}\alternativMtsIn.
-		\\Die grundlegende \gloFt{Relation} der \gloFt{Mengenlehre}.
+	symbol={\formaleDefinition{(x \RawMtsIn M)}},
+	user6 ={\informelleDefinition{$x$ \OptFt{ist ein Element} \ManFt{aus} $M$}},
+	see   ={Element,Komponente},
+	description={\todoOk%
+		\baueBeschreibung[Eine \DefFt{\Elementrelation}]{MtsIn}\alternativMtsIn.
+		\\Die grundlegende \Relation\ der \Mengenlehre.
 	}
 }
 \newcommand*{\alternativMtsIn}{\alternativi[;
-	\enquote{$a$ von $M$} könnte \textzB\ auch \enquote{(\gloFt{Komponente}) $a$ von der \gloFt{Folge} $M$} meinen.
-	Daher bevorzugen wir für \gloFt{Elemente} \enquote{aus}.
+	\enquote{$a$ von $M$} könnte \textzB\ auch \enquote{\Komponente\ $a$ von der \Folge\ $M$} meinen.
+	Daher bevorzugen wir für \Elemente\ \enquote{aus} und für \Komponenten\ \enquote{von}.
 ]{von}}
 
 \newVerweis               {\MtsNi}{\glstext}{MtsNi}
@@ -575,12 +595,12 @@
 	name  ={\ensuremath{\RawMtsNi}},
 	sort  ={= 3 1 2},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsNi x) \RawMtsDefEquiv (x \RawMtsIn M)}},
-	user6 ={$M$ \manFt{enthält} $x$ \optFt{als Element}},
-	see   ={MtsDefEquiv,MtsIn,Element,Elementrelation,Umkehrrelation},
-	description={
-		\baueBeschreibung{MtsNi}{Eine \gloFt{Elementrelation}}.
-		\\Die \gloFt{Umkehrrelation} von $\RawMtsIn$.
+	symbol={\formaleDefinition{(M \RawMtsNi x) \RawMtsDefEquiv (x \RawMtsIn M)}},
+	user6 ={\informelleDefinition{$M$ \ManFt{enthält} $x$ \OptFt{als Element}}},
+	see   ={MtsDefEquiv,Element},
+	description={\todoOk%
+		\baueBeschreibung[Eine \DefFt{\Elementrelation}]{MtsNi}.
+		\\Die \Umkehrrelation\ von \MtsIn.
 	}
 }
 
@@ -589,40 +609,40 @@
 	name  ={\ensuremath{\RawMtsInN}},
 	sort  ={= 3 2 1},
 	type  ={symbols},
-	user6 ={$x$ \optFt{ist} \manFt{nicht aus} $M$},
-	symbol={\ensuremath{(x \RawMtsInN M) \RawMtsDefEquiv \RawMtsNot (x \RawMtsIn M)}},
-	see   ={MtsNot,MtsDefEquiv,MtsIn,Elementrelation,Negation},
-	description={
-		\baueBeschreibung{MtsInN}{Eine \gloFt{Elementrelation}}\alternativMtsInN.
-		\\Die \gloFt{Negation} von $\RawMtsIn$.
+	user6 ={\informelleDefinition{$x$ \OptFt{ist} \ManFt{nicht} \OptFt{ein Element} \ManFt{aus} $M$}},
+	symbol={\formaleDefinition{(x \RawMtsInN M) \RawMtsDefEquiv \RawMtsNot (x \RawMtsIn M)}},
+	see   ={MtsNot,MtsDefEquiv},
+	description={\todoOk%
+		\baueBeschreibung[Eine \DefFt{\Elementrelation}]{MtsInN}\alternativMtsInN.
+		\\Die \Negation\ von \MtsIn.
 	}
 }
-\newcommand*{\alternativMtsInN}{\alternativi{kein Element aus}}
+\newcommand*{\alternativMtsInN}{\alternativi{kein \Element\ aus}}
 
 \newVerweis               {\MtsNiN}{\glstext}{MtsNiN}
 \newglossaryentry          {MtsNiN}{
 	name  ={\ensuremath{\RawMtsNiN}},
 	sort  ={= 3 2 2},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsNiN x) \RawMtsDefEquiv \RawMtsNot (x \RawMtsIn M)}},
-	user6 ={$M$ \manFt{enthält} $x$ \manFt{nicht} \optFt{als Element}},
-	see   ={MtsNot,MtsDefEquiv,MtsIn,Elementrelation,Negation,Umkehrrelation},
-	description={
-		\baueBeschreibung{MtsNiN}{Eine \gloFt{Elementrelation}}.
-		\\Die \gloFt{Negation} der \gloFt{Umkehrrelation} und gleichzeitig die \gloFt{Umkehrrelation} der \gloFt{Negation} von $\RawMtsIn$.
+	symbol={\formaleDefinition{(M \RawMtsNiN x) \RawMtsDefEquiv \RawMtsNot (x \RawMtsIn M)}},
+	user6 ={\informelleDefinition{$M$ \ManFt{enthält} $x$ \ManFt{nicht} \OptFt{als Element}}},
+	see   ={MtsNot,MtsDefEquiv},
+	description={\todoOk%
+		\baueBeschreibung[Eine \DefFt{\Elementrelation}]{MtsNiN}.
+		\\Die \Negation\ der \Umkehrrelation\ und gleichzeitig die \Umkehrrelation\ der \Negation\ von \MtsIn.
 	}
 }
 
 % ==============================================================================
 % \Mts* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
-\newglossaryentry{Glo-Mengenoperationen}{
-	name  ={\gloFt{Mengenrelationen} und \gloFt{-operationen}},% ===============
-	sort  ={= 4 0 0},
-	type  ={symbols},
-	see   ={Menge,Metaoperation,Metarelation},
+\newglossaryentry{Glo-Bereichsoperationen}{
+	name     ={\gloFt{Bereichsrelationen} und \gloFt{-operationen}},% ============
+	sort     ={= 4 0 0},
+	type     ={symbols},
+	see      ={Menge,Metaoperation,Metarelation},
 	description={
-		\footnote{In diesem Dokument \gloFt{Metarelationen} und \gloFt{-operationen}.}
-		Im Folgenden seien $M$ und $N$ beliebige \gloFt{Mengen}.
+		\footnote{In diesem Dokument \Metarelationen\ und \Moperationen.}
+		Im Folgenden seien $M$ und $N$ beliebige \Mengen.
 	}
 }
 
@@ -631,12 +651,12 @@
 	name  ={\ensuremath{\RawMtsSubset}},
 	sort  ={= 4 1 1},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsSubset N) \RawMtsDefEquiv ((M \RawMtsSubsetEq N) \RawMtsAnd (M \RawMtsEqN N))}},
-	user6 ={$M$ \optFt{ist eine} \manFt{echte Teilmenge} \optFt{von} $N$},
-	see   ={MtsAnd,MtsDefEquiv,MtsEqN,MtsSubsetEq,Mengenrelation,echteTeilmenge},
-	description={
-		\baueBeschreibung{MtsSubset}{Eine \gloFt{Mengenrelation}}.
-		\\Ursprünglich wurde $\RawMtsSubset$ im Sinne von $\RawMtsSubsetEq$ verwendet.
+	symbol={\formaleDefinition{(M \RawMtsSubset N) \RawMtsDefEquiv ((M \RawMtsSubsetEq N) \RawMtsAnd (M \RawMtsEqN N))}},
+	user6 ={\informelleDefinition{$M$ \OptFt{ist eine} \ManFt{echte Teilmenge} \OptFt{von} $N$}},
+	see   ={MtsAnd,MtsDefEquiv,MtsEqN,echteTeilmenge},
+	description={\todoOk%
+		\baueBeschreibung[Eine \Bereichsrelation]{MtsSubset}.
+		\\Ursprünglich wurde \MtsSubset\ im Sinne von \MtsSubsetEq\ verwendet.
 	}
 }
 
@@ -645,10 +665,12 @@
 	name  ={\ensuremath{\RawMtsSubsetEq}},
 	sort  ={= 4 1 2},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsSubsetEq N) \RawMtsDefEquiv \RawMtsForall x:((x \RawMtsIn M) \RawMtsImp (x \RawMtsIn N))}},
-	user6 ={$M$ \optFt{ist eine} \manFt{Teilmenge} \optFt{von} $N$},
-	see   ={MtsImp,MtsDefEquiv,MtsIn,MtsForall,Mengenrelation,Teilmenge},
-	description={\baueBeschreibung{MtsSubsetEq}{Eine \gloFt{Mengenrelation}}.}
+	symbol={\formaleDefinition{(M \RawMtsSubsetEq N) \RawMtsDefEquiv \RawMtsForall x:((x \RawMtsIn M) \RawMtsImp (x \RawMtsIn N))}},
+	user6 ={\informelleDefinition{$M$ \OptFt{ist eine} \ManFt{Teilmenge} \OptFt{von} $N$}},
+	see   ={MtsImp,MtsDefEquiv,MtsIn,MtsForall,Teilmenge},
+	description={\todoOk%
+		\baueBeschreibung[Eine \Bereichsrelation]{MtsSubsetEq}.
+	}
 }
 
 \newVerweis               {\MtsSupset}{\glstext}{MtsSupset}
@@ -656,13 +678,13 @@
 	name  ={\ensuremath{\RawMtsSupset}},
 	sort  ={= 4 1 3},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsSupset N) \RawMtsDefEquiv (N \RawMtsSubset M)}},
-	user6 ={$M$ \optFt{ist eine} \manFt{echte Obermenge von} $N$},
-	see   ={MtsDefEquiv,MtsSubset,MtsSupsetEq,Mengenrelation,echteObermenge,Umkehrrelation},
-	description={
-		\baueBeschreibung{MtsSupset}{Eine \gloFt{Mengenrelation}}.
-		\\Die \gloFt{Umkehrrelation} von $\RawMtsSubset$.
-		Ursprünglich wurde $\RawMtsSupset$ im Sinne von $\RawMtsSupsetEq$ verwendet.
+	symbol={\formaleDefinition{(M \RawMtsSupset N) \RawMtsDefEquiv (N \RawMtsSubset M)}},
+	user6 ={\informelleDefinition{$M$ \OptFt{ist eine} \ManFt{echte Obermenge von} $N$}},
+	see   ={MtsDefEquiv,echteObermenge},
+	description={\todoOk%
+		\baueBeschreibung[Eine \Bereichsrelation]{MtsSupset}.
+		\\Die \Umkehrrelation\ von \MtsSubset.
+		Ursprünglich wurde \MtsSupset\ im Sinne von \MtsSupsetEq\ verwendet.
 	}
 }
 
@@ -671,12 +693,12 @@
 	name  ={\ensuremath{\RawMtsSupsetEq}},
 	sort  ={= 4 1 4},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsSupsetEq N) \RawMtsDefEquiv (N \RawMtsSubsetEq M)}},
-	user6 ={$M$ \optFt{ist eine} \manFt{Obermenge von} $N$},
-	see   ={MtsDefEquiv,MtsSubsetEq,Mengenrelation,Obermenge,Umkehrrelation},
-	description={
-		\baueBeschreibung{MtsSupsetEq}{Eine \gloFt{Mengenrelation}}.
-		\\Die \gloFt{Umkehrrelation} von $\RawMtsSubsetEq$.
+	symbol={\formaleDefinition{(M \RawMtsSupsetEq N) \RawMtsDefEquiv (N \RawMtsSubsetEq M)}},
+	user6 ={\informelleDefinition{$M$ \OptFt{ist eine} \ManFt{Obermenge von} $N$}},
+	see   ={MtsDefEquiv,Obermenge},
+	description={\todoOk%
+		\baueBeschreibung[Eine \Bereichsrelation]{MtsSupsetEq}.
+		\\Die \Umkehrrelation\ von \MtsSubsetEq.
 	}
 }
 
@@ -685,12 +707,12 @@
 	name  ={\ensuremath{\RawMtsSubsetN}},
 	sort  ={= 4 2 1},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsSubsetN N) \RawMtsDefEquiv \RawMtsNot (M \RawMtsSubset N)}},
-	user6 ={$M$ \optFt{ist} \manFt{keine echte Teilmenge} \optFt{von} $N$},
-	see   ={MtsNot,MtsDefEquiv,MtsSubset,Mengenrelation,Negation,echteTeilmenge},
-	description={
-		\baueBeschreibung{MtsSubsetN}{Eine \gloFt{Mengenrelation}}.
-		\\Die \gloFt{Negation} von $\RawMtsSubset$.
+	symbol={\formaleDefinition{(M \RawMtsSubsetN N) \RawMtsDefEquiv \RawMtsNot (M \RawMtsSubset N)}},
+	user6 ={\informelleDefinition{$M$ \OptFt{ist} \ManFt{keine echte Teilmenge} \OptFt{von} $N$}},
+	see   ={MtsNot,MtsDefEquiv,echteTeilmenge},
+	description={\todoOk%
+		\baueBeschreibung[Eine \Bereichsrelation]{MtsSubsetN}.
+		\\Die \Negation\ von \MtsSubset.
 	}
 }
 
@@ -699,12 +721,12 @@
 	name  ={\ensuremath{\RawMtsSubsetEqN}},
 	sort  ={= 4 2 2},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsSubsetEqN N) \RawMtsDefEquiv \RawMtsNot (M \RawMtsSubsetEq N)}},
-	user6 ={$M$ \optFt{ist} \manFt{keine Teilmenge} \optFt{von} $N$},
-	see   ={MtsNot,MtsDefEquiv,MtsSubsetEq,Mengenrelation,Negation,Teilmenge},
-	description={
-		\baueBeschreibung{MtsSubsetEqN}{Eine \gloFt{Mengenrelation}}.
-		\\Die \gloFt{Negation} von $\RawMtsSubsetEq$.
+	symbol={\formaleDefinition{(M \RawMtsSubsetEqN N) \RawMtsDefEquiv \RawMtsNot (M \RawMtsSubsetEq N)}},
+	user6 ={\informelleDefinition{$M$ \OptFt{ist} \ManFt{keine Teilmenge} \OptFt{von} $N$}},
+	see   ={MtsNot,MtsDefEquiv,Teilmenge},
+	description={\todoOk%
+		\baueBeschreibung[Eine \Bereichsrelation]{MtsSubsetEqN}.
+		\\Die \Negation\ von \MtsSubsetEq.
 	}
 }
 
@@ -713,12 +735,12 @@
 	name  ={\ensuremath{\RawMtsSupsetN}},
 	sort  ={= 4 2 3},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsSupsetN N) \RawMtsDefEquiv \RawMtsNot (N \RawMtsSubset M)}},
-	user6 ={$M$ \optFt{ist} \manFt{keine echte Obermenge von} $N$},
-	see   ={MtsNot,MtsDefEquiv,MtsSubset,Mengenrelation,Negation,Umkehrrelation},
-	description={
-		\baueBeschreibung{MtsSupsetN}{Eine \gloFt{Mengenrelation}}.
-		\\Die \gloFt{Negation} der \gloFt{Umkehrrelation} und gleichzeitig die \gloFt{Umkehrrelation} der \gloFt{Negation} von $\RawMtsSubset$.
+	symbol={\formaleDefinition{(M \RawMtsSupsetN N) \RawMtsDefEquiv \RawMtsNot (N \RawMtsSubset M)}},
+	user6 ={\informelleDefinition{$M$ \OptFt{ist} \ManFt{keine echte Obermenge von} $N$}},
+	see   ={MtsNot,MtsDefEquiv},
+	description={\todoOk%
+		\baueBeschreibung[Eine \Bereichsrelation]{MtsSupsetN}.
+		\\Die \Negation\ der \Umkehrrelation\ und gleichzeitig die \Umkehrrelation\ der \Negation\ von \MtsSubset.
 	}
 }
 
@@ -727,12 +749,12 @@
 	name  ={\ensuremath{\RawMtsSupsetEqN}},
 	sort  ={= 4 2 4},
 	type  ={symbols},
-	symbol={\ensuremath{(M \RawMtsSupsetEqN N) \RawMtsDefEquiv \RawMtsNot (N \RawMtsSubsetEq M)}},
-	user6 ={$M$ \optFt{ist} \manFt{keine Obermenge von} $N$},
-	see   ={MtsNot,MtsDefEquiv,MtsSubsetEq,Mengenrelation,Negation,Umkehrrelation},
-	description={
-		\baueBeschreibung{MtsSupsetEqN}{Eine \gloFt{Mengenrelation}}.
-		\\Die \gloFt{Negation} der \gloFt{Umkehrrelation} und gleichzeitig die \gloFt{Umkehrrelation} der \gloFt{Negation} von $\RawMtsSubsetEq$.
+	symbol={\formaleDefinition{(M \RawMtsSupsetEqN N) \RawMtsDefEquiv \RawMtsNot (N \RawMtsSubsetEq M)}},
+	user6 ={\informelleDefinition{$M$ \OptFt{ist} \ManFt{keine Obermenge von} $N$}},
+	see   ={MtsNot,MtsDefEquiv},
+	description={\todoOk%
+		\baueBeschreibung[Eine \Bereichsrelation]{MtsSupsetEqN}.
+		\\Die \Negation\ der \Umkehrrelation\ und gleichzeitig die \Umkehrrelation\ der \Negation\ von \MtsSubsetEq.
 	}
 }
 
@@ -741,10 +763,10 @@
 	name  ={\ensuremath{\RawMtsCap}},
 	sort  ={= 4 3 1},
 	type  ={symbols},
-	symbol={\ensuremath{M \RawMtsCap N \RawMtsDefEq \RawMengeDef{x}{(x \RawMtsIn M) \RawMtsAnd (x \RawMtsIn N)}}},
-	user6 ={\optFt{Der} \manFt{Durchschnitt von} $M$ \manFt{und} $N$},
-	see   ={MtsAnd,MtsDefEq,MtsIn,Durchschnitt,Menge,Mengenoperation},
-	description={\baueBeschreibung{MtsCap}{Eine \gloFt{Mengenoperation}}.}
+	symbol={\formaleDefinition{M \RawMtsCap N \RawMtsDefEq \RawMengeDef{x}{(x \RawMtsIn M) \RawMtsAnd (x \RawMtsIn N)}}},
+	user6 ={\informelleDefinition{\OptFt{Der} \ManFt{Durchschnitt von} $M$ \ManFt{und} $N$}},
+	see   ={MtsAnd,MtsDefEq,MtsIn,Durchschnitt},
+	description={\baueBeschreibung[Eine \Bereichsoperation]{MtsCap}.}
 }
 
 \newVerweis               {\MtsCup}{\glstext}{MtsCup}
@@ -752,10 +774,10 @@
 	name  ={\ensuremath{\RawMtsCup}},
 	sort  ={= 4 3 2},
 	type  ={symbols},
-	symbol={\ensuremath{M \RawMtsCup N \RawMtsDefEq \RawMengeDef{x}{(x \RawMtsIn M) \RawMtsOr (x \RawMtsIn N)}}},
-	user6 ={\optFt{Die} \manFt{Vereinigung von} $M$ \manFt{und} $N$},
-	see   ={MtsOr,MtsDefEq,MtsIn,Menge,Mengenoperation,Vereinigung},
-	description={\baueBeschreibung{MtsCup}{Eine \gloFt{Mengenoperation}}.}
+	symbol={\formaleDefinition{M \RawMtsCup N \RawMtsDefEq \RawMengeDef{x}{(x \RawMtsIn M) \RawMtsOr (x \RawMtsIn N)}}},
+	user6 ={\informelleDefinition{\OptFt{Die} \ManFt{Vereinigung von} $M$ \ManFt{und} $N$}},
+	see   ={MtsOr,MtsDefEq,MtsIn,Menge,Bereichsoperation,Vereinigung},
+	description={\baueBeschreibung[Eine \Bereichsoperation]{MtsCup}.}
 }
 
 \newVerweis               {\MtsSetminus}{\glstext}{MtsSetminus}
@@ -763,36 +785,33 @@
 	name  ={\ensuremath{\RawMtsSetminus}},
 	sort  ={= 4 3 3},
 	type  ={symbols},
-	symbol={\ensuremath{M \RawMtsSetminus N \RawMtsDefEq \RawMengeDef{x}{(x \RawMtsIn M) \RawMtsAnd (x \RawMtsInN N)}}},
-	user6 ={\optFt{Die} \manFt{Differenz von} $M$ \manFt{und} $N$},
-	see   ={MtsAnd,MtsDefEq,MtsIn,MtsInN,Differenz,Menge,Mengenoperation},
-	description={\baueBeschreibung{MtsSetminus}{Eine \gloFt{Mengenoperation}}.}
+	symbol={\formaleDefinition{M \RawMtsSetminus N \RawMtsDefEq \RawMengeDef{x}{(x \RawMtsIn M) \RawMtsAnd (x \RawMtsInN N)}}},
+	user6 ={\informelleDefinition{\OptFt{Die} \ManFt{Differenz von} $M$ \ManFt{und} $N$}},
+	see   ={MtsAnd,MtsDefEq,MtsIn,MtsInN,Differenz,Menge,Bereichsoperation},
+	description={\baueBeschreibung[Eine \Bereichsoperation]{MtsSetminus}.}
 }
 
-%%% Todo Formel wird fälschlicherweise blau auf den Rand geschrieben
 \newVerweis               {\MtsTimes}{\glstext}{MtsTimes}
 \newglossaryentry          {MtsTimes}{
 	name  ={\ensuremath{\RawMtsTimes}},
 	sort  ={= 4 3 4},
 	type  ={symbols},
-	symbol={\ensuremath{M \RawMtsTimes N \RawMtsDefEq \RawMengeDef{(x,y)}{(x \RawMtsIn M) \RawMtsAnd (y \RawMtsIn N)}}},
-	user6 ={\optFt{Das} \manFt{kartesische Produkt von} $M$ \manFt{und} $N$},
-	see   ={MtsAnd,MtsDefEq,MtsIn,kartesischesProdukt,Menge,Mengenoperation,Mengenprodukt},
-	description={
-		\baueBeschreibung{MtsTimes}{Eine \gloFt{Mengenoperation}}\synonymMtsTimes.
-	}
+	symbol={\formaleDefinition{M \RawMtsTimes N \RawMtsDefEq \RawMengeDef{(x,y)}{(x \RawMtsIn M) \RawMtsAnd (y \RawMtsIn N)}}},
+	user6 ={\informelleDefinition{\OptFt{Das} \ManFt{kartesische Produkt von} $M$ \ManFt{und} $N$}},
+	see   ={MtsAnd,MtsDefEq,MtsIn,kartesischesProdukt,Menge,Bereichsoperation,Mengenprodukt},
+	description={\baueBeschreibung[Eine \Bereichsoperation]{MtsTimes}\synonymMtsTimes.}
 }
 \newcommand*{\synonymMtsTimes}{\synonym{\gloFt{Mengenprodukt}}}
 
 % ==============================================================================
 % \MtsSeq* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
 \newglossaryentry{Glo-Komponentenrelationen}{
-	name     ={\gloFt{Komponentenrelationen}},% ===================================
-	sort  ={= 5 0 0},
-	type  ={symbols},
-	see   ={Folge,Komponentenrelation},
+	name     ={\gloFt{Komponentenrelationen}},% ================================
+	sort     ={= 5 0 0},
+	type     ={symbols},
+	see      ={Komponentenrelation},
 	description={
-		Im Folgenden sei $x$ eine beliebige \gloFt{Komponente} und $F$ eine beliebige \gloFt{Folge}.
+		Im Folgenden sei $x$ eine beliebige \Komponente\ und $F$ eine beliebige \Folge.
 	}
 }
 
@@ -801,16 +820,14 @@
 	name  ={\ensuremath{\RawMtsSeqIn}},
 	sort  ={= 5 1 1},
 	type  ={symbols},
-	symbol={\ensuremath{(x \RawMtsSeqIn F)}},
-	user6 ={$x$ \optFt{ist eine} \manFt{Komponente von} $F$},
-	see   ={Element,Komponente,Komponentenrelation},
-	description={
-		\baueBeschreibung{MtsSeqIn}{Eine \gloFt{Komponentenrelation}}.\alternativMtsSeqIn
-	}
+	symbol={\formaleDefinition{(x \RawMtsSeqIn F)}},
+	user6 ={\informelleDefinition{$x$ \OptFt{ist eine} \ManFt{Komponente von} $F$}},
+	see   ={Element,Komponente},
+	description={\baueBeschreibung[Eine \Komponentenrelation]{MtsSeqIn}\alternativMtsSeqIn.}
 }
 \newcommand*{\alternativMtsSeqIn}{\alternativi[;
-	\enquote{$x$ aus $F$} könnte \textzB\ auch \enquote{(\gloFt{Element}) $x$ aus der Menge $F$} meinen.
-	Daher bevorzugen wir für \gloFt{Komponenten} \enquote{von}.
+	\enquote{$x$ aus $F$} könnte \textzB\ auch \enquote{\Element\ $x$ aus der \Menge\ $F$} meinen.
+	Daher bevorzugen wir für \Komponenten\ \enquote{von} und für \Elemente\ \enquote{aus}.
 ]{aus}}
 
 \newVerweis               {\MtsSeqNi}{\glstext}{MtsSeqNi}
@@ -818,12 +835,12 @@
 	name  ={\ensuremath{\RawMtsSeqNi}},
 	sort  ={= 5 1 2},
 	type  ={symbols},
-	symbol={\ensuremath{(F \RawMtsSeqNi x) \RawMtsDefEq (x \RawMtsSeqIn F)}},
-	user6 ={$F$ \manFt{enthält} $x$ \optFt{als Komponente}},
-	see   ={MtsDefEq,MtsSeqIn,Komponente,Komponentenrelation,Umkehrrelation},
+	symbol={\formaleDefinition{(F \RawMtsSeqNi x) \RawMtsDefEq (x \RawMtsSeqIn F)}},
+	user6 ={\informelleDefinition{$F$ \ManFt{enthält} $x$ \OptFt{als Komponente}}},
+	see   ={MtsDefEq,Komponente},
 	description={
-		\baueBeschreibung{MtsSeqNi}{Eine \gloFt{Komponentenrelation}}.
-		\\Die \gloFt{Umkehrrelation} von $\RawMtsSeqIn$.
+		\baueBeschreibung[Eine \Komponentenrelation]{MtsSeqNi}.
+		\\Die \Umkehrrelation\ von \MtsSeqIn.
 	}
 }
 
@@ -832,12 +849,12 @@
 	name  ={\ensuremath{\RawMtsSeqInN}},
 	sort  ={= 5 2 1},
 	type  ={symbols},
-	symbol={\ensuremath{(x \RawMtsSeqInN F) \RawMtsDefEq \RawMtsNot (x \RawMtsSeqIn F)}},
-	user6 ={$x$ \optFt{ist} \manFt{keine Komponente aus} $F$},
-	see   ={MtsNot,MtsDefEq,MtsSeqIn,Komponente,Komponentenrelation,Negation},
+	symbol={\formaleDefinition{(x \RawMtsSeqInN F) \RawMtsDefEq \RawMtsNot (x \RawMtsSeqIn F)}},
+	user6 ={\informelleDefinition{$x$ \OptFt{ist} \ManFt{keine Komponente aus} $F$}},
+	see   ={MtsNot,MtsDefEq,Komponente},
 	description={
-		\baueBeschreibung{MtsSeqInN}{Eine \gloFt{Komponentenrelation}}.
-		\\Die \gloFt{Negation} von $\RawMtsSeqIn$.
+		\baueBeschreibung[Eine \Komponentenrelation]{MtsSeqInN}.
+		\\Die \Negation\ von \MtsSeqIn.
 	}
 }
 
@@ -846,24 +863,24 @@
 	name  ={\ensuremath{\RawMtsSeqNiN}},
 	sort  ={= 5 2 2},
 	type  ={symbols},
-	symbol={\ensuremath{(F \RawMtsSeqNiN x) \RawMtsDefEq \RawMtsNot (x \RawMtsSeqIn F)}},
-	user6 ={$F$ \manFt{enthält} $x$ \manFt{nicht} \optFt{als Komponente}},
-	see   ={MtsNot,MtsDefEq,MtsSeqIn,Komponente,Komponentenrelation,Negation,Umkehrrelation},
+	symbol={\formaleDefinition{(F \RawMtsSeqNiN x) \RawMtsDefEq \RawMtsNot (x \RawMtsSeqIn F)}},
+	user6 ={\informelleDefinition{$F$ \ManFt{enthält} $x$ \ManFt{nicht} \OptFt{als Komponente}}},
+	see   ={MtsNot,MtsDefEq,Komponente},
 	description={
-		\baueBeschreibung{MtsSeqNiN}{Eine \gloFt{Komponentenrelation}}.
-		\\Die \gloFt{Negation} der \gloFt{Umkehrrelation} und gleichzeitig die \gloFt{Umkehrrelation} der \gloFt{Negation} von $\RawMtsSeqIn$.
+		\baueBeschreibung[Eine \Komponentenrelation]{MtsSeqNiN}.
+		\\Die \Negation\ der \Umkehrrelation\ und gleichzeitig die \Umkehrrelation\ der \Negation\ von \MtsSeqIn.
 	}
 }
 
 % ==============================================================================
 % \Mts* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
 \newglossaryentry{Glo-Folgenrelationen}{
-	name  ={\gloFt{Folgenoperationen} und \gloFt{-relationen}},% ===============================
-	sort  ={= 6 0 0},
-	see   ={Folge,Folgenoperation,Folgenrelation,Tupel},
-	type  ={symbols},
+	name     ={\gloFt{Folgenoperationen} und \gloFt{-relationen}},% ============
+	sort     ={= 6 0 0},
+	see      ={Folgenoperation,Folgenrelation,Tupel},
+	type     ={symbols},
 	description={
-		Im Folgenden seien $\vec{a}$ eine endliche und $\vec{b}$, $\vec{c}$ und $\vec{d}$ beliebige \gloFt{Folgen}.
+		Im Folgenden seien $\vec{a}$ eine endliche und $\vec{b}$, $\vec{c}$ und $\vec{d}$ beliebige \Folgen.
 	}
 }
 
@@ -872,10 +889,10 @@
 	name  ={\ensuremath{\RawMtsCat}},
 	sort  ={= 6 0 1},
 	type  ={symbols},
-	symbol={\ensuremath{\{a_1, \dots, a_n\} \RawMtsCat \{c_1, c_2, \dots\} \RawMtsDefEq \{a_1, \dots, a_n, c_1, c_2, \dots\}}},
-	user6 ={$\vec{a}$ \manFt{verkettet} \optFt{mit} $\vec{c}$},
-	see   ={MtsDefEq,Folge,Folgenoperation,Verkettung},
-	description={\baueBeschreibung{MtsCat}{Eine \gloFt{Folgenoperation}}.}
+	symbol={\formaleDefinition{\{a_1, \dots, a_n\} \RawMtsCat \{c_1, c_2, \dots\} \RawMtsDefEq \{a_1, \dots, a_n, c_1, c_2, \dots\}}},
+	user6 ={\informelleDefinition{$\vec{a}$ \ManFt{verkettet} \OptFt{mit} $\vec{c}$}},
+	see   ={MtsDefEq,Folge,Verkettung},
+	description={\baueBeschreibung[Eine \Folgenoperation]{MtsCat}.}
 }
 
 \newVerweis               {\MtsSubseq}{\glstext}{MtsSubseq}
@@ -883,10 +900,10 @@
 	name  ={\ensuremath{\RawMtsSubseq}},
 	sort  ={= 6 1 1},
 	type  ={symbols},
-	symbol={\ensuremath{(\vec{c} \RawMtsSubseq \vec{d}) \RawMtsDefEquiv ((\vec{c} \RawMtsSubseqEq \vec{d}) \RawMtsAnd (\vec{c} \RawMtsEqN \vec{d}))}},
-	user6 ={$\vec{c}$ \optFt{ist eine} \manFt{echte Teilfolge} \optFt{von} $\vec{d}$},
-	see   ={MtsAnd,MtsDefEquiv,MtsEqN,MtsSubseqEq,Folgenrelation,echteTeilfolge},
-	description={\baueBeschreibung{MtsSubseq}{Eine \gloFt{Folgenrelation}}.}
+	symbol={\formaleDefinition{(\vec{c} \RawMtsSubseq \vec{d}) \RawMtsDefEquiv ((\vec{c} \RawMtsSubseqEq \vec{d}) \RawMtsAnd (\vec{c} \RawMtsEqN \vec{d}))}},
+	user6 ={\informelleDefinition{$\vec{c}$ \OptFt{ist eine} \ManFt{echte Teilfolge} \OptFt{von} $\vec{d}$}},
+	see   ={MtsAnd,MtsDefEquiv,MtsEqN,MtsSubseqEq,echteTeilfolge},
+	description={\baueBeschreibung[Eine \Folgenoperation]{MtsSubseq}.}
 }
 
 \newVerweis               {\MtsSubseqEq}{\glstext}{MtsSubseqEq}
@@ -894,18 +911,18 @@
 	name  ={\ensuremath{\RawMtsSubseqEq}},
 	sort  ={= 6 1 2},
 	type  ={symbols},
-	symbol={\ensuremath{
+	symbol={\formaleDefinition{
 			(\vec{c} \RawMtsSubseqEq \vec{d}) \RawMtsDefEquiv (
 				(\RawMtsExists \vec{a} :         (\vec{a} \RawMtsCat \vec{c})                   \RawMtsEq \vec{d}) \RawMtsOr
 				(\RawMtsExists \vec{a},\vec{b} : (\vec{a} \RawMtsCat \vec{c} \RawMtsCat \vec{b}) \RawMtsEq \vec{d})
 			)
 		}
 	},
-	user6 ={$\vec{c}$ \optFt{ist eine} \manFt{Teilfolge von} $\vec{d}$},
-	see   ={MtsDefEquiv,MtsEq,MtsExists,Folge,Folgenrelation,Teilfolge},
+	user6 ={\informelleDefinition{$\vec{c}$ \OptFt{ist eine} \ManFt{Teilfolge von} $\vec{d}$}},
+	see   ={MtsDefEquiv,MtsEq,MtsExists,Folge,Teilfolge},
 	description={
-		\baueBeschreibung{MtsSubseqEq}{Eine \gloFt{Folgenrelation}}%
-		\footnote{In letzterem Fall muss $\vec{c}$ eine endliche \gloFt{Folge} sein.}.
+		\baueBeschreibung[Eine \Folgenrelation]{MtsSubseqEq}%
+		\footnote{Im letzteren Fall muss $\vec{c}$ eine endliche \Folge\ sein.}.
 	}
 }
 
@@ -914,12 +931,12 @@
 	name  ={\ensuremath{\RawMtsSupseq}},
 	sort  ={= 6 1 3},
 	type  ={symbols},
-	symbol={\ensuremath{(\vec{c} \RawMtsSupseq \vec{d}) \RawMtsDefEquiv (\vec{d} \RawMtsSubseq \vec{c})}},
-	user6 ={$\vec{c}$ \optFt{ist eine} \manFt{echte Oberfolge von} $\vec{d}$},
-	see   ={MtsDefEquiv,MtsSubseq,Folgenrelation,echteOberfolge,Umkehrrelation},
+	symbol={\formaleDefinition{(\vec{c} \RawMtsSupseq \vec{d}) \RawMtsDefEquiv (\vec{d} \RawMtsSubseq \vec{c})}},
+	user6 ={\informelleDefinition{$\vec{c}$ \OptFt{ist eine} \ManFt{echte Oberfolge von} $\vec{d}$}},
+	see   ={MtsDefEquiv,echteOberfolge},
 	description={
-		\baueBeschreibung{MtsSupseq}{Eine \gloFt{Folgenrelation}}.
-		\\Die \gloFt{Umkehrrelation} von $\RawMtsSubseq$.
+		\baueBeschreibung[Eine \Folgenrelation]{MtsSupseq}.
+		\\Die \Umkehrrelation\ von \MtsSubseq.
 	}
 }
 
@@ -928,12 +945,12 @@
 	name  ={\ensuremath{\RawMtsSupseqEq}},
 	sort  ={= 6 1 4},
 	type  ={symbols},
-	symbol={\ensuremath{(\vec{c} \RawMtsSupseqEq \vec{d}) \RawMtsDefEquiv (\vec{d} \RawMtsSubseqEq \vec{c})}},
-	user6 ={$\vec{c}$ \optFt{ist eine} \manFt{Oberfolge von} $\vec{d}$},
-	see   ={MtsDefEquiv,MtsSubseqEq,Folgenrelation,Oberfolge,Umkehrrelation},
+	symbol={\formaleDefinition{(\vec{c} \RawMtsSupseqEq \vec{d}) \RawMtsDefEquiv (\vec{d} \RawMtsSubseqEq \vec{c})}},
+	user6 ={\informelleDefinition{$\vec{c}$ \OptFt{ist eine} \ManFt{Oberfolge von} $\vec{d}$}},
+	see   ={MtsDefEquiv,Oberfolge},
 	description={
-		\baueBeschreibung{MtsSupseqEq}{Eine \gloFt{Folgenrelation}}.
-		\\Die \gloFt{Umkehrrelation} von $\RawMtsSubseqEq$.
+		\baueBeschreibung[Eine \Folgenrelation]{MtsSupseqEq}.
+		\\Die \Umkehrrelation\ von \MtsSubseqEq.
 	}
 }
 
@@ -942,12 +959,12 @@
 	name  ={\ensuremath{\RawMtsSubseqN}},
 	sort  ={= 6 2 1},
 	type  ={symbols},
-	symbol={\ensuremath{(\vec{c} \RawMtsSubseqN \vec{d}) \RawMtsDefEquiv \RawMtsNot (\vec{c} \RawMtsSubseq \vec{d})}},
-	user6 ={$\vec{c}$ \optFt{ist} \manFt{keine echte Teilfolge von} $\vec{d}$},
-	see   ={MtsNot,MtsDefEquiv,MtsSubseq,Folgenrelation,Negation,echteTeilfolge},
+	symbol={\formaleDefinition{(\vec{c} \RawMtsSubseqN \vec{d}) \RawMtsDefEquiv \RawMtsNot (\vec{c} \RawMtsSubseq \vec{d})}},
+	user6 ={\informelleDefinition{$\vec{c}$ \OptFt{ist} \ManFt{keine echte Teilfolge von} $\vec{d}$}},
+	see   ={MtsNot,MtsDefEquiv,echteTeilfolge},
 	description={
-		\baueBeschreibung{MtsSubseqN}{Eine \gloFt{Folgenrelation}}.
-		\\Die \gloFt{Negation} von $\RawMtsSubseq$.
+		\baueBeschreibung[Eine \Folgenrelation]{MtsSubseqN}.
+		\\Die \Negation\ von \MtsSubseq.
 	}
 }
 
@@ -956,12 +973,12 @@
 	name  ={\ensuremath{\RawMtsSubseqEqN}},
 	sort  ={= 6 2 2},
 	type  ={symbols},
-	symbol={\ensuremath{(\vec{c} \RawMtsSubseqEqN \vec{d}) \RawMtsDefEquiv \RawMtsNot (\vec{c} \RawMtsSubseqEq \vec{d})}},
-	user6 ={$\vec{c}$ \optFt{ist} \manFt{keine Teilfolge von} $\vec{d}$},
-	see   ={MtsNot,MtsDefEquiv,MtsSubseqEq,Folgenrelation,Negation,Teilfolge},
+	symbol={\formaleDefinition{(\vec{c} \RawMtsSubseqEqN \vec{d}) \RawMtsDefEquiv \RawMtsNot (\vec{c} \RawMtsSubseqEq \vec{d})}},
+	user6 ={\informelleDefinition{$\vec{c}$ \OptFt{ist} \ManFt{keine Teilfolge von} $\vec{d}$}},
+	see   ={MtsNot,MtsDefEquiv,Teilfolge},
 	description={
-		\baueBeschreibung{MtsSubseqEqN}{Eine \gloFt{Folgenrelation}}.
-		\\Die \gloFt{Negation} von $\RawMtsSubseqEq$.
+		\baueBeschreibung[Eine \Folgenrelation]{MtsSubseqEqN}.
+		\\Die \Negation\ von \MtsSubseqEq.
 	}
 }
 
@@ -970,12 +987,12 @@
 	name  ={\ensuremath{\RawMtsSupseqN}},
 	sort  ={= 6 2 3},
 	type  ={symbols},
-	symbol={\ensuremath{(\vec{c} \RawMtsSupseqN \vec{d}) \RawMtsDefEquiv \RawMtsNot (\vec{d} \RawMtsSubseq \vec{c})}},
-	user6 ={$\vec{c}$ \optFt{ist} \manFt{keine echte Oberfolge von} $\vec{d}$},
-	see   ={MtsNot,MtsDefEquiv,MtsSubseq,Folgenrelation,Negation,echteOberfolge,Umkehrrelation},
+	symbol={\formaleDefinition{(\vec{c} \RawMtsSupseqN \vec{d}) \RawMtsDefEquiv \RawMtsNot (\vec{d} \RawMtsSubseq \vec{c})}},
+	user6 ={\informelleDefinition{$\vec{c}$ \OptFt{ist} \ManFt{keine echte Oberfolge von} $\vec{d}$}},
+	see   ={MtsNot,MtsDefEquiv,echteOberfolge},
 	description={
-		\baueBeschreibung{MtsSupseqN}{Eine \gloFt{Folgenrelation}}.
-		\\Die \gloFt{Negation} der \gloFt{Umkehrrelation} und gleichzeitig die \gloFt{Umkehrrelation} der \gloFt{Negation} von $\RawMtsSubseq$.
+		\baueBeschreibung[Eine \Folgenrelation]{MtsSupseqN}.
+		\\Die \Negation\ der \Umkehrrelation\ und gleichzeitig die \Umkehrrelation\ der \Negation\ von \MtsSubseq.
 	}
 }
 
@@ -984,39 +1001,38 @@
 	name  ={\ensuremath{\RawMtsSupseqEqN}},
 	sort  ={= 6 2 4},
 	type  ={symbols},
-	symbol={\ensuremath{(\vec{c} \RawMtsSupseqEqN \vec{d}) \RawMtsDefEquiv \RawMtsNot (\vec{d} \RawMtsSubseqEq \vec{c})}},
-	user6 ={$\vec{c}$ \optFt{ist} \manFt{keine Oberfolge von} $\vec{d}$},
-	see   ={MtsNot,MtsDefEquiv,MtsSubseqEq,Folgenrelation,Negation,Oberfolge,Umkehrrelation},
+	symbol={\formaleDefinition{(\vec{c} \RawMtsSupseqEqN \vec{d}) \RawMtsDefEquiv \RawMtsNot (\vec{d} \RawMtsSubseqEq \vec{c})}},
+	user6 ={\informelleDefinition{$\vec{c}$ \OptFt{ist} \ManFt{keine Oberfolge von} $\vec{d}$}},
+	see   ={MtsNot,MtsDefEquiv,Oberfolge},
 	description={
-		\baueBeschreibung{MtsSupseqEqN}{Eine \gloFt{Folgenrelation}}.
-		\\Die \gloFt{Negation} der \gloFt{Umkehrrelation} und gleichzeitig die \gloFt{Umkehrrelation} der \gloFt{Negation} von $\RawMtsSubseqEq$.
+		\baueBeschreibung[Eine \Folgenrelation]{MtsSupseqEqN}.
+		\\Die \Negation\ der \Umkehrrelation\ und gleichzeitig die \Umkehrrelation\ der \Negation\ von \MtsSubseqEq.
 	}
 }
 
 % ==============================================================================
 % \Ojk* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
 \newglossaryentry{Glo-Objektsymbole}{
-	name  ={\gloFt{Junktoren}},% ===============================================
-	sort  ={= 7 0 0},
-	type  ={symbols},
-	see   ={logischeAussage,Junktor,Objektkonstante,Objektoperation,Objektrelation,aussagenlogischeOperation,aussagenlogischeRelation},
+	name       ={\gloFt{Junktoren}},% ==========================================
+	sort       ={= 7 0 0},
+	type       ={symbols},
+	see   ={Junktor},
 	description={
-		\footnote{In diesem Dokument \gloFt{aussagenlogische Konstante}, \gloFt{Relationen} und \gloFt{Operationen}, \textdh\ \gloFt{Objektkonstante}, \gloFt{-relationen} und \gloFt{-operationen}.}
-		Im Folgenden seien $A$ und $B$ beliebige \gloFt{logische Aussagen}.
+		\footnote{In diesem Dokument \aussagenlogischeKonstante, \aRelationen\ und \aOperationen, \textdh\ \Objektkonstante, \Orelationen\ und \Ooperationen.}
+		Im Folgenden seien $A$ und $B$ beliebige \logischeAussagen.
 	}
 }
-
-% TODO ### Definierende Formel in 'symbol' eintragen --- Symbol am Seitenrand ausgeben: mit \baueBeschreibung oder \SymbolAmRand
 
 \newVerweis               {\OjkFalse}{\glstext}{OjkFalse}
 \newglossaryentry          {OjkFalse}{
 	name  ={\ensuremath{\RawOjkFalse}},
 	sort  ={= 7 0 1},
 	type  ={symbols},
-	symbol={\ensuremath{Wert(\RawOjkFalse) \RawMtsDefEq \RawTxtFalse}},
-	see   ={MtsFalse,TxtFalse,Junktor,aussagenlogischeKonstante,stellig,Wahrheitswert},
-	description={\SymbolAmRand{OjkFalse}%
-		Ein $0$-\gloFt{stelliger} \gls{Junktor}, \textdh\ eine \gloFt{aussagenlogische Konstante} mit dem \gloFt{Wahrheitswert} \RawTxtFalse.
+	symbol={\formaleDefinition{Wert(\RawOjkFalse) \RawMtsDefEq \RawTxtFalse}},
+	user6 ={\informelleDefinition{\ManFt{falsch}}},
+	see   ={MtsFalse,TxtFalse,Wahrheitswert},
+	description={\todoOk%
+		\baueBeschreibung[Ein $0$-\stelliger\ \Junktor, \textdh\ eine \aussagenlogischeKonstante]{OjkFalse}.
 	}
 }
 
@@ -1025,10 +1041,11 @@
 	name  ={\ensuremath{\RawOjkTrue}},
 	sort  ={= 7 0 2},
 	type  ={symbols},
-	symbol={\ensuremath{Wert(\RawOjkTrue) \RawMtsDefEq \RawTxtTrue }},
-	see   ={MtsTrue,TxtTrue,Junktor,aussagenlogischeKonstante,stellig,Wahrheitswert},
-	description={\SymbolAmRand{OjkFalse}%
-		Ein $0$-\gloFt{stelliger} \gloFt{Junktor}, \textdh\ eine \gloFt{aussagenlogische Konstante} mit dem \gloFt{Wahrheitswert} \RawTxtTrue.
+	symbol={\formaleDefinition{Wert(\RawOjkTrue) \RawMtsDefEq \RawTxtTrue}},
+	user6 ={\informelleDefinition{\ManFt{wahr}}},
+	see   ={MtsTrue,TxtTrue,Wahrheitswert},
+	description={\todoOk%
+		\baueBeschreibung[Ein $0$-\stelliger\ \Junktor, \textdh\ eine \aussagenlogischeKonstante]{OjkTrue}.
 	}
 }
 
@@ -1037,9 +1054,10 @@
 	name  ={\ensuremath{\RawOjkNot}},
 	sort  ={= 7 1 1},
 	type  ={symbols},
-	symbol={\ensuremath{\RawOjkNot A \RawMtsDefEq \text{\defFt{nicht}} A}},
-	see   ={MtsNot,unaererJunktor},
-	description={\baueBeschreibung[]{OjkNot}{Ein \gloFt{unärer Junktor}}.}
+	symbol={\formaleDefinition{\RawOjkNot A}},
+	user6 ={\informelleDefinition{\DefFt{nicht} $A$}},
+	see   ={MtsNot},
+	description={\baueBeschreibung[Ein \unaererJunktor]{OjkNot}.}
 }
 
 \newVerweis               {\OjkAnd}{\glstext}{OjkAnd}
@@ -1047,27 +1065,22 @@
 	name  ={\ensuremath{\RawOjkAnd}},
 	sort  ={= 7 1 2},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
-	see   ={MtsAnd,OjkNand,binaererJunktor},
-	description={
-		Ein \gloFt{binärer Junktor}:~ $A$ \defFt{und} $B$.
-	}
+	symbol={\formaleDefinition{A \RawOjkAnd B}},
+	user6 ={\informelleDefinition{$A$ \DefFt{und} $B$}},
+	see   ={MtsAnd,OjkNand},
+	description={\baueBeschreibung[Ein \binaererJunktor]{OjkAnd}\alternativOjkAnd.}
 }
-
-% TODO ### direkte glossarinterne Verweise abbauen
+\newcommand*{\alternativOjkAnd}{\alternativi{sowohl \textdots\ als auch \textdots}}
 
 \newVerweis               {\OjkOr}{\glstext}{OjkOr}
 \newglossaryentry          {OjkOr}{
 	name  ={\ensuremath{\RawOjkOr}},
 	sort  ={= 7 1 3},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
+	symbol={\formaleDefinition{A \RawOjkOr B}},
+	user6 ={\informelleDefinition{$A$ \DefFt{oder} $B$}},
 	see   ={MtsOr,OjkNor,OjkXor},
-	description={
-		Ein \binaererJunktor:~ $A$ \defFt{oder} $B$.
-	}
+	description={\baueBeschreibung[Ein \binaererJunktor]{OjkOr}.}
 }
 
 \newVerweis               {\OjkImp}{\glstext}{OjkImp}
@@ -1075,12 +1088,10 @@
 	name  ={\ensuremath{\RawOjkImp}},
 	sort  ={= 7 2 1},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
+	symbol={\formaleDefinition{(A \RawOjkImp B) \RawMtsDefEquiv (\RawOjkNot A \RawOjkOr B})},
+	user6 ={\informelleDefinition{wenn $A$ \DefFt{dann} $B$}},
 	see   ={MtsImp},
-	description={
-		Ein \binaererJunktor:~ wenn $A$ \defFt{dann} $B$.
-	}
+	description={\baueBeschreibung[Ein \binaererJunktor]{OjkImp}.}
 }
 
 \newVerweis               {\OjkRep}{\glstext}{OjkRep}
@@ -1088,12 +1099,10 @@
 	name  ={\ensuremath{\RawOjkRep}},
 	sort  ={= 7 2 2},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
+	symbol={\formaleDefinition{(A \RawOjkRep B) \RawMtsDefEquiv (B \RawOjkImp A)}},
+	user6 ={\informelleDefinition{$A$ \DefFt{wenn} $B$}},
 	see   ={MtsRep},
-	description={
-		Ein \binaererJunktor:~ $A$ \defFt{wenn} $B$.
-	}
+	description={\baueBeschreibung[Ein \binaererJunktor]{OjkRep}.}
 }
 
 \newVerweis               {\OjkEquiv}{\glstext}{OjkEquiv}
@@ -1101,12 +1110,10 @@
 	name  ={\ensuremath{\RawOjkEquiv}},
 	sort  ={= 7 2 3},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
+	symbol={\formaleDefinition{(A \RawOjkEquiv B) \RawMtsDefEquiv ((A \RawOjkImp B) \RawOjkAnd (B \RawOjkImp A))}},
+	user6 ={\informelleDefinition{$A$ genau \DefFt{dann wenn} $B$}},
 	see   ={MtsEquiv},
-	description={
-		Ein \binaererJunktor:~ $A$ genau \defFt{dann wenn} $B$.
-	}
+	description={\baueBeschreibung[Ein \binaererJunktor]{OjkEquiv}.}
 }
 
 \newVerweis               {\OjkNand}{\glstext}{OjkNand}
@@ -1114,40 +1121,33 @@
 	name  ={\ensuremath{\RawOjkNand}},
 	sort  ={= 7 3 1},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
+	symbol={\formaleDefinition{(A \RawOjkNand B) \RawMtsDefEquiv \RawOjkNot (A \RawOjkAnd B)}},
+	user6 ={\informelleDefinition{\DefFt{nicht} ($A$ \DefFt{und} $B$)}},
 	see   ={OjkAnd},
-	description={
-		Ein \binaererJunktor:~ \defFt{nicht} ($A$ \defFt{und} $B$)\alternativOjkNand.
-	}
+	description={\baueBeschreibung[Ein \binaererJunktor]{OjkNand}.}
 }
-\newcommand*{\alternativOjkNand}{\alternativi{sowohl~~~als auch}}
 
 \newVerweis               {\OjkNor}{\glstext}{OjkNor}
 \newglossaryentry          {OjkNor}{
 	name  ={\ensuremath{\RawOjkNor}},
 	sort  ={= 7 3 2},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
+	symbol={\formaleDefinition{(A \RawOjkNor B) \RawMtsDefEquiv \RawOjkNot (A \RawOjkOr B)}},
+	user6 ={\informelleDefinition{\DefFt{nicht} ($A$ \DefFt{oder} $B$}},
 	see   ={OjkOr,OjkXor},
-	description={
-		Ein \binaererJunktor:~ \defFt{nicht} ($A$ \defFt{oder} $B$)\alternativOjkNor.
-	}
+	description={\baueBeschreibung[Ein \binaererJunktor]{OjkNor}.\alternativOjkNor}
 }
-\newcommand*{\alternativOjkNor}{\alternativi{weder~~~noch}}
+\newcommand*{\alternativOjkNor}{\alternativi{weder \textdots\ noch \textdots}}
 
 \newVerweis               {\OjkXor}{\glstext}{OjkXor}
 \newglossaryentry          {OjkXor}{
 	name  ={\ensuremath{\RawOjkXor}},
 	sort  ={= 7 3 3},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
+	symbol={\formaleDefinition{(A \RawOjkXor B) \RawMtsDefEquiv ((A \RawOjkAnd \RawOjkNot B) \RawOjkOr (B \RawOjkAnd \RawOjkNot A))}},
+	user6 ={\informelleDefinition{\DefFt{entweder} $A$ \DefFt{oder} $B$}},
 	see   ={OjkOr,OjkNor},
-	description={
-		Ein \binaererJunktor:~ \defFt{entweder} $A$ \defFt{oder} $B$.
-	}
+	description={\baueBeschreibung[Ein \binaererJunktor]{OjkXor}.}
 }
 
 \newVerweis               {\OjkEq}{\glstext}{OjkEq}
@@ -1155,12 +1155,10 @@
 	name  ={\ensuremath{\RawOjkEq}},
 	sort  ={= 7 4 1},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
+	symbol={\formaleDefinition{A \RawOjkEq B}},
+	user6 ={\informelleDefinition{$A$ ist \DefFt{gleich} $B$}},
 	see   ={MtsEq},
-	description={
-		Logische \Gleichheit:~ $A$ ist \defFt{gleich} $B$.
-	}
+	description={\baueBeschreibung[\DefFt{Logische\Gleichheit}]{OjkEq}.}
 }
 
 \newVerweis               {\OjkEqN}{\glstext}{OjkEqN}
@@ -1168,27 +1166,23 @@
 	name  ={\ensuremath{\RawOjkEqN}},
 	sort  ={= 7 4 2},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
+	symbol={\formaleDefinition{A \RawOjkEqN B}},
+	user6 ={\informelleDefinition{$A$ ist \DefFt{ungleich} $B$}},
 	see   ={MtsEqN},
-	description={
-		Logische \Ungleichheit:~ $A$ ist \defFt{ungleich} $B$.
-	}
+	description={\baueBeschreibung[\DefFt{Logische \Ungleichheit}]{OjkEqN}.}
 }
 
 % ==============================================================================
 % \Mts* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
 % \Ojk* - Ausgabe als Symbol und Eintrag und Verweis ins Symbolverzeichnis
 \newglossaryentry{Glo-Quantoren}{
-	name     ={\gloFt{Quantoren}},% ===============================================
-	sort  ={= 8 0 0},
-	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
-	see   ={Quantor},
+	name     ={\gloFt{Quantoren}},% ============================================
+	sort     ={= 8 0 0},
+	type     ={symbols},
+	see      ={Aussage,Formel,Quantor,Variable,logischeVariable,metasprachlicheVariable},
 	description={
-		$x$ steht jeweils für eine \metasprachlicheV\ \textbzw\ \logischeV\ \Variable\ und $A$ für eine \Aussage\ \textbzw\ \Formel.
-	}
+		Im Folgenden seien $a$, $b$ und $x$ \metasprachlicheV\ \textbzw\ \logischeVariablen\ und $A(x)$ eine \Aussage\ \textbzw\ \Formel\ mit der \freienVariablen\ $x$.
+	}% Todo = freie Variable
 }
 
 \newVerweis               {\MtsForall}{\glstext}{MtsForall}
@@ -1196,12 +1190,10 @@
 	name  ={\ensuremath{\RawMtsForall}},
 	sort  ={= 8 1 1},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
-	see   ={OjkForall,Allquantor},
-	description={
-		Ein \metasprachlicherQuantor: \defFt{für alle} $x$ \defFt{gilt} $A$.
-	}
+	symbol={\formaleDefinition{\RawMtsForall x A(x)}},
+	user6 ={\informelleDefinition{\DefFt{für alle} $x$ \DefFt{gilt} $A(x)$}},
+	see   ={OjkForall},
+	description={\baueBeschreibung[Ein \metasprachlicherQuantor]{MtsForall}.}
 }
 
 \newVerweis               {\MtsExists}{\glstext}{MtsExists}
@@ -1209,12 +1201,10 @@
 	name  ={\ensuremath{\RawMtsExists}},
 	sort  ={= 8 1 2},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
-	see   ={OjkExists,Existenzquantor},
-	description={
-		Ein \metasprachlicherQuantor: \defFt{es gibt ein} $x$ \defFt{so dass} $A$.
-	}
+	symbol={\formaleDefinition{\RawMtsExists x A(x)}},
+	user6 ={\informelleDefinition{\DefFt{es gibt ein} $x$ \DefFt{so dass} $A(x)$}},
+	see   ={OjkExists},
+	description={\baueBeschreibung[Ein \metasprachlicherQuantor]{MtsExists}.}
 }
 
 \newVerweis               {\MtsExione}{\glstext}{MtsExione}
@@ -1222,12 +1212,10 @@
 	name  ={\ensuremath{\RawMtsExione}},
 	sort  ={= 8 1 3},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
-	see   ={OjkExione,Existenzquantor},
-	description={
-		Ein \metasprachlicherQuantor: \defFt{es gibt genau ein} $x$ \defFt{so dass} $A$.
-	}
+	symbol={\formaleDefinition{(\RawMtsExione x A(x)) \RawMtsDefEquiv ((\RawMtsExists x A(x)) \RawMtsAnd ((A(a) \RawMtsAnd A(b)) \RawMtsImp (a = b)))}},
+	user6 ={\informelleDefinition{\DefFt{es gibt genau ein} $x$ \DefFt{so dass} $A(x)$}},
+	see   ={OjkExione},
+	description={\baueBeschreibung[Ein \metasprachlicherQuantor]{MtsExione}.}
 }
 
 \newVerweis               {\OjkForall}{\glstext}{OjkForall}
@@ -1235,12 +1223,10 @@
 	name  ={\ensuremath{\RawOjkForall}},
 	sort  ={= 8 2 1},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
-	see   ={MtsForall,Allquantor},
-	description={
-		Ein \logischerQuantor: \defFt{für alle} $x$ \defFt{gilt} $A$.
-	}
+	symbol={\formaleDefinition{\RawOjkForall x A(x)}},
+	user6 ={\informelleDefinition{\DefFt{für alle} $x$ \DefFt{gilt} $A(x)$}},
+	see   ={MtsForall},
+	description={\baueBeschreibung[Ein \DefFt{\logischerQuantor}]{OjkForall}.}
 }
 
 \newVerweis               {\OjkExists}{\glstext}{OjkExists}
@@ -1248,12 +1234,10 @@
 	name  ={\ensuremath{\RawOjkExists}},
 	sort  ={= 8 2 2},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
-	see   ={MtsExists,Existenzquantor},
-	description={
-		Ein \logischerQuantor: \defFt{es gibt ein} $x$ \defFt{so dass} $A$.
-	}
+	symbol={\formaleDefinition{\RawOjkExists x A(x)}},
+	user6 ={\informelleDefinition{\DefFt{es gibt ein} $x$ \DefFt{so dass} $A(x)$}},
+	see   ={MtsExists},
+	description={\baueBeschreibung[Ein \DefFt{\logischerQuantor}]{OjkExists}.}
 }
 
 \newVerweis               {\OjkExione}{\glstext}{OjkExione}
@@ -1261,12 +1245,10 @@
 	name  ={\ensuremath{\RawOjkExione}},
 	sort  ={= 8 2 3},
 	type  ={symbols},
-	symbol={\ensuremath{}},
-	user6 ={},
-	see   ={MtsExione,Existenzquantor},
-	description={
-		Ein \logischerQuantor: \defFt{es gibt genau ein} $x$ \defFt{so dass} $A$.
-	}
+	symbol={\formaleDefinition{(\RawOjkExione x A(x)) \RawMtsDefEquiv ((\RawOjkExists x A(x)) \RawOjkAnd ((A(a) \RawOjkAnd A(b)) \RawOjkImp (a = b)))}},
+	user6 ={\informelleDefinition{\DefFt{es gibt genau ein} $x$ \DefFt{so dass} $A(x)$}},
+	see   ={MtsExione},
+	description={\baueBeschreibung[Ein \DefFt{\logischerQuantor}]{OjkExione}.}
 }
 
 % ==============================================================================
@@ -1278,283 +1260,226 @@
 %   \eqref  {def:*} --> (\*)
 %   \vreffor{def:*} --> (\*) auf Seite <n>
 \newglossaryentry{Glo-Schlussregeln}{
-	name     ={\gloFt{Schlussregeln}},% =========================================
-	sort    ={= 9},
-	type       ={symbols},
+	name     ={\gloFt{Schlussregeln}},% ========================================
+	sort     ={= 9},
+	type     ={symbols},
 	description={}
 }
 
+% TODO ### symbol := formale Definition (für Schlussregeln)
+
 \newcommand*    {\AR}{\ensuremath{\text{AR}}}
 \newVerweis  {\glsAR}{\glstext }       {AR}
-\newVerweis  {\symAR}{\glsuserv}       {AR}
+\newVerweis  {\symAR}{\glsuseri}       {AR}
 \newcommand* {\tagAR}{\glsTag          {AR}}
 \newglossaryentry{AR}{
 	name      ={(\AR)},
-	user5      ={\AR},
+	user1      ={\AR},
 	sort    ={= 9 AR},
-	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
-	see        ={Anfangsregel,Schlussregel},
-	description={
-		Eine Schlussregel: Anfangsregel.
-	}
+	description={Eine \Schlussregel: Die \Anfangsregel.}
 }
 
 \newcommand*    {\FS}{\ensuremath{\text{FS}}}
 \newVerweis  {\glsFS}{\glstext }       {FS}
-\newVerweis  {\symFS}{\glsuserv}       {FS}
+\newVerweis  {\symFS}{\glsuseri}       {FS}
 \newcommand* {\tagFS}{\glsTag          {FS}}
 \newglossaryentry{FS}{
 	name      ={(\FS)},
-	user5      ={\FS},
+	user1      ={\FS},
 	sort    ={= 9 FS},
-	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
-	see        ={formalerSatz,Schlussregel},
-	description={
-		Eine Schlussregel: formalerSatz.
-	}
+	description={Eine \Schlussregel: Ein \formalerSatz.}
 }
 
 \newcommand*    {\MR}{\ensuremath{\text{MR}}}
 \newVerweis  {\glsMR}{\glstext }       {MR}
-\newVerweis  {\symMR}{\glsuserv}       {MR}
+\newVerweis  {\symMR}{\glsuseri}       {MR}
 \newcommand* {\tagMR}{\glsTag          {MR}}
 \newglossaryentry{MR}{
 	name      ={(\MR)},
-	user5      ={\MR},
+	user1      ={\MR},
 	sort    ={= 9 MR},
-	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
-	see        ={Monotonieregel,Schlussregel},
-	description={
-		Eine Schlussregel: Monotonieregel.
-	}
+	description={Eine \Schlussregel: Die \Monotonieregel.}
 }
 
 \newcommand*    {\SR}{\ensuremath{\text{SR}}}
 \newVerweis  {\glsSR}{\glstext }       {SR}
-\newVerweis  {\symSR}{\glsuserv}       {SR}
+\newVerweis  {\symSR}{\glsuseri}       {SR}
 \newcommand* {\tagSR}{\glsTag          {SR}}
 \newglossaryentry{SR}{
 	name      ={(\SR)},
-	user5      ={\SR},
+	user1      ={\SR},
 	sort    ={= 9 SR},
-	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
-	see        ={Schlussregel,Schnittregel},
-	description={
-		Eine Schlussregel: Schnittregel.
-	}
+	description={Eine \Schlussregel: Die \Schnittregel.}
 }
 
 \newcommand*    {\TR}{\ensuremath{\text{TR}}}
 \newVerweis  {\glsTR}{\glstext }       {TR}
-\newVerweis  {\symTR}{\glsuserv}       {TR}
+\newVerweis  {\symTR}{\glsuseri}       {TR}
 \newcommand* {\tagTR}{\glsTag          {TR}}
 \newglossaryentry{TR}{
 	name      ={(\TR)},
-	user5      ={\TR},
+	user1      ={\TR},
 	sort    ={= 9 TR},
-	user6      ={},% Dummy für \glsTag
 	type       ={symbols},
-	see        ={Abtrennungsregel,Schlussregel},
-	description={
-		Eine Schlussregel: Abtrennungsregel.
-	}
+	description={Eine \Schlussregel: Die \Abtrennungsregel.}
 }
 
 \newcommand*    {\andB}{\ensuremath{\RawOjkAnd\text{B}}}
 \newVerweis  {\glsandB}{\glstext }{andB}
-\newVerweis  {\symandB}{\glsuserv}{andB}
+\newVerweis  {\symandB}{\glsuseri}{andB}
 \newcommand* {\tagandB}{\glsTag   {andB}}
 \newglossaryentry{andB}{
 	name      ={(\andB)},
-	user5      ={\andB},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\andB},
 	sort       ={= 9 1 1},
 	type       ={symbols},
-	see        ={OjkAnd,Schlussregel},
-	description={
-		Eine Schlussregel: Beseitigung von $\RawOjkAnd$.
-	}
+	see        ={OjkAnd},
+	description={Eine \Schlussregel: Beseitigung von \OjkAnd.}
 }
 
 \newcommand*    {\andE}{\ensuremath{\RawOjkAnd\text{E}}}
 \newVerweis  {\glsandE}{\glstext }        {andE}
-\newVerweis  {\symandE}{\glsuserv}        {andE}
+\newVerweis  {\symandE}{\glsuseri}        {andE}
 \newcommand* {\tagandE}{\glsTag           {andE}}
 \newglossaryentry{andE}{
 	name      ={(\andE)},
-	user5      ={\andE},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\andE},
 	sort       ={= 9 1 2},
 	type       ={symbols},
-	see        ={OjkAnd,Schlussregel},
-	description={
-		Eine Schlussregel: Einführung von $\RawOjkAnd$.
-	}
+	description={Eine \Schlussregel: Einführung von \OjkAnd.}
 }
 
 \newcommand*    {\orB}{\ensuremath{\RawOjkOr\text{B}}}
 \newVerweis  {\glsorB}{\glstext }        {orB}
-\newVerweis  {\symorB}{\glsuserv}        {orB}
+\newVerweis  {\symorB}{\glsuseri}        {orB}
 \newcommand* {\tagorB}{\glsTag           {orB}}
 \newglossaryentry{orB}{
 	name      ={(\orB)},
-	user5      ={\orB},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\orB},
 	sort       ={= 9 2 1},
 	type       ={symbols},
-	see        ={OjkOr,Schlussregel},
-	description={
-		Eine Schlussregel: Beseitigung von $\RawOjkOr$.
-	}
+	description={Eine \Schlussregel: Beseitigung von \OjkOr.}
 }
 
 \newcommand*    {\orE}{\ensuremath{\RawOjkOr\text{E}}}
 \newVerweis  {\glsorE}{\glstext }        {orE}
-\newVerweis  {\symorE}{\glsuserv}        {orE}
+\newVerweis  {\symorE}{\glsuseri}        {orE}
 \newcommand* {\tagorE}{\glsTag           {orE}}
 \newglossaryentry{orE}{
 	name      ={(\orE)},
-	user5      ={\orE},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\orE},
 	sort       ={= 9 2 2},
 	type       ={symbols},
-	see        ={OjkOr,Schlussregel},
-	description={
-		Eine Schlussregel: Einführung von $\RawOjkOr$.
-	}
+	description={Eine \Schlussregel: Einführung von \OjkOr.}
 }
 
 \newcommand*    {\impB}{\ensuremath{\RawOjkImp\text{B}}}
 \newVerweis  {\glsimpB}{\glstext }        {impB}
-\newVerweis  {\symimpB}{\glsuserv}        {impB}
+\newVerweis  {\symimpB}{\glsuseri}        {impB}
 \newcommand* {\tagimpB}{\glsTag           {impB}}
 \newglossaryentry{impB}{
 	name      ={(\impB)},
-	user5      ={\impB},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\impB},
 	sort       ={= 9 3 1},
 	type       ={symbols},
-	see        ={OjkImp,Schlussregel},
-	description={
-		Eine Schlussregel: Beseitigung von $\RawOjkImp$.
-	}
+	description={Eine \Schlussregel: Beseitigung von \OjkImp.}
 }
 
 \newcommand*    {\impE}{\ensuremath{\RawOjkImp\text{E}}}
 \newVerweis  {\glsimpE}{\glstext }        {impE}
-\newVerweis  {\symimpE}{\glsuserv}        {impE}
+\newVerweis  {\symimpE}{\glsuseri}        {impE}
 \newcommand* {\tagimpE}{\glsTag           {impE}}
 \newglossaryentry{impE}{
 	name      ={(\impE)},
-	user5      ={\impE},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\impE},
 	sort       ={= 9 3 2},
 	type       ={symbols},
-	see        ={OjkImp,Schlussregel},
-	description={
-		Eine Schlussregel: Einführung von $\RawOjkImp$.
-	}
+	description={Eine \Schlussregel: Einführung von \OjkImp.}
 }
 
 \newcommand*    {\nota}{\ensuremath{\RawOjkNot\text{1}}}
 \newVerweis  {\glsnota}{\glstext }        {nota}
-\newVerweis  {\symnota}{\glsuserv}        {nota}
+\newVerweis  {\symnota}{\glsuseri}        {nota}
 \newcommand* {\tagnota}{\glsTag           {nota}}
 \newglossaryentry{nota}{
 	name      ={(\nota)},
-	user5      ={\nota},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\nota},
 	sort       ={= 9 4 1},
 	type       ={symbols},
-	see        ={OjkNot,Schlussregel},
-	description={
-		Eine Schlussregel: Einführung/Beseitigung von $\RawOjkNot$ Teil 1.
-	}
+	description={Eine \Schlussregel: Einführung/Beseitigung von \OjkNot, Teil 1.}
 }
 
 \newcommand*    {\notb}{\ensuremath{\RawOjkNot\text{2}}}
 \newVerweis  {\glsnotb}{\glstext }        {notb}
-\newVerweis  {\symnotb}{\glsuserv}        {notb}
+\newVerweis  {\symnotb}{\glsuseri}        {notb}
 \newcommand* {\tagnotb}{\glsTag           {notb}}
 \newglossaryentry{notb}{
 	name      ={(\notb)},
-	user5      ={\notb},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\notb},
 	sort       ={= 9 4 2},
 	type       ={symbols},
-	see        ={OjkNot,Schlussregel},
-	description={
-		Eine Schlussregel: Einführung/Beseitigung von $\RawOjkNot$ Teil 2.
-	}
+	description={Eine \Schlussregel: Einführung/Beseitigung von \OjkNot, Teil 2.}
 }
 
 \newcommand*    {\notc}{\ensuremath{\RawOjkNot\text{3}}}
 \newVerweis  {\glsnotc}{\glstext }        {notc}
-\newVerweis  {\symnotc}{\glsuserv}        {notc}
+\newVerweis  {\symnotc}{\glsuseri}        {notc}
 \newcommand* {\tagnotc}{\glsTag           {notc}}
 \newglossaryentry{notc}{
 	name      ={(\notc)},
-	user5      ={\notc},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\notc},
 	sort       ={= 9 4 3},
 	type       ={symbols},
-	see        ={Beweis,Schlussregel},
-	description={
-		Eine Schlussregel: Beweistechnik „Indirekter Beweis“.
-	}
+	see        ={Beweis},% Todo = Indirekter Beweis
+	description={Eine \Schlussregel: Beweistechnik „\DefFt{Indirekter Beweis}“.}
 }
 
 \newcommand*    {\notd}{\ensuremath{\RawOjkNot\text{4}}}
 \newVerweis  {\glsnotd}{\glstext }        {notd}
-\newVerweis  {\symnotd}{\glsuserv}        {notd}
+\newVerweis  {\symnotd}{\glsuseri}        {notd}
 \newcommand* {\tagnotd}{\glsTag           {notd}}
 \newglossaryentry{notd}{
 	name      ={(\notd)},
-	user5      ={\notd},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\notd},
 	sort       ={= 9 4 4},
 	type       ={symbols},
-	see        ={Beweis,Schlussregel},
-	description={
-		Eine Schlussregel: Reductio ad absurdum (Indirekter Beweis).
-	}
+	see        ={Beweis},% Todo = Reductio ad absurdum, Indirekter Beweis
+	description={Eine \Schlussregel]: \DefFt{Reductio ad absurdum} (\DefFt{Indirekter Beweis}).}
 }
 
 \newcommand*    {\eqB}{\ensuremath{\RawOjkEq\text{B}}}
 \newVerweis  {\glseqB}{\glstext }        {eqB}
-\newVerweis  {\symeqB}{\glsuserv}        {eqB}
+\newVerweis  {\symeqB}{\glsuseri}        {eqB}
 \newcommand* {\tageqB}{\glsTag           {eqB}}
 \newglossaryentry{eqB}{
 	name      ={(\eqB)},
-	user5      ={\eqB},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\eqB},
 	sort       ={= 9 5 1},
 	type       ={symbols},
-	see        ={OjkEq,Schlussregel},
-	description={
-		Eine Schlussregel: Beseitigung von $\RawOjkEq$.
-	}
+	description={Eine \Schlussregel: Beseitigung von \OjkEq.}
 }
 
 \newcommand*    {\eqE}{\ensuremath{\RawOjkEq\text{E}}}
 \newVerweis  {\glseqE}{\glstext }        {eqE}
-\newVerweis  {\symeqE}{\glsuserv}        {eqE}
+\newVerweis  {\symeqE}{\glsuseri}        {eqE}
 \newcommand* {\tageqE}{\glsTag           {eqE}}
 \newglossaryentry{eqE}{
 	name      ={(\eqE)},
-	user5      ={\eqE},
-	user6      ={},% Dummy für \glsTag
+	user1      ={\eqE},
 	sort       ={= 9 5 2},
 	type       ={symbols},
-	see        ={OjkEq,Schlussregel},
-	description={
-		Eine Schlussregel: Einführung von $\RawOjkEq$.
-	}
+	description={Eine \Schlussregel: Einführung von \OjkEq.}
 }
+
+% TODO ### Symbol am Seitenrand ausgeben: mit \baueBeschreibung{label} oder \SymbolAmRand{label}
+
+% TODO ### symbol={\formaleDefinition{MathMode}},
+
+% TODO ### user6 ={\informelleDefinition{TextMode}},
 
 % ### Symbolverzeichnis und Index ##############################################
 % Anmerkung:
@@ -1565,23 +1490,29 @@
 % ==============================================================================
 \newglossaryentry{Glo-TextSymbole}{
 	name    ={Text-\gloFt{Symbole}},% ==========================================
-	sort       ={A},
-	type       ={symbols},
-	see        ={Symbol},
+	sort    ={A},
+	type    ={symbols},
 	description={
-		Die folgenden \gloFt{Symbole} sind alphabetisch geordnet und auch im Index aufgeführt.
-		$\square$ dient zur Verdeutlichung, an welche Stelle die Indizes gehören.
+		Die folgenden \Symbole\ sind alphabetisch geordnet und auch im Index aufgeführt.
+		$\square$ dient nur zur Verdeutlichung, an welche Stelle die Indizes gehören.
 	}
 }
+
+% ==============================================================================
+% Zur Unterscheidung der einbuchstabigen Symbole im Key 'sort':
+% ... _   = Index
+% ... Ber = Bereich
+% ... Men = Menge
+% ... MeT = Teilmenge
+% ... Rel = Relation
+% ... Tup = Folge/Tupel
+% ... xEl = Element (allgemein)
 
 % ==============================================================================
 % \StrMtsIdx* - Ausgabe als Text-Symbol und Eintrag und Verweis ins Symbolverzeichnis
 % \Mts* - Ausgabe als Text-Symbol und Eintrag und Verweis ins Symbolverzeichnis
 % Operationen mit Namen (Buchstaben) ===========================================
 
-%TODO Wert definieren
-\newcommand*{\Wert}{Wert}
-\newcommand*{\Werten}{Werten}
 \newcommand*             {\StrMtsValue}            {val}% Definitionsbereich [domain]
 \newVerweis                 {\MtsValue}{\glstext}{MtsValue}
 \newglossaryentry            {MtsValue}{
@@ -1591,21 +1522,21 @@
 		sort={val}]                              {MtsValue}},
 	sort    ={dom},%      \StrMtsValue
 	type    ={symbols},
-	symbol  ={\ensuremath{\RawMtsValue}},
-	see     ={},
+	symbol  ={\formaleDefinition{\RawMtsValue}},
+	see     ={Formel,Variable,Wert},
 	description={
-		Der \Wert einer \Formel, nachdem die \Variablen mit \Werten belegt wurden.
+		Der \Wert\ einer \Formel, nachdem die \Variablen\ mit \Werten\ belegt wurden.
 	}
 }
 
-\newcommand*             {\LtrMtsIdxEndlich}       {e}% nur endliche Elemente
-\newVerweis                 {\MtsIdxEndlich} {\glstext}{MtsIdxEndlich}
-\newglossaryentry            {MtsIdxEndlich}{
-	text    ={\ensuremath{\RawMtsIdxEndlich}},
+\newcommand*                      {\LtrMtsIdxEndlich}{e}% nur endliche Elemente
+\newVerweis                          {\MtsIdxEndlich} {\glstext}{MtsIdxEndlich}
+\newglossaryentry                     {MtsIdxEndlich}{
+	text    ={\ensuremath         {\RawMtsIdxEndlich}},
 	name    ={\ensuremath{\square_{\RawMtsIdxEndlich}} \addIdx[
-		name={\ensuremath{\RawMtsIdxEndlich}},
-		sort={e Ind}]                                  {MtsIdxEndlich}},
-	sort    ={e Ind},%       \LtrIdxEndlich Index
+		name={\ensuremath{\square_{\RawMtsIdxEndlich}}},
+		sort={e _}]                                             {MtsIdxEndlich}},
+	sort    ={e _},%         \LtrIdxEndlich Index
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -1626,14 +1557,14 @@
 	}
 }
 
-\newcommand*             {\LtrMtsIdxGraph}         {g}% Graph von
-\newVerweis                 {\MtsIdxGraph} {\glstext}{MtsIdxGraph}
-\newglossaryentry            {MtsIdxGraph}{
-	text    ={\ensuremath{\RawMtsIdxGraph}},
+\newcommand*                      {\LtrMtsIdxGraph}{g}%              Graph von
+\newVerweis                          {\MtsIdxGraph} {\glstext}{MtsIdxGraph}
+\newglossaryentry                     {MtsIdxGraph}{
+	text    ={\ensuremath         {\RawMtsIdxGraph}},
 	name    ={\ensuremath{\square_{\RawMtsIdxGraph}} \addIdx[
-		name={\ensuremath{\RawMtsIdxGraph}},
-		sort={g Ind}]                                {MtsIdxGraph}},
-	sort    ={g Ind},%    \LtrMtsIdxGraph Index
+		name={\ensuremath{\square_{\RawMtsIdxGraph}}},
+		sort={g _}]                                           {MtsIdxGraph}},
+	sort    ={g _},%               \LtrMtsIdxGraph Index
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -1644,14 +1575,14 @@
 	}
 }
 
-\newcommand*             {\LtrMtsIdxPolnisch}      {p}% in Polnischer Notation
-\newVerweis                 {\MtsIdxPolnisch} {\glstext}{MtsIdxPolnisch}
-\newglossaryentry            {MtsIdxPolnisch}{
-	text    ={\ensuremath{\RawMtsIdxPolnisch}},
+\newcommand*                      {\LtrMtsIdxPolnisch}{p}% in Polnischer Notation
+\newVerweis                          {\MtsIdxPolnisch} {\glstext}{MtsIdxPolnisch}
+\newglossaryentry                     {MtsIdxPolnisch}{
+	text    ={\ensuremath         {\RawMtsIdxPolnisch}},
 	name    ={\ensuremath{\square^{\RawMtsIdxPolnisch}} \addIdx[
-		name={\ensuremath{\RawMtsIdxPolnisch}},
-		sort={p Ind}]                                   {MtsIdxPolnisch}},
-	sort    ={p Ind},%    \LtrMtsIdxPolnisch Index
+		name={\ensuremath{\square^{\RawMtsIdxPolnisch}}},
+		sort={p _}]                                              {MtsIdxPolnisch}},
+	sort    ={p _},%               \LtrMtsIdxPolnisch Index
 	type    ={symbols},
 	symbol  ={},
 	user6   ={}, 
@@ -1676,7 +1607,7 @@
 	user6   ={},
 	see     ={},
 	description={
-		Für eine \Funktion\ \FunktionDef{f}{A}{B} ist $\RawMtsDb(f) \RawMtsDefEq A$, der \Definitionsbereich\ von $f$.
+		Für eine \Funktion\ \FunktionDef{f}{A}{B} ist $\MtsDb(f) \MtsDefEq A$, der \Definitionsbereich\ von $f$.
 	}
 }
 
@@ -1686,8 +1617,8 @@
 	text    ={\ensuremath{\RawMtsFol}},
 	name    ={\ensuremath{\RawMtsFol} \addIdx[
 		name={\ensuremath{\RawMtsFol}},
-		sort={F}]                              {MtsFol}},
-	sort    ={F},%        \LtrMtsFol
+		sort={F Tup}]                          {MtsFol}},
+	sort    ={F Tup},%    \LtrMtsFol Folge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -1702,8 +1633,8 @@
 	text    ={\ensuremath{\RawMtsFolf}},
 	name    ={\ensuremath{\RawMtsFolf} \addIdx[
 		name={\ensuremath{\RawMtsFolf}},
-		sort={F e}]                             {MtsFolf}},
-	sort    ={F e},%      \LtrMtsFol \LtrIdxEndlich
+		sort={F Tup e}]                         {MtsFolf}},
+	sort    ={F Tup e},%  \LtrMtsFol Folge \LtrIdxEndlich
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -1754,8 +1685,8 @@
 	text    ={\ensuremath{\RawMtsPot}},
 	name    ={\ensuremath{\RawMtsPot} \addIdx[
 		name={\ensuremath{\RawMtsPot}},
-		sort={P}]                              {MtsPot}},
-	sort    ={P},%        \LtrMtsPot
+		sort={P Men}]                          {MtsPot}},
+	sort    ={P Men},%    \LtrMtsPot Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -1770,8 +1701,8 @@
 	text    ={\ensuremath{\RawMtsPotf}},
 	name    ={\ensuremath{\RawMtsPotf} \addIdx[
 		name={\ensuremath{\RawMtsPotf}},
-		sort={P e}]                             {MtsPotf}},
-	sort    ={P e},%      \LtrMtsPot \LtrIdxEndlich
+		sort={P Men e}]                         {MtsPotf}},
+	sort    ={P Men e},%  \LtrMtsPot \LtrIdxEndlich Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -1804,8 +1735,8 @@
 	text    ={\ensuremath{\RawMtsRel}},
 	name    ={\ensuremath{\RawMtsRel} \addIdx[
 		name={\ensuremath{\RawMtsRel}},
-		sort={R}]                              {MtsRel}},
-	sort    ={R},%        \LtrMtsRel
+		sort={R Men}]                          {MtsRel}},
+	sort    ={R Men},%    \LtrMtsRel Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -1820,14 +1751,14 @@
 	text    ={\ensuremath{\RawMtsRelf}},
 	name    ={\ensuremath{\RawMtsRelf} \addIdx[
 		name={\ensuremath{\RawMtsRelf}},
-		sort={R e}]                             {MtsRelf}},
-	sort    ={R e},%      \LtrMtsRel \LtrIdxEndlich
+		sort={R Men e}]                         {MtsRelf}},
+	sort    ={R Men e},%  \LtrMtsRel Menge \LtrIdxEndlich
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
 	see     ={Menge},
 	description={
-		$\RawMtsRelf(M) \RawMtsDefEq \RawMengeDef{R \RawMtsIn \RawMtsRel(M)}{|R_{\RawMtsIdxEndlich}| \RawMtsIn \RawMtsINo}$
+		Für eine \Menge\ $M$ ist $\RawMtsRelf(M) \RawMtsDefEq \RawMengeDef{R \RawMtsIn \RawMtsRel(M)}{|R_{\RawMtsIdxEndlich}| \RawMtsIn \RawMtsINo}$ die \Menge\ der endlichen, \binaeren\ \Relationen\ in $M$.
 	}
 }
 
@@ -1836,7 +1767,7 @@
 \newglossaryentry            {MtsSet}{
 	text    ={\ensuremath{\RawMtsSet}},
 	name    ={\ensuremath{\RawMtsSet} \addIdx[
-		name={\ensuremath{\RawMtsSet} (Menge)},
+		name={\ensuremath{\RawMtsSet}},
 		sort={Set}]                            {MtsSet}},
 	sort    ={Set},%      \StrMtsSet
 	type    ={symbols},
@@ -1915,14 +1846,14 @@
 	text    ={\ensuremath{\RawMtsUniversum}},
 	name    ={\ensuremath{\RawMtsUniversum} \addIdx[
 		name={\ensuremath{\RawMtsUniversum}},
-		sort={U}]                                    {MtsUniversum}},
-	sort    ={U},%        \LtrMtsUniversum
+		sort={U Ber}]                                {MtsUniversum}},
+	sort    ={U Ber},%    \LtrMtsUniversum Bereich
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
 	see     ={},
 	description={
-		RAWMtsUniversum\ ist das \Diskursuniversum.
+		Das \Diskursuniversum.
 	}
 }
 
@@ -1964,14 +1895,31 @@
 % \Mts* - Ausgabe als Text-Symbol und Eintrag und Verweis ins Symbolverzeichnis
 % Mengen und Elemente ==========================================================
 
+\newcommand*             {\LtrMtsAussagen}         {A}% Aussagen
+\newVerweis                 {\MtsAussagen}{\glstext}{MtsAussagen}
+\newglossaryentry            {MtsAussagen}{
+	text    ={\ensuremath{\RawMtsAussagen}},
+	name    ={\ensuremath{\RawMtsAussagen} \addIdx[
+		name={\ensuremath{\RawMtsAussagen}},
+		sort={A Ber}]                               {MtsAussagen}},
+	sort    ={A Ber},%    \LtrMtsAussagen   Bereich
+	type    ={symbols},
+	symbol  ={},
+	user6   ={},
+	see     ={},
+	description={\todoOk%
+		Der \Bereich\ der \Aussagen\ in \Objektsprache.
+	}
+}
+
 \newcommand*             {\LtrMtsAxiom}            {X}%        A[x]iom
 \newVerweis                 {\MtsAxiom}{\glstext}{MtsAxiom}
 \newglossaryentry            {MtsAxiom}{
 	text    ={\ensuremath{\RawMtsAxiom}},
 	name    ={\ensuremath{\RawMtsAxiom} \addIdx[
-		name={\ensuremath{\RawMtsAxiom} (Element)},
-		sort={X Ele}]                            {MtsAxiom}},
-	sort    ={X Ele},%    \LtrMtsAxiom   Element
+		name={\ensuremath{\RawMtsAxiom}},
+		sort={X xEl}]                            {MtsAxiom}},
+	sort    ={X xEl},%    \LtrMtsAxiom Element
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -1985,9 +1933,9 @@
 \newglossaryentry            {MtsAxiomSet}{
 	text    ={\ensuremath{\RawMtsAxiomSet}},
 	name    ={\ensuremath{\RawMtsAxiomSet} \addIdx[
-		name={\ensuremath{\RawMtsAxiomSet} (Menge)},
+		name={\ensuremath{\RawMtsAxiomSet}},
 		sort={X Men}]                               {MtsAxiomSet}},
-	sort    ={X Men},%    \LtrMtsAxiom      Menge
+	sort    ={X Men},%    \LtrMtsAxiom Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2002,9 +1950,9 @@
 \newglossaryentry            {MtsBeweisschritt}{
 	text    ={\ensuremath{\RawMtsBeweisschritt}},
 	name    ={\ensuremath{\RawMtsBeweisschritt} \addIdx[
-		name={\ensuremath{\RawMtsBeweisschritt} (Element)},
-		sort={b Ele}]                                    {MtsBeweisschritt}},
-	sort    ={b Ele},%    \LtrMtsBeweisschritt   Element
+		name={\ensuremath{\RawMtsBeweisschritt}},
+		sort={b xEl}]                                    {MtsBeweisschritt}},
+	sort    ={b xEl},%    \LtrMtsBeweisschritt Element
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2018,9 +1966,9 @@
 \newglossaryentry            {MtsBeweisschrittTup}{
 	text    ={\ensuremath{\RawMtsBeweisschrittTup}},
 	name    ={\ensuremath{\RawMtsBeweisschrittTup} \addIdx[
-		name={\ensuremath{\RawMtsBeweisschrittTup} (Tupel)},
+		name={\ensuremath{\RawMtsBeweisschrittTup}},
 		sort={b Tup}]                                       {MtsBeweisschrittTup}},
-	sort    ={b Tup},%    \LtrMtsBeweisschritt      Tupel
+	sort    ={b Tup},%    \LtrMtsBeweisschritt Tupel
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2035,9 +1983,9 @@
 \newglossaryentry            {MtsBeweisschrittSet}{
 	text    ={\ensuremath{\RawMtsBeweisschrittSet}},
 	name    ={\ensuremath{\RawMtsBeweisschrittSet} \addIdx[
-		name={\ensuremath{\RawMtsBeweisschrittSet} (Menge)},
+		name={\ensuremath{\RawMtsBeweisschrittSet}},
 		sort={B Men}]                                       {MtsBeweisschrittSet}},
-	sort    ={B Men},%    \LtrMtsBeweisschrittSet   Menge
+	sort    ={B Men},%    \LtrMtsBeweisschrittSet Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2052,9 +2000,9 @@
 \newglossaryentry            {MtsErgebnis}{
 	text    ={\ensuremath{\RawMtsErgebnis}},
 	name    ={\ensuremath{\RawMtsErgebnis} \addIdx[
-		name={\ensuremath{\RawMtsErgebnis} (Element)},
-		sort={r Ele}]                               {MtsErgebnis}},
-	sort    ={r Ele},%    \LtrMtsErgebnis   Element
+		name={\ensuremath{\RawMtsErgebnis}},
+		sort={r xEl}]                               {MtsErgebnis}},
+	sort    ={r xEl},%    \LtrMtsErgebnis Element
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2069,7 +2017,7 @@
 \newglossaryentry            {MtsErgebnisSet}{
 	text    ={\ensuremath{\RawMtsErgebnisSet}},
 	name    ={\ensuremath{\RawMtsErgebnisSet} \addIdx[
-		name={\ensuremath{\RawMtsErgebnisSet} (Menge)},
+		name={\ensuremath{\RawMtsErgebnisSet}},
 		sort={R Men}]                                  {MtsErgebnisSet}},
 	sort    ={R Men},%    \LtrMtsErgebnisSet   Menge
 	type    ={symbols},
@@ -2085,9 +2033,9 @@
 \newglossaryentry            {MtsErgebnisRel}{
 	text    ={\ensuremath{\RawMtsErgebnisRel}},
 	name    ={\ensuremath{\RawMtsErgebnisRel} \addIdx[
-		name={\ensuremath{\RawMtsErgebnisRel} (Relation)},
+		name={\ensuremath{\RawMtsErgebnisRel}},
 		sort={R Rel}]                                  {MtsErgebnisRel}},
-	sort    ={R Rel},%    \LtrMtsErgebnisSet   Relation
+	sort    ={R Rel},%    \LtrMtsErgebnisSet Relation
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2102,9 +2050,9 @@
 \newglossaryentry            {MtsErsetzung}{
 	text    ={\ensuremath{\RawMtsErsetzung}},
 	name    ={\ensuremath{\RawMtsErsetzung} \addIdx[
-		name={\ensuremath{\RawMtsErsetzung} (Element)},
-		sort={E Ele}]                                {MtsErsetzung}},
-	sort    ={E Ele},%    \LtrMtsErsetzung   Element
+		name={\ensuremath{\RawMtsErsetzung}},
+		sort={E xEl}]                                {MtsErsetzung}},
+	sort    ={E xEl},%    \LtrMtsErsetzung Element
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2118,9 +2066,9 @@
 \newglossaryentry            {MtsErsetzungSet}{
 	text    ={\ensuremath{\RawMtsErsetzungSet}},
 	name    ={\ensuremath{\RawMtsErsetzungSet} \addIdx[
-		name={\ensuremath{\RawMtsErsetzungSet} (Menge)},
+		name={\ensuremath{\RawMtsErsetzungSet}},
 		sort={E Men}]                                   {MtsErsetzungSet}},
-	sort    ={E Men},%    \LtrMtsErsetzung      Menge
+	sort    ={E Men},%    \LtrMtsErsetzung Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2135,9 +2083,9 @@
 \newglossaryentry            {MtsKonklusion}{
 	text    ={\ensuremath{\RawMtsKonklusion}},
 	name    ={\ensuremath{\RawMtsKonklusion} \addIdx[
-		name={\ensuremath{\RawMtsKonklusion} (Element)},
-		sort={k Ele}]                                {MtsKonklusion}},
-	sort    ={k Ele},%    \LtrMtsKonklusion   Element
+		name={\ensuremath{\RawMtsKonklusion}},
+		sort={k xEl}]                                {MtsKonklusion}},
+	sort    ={k xEl},%    \LtrMtsKonklusion Element
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2152,9 +2100,9 @@
 \newglossaryentry            {MtsKonklusionSet}{
 	text    ={\ensuremath{\RawMtsKonklusionSet}},
 	name    ={\ensuremath{\RawMtsKonklusionSet} \addIdx[
-		name={\ensuremath{\RawMtsKonklusionSet} (Menge)},
+		name={\ensuremath{\RawMtsKonklusionSet}},
 		sort={K Men}]                                   {MtsKonklusionSet}},
-	sort    ={K Men},%    \LtrMtsKonklusionSet   Menge
+	sort    ={K Men},%    \LtrMtsKonklusionSet Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2168,9 +2116,9 @@
 \newglossaryentry            {MtsKonklusionRel}{
 	text    ={\ensuremath{\RawMtsKonklusionRel}},
 	name    ={\ensuremath{\RawMtsKonklusionRel} \addIdx[
-		name={\ensuremath{\RawMtsKonklusionRel} (Relation)},
+		name={\ensuremath{\RawMtsKonklusionRel}},
 		sort={K Rel}]                                    {MtsKonklusionRel}},
-	sort    ={K Rel},%    \LtrMtsKonklusionSet   Relation
+	sort    ={K Rel},%    \LtrMtsKonklusionSet Relation
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2185,8 +2133,8 @@
 	text    ={\ensuremath{\RawMtsEmptyset}},
 	name    ={\ensuremath{\RawMtsEmptyset} \addIdx[
 		name={\ensuremath{\RawMtsEmptyset}},
-		sort={O}]                                   {MtsEmptyset}},
-	sort    ={O},
+		sort={O Men}]                               {MtsEmptyset}},
+	sort    ={O Men},% ... Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2202,8 +2150,8 @@
 	text    ={\ensuremath{\RawMtsIN}},
 	name    ={\ensuremath{\RawMtsIN} \addIdx[
 		name={\ensuremath{\RawMtsIN}},
-		sort={N}]                             {MtsIN}},
-	sort    ={N},%        \LtrMtsIN
+		sort={N Men}]                         {MtsIN}},
+	sort    ={N Men},%    \LtrMtsIN Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2218,8 +2166,8 @@
 	text    ={\ensuremath{\RawMtsINo}},
 	name    ={\ensuremath{\RawMtsINo} \addIdx[
 		name={\ensuremath{\RawMtsINo}},
-		sort={N 0}]                            {MtsINo}},
-	sort    ={N 0},%      \LtrMtsIN 0
+		sort={N Men 0}]                        {MtsINo}},
+	sort    ={N Men 0},%  \LtrMtsIN Menge 0
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2234,14 +2182,14 @@
 	text    ={\ensuremath{\RawMtsMn}},
 	name    ={\ensuremath{\RawMtsMn} \addIdx[
 		name={\ensuremath{\RawMtsMn}},
-		sort={M n}]                           {MtsMn}},
-	sort    ={M n},
+		sort={M Men n}]                       {MtsMn}},
+	sort    ={M Men n},% ... Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
 	see     ={Tupel},
 	description={
-		Das \kartesischeProdukt\ $M \RawMtsTimes \dots \RawMtsTimes M$ aus $n$ Mengen $M$ mit $n \RawMtsIn \RawMtsINo$.
+		Das \kartesischeProdukt\ $M \RawMtsTimes \dots \RawMtsTimes M$ aus $n$ \Mengen\ $M$ mit $n \RawMtsIn \RawMtsINo$.
 	}
 }
 
@@ -2250,8 +2198,8 @@
 	text    ={\ensuremath{\RawMtsMo}},
 	name    ={\ensuremath{\RawMtsMo} \addIdx[
 		name={\ensuremath{\RawMtsMo}},
-		sort={M 0}]                           {MtsMo}},
-	sort    ={M 0},
+		sort={M Men 0}]                       {MtsMo}},
+	sort    ={M Men 0},
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2261,14 +2209,31 @@
 	}
 }
 
+\newcommand*             {\LtrMtsObjekte}         {O}% Objekte
+\newVerweis                 {\MtsObjekte}{\glstext}{MtsObjekte}
+\newglossaryentry            {MtsObjekte}{
+	text    ={\ensuremath{\RawMtsObjekte}},
+	name    ={\ensuremath{\RawMtsObjekte} \addIdx[
+		name={\ensuremath{\RawMtsObjekte}},
+		sort={A Ber}]                               {MtsObjekte}},
+	sort    ={A Ber},%    \LtrMtsObjekte   Bereich
+	type    ={symbols},
+	symbol  ={},
+	user6   ={},
+	see     ={},
+	description={\todoOk%
+		Der \Bereich\ der \Objekte\ in \Objektsprache, die \Parameter\ von \Aussagen\ aus \MtsAussagen\ ersetzen dürfen.
+	}
+}
+
 \newcommand*             {\LtrMtsPraemisse}        {p}% Eine Voraussetzung; Prämisse
 \newVerweis                 {\MtsPraemisse}{\glstext}{MtsPraemisse}
 \newglossaryentry            {MtsPraemisse}{
 	text    ={\ensuremath{\RawMtsPraemisse}},
 	name    ={\ensuremath{\RawMtsPraemisse} \addIdx[
-		name={\ensuremath{\RawMtsPraemisse} (Element)},
-		sort={p Ele}]                                {MtsPraemisse}},
-	sort    ={p Ele},%    \LtrMtsPraemisse   Element
+		name={\ensuremath{\RawMtsPraemisse}},
+		sort={p xEl}]                                {MtsPraemisse}},
+	sort    ={p xEl},%    \LtrMtsPraemisse   Element
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2283,9 +2248,9 @@
 \newglossaryentry            {MtsPraemisseSet}{
 	text    ={\ensuremath{\RawMtsPraemisseSet}},
 	name    ={\ensuremath{\RawMtsPraemisseSet} \addIdx[
-		name={\ensuremath{\RawMtsPraemisseSet} (Menge)},
+		name={\ensuremath{\RawMtsPraemisseSet}},
 		sort={P Men}]                                   {MtsPraemisseSet}},
-	sort    ={P Men},%    \LtrMtsPraemisseSet   Menge
+	sort    ={P Men},%    \LtrMtsPraemisseSet Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2299,9 +2264,9 @@
 \newglossaryentry            {MtsPraemisseRel}{
 	text    ={\ensuremath{\RawMtsPraemisseRel}},
 	name    ={\ensuremath{\RawMtsPraemisseRel} \addIdx[
-		name={\ensuremath{\RawMtsPraemisseRel} (Relation)},
+		name={\ensuremath{\RawMtsPraemisseRel}},
 		sort={P Rel}]                                   {MtsPraemisseRel}},
-	sort    ={P Rel},%    \LtrMtsPraemisseSet   Relation
+	sort    ={P Rel},%    \LtrMtsPraemisseSet Relation
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2316,9 +2281,9 @@
 \newglossaryentry            {MtsSchlussregel}{
 	text    ={\ensuremath{\RawMtsSchlussregel}},
 	name    ={\ensuremath{\RawMtsSchlussregel} \addIdx[
-		name={\ensuremath{\RawMtsSchlussregel} (Element)},
-		sort={C Ele}]                                   {MtsSchlussregel}},
-	sort    ={C Ele},%    \LtrMtsSchlussregel   Element
+		name={\ensuremath{\RawMtsSchlussregel}},
+		sort={C xEl}]                                   {MtsSchlussregel}},
+	sort    ={C xEl},%    \LtrMtsSchlussregel Element
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2332,9 +2297,9 @@
 \newglossaryentry            {MtsSchlussregelSet}{
 	text    ={\ensuremath{\RawMtsSchlussregelSet}},
 	name    ={\ensuremath{\RawMtsSchlussregelSet} \addIdx[
-		name={\ensuremath{\RawMtsSchlussregelSet} (Menge)},
+		name={\ensuremath{\RawMtsSchlussregelSet}},
 		sort={C Men}]                                      {MtsSchlussregelSet}},
-	sort    ={C Men},%    \LtrMtsSchlussregel      Menge
+	sort    ={C Men},%    \LtrMtsSchlussregel Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2350,8 +2315,8 @@
 	text    ={\ensuremath{\RawMtsSprache}},
 	name    ={\ensuremath{\RawMtsSprache} \addIdx[
 		name={\ensuremath{\RawMtsSprache}},
-		sort={L}]                                  {MtsSprache}},
-	sort    ={L},%        \LtrMtsSprache
+		sort={L Men}]                              {MtsSprache}},
+	sort    ={L Men},%    \LtrMtsSprache Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2367,14 +2332,14 @@
 	text    ={\ensuremath{\RawMtsTup}},
 	name    ={\ensuremath{\RawMtsTup} \addIdx[
 		name={\ensuremath{\RawMtsTup}},
-		sort={T}]                              {MtsTup}},
-	sort    ={T},%        \LtrMtsTup
+		sort={T Men}]                              {MtsTup}},
+	sort    ={T Men},%    \LtrMtsTup Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
 	see     ={Tupelmenge},
 	description={
-		Eine \Mengenoperation: $\RawMtsTup(M)$ ist die \Menge\ aller \Tupel\ von $M$.
+		Eine \Bereichsoperation: $\RawMtsTup(M)$ ist die \Menge\ aller \Tupel\ von $M$.
 	}
 }
 
@@ -2383,9 +2348,9 @@
 \newglossaryentry            {MtsTransformation}{
 	text    ={\ensuremath{\RawMtsTransformation}},
 	name    ={\ensuremath{\RawMtsTransformation} \addIdx[
-		name={\ensuremath{\RawMtsTransformation} (Element)},
-		sort={T Ele}]                                     {MtsTransformation}},
-	sort    ={T Ele},%    \LtrMtsTransformation   Element
+		name={\ensuremath{\RawMtsTransformation}},
+		sort={T xEl}]                                     {MtsTransformation}},
+	sort    ={T xEl},%    \LtrMtsTransformation Element
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2399,15 +2364,15 @@
 \newglossaryentry            {MtsTransformationTup}{
 	text    ={\ensuremath{\RawMtsTransformationTup}},
 	name    ={\ensuremath{\RawMtsTransformationTup} \addIdx[
-		name={\ensuremath{\RawMtsTransformationTup} (Tupel)},
+		name={\ensuremath{\RawMtsTransformationTup}},
 		sort={T Tup}]                                        {MtsTransformationTup}},
-	sort    ={T Tup},%    \LtrMtsTransformation      Tupel
+	sort    ={T Tup},%    \LtrMtsTransformation Tupel
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
 	see     ={},
 	description={
-		Eine \Menge\ von \Transformationen.
+		Ein \Tupel\ von \Transformationen.
 	}
 }
 
@@ -2421,8 +2386,8 @@
 	text    ={\ensuremath{\RawOjkABC}},
 	name    ={\ensuremath{\RawOjkABC} \addIdx[
 		name={\ensuremath{\RawOjkABC}},
-		sort={A a}]                            {OjkABC}},
-	sort    ={A a},%      \LtrOjkABC ('a' wegen Kollision mit 'Glo-TextSymbole')
+		sort={A Men}]                          {OjkABC}},
+	sort    ={A Men},%    \LtrOjkABC Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2437,8 +2402,8 @@
 	text    ={\ensuremath{\RawOjkABC_x}},
 	name    ={\ensuremath{\RawOjkABC_x} \addIdx[
 		name={\ensuremath{\RawOjkABC_x}},
-		sort={A x}]                             {OjkABCx}},
-	sort    ={A x},%      \LtrOjkABC x
+		sort={A MeT x}]                         {OjkABCx}},
+	sort    ={A MeT x},%  \LtrOjkABC Teilmenge x
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2454,8 +2419,8 @@
 	text    ={\ensuremath{\RawOjkFor}},
 	name    ={\ensuremath{\RawOjkFor} \addIdx[
 		name={\ensuremath{\RawOjkFor}},
-		sort={L A}]                            {OjkFor}},
-	sort    ={L A},%      \LtrOjkFor \LtrMtsIdxLogisch
+		sort={L Men A}]                        {OjkFor}},
+	sort    ={L Men A},%  \LtrOjkFor Menge \LtrMtsIdxLogisch
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2470,8 +2435,8 @@
 	text    ={\ensuremath{\RawOjkForp}},
 	name    ={\ensuremath{\RawOjkForp} \addIdx[
 		name={\ensuremath{\RawOjkForp}},
-		sort={L Ap}]                            {OjkForp}},
-	sort    ={L Ap},%     \LtrOjkFor \LtrMtsIdxLogisch\LtrMtsIdxPolnisch
+		sort={L Men Ap}]                        {OjkForp}},
+	sort    ={L Men Ap},% \LtrOjkFor Menge \LtrMtsIdxLogisch\LtrMtsIdxPolnisch
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2486,8 +2451,8 @@
 	text    ={\ensuremath{\RawOjkFor_x}},
 	name    ={\ensuremath{\RawOjkFor_x} \addIdx[
 		name={\ensuremath{\RawOjkFor_x}},
-		sort={L A x}]                           {OjkForx}},
-	sort    ={L A x},%    \LtrOjkFor \LtrMtsIdxLogisch x
+		sort={L Men A x}]                       {OjkForx}},
+	sort    ={L Men A x},%\LtrOjkFor \LtrMtsIdxLogisch x
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2502,8 +2467,8 @@
 	text    ={\ensuremath{\RawOjkForp_x}},
 	name    ={\ensuremath{\RawOjkForp_x} \addIdx[
 		name={\ensuremath{\RawOjkForp_x}},
-		sort={L Ap x}]                           {OjkForpx}},
-	sort    ={L Ap x},%   \LtrOjkFor \LtrMtsIdxLogisch\LtrMtsIdxPolnisch x
+		sort={L Men Ap x}]                       {OjkForpx}},
+	sort    ={L Men Ap x},%\LtrOjkFor Menge \LtrMtsIdxLogisch\LtrMtsIdxPolnisch x
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2519,8 +2484,8 @@
 	text    ={\ensuremath{\RawOjkJun}},
 	name    ={\ensuremath{\RawOjkJun} \addIdx[
 		name={\ensuremath{\RawOjkJun}},
-		sort={J}]                              {OjkJun}},
-	sort    ={J},%        \LtrOjkJun
+		sort={J Men}]                          {OjkJun}},
+	sort    ={J Men},%    \LtrOjkJun Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2535,8 +2500,8 @@
 	text    ={\ensuremath{\RawOjkJun_x}},
 	name    ={\ensuremath{\RawOjkJun_x} \addIdx[
 		name={\ensuremath{\RawOjkJun_x}},
-		sort={J x}]                             {OjkJunx}},
-	sort    ={J x},%      \LtrOjkJun x
+		sort={J Men x}]                         {OjkJunx}},
+	sort    ={J Men x},%  \LtrOjkJun Menge x
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2551,8 +2516,8 @@
 	text    ={\ensuremath{\RawOjkBin}},
 	name    ={\ensuremath{\RawOjkBin} \addIdx[
 		name={\ensuremath{\RawOjkBin}},
-		sort={J b}]                            {OjkBin}},
-	sort    ={J b},%      \LtrOjkJun \StrMtsIdxBin
+		sort={J Men b}]                        {OjkBin}},
+	sort    ={J Men b},%  \LtrOjkJun Menge \StrMtsIdxBin
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2567,8 +2532,8 @@
 	text    ={\ensuremath{\RawOjkCon}},
 	name    ={\ensuremath{\RawOjkCon} \addIdx[
 		name={\ensuremath{\RawOjkCon}},
-		sort={J c}]                            {OjkCon}},
-	sort    ={J c},%      \LtrOjkJun \StrMtsIdxCon
+		sort={J Men c}]                        {OjkCon}},
+	sort    ={J Men c},%  \LtrOjkJun Menge \StrMtsIdxCon
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2583,8 +2548,8 @@
 	text    ={\ensuremath{\RawOjkUna}},
 	name    ={\ensuremath{\RawOjkUna} \addIdx[
 		name={\ensuremath{\RawOjkUna}},
-		sort={J u}]                            {OjkUna}},
-	sort    ={J u},%      \LtrOjkJun \StrMtsIdxUna
+		sort={J Men u}]                        {OjkUna}},
+	sort    ={J Men u},%  \LtrOjkJun Menge \StrMtsIdxUna
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2600,14 +2565,14 @@
 	text    ={\ensuremath{\RawOjkvar}},
 	name    ={\ensuremath{\RawOjkvar} \addIdx[
 		name={\ensuremath{\RawOjkvar}},
-		sort={q}]                              {Ojkvar}},
-	sort    ={q},%        \LtrOjkvar
+		sort={q xEl}]                          {Ojkvar}},
+	sort    ={q xEl},%    \LtrOjkvar Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
 	see     ={Aussagenlogik},
 	description={
-		Die \Elemente\ aus \OjkVar\ sind die \aussagenlogischenVariablen.
+		Eine \aussagenlogischeVariable.
 	}
 }
 
@@ -2617,8 +2582,8 @@
 	text    ={\ensuremath{\RawOjkVar}},
 	name    ={\ensuremath{\RawOjkVar} \addIdx[
 		name={\ensuremath{\RawOjkVar}},
-		sort={Q}]                              {OjkVar}},
-	sort    ={Q},%        \LtrOjkVar
+		sort={Q Men}]                          {OjkVar}},
+	sort    ={Q Men},%    \LtrOjkVar Menge
 	type    ={symbols},
 	symbol  ={},
 	user6   ={},
@@ -2645,7 +2610,7 @@
 	symbol  ={},
 	user6   ={},
 	see     ={MtsTrue,OjkFalse},
-	description={
+	description={\todoOk%
 		Der \metasprachlicheWahrheitswert\ \TxtFalse\ als \Symbol.
 	}
 }
@@ -2662,7 +2627,39 @@
 	symbol  ={},
 	user6   ={},
 	see     ={MtsFalse,OjkTrue},
-	description={
+	description={\todoOk%
 		Der \metasprachlicheWahrheitswert\ \TxtTrue\ als \Symbol.
+	}
+}
+
+% ==============================================================================
+% \Txt* - Ausgabe als formatierter Text und Eintrag und Verweis ins Glossar
+% Wahrheitswerte ===============================================================
+
+\newcommand*             {\StrTxtFalse}            {falsch}
+\newVerweis                 {\TxtFalse}{\glstext}{TxtFalse}
+\newglossaryentry            {TxtFalse}{
+	name       =         {\RawTxtFalse \addIdx[
+		name   =         {\RawTxtFalse},
+		sort   ={falsch}]    {TxtFalse}},
+	sort       ={falsch},%\StrTxtFalse
+	text       =         {\RawTxtFalse},
+	see        ={TxtTrue,MtsFalse,OjkFalse},
+	description={\todoOk%
+		Ein \metasprachlicherWahrheitswert\ in Textform.
+	}
+}
+
+\newcommand*               {\StrTxtTrue}           {wahr}
+\newVerweis                   {\TxtTrue}{\glstext}{TxtTrue}
+\newglossaryentry              {TxtTrue}{
+	name       =           {\RawTxtTrue \addIdx[
+		name   =           {\RawTxtTrue},
+		sort   ={wahr}]        {TxtTrue}},
+	sort       ={wahr},%  \StrTxtTrue
+	text       =           {\RawTxtTrue},
+	see        ={TxtFalse,MtsTrue,OjkTrue},
+	description={\todoOk%
+		Ein \metasprachlicherWahrheitswert\ in Textform.
 	}
 }
