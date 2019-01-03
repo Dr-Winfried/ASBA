@@ -228,44 +228,84 @@
 
 % Einstellung von globalen Werten und Makro-Redefinitionen #####################
 
-\newenvironment{offen}{\color{gray}}{\relax}% Passagen, die noch offen sind und ggf. entfallen.
-
-% Text-Fonts - enden auf Ft ====================================================
-\newcommand*       {\HeFoFt}[1]{\textnormal{\textsf  {#1}}} % Kopf- und Fußzeile
-\newcommand*       {\HeadFt}[1]{\HeFoFt      {\textbf{#1}}} % Kopfzeile
-\newcommand*       {\FootFt}[1]{\HeFoFt              {#1}}  % Fußzeile
-\newcommand*       {\PageFt}[1]{\FootFt      {\textbf{#1}}} % Seitennummer
-\newcommand*{\likeChapterFt}[1]{{\huge\textsf{\textbf{#1}}}}% Kapitelüberschrift
-\newcommand*        {\TabFt}[1]              {\textbf{#1}}  % Spaltenüberschrift
-\newcommand*      {\ImageFt}[1]      {\textsf{\textbf{#1}}} % Text in Bildern
-% Text-Fonts im laufenden Text ------------------------------------------------
-\newcommand*   {\likeLinkFt}[1]{\textcolor{blue}     {#1}}  % Link-Farbe intern
-\newcommand*    {\likeBibFt}[1]{\textcolor{green}    {#1}}  % Link ins Literaturverzeichnis
-\newcommand*       {\CharFt}[1]{\texttt      {\textbf{#1}}} % Zeichen [in Zeichenketten]
-\newcommand*        {\DefFt}[1]      {\textsf{\textbf{#1}}} % Definition
-\newcommand*        {\OptFt}[1]              {\textit{#1}}  % optionale              Teile von Sprechweisen
-\newcommand*        {\ManFt}[1]              {\textbf{#1}}  % notwendige (mandatory) Teile von Sprechweisen
-\newcommand*        {\GloFt}[1]      {\textsf{\textbf{#1}}} % erstmalige Selbstreferenz ohne Link
-\newcommand*        {\gloFt}[1]      {\textsf        {#1}}  %            Selbstreferenz ohne Link
-\newcommand*    {\likePreFt}[1]                      {#1}   % Prädikat
-% angepasst an Wikipedia
-\newcommand*   {\wikiFamily}   {\sffamily}                  % serifenlos  in Wikipedia
-\newcommand*   {\likeWikiFt}[1]      {\textsf        {#1}}  % Zitat aus Wikipedia
-\newcommand*   {\wikiBoldFt}[1]              {\textbf{#1}}  % Bold   Font in Wikipedia
-\newcommand* {\wikiItalicFt}[1]{\textit              {#1}}  % Italic Font in Wikipedia
-\newcommand*   {\wikiLinkFt}[1]{\textcolor{blue}     {#1}}  % Link-Farbe  in Wikipedia
+% Font-Komandos, die mit '\like' beginnen, sind Simulationen anderer Fonts.
 
 % Mathematische Text-Fonts - enden auf ft ======================================
-\newcommand*        {\Varft}[1]                      {#1}   % Variable allgemein          (Buchstabe)
-\newcommand*        {\varft}[1]              {\mathbf{#1}}  % Variablensymbol        (Kleinbuchstabe)
-\newcommand*        {\Conft}[1]      {\mathrm        {#1}}  % Konstante                        (Wort)
-\newcommand*        {\Idxft}[1]      {\mathrm        {#1}}  % konstanter Index            (Buchstabe)
-\newcommand*        {\Setft}[1]{\mathcal             {#1}}  % vorgegebener Bereich    (Großbuchstabe)
-\newcommand*        {\Elmft}[1]                      {#1}   % Element daraus          (Großbuchstabe)
-\newcommand*        {\sOpft}[1]{\mathfrak            {#1}}  % Bereichsoperation                (Wort)
-\newcommand*        {\Drvft}[1]              {\mathbf{#1}}  % Bereich von Ableitungen (Großbuchstabe)
-\newcommand*        {\drvft}[1]              {\mathbf{#1}}  % Element daraus              (Buchstabe)
-\newcommand*        {\Preft}[1]      {\mathrm        {#1}}  % Prädikat                         (Wort)
+\newcommand*        {\VarTyp} {kursiv}
+\newcommand*        {\Varft}[1]                       {#1}   % Variable allgemein          (Buchstabe)
+\newcommand*        {\varTyp}                  {fett}
+\newcommand*        {\varft}[1]               {\mathbf{#1}}  % Variablensymbol        (Kleinbuchstabe)
+\newcommand*        {\ConTyp}          {normal}
+\newcommand*        {\Conft}[1]       {\mathrm        {#1}}  % Konstante                        (Wort)
+\newcommand*        {\IdxTyp}          {normal}
+\newcommand*        {\Idxft}[1]       {\mathrm        {#1}}  % konstanter Index            (Buchstabe)
+\newcommand*        {\SetTyp}   {deutsch}
+\newcommand*        {\Setft}[1]{\mathcal              {#1}}  % vorgegebener Bereich    (Großbuchstabe)
+\newcommand*        {\ElmTyp} {kursiv}
+\newcommand*        {\Elmft}[1]                       {#1}   % Element daraus          (Großbuchstabe)
+\newcommand*        {\BOpTyp}   {fraktur}
+\newcommand*        {\BOpft}[1]{\mathfrak             {#1}}  % Bereichsoperation                (Wort)
+\newcommand*        {\DrvTyp}                  {fett}
+\newcommand*        {\Drvft}[1]               {\mathbf{#1}}  % Bereich von Ableitungen (Großbuchstabe)
+\newcommand*        {\drvTyp}                  {fett}
+\newcommand*        {\drvft}[1]               {\mathbf{#1}}  % Element daraus              (Buchstabe)
+\newcommand*        {\PrefTyp}         {normal}
+\newcommand*        {\Preft}[1]       {\textrm        {#1}}  % Prädikat                         (Wort)
+
+% An Wikipedia Zitate angepasst Text-Fonts
+\newcommand*       {\WikiTyp}   {serifenlos}
+\newcommand*   {\wikiFamily}   {\sffamily}                   % serifenlos  in Wikipedia
+\newcommand*   {\likeWikiFt}[1]       {\textsf        {#1}}  % Zitat aus Wikipedia
+\newcommand*   {\wikiBoldTyp}                  {fett}
+\newcommand*   {\wikiBoldFt}[1]               {\textbf{#1}}  % Bold   Font in Wikipedia
+\newcommand* {\wikiItalicTyp}   {kursiv}
+\newcommand* {\wikiItalicFt}[1]{\textit               {#1}}  % Italic Font in Wikipedia
+\newcommand*   {\wikiColor}{blue}
+\newcommand*   {\wikiFarbe}{blau}
+\newcommand*   {\wikiLinkFt}[1]{\textcolor{\wikiColor}{#1}}  % Link-Farbe  in Wikipedia
+
+% Nicht beschriebene Text-Fonts - enden auf Ft =================================
+\newcommand*       {\HeFoFt}[1]{\textnormal{\textsf   {#1}}} % Kopf- und Fußzeile
+\newcommand*       {\HeadFt}[1]{\HeFoFt       {\textbf{#1}}} % Kopfzeile
+\newcommand*       {\FootFt}[1]{\HeFoFt               {#1}}  % Fußzeile
+\newcommand*       {\PageFt}[1]{\FootFt       {\textbf{#1}}} % Seitennummer
+\newcommand*{\likeChapterFt}[1] {{\huge\textsf{\textbf{#1}}}}% Kapitelüberschrift
+\newcommand*        {\TabFt}[1]               {\textbf{#1}}  % Spaltenüberschrift
+\newcommand*      {\ImageFt}[1]       {\textsf{\textbf{#1}}} % Text in Bildern
+
+% Sonstige, im laufenden Text verwendete Text-Fonts - enden auf Ft =============
+\newcommand*       {\LinkColor}{blue}
+\newcommand*       {\LinkFarbe}{blau}
+\newcommand*   {\likeLinkFt}[1]{\textcolor{\LinkColor}{#1}}  % Link-Farbe intern
+\newcommand*        {\BibColor}{green}
+\newcommand*        {\BibFarbe}{grün}
+\newcommand*    {\likeBibFt}[1]{\textcolor{\BibColor} {#1}}  % Link ins Literaturverzeichnis
+\newcommand*       {\CharTyp}   {monotype\footnote{Schreibmaschinenschrift}}
+\newcommand*       {\CharFt}[1]{\texttt               {#1}}  % Zeichen [in Zeichenketten]
+\newcommand*        {\DefTyp}   {serifenlos und fett}
+\newcommand*        {\DefFt}[1]       {\textsf{\textbf{#1}}} % Definition
+\newcommand*        {\OptTyp}   {kursiv}
+\newcommand*        {\OptFt}[1]{\textit               {#1}}  % optionale              Teile von Sprechweisen
+\newcommand*        {\ManTyp}                  {fett}
+\newcommand*        {\ManFt}[1]               {\textbf{#1}}  % notwendige (mandatory) Teile von Sprechweisen
+\newcommand*        {\GloTyp}   {serifenlos und fett}
+\newcommand*        {\GloFt}[1]       {\textsf{\textbf{#1}}} % erstmalige Selbstreferenz ohne Link
+\newcommand*        {\gloTyp}   {serifenlos}
+\newcommand*        {\gloFt}[1]       {\textsf        {#1}}  %            Selbstreferenz ohne Link
+\newcommand*        {\PreTyp}   {normal}
+\newcommand*    {\likePreFt}[1]                       {#1}   % Prädikat
+
+\newcommand   {\offenFarbe}{grau}
+\newcommand   {\offenColor}{gray}
+\newenvironment{offen}{\color{\offenColor}}{\relax}  % Passagen, die noch offen sind und ggf. entfallen.
+
+% Mögliche Einträge nach \[long]\]newglossary am Start von description =========
+%%%\newcommand*{\todoKlassifizieren}{[\#] }% nicht klassifiziert
+\newcommand*{\todoBeschreiben}   {[*]  }% Eintrag muss noch beschrieben werden
+\newcommand*{\todoErgaenzen}     {[+]  }% Eintrag muss noch ergänzt werden
+\newcommand*{\todoPruefen}       {[?]  }% Eintrag muss noch geprüft werden
+\newcommand*{\todoGeprueft}      {[!]  }% Eintrag ist geprüft, Link oder Definition im Text noch nicht
+\newcommand*{\todoOk}            {[\checkmark] }% Eintrag ist geprüft und ok
 
 % Kopfzeilen und Fußzeilen =====================================================
 \newcommand*{\Lehead}[1]{\lehead{\HeadFt{#1}}}
@@ -447,10 +487,10 @@
 \newcommand*{\formulatoleft}{&&&&&&&&&&}%  Um Formeln nach links zu komprimieren
 \newcommand*{\formulaspace} {&&&&}      %  Für Platz zwischen den Formeln
 \newcommand*{\todo}[1]{\textbf{>~>~>~#1~<~<~<}}% für TODOs
-% Quotierung von Zeichen [chr], Symbolfolgen [seq] und Zeichenketten [str]
+% Quotierung von Zeichen [chr], Symbolketten [seq] und Zeichenketten [str]
 % Parameter im Textmodus
 \newcommand*{\chrqt}[1]{\ensuremath{\left<\text{#1}\right>}}% Zeichen/Symbol
-\newcommand*{\seqqt}[1]{\ensuremath{\left<\mkern-4mu\left<\text{#1}\right>\mkern-4mu\right>}}% Symbolfolge/Formel
+\newcommand*{\seqqt}[1]{\ensuremath{\left<\mkern-4mu\left<\text{#1}\right>\mkern-4mu\right>}}% Symbolkette/Formel
 \newcommand*{\strqt}[1]       {``\CharFt{#1}''}%              Zeichenkette
 % Sonstige Quotierungen:
 \newcommand*{\standsfor}[1]{\enquote{#1}}% Definition einer Bezeichnung
@@ -581,6 +621,7 @@
 \newcommand*{\textGgf} {Ggf.\@}
 \newcommand*{\textiAlg}{i.\@\,Alg.\@}
 \newcommand*{\textIAlg}{I.\@\,Alg.\@}
+\newcommand*{\textoae} {o.\@\,ä.\@}
 \newcommand*{\textua}  {u.\@\,a.\@}
 \newcommand*{\textUa}  {U.\@\,a.\@}
 \newcommand*{\textusw} {usw.\@}

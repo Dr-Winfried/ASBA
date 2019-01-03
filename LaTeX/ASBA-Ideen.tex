@@ -47,7 +47,9 @@ Die \Schlussregeln\ haben die Form eines Formalen \Satzes.
 \subsection[Basisregeln]{\Basisregeln}% ----------------------------------------
 \label               {sub:Basisregeln}
 
-Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \Basisregeln\ definiert. Zuvor werden aber noch einige Definitionen gebraucht. Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \Formeln\, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \Formeln\ und
+Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogischer Kalkül} werden sechs \Basisregeln\ definiert.
+Zuvor werden aber noch einige Definitionen gebraucht.
+Dazu seien $n$, $m$, $k$ und $l$ natürliche Zahlen (auch~0), $\alpha$, $\alpha_i$, $\beta$ und $\beta_j$ \Formeln\, $X$, $X_i$, $Y$ und $Y_j$ Mengen von \Formeln\ und
 \begin{align}
 	%
 	&X&&\MtsDefEq&&X_1\MtsCup X_2\MtsCup...\MtsCup X_n\MtsCup\{\alpha_1,...,\alpha_m\}
@@ -56,7 +58,8 @@ Gemäß \cite{bib:Rautenberg} Kapitel~1.4 \emph{Ein vollständiger aussagenlogis
 	\formulatoleft\formulatoleft
 \end{align}
 
-$X$ und $Y$ können auch die \leereMenge\ sein. Damit wird definiert:
+$X$ und $Y$ können auch die \leereMenge\ sein.
+Damit wird definiert:
 \begin{align}
 	& \alpha \defSymBin{\MtsDerive} \beta \quad \MtsDefEquiv \quad
 	\parbox[t]{11cm}{%
@@ -83,7 +86,8 @@ Bei den \Schlussregeln\ und der \Ersetzung\ \chrqt{\MtsSubst} soll das Komma st�
 Zur der Auswahl der \Basisregeln, der Formulierung und der \Bezeichnungen\ wird auf~\cite{bib:Rautenberg,bib:NatuerlichesSchliessen} zurückgegriffen.
 Wie in~\cite{bib:NatuerlichesSchliessen} steht \chrqt{${E}$} für "`-Einführung"' und \chrqt{${B}$} für "`-Beseitigung"' (oder "`-Elimination"') von \Junktoren.%
 \footnote{%
-	In der \Monotonieregel\ wird \hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \MtsSupsetEq X $} genommen. Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \MtsSupsetEq X $}.
+	In der \Monotonieregel\ wird \hier, anders als in~\cite{bib:Rautenberg}, \seqqt{$X,Y$} statt \seqqt{$ Y \text{ , für } Y \MtsSupsetEq X $} genommen.
+	Das ist gleichwertig, vermeidet aber den Zusatz \seqqt{$ \text{ , für } Y \MtsSupsetEq X $}.
 	Außerdem werden bei den \Bezeichnungen\ \seqqt{$(\OjkAnd 1)$} und \seqqt{$(\OjkAnd 2)$} gemäß~\cite{bib:NatuerlichesSchliessen} durch \seqqt{$(\andE)$} \textbzw\ \seqqt{$(\andB)$} ersetzt.
 }
 
@@ -176,7 +180,9 @@ Folgende Sprechweisen werden verwendet:
 	\item [$\gamma(S)$ :] $S$ wird auf $\gamma$ angewendet.
 \end{itemize}
 %
-Bei obiger Definition der \Ersetzung\ bleibt noch offen, unter welchen \Praemissen\ sie angewendet werden darf. Das soll hier nicht untersucht werden. In diesem \sectionname\ genügt es, das nur \Vertauschung\ und vollständige \Ersetzung\ verwendet werden.
+Bei obiger Definition der \Ersetzung\ bleibt noch offen, unter welchen \Praemissen\ sie angewendet werden darf.
+Das soll hier nicht untersucht werden.
+In diesem \sectionname\ genügt es, das nur \Vertauschung\ und vollständige \Ersetzung\ verwendet werden.
 In diesen Fällen sind beliebige \Ersetzungen\ von Variablen durch \Formeln\ erlaubt.
 
 Ist $\gamma$ wie oben und $S$ eine \Menge\ von \Ersetzungen.
@@ -255,7 +261,8 @@ Als Beispiel wird hier die \Schnittregel\ aus den \Basisregeln\ abgeleitet.%
 	Die Form der Tabelle ist angelehnt an~\cite{bib:NatuerlichesSchliessen} Kapitel~2.2.4 \emph{Eine Beispielableitung}.
 }
 Dazu wird verabredet, dass \vrefintab{tab:AbleitungSchnittregel} der Inhalt der Zelle in der Zeile $i$ und der Spalte $(X_n)$ mit $X_i$ bezeichnet wird.
-Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschriften nur auf die dort notierten $(X_n)$ verwiesen. Dass in der Spalte $(n)$ stets die Zeilennummer steht, wird im folgenden nicht mehr extra erwähnt.
+Zur kürzeren Darstellung wird statt auf die vollständigen Spaltenüberschriften nur auf die dort notierten $(X_n)$ verwiesen.
+Dass in der Spalte $(n)$ stets die Zeilennummer steht, wird im folgenden nicht mehr extra erwähnt.
 
 Für die ausgefüllten Felder wird nun definiert:%
 \footnote{%
@@ -716,17 +723,17 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			& Kontradiktion
 			& & - \\
 			\hline% -- Tabellenende ----------------------------------------
-			\ifmarginparFlg\else
-			\multicolumn{11}{l}{~} \\
-			\multicolumn{11}{l}{\parbox{\linewidth-6pt}{\alleMoeglichenJunktoren}} \\
-			\fi
-			\multicolumn{11}{l}{~} \\
+%%%			\ifmarginparFlg\else
+%%%			\multicolumn{11}{l}{~} \\
+%%%			\multicolumn{11}{l}{\parbox{\linewidth-6pt}{\alleMoeglichenJunktoren}} \\
+%%%			\fi
+%%%			\multicolumn{11}{l}{~} \\
 			\hline% -- Fußnoten --------------------------------------------
 		\end{tabularx}
 		\begin{tablenotes}
 			\footnotesize
 			%
-			\item[1] Die \Junktoren\ \chrqt{$\subset$}, \chrqt{$\supset$}, \chrqt{$\nsubset$} und \chrqt{$nsupset$} haben hier nicht die Bedeutung der entsprechenden \Operationen\ der \Mengenlehre\ und dürfen nicht damit verwechselt werden; entsprechendes gilt für \chrqt{$+$} und \chrqt{$\cdot$} mit Addition und Multiplikation.
+			\item[1] Die \Junktoren\ \chrqt{$\subset$}, \chrqt{$\supset$}, \chrqt{$\nsubset$} und \chrqt{$\nsupset$} haben hier nicht die Bedeutung der entsprechenden \Operationen\ der \Mengenlehre\ und dürfen nicht damit verwechselt werden; entsprechendes gilt für \chrqt{$+$} und \chrqt{$\cdot$} mit Addition und Multiplikation.
 			%
 			\item[2] 0-stellige \Junktoren\ sind Konstante, hier \emph{\Wahrheitswerte}.
 			%
@@ -734,7 +741,8 @@ Hat der Inhalt einer Zelle keine Relevanz, steht dort ein Minuszeichen, ist kein
 			%
 			\item[4] Je kleiner die Zahl, je höher die Priorität.
 			%
-			\item[5] Klammerung ist genau genommen keine \Operation\ und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet. Ihre Priorität - sofern man überhaupt davon sprechen kann - kann nur höher als die aller \Junktoren\ sein.
+			\item[5] Klammerung ist genau genommen keine \Operation\ und wird nicht nur bei logischen, sondern auch bei anderen Ausdrücken verwendet.
+			Ihre Priorität - sofern man überhaupt davon sprechen kann - kann nur höher als die aller \Junktoren\ sein.
 			%
 			\item[6] Die Priorität der \unaeren\ \Operationen\ muss höher sein als die aller mehrwertigen, also auch der \binaeren\ \Operationen.
 			Wenn die Symbole aller \unaeren\ \Operationen\ auf derselben Seite des Operanden stehen, brauchen sie eigentlich keine Priorität, da die Auswertung nur von innen (dem Operanden) nach außen erfolgen kann.
@@ -877,13 +885,15 @@ Wie man leicht sieht, gilt
 \OjkForpx \, \MtsSubset \: \OjkForp_y \, \MtsSubsetEq \: \OjkForp
 \end{cases}
 \end{equation}
-und weiterhin gibt es eine bijektive Abbildung von \OjkFor\ nach \OjkForp. Auf einen \Beweis\ verzichten wir.
+und weiterhin gibt es eine bijektive Abbildung von \OjkFor\ nach \OjkForp.
+Auf einen \Beweis\ verzichten wir.
 %
 Durch Anwendung der Klammerregeln \vrefvonsubsub{subsub:Bausteine} lassen sich in der Regel noch viele Klammern der \Formeln\ aus \OjkForx\ einsparen.
 Die \Formeln\ aus \OjkForpx\ sind frei von Klammern.
 Die Namen der \Junktoren\ finden sich \vrefintab{tab:Symbole}.
 
-Die \Formeln, die nach einer der Regeln \eqref{def:ForU}, \eqref{def:ForB}, \eqref{def:ForUp} oder \eqref{def:ForBp} gebildet wurden, sind offensichtlich \zerlegbar, die anderen, \textdh\ Variablen und Konstanten (aus \OjkVar\ \textbzw\ \OjkCon), sind nicht \zerlegbar. Letztere bezeichnet man auch als \defTxt{\atomare\ \Formeln}.
+Die \Formeln, die nach einer der Regeln \eqref{def:ForU}, \eqref{def:ForB}, \eqref{def:ForUp} oder \eqref{def:ForBp} gebildet wurden, sind offensichtlich \zerlegbar, die anderen, \textdh\ Variablen und Konstanten (aus \OjkVar\ \textbzw\ \OjkCon), sind nicht \zerlegbar.
+Letztere bezeichnet man auch als \defTxt{\atomare} \Formeln.
 
 \subsection[Definition von Junktoren durch andere]{Definition\ von \Junktoren\ durch andere}
 \label                    {sub:JunktorDef}

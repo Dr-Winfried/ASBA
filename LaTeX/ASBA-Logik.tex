@@ -37,40 +37,9 @@
 
 \footnoteForNotDefinedItem
 
-\begin{offen}%%%
-	Die logischen Grundlagen werden einerseits gebraucht, um die erlaubten \Beweisschritte\vrefnotesec{sub:Beweisschritte} zu definieren, andererseits dienen sie auch zum Testen von \ASBA.
-	Daher werden sie in \datcha{cha:Grundlagen} ausführlicher behandelt, als für die Erstellung von \ASBA\ erforderlich ist.
-	Alle \hier\ aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und die \Beweise\ dann von \ASBA\ verifiziert werden.
-\end{offen}%%%
-
-Speziell in \datcha{cha:Grundlagen} wollen wir mit möglichst exakt definierten \defGlo{\Begriffen} und den zugehörigen einheitlichen, systematischen \defGlo{\Bezeichnungen} (\textdh\ \defGlo{\Benennungen} und \Symbolen) arbeiten.
-Wenn sie \likeHyperTxt{in dieser} Schriftart erscheinen, gibt es eine Definition im Symbolverzeichnis (ab \Pageref{dic:Symbolverzeichnis}) oder Glossar (ab \Pageref{dic:Glossar})%
-\footnote{%
-	Möglicherweise steht dort statt einer Definition auch nur eine Referenz zur Definition im laufenden Text.
-},
-und diese Bedeutung ist dann gemeint.
-Gleichzeitig ist damit im PDF-Dokument ein Link dorthin verbunden.
-An Stellen, wo eine \Benennung\footnote{%
-	Für Symbole gilt kann leider nur die Farbe, nicht die Schriftart geändert werden.%
-} definiert wird, wird sie \likeHyperDef{in dieser} Schriftart ausgegeben.
-Wenn die \Benennung\ mit der Fußnote "`\footnotemark[0]"' versehen ist, steht die vollständige Definition nur im Glossar und nicht im laufenden Text.
-Eine vertiefende Beschreibung im Glossar oder Symbolverzeichnis ist unabhängig davon immer möglich.
-
-\begin{center}
-	\begin{tabular}{|l|c|c|}
-		\hline
-		Die Sache an sich:  & \multicolumn{2}{c|}{\Begriff}     \\
-		\hline
-		Darstellung:        & \multicolumn{2}{c|}{\Bezeichnung} \\
-		Darstellungsmittel: & \Benennung      & \Symbol         \\
-		\hline
-	\end{tabular}
-\end{center}
-
-Wenn im Text "`wir"' verwendet wird, geht es um Definitionen, die von allgemein bekannten möglicherweise abweichen.\footnote{%
-	"`Wir"' und nicht "`ich"', da der Leser eingeschlossen werden soll und in Zukunft möglicherweise auch andere Autoren an diesem Dokument beteiligt sein werden.
-}
-Die Verwendung von "`wir"' ist allerdings möglicherweise nicht konsistent und soll nur als Hinweis dienen.
+Die logischen Grundlagen werden einerseits gebraucht, um die erlaubten \Beweisschritte\vrefnotesec{sub:Beweisschritte} zu definieren, andererseits dienen sie auch zum Testen von \ASBA.
+Daher werden sie in \datcha{cha:Grundlagen} ausführlicher behandelt, als für die Erstellung von \ASBA\ erforderlich ist.
+Alle \hier\ aufgeführten \Axiome, \Saetze\ und \Beweise\ sollen dazu kodiert und die \Beweise\ dann von \ASBA\ verifiziert werden.
 
 \section     {Metasprache}% ====================================================
 \beginsection{Metasprache}
@@ -134,7 +103,7 @@ Wir definieren daher:
 	\item[\defTxt{\atomareAussage}]    \glsBeschreibung{atomareAussage}
 	\item[\defTxt{\zerlegbareAussage}] \glsBeschreibung{zerlegbareAussage}
 \end{description}
-Während (a) und (b) \atomare\ \Aussagen\ sind, ist (c) \zerlegbarA.
+Während (a) und (b) \atomareAussagen\ sind, ist (c) \zerlegbarA.
 Für alle vier \Aussagen\ ist es sinnvoll zu fragen, ob sie gelten oder nicht;
 für (a) allerdings nur im Nachhinein und für den zweiten Teil von (c) nur weil klar ist, worauf sich "`das"' bezieht.
 Offensichtlich muss manchmal der Zusammenhang, in dem eine \Aussage\ formuliert wird, bekannt sein.
@@ -151,7 +120,7 @@ Man sagt, dass die \Variable $X$ in (e) \freiV\ und in (f) \gebundenV\ vorkommt.
 Die \freienVariablen\ einer \Aussage\ nennt man auch ihre \Parameter\ und eine \Aussage\ mit mindestens einem \Parameter\ eine \parametrisierteAussage.
 
 Die \Parameter\ einer \Aussage\ dürfen, soweit nicht anderweitig eingeschränkt, durch jedes zulässige \DefFt{\Objekt}\footnote{\glsBeschreibung{Objekt}} ersetzt werden.
-Denkbar sind \Symbole, \Formeln\ und \Aussagen\ sowie \Mengen, \Symbolfolgen\ und Zahlen; ganz allgemein jedes reale oder gedachte Ding an sich.
+Denkbar sind \Symbole, \Formeln\ und \Aussagen\ sowie \Mengen, \Symbolketten\ und Zahlen; ganz allgemein jedes reale oder gedachte Ding an sich.
 
 Wir definieren noch für \Aussagen\ \textbzw\ \Objekte\ $A$ und $B$:%
 \footnote{%
@@ -269,7 +238,8 @@ Offensichtlich sind das alles ebenfalls \Aussagen, jetzt aber teilweise formalis
 
 Wir nennen \MtsAnd\ und \MtsOr\ \defTxt{\Metaoperationen} und \MtsImp, \MtsRep\ und \MtsEquiv\ \defTxt{\Metarelationen}%
 \footnote{%
-	Man könnte \Metaoperationen\ und \Metarelationen\ auch als \DefFt{Metajunktoren} bezeichnen. Zur Unterscheidung von \Operationen\ und \Relationen\ vergleiche aber auch die Fußnote~\ref{def:Junktor} auf \Pageref{def:Junktor}.
+	Man könnte \Metaoperationen\ und \Metarelationen\ auch als \DefFt{Metajunktoren} bezeichnen.
+	Zur Unterscheidung von \Operationen\ und \Relationen\ vergleiche aber auch die Fußnote~\ref{def:Junktor} auf \Pageref{def:Junktor}.
 }.
 Die damit gebildeten \Aussagen\ können natürlich auch geklammert werden, um die Reihenfolge der Auswertung eindeutig zu machen.
 Für den Fall fehlender Klammern sind ihre Prioritäten \vrefintab{tab:Prioritaeten} angegeben.
@@ -293,14 +263,15 @@ Zusammengefasst ist die Reihenfolge der \Operationen\ und der Auswertung dort be
 \subsubsection[Vergleichbar]{\Vergleichbar}% - - - - - - - - - - - - - - - - - -
 \label {subsub:Vergleichbar}
 
-Zwei \Objekte\ $A$ und $B$ sind \defTxt{\vergleichbar}, wenn beide von derselben \Objektart\ sind, \textdh\ wenn \textzB\ jeweils beide Mengen, \Symbolfolgen, Zahlen, \textusw\ sind.
-Dabei muss bei \Formeln\ zwischen der \Formel\ an sich und dem Ergebnis der \Formel\ unterschieden werden. Siehe Beispiel (a).
+Zwei \Objekte\ $A$ und $B$ sind \defTxt{\vergleichbar}, wenn beide von derselben \Objektart\ sind, \textdh\ wenn \textzB\ jeweils beide Mengen, \Symbolketten, Zahlen, \textusw\ sind.
+Dabei muss bei \Formeln\ zwischen der \Formel\ an sich und dem Ergebnis der \Formel\ unterschieden werden.
+Siehe Beispiel (a).
 
 Intuitiv scheint klar zu sein, was damit  gemeint ist.
 Wenn aber entschieden werden muss, ob \textzB\ (a) "`1+1"' gleich "`2"' oder (b) "`1+1"' gleich "`1 + 1"' ist, muss man erst entscheiden, von welcher \Objektart\ die beiden zu vergleichenden Ausdrücke sind, \textdh\ \emph{wie} verglichen wird.
 Wenn sie als jeweiliges Ergebnis der beiden \Formeln, verglichen werden, dann ist (a) richtig.
-Wenn sie als \Formeln, \textdh\ als \Symbolfolgen, verglichen werden, ist (a) falsch.
-Wenn die Ausdrücke in (b) als \Symbolfolgen\ verglichen werden, dann ist (b) richtig.
+Wenn sie als \Formeln, \textdh\ als \Symbolketten, verglichen werden, ist (a) falsch.
+Wenn die Ausdrücke in (b) als \Symbolketten\ verglichen werden, dann ist (b) richtig.
 Wenn sie als \Zeichenketten\ verglichen werden, ist (b) falsch.
 
 Die folgende Tabelle fasst dass zusammen:
@@ -312,7 +283,7 @@ Die folgende Tabelle fasst dass zusammen:
 		\hline
 		$       1+1$  &        $2$        & \Objekt       & richtig \\
 		\seqqt{$1+1$} & \seqqt{$2$}       & \Formel       & falsch  \\
-		\seqqt{$1+1$} & \seqqt{$1\;+\;1$} & \Symbolfolge & richtig \\
+		\seqqt{$1+1$} & \seqqt{$1\;+\;1$} & \Symbolkette & richtig \\
 		\strqt{1+1}   & \strqt{1 + 1}     & \Zeichenkette & falsch  \\
 		\hline
 	\end{tabular}
@@ -331,7 +302,8 @@ Dann definieren wir:
 	\footnote{%
 		\textZB\ sind zwei \Junktoren\ üblicherweise dann gleich, wenn sie stets denselben \emph{\Wahrheitswert} liefern.
 		Ihre \Bezeichnungen\ können dabei durchaus verschieden sein, interessieren bei der Feststellung der \Gleichheit\ aber nicht.
-		\textZB\ bezeichnen \chrqt{\MtsAnd} und \chrqt{\MtsUnd} dieselbe \Operation, haben aber verschiedene Priorität. --- \vrefseetab{tab:Prioritaeten}
+		\textZB\ bezeichnen \chrqt{\MtsAnd} und \chrqt{\MtsUnd} dieselbe \Operation, haben aber verschiedene Priorität.
+		--- \vrefseetab{tab:Prioritaeten}
 	}
 	Sprechweisen: \standsfor{$A$ ist \emph{dasselbe} wie $B$} oder \standsfor{$A$ ist \emph{identisch} zu $B$}
 	--- Inwieweit die \Begriffe\ \emph{Gleichheit} und \emph{Identität} korrelieren, wird \hier\ nicht erörtert.\citenote{bib:Identitaet}
@@ -372,7 +344,7 @@ Dann definieren wir:
 	Wir nennen sie dann \DefFt{zusammengesetzte Symbole}, im Gegensatz zu den \DefFt{einfachen Symbolen}.
 	Charakteristisch für ein Symbol ist, dass es ohne Bedeutungsverlust nicht zerlegt werden kann.
 	Ein \zusammengesetztesSymbol\ ist \textiAlg\ \zerlegbar, kann aber auch als \atomar, \textdh\ \unzerlegbar, definiert werden, wie \textzB\ $\sin$ als \Symbol\ für die Sinusfunktion.
-	\Symbole\ werden \chrqt{so} quotiert; \zerlegbare\ können aber auch wie \Symbolfolgen\ quotiert werden.
+	\Symbole\ werden \chrqt{so} quotiert; \zerlegbare\ können aber auch wie \Symbolketten\ quotiert werden.
 	--- Die Quotierung ist kein Bestandteil des \Symbols!
 
 	Wird für bestimmte \Objekte\ ein \Symbol\ verwendet, so nennen wir dies ein \defTxt{\Objektsymbol}.
@@ -387,38 +359,39 @@ Dann definieren wir:
 	werden \Zeichenketten\ stets \strqt{in dieser} Schriftart und Quotierung dargestellt.
 	--- Die Quotierung ist kein Bestandteil der \Zeichenkette!
 
-	% ----- Symbolfolge -------------------------------------------------------
-	\item [\Symbolfolgen] sind ähnlich wie \Zeichenketten, außer das sie als Bausteine neben einfachen auch zusammengesetzte, aber \atomare\ \Symbole\ enthalten können und Leerzeichen und andere Zwischenraumzeichen nicht zählen.
+	% ----- Symbolkette -------------------------------------------------------
+	\item [\Symbolketten] sind ähnlich wie \Zeichenketten, außer das sie als Bausteine neben einfachen auch zusammengesetzte, aber \atomare\ \Symbole\ enthalten können und Leerzeichen und andere Zwischenraumzeichen nicht zählen.
 	Letztere dienen nur der optischen Trennung der \Symbole\ und der besseren Lesbarkeit.
-	\Symbolfolgen\ werden stets \seqqt{in dieser} Quotierung dargestellt.
-	--- Die Quotierung ist kein Bestandteil der \Symbolfolge!
+	\Symbolketten\ werden stets \seqqt{in dieser} Quotierung dargestellt.
+	--- Die Quotierung ist kein Bestandteil der \Symbolkette!
 
 	% ----- Formel -------------------------------------------------------------
-	\item [\Formeln] \label{def:Formel} sind \hier\ immer nach vorgegebenen Regeln aufgebaute \Symbolfolgen%
+	\item [\Formeln] \label{def:Formel} sind \hier\ immer nach vorgegebenen Regeln aufgebaute \Symbolketten%
 	\footnote{%
 		Es kann verschiedene Arten von \Formeln\ geben, \textzB\ \aussagenlogischeF, prädikatenlogische und solche, die ein Taschenrechner auswerten kann.
 	}.
-	Daher werden sie wie \Symbolfolgen\ quotiert.
-	--- Die Quotierung ist kein Bestandteil der \Symbolfolge!
+	Daher werden sie wie \Symbolketten\ quotiert.
+	--- Die Quotierung ist kein Bestandteil der \Symbolkette!
 
-	Man kann eine \Formel\ auch dadurch charakterisieren, dass sie ein \Element\ aus einer vorgegebenen \Menge\ \MtsSprache\ von \Symbolfolgen\ ist.%
+	Man kann eine \Formel\ auch dadurch charakterisieren, dass sie ein \Element\ aus einer vorgegebenen \Menge\ \MtsSprache\ von \Symbolketten\ ist.%
 	\footnote{%
-		Die \Formel\ wird dann auch \defTxt{\Wort} der \defTxt{\Sprache} \MtsSprache\ genannt - besonders, wenn die \Elemente\ aus \MtsSprache\ \Zeichenketten\ statt \Symbolfolgen\ sind.
+		Die \Formel\ wird dann auch \defTxt{\Wort} der \defTxt{\Sprache} \MtsSprache\ genannt - besonders, wenn die \Elemente\ aus \MtsSprache\ \Zeichenketten\ statt \Symbolketten\ sind.
 		Wir bleiben der Klarheit willen bei "`\Formel"'.
 	}
 	Das ist dann so ziemlich die einfachste Regel.
 
-	Wenn eine \Symbolfolge\ nicht korrekt nach den vorgegebenen Regeln aufgebaut ist \textbzw\ kein \Element\ aus der vorgegebenen \Menge\ \MtsSprache\ ist, werden wir sie \emph{nicht} als \Formel\ bezeichnen, auch nicht als "`fehlerhafte Formel"' oder ähnlich.
+	Wenn eine \Symbolkette\ nicht korrekt nach den vorgegebenen Regeln aufgebaut ist \textbzw\ kein \Element\ aus der vorgegebenen \Menge\ \MtsSprache\ ist, werden wir sie \emph{nicht} als \Formel\ bezeichnen, auch nicht als "`fehlerhafte Formel"' oder ähnlich.
 	Sie ist dann einfach keine \Formel.
 
 	% ----- Objekt -------------------------------------------------------------
-	\item [\Objekte] sind \textzB\ \Symbole, \Zeichenketten, \Symbolfolgen\ und \Formeln, oder auch \Aussagen, Mengen, Zahlen, \textusw\ --- ganz allgemein reale oder gedachte Dinge an sich.
+	\item [\Objekte] sind \textzB\ \Symbole, \Zeichenketten, \Symbolketten\ und \Formeln, oder auch \Aussagen, Mengen, Zahlen, \textusw\ --- ganz allgemein reale oder gedachte Dinge an sich.
 	Eine \Formel, die nicht quotiert ist, steht für den Wert dieser \Formel, der dann wieder ein \Objekt\ ist.
 	Entsprechend steht ein \Symbol, das nicht quotiert ist, für das dadurch bezeichnete \Objekt.
 	\textZB\ bezeichnet das \Symbol\ \chrqt{\MtsIN} die \Menge\ \MtsIN der natürlichen Zahlen ohne 0.
 
 \end{description}
 
+\begin{offen} %%%
 \subsection{Quotierung}% -------------------------------------------------------
 \label {sub:Quotierung}
 
@@ -433,17 +406,18 @@ Zur Verdeutlichung der soeben definierten Quotierungen ein Beispiel:\footnote{%
 	& \chrqt{$\sin$} & \Bezeichnung
 	& für das \Objekt
 	\\
-	& \seqqt{$\sin$} & \Symbolfolge\ (\Formel)
+	& \seqqt{$\sin$} & \Symbolkette\ (\Formel)
 	& aus dem zusammengesetzten, \atomaren\ \Symbol\ \chrqt{$\sin$}
 	\\
-	& \seqqt {$sin$} & \Symbolfolge\ (\Formel)
+	& \seqqt {$sin$} & \Symbolkette\ (\Formel)
 	& aus den einfachen \Symbolen\ \chrqt{$s$}, \chrqt{$i$} und \chrqt{$n$}
 	\\
 	& \strqt  {sin}  & \Zeichenkette
 	& aus den einfachen \Symbolen\ \chrqt{\CharFt{s}}, \chrqt{\CharFt{i}} und \chrqt{\CharFt{n}}
 \end{tabular}
+\end{offen} %%%
 
-Die \Bezeichnung\ eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textdh\ einer \Symbolfolge\ oder sogar einer ganzen \Formel; \textzB\ ist die Bezeichnung für das indizierte \Objekt\ $a_i$ gleich \seqqt{$a_i$}.
+Die \Bezeichnung\ eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \textdh\ einer \Symbolkette\ oder sogar einer ganzen \Formel; \textzB\ ist die Bezeichnung für das indizierte \Objekt\ $a_i$ gleich \seqqt{$a_i$}.
 
 \subsection[Weitere Bezeichnungen]{Weitere \Bezeichnungen}% --------------------
 \label  {sub:weitereBezeichnungen}
@@ -496,7 +470,7 @@ Die \Bezeichnung\ eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \tex
 
 	Ist $R=(G,M,\dots,M)$, so heißt $R$ eine $n$-stellige Relation \DefFt{auf}\alternativi{in} $M$.
 
-	Ist $|G|$ endlich, so nennen wir auch $R$ \DefFt{endlich}.
+	Ist $\card{G}$ endlich, so nennen wir auch $R$ \DefFt{endlich}.
 
 	% ----- Umkehrrelation -----------------------------------------------------
 	\item [\Umkehrrelation] Die \defTxt{\Umkehrrelation} \DefFt{von}\alternativi{für} einer \binaeren\ Relation $(G,A,B)$ ist die Relation $(G',B,A)$ mit $G' \MtsDefEq \MengeDef{(b,a)}{(a,b) \in G}$.
@@ -531,7 +505,8 @@ Die \Bezeichnung\ eines \Objekts\ kann auch aus mehreren Symbolen bestehen, \tex
 
 		$\MtsZb f \MtsDefEq \MtsZb(f)$
 	\end{itemize}
-	Für $n = 0$ ist $G = ((),b)$ für ein $b \in B$ und somit $f() = b$. $f$ kann damit auch als Konstante $b$ aufgefasst werden.%
+	Für $n = 0$ ist $G = ((),b)$ für ein $b \in B$ und somit $f() = b$.
+	$f$ kann damit auch als Konstante $b$ aufgefasst werden.%
 	\footnote{%
 		Bei der Schreibweise ohne Klammern steht da statt \seqqt{$f()$} nur noch \seqqt{$f$} und statt \seqqt{$f()=b$}, insgesamt also nur noch \seqqt{$f=b$}.
 	}
@@ -770,7 +745,7 @@ Die Prioritäten der \Junktoren\ wurden aus~\cite{bib:Rautenberg} Kapitel~1.1 Se
 			\item[3] \vrefseesub{sub:Bezeichnungen}
 			\item[4] \vrefseesubsub{subsub:Vergleiche}
 			\item[5] \vrefseesub{sub:Basisregeln}
-			\item[6] \vrefseesubsub{bereich}
+			\item[6] \vrefseesubsub{sub:Bereiche}
 			\item[7] \vrefseesub{sub:Metaoperationen}
 			\item[8] \chrqt{\MtsUnd} wird nur bei den \Schlussregeln\ (\vrefseesub{sub:Schlussregeln}) verwendet.
 			\chrqt{\MtsAnd} und \chrqt{\MtsUnd} bezeichnen die gleiche \Operation, haben aber unterschiedliche Priorität.
@@ -811,47 +786,47 @@ Zuerst brauchen wir aber noch ein paar Definitionen.
 Zu \chrqt{\MtsLen} und \chrqt{\MtsSet} Vergleiche die Definition von \emph{$n$-\Tupel} \vrefinsub{sub:weitereBezeichnungen}.
 
 \begin{align}
-	& |M|                          & \MtsDefEq \quad & \text{Kardinalität von } M
+	& \card{M}             & \MtsDefEq \quad & \text{Kardinalität von } M
 	&&\text{, die \DefFt{Anzahl der \Elemente} aus } M
 	\label{def:Anzahl}
 	\\
-	& \defSym{\MtsMn}     & \MtsDefEq \quad & M \MtsTimes \dots \MtsTimes M \quad \text{ , für } n \in \MtsINo
+	& \defSym{\MtsMn}      & \MtsDefEq \quad & M \MtsTimes \dots \MtsTimes M \quad \text{ , für } n \in \MtsINo
 	&&\text{, das \DefFt{kartesische Produkt} aus $n$ Mengen } M
 	\label{def:kartesischesProdukt}
 	\\
-	& \MtsMo                  &    \MtsEq \quad & \{()\}
+	& \MtsMo               &    \MtsEq \quad & \{()\}
 	&&\text{, wobei $()$ das \DefFt{0-\Tupel} ist}
 	\label{def:Mo}
 	\\
-	& \defSym{\MtsTup}(M) & \MtsDefEq \quad & \MengeDef{\vec{a} \in \MtsMn}{n \in \MtsINo}
+	& \defSym{\MtsTup}(M ) & \MtsDefEq \quad & \MengeDef{\vec{a} \in \MtsMn}{n \in \MtsINo}
 	&&\text{, die \Menge\ der \defTxt{\Tupel} \DefFt{über} $M$ (\defTxt{\Tupelmenge})}
 	\label{def:Tupelmenge}
 	\\
-	& \links{(A,B)}                & \MtsDefEq \quad & A
+	& \links{(A,B)}        & \MtsDefEq \quad & A
 	&& \text{, die \DefFt{linke Seite} eines geordneten Paares.}
 	\label{def:links}
 	\\
-	& \rechts{(A,B)}               & \MtsDefEq \quad & B
+	& \rechts{(A,B)}       & \MtsDefEq \quad & B
 	&& \text{, die \DefFt{rechte Seite} eines geordneten Paares.}
 	\label{def:rechts}
 	\\
-	& \defSym{\MtsPot}(M)      & \MtsDefEq \quad & \MengeDef{A}{A \MtsSubsetEq M}
+	& \defSym{\MtsPot}(M)  & \MtsDefEq \quad & \MengeDef{A}{A \MtsSubsetEq M}
 	&&\text{, die \defTxt{\Potenzmenge} der \Menge\ } M
 	\label{def:Potenzmenge}
 	\\
-	& \defSym{\MtsPotf}(M)     & \MtsDefEq \quad & \MengeDef{A \MtsSubsetEq M}{|A| \in \MtsINo}
+	& \defSym{\MtsPotf}(M) & \MtsDefEq \quad & \MengeDef{A \MtsSubsetEq M}{\card{A} \in \MtsINo}
 	&& \text{, die \DefFt{endlichen \Teilmengen} von } M
 	\label{def:endlichePotenzmenge}
 	\\
-	& \defSym{\MtsRel}(M)      & \MtsDefEq \quad & \MengeDef{R}{R \MtsSubsetEq M \MtsTimes M}
+	& \defSym{\MtsRel}(M)  & \MtsDefEq \quad & \MengeDef{R}{R \MtsSubsetEq M \MtsTimes M}
 	&& \text{, die \Menge\ der \DefFt{\binaeren\ \Relationen\ in} } M
 	\label{def:Relationsmenge}
 	\\
-	& \defSym{\MtsRelf}(M)     & \MtsDefEq \quad & \MengeDef{R \MtsSubsetEq M \MtsTimes M}{|R| \in \MtsINo}
+	& \defSym{\MtsRelf}(M) & \MtsDefEq \quad & \MengeDef{R \MtsSubsetEq M \MtsTimes M}{\card{R} \in \MtsINo}
 	&& \text{, die \DefFt{endlichen \binaeren\ \Relationen\ in} } M
 	\label{def:endlicheRelationsmenge}
 	\\
-	& \defSym{\MtsDeriveR}     & \MtsDefEq \quad & R
+	& \defSym{\MtsDeriveR} & \MtsDefEq \quad & R
 	&& \text{, für Relationen } R \in \MtsRelAllDerive
 	\label{def:Ableitung}
 \end{align}
@@ -886,7 +861,7 @@ Offensichtlich gilt für Mengen $M$ und $N$:
 \label             {sub:Ableitungen}
 
 Im Folgenden sei \MtsSprache\ stets eine gegebene \Menge\ von \Formeln, \textzB\ alle korrekten \Formeln\ der \Aussagenlogik\ oder der \Praedikatenlogik.
-Für die folgenden Betrachtungen ist aber nur nötig, dass die \Elemente\ aus \MtsSprache\ \Symbolfolgen\ sind.
+Für die folgenden Betrachtungen ist aber nur nötig, dass die \Elemente\ aus \MtsSprache\ \Symbolketten\ sind.
 Die \Teilmengen\ von \MtsSprache\ nennen wir \defTxt{\Formelmengen}.
 Es sind genau die \Elemente\ aus \MtsPotSprache.
 
@@ -1059,8 +1034,8 @@ Wenn eine Schlussregel $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ beschränkt 
 	&     \MtsPraemisseSet    & \MtsEq \quad & \MtsSet(\vec{\MtsPraemisse})
 	&,\;& \MtsKonklusionSet        & \MtsEq \quad & \MtsSet(\vec{\MtsKonklusion})
 	\label{eq:SRTa}          \\
-	&     N                       &    \ge \quad & |\MtsPraemisseSet|
-	&,\;& M                       &    \ge \quad & |\MtsKonklusionSet|
+	&     N                       &    \ge \quad & \card{\MtsPraemisseSet}
+	&,\;& M                       &    \ge \quad & \card{\MtsKonklusionSet}
 	&,\;& \text{mit } N, M \in \MtsINo
 	\label{eq:SRTb}          \\
 	& \vec{\MtsPraemisse}     & \MtsEq \quad & \{\MtsPraemisse_1,\dots,\MtsPraemisse_N \}
@@ -1145,7 +1120,8 @@ Im Fall von \beschraenkten\ \Schlussregeln\ können statt \MtsSchlussregelSet\ u
 	&& \text{, ein \Tupel\ aus \defTxt{\Ableitungen}, die \defTxt{\Ergebnisse}.}
 	\label{def:Konklusionsvector}    \formulatoleft
 \end{align}
-gegeben sein. Mit
+gegeben sein.
+Mit
 \begin{align}
 	& \MtsSchlussregelSet \MtsDefEq \MengeDef{(\MtsSet(\vec{\MtsPraemisse}), \MtsSet(\vec{\MtsKonklusion}))}{(\vec{\MtsPraemisse}, \vec{\MtsKonklusion}) \in \MtsSet(\vec{\MtsSchlussregel})}
 	\\

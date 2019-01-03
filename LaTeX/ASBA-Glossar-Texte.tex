@@ -34,7 +34,7 @@
 % ### Glossar und Index ########################################################
 
 % ==============================================================================
-% \* - Ausgabe als Text und Eintrag und Link ins Glossar
+% - Ausgabe als Text und Eintrag und Link ins Glossar
 % Fachbegriffe =================================================================
 
 \iftestFlg% Definition von Dummy Glossareinträgen; gleichzeitig Kopiervorlagen
@@ -47,8 +47,12 @@
 		text       ={dummy Dummy},%               Ausgabe             im Text
 		user1      ={},%             alternative Ausgabe im Text für \newVerweis
 		user2      ={},%             alternative Ausgabe im Text für \newVerweis
+%%%		symbol     ={\ensuremath{Mathmode}},% formal - kein Link ins Glossar
+%%%		user6      ={Textmode},%           informell - kein Link ins Glossar
 		see        ={},%             Verweise ins Symbolverzeichnis und Glossar
 		description={\todoBeschreiben%
+%%%			\SymbolAmRand{dummy}%
+%%%			\TextAmRand  {dummy}%
 		}
 	}
 	\newVerweis     {\Dummy}{\glstext}{Dummy}
@@ -57,8 +61,12 @@
 		text        ={Dummy},%                   Ausgabe             im Text
 		user1       ={},%            alternative Ausgabe im Text für \newVerweis
 		user2       ={},%            alternative Ausgabe im Text für \newVerweis
+%%%		symbol      ={\ensuremath{Mathmode}},% formal - kein Link ins Glossar
+%%%		user6       ={Textmode},%           informell - kein Link ins Glossar
 		see         ={},%            Verweise ins Symbolverzeichnis und Glossar
 		description ={\todoBeschreiben%
+%%%			\SymbolAmRand{dummy}%
+%%%			\TextAmRand  {dummy}%
 		}
 	}
 	% dsgl. mit Absätzen in der Beschreibung
@@ -68,22 +76,26 @@
 		text            ={WikiDummy},
 		user1           ={},
 		user2           ={},
+%%%		symbol          ={\ensuremath{Mathmode}},% formal - kein Link ins Glossar
+%%%		user6           ={Textmode},%           informell - kein Link ins Glossar
 		see             ={},
 	}{\todoBeschreiben%
+%%%		\SymbolAmRand{dummy}%
+%%%		\TextAmRand  {dummy}%
 		\wikicite{bib:Wikipedia}{
 		}
 	}
 \else\fi
 
-% TODO ### symbol := Symbol (falls vorhenden); nur dann: am Seitenrand ausgeben: mit \SymbolAmRand{label}
+% TODO ### Selbstreferenzen auflösen: \GloFt{text} und \gloFt{text})
 
-% TODO ### Selbstreferenzen auflösen
+% TODO ### Vorkommen prüfen und durch Makro ersetzen (???)
 
-% TODO ### Vorkommen prüfen und durch Makro ersetzen
+% TODO symbol, user6 und SymbolAmRand hinzufügen
+% TODO Konkrete Werte für symbol und user6 einsetzen.
 
-% TODO symbol  ={\formaleDefinition{symbol}},%  Symbol ohne Link, falls vorhanden
-
-% TODO \todo... nach description einfügen
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 
 %A === A === A === A === A === A === A === A === A === A === A === A === A === A
 
@@ -94,8 +106,11 @@
 \newglossaryentry{ableitbar}{
 	name        ={ableitbar \addIdx    {ableitbar}},
 	text        ={ableitbar},
+%%%	symbol      ={\ensuremath{Mathmode}},
+%%%	user6       ={Textmode},
 	see         ={Ableitungsrelation},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{ableitbar}%
 		Wenn sich eine \Formel\ $\beta$ aus einer anderen \Formel\ $\alpha$ mittels \zulaessiger\ \Transformationen\ ableiten lässt, heißt $\beta$ \GloFt{ableitbar} aus $\alpha$.
 		Sprechweise: $\alpha$ \GloFt{ableitbar}\synonym{\beweisbar} $\beta $.
 		Eine oder beide \Formeln\ $\alpha$ \textbzw\ $\beta$ dürfen dabei durch \Formelmengen\ ersetzt werden.
@@ -107,15 +122,17 @@
 \longnewglossaryentry{Ableitung}{
 	name            ={Ableitung \addIdx     {Ableitung}},
 	text            ={Ableitung},
+	symbol          ={\MtsDerive},
 	see             ={Ableitungsmenge,Ableitungsrelation,Konklusion,Logik,Praemisse,Schlussregel},
 }{\todoPruefen%
+	\SymbolAmRand{Ableitung}%
 	\wikicite{bib:Ableitung}{
 		Eine \wikiBoldFt{Ableitung}, \wikiBoldFt{Herleitung}, oder \wikiLinkFt{Deduktion} ist in der \wikiLinkFt{Logik} die Gewinnung von \wikiLinkFt{Aussagen} aus anderen Aussagen. Dabei werden \wikiLinkFt{Schlussregeln} auf \wikiLinkFt{Prämissen} angewandt, um zu \wikiLinkFt{Konklusionen} zu gelangen. Welche Schlussregeln dabei erlaubt sind, wird durch das verwendete \wikiLinkFt{Kalkül} bestimmt.
 
 		Die Ableitung ist zusammen mit der \wikiLinkFt{semantischen Konklusion} einer der zwei logischen Methoden, um auf die Konklusion zu kommen.
 	}
 	Eine Ableitung ist für \ASBA\ eine \Aussage\ $A \MtsDerive B$ \textbzw\ allgemeiner $A \MtsDeriveR B$ mit $A,B \MtsSubsetEq \MtsSprache$, wobei \MtsSprache\ eine \Sprache\ ist.
-	Dies entspricht einem \Element\ $(A,B)$ aus einer \Ableitungsrelation\ \MtsDerive\ \textbzw\ \MtsDeriveR\ (\textdh\ $(A,B) \in R_{\MtsIdxGraph}$.
+	Dies entspricht einem \Element\ $(A,B)$ aus einer \Ableitungsrelation\ \MtsDerive\ \textbzw\ \MtsDeriveR\ (\textdh\ $(A,B) \in R_{\MtsIdxGraph}$ für eine \Ableitungsrelation\ $R$).
 	Die semantische Aussage ist die, das die \Formeln\ aus $B$ aus den \Formeln\ aus $A$ abgeleitet werden können.
 }
 
@@ -124,7 +141,10 @@
 \newglossaryentry{Ableitungsmenge}{
 	name        ={Ableitungsmenge \addIdx    {Ableitungsmenge}},
 	text        ={Ableitungsmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\TextAmRand{Ableitungsmenge}%
 		Eine \Menge\ von \Ableitungen, letztlich nichts anderes als eine \Ableitungsrelation.
 	}
 }
@@ -134,8 +154,11 @@
 \newglossaryentry{Ableitungsrelation}{
 	name        ={Ableitungsrelation \addIdx     {Ableitungsrelation}},
 	text        ={Ableitungsrelation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Ableitung},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Ableitungsrelation}%
 		Eine \binaere\ \Relation\ \MtsDerive\ aus \MtsAllDerive.
 		Für $R \in \MtsAllDerive$ auch mit \MtsDeriveR\ bezeichnet.
 	}
@@ -145,8 +168,11 @@
 \newglossaryentry{Abtrennungsregel}{
 	name        ={Abtrennungsregel \addIdx   {Abtrennungsregel}},
 	text        ={Abtrennungsregel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={TR},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Abtrennungsregel}%
 		Eine \Schlussregel.
 	}
 }
@@ -157,8 +183,11 @@
 %%%	name        ={Äquivalenz \addIdx[
 %%%		name    ={Äquivalenz}]            {Aequivalenz}},
 %%%	text        ={Äquivalenz},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 %%%	see         ={MtsAequiv},
 %%%	description ={\todoPruefen%
+%%%		\SymbolAmRand{Aequivalenz}%
 %%%		Eine \Gleichheitsrelation:
 %%%		Zwei Objekte $A$ und $B$ sind \GloFt{äquivalent}\alternativi{ähnlich}, $A \MtsAequiv B$, wenn sie in den \interessierendenEigenschaften\ für \MtsAequiv\ übereinstimmen.
 %%%	}
@@ -170,7 +199,10 @@
 	name            ={Äquivalenzrelation \addIdx[
 		name        ={Äquivalenzrelation}]           {Aequivalenzrelation}},
 	text            ={Äquivalenzrelation},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Aequivalenzrelation}%
 	Eine \GloFt{Äquivalenzrelation} ist eine \binaere\ \Relation\ auf einer \Menge\ $M$ mit folgenden Eigenschaften
 	(dabei sei $\sim$ die \gloFt{Äquivalenzrelation}):
 	\begin{align}
@@ -186,17 +218,11 @@
 \newglossaryentry{Allquantor}{
 	name        ={Allquantor \addIdx    {Allquantor}},
 	text        ={Allquantor},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
-		Man nennt den \Quantor\ \MtsForall\ \textbzw\ \OjkForall\ auch \GloFt{Allquantor}.
-	}
-}
-
-\newVerweis     {\Existenzquantor} {\glstext}{Existenzquantor}
-\newglossaryentry{Existenzquantor}{
-	name        ={Existenzquantor \addIdx    {Existenzquantor}},
-	text        ={Existenzquantor},
-	description ={\todoPruefen%
-		Man nennt den \Quantor\ \MtsExists\ \textbzw\ \OjkExists\ auch \GloFt{Existenzquantor}.
+%%%		\SymbolAmRand{Allquantor}%
+		Man nennt den \Quantor\ \MtsForAll\ \textbzw\ \OjkForAll\ auch \GloFt{Allquantor}.
 	}
 }
 
@@ -205,7 +231,22 @@
 \newglossaryentry{Alphabet}{
 	name        ={Alphabet \addIdx    {Alphabet}},
 	text        ={Alphabet},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Alphabet}%
+	}
+}
+
+\newVerweis     {\Anfangsglied}{\glstext} {Anfangsglied}
+\newVerweis     {\AnfangsG}    {\glsuseri}{Anfangsglied}
+\newglossaryentry{Anfangsglied}{
+	name        ={Anfangsglied \addIdx   {Anfangsglied}},
+	text        ={Anfangsglied},
+	user1       ={Anfangs-},
+	see         ={Endglied,Nachfolger,Vorgaenger,Zwischenglied},
+	description ={\todoOk%
+		Das \GloFt{Anfangsglied} einer \Kette\ ist ihr erstes (links) \Kettenglied.
 	}
 }
 
@@ -215,7 +256,6 @@
 	text        ={Anfangsregel},
 	description ={\todoPruefen%
 		Die \Schlussregel\ \glsAR\ um anfangen zu können.
-		\glsentrydesc{AR}
 	}
 }
 
@@ -229,19 +269,20 @@
 	}
 }
 
+% [#1= gleicher \Objektart], #2=Ein \Objekt, #3=sie kein echtes \Teilobjekt
+\newcommand*{\atomarBeschreibung}[3][]{%
+	#2\ ist \GloFt{\atomar}\synonym{\defTxt{\unzerlegbar}}, wenn #3\ #1\ enthält.
+}
 \newVerweis     {\atomar}  {\glstext}{atomar}
-\newVerweis     {\Atomar}  {\Glstext}{atomar}
 \newVerweis[e]  {\atomare} {\glstext}{atomar}
-\newVerweis[e]  {\Atomare} {\glstext}{atomar}
 \newVerweis[en] {\atomaren}{\glstext}{atomar}
 \newVerweis[es] {\atomares}{\glstext}{atomar}
 \newglossaryentry{atomar}{
 	name        ={atomar \addIdx     {atomar}},
 	text        ={atomar},
-	see         ={zerlegbar},
-	description ={\todoPruefen%
-		Das Attribut \GloFt{atomar} kann auf \Aussagen, \Formeln\ und \Symbole\ angewendet werden.
-		\Atomar\ sind solche, die keine echten \Teilobjekte\ gleicher \Objektart\ enthalten.
+	see         ={unzerlegbar,zerlegbar,zusammengesetzt},
+	description ={\todoOk%
+		\atomarBeschreibung[gleicher \Objektart]{Ein \Objekt\ (\Aussage, \Formel\ oder \Symbol)}{es kein \echtes\ \Teilobjekt}
 	}
 }
 
@@ -260,7 +301,10 @@
 \newglossaryentry{Ausgabeschema}{
 	name        ={Ausgabeschema \addIdx     {Ausgabeschema}},
 	text        ={Ausgabeschema},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoGeprueft%
+%%%		\SymbolAmRand{Ausgabeschema}%
 		Ein \GloFt{Ausgabeschema} ist für \ASBA\ eine Beschreibung, wie ein bestimmtes mathematisches \Objekt\ ausgegeben werden soll.
 		Dies kann \textzB\ ein Stück \LaTeX-Code mit entsprechenden Parametern sein.
 	}
@@ -292,8 +336,9 @@
 		sort   =        {Aussage, atomare}] {atomareAussage}},
 	sort       =        {Aussage, atomare},
 	text       ={atomare Aussage},
+	see        ={unzerlegbar,zerlegbar,zusammengesetzt},
 	description={\todoOk%
-		Eine \Aussage\ heißt \defTxt{\atomar}\synonym{\defTxt{\unzerlegbar}}, wenn sie nicht \zerlegbar\ ist, \textdh\ wenn sie keine \echteTeilaussage\ enthält.
+		\atomarBeschreibung{Eine \Aussage}{sie keine \echteTeilaussage}
 	}
 }
 
@@ -365,11 +410,7 @@
 	text       ={zerlegbare Aussage},
 	user1      ={zerlegbar},
 	description={\todoOk%
-		Eine \Aussage\ heißt \defTxt{\zerlegbar}\alternativi[%
-			--- wir unterscheiden allerdings die beiden \Begriffe.
-			Aus \zerlegbar\ folgt zusammengesetzt, aber nicht immer umgekehrt.
-		]{zusammengesetzt}
-		wenn sie mindestens eine \echteTeilaussage\ enthält.
+		Eine \Aussage\ heißt \defTxt{\zerlegbar}, wenn sie mindestens eine \echteTeilaussage\ enthält.
 	}
 }
 
@@ -378,11 +419,11 @@
 \newglossaryentry{Aussagedefinition}{
 	name        ={Aussagedefinition \addIdx     {Aussagedefinition}},
 	text        ={Aussagedefinition},
+	symbol      ={\ensuremath{\MtsDefEquiv}},
 	see         ={Objektdefinition},
 	description ={\todoOk%
-		Eine \Metadefinition: Die formale Definition einer \Aussage.
-		\ifmarginparFlg\newline\else\fi
-		\seqqt{$A \MtsDefEquiv B$} steht für \standsfor{$A$ ist \DefFt{definitionsgemäß äquivalent zu} $B$} für \Aussagen\ $A$ und $B$.
+		\SymbolAmRand{Aussagedefinition}%
+		Eine \Metadefinition: Die formale Definition einer \Aussage\ mittels \MtsDefEquiv.
 		Gewissermaßen ist $A$ nur eine andere Schreibweise für $B$.
 	}
 }
@@ -391,7 +432,9 @@
 \newglossaryentry{Aussagenbereich}{
 	name        ={Aussagenbereich \addIdx    {Aussagenbereich}},
 	text        ={Aussagenbereich},
+	symbol      ={\ensuremath{\MtsAussagen}},
 	description ={\todoOk%
+		\SymbolAmRand{Aussagenbereich}%
 		Der \GloFt{Aussagenbereich} \MtsAussagen\ ist der \Bereich\ aller \formalenAussagen, \textdh\ der \Aussagen\ in \Objektsprache.
 		Es kann $\MtsAussagen \MtsSubsetEq \MtsUniversum$ gelten, muss es aber nicht.
 	}
@@ -403,8 +446,11 @@
 	name            ={Aussagenlogik \addIdx    {Aussagenlogik}},
 	text            ={Aussagenlogik},
 	user1           ={Aussagen-},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see             ={Aussage,Junktor,Logik,Praedikatenlogik,Wahrheitswert},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Aussagenlogik}%
 	\wikicite{bib:Aussagenlogik}{
 		Die \wikiBoldFt{Aussagenlogik} ist ein Teilgebiet der \wikiLinkFt{Logik}, das sich mit Aussagen und deren Verknüpfung durch \wikiLinkFt{Junktoren} befasst, ausgehend von strukturlosen \wikiLinkFt{Elementaraussagen} (Atomen), denen ein \wikiLinkFt{Wahrheitswert} zugeordnet wird. In der \wikiItalicFt{klassischen Aussagenlogik} wird jeder Aussage genau einer der zwei Wahrheitswerte „wahr“ und „falsch“ zugeordnet. Der Wahrheitswert einer zusammengesetzten Aussage lässt sich ohne zusätzliche Informationen aus den Wahrheitswerten ihrer Teilaussagen bestimmen.
 	}
@@ -415,7 +461,10 @@
 \newglossaryentry{Auswertung}{
 	name        ={Auswertung \addIdx     {Auswertung}},
 	text        ={Auswertung},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Auswertung}%
 		Eine \GloFt{Auswertung} ist für \ASBA\ eine statistische oder andere Auswertung, die bestimmten Elementen der Datei \textbzw\ Datenbank zugeordnet sind.
 		\textZB\ können zu einem \Satz\ alle für einen \Beweis\ notwendigen \Axiome\ angegeben werden.
 	}
@@ -427,8 +476,11 @@
 \newglossaryentry{Axiom}{
 	name        ={Axiom \addIdx     {Axiom}},
 	text        ={Axiom},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsAxiom,MtsAxiomSet},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Axiom}%
 		Ein \GloFt{Axiom} ist eine \Aussage, die nicht aus anderen Aussagen abgeleitet werden kann.
 		Es können wie bei \Saetzen\ \Praemissen\ und \Konklusionen\ vorhanden sein, aber keine \Beweise.
 	}
@@ -439,7 +491,10 @@
 \newglossaryentry{Axiomensystem}{
 	name        ={Axiomensystem \addIdx    {Axiomensystem}},
 	text        ={Axiomensysteme},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoGeprueft%
+%%%		\SymbolAmRand{Axiomensystem}%
 		Eine \Menge\ von \Axiomen.
 	}
 }
@@ -451,7 +506,10 @@
 \newglossaryentry{Basisregel}{
 	name        ={Basisregel \addIdx    {Basisregel}},
 	text        ={Basisregel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Basisregel}%
 		Eine \Schlussregel, die nicht mehr auf andere zurückgeführt wird.
 		Obwohl das auch auf die \Identitaetsregeln\ zutrifft, werden diese \hier\ aber nicht dazu gezählt.
 	}
@@ -462,18 +520,25 @@
 \newglossaryentry{Baustein}{
 	name        ={Baustein \addIdx    {Baustein}},
 	text        ={Baustein},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Baustein}%
 	}
 }
 
 \newVerweis         {\Begriff}  {\glstext}{Begriff}
 \newVerweis[e]      {\Begriffe} {\glstext}{Begriff}
 \newVerweis[en]     {\Begriffen}{\glstext}{Begriff}
+\newVerweis[s]      {\Begriffs} {\glstext}{Begriff}
 \longnewglossaryentry{Begriff}{
 	name            ={Begriff \addIdx     {Begriff}},
 	text            ={Begriff},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Bezeichnung},
 }{\todoOk%
+%%%	\SymbolAmRand{Begriff}%
 	\wikicite{bib:Begriff}{
 		Mit dem Ausdruck \wikiBoldFt{Begriff} (\wikiLinkFt{mittelhochdeutsch} und \wikiLinkFt{frühneuhochdeutsch} \wikiItalicFt{begrif} oder \wikiItalicFt{begrifunge}) ist allgemein der \wikiLinkFt{Bedeutungsinhalt} einer \wikiLinkFt{Bezeichnung} angesprochen. Die Abgrenzung zwischen Begriffen und rein gedanklichen (mentalen) Einheiten erfolgt jedoch oft unscharf: Teilweise wird ein \wikiItalicFt{Begriff} als „mentale Informationseinheit“ beschrieben, (also genauso wie in der Kognitionswissenschaft das Konzept). Präziser ist die Abgrenzung des \wikiItalicFt{Begriffes} als \wikiItalicFt{Konzept, das sprachlich benannt ist}, oder geradezu als die \wikiItalicFt{Kombination aus einer sprachlichen Bezeichnung und dem entsprechenden Konzept}.
 	}
@@ -483,8 +548,11 @@
 \newglossaryentry{Beispielsymbol}{
 	name        ={Beispielsymbol \addIdx   {Beispielsymbol}},
 	text        ={Beispielsymbol},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Symbol},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Beispielsymbol}%
 	}
 }
 
@@ -495,21 +563,30 @@
 \longnewglossaryentry{Benennung}{
 	name            ={Benennung \addIdx     {Benennung}},
 	text            ={Benennung},
-	see             ={Bezeichnung,Symbol},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
+	see             ={Bezeichnung},
 }{\todoOk%
+%%%	\SymbolAmRand{Benennung}%
 	\wikicite{bib:Benennung}{
-		Eine \wikiBoldFt{Benennung} ist die \wikiLinkFt{Bezeichnung} eines Gegenstandes durch ein \wikiLinkFt{Wort} oder mehrere Wörter.[1] Die Benennung gilt in der Sprachwissenschaft und in der \wikiLinkFt{Terminologielehre} als die sprachliche Form, mit der \wikiLinkFt{Begriffe} ins Bewusstsein gerufen werden.[2] Eine Benennung ist insofern die Versprachlichung einer Vorstellung.[2] Der weiter gefasste Oberbegriff \wikiItalicFt{Bezeichnung} beinhaltet demgegenüber, neben der \wikiItalicFt{Benennung}, auch nichtsprachliches, wie Nummern, Notationen und Symbole.[3] Bei einer \wikiLinkFt{fachsprachlichen} Benennung spricht man auch von einem \wikiLinkFt{Fachausdruck} oder Terminus.[2] Benennungen kommen als Einwort- und als \wikiLinkFt{Mehrwortbenennungen}, auch Mehrworttermini genannt, vor.
+		Eine \wikiBoldFt{Benennung} ist die \wikiLinkFt{Bezeichnung} eines Gegenstandes durch ein \wikiLinkFt{Wort} oder mehrere Wörter. Die Benennung gilt in der Sprachwissenschaft und in der \wikiLinkFt{Terminologielehre} als die sprachliche Form, mit der \wikiLinkFt{Begriffe} ins Bewusstsein gerufen werden. Eine Benennung ist insofern die Versprachlichung einer Vorstellung. Der weiter gefasste Oberbegriff \wikiItalicFt{Bezeichnung} beinhaltet demgegenüber, neben der \wikiItalicFt{Benennung}, auch nichtsprachliches, wie Nummern, Notationen und Symbole. Bei einer \wikiLinkFt{fachsprachlichen} Benennung spricht man auch von einem \wikiLinkFt{Fachausdruck} oder Terminus. Benennungen kommen als Einwort- und als \wikiLinkFt{Mehrwortbenennungen}, auch Mehrworttermini genannt, vor.
 	}
+	Bei \GloFt{Benennungen} spielt im Gegensatz zu \Symbolketten\ die Schriftart üblicherweise keine Rolle.
 }
 
-\newVerweis     {\Bereich}  {\glstext}{Bereich}
-\newVerweis[e]  {\Bereiche} {\glstext}{Bereich}
-\newVerweis[en] {\Bereichen}{\glstext}{Bereich}
+\newVerweis     {\Bereich}  {\glstext} {Bereich}
+\newVerweis[e]  {\Bereiche} {\glstext} {Bereich}
+\newVerweis[en] {\Bereichen}{\glstext} {Bereich}
+\newVerweis     {\BEREICH}  {\glsuseri}{Bereich}
 \newglossaryentry{Bereich}{
 	name        ={Bereich \addIdx     {Bereich}},
 	text        ={Bereich},
+	user1       ={BEREICH},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Element,Klasse,leererBereich,Menge},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Bereich}%
 		Ein \GloFt{Bereich} ist eine Zusammenfassung von \Aussagen\ und \Objekten.
 		Für solche Zusammenfassungen brauchen wir nur wenige Eigenschaften, die explizit angegeben werden.
 		Die in einem \gloFt{Bereich} zusammengefassten \Aussagen\ und \Objekte\ bezeichnen wir wie üblich als seine \DefFt{\Elemente}.
@@ -518,14 +595,32 @@
 	}
 }
 
+\newVerweis     {\leererBereich}{\glstext}{leererBereich}
+\newglossaryentry{leererBereich}{
+	name       =           {---, leere \addIdx[
+		name   =           {---, leere},
+		sort   =       {Bereich, leere}]  {leererBereich}},
+	sort       =       {Bereich, leere},
+	text       ={leerer Bereich},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	description={\todoPruefen%
+%%%		\SymbolAmRand{leererBereich}%
+		\MtsEmptyset, die \leereMenge, ist auch der einzige \Bereich\ ohne \Elemente.
+	}
+}
+
 \newVerweis     {\Bereichsoperation}  {\glstext}{Bereichsoperation}
 \newVerweis[en] {\Bereichsoperationen}{\glstext}{Bereichsoperation}
 \newglossaryentry{Bereichsoperation}{
 	name        ={Bereichsoperation \addIdx     {Bereichsoperation}},
 	text        ={Bereichsoperation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Bereichsoperation}%
 		Eine \GloFt{Bereichsoperation} ist eine \Operation\ auf \Bereichen.
-		Hoier sind <es die \Operationen\ \MtsCup, \MtsCap und \MtsTimes.
+		\Hier\ sind <es die \Operationen\ \MtsCup, \MtsCap\ und \MtsTimes.
 	}
 }
 
@@ -534,9 +629,12 @@
 \newglossaryentry{Bereichsrelation}{
 	name        ={Bereichsrelation \addIdx     {Bereichsrelation}},
 	text        ={Bereichsrelation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Bereichsrelation}%
 		Eine \GloFt{Bereichsrelationen} ist eine \Relation\ zwischen \Bereichen.
-		\Hier\ sind es die acht \Relationen\ \MtsSubset, \MtsSubsetEq, \MtsSupset, \MtsSupsetEq, \MtsSubsetN, \MtsSubsetEqN, \MtsSupsetN und \MtsSupsetEqN.
+		\Hier\ sind es die acht \Relationen\ \MtsSubset, \MtsSubsetEq, \MtsSupset, \MtsSupsetEq, \MtsSubsetN, \MtsSubsetEqN, \MtsSupsetN\ und \MtsSupsetEqN.
 	}
 }
 
@@ -547,7 +645,10 @@
 	name        ={beschränkt \addIdx[
 		name    ={beschränkt}]            {beschraenkt}},
 	text        ={beschränkt},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{beschraenkt}%
 		Eine \Schlussregel\ heißt \beschraenkt, wenn sie nur endlich viele Prämissen und Konklusionen hat.
 	}
 }
@@ -559,8 +660,11 @@
 \longnewglossaryentry{Beweis}{
 	name            ={Beweis \addIdx     {Beweis}},
 	text            ={Beweis},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Ableitung,Aussage,Axiom},
 }{\todoOk%
+%%%	\SymbolAmRand{Beweis}%
 	\wikicite{bib:Beweis}{
 		Ein \wikiBoldFt{Beweis} ist in der Mathematik die als fehlerfrei anerkannte Herleitung der Richtigkeit bzw. der Unrichtigkeit einer \wikiBoldFt{Aussage} aus einer Menge von \wikiLinkFt{Axiomen}, die als wahr vorausgesetzt werden, und anderen Aussagen, die bereits bewiesen sind. Um den Beweis klar vom gültigen Schluss zu unterscheiden, spricht man auch vom \wikiBoldFt{axiomatischen Beweis}.
 
@@ -578,8 +682,11 @@
 \newglossaryentry{Beweisschritt}{
 	name        ={Beweisschritt \addIdx     {Beweisschritt}},
 	text        ={Beweisschritt},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsBeweisschritt,MtsBeweisschrittSet,MtsBeweisschrittTup},
-	description ={
+	description ={\todoPruefen%
+%%%		\SymbolAmRand{Beweisschritt}%
 		Eine Vorschrift, wie aus vorgegebenen \Aussagen\ (den \Praemissen) weitere (die \Konklusionen) folgen.
 	}
 }
@@ -589,7 +696,10 @@
 \newglossaryentry{Beweisschrittfolge}{
 	name        ={Beweisschrittfolge \addIdx    {Beweisschrittfolge}},
 	text        ={Beweisschrittfolge},
-	description ={
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoPruefen%
+%%%		\SymbolAmRand{Beweisschrittfolge}%
 		Eine Folge von \Beweisschritten.
 	}
 }
@@ -599,7 +709,10 @@
 \newglossaryentry{Beweisschrittmenge}{
 	name        ={Beweisschrittmenge \addIdx    {Beweisschrittmenge}},
 	text        ={Beweisschrittmenge},
-	description ={
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoPruefen%
+%%%		\SymbolAmRand{Beweisschrittmenge}%
 		Eine \Menge\ von \Beweisschritten, insbesondere die \Menge\ der Glieder einer \Beweisschrittfolge.
 	}
 }
@@ -609,11 +722,17 @@
 \longnewglossaryentry{Bezeichnung}{
 	name            ={Bezeichnung \addIdx     {Bezeichnung}},
 	text            ={Bezeichnung},
-	see             ={Begriff,Benennung,Symbol},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
+	see             ={Begriff},
 }{\todoOk%
+%%%	\SymbolAmRand{Bezeichnung}%
 	\wikicite{bib:Bezeichnung}{
 		Eine \wikiBoldFt{Bezeichnung} ist die Repräsentation eines \wikiLinkFt{Begriffs} mit sprachlichen oder anderen Mitteln. Erfolgt diese Repräsentation mittels Wörtern, handelt es sich um eine \wikiLinkFt{Benennung}. Eine nichtsprachliche Bezeichnung kann durch ein \wikiLinkFt{Symbol} erfolgen.
 	}
+	Eine \GloFt{Bezeichnung} ist eine \Benennung\ oder eine \Symbolkette.
+	\Benennungen\ sind \hier\ aber spezielle \Symbolketten.
+	Eine \Symbolkette\ als \Bezeichnung\ wird normalerweise soweit möglich als \Benennung\ interpretiert, so dass die Schriftart dann, im Gegensatz zu \Symbolketten, keine Rolle mehr spielt.
 }
 
 \newVerweis     {\binaer}  {\glstext}{binaer}
@@ -623,9 +742,76 @@
 	name        ={binär \addIdx[
 		name    ={binär}]            {binaer}},
 	text        ={binär},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={unaer},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{binaer}%
 		Eine \Operation, \Funktion\ oder \Relation\ heißt \GloFt{binär}, wenn ihre \Stelligkeit\ gleich 2 ist.
+	}
+}
+
+\newglossaryentry{Buchstabe}{% Platzhalter für Buchstabe
+	name        ={Buchstabe \addIdx {Buchstabe}},
+	text        ={Buchstabe},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Buchstabe}%
+	}
+}
+
+\newVerweis     {\deutschenBuchstaben}{\glsuseri}{deutscherBuchstabe}
+\newVerweis     {\deutscherBuchstabe} {\glstext} {deutscherBuchstabe}
+\newglossaryentry{deutscherBuchstabe}{
+	name       =                {---, deutscher \addIdx[
+		name   =                {---, deutscher},
+		sort   =          {Buchstabe, deutscher}]{deutscherBuchstabe}},
+	sort       =          {Buchstabe, deutscher},
+	text       ={deutscher Buchstabe},
+	user1      ={deutschen Buchstaben},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={deutschesWort,Textwort,griechischerBuchstabe,lateinischerBuchstabe,Textbuchstabe},
+	description={\todoOk%
+%%%		\SymbolAmRand{deutscherBuchstabe}%
+		Ein Buchstabe des deutschen Alphabets.
+	}
+}
+
+\newVerweis     {\griechischenBuchstaben}{\glsuseri}   {griechischerBuchstabe}
+\newVerweis     {\griechischerBuchstabe} {\glstext}    {griechischerBuchstabe}
+\newglossaryentry{griechischerBuchstabe}{
+	name       =                   {---, griechischer \addIdx[
+		name   =                   {---, griechischer},
+		sort   =             {Buchstabe, griechischer}]{griechischerBuchstabe}},
+	sort       =             {Buchstabe, griechischer},
+	text       ={griechischer Buchstabe},
+	user1      ={griechischen Buchstaben},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={griechischesWort,Textwort,deutscherBuchstabe,lateinischerBuchstabe,Textbuchstabe},
+	description={\todoOk%
+%%%		\SymbolAmRand{griechischerBuchstabe}%
+		Ein Buchstabe des griechischen Alphabets.
+	}
+}
+
+\newVerweis     {\lateinischenBuchstaben}{\glsuseri}   {lateinischerBuchstabe}
+\newVerweis     {\lateinischerBuchstabe} {\glstext}    {lateinischerBuchstabe}
+\newglossaryentry{lateinischerBuchstabe}{
+	name       =                   {---, lateinischer \addIdx[
+		name   =                   {---, lateinischer},
+		sort   =             {Buchstabe, lateinischer}]{lateinischerBuchstabe}},
+	sort       =             {Buchstabe, lateinischer},
+	text       ={lateinischer Buchstabe},
+	user1      ={lateinischen Buchstaben},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={lateinischesWort,Textwort,deutscherBuchstabe,griechischerBuchstabe,Textbuchstabe},
+	description={\todoOk%
+%%%		\SymbolAmRand{lateinischerBuchstabe}%
+		Ein Buchstabe des lateinischen Alphabets.
 	}
 }
 
@@ -636,7 +822,10 @@
 \longnewglossaryentry{Darstellung}{
 	name            ={Darstellung \addIdx     {Darstellung}},
 	text            ={Darstellung},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 }{\todoErgaenzen%
+%%%	\SymbolAmRand{Darstellung}%
 	\wikicite{bib:Darstellung}{
 		Unter \wikiBoldFt{Darstellung} (zur semantischen Wurzel \wikiItalicFt{dar}- „öffentlich übergeben“, vergleiche Darbietung, \wikiLinkFt{Darlehen}, darreichen) versteht man die Umsetzung von \wikiLinkFt{Sachverhalten}, \wikiLinkFt{Ereignissen} oder abstrakten Konzepten mittels \wikiLinkFt{Zeichen}, performativer \wikiLinkFt{Handlungen} oder \wikiLinkFt{Modellen}. Historisch reicht die Darstellung von der \wikiLinkFt{mündlichen Überlieferung} über das \wikiLinkFt{Schauspiel} bis zur \wikiLinkFt{Computergrafik} und schließt zahlreiche Vermittlungsmethoden zwischen \wikiLinkFt{Text}, \wikiLinkFt{Bild} und künstlerischer \wikiLinkFt{Aufführung} ein.
 	}
@@ -650,7 +839,10 @@
 		sort   =         {Darstellung, interne}]{interneDarstellung}},
 	sort       =         {Darstellung, interne},
 	text       ={interne Darstellung},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{interneDarstellung}%
 	}
 }
 
@@ -663,7 +855,10 @@
 	sort       =         {Darstellung, logische},
 	text       ={logische Darstellung},
 	user1      ={logischen},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{logischeDarstellung}%
 	}
 }
 
@@ -672,7 +867,10 @@
 \newglossaryentry{Darstellungsweise}{
 	name        ={Darstellungsweise \addIdx    {Darstellungsweise}},
 	text        ={Darstellungsweise},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Darstellungsweise}%
 		Die Art der \Darstellung\ mathematischer \Objekte.
 	}
 }
@@ -684,8 +882,11 @@
 	name        ={Definitionsbereich \addIdx     {Definitionsbereich}},
 	text        ={Definitionsbereich},
 	user1       ={Definitions},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsDb,Quellbereich,Funktion},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Definitionsbereich}%
 		Für eine \Funktion\ \FunktionDef{f}{A}{B} ist $\MtsDb(f)A$ ihr \Definitionsbereich\ (domain).
 	}
 }
@@ -694,7 +895,10 @@
 \newglossaryentry{Differenz}{
 	name        ={Differenz \addIdx    {Differenz}},
 	text        ={Differenz},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoErgaenzen%
+%%%		\SymbolAmRand{Differenz}%
 		Eine \Bereichsoperation:
 	}
 }
@@ -703,9 +907,11 @@
 \longnewglossaryentry{Diskursuniversum}{
 	name            ={Diskursuniversum \addIdx    {Diskursuniversum}},
 	text            ={Diskursuniversum},
-	symbol          ={\formaleDefinition{\RawMtsUniversum}},
+	symbol          ={\ensuremath{\MtsUniversum}},
+%%%	user6           ={Textmode},
 	see             ={Aussage,Begriff,Logik},
 }{\todoPruefen%
+	\SymbolAmRand{Diskursuniversum}%
 	\wikicite{bib:Diskursuniversum}{
 		Unter einem \wikiBoldFt{Diskursuniversum} versteht man in der \wikiLinkFt{Logik} und \wikiLinkFt{Sprachphilosophie} die Gesamtheit der Gegenstände, auf die sich Aussagen wie „alle Gegenstände sind … “ (\wikiLinkFt{Allaussage}) oder „es gibt keine Gegenstände, die … sind“ (negative \wikiLinkFt{Existenzaussage}) beziehen. Solche Aussagen sind nur sinnvoll, wenn die Bedeutung von „Gegenstand“ auf einen bestimmten Bereich, das Diskursuniversum, eingeschränkt wird. Ausmaß und Art der Einschränkung hängen vom Inhalt und vom Zusammenhang der Aussagen ab. Es gibt daher nicht nur ein Diskursuniversum, sondern verschiedene Diskursuniversen.
 
@@ -723,7 +929,6 @@
 
 		Das \wikiItalicFt{U} ist in der Regel eine Teilmenge aller existierenden Objekte und insbesondere in der Prädikatenlogik der bei der Verwendung von \wikiLinkFt{Quantoren} festgelegte oder vorausgesetzte Objektbereich.
 	}
-	\SymbolAmRand{Diskursuniversum}
 	Das \GloFt{Diskursuniversum} \MtsUniversum\ ist der vorgegebene \Bereich\ aller \Objekte, die in \Aussagen\ einen \Parameter\ ersetzen dürfen.
 }
 
@@ -731,19 +936,24 @@
 \newglossaryentry{Durchschnitt}{
 	name        ={Durchschnitt \addIdx    {Durchschnitt}},
 	text        ={Durchschnitt},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoErgaenzen%
+%%%		\SymbolAmRand{Durchschnitt}%
 		Eine \Bereichsoperation:
 	}
 }
 
 %E === E === E === E === E === E === E === E === E === E === E === E === E === E
 
-\newVerweis     {\echt} {\glstext}{echt}
-\newVerweis[e]  {\echte}{\glstext}{echt}
+\newVerweis     {\echt}  {\glstext}{echt}
+\newVerweis[e]  {\echte} {\glstext}{echt}
+\newVerweis[es] {\echtes}{\glstext}{echt}
 \newglossaryentry{echt}{
-	name        ={echt \addIdx    {echt}},
+	name        ={echt \addIdx     {echt}},
 	text        ={echt},
 	description ={\todoGeprueft%
+%%%		\SymbolAmRand{echt}%
 		Attribut für \Oberaussage, \Oberfolge, \Oberformel, \Oberobjekt, \Obermenge, \Obersprache, \Obersymbol, \Teilaussage, \Teilfolge,  \Teilformel, \Teilobjekt, \Teilmenge, \Teilsprache\ und \Teilsymbol.
 	}
 }
@@ -753,7 +963,10 @@
 \newglossaryentry{Eigenschaft}{
 	name        ={Eigenschaft \addIdx   {Eigenschaft}},
 	text        ={Eigenschaft},
-	description ={\todoPruefen%
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoPruefen% ToDo A(x) ist unpräzise
+%%%		\SymbolAmRand{Eigenschaft}%
 		Ist $x$ ein \Parameter\ einer \Aussage\ $A$, so ist die \Aussage\ \statement{$x$ hat die \Eigenschaft\ $A$} gleichbedeutend damit, das $A$ gilt.
 		Wir schreiben etwas unpräzise auch $A(x)$, besonders dann, wenn auch $A(y)$ für $y \ne x$ von Interesse ist.
 	}
@@ -770,7 +983,10 @@
 	sort       =                 {Eigenschaft, interessierende},
 	text       ={interessierende  Eigenschaft},
 	user1      ={interessierenden Eigenschaft},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{interessierendeEigenschaft}%
 		Solche Eigenschaften von \Objekten, die im aktuellen Zusammenhang von Interesse sind, \textzB\ einen bestimmten Wert zu haben, \Element\ aus einer bestimmten \Menge\ zu sein, ein bestimmtes \Objekt\ zu bezeichnen, usw.
 	}
 }
@@ -781,8 +997,11 @@
 \longnewglossaryentry{Element}{
 	name            ={Element \addIdx     {Element}},
 	text            ={Element},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Mengenlehre,Relation},
 }{\todoOk%
+%%%	\SymbolAmRand{Element}%
 	\wikicite{bib:Element}{
 		Ein \wikiBoldFt{Element} in der \wikiLinkFt{Mathematik} ist immer im Rahmen der \wikiLinkFt{Mengenlehre} oder \wikiLinkFt{Klassenlogik} zu verstehen. Die grundlegende \wikiLinkFt{Relation}, wenn $x$ ein Element ist und $M$ eine \wikiLinkFt{Menge} oder \wikiLinkFt{Klasse} ist, lautet:
 		\begin{quote}
@@ -802,7 +1021,10 @@
 \newglossaryentry{Elementoperation}{
 	name        ={Elementoperation \addIdx     {Elementoperation}},
 	text        ={Elementoperation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Elementoperation}%
 	}
 }
 
@@ -811,10 +1033,27 @@
 \newglossaryentry{Elementrelation}{
 	name        ={Elementrelation \addIdx     {Elementrelation}},
 	text        ={Elementrelation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Komponentenrelation},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Elementrelation}%
 		Eine \GloFt{Elementrelation} ist eine \Relation\ zwischen einem \Element\ und einem \Bereich.
-		Hier sind es die vier \Relationen\ \MtsIn, \MtsNi, \MtsInN und \MtsNiN.
+		Hier sind es die vier \Relationen\ \MtsIn, \MtsNi, \MtsInN\ und \MtsNiN.
+	}
+}
+
+\newVerweis     {\Endglied}  {\glstext}{Endglied}
+\newVerweis[er] {\Endglieder}{\glstext}{Endglied}
+\newglossaryentry{Endglied}{
+	name        ={Endglied \addIdx     {Endglied}},
+	text        ={Endglied},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={Anfangsglied,Nachfolger,Vorgaenger,Zwischenglied},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Endglied}%
+		Das \GloFt{Endglied} einer \Kette\ ist ihr letztes (rechts) \Kettenglied.
 	}
 }
 
@@ -824,8 +1063,11 @@
 \newglossaryentry{Ergebnis}{
 	name        ={Ergebnis \addIdx      {Ergebnis}},
 	text        ={Ergebnis},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsErgebnis,MtsErgebnisSet,MtsErgebnisRel},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Ergebnis}%
 		Eine \Ableitung:
 		Ein \Ergebnis\ eines \Beweises.
 	}
@@ -836,7 +1078,10 @@
 \newglossaryentry{Ergebnismenge}{
 	name        ={Ergebnismenge \addIdx    {Ergebnismenge}},
 	text        ={Ergebnismenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Ergebnismenge}%
 		Eine \Ableitungsmenge:
 		Die \Menge\ \MtsErgebnisSet\ der \Ergebnisse\ eines \Beweises.
 	}
@@ -847,7 +1092,10 @@
 \newglossaryentry{Ersetzung}{
 	name        ={Ersetzung \addIdx     {Ersetzung}},
 	text        ={Ersetzung},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Ersetzung}%
 		Eine \Funktion\ zur \Transformation\ einer \Formel\ mittels \Ersetzung\ in eine gleichwertige.
 		Die \Ersetzung\ heißt \zulaessig, wenn sie vorgegebene Regeln erfüllt.
 	}
@@ -858,8 +1106,22 @@
 \newglossaryentry{Ersetzungsmenge}{
 	name        ={Ersetzungsmenge \addIdx    {Ersetzungsmenge}},
 	text        ={Ersetzungsmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Ersetzungsmenge}%
 		Eine \Menge\ von \Ersetzungen, meistens mit \MtsErsetzungSet\ bezeichnet.
+	}
+}
+
+\newVerweis     {\Existenzquantor} {\glstext}{Existenzquantor}
+\newglossaryentry{Existenzquantor}{
+	name        ={Existenzquantor \addIdx    {Existenzquantor}},
+	text        ={Existenzquantor},
+	symbol      ={\ensuremath{\MtsExists \text{ \textbzw\ } \OjkExists}},
+	description ={\todoPruefen%
+		\SymbolAmRand{Existenzquantor}%
+		Man nennt den \Quantor\ \MtsExists\ \textbzw\ \OjkExists\ auch \GloFt{Existenzquantor}.
 	}
 }
 
@@ -871,8 +1133,11 @@
 \longnewglossaryentry{Fachbegriff}{
 	name            ={Fachbegriff \addIdx     {Fachbegriff}},
 	text            ={Fachbegriff},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Begriff,Fachgebiet},
 }{\todoOk%
+%%%	\SymbolAmRand{Fachbegriff}%
 	\wikicite{bib:Terminus}{
 		Ein \wikiBoldFt{Terminus} oder \wikiBoldFt{Fachbegriff} ist eine \wikiLinkFt{definierte} \wikiLinkFt{Benennung} für einen \wikiLinkFt{Begriff} innerhalb der \wikiLinkFt{Fachsprache} eines \wikiLinkFt{Fachgebietes}. Synonyme dazu sind auch \wikiBoldFt{Term} oder \wikiBoldFt{Terminus technicus} (lateinisch \wikiItalicFt{terminus technicus}; \wikiLinkFt{Genus} \wikiItalicFt{m.}; \wikiLinkFt{Pl.} \wikiItalicFt{Termini technici}, kurz \wikiItalicFt{Termini}). \wikiItalicFt{Terminus} kann allerdings neben der rein sprachlichen \wikiItalicFt{Benennung} auch den Bedeutungsinhalt, den \wikiItalicFt{Begriff} selbst, ansprechen.
 
@@ -891,7 +1156,10 @@
 \longnewglossaryentry{Fachgebiet}{
 	name            ={Fachgebiet \addIdx     {Fachgebiet}},
 	text            ={Fachgebiet},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 }{\todoOk%
+%%%	\SymbolAmRand{Fachgebiet}%
 	\wikicite{bib:Fachgebiet}{
 		\wikiBoldFt{Fachgebiet} (auch \wikiBoldFt{Fachbereich} oder \wikiBoldFt{Fachrichtung} oder \wikiBoldFt{Domäne}) ist das auf ein bestimmtes \wikiLinkFt{Wissensgebiet} begrenzte \wikiLinkFt{Wissen}.
 	}
@@ -906,17 +1174,36 @@
 \longnewglossaryentry{Folge}{
 	name            ={Folge \addIdx    {Folge}},
 	text            ={Folge},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 }{\todoGeprueft%
+%%%	\SymbolAmRand{Folge}%
 	\wikicite{bib:Folge}{
-		Als \wikiBoldFt{Folge} oder \wikiBoldFt{Sequenz} wird in der \wikiLinkFt{Mathematik} eine Auflistung (\wikiLinkFt{Familie}) von endlich oder unendlich vielen fortlaufend nummerierten Objekten (beispielsweise Zahlen) bezeichnet. Dasselbe Objekt kann in einer Folge auch mehrfach auftreten. Das Objekt mit der Nummer $i$, man sagt auch: mit dem Index $i$ i, wird $i$-tes Glied oder $i$-te Komponente der Folge genannt. Endliche wie unendliche Folgen finden sich in allen Bereichen der Mathematik. Mit unendlichen Folgen, deren Glieder Zahlen sind, beschäftigt sich vor allem die \wikiLinkFt{Analysis}.
+		Als \wikiBoldFt{Folge} oder \wikiBoldFt{Sequenz} wird in der \wikiLinkFt{Mathematik} eine Auflistung (\wikiLinkFt{Familie}) von endlich oder unendlich vielen fortlaufend nummerierten Objekten (beispielsweise Zahlen) bezeichnet. Dasselbe Objekt kann in einer Folge auch mehrfach auftreten. Das Objekt mit der Nummer $i$, man sagt auch: mit dem Index $i$, wird $i$-tes Glied oder $i$-te Komponente der Folge genannt. Endliche wie unendliche Folgen finden sich in allen Bereichen der Mathematik. Mit unendlichen Folgen, deren Glieder Zahlen sind, beschäftigt sich vor allem die \wikiLinkFt{Analysis}.
 
 		Ist $n$ die Anzahl der Glieder einer endlichen Folge, so spricht man von einer Folge der Länge $n$, einer $n$-gliedrigen Folge oder von einem $n$-Tupel. Die Folge ohne Glieder, deren Index-Bereich also leer ist, wird leere Folge, 0-gliedrige Folge oder 0-Tupel genannt.
 	}
-%%%%	Ein \GloFt{Folge}\alternativi{Sequenz} $\vec{a}$ ist eine Aneinanderreihung ihrer \defTxt{\Komponenten} $a_i$, $i \in \MtsINo$, geschrieben $[a_1, a_2, \dots]$.
-%%%%	Sind alle \Komponenten\ \Elemente\ aus einer \Menge\ $M$, so heißt $\vec{a}$ eine \GloFt{Folge} \DefFt{auf} $M$ oder \DefFt{von} \Elementen\ aus $M$.
-%%%%	Hat die \GloFt{Folge} nur endlich viele \Komponenten, so heißt sie \DefFt{endlich} und die Anzahl $\MtsLen(\vec{a})$ ihrer \Komponenten\ ihre \DefFt{Länge}.
-%%%%	Ist die Länge gleich $0$, so sprechen wir von der \defTxt{\leerenFolge} und bezeichnen sie mit \seqqt{$()$}.
-%%%%	Eine endliche \GloFt{Folge} der Länge $n$ heißt auch \DefFt{$n$-\Tupel} und die leere \GloFt{Folge} demnach \DefFt{$0$-\Tupel}.
+	Ein \GloFt{Folge}\alternativi{Sequenz} $\vec{a}$ ist eine Aneinanderreihung ihrer \defTxt{\Komponenten} $a_i$, $i \in \MtsINo$, geschrieben $[a_1, a_2, \dots]$.
+	Sind alle \Komponenten\ \Elemente\ aus einer \Menge\ $M$, so heißt $\vec{a}$ eine \GloFt{Folge} \DefFt{auf} $M$ oder \DefFt{von} \Elementen\ aus $M$.
+	Hat die \GloFt{Folge} nur endlich viele \Komponenten, so heißt sie \DefFt{endlich} und die Anzahl $\MtsLen(\vec{a})$ ihrer \Komponenten\ ihre \DefFt{Länge}.
+	Ist die Länge gleich $0$, so sprechen wir von der \defTxt{\leerenFolge} und bezeichnen sie mit \seqqt{$[]$}.
+	Eine endliche \GloFt{Folge} der Länge $n$ heißt auch \DefFt{$n$-\Tupel} und die leere \GloFt{Folge} demnach \DefFt{$0$-\Tupel}.
+}
+
+%%%%\newVerweis {\endlicheFolge}{\glstext} {endlicheFolge} %%%% Angeblich schon definiert
+\newglossaryentry{endlicheFolge}{
+	name       =           {---, endliche \addIdx[
+		name   =           {---, endliche},
+		sort   =         {Folge, endliche}]{endlicheFolge}},
+	sort       =         {Folge, endliche},
+	text       ={endliche Folge},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={MtsLen,Folge,Tupel},
+	description={\todoPruefen%
+%%%		\SymbolAmRand{endlicheFolge}%
+		Eine \Folge\ heißt \GloFt{endlich}, wenn ihre Länge endlich ist, \textdh\ wenn sie nur endlich viele \Komponenten\ besitzt.
+	}
 }
 
 \newVerweis      {\leereFolge} {\glstext} {leereFolge}
@@ -929,8 +1216,11 @@
 	sort       =       {Folge, leere},
 	text       ={leere  Folge},
 	user1      ={leeren Folge},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	see        ={MtsLen,Folge,Tupel},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{leereFolge}%
 		Eine \Folge\ heißt \GloFt{leer}, wenn ihre Länge $0$ ist, \textdh\ wenn sie keine \Komponenten\ besitzt.
 	}
 }
@@ -939,7 +1229,10 @@
 \newglossaryentry{Folgenmenge}{
 	name        ={Folgenmenge \addIdx   {Folgenmenge}},
 	text        ={Folgenmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Folgenmenge}%
 	}
 }
 
@@ -949,6 +1242,7 @@
 	name        ={Folgenoperation \addIdx     {Folgenoperation}},
 	text        ={Folgenoperation},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Folgenoperation}%
 	}
 }
 
@@ -957,12 +1251,15 @@
 \newglossaryentry{Folgenrelation}{
 	name        ={Folgenrelation \addIdx     {Folgenrelation}},
 	text        ={Folgenrelation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Folgenrelation}%
 	}
 }
 
-\newcommand*{\Folgerungen}[1][]{\glstext[#1]{Folgerung}[en]}
-\newsynonym{\Folgerung}{Folgerung}{\Konklusion}
+\newsynonym    {\Folgerung}            {Folgerung}{\Konklusion}
+\newVerweis[en]{\Folgerungen}{\glstext}{Folgerung}
 
 \newsynonym{\Folgerungsmenge}{Folgerungsmenge}{\Konklusionsmenge}
 
@@ -971,7 +1268,10 @@
 \newglossaryentry{Formationsregel}{
 	name        ={Formationsregel \addIdx    {Formationsregel}},
 	text        ={Formationsregel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Formationsregel}%
 	}
 }
 
@@ -980,9 +1280,12 @@
 \newglossaryentry{Formel}{
 	name        ={Formel \addIdx    {Formel}},
 	text        ={Formel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Formel}%
 		Unter einer \GloFt{Formel} verstehen wir stets eine mathematische Formel.
-		Diese kann aus einem einzigen \Symbol\ bestehen (\atomare\ \gloFt{Formel}), andererseits aber auch mehrdimensional sein, lässt sich dann aber mittels geeigneter Definitionen immer eindeutig als eine \Symbolfolge\ schreiben.
+		Diese kann aus einem einzigen \Symbol\ bestehen (\atomare\ \gloFt{Formel}), andererseits aber auch mehrdimensional sein, lässt sich dann aber mittels geeigneter Definitionen immer eindeutig als eine \Symbolkette\ schreiben.
 		%%% besser: Formel = \Element\ aus einer Sprache?
 	}
 }
@@ -995,9 +1298,29 @@
 		sort   =                  {Formel, allgemeingültige}]{allgemeingueltigeFormel}},
 	sort       =                  {Formel, allgemeingültige},
 	text       ={allgemeingültige  Formel},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	user1      ={allgemeingültigen Formel},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{allgemeingueltigeFormel}%
 		Eine \Formel\ heißt \GloFt{allgemeingültig}, wenn sie aus den \Axiomen\ und \allgemeingueltigenSchlussregeln\ abgeleitet werden kann.
+	}
+}
+
+%%%\newVerweis     {\atomareFormel} {\glstext}{atomareFormel}
+%%%\newVerweis[n]  {\atomareFormeln}{\glstext}{atomareFormel}
+\newglossaryentry{atomareFormel}{
+	name       =           {---, atomare \addIdx[
+		name   =           {---, atomare},
+		sort   =        {Formel, atomare}] {atomareFormel}},
+	sort       =        {Formel, atomare},
+	text       ={atomare Formel},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={unzerlegbar,zerlegbar,zusammengesetzt},
+	description={\todoGeprueft%
+%%%		\SymbolAmRand{atomareFormel}%
+		\atomarBeschreibung{Eine \Formel}{sie keine \echteTeilformel}
 	}
 }
 
@@ -1014,21 +1337,27 @@
 	text       ={aussagenlogische  Formel},
 	user1      ={aussagenlogischen Formel},
 	user2      ={aussagenlogische},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{aussagenlogischeFormel}%
 		Eine \Formel\ heißt \GloFt{aussagenlogisch}, wenn sie ein \Element\ aus \OjkFor\ ist.
 	}
 }
 
-\newVerweis      {\praedikatenlogischeFormel} {\glstext}           {praedikatenlogischeFormel}
-\newVerweis[n]   {\praedikatenlogischeFormeln}{\glstext}           {praedikatenlogischeFormel}
-\newglossaryentry {praedikatenlogischeFormel}{
-	name       =                        {---, praedikatenlogische \addIdx[
-		name   =                        {---, praedikatenlogische},
-		sort   =                     {Formel, praedikatenlogische}]{praedikatenlogischeFormel}},
-	sort       =                     {Formel, praedikatenlogische},
-	text       ={praedikatenlogische  Formel},
-	description={\todoPruefen%
-		Eine \Formel\ heißt \GloFt{prädikatenlogisch}, wenn sie ein \Element\ aus \OjkFor\ ist.%TODO andere Menge
+\newVerweis     {\praedikatenlogischeFormel} {\glstext}           {praedikatenlogischeFormel}
+\newVerweis[n]  {\praedikatenlogischeFormeln}{\glstext}           {praedikatenlogischeFormel}
+\newglossaryentry{praedikatenlogischeFormel}{
+	name       =                       {---, praedikatenlogische \addIdx[
+		name   =                       {---, praedikatenlogische},
+		sort   =                    {Formel, praedikatenlogische}]{praedikatenlogischeFormel}},
+	sort       =                    {Formel, praedikatenlogische},
+	text       = {prädikatenlogische Formel},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	description={\todoPruefen% ToDo=\OjkFor durch korrekte Menge ersetzen
+%%%		\SymbolAmRand{praedikatenlogischeFormel}%
+		Eine \Formel\ heißt \GloFt{prädikatenlogisch}, wenn sie ein \Element\ aus \OjkFor\ ist.
 	}
 }
 
@@ -1037,7 +1366,10 @@
 \newglossaryentry{Formelmenge}{
 	name        ={Formelmenge \addIdx    {Formelmenge}},
 	text        ={Formelmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Formelmenge}%
 		Eine \Menge\ von \Formeln, oft mit \MtsSprache\ bezeichnet.
 		Man nennt \MtsSprache\ auch eine \Sprache\ und ihre \Elemente\ \Woerter, insbesondere dann, wenn es eindeutige Regeln zur Konstruktion von \MtsSprache\ gibt.
 		Wir bevorzugen „\Formel“ und „\Formelmenge“.
@@ -1053,8 +1385,11 @@
 	text            ={Funktion},
 	user1           ={:},
 	user2           ={\ensuremath{\RawMtsFktArrow}},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Abbildung,Element,Menge,Objekt,Relation},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Funktion}%
 	\wikicite{bib:Funktion}{
 		In der \wikiLinkFt{Mathematik} ist eine \wikiBoldFt{Funktion} (lateinisch \wikiItalicFt{functio}) oder \wikiBoldFt{Abbildung} eine Beziehung (\wikiLinkFt{Relation}) zwischen zwei \wikiLinkFt{Mengen}, die jedem Element der einen Menge (Funktionsargument, unabhängige Variable, $x$-Wert) genau ein Element der anderen Menge (Funktionswert, abhängige Variable, $y$-Wert) zuordnet. Der Funktionsbegriff wird in der Literatur unterschiedlich definiert, jedoch geht man generell von der Vorstellung aus, dass Funktionen \wikiLinkFt{mathematischen Objekten} mathematische Objekte zuordnen, zum Beispiel jeder reellen Zahl deren Quadrat.  Das Konzept der Funktion oder Abbildung nimmt in der modernen Mathematik eine zentrale Stellung ein; es enthält als Spezialfälle unter anderem \wikiLinkFt{parametrische Kurven}, Skalar- und \wikiLinkFt{Vektorfelder}, \wikiLinkFt{Transformationen}, \wikiLinkFt{Operationen}, \wikiLinkFt{Operatoren} und vieles mehr.
 	}
@@ -1069,7 +1404,10 @@
 \newglossaryentry{Funktionssymbol}{
 	name        ={Funktionssymbol \addIdx     {Funktionssymbol}},
 	text        ={Funktionssymbol},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Funktionssymbol}%
 		Ein \Symbol\ für eine \Funktion.
 	}
 }
@@ -1079,7 +1417,10 @@
 \newglossaryentry{Funktionswert}{
 	name        ={Funktionswert \addIdx    {Funktionswert}},
 	text        ={Funktionswert},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Funktionswert}%
 		einer \Funktion.
 	}
 }
@@ -1090,7 +1431,10 @@
 \newglossaryentry{Gleichheit}{
 	name        ={Gleichheit \addIdx   {Gleichheit}},
 	text        ={Gleichheit},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Gleichheit}%
 		Eine \Gleichheitsrelation:
 		Zwei Objekte $A$ und $B$ sind \DefFt{gleich} (dasselbe; identisch), $A \MtsEq B$, wenn sie in den \interessierendenEigenschaften\ für \MtsEq\ übereinstimmen.
 	}
@@ -1101,17 +1445,26 @@
 \newglossaryentry{Gleichheitsrelation}{
 	name        ={Gleichheitsrelation \addIdx     {Gleichheitsrelation}},
 	text        ={Gleichheitsrelation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Gleichheitsrelation}%
 %%%		Eine mit \Gleichheit\ verwandte \Relation: \MtsEq, \MtsEqN, \MtsAequiv\ und \MtsAequivN.
-		Eine mit \Gleichheit\ verwandte \Relation: \MtsEq und \MtsEqN.
+		Eine mit \Gleichheit\ verwandte \Relation: \MtsEq\ und \MtsEqN.
 	}
 }
+
+%%%\newVerweis[er]{\Glieder}{\glstext}{Glied}
+%%%\newsynonym    {\Glied}{Glied}{\Kettenglied}
 
 \newVerweis     {\Gliederungszeichen}{\glstext}{Gliederungszeichen}
 \newglossaryentry{Gliederungszeichen}{
 	name        ={Gliederungszeichen \addIdx   {Gliederungszeichen}},
 	text        ={Gliederungszeichen},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Gliederungszeichen}%
 	}
 }
 
@@ -1120,8 +1473,11 @@
 \newglossaryentry{Graph}{
 	name        ={Graph \addIdx     {Graph}},
 	text        ={Graph},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see      ={MtsGraph},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Graph}%
 		einer \Funktion\ oder \Relation.
 	}
 }
@@ -1134,7 +1490,10 @@
 	name        ={Identitätsregel \addIdx[
 		name    ={Identitätsregel}]           {Identitaetsregel}},
 	text        ={Identitätsregel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Identitaetsregel}%
 		Eigentlich eine \Basisregel\ zur Identität.
 		Da die \Identitaetsregeln\ nur zur Rechtfertigung der \Ersetzung\ verwendet werden, werden sie \hier\ nicht zu den \Basisregeln\ gezählt.
 	}
@@ -1147,8 +1506,11 @@
 \longnewglossaryentry{Junktor}{
 	name            ={Junktor \addIdx     {Junktor}},
 	text            ={Junktor},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Metajunktor},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Junktor}%
 	\wikicite{bib:Junktor}{
 		Ein \wikiBoldFt{Junktor} (von \wikiLinkFt{lat.} \wikiItalicFt{iungere} „verknüpfen, verbinden“) ist eine \wikiLinkFt{logische Verknüpfung} zwischen Aussagen innerhalb der \wikiLinkFt{Aussagenlogik}, also ein logischer \wikiLinkFt{Operator}. Junktoren werden auch Konnektive, Konnektoren, Satzoperatoren, Satzverknüpfer, Satzverknüpfungen, Aussagenverknüpfer, logische Bindewörter, Verknüpfungszeichen oder Funktoren genannt und als \wikiLinkFt{logische Partikel} klassifiziert.
 
@@ -1166,8 +1528,11 @@
 		sort    =        {Junktor, binärer}]   {binaererJunktor}},
 	sort        =        {Junktor, binärer},
 	text        ={binärer Junktor},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	user1       ={binären Junktor},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{binaererJunktor}%
 	}
 }
 
@@ -1179,8 +1544,11 @@
 		sort    =       {Junktor, unärer}]    {unaererJunktor}},
 	sort        =       {Junktor, unärer},
 	text        ={unärer Junktor},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	user1       ={unären Junktor},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{unaererJunktor}%
 	}
 }
 
@@ -1189,7 +1557,10 @@
 \newglossaryentry{Junktorsymbol}{
 	name        ={Junktorsymbol \addIdx    {Junktorsymbol}},
 	text        ={Junktorsymbol},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Junktorsymbol}%
 		Ein \Symbol\ für einen \Junktor.
 	}
 }
@@ -1200,19 +1571,88 @@
 \longnewglossaryentry{Kalkuel}{
 	name            ={Kalkuel \addIdx   {Kalkuel}},
 	text            ={Kalkül},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Axiom,Logik},
 }{\todoErgaenzen%
+%%%	\SymbolAmRand{Kalkuel}%
 	\wikicite{bib:Kalkuel}{
 		Als der oder das \wikiBoldFt{Kalkül} (französisch \wikiItalicFt{calcul} „Rechnung“; von \wikiLinkFt{lateinisch} \wikiItalicFt{calculus} „\wikiLinkFt{Rechenstein}“, „\wikiLinkFt{Spielstein}“) versteht man in den formalen Wissenschaften wie \wikiLinkFt{Logik} und \wikiLinkFt{Mathematik} ein System von Regeln, mit denen sich aus gegebenen Aussagen (\wikiLinkFt{Axiomen}) weitere Aussagen ableiten lassen. Kalküle, auf eine Logik selbst angewandt, werden auch Logikkalküle genannt.
 	}
-	\todo{Beschreibung fehlt noch}
+}
+
+\newVerweis     {\Kette} {\glstext}{Kette}
+\newVerweis[n]  {\Ketten}{\glstext}{Kette}
+\newglossaryentry{Kette}{
+	name        ={Kette \addIdx    {Kette}},
+	text        ={Kette},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={Symbolkette,Zeichenkette},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Kette}%
+		Eine \GloFt{Kette} ist eine lineare Aneinanderreihung von endlich vielen, nicht notwendig verschiedenen \defGlo{\Kettengliedern}.
+		In der Darstellung werden die \Kettenglieder\ \hier\ von links (Anfang) nach rechts (Ende) geschrieben.
+		Wenn sie kein \Kettenglied\ hat, ist sie \leerK, ansonsten \DefFt{nicht leer}.
+		Sie hat folgende Eigenschaften:
+		\begin{enumerate}
+			\item Wenn nichts anderes gesagt wird, hat sie mindestens ein \Kettenglied.
+			\item Jedes \Kettenglied\ hat höchstens einen \defGlo{\Vorgaenger} (Richtung Anfang) und höchstens einen \defGlo{\Nachfolger} (Richtung Ende).
+			\item Eine nicht leere \Kette\ hat genau ein \defGlo{\AnfangsG} und ein \defGlo{\Endglied}.
+			\item \AnfangsG\ und \Endglied\ dürfen übereinstimmen.
+			Die \gloFt{Kette} hat dann nur ein \Kettenglied.
+			\item Ein \Anfangsglied\ hat keinen \Vorgaenger\ und höchstens einen \Nachfolger.
+			\item Ein \Endglied\     hat keinen \Nachfolger\ und höchstens einen \Vorgaenger.
+			\item \defGlo{\Zwischenglieder} sind die \Kettenglieder, die weder \AnfangsG\ noch \Endglied\ sind.
+			\item Jedes \Zwischenglied\ hat genau einen \Vorgaenger\ und einen \Nachfolger.
+			\item Zwei \Ketten\ sind gleich, wenn sie die gleichen \Kettenglieder\ in der gleichen Reihenfolge besitzen.
+		\end{enumerate}
+		Die \Kette\ ohne \Kettenglieder\ ist die \defGlo{\leereKette}.
+		Wegen 9 gibt es genau eine \leereKette.
+	}
+}
+
+\newVerweis     {\leereKette}{\glstext} {leereKette}
+\newVerweis     {\leerK}     {\glsuseri}{leereKette}
+\newglossaryentry{leereKette}{
+	name       =        {---, leere \addIdx[
+		name   =        {---, leere},
+		sort   =      {Kette, leere}]   {leereKette}},
+	sort       =      {Kette, leere},
+	text       ={leere Kette},
+	user1      ={leer},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	description={\todoOk%
+%%%		\SymbolAmRand{leereKette}%
+		Eine \GloFt{leere Kette} ist eine \Kette\ ohne \Kettenglieder.
+		Es gibt genau eine \gloFt{leere Kette}.
+	}
+}
+
+\newVerweis     {\Kettenglied}   {\glstext}{Kettenglied}
+\newVerweis[er] {\Kettenglieder} {\glstext}{Kettenglied}
+\newVerweis[ern]{\Kettengliedern}{\glstext}{Kettenglied}
+\newVerweis[s]  {\Kettenglieds}  {\glstext}{Kettenglied}
+\newglossaryentry{Kettenglied}{
+	name        ={Kettenglied \addIdx      {Kettenglied}},
+	text        ={Kettenglied},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Kettenglied}%
+		Eine \GloFt{Kettenglied}\synonym{Glied} ist Teil einer \Kette\ und kann jedes nicht weiter \zerlegbare\ \Element\ sein.
+	}
 }
 
 \newVerweis     {\Klammerung}{\glstext}{Klammerung}
 \newglossaryentry{Klammerung}{
 	name        ={Klammerung \addIdx   {Klammerung}},
 	text        ={Klammerung},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Klammerung}%
 	}
 }
 
@@ -1221,23 +1661,44 @@
 \longnewglossaryentry{Klasse}{
 	name            ={Klasse \addIdx    {Klasse}},
 	text            ={Klasse},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Menge,Mengenlehre}
 }{\todoOk%
+%%%	\SymbolAmRand{Klasse}%
 	\wikicite{bib:Klasse}{
 		Als \wikiBoldFt{Klasse} gilt in der \wikiLinkFt{Mathematik}, \wikiLinkFt{Klassenlogik} und \wikiLinkFt{Mengenlehre} eine Zusammenfassung beliebiger Objekte, definiert durch eine logische Eigenschaft, die alle Objekte der Klasse erfüllen. Vom Klassenbegriff ist der Mengenbegriff zu unterscheiden. Nicht alle Klassen sind automatisch auch Mengen, weil Mengen zusätzliche Bedingungen erfüllen müssen. Mengen sind aber stets Klassen und werden daher auch in der Praxis in Klassenschreibweise notiert.
 	}
 	Eine \GloFt{Klasse} ist eine \Bereich, deren \Elemente\ genau die \Objekte\ mit einer bestimmten \Eigenschaft\ sind.
-	%TODO Eigenschaft(x) definieren
+
 	Schreibweise: \MengeDef{x}{Eigenschaft(x)}
 	-- Jede \Menge\ ist auch eine \gloFt{Klasse} und jede \gloFt{Klasse} ein \Bereich.
+}
+
+\newVerweis     {\leereKlasse}{\glstext}{leereKlasse}
+\newglossaryentry{leereKlasse}{
+	name        =         {---, leere \addIdx[
+		name    =         {---, leere},
+		sort    =      {Klasse, leere}] {leereKlasse}},
+	sort        =      {Klasse, leere},
+	text        ={leere Klasse},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoPruefen%
+%%%		\SymbolAmRand{leereKlasse}%
+		\MtsEmptyset, die \leereMenge, ist auch die einzige \Klasse\ ohne \Elemente.
+	}
 }
 
 \newVerweis         {\Klassenlogik} {\glstext}{Klassenlogik}
 \longnewglossaryentry{Klassenlogik}{
 	name            ={Klassenlogik \addIdx    {Klassenlogik}},
 	text            ={Klassenlogik},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Klasse,Logik},
 }{\todoErgaenzen%
+%%%	\SymbolAmRand{Klassenlogik}%
 	\wikicite{bib:Klassenlogik}{
 		Die \wikiBoldFt{Klassenlogik} ist im weiteren Sinn eine \wikiLinkFt{Logik}, deren Objekte als Klassen bezeichnet werden. Im engeren Sinn spricht man von einer Klassenlogik nur dann, wenn \wikiLinkFt{Klassen} durch eine Eigenschaft ihrer Elemente beschrieben werden. Diese Klassenlogik ist daher eine Verallgemeinerung der \wikiLinkFt{Mengenlehre}, die nur eine eingeschränkte Klassenbildung erlaubt.
 	}
@@ -1248,8 +1709,11 @@
 \newglossaryentry{Komponente}{
 	name        ={Komponente \addIdx    {Komponente}},
 	text        ={Komponente},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Folge,Tupel},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Komponente}%
 		Die \Komponenten\ einer \Folge\ $\vec{a} = (a_1, a_2, \dots)$ sind die $a_i$.
 		$a_i$ heißt die \GloFt{$i$-te \Komponente} von $\vec{a}$.
 	}
@@ -1259,8 +1723,11 @@
 \newglossaryentry{Komponentenmenge}{
 	name        ={Komponentenmenge \addIdx     {Komponentenmenge}},
 	text        ={Komponentenmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Menge},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Komponentenmenge}%
 		$\MtsSet(\vec{a}) \MtsDefEq \RawMengeDef{a}{a \MtsSeqIn \vec{a}}$ ist die \GloFt{Komponentenmenge} einer \Folge\ \textbzw\ eines \Tupels\ $\vec{a}$.
 	}
 }
@@ -1270,9 +1737,12 @@
 \newglossaryentry{Komponentenrelation}{
 	name        ={Komponentenrelation \addIdx     {Komponentenrelation}},
 	text        ={Komponentenrelation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Elementrelation},
-	description ={\todoPruefen%
-		Eine \GloFt{Komponentenrelation} ist eine Relation zwischen einer (möglichen) \Komponente\ und einer \Folge: \MtsSeqIn, \MtsSeqNi, \MtsSeqInN und \MtsSeqNiN
+	description ={\todoPruefen% ToDo Was heißt (möglichen)?
+%%%		\SymbolAmRand{Komponentenrelation}%
+		Eine \GloFt{Komponentenrelation} ist eine Relation zwischen einer (möglichen) \Komponente\ und einer \Folge: \MtsSeqIn, \MtsSeqNi, \MtsSeqInN\ und \MtsSeqNiN
 	}
 }
 
@@ -1281,8 +1751,11 @@
 \newglossaryentry{Konklusion}{
 	name        ={Konklusion \addIdx     {Konklusion}},
 	text        ={Konklusion},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Schlussregel},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Konklusion}%
 		Eine \Ableitung:
 		Die \Konklusionen\ einer \Schlussregel\ $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ \textbzw\ $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ sind die \Elemente\ aus \MtsKonklusionSet\ \textbzw\ \MtsKonklusionRel.
 		Die \Konklusionen\ werden normalerweise mit $\MtsKonklusion_i$ bezeichnet.
@@ -1294,7 +1767,10 @@
 \newglossaryentry{Konklusionsmenge}{
 	name        ={Konklusionsmenge \addIdx    {Konklusionsmenge}},
 	text        ={Konklusionsmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Konklusionsmenge}%
 		Eine \Ableitungsmenge:
 		Die \Menge\ \MtsKonklusionSet\ der \Konklusionen\ einer \Schlussregel\ \textbzw\ eines \Beweises.
 	}
@@ -1305,10 +1781,13 @@
 \longnewglossaryentry{Konstante}{
 	name            ={Konstante \addIdx    {Konstante}},
 	text            ={Konstante},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Symbol,Variable},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Konstante}%
 	\wikicite{bib:Konstante}{
-		Allgemein ist eine \wikiBoldFt{Konstante} (von \wikiLinkFt{lateinisch} \wikiItalicFt{constans} „feststehend“) ein Zeichen beziehungsweise ein Sprachausdruck mit einer „genau bestimmte[n]Bedeutung, die im Laufe der Überlegungen unverändert bleibt“[1]. Die Konstante ist damit ein Gegenbegriff zur \wikiLinkFt{Variablen}.
+		Allgemein ist eine \wikiBoldFt{Konstante} (von \wikiLinkFt{lateinisch} \wikiItalicFt{constans} „feststehend“) ein Zeichen beziehungsweise ein Sprachausdruck mit einer „genau bestimmte[n]Bedeutung, die im Laufe der Überlegungen unverändert bleibt“. Die Konstante ist damit ein Gegenbegriff zur \wikiLinkFt{Variablen}.
 	}
 }
 
@@ -1321,8 +1800,11 @@
 		sort   =                  {Konstante, aussagenlogische}]{aussagenlogischeKonstante}},
 	sort       =                  {Konstante, aussagenlogische},
 	text       ={aussagenlogische  Konstante},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	user1      ={aussagenlogischen Konstante},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{aussagenlogischeKonstante}%
 		Eine \Konstante\ heißt \GloFt{aussagenlogisch}, wenn sie ein \Element\ aus \OjkCon\ ist.
 	}
 }
@@ -1331,7 +1813,10 @@
 \newglossaryentry{Kontraposition}{
 	name        ={Kontraposition \addIdx   {Kontraposition}},
 	text        ={Kontraposition},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Kontraposition}%
 		Die allgemeingültige \Aussage: $ (\alpha \OjkImp \beta) \OjkImp (\OjkNot\beta \OjkImp \OjkNot\alpha) $.
 	}
 }
@@ -1340,7 +1825,10 @@
 %%%\newglossaryentry{Kontravalenz}{
 %%%	name        ={Kontravalenz \addIdx   {Kontravalenz}},
 %%%	text        ={Kontravalenz},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 %%%	description ={\todoPruefen%
+%%%		\SymbolAmRand{Kontravalenz}%
 %%%		Eine \Gleichheitsrelation:
 %%%		Zwei Objekte $A$ und $B$ sind \DefFt{nicht äquivalent} (nicht ähnlich), $A \MtsAequivN B$, wenn sie in mindestens einer \interessierendenEigenschaft\ für \MtsAequiv\ nicht übereinstimmen.
 %%%	}
@@ -1353,8 +1841,11 @@
 \longnewglossaryentry{Logik}{
 	name            ={Logik \addIdx     {Logik}},
 	text            ={Logik},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={atomar,Aussage,Aussagenlogik,Praedikatenlogik,Schlussregel},
 }{\todoGeprueft%
+%%%	\SymbolAmRand{Logik}%
 	\wikicite{bib:Logik}{
 		Mit \wikiBoldFt{Logik} (von \wikiLinkFt{altgriechisch} [\textdots]‚denkende Kunst‘, ‚Vorgehensweise‘) oder auch \wikiBoldFt{Folgerichtigkeit} wird im Allgemeinen das \wikiLinkFt{vernünftige Schlussfolgern} und im Besonderen dessen Lehre – die \wikiBoldFt{Schlussfolgerungslehre} oder auch \wikiBoldFt{Denklehre} – bezeichnet. In der Logik wird die Struktur von \wikiLinkFt{Argumenten} im Hinblick auf ihre \wikiLinkFt{Gültigkeit} untersucht, unabhängig vom Inhalt der \wikiLinkFt{Aussagen}. Bereits in diesem Sinne spricht man auch von „formaler“ Logik. Traditionell ist die Logik ein Teil der \wikiLinkFt{Philosophie}. Ursprünglich hat sich die traditionelle Logik in Nachbarschaft zur \wikiLinkFt{Rhetorik} entwickelt. Seit dem 20. Jahrhundert versteht man unter Logik überwiegend {symbolische Logik}, die auch als grundlegende \wikiLinkFt{Strukturwissenschaft}, z. B. innerhalb der \wikiLinkFt{Mathematik} und der \wikiLinkFt{theoretischen Informatik}, behandelt wird.
 
@@ -1368,9 +1859,12 @@
 		name        =                {---, mathematische},
 		sort        =              {Logik, mathematische}]{mathematischeLogik}},
 	sort            =              {Logik, mathematische},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	text            ={mathematische Logik},
 	see             ={Mengenlehre,Fachgebiet},
 }{\todoGeprueft%
+%%%	\SymbolAmRand{mathematischeLogik}%
 	\wikicite{bib:mathematischeLogik}{
 		Die \wikiBoldFt{mathematische Logik}, auch \wikiBoldFt{symbolische Logik}, (alternativer Sprachgebrauch auch \wikiItalicFt{Logistik}), ist ein Teilgebiet der \wikiLinkFt{Mathematik}, insbesondere als Methode der \wikiLinkFt{Metamathematik} und eine Anwendung der modernen \wikiLinkFt{formalen Logik}. Oft wird sie wiederum in die Teilgebiete \wikiLinkFt{Modelltheorie}, \wikiLinkFt{Beweistheorie}, \wikiLinkFt{Mengenlehre} und \wikiLinkFt{Rekursionstheorie} aufgeteilt. Forschung im Bereich der mathematischen Logik hat zum Studium der \wikiLinkFt{Grundlagen der Mathematik} beigetragen und wurde auch durch dieses motiviert. Infolgedessen wurde sie auch unter dem Begriff \wikiItalicFt{Metamathematik} bekannt.
 
@@ -1389,8 +1883,11 @@
 	name            ={Menge \addIdx     {Menge}},
 	text            ={Menge},
 	user1           ={\ensuremath{\RawMtsSetSep}},
-	see             ={Berich,Element,Folge,leereMenge,Mengenlehre,Tupel},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
+	see             ={Bereich,Element,Folge,leereMenge,Mengenlehre,Tupel},
 }{\todoGeprueft%
+%%%	\SymbolAmRand{Menge}%
 	\wikicite{bib:Menge}{
 		Eine \wikiBoldFt{Menge} ist ein Verbund, eine Zusammenfassung von einzelnen \wikiLinkFt{Elementen}. Die \wikiItalicFt{Menge} ist eines der wichtigsten und grundlegenden Konzepte der Mathematik, mit ihrer Betrachtung beschäftigt sich die \wikiLinkFt{Mengenlehre}.
 
@@ -1408,7 +1905,10 @@
 		sort   =      {Menge, leere}]  {leereMenge}},
 	sort       =      {Menge, leere},
 	text       ={leere Menge},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{leereMenge}%
 		\MtsEmptyset, die \GloFt{leere Menge}, ist die einzige \Menge\ ohne \Elemente.
 		Sie wird auch mit \seqqt{$\{\}$} bezeichnet.
 	}
@@ -1418,8 +1918,11 @@
 \longnewglossaryentry{Mengenlehre}{
 	name            ={Mengenlehre \addIdx   {Mengenlehre}},
 	text            ={Mengenlehre},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Axiom,Fachgebiet,Menge,Objekt},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Mengenlehre}%
 	\wikicite{bib:Mengenlehre}{
 		Die \wikiBoldFt{Mengenlehre} ist ein grundlegendes \wikiLinkFt{Teilgebiet der Mathematik}, das sich mit der Untersuchung von \wikiLinkFt{Mengen}, also von Zusammenfassungen von \wikiLinkFt{Objekten}, beschäftigt. Die gesamte Mathematik, wie sie heute üblicherweise gelehrt wird, ist in der Sprache der Mengenlehre formuliert und baut auf den \wikiLinkFt{Axiomen der Mengenlehre} auf. Die meisten mathematischen Objekte, die in Teilbereichen wie \wikiLinkFt{Algebra}, \wikiLinkFt{Analysis}, \wikiLinkFt{Geometrie}, \wikiLinkFt{Stochastik} oder \wikiLinkFt{Topologie} behandelt werden, um nur einige wenige zu nennen, lassen sich als Mengen definieren. Gemessen daran ist die Mengenlehre eine recht junge Wissenschaft; erst nach der Überwindung der \wikiLinkFt{Grundlagenkrise der Mathematik} im frühen 20. Jahrhundert konnte die Mengenlehre ihren heutigen, zentralen und grundlegenden Platz in der Mathematik einnehmen.
 	}
@@ -1430,7 +1933,10 @@
 \newglossaryentry{Mengenoperation}{
 	name        ={Mengenoperation \addIdx     {Mengenoperation}},
 	text        ={Mengenoperation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Mengenoperation}%
 	}
 }
 
@@ -1441,7 +1947,10 @@
 \newglossaryentry{Mengenrelation}{
 	name        ={Mengenrelation \addIdx     {Mengenrelation}},
 	text        ={Mengenrelation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Mengenrelation}%
 	}
 }
 
@@ -1450,7 +1959,10 @@
 \newglossaryentry{Metadefinition}{
 	name        ={Metadefinition \addIdx     {Metadefinition}},
 	text        ={Metadefinition},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Metadefinition}%
 		Eine \Metaoperation: Die formale Definition einer \Aussage\ (\Aussagedefinition) \textbzw\ eines \Objekts\ (\Objektdefinition).
 	}
 }
@@ -1460,7 +1972,10 @@
 \newglossaryentry{Metaformel}{
 	name        ={Metaformel \addIdx    {Metaformel}},
 	text        ={Metaformel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Metaformel}%
 		Eine \Formel\ der \formalenMetasprache.
 	}
 }
@@ -1470,8 +1985,11 @@
 \newglossaryentry{Metajunktor}{
 	name        ={Metajunktor \addIdx     {Metajunktor}},
 	text        ={Metajunktor},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Junktor},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Metajunktor}%
 	}
 }
 
@@ -1482,8 +2000,11 @@
 	name        ={Metaoperation \addIdx      {Metaoperation}},
 	text        ={Metaoperation},
 	user1       =    {operation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Objektoperation},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Metaoperation}%
 		Eine \Operation\ der \Metasprache: \MtsAnd, \MtsOr\ oder \MtsUnd.
 	}
 }
@@ -1495,8 +2016,11 @@
 	name        ={Metarelation \addIdx      {Metarelation}},
 	text        ={Metarelation},
 	user1       =    {relation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Objektrelation},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Metarelation}%
 		Eine \Relation\ der \Metasprache: \MtsImp, \MtsRep\ oder \MtsEquiv.
 	}
 }
@@ -1506,8 +2030,11 @@
 \newglossaryentry{Metasprache}{
 	name        ={Metasprache \addIdx    {Metasprache}},
 	text        ={Metasprache},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Objektsprache},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Metasprache}%
 		Die \Sprache, in der \Aussagen\ über eine andere \Sprache\ getroffen werden können.
 		\Hier\ ist dies immer die normale Umgangssprache.
 		Ihre \Syntax\ ist gegeben, \textbzgl\ der \Semantik\ bemühen wir uns um exakte Definitionen der \Begriffe\ und \Bezeichnungen.
@@ -1527,7 +2054,10 @@
 	text       ={formale  Metasprache},
 	user1      ={formalen Metasprache},
 	user2      ={formalen},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoOk%
+%%%		\SymbolAmRand{formaleMetasprache}%
 		Die \Metasprache, deren Ausdrucksmittel nur \atomare\ \Aussagen\ und definierte \Metasymbole\ sind.
 		\Hier\ ist ihre Syntax und Semantik passend für \ASBA\ definiert, in der Regel parallel zur \Praedikatenlogik.
 	}
@@ -1538,8 +2068,11 @@
 \newglossaryentry{Metasymbol}{
 	name        ={Metasymbol \addIdx    {Metasymbol}},
 	text        ={Metasymbol},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Objektsymbol},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Metasymbol}%
 		Ein \Symbol\ der \formalenMetasprache.
 	}
 }
@@ -1550,7 +2083,10 @@
 	name        ={Metavariable \addIdx     {Metavariable}},
 	text        ={Metavariable},
 	user1       =    {variable},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Metavariable}%
 		Eine \Variable\ der \formalenMetasprache.
 	}
 }
@@ -1559,20 +2095,39 @@
 \newglossaryentry{Monotonieregel}{
 	name        ={Monotonieregel \addIdx   {Monotonieregel}},
 	text        ={Monotonieregel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MR},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Monotonieregel}%
 		Eine \Schlussregel.
 	}
 }
 
 %N === N === N === N === N === N === N === N === N === N === N === N === N === N
 
+\newVerweis     {\Nachfolger}{\glstext}{Nachfolger}
+\newglossaryentry{Nachfolger}{
+	name        ={Nachfolger \addIdx   {Nachfolger}},
+	text        ={Nachfolger},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={Anfangsglied,Endglied,Vorgaenger,Zwischenglied},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Nachfolger}%
+		Der \GloFt{Nachfolger} eines \Kettenglieds\ in einer \Kette\ ist das nachfolgende (rechts stehende) \Kettenglied\ in der \Kette.
+	}
+}
+
 \newVerweis     {\Negation}  {\glstext}{Negation}
 \newVerweis[en] {\Negationen}{\glstext}{Negation}
 \newglossaryentry{Negation}{
 	name        ={Negation \addIdx     {Negation}},
 	text        ={Negation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Negation}%
 		Die \GloFt{Negation} \emph{von} einer \binaeren\ \Relation\ $(G,A,B)$ ist die \Relation\ $(H,A,B)$ mit $H = (A \MtsTimes B) \MtsSetminus G\}$.
 		Üblicherweise wird das zugehörige \Relationssymbol\ mit einem schrägen oder vertikalen Strich durchgestrichen.
 		Die \gloFt{Negation} der \Umkehrrelation\ einer \Relation\ ist gleich der \Umkehrrelation\ ihrer \gloFt{Negation}.
@@ -1586,7 +2141,10 @@
 \newglossaryentry{Oberaussage}{
 	name        ={Oberaussage \addIdx    {Oberaussage}},
 	text        ={Oberaussage},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Oberaussage}%
 		Eine \Aussage\ $A$ ist genau dann eine \GloFt{Oberaussage} einer \Aussage\ $B$, wenn $B$ eine \Teilaussage\ von $A$ ist.
 	}
 }
@@ -1600,7 +2158,10 @@
 	sort       =       {Oberaussage, echte},
 	text       ={echte  Oberaussage},
 	user1      ={echten Oberaussage},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoOk%
+%%%		\SymbolAmRand{echteOberaussage}%
 		Eine \Aussage\ $A$ ist genau dann eine \GloFt{echte Oberaussage} einer \Aussage\ $B$, wenn $B$ eine \echteTeilaussage\ von $A$ ist.
 	}
 }
@@ -1610,8 +2171,11 @@
 \newglossaryentry{Oberbereich}{
 	name        ={Oberbereich \addIdx     {Oberbereich}},
 	text        ={Oberbereich},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Teilbereich},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Oberbereich}%
 		Ein \Bereich\ $A$ ist ist genau dann ein \GloFt{Oberbereich} von einem \Bereich\ $B$, wenn $A \MtsSupsetEq B$ ist.
 	}
 }
@@ -1623,8 +2187,11 @@
 		sort   =       {Oberbereich, echter}]   {echterOberbereich}},
 	sort       =       {Oberbereich, echter},
 	text       ={echter Oberbereich},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	see        ={echterTeilbereich},
 	description={\todoOk%
+%%%		\SymbolAmRand{echterOberbereich}%
 		Ein \Bereich\ $A$ ist ist genau dann ein \GloFt{echter Oberbereich} von einem \Bereich\ $B$, wenn $A \MtsSupset B$ ist.
 	}
 }
@@ -1634,7 +2201,10 @@
 \newglossaryentry{Oberfolge}{
 	name        ={Oberfolge \addIdx    {Oberfolge}},
 	text        ={Oberfolge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Oberfolge}%
 		Eine \Folge\ $A$ ist genau dann eine \GloFt{Oberfolge} einer \Folge\ $B$, wenn $B$ eine \Teilfolge\ von $A$ ist.
 	}
 }
@@ -1648,7 +2218,10 @@
 	sort       =       {Oberfolge, echte},
 	text       ={echte  Oberfolge},
 	user1      ={echten Oberfolge},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{echteOberfolge}%
 		Eine \Folge\ $A$ ist genau dann eine \GloFt{echte Oberfolge} einer \Folge\ $B$, wenn $B$ eine \echteTeilfolge\ von $A$ ist.
 	}
 }
@@ -1658,7 +2231,10 @@
 \newglossaryentry{Oberformel}{
 	name        ={Oberformel \addIdx    {Oberformel}},
 	text        ={Oberformel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Oberformel}%
 		Eine \Formel\ $A$ ist genau dann eine \GloFt{Oberformel} einer \Formel\ $B$, wenn $B$ eine \Teilformel\ von $A$ ist.
 	}
 }
@@ -1672,7 +2248,10 @@
 	sort       =       {Oberformel, echte},
 	text       ={echte  Oberformel},
 	user1      ={echten Oberformel},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{echteOberformel}%
 		Eine \Formel\ $A$ ist genau dann eine \GloFt{echte Oberformel} einer \Formel\ $B$, wenn $B$ eine \echteTeilformel\ von $A$ ist.
 	}
 }
@@ -1682,8 +2261,11 @@
 \newglossaryentry{Obermenge}{
 	name        ={Obermenge \addIdx    {Obermenge}},
 	text        ={Obermenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Oberbereich,Teilmenge},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Obermenge}%
 		Eine \Menge\ $A$ ist genau dann eine \GloFt{Obermenge} von einer \Menge\ $B$, wenn $A \MtsSupsetEq B$ ist.
 	}
 }
@@ -1699,8 +2281,11 @@
 	text       ={echte  Obermenge},
 	user1      ={echten Obermenge},
 	user2      ={echte},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	see        ={echterOberbereich,echteTeilmenge},
 	description={\todoOk%
+%%%		\SymbolAmRand{echteObermenge}%
 		Eine \Menge\ $A$ ist genau dann eine \GloFt{echte Obermenge} von einer \Menge\ $B$, wenn $A \MtsSupset B$ ist.
 	}
 }
@@ -1710,7 +2295,10 @@
 \newglossaryentry{Oberobjekt}{
 	name        ={Oberobjekt \addIdx    {Oberobjekt}},
 	text        ={Oberobjekt},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Oberobjekt}%
 		Eine \Objekt\ $A$ ist genau dann ein \GloFt{Oberobjekt} eines \Objekts\ $B$, wenn $B$ ein \Teilobjekt\ von $A$ ist.
 	}
 }
@@ -1724,7 +2312,10 @@
 	sort       =       {Oberobjekt, echtes},
 	text       ={echtes Oberobjekt},
 	user1      ={echten Oberobjekt},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{echtesOberobjekt}%
 		Ein \Objekt\ $A$ ist genau dann ein \GloFt{echtes Oberobjekt} eines \Objekts\ $B$, wenn $B$ ein \echtesTeilobjekt\ von $A$ ist.
 	}
 }
@@ -1735,7 +2326,10 @@
 	name        ={Obersprache \addIdx     {Obersprache}},
 	text        ={Obersprache},
 	user1       =    {sprache},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Obersprache}%
 		Eine \Sprache\ $A$ ist genau dann eine \GloFt{Obersprache} einer \Sprache\ $B$, wenn $B$ eine \Teilsprache\ von $A$ ist.
 	}
 }
@@ -1749,7 +2343,10 @@
 	text        ={echte Obersprache},
 	user1       ={echten Obersprache},
 	user2       =           {sprache},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{echteObersprache}%
 		Eine \Sprache\ $A$ ist genau dann eine \GloFt{echte Obersprache} einer \Sprache\ $B$, wenn $B$ eine \echteTeilsprache\ von $A$ ist.
 	}
 }
@@ -1759,8 +2356,11 @@
 \newglossaryentry{Obersymbol}{
 	name        ={Obersymbol \addIdx    {Obersymbol}},
 	text        ={Obersymbol},
-	description ={\todoPruefen%
-		Eine \Symbol\ $A$ ist genau dann ein \GloFt{Obersymbol} eines \Symbols\ $B$, wenn $B$ ein \Teilsymbol\ von $A$ ist.
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoErgaenzen%
+%%%		\SymbolAmRand{Obersymbol}%
+		Ein \Symbol\ $A$ ist genau dann ein \GloFt{Obersymbol} eines \Symbols\ $B$, wenn $B$ ein \Teilsymbol\ von $A$ ist.
 	}
 }
 
@@ -1773,8 +2373,11 @@
 	sort       =       {Obersymbol, echtes},
 	text       ={echtes Obersymbol},
 	user1      ={echten Obersymbol},
-	description={\todoPruefen%
-		Eine \Symbol\ $A$ ist genau dann ein \GloFt{echtes Obersymbol} eines \Symbols\ $B$, wenn $B$ ein \echtesTeilsymbol\ von $A$ ist.
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	description={\todoErgaenzen%
+%%%		\SymbolAmRand{echtesObersymbol}%
+		Ein \Symbol\ $A$ ist genau dann ein \GloFt{echtes Obersymbol} eines \Symbols\ $B$, wenn $B$ ein \echtesTeilsymbol\ von $A$ ist.
 	}
 }
 
@@ -1785,7 +2388,10 @@
 \longnewglossaryentry{Objekt}{
 	name            ={Objekt \addIdx     {Objekt}},
 	text            ={Objekt},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 }{\todoOk%
+%%%	\SymbolAmRand{Objekt}%
 	\wikicite{bib:mathematischesObjekt}{
 		Als \wikiBoldFt{mathematische Objekte} werden die \wikiLinkFt{abstrakten} \wikiLinkFt{Objekte} bezeichnet, die in den verschiedenen \wikiLinkFt{Teilgebieten der Mathematik} beschrieben und untersucht werden. \wikiLinkFt{Grundlegende} Beispiele sind \wikiLinkFt{Zahlen}, \wikiLinkFt{Mengen} und \wikiLinkFt{geometrische Körper}, weiterführend sind beispielsweise \wikiLinkFt{Graphen}, \wikiLinkFt{Integrale} und \wikiLinkFt{Kohomologien}. Die Fragen zur Existenz und zu der Natur von mathematischen Objekten sind zentral in der \wikiLinkFt{Philosophie der Mathematik}. Die zeitgenössische Mathematik hingegen klammert diese Fragestellungen aus und beschäftigt sich \wikiLinkFt{innerstrukturell} mit ihnen. Dies schließt Bereiche wie \wikiLinkFt{Mengenlehre}, \wikiLinkFt{Prädikatenlogik}, \wikiLinkFt{Modelltheorie} und \wikiLinkFt{Kategorientheorie} mit ein, in denen die (sonst übergeordneten) mathematischen Strukturen wie \wikiLinkFt{Axiome}, \wikiLinkFt{Schlussregeln} und \wikiLinkFt{Beweise} erforscht werden, die damit selbst zu mathematischen Objekten werden. Die Ansichten darüber, was mathematische Objekte sind, haben sich im Lauf der \wikiLinkFt{Geschichte der Mathematik} stark gewandelt.
 	}
@@ -1802,7 +2408,10 @@
 	sort       =         {Objekt, formales},
 	text       ={formales Objekt},
 	user1      ={formalen Objekte},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoOk%
+%%%		\SymbolAmRand{formalesObjekt}%
 		Ein \GloFt{formales Objekt} ist ein \Objekt, das in \Aussagen\ in \Objektsprache\ einen \Parameter\ ersetzen darf.
 		Es ist notwendigerweise in \Objektsprache\ geschrieben.
 	}
@@ -1818,7 +2427,10 @@
 	sort       =                 {Objekt, metasprachliches},
 	text       ={metasprachliches Objekt},
 	plural     ={metasprachliche  Objekte},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{metasprachlichesObjekt}%
 		Ein \GloFt{metasprachliches Objekt} ist ein \Objekt\ in \Metasprache.
 	}
 }
@@ -1828,7 +2440,10 @@
 \newglossaryentry{Objektart}{
 	name        ={Objektart \addIdx     {Objektart}},
 	text        ={Objektart},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Objektart}%
 	}
 }
 
@@ -1836,7 +2451,10 @@
 \newglossaryentry{Objektbereich}{
 	name        ={Objektbereich \addIdx    {Objektbereich}},
 	text        ={Objektbereich},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Objektbereich}%
 		Der \GloFt{Objektbereich} \MtsObjekte\ ist der \Bereich\ aller \formalenObjekte, \textdh\ der \Objekte, die in \Aussagen\ in \Objektsprache\ einen \Parameter\ ersetzen dürfen.
 		Diese Objekte sind notwendigerweise auch in \Objektsprache\ geschrieben und offensichtlich ist $\MtsObjekte \MtsSubsetEq \MtsUniversum$.
 	}
@@ -1847,8 +2465,11 @@
 \newglossaryentry{Objektdefinition}{
 	name        ={Objektdefinition \addIdx     {Objektdefinition}},
 	text        ={Objektdefinition},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Aussagedefinition},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Objektdefinition}%
 		Eine \Metadefinition: Die formale Definition eines \Objekts.
 		\ifmarginparFlg\newline\else\fi
 		\seqqt{$A \MtsDefEq B$} steht für \standsfor{$A$ ist \DefFt{definitionsgemäß gleich} $B$} für \Objekte\ $A$ und $B$.
@@ -1861,7 +2482,10 @@
 \newglossaryentry{Objektformel}{
 	name        ={Objektformel \addIdx    {Objektformel}},
 	text        ={Objektformel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Objektformel}%
 		Eine \Formel\ der \Objektsprache.
 	}
 }
@@ -1871,7 +2495,10 @@
 \newglossaryentry{Objektkonstante}{
 	name        ={Objektkonstante \addIdx    {Objektkonstante}},
 	text        ={Objektkonstante},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Objektkonstante}%
 		Eine \Konstante\ der \Objektsprache.
 	}
 }
@@ -1883,8 +2510,11 @@
 	name        ={Objektoperation \addIdx      {Objektoperation}},
 	text        ={Objektoperation},
 	user1       =      {operation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Metaoperation},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Objektoperation}%
 		Eine \Operation\ der \Objektsprache: \OjkAnd, \OjkOr.
 	}
 }
@@ -1896,8 +2526,11 @@
 	name        ={Objektrelation \addIdx      {Objektrelation}},
 	text        ={Objektrelation},
 	user1       =      {relation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Metarelation},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Objektrelation}%
 		Eine \Relation\ der \Objektsprache: \OjkImp, \OjkRep\ oder \OjkEquiv.
 	}
 }
@@ -1907,7 +2540,10 @@
 \newglossaryentry{Objektsprache}{
 	name        ={Objektsprache \addIdx    {Objektsprache}},
 	text        ={Objektsprache},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Objektsprache}%
 		Die \Sprache, über die mittels einer (\formalenM) \Metasprache\ "`geredet"' wird.
 		Unser \Objekt, mit dem mathematische \Beweise\ formuliert werden sollen, ist die \Logik.
 		Demnach sind die Ausdrucksmittel der \Objektsprache\ die der \Logik.
@@ -1920,8 +2556,11 @@
 \newglossaryentry{Objektsymbol}{
 	name        ={Objektsymbol \addIdx    {Objektsymbol}},
 	text        ={Objektsymbol},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Metasymbol},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Objektsymbol}%
 		Ein \Symbol\ der \Objektsprache.
 	}
 }
@@ -1931,7 +2570,10 @@
 \newglossaryentry{Operation}{
 	name        ={Operation \addIdx     {Operation}},
 	text        ={Operation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Operation}%
 		Eine \GloFt{Operation} ist eine --- meistens \binaere, \textdh\ zweiwertige --- \Funktion\ $M^n \MtsFktArrow M$ mit $n \MtsIn \MtsINo$.
 		Für eine \binaere, \textdh\ $n = 2$, \gloFt{Operation} $\FunktionDef{\BspOpB}{M \MtsTimes M}{M}$ schreibt man meistens $x \BspOpB y$ statt $\BspOpB(x,y)$.
 		Für $n = 0$ kann man die \gloFt{Operation} mit einer \Konstanten\ identifizieren.
@@ -1950,7 +2592,10 @@
 	text       ={aussagenlogische  Operation},
 	user1      ={aussagenlogischen Operation},
 	user2      =                  {Operation},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoErgaenzen%
+%%%		\SymbolAmRand{aussagenlogischeOperation}%
 		Die \GloFt{aussagenlogischen Operationen} sind ...
 	}
 }
@@ -1960,7 +2605,10 @@
 \newglossaryentry{Operationssymbol}{
 	name        ={Operationssymbol \addIdx    {Operationssymbol}},
 	text        ={Operationssymbol},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Operationssymbol}%
 		Ein \Symbol\ für eine \Operation.
 	}
 }
@@ -1971,7 +2619,10 @@
 	name            ={Ordnungsrelation \addIdx[
 		name        ={Ordnungsrelation}]           {Ordnungsrelation}},
 	text            ={Ordnungsrelation},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Ordnungsrelation}%
 	Eine \GloFt{Ordnungsrelation} ist ein \binaere\ \Relation\ auf einer \Menge\ $M$ mit der folgenden Eigenschaft
 	(dabei sei $\preceq$ die \gloFt{Ordnungsrelation}):
 	\begin{align}
@@ -1989,7 +2640,10 @@
 		name   =           {Paar, geordnetes}]{geordnetesPaar}},
 	text       ={geordnetes Paar},
 	user1      ={geordneten Paar},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{geordnetesPaar}%
 	}
 }
 
@@ -1999,8 +2653,11 @@
 \newglossaryentry{Parameter}{
 	name        ={Parameter \addIdx    {Potenzmenge}},
 	text        ={Parameter},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Aussage,Variable},
 	description ={\todoGeprueft%
+%%%		\SymbolAmRand{Parameter}%
 		Die \GloFt{Parameter} einer \Aussage\ sind deren \freieVariablen.
 	}
 }
@@ -2016,7 +2673,10 @@
 	text        ={Polnische  Notation},
 	user1       ={Polnischen Notation},
 	user2       ={Polnischer Notation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{PolnischeNotation}%
 		Bei der \GloFt{Polnischen Notation} stehen die Argumente von \Relationen\ und \Funktionen\ stets rechts von den \RelationsS- und \Funktionssymbolen.
 		Dadurch kann auf \Gliederungszeichen\ wie Klammern und Kommata verzichtet werden.
 		Noch einfacher für Computer ist die \GloFt{umgekehrte Polnische Notation}, bei der die Argumente immer links stehen.
@@ -2028,7 +2688,10 @@
 \newglossaryentry{Potenzmenge}{
 	name        ={Potenzmenge \addIdx    {Potenzmenge}},
 	text        ={Potenzmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Potenzmenge}%
 		Die \Potenzmenge\ $\MtsPot(M)$ einer \Menge\ $M$ ist die \Menge\ ihrer \Teilmengen.
 	}
 }
@@ -2040,9 +2703,12 @@
 	name        ={Prädikat \addIdx[
 		name    ={Prädikat}]           {Praedikat}},
 	text        ={Prädikat},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
-		Ein Element der \Praedikatenlogik. ---
-		\textZB\ kann man eine Gruppe als ein zwei\stelliges\ \Praedikat\ $\Preft{Gruppe}(G,+)$ definieren, in dem $G$ eine \Menge\ und $+$ eine \Operation, \textdh\ eine \binaere\ (zwei\stellige) \Funktion\ $ +: G \MtsTimes G \rightarrow G $ ist, so dass die Gruppenaxiome erfüllt sind.
+%%%		\SymbolAmRand{Praedikat}%
+		Ein Element der \Praedikatenlogik.
+		--- \textZB\ kann man eine Gruppe als ein zwei\stelliges\ \Praedikat\ $\Preft{Gruppe}(G,+)$ definieren, in dem $G$ eine \Menge\ und $+$ eine \Operation, \textdh\ eine \binaere\ (zwei\stellige) \Funktion\ $ +: G \MtsTimes G \rightarrow G $ ist, so dass die Gruppenaxiome erfüllt sind.
 	}
 }
 
@@ -2051,32 +2717,43 @@
 	name            ={Prädikatenlogik \addIdx[
 		name        ={Prädikatenlogik}]          {Praedikatenlogik}},
 	text            ={Prädikatenlogik},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Aussagenlogik,Logik},
-}{
+}{\todoPruefen%
+%%%	\SymbolAmRand{Praedikatenlogik}%
 	\wikicite{bib:Praedikatenlogik}{
 		Die \wikiBoldFt{Prädikatenlogiken} (auch \wikiBoldFt{Quantorenlogiken}) bilden eine Familie \wikiLinkFt{logischer} Systeme, die es erlauben, einen weiten und in der Praxis vieler Wissenschaften und deren Anwendungen wichtigen Bereich von Argumenten zu formalisieren und auf ihre Gültigkeit zu überprüfen. Auf Grund dieser Eigenschaft spielt die Prädikatenlogik eine große Rolle in der \wikiLinkFt{Logik} sowie in \wikiLinkFt{Mathematik}, \wikiLinkFt{Informatik}, \wikiLinkFt{Linguistik} und \wikiLinkFt{Philosophie}.
 	}
 }
 
-\newVerweis     {\Praemisse}  {\glstext}{Praemisse}
+\newVerweis     {\Praemisse} {\glstext}{Praemisse}
 \newVerweis[n]  {\Praemissen}{\glstext}{Praemisse}
 \newglossaryentry{Praemisse}{
-	name        ={Prämisse \addIdx      {Praemisse}},
+	name        ={Prämisse \addIdx     {Praemisse}},
 	text        ={Prämisse},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Schlussregel},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Praemisse}%
 		Eine \Ableitung:
 		Die \Praemissen\ einer \Schlussregel\ $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ \textbzw\ $\frac{\MtsPraemisseSet}{\MtsKonklusionSet}$ sind die \Elemente\ aus \MtsPraemisseSet\ \textbzw\ \MtsPraemisseRel.
 		Die \Praemissen\ werden normalerweise mit $\MtsPraemisse_i$ bezeichnet.
 	}
 }
 
-\newVerweis     {\Praemissenmenge} {\glstext}{Praemissenmenge}
-\newVerweis[n]  {\Praemissenmengen}{\glstext}{Praemissenmenge}
+\newVerweis     {\Praemissenmenge} {\glstext} {Praemissenmenge}
+\newVerweis[n]  {\Praemissenmengen}{\glstext} {Praemissenmenge}
+%%%\newVerweis     {\PraemissenM}     {\glsuseri}{Praemissenmenge}
 \newglossaryentry{Praemissenmenge}{
-	name        = {Prämissenmenge \addIdx    {Praemissenmenge}},
+	name        = {Prämissenmenge \addIdx     {Praemissenmenge}},
 	text        = {Prämissenmenge},
+	user1       = {Prämissen},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Praemissenmenge}%
 		Eine \Ableitungsmenge:
 		Die \Menge\ \MtsPraemisseSet\ der \Praemissen\ einer \Schlussregel\ \textbzw\ eines \Beweises.
 	}
@@ -2089,7 +2766,10 @@
 		name        =             {Produkt, kartesisches}]{kartesischesProdukt}},
 	text            ={kartesisches Produkt},
 	user1           ={kartesische  Produkt},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 }{\todoPruefen%
+%%%	\SymbolAmRand{kartesischesProdukt}%
 	\wikicite{bib:kartesischesProdukt}{
 		Das \wikiBoldFt{kartesische Produkt} oder \wikiBoldFt{Mengenprodukt} ist in der Mengenlehre eine grundlegende Konstruktion, aus gegebenen Mengen eine neue Menge zu erzeugen. [\textdots] Das kartesische Produkt zweier Mengen ist die Menge aller geordneten Paare von Elementen der beiden Mengen, wobei die erste Komponente ein Element der ersten Menge und die zweite Komponente ein Element der zweiten Menge ist. Allgemeiner besteht das kartesische Produkt mehrerer Mengen aus der Menge aller Tupel von Elementen der Mengen, wobei die Reihenfolge der Mengen und damit der entsprechenden Elemente fest vorgegeben ist. Die Ergebnismenge des kartesischen Produkts wird auch \wikiBoldFt{Produktmenge}, \wikiBoldFt{Kreuzmenge} oder \wikiBoldFt{Verbindungsmenge} genannt. [\textdots]
 	}
@@ -2102,8 +2782,11 @@
 \longnewglossaryentry{Quantor}{
 	name            ={Quantor \addIdx     {Quantor}},
 	text            ={Quantor},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Allquantor,Existenzquantor,Junktor,Praedikatenlogik},
 }{\todoErgaenzen%
+%%%	\SymbolAmRand{Quantor}%
 	\wikicite{bib:Quantor}{
 		Ein \wikiBoldFt{Quantor} oder \wikiBoldFt{Quantifikator}, die Re-Latinisierung des von \wikiLinkFt{C. S. Peirce} eingeführten Ausdrucks „quantifier“, ist ein \wikiLinkFt{Operator} der \wikiLinkFt{Prädikatenlogik}. Neben den \wikiLinkFt{Junktoren} sind die Quantoren Grundzeichen der Prädikatenlogik. Allen Quantoren gemeinsam ist, dass sie \wikiLinkFt{Variablen} \wikiLinkFt{binden}.
 
@@ -2118,7 +2801,10 @@
 		sort   =          {Quantor, logischer}]{logischerQuantor}},
 	sort       =          {Quantor, logischer},
 	text       ={logischer Quantor},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{logischerQuantor}%
 	}
 }
 
@@ -2129,7 +2815,10 @@
 		sort   =                 {Quantor, metasprachlicher}]{metasprachlicherQuantor}},
 	sort       =                 {Quantor, metasprachlicher},
 	text       ={metasprachlicher Quantor},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{metasprachlicherQuantor}%
 	}
 }
 
@@ -2140,8 +2829,11 @@
 	name        ={Quellbereich \addIdx     {Quellbereich}},
 	text        ={Quellbereich},
 	user1       ={Quell},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Definitionsbereich,Menge},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Quellbereich}%
 		Für die \Funktion \FunktionDef{f}{A}{B} ist die \Menge\ $\MtsQb(f) \MtsDefEq \RawMengeDef{a \in A}{f(a) \text{ existiert}}$ ihr \Quellbereich%
 		\footnote{%
 			Der \GloFt{Quellbereich} $\MtsQb(f)$ unterscheidet sich nur bei \DefFt{partiellen} \Funktionen\ vom \Definitionsbereich\ $\MtsDb(f)$, \textdh\ solchen \Funktionen, für die $f(a)$ nicht für alle $a \MtsIn A$ definiert ist.
@@ -2157,8 +2849,11 @@
 \longnewglossaryentry{Relation}{
 	name            ={Relation \addIdx     {Relation}},
 	text            ={Relation},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Aequivalenzrelation,Begriff,Menge,Objekt,Ordnungsrelation},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Relation}%
 	\wikicite{bib:Relation}{
 		Eine \wikiBoldFt{Relation} (\wikiLinkFt{lateinisch} \wikiItalicFt{relatio} „Beziehung“, „Verhältnis“) ist allgemein eine Beziehung, die zwischen Dingen bestehen kann. Relationen im Sinne der \wikiLinkFt{Mathematik} sind ausschließlich diejenigen Beziehungen, bei denen stets klar ist, ob sie bestehen oder nicht; Objekte können also nicht „bis zu einem gewissen Grade“ in einer Relation zueinander stehen. Damit ist eine einfache \wikiLinkFt{mengentheoretische} Definition des Begriffs möglich: Eine Relation $R$ ist eine Menge von $n$-\wikiLinkFt{Tupeln}. In der Relation $R$ zueinander stehende Dinge bilden $n$-Tupel, die Element von $R$ sind.
 
@@ -2184,7 +2879,10 @@
 	text       ={aussagenlogische  Relation},
 	user1      ={aussagenlogischen Relation},
 	user2      =                  {Relation},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoErgaenzen%
+%%%		\SymbolAmRand{aussagenlogischeRelation}%
 		Die \GloFt{aussagenlogischen} \Relationen\ sind ...
 	}
 }
@@ -2196,7 +2894,10 @@
 	name        ={Relationssymbol \addIdx     {Relationssymbol}},
 	text        ={Relationssymbol},
 	user1       ={Relations},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Relationssymbol}%
 		Ein \Symbol\ für eine \Relation.
 	}
 }
@@ -2211,7 +2912,10 @@
 	name        ={Satz \addIdx      {Satz}},
 	text        ={Satz},
 	plural      ={Sätze},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Satz}%
 		Ein \GloFt{Satz} ist eine \Aussage, bestehend aus einer Anzahl von \Praemissen\ und \Konklusionen\ und einem \Beweis, der die \Konklusionen\ aus den \Praemissen\ ableitet.
 	}
 }
@@ -2225,8 +2929,11 @@
 	sort       =         {Satz, formaler},
 	text       ={formaler Satz},
 	user1      ={formalen Satz},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	see        ={FS},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{formalerSatz}%
 		Formale \Darstellung\ eines mathematischen \Satzes.
 	}
 }
@@ -2236,8 +2943,11 @@
 \longnewglossaryentry{Schlussregel}{
 	name            ={Schlussregel \addIdx    {Schlussregel}},
 	text            ={Schlussregel},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={MtsSchlussregel,MtsSchlussregelSet,Kalkuel},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Schlussregel}%
 	\wikicite{bib:Schlussregel}{
 		Eine \wikiBoldFt{Schlussregel} (oder \wikiItalicFt{Inferenzregel}) bezeichnet eine Transformationsregel (Umformungsregel) in einem \wikiLinkFt{Kalkül} der \wikiLinkFt{formalen Logik}, d. h. eine \wikiLinkFt{syntaktische} Regel, nach der es erlaubt ist, von bestehenden Ausdrücken einer formalen Sprache zu neuen Ausdrücken überzugehen. Dieser regelgeleitete Übergang stellt eine \wikiLinkFt{Schlussfolgerung} dar.
 	}
@@ -2259,7 +2969,10 @@
 	sort       =                  {Schlussregel, allgemeingültige},
 	text       ={allgemeingültige  Schlussregel},
 	user1      ={allgemeingültigen Schlussregel},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{allgemeingueltigeSchlussregel}%
 		Eine \Schlussregel\ heißt \GloFt{allgemeingültig}, wenn sie aus den \Basisregeln\ und schon bekannten \allgemeingueltigenSchlussregeln\ abgeleitet werden kann.
 	}
 }
@@ -2269,8 +2982,11 @@
 \newglossaryentry{Schlussregelmenge}{
 	name        ={Schlussregelmenge \addIdx    {Schlussregelmenge}},
 	text        ={Schlussregelmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsSchlussregelSet},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Schlussregelmenge}%
 		Eine \Menge\ von \Schlussregeln, meistens mit \MtsSchlussregelSet\ bezeichnet.
 	}
 }
@@ -2281,6 +2997,7 @@
 	text        ={Schnittregel},
 	see         ={SR},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Schnittregel}%
 		Eine \allgemeingueltigeSchlussregel.
 	}
 }
@@ -2289,7 +3006,10 @@
 \longnewglossaryentry{Semantik}{
 	name            ={Semantik \addIdx    {Semantik}},
 	text            ={Semantik},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 }{\todoGeprueft%
+%%%	\SymbolAmRand{Semantik}%
 	\wikicite{bib:Wikipedia}{
 		\wikiBoldFt{Semantik} [\textdots], auch \wikiBoldFt{Bedeutungslehre}, nennt man die Theorie oder Wissenschaft von der Bedeutung der Zeichen. \wikiItalicFt{Zeichen} können hierbei beliebige \wikiLinkFt{Symbole} sein, insbesondere aber auch \wikiLinkFt{Sätze}, Satzteile, \wikiLinkFt{Wörter} oder \wikiLinkFt{Wortteile}.
 	}
@@ -2300,8 +3020,11 @@
 \longnewglossaryentry{Signatur}{
 	name            ={Signatur \addIdx   {Signatur}},
 	text            ={Signatur},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Abbildung,Logik,Praedikatenlogik,Sprache,Stelligkeit,Symbol},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Signatur}%
 	\wikicite{bib:Signatur}{
 		In der \wikiLinkFt{mathematischen Logik} besteht eine \wikiBoldFt{Signatur} aus der \wikiLinkFt{Menge} der \wikiLinkFt{Symbole}, die in der betrachteten \wikiLinkFt{Sprache} zu den üblichen, rein logischen Symbolen hinzukommt, und einer \wikiLinkFt{Abbildung}, die jedem Symbol der Signatur eine \wikiLinkFt{Stelligkeit} eindeutig zuordnet. Während die logischen Symbole wie  $\forall ,\exists ,\land ,\lor ,\rightarrow ,\leftrightarrow ,\neg$ stets als „für alle“, „es gibt ein“, „und“, „oder“, „folgt“, „äquivalent zu“ bzw. „nicht“ interpretiert werden, können durch die semantische \wikiLinkFt{Interpretation} der Symbole der Signatur verschiedene \wikiLinkFt{Strukturen} (insbesondere Modelle von Aussagen der Logik) unterschieden werden. Die Signatur ist der spezifische Teil einer \wikiLinkFt{elementaren Sprache}.
 
@@ -2318,7 +3041,10 @@
 	sort       =           {Signatur, Boolesche},
 	text       ={Boolesche  Signatur},
 	user1      ={Booleschen Signatur},
+%%%	symbo      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{BoolescheSignatur}%
 		Die \logischeSignatur\ $\{\OjkNot, \OjkAnd, \OjkOr\}$.
 	}
 }
@@ -2333,7 +3059,10 @@
 	sort       =          {Signatur, logische},
 	text       ={logische  Signatur},
 	user1      ={logischen Signatur},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{logischeSignatur}%
 		Abweichend von der Definition von \Signatur\ in \Wikipedia\ ist eine \GloFt{logische Signatur} eine \Teilmenge\ von \OjkJun, ausreichend um damit und mit \OjkVar\ und Klammerung alle anderen \Elemente\ aus \OjkJun\ zu definieren.
 	}
 }
@@ -2343,7 +3072,10 @@
 \newglossaryentry{Sprache}{
 	name        ={Sprache \addIdx    {Sprache}},
 	text        ={Sprache},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Sprache}%
 		--- Siehe \Formelmenge.
 	}
 }
@@ -2357,7 +3089,10 @@
 	sort       =                  {Sprache, aussagenlogische},
 	text       ={aussagenlogische  Sprache},
 	user1      ={aussagenlogischen Sprache},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{aussagenlogischeSprache}%
 	}
 }
 
@@ -2366,7 +3101,10 @@
 \newglossaryentry{Sprachebene}{
 	name        ={Sprachebene \addIdx    {Sprachebene}},
 	text        ={Sprachebene},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Sprachebene}%
 		Wir unterscheiden \hier\ drei \GloFt{Sprachebenen}: Die obere Ebene mit der \Metasprache, die mittlere mit der \formalenMetasprache\ und die untere mit der \Objektsprache.
 		Mit einer \Sprache\ einer höheren Ebene kann man \textua\ \Aussagen\ über \Sprachen\ mit niedrigere Ebene treffen.
 	}
@@ -2382,8 +3120,11 @@
 		sort    ={stellig}]           {stellig}},
 	sort        ={stellig},
 	text        ={stellig},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsStelF,MtsStelR},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{stellig}%
 		Eine \Funktion, \Relation\ oder ein \Praedikat\ mit der \Stelligkeit\ $n \MtsIn \MtsINo$ nennt man \GloFt{$n$-stellig}.
 	}
 }
@@ -2393,31 +3134,38 @@
 \newglossaryentry{Stelligkeit}{
 	name        ={Stelligkeit \addIdx     {Stelligkeit}},
 	text        ={Stelligkeit},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsStelF,MtsStelR},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Stelligkeit}%
 		einer \Funktion, \Relation\ oder eines \Praedikats.
 	}
 }
 
-\newVerweis     {\Symbol}  {\glstext} {Symbol}
-\newVerweis[e]  {\Symbole} {\glstext} {Symbol}
-\newVerweis[s]  {\Symbols} {\glstext} {Symbol}
-\newVerweis[en] {\Symbolen}{\glstext} {Symbol}
-\newglossaryentry{Symbol}{
-	name        ={Symbol \addIdx      {Symbol}},
-	text        ={Symbol},
-	see         ={Beispielsymbol,Metasymbol,Objektsymbol},
-	description ={\todoPruefen%
-		Ein \DefFt{einfaches} \GloFt{Symbol} ist ein druckbares typographisches Zeichen, das als Einheit angesehen wird.
-		Ein \DefFt{zusammengesetztes} \GloFt{Symbol} besteht aus mehreren einfachen \gloFt{Symbolen}.
-		Wird ein \gloFt{Symbol}, das kann auch ein zusammengesetztes \gloFt{Symbol} sein, stets als Einheit angesehen, nennen wir es \defTxt{\atomar}\alternativi{unzerlegbar}, andernfalls \defTxt{\zerlegbar}.
-		Im Einzelfall muss für ein Symbol definiert werden, ob es zerlegt werden kann oder nicht.
-		Ein \emph{einfaches} \gloFt{Symbol} ist offensichtlich immer \atomar.
-	}
+\newVerweis         {\Symbol}  {\glstext} {Symbol}
+\newVerweis[e]      {\Symbole} {\glstext} {Symbol}
+\newVerweis[s]      {\Symbols} {\glstext} {Symbol}
+\newVerweis[en]     {\Symbolen}{\glstext} {Symbol}
+\longnewglossaryentry{Symbol}{
+	name            ={Symbol \addIdx      {Symbol}},
+	text            ={Symbol},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
+	see             ={Beispielsymbol,Metasymbol,Obersymbol,Objektsymbol,Teilsymbol},
+}{\todoPruefen%
+%%%	\SymbolAmRand{Symbol}%
+	Ein \GloFt{Symbol} ist eine \Kette\ von \atomarenSymbolen.
+	Aus dem Zusammenhang muss hervorgehen, welche \atomarenSymbole\ gemeint sind.
+	Die Darstellung kann auch mehrdimensional sein, \textzB\ mit Indizes.
+	Prinzipiell kann eine mehrdimensionale Darstellung eines \gloFt{Symbols} aber auch eindimensional erfolgen.
+
+	Ist ein \gloFt{Symbol} Teil eines anderen \gloFt{Symbols} (im Sinne der Darstellung), aber kein \Teilsymbol\ davon, so wird es (in diesem Zusammenhang) nicht als \gloFt{Symbol} interpretiert.
 }
 
+
 \newVerweis     {\aussagenlogischesSymbol}  {\glstext}       {aussagenlogischesSymbol}
-\newVerweis[en] {\aussagenlogischenSymbolen}{\glstext}       {aussagenlogischesSymbol}
+\newVerweis[en] {\aussagenlogischenSymbolen}{\glsuseri}      {aussagenlogischesSymbol}
 \newglossaryentry{aussagenlogischesSymbol}{
 	name       =                       {---, aussagenlogisches \addIdx[
 		name   =                       {---, aussagenlogisches},
@@ -2425,45 +3173,121 @@
 	sort       =                  {Symbol, aussagenlogische},
 	text       ={aussagenlogisches Symbol},
 	user1      ={aussagenlogischen Symbol},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoErgaenzen%
+%%%		\SymbolAmRand{aussagenlogischesSymbol}%
 		Die \GloFt{aussagenlogischen} \Symbole\ sind ...
 	}
 }
 
+\newVerweis     {\atomaresSymbol}  {\glstext}  {atomaresSymbol}
+\newVerweis      {\atomareSymbol}  {\glsuseri} {atomaresSymbol}
+\newVerweis[e]   {\atomareSymbole} {\glsuseri} {atomaresSymbol}
+\newVerweis     {\atomarenSymbol}  {\glsuserii}{atomaresSymbol}
+\newVerweis[e]  {\atomarenSymbole} {\glsuserii}{atomaresSymbol}
+\newVerweis[en] {\atomarenSymbolen}{\glsuserii}{atomaresSymbol}
+\newglossaryentry{atomaresSymbol}{
+	name       =            {---, atomares \addIdx[
+		name   =            {---, atomares},
+		sort   =         {Symbol, atomares}]   {atomaresSymbol}},
+	sort       =         {Symbol, atomares},
+	text       ={atomares Symbol},
+	user1      ={atomare  Symbol},
+	user2      ={atomaren Symbol},
+	user6      ={\{Textwort|typographisches Symbol\}},
+	see        ={unzerlegbar,zerlegbar,zusammengesetzt},
+	description={\todoOk%
+		\TextAmRand{atomaresSymbol}%
+		Ein \GloFt{atomares Symbol} ist ein \Textwort\ oder ein \typographischesSymbol.
+		Aus dem Zusammenhang muss hervorgehen, welche \Textworte\ als \gloFt{\atomareSymbole} anzusehen sind.\footnote{%
+			\textZB\ könnte "`sincos"' als ein \gloFt{atomares Symbol} oder als Aneinanderreihung der zwei \gloFt{atomaren Symbole} "`sin"' und "`cos"' verstanden werden.
+		}
+	}
+}
+
 \newVerweis     {\metasprachlichesSymbol} {\glstext}         {metasprachlichesSymbol}
-\newVerweis      {\metasprachlicheSymbole}{\glsuseri}        {metasprachlichesSymbol}
+\newVerweis      {\metasprachlicheSymbole}{\glspl}           {metasprachlichesSymbol}
 \newglossaryentry{metasprachlichesSymbol}{
 	name       =                     {---, metasprachliches \addIdx[
 		name   =                     {---, metasprachliches},
 		sort   =                  {Symbol, metasprachliches}]{metasprachlichesSymbol}},
 	sort       =                  {Symbol, metasprachliches},
 	text       ={metasprachliches Symbol},
-	user1      ={metasprachliche  Symbole},
+	plural     ={metasprachliche  Symbole},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{metasprachlichesSymbol}%
+	}
+}
+
+\newVerweis      {\typographischeSymbole}{\glspl}         {typographischesSymbol}
+\newVerweis      {\TypographischeSymbole}{\Glspl}         {typographischesSymbol}
+\newVerweis     {\typographischesSymbol} {\glstext}       {typographischesSymbol}
+\newglossaryentry{typographischesSymbol}{
+	name       =                   {---, typographisches \addIdx[
+		name   =                   {---, typographisches},
+		sort   =                {Symbol, typographisches}]{typographischesSymbol}},
+	sort       =                {Symbol, typographisches},
+	text       ={typographisches Symbol},
+	plural     ={typographische  Symbole},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={typographischesZeichen},
+	description={\todoOk%
+%%%		\SymbolAmRand{typographischesSymbol}%
+		Ein sichtbares Zeichen aus den verwendeten Alphabeten (und damit kein Leerzeichen, Tab \textoae), aber kein Buchstabe.
+	}
+}
+
+\newVerweis     {\zerlegbaresSymbol}{\glstext}    {zerlegbaresSymbol}
+\newglossaryentry{zerlegbaresSymbol}{
+	name       =               {---, zerlegbares \addIdx[
+		name   =               {---, zerlegbares},
+		sort   =            {Symbol, zerlegbares}]{zerlegbaresSymbol}},
+	sort       =            {Symbol, zerlegbares},
+	text       ={zerlegbares Symbol},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	description={\todoBeschreiben%
+%%%		\SymbolAmRand{zerlegbaresSymbol}%
+		Ist ein \Symbol\ eine \Kette\ aus mehr als einem \Symbol, so ist es \DefFt{\zerlegbar} \OptFt{in diese \Symbole}.
+		Aus \zerlegbar\ folgt für \Symbole\ auch \zusammengesetzt, aber nicht immer umgekehrt.
 	}
 }
 
 \newVerweis     {\zusammengesetztesSymbol} {\glstext}         {zusammengesetztesSymbol}
-\newVerweis      {\zusammengesetzteSymbole}{\glsuseri}        {zusammengesetztesSymbol}
+\newVerweis      {\zusammengesetzteSymbole}{\glspl}           {zusammengesetztesSymbol}
 \newglossaryentry{zusammengesetztesSymbol}{
 	name       =                     {---, zusammengesetztes \addIdx[
 		name   =                     {---, zusammengesetztes},
 		sort   =                  {Symbol, zusammengesetztes}]{zusammengesetztesSymbol}},
 	sort       =                  {Symbol, zusammengesetztes},
 	text       ={zusammengesetztes Symbol},
-	user1      ={zusammengesetzte  Symbole},
+	plural     ={zusammengesetzte  Symbole},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{zusammengesetztesSymbol}%
+		Ist ein \Symbol\ ein \Textwort\ aus mehr als einem \Textbuchstaben, so ist es \DefFt{\zusammengesetzt} \OptFt{aus diesen \Textbuchstaben}.
+		Aus \zerlegbar\ folgt für \Symbole\ auch \zusammengesetzt, aber nicht immer umgekehrt.
 	}
 }
 
-\newVerweis     {\Symbolfolge} {\glstext}{Symbolfolge}
-\newVerweis[n]  {\Symbolfolgen}{\glstext}{Symbolfolge}
-\newglossaryentry{Symbolfolge}{
-	name        ={Symbolfolge \addIdx    {Symbolfolge}},
-	text        ={Symbolfolge},
+\newVerweis     {\Symbolkette} {\glstext}{Symbolkette}
+\newVerweis[n]  {\Symbolketten}{\glstext}{Symbolkette}
+\newglossaryentry{Symbolkette}{
+	name        ={Symbolkette \addIdx    {Symbolkette}},
+	text        ={Symbolkette},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Zeichenkette},
-	description ={\todoPruefen%
-		Eine \GloFt{Symbolfolge} ist eine \Folge\ von \atomaren\ \Symbolen.
+	description ={\todoOk%
+%%%		\SymbolAmRand{Symbolkette}%
+		Eine \GloFt{Symbolkette} ist eine \Kette\ von \Symbolen.
+		Zur Strukturierung und insbesondere zur Trennung von \Symbolen, wenn die Bedeutung sonst mehrdeutig ist, kann bei der Darstellung an verschiednen Stellen Zwischenraum (\textzB\ ein oder mehrere Leerzeichen) eingeschoben werden.
+		Logisch gehört der Zwischenraum jedoch nicht zur \gloFt{\Symbolkette}.
 	}
 }
 
@@ -2471,8 +3295,11 @@
 \longnewglossaryentry{Syntax}{
 	name            ={Syntax \addIdx    {Syntax}},
 	text            ={Syntax},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={Semantik,Sprache},
 }{\todoGeprueft%
+%%%	\SymbolAmRand{Syntax}%
 	\wikicite{bib:Wikipedia}{
 		Unter \wikiBoldFt{Syntax} [\textdots] versteht man allgemein ein Regelsystem zur Kombination elementarer Zeichen zu zusammengesetzten Zeichen in natürlichen oder künstlichen Zeichensystemen. Die Zusammenfügungsregeln der Syntax stehen hierbei den Interpretationsregeln der \wikiLinkFt{Semantik} gegenüber.
 	}
@@ -2488,8 +3315,11 @@
 	name        ={Teilaussage \addIdx     {Teilaussage}},
 	text        ={Teilaussage},
 	user1       =    {aussage},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoOk%
-		Eine \Aussage\ $A$ heißt eine \GloFt{Teilaussage}\synonym{\defTxt{\Unteraussage}} \DefFt{von} einer \Aussage\ $B$, wenn sie Teil von $B$ ist und man sie ohne Bedeutungsänderung von $B$ dort klammern könnte.
+%%%		\SymbolAmRand{Teilaussage}%
+		Eine \Aussage\ $A$ heißt \GloFt{Teilaussage}\synonym{\defTxt{\Unteraussage}} \OptFt{von} einer \Aussage\ $B$, wenn sie Teil von $B$ ist und man sie ohne Bedeutungsänderung von $B$ dort klammern könnte.
 	}
 }
 
@@ -2504,7 +3334,10 @@
 	text       ={echte  Teilaussage},
 	user1      ={echten Teilaussage},
 	user2      =           {aussage},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoOk%
+%%%		\SymbolAmRand{echteTeilaussage}%
 		Eine \Teilaussage\ $A$ einer \Aussage\ $B$ heißt \GloFt{echte Teilaussage} von $B$, wenn $A$ verschieden von $B$ ist.
 	}
 }
@@ -2514,8 +3347,11 @@
 \newglossaryentry{Teilbereich}{
 	name        ={Teilbereich \addIdx     {Teilbereich}},
 	text        ={Teilbereich},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Oberbereich},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Teilbereich}%
 		Ein \Bereich\ $A$ ist genau dann ein \GloFt{Teilbereich} von einem \Bereich\ $B$, wenn $A \MtsSubsetEq B$ ist.
 	}
 }
@@ -2529,8 +3365,11 @@
 		sort   =       {Teilbereich, echter}]   {echterTeilbereich}},
 	sort       =       {Teilbereich, echter},
 	text       ={echter Teilbereich},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	see        ={echterOberbereich},
 	description={\todoOk%
+%%%		\SymbolAmRand{echterTeilbereich}%
 		Ein \Bereich\ $A$ ist genau dann ein \GloFt{echter Teilbereich} von einem \Bereich\ $B$, wenn $A \MtsSubset B$ ist.
 	}
 }
@@ -2542,7 +3381,10 @@
 	name        ={Teilfolge \addIdx     {Teilfolge}},
 	text        ={Teilfolge},
 	user1       =    {folge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Teilfolge}%
 	}
 }
 
@@ -2557,7 +3399,10 @@
 	text       ={echte  Teilfolge},
 	user1      ={echten Teilfolge},
 	user2      =           {folge},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{echteTeilfolge}%
 	}
 }
 
@@ -2568,7 +3413,10 @@
 	name        ={Teilformel \addIdx     {Teilformel}},
 	text        ={Teilformel},
 	user1       =    {formel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Teilformel}%
 	}
 }
 
@@ -2583,7 +3431,46 @@
 	text       ={echte  Teilformel},
 	user1      ={echten Teilformel},
 	user2      =           {formel},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{echteTeilformel}%
+	}
+}
+
+\newVerweis     {\Teilkette} {\glstext} {Teilkette}
+%%%\newVerweis        {\Tkette} {\glsuseri}{Teilkette}
+%%%\newVerweis[n]  {\Teilketten}{\glstext} {Teilkette}
+\newglossaryentry{Teilkette}{
+	name        ={Teilkette \addIdx     {Teilkette}},
+	text        ={Teilkette},
+	user1       =    {kette},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={},% ToDo=Oberkette
+	description ={\todoOk%
+%%%		\SymbolAmRand{Teilkette}%
+		Eine \Kette\ $A$ ist ist genau dann eine \GloFt{Teilkette} von einer \Kette\ $B$, wenn $A ein zusammenhängender Teil von B$ ist.
+	}
+}
+
+\newVerweis      {\echteTeilkette}{\glstext}  {echteTeilkette}
+%%%\newVerweis     {\echtenTeilkette}{\glsuseri} {echteTeilkette}
+\newVerweis             {\eTkette}{\glsuserii}{echteTeilkette}
+\newglossaryentry {echteTeilkette}{
+	name       =             {---, echte \addIdx[
+		name   =             {---, echte},
+		sort   =       {Teilkette, echte}]    {echteTeilkette}},
+	sort       =       {Teilkette, echte},
+	text       ={echte  Teilkette},
+	user1      ={echten Teilkette},
+	user2      =           {kette},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={},% ToDo=echteOberkette
+	description={\todoOk%
+%%%		\SymbolAmRand{echteTeilkette}%
+		Eine \Kette\ $A$ ist ist genau dann eine \GloFt{echte Teilkette} von einer \Kette\ $B$, wenn $A$ \Teilkette\ von $B$, aber ungleich $B$ ist.
 	}
 }
 
@@ -2594,8 +3481,11 @@
 	name        ={Teilmenge \addIdx     {Teilmenge}},
 	text        ={Teilmenge},
 	user1       =    {menge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Obermenge,Teilbereich},
 	description ={\todoOk%
+%%%		\SymbolAmRand{Teilmenge}%
 		Eine \Menge\ $A$ ist ist genau dann eine \GloFt{Teilmenge} von einer \Menge\ $B$, wenn $A \MtsSubsetEq B$ ist.
 	}
 }
@@ -2611,8 +3501,11 @@
 	text       ={echte  Teilmenge},
 	user1      ={echten Teilmenge},
 	user2      =           {menge},
-	see         ={echteObermenge,echterTeilbereich},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={echteObermenge,echterTeilbereich},
 	description={\todoOk%
+%%%		\SymbolAmRand{echteTeilmenge}%
 		Eine \Menge\ $A$ ist ist genau dann eine \GloFt{echte Teilmenge} von einer \Menge\ $B$, wenn $A \MtsSubset B$ ist.
 	}
 }
@@ -2624,7 +3517,10 @@
 	name        ={Teilobjekt \addIdx     {Teilobjekt}},
 	text        ={Teilobjekt},
 	user1       =    {objekt},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Teilobjekt}%
 	}
 }
 
@@ -2639,7 +3535,10 @@
 	text        ={echtes Teilobjekt},
 	user1       ={echten Teilobjekt},
 	user2       =           {objekt},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{echtesTeilobjekt}%
 	}
 }
 
@@ -2647,7 +3546,10 @@
 \newglossaryentry{Teilsprache}{
 	name        ={Teilsprache \addIdx     {Teilsprache}},
 	text        ={Teilsprache},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Teilsprache}%
 	}
 }
 
@@ -2658,7 +3560,10 @@
 		sort    =       {Teilsprache, echte}]  {echteTeilsprache}},
 	sort        =       {Teilsprache, echte},
 	text        ={echte Teilsprache},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{echteTeilsprache}%
 	}
 }
 
@@ -2669,22 +3574,78 @@
 	name        ={Teilsymbol \addIdx     {Teilsymbol}},
 	text        ={Teilsymbol},
 	user1       =    {symbol},
-	description ={\todoBeschreiben%
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoErgaenzen%
+%%%		\SymbolAmRand{Teilsymbol}%
+		Ein \Symbol\ $A$ sei eine \Kette\ von \atomarenSymbolen\ und $B$ eine \Teilkette\ davon.
+		Wenn (in dem Zusammenhang) $B$ auch ein \Symbol\ ist, dann ist $B$ ein \GloFt{Teilsymbol} \OptFt{von} $A$.
+		$A$ ist stets sein eigenes Teilsymbol.
+%%%%		Sprechweise: $B aus A$
 	}
 }
 
-\newVerweis     {\echtesTeilsymbol}{\glstext}  {echtesTeilsymbol}
-\newVerweis     {\echtenTeilsymbol}{\glsuseri} {echtesTeilsymbol}
-\newVerweis             {\eTsymbol}{\glsuserii}{echtesTeilsymbol}
+\newVerweis     {\echtesTeilsymbol} {\glstext}  {echtesTeilsymbol}
+\newVerweis     {\echtenTeilsymbol} {\glsuseri} {echtesTeilsymbol}
+\newVerweis[s]  {\echtenTeilsymbols}{\glsuseri} {echtesTeilsymbol}
+\newVerweis             {\eTsymbol} {\glsuserii}{echtesTeilsymbol}
 \newglossaryentry{echtesTeilsymbol}{
 	name       =              {---, echtes \addIdx[
 		name   =              {---, echtes},
-		sort   =       {Teilsymbol, echtes}]   {echtesTeilsymbol}},
+		sort   =       {Teilsymbol, echtes}]    {echtesTeilsymbol}},
 	sort       =       {Teilsymbol, echtes},
 	text       ={echtes Teilsymbol},
 	user1      ={echten Teilsymbol},
 	user2      =           {symbol},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={Obersymbol},
 	description={\todoBeschreiben%
+%%%		\SymbolAmRand{echtesTeilsymbol}%
+		Ein \Teilsymbol\ $A$ eines \Symbols\ $B$ welches nicht mit $B$ übereinstimmt, ist ein \GloFt{echtes Teilsymbol} \OptFt{von} $B$.
+%%%%		Sprechweise: $A echt aus B$
+	}
+}
+
+\newVerweis     {\Textbuchstabe} {\glstext}{Textbuchstabe}
+\newVerweis[n]  {\Textbuchstaben}{\glstext}{Textbuchstabe}
+\newglossaryentry{Textbuchstabe}{
+	name        ={Textbuchstabe \addIdx    {Textbuchstabe}},
+	text        ={Textbuchstabe},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={deutscherBuchstabe,lateinischerBuchstabe,griechischerBuchstabe,Textwort},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Textbuchstabe}%
+		\footnote{\glqq Buchstabe\grqq\ allein ist nicht genau genug.}
+		Ein Buchstabe aus einem der verwendeten\footnote{%
+			Wir verwenden hier nur das lateinische, das deutsche und das griechische Alphabet.
+			Denkbar wären auch weitere nationale Erweiterungen und \textzB\ das kyrillische Alphabet.
+		} Alphabete.
+		\begin{itemize}
+			\item Klein- und Großbuchstaben gelten als verschieden.
+			\item \GloFt{Textbuchstaben} in verschiedenen Schriftarten gelten als verschieden
+			\item \gloFt{Textbuchstaben} in verschiedenen Textauszeichnungen gelten nicht als verschieden.
+			Die unterschiedlichen Textauszeichnungen können aber eine Bedeutung haben.
+		\end{itemize}
+	}
+}
+
+\newVerweis     {\Textwort} {\glstext}{Textwort}
+\newVerweis[e]  {\Textworte}{\glstext}{Textwort}
+\newglossaryentry{Textwort}{
+	name        ={Textwort \addIdx   {Textwort}},
+	text        ={Textwort},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={deutschesWort,lateinischesWort,griechischesWort,Textbuchstabe},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Textwort}%
+		\footnote{%
+			\glqq Wort\grqq\ allein ist nicht genau genug.
+			Man denke an gemischte Alphabete, die Verwendung von Bindestrichen und die in Programmiersprachen übliche Verwendung von Unterstrichen.
+		} Eine \Kette\ von \Textbuchstaben, alle aus demselben Alphabet und in derselben Schriftart.
+		Normalerweise hat ein \gloFt{Textwort} als Ganzes dieselbe Textauszeichnung.
 	}
 }
 
@@ -2694,8 +3655,11 @@
 	name        ={Trägermenge \addIdx[
 		name    ={Trägermenge}]           {Traegermenge}},
 	text        ={Trägermenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsTraeger},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Traegermenge}%
 		einer \Relation.
 	}
 }
@@ -2705,8 +3669,11 @@
 \newglossaryentry{Transformation}{
 	name        ={Transformation \addIdx     {Transformation}},
 	text        ={Transformation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsTransformation,MtsTransformationTup,zulaessigeTransformation},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Transformation}%
 		Eine Umformung oder Erzeugung einer \Formel\ aus einer vorgegebenen \Menge\ von \Formeln, \textdh\ die Anwendung einer \Schlussregel.
 	}
 }
@@ -2724,7 +3691,10 @@
 	text        ={zulässige  Transformation},
 	user1       ={zulässigen Transformation},
 	user2       ={zulässiger Transformation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{zulaessigeTransformation}%
 		Eine \Transformation\ heißt \GloFt{zulässig}, wenn sie \Element\ aus einer vorgegebenen \Menge\ von \Transformationen\ oder eine daraus zulässigerweise abgeleitete \Transformation\ ist.
 	}
 }
@@ -2734,8 +3704,11 @@
 \newglossaryentry{Transformationsfolge}{
 	name        ={Transformationsfolge \addIdx    {Transformationsfolge}},
 	text        ={Transformationsfolge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsTransformation,MtsTransformationTup,Transformation},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Transformationsfolge}%
 		Eine Folge von \Transformationen.
 	}
 }
@@ -2745,7 +3718,10 @@
 \newglossaryentry{Transformationsregel}{
 	name        ={Transformationsregel \addIdx    {Transformationsregel}},
 	text        ={Transformationsregel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Transformationsregel}%
 	}
 }
 
@@ -2754,8 +3730,11 @@
 \longnewglossaryentry{Tupel}{
 	name            ={Tupel \addIdx    {Tupel}},
 	text            ={Tupel},
-	see             ={Folge,Komponente,Menge,Objekt,Symbolfolge,Zeichenkette},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
+	see             ={Folge,Komponente,Menge,Objekt,Symbolkette,Zeichenkette},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Tupel}%
 	\wikicite{bib:Tupel}{
 		\wikiBoldFt{Tupel} (abgetrennt von \wikiLinkFt{mittellat.} \wikiItalicFt{quintuplus} ‚fünffach‘, \wikiItalicFt{septuplus} ‚siebenfach‘, \wikiItalicFt{centuplus} ‚hundertfach‘ etc.) sind in der \wikiLinkFt{Mathematik} neben \wikiLinkFt{Mengen} eine wichtige Art und Weise, \wikiLinkFt{mathematische Objekte} zusammenzufassen. Ein Tupel besteht aus einer \wikiLinkFt{Liste} endlich vieler, nicht notwendigerweise voneinander verschiedener Objekte. Dabei spielt, im Gegensatz zu Mengen, die Reihenfolge der Objekte eine Rolle. Es gibt verschiedene Möglichkeiten, Tupel formal als Mengen darzustellen. Tupel finden in vielen Bereichen der Mathematik Verwendung, zum Beispiel als \wikiLinkFt{Koordinaten} von Punkten oder als \wikiLinkFt{Vektoren} in mehrdimensionalen \wikiLinkFt{Vektorräumen}.
 
@@ -2770,7 +3749,10 @@
 \newglossaryentry{Tupelmenge}{
 	name        ={Tupelmenge \addIdx    {Tupelmenge}},
 	text        ={Tupelmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Tupelmenge}%
 		Die \Tupelmenge\ $\MtsTup(M)$ einer \Menge\ $M$ ist die \Menge\ aller $n$-Tupel aus $M^n$ für alle $n \in \MtsINo$.
 	}
 }
@@ -2782,8 +3764,11 @@
 \newglossaryentry{Umkehrrelation}{
 	name        ={Umkehrrelation \addIdx     {Umkehrrelation}},
 	text        ={Umkehrrelation},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Menge},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Umkehrrelation}%
 		Die \GloFt{Umkehrrelation}\alternativiii{konverse Relation}{Konverse }{inverse Relation } \emph{von} einer \binaeren\ \Relation\ $(G,A,B)$ ist die \Relation\ $(H,B,A)$ mit $H = \RawMengeDef{(b,a)}{(a,b) \in G}$.
 		Üblicherweise wird das zugehörige \Relationssymbol\ gespiegelt.
 		Die \gloFt{Umkehrrelation} der \Negation\ einer \Relation\ ist gleich der \Negation\ ihrer \gloFt{Umkehrrelation}.
@@ -2798,8 +3783,11 @@
 	name        ={unär \addIdx[
 		name    ={unär}]            {unaer}},
 	text        ={unär},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={binaer},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{unaer}%
 		Eine \Operation, \Funktion\ oder \Relation\ heißt \GloFt{unär}, wenn ihre \Stelligkeit\ gleich 1 ist.
 	}
 }
@@ -2808,7 +3796,10 @@
 \newglossaryentry{Ungleichheit}{
 	name        ={Ungleichheit \addIdx   {Ungleichheit}},
 	text        ={Ungleichheit},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Ungleichheit}%
 		Eine \Gleichheitsrelation:
 		Zwei Objekte $A$ und $B$ sind \DefFt{nicht gleich}\alternativii{nicht dasselbe}{nicht identisch} $A \MtsEqN B$, wenn sie in mindestens einer \interessierendenEigenschaft\ für \MtsEq\ nicht übereinstimmen.
 	}
@@ -2820,7 +3811,7 @@
 \newsynonym{\Unterobjekt} {Unterobjekt} {\Teilobjekt}
 \newsynonym{\Untersymbol} {Untersymbol} {\Teilsymbol}
 
-\newsynonym{\unzerlegbar} {unzerlegbar} {\atomar}
+\newsynonym{\unzerlegbar}{unzerlegbar}{\atomar}
 
 %V === V === V === V === V === V === V === V === V === V === V === V === V === V
 
@@ -2831,8 +3822,9 @@
 	text            ={Variable},
 	see             ={Konstante},
 }{\todoGeprueft%
+%%%	\SymbolAmRand{Variable}%
 	\wikicite{bib:Variable}{
-		Eine \wikiBoldFt{Variable} ist ein Name für eine Leerstelle in einem logischen oder mathematischen Ausdruck.[1]Der Begriff leitet sich vom lateinischen \wikiLinkFt{Adjektiv} \wikiItalicFt{variabilis} (veränderlich) ab. Gleichwertig werden auch die Begriffe \wikiItalicFt{Platzhalter} oder \wikiItalicFt{Veränderliche} benutzt. Als „Variable“ dienten früher Wörter oder Symbole, heute verwendet man zur \wikiLinkFt{mathematischen Notation} in der Regel Buchstaben als Zeichen. Wird anstelle der Variablen ein konkretes Objekt eingesetzt, so ist darauf zu achten, dass überall dort, wo die Variable auftritt, auch dasselbe Objekt benutzt wird.
+		Eine \wikiBoldFt{Variable} ist ein Name für eine Leerstelle in einem logischen oder mathematischen Ausdruck. Der Begriff leitet sich vom lateinischen \wikiLinkFt{Adjektiv} \wikiItalicFt{variabilis} (veränderlich) ab. Gleichwertig werden auch die Begriffe \wikiItalicFt{Platzhalter} oder \wikiItalicFt{Veränderliche} benutzt. Als „Variable“ dienten früher Wörter oder Symbole, heute verwendet man zur \wikiLinkFt{mathematischen Notation} in der Regel Buchstaben als Zeichen. Wird anstelle der Variablen ein konkretes Objekt eingesetzt, so ist darauf zu achten, dass überall dort, wo die Variable auftritt, auch dasselbe Objekt benutzt wird.
 	}
 }
 
@@ -2847,7 +3839,10 @@
 	text       ={aussagenlogische  Variable},
 	user1      ={aussagenlogischen Variable},
 	user2      ={aussagenlogischen},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{aussagenlogischeVariable}%
 		Die \GloFt{aussagenlogischen} \Variablen\ sind die \Elemente\ aus \OjkVar.
 	}
 }
@@ -2865,7 +3860,10 @@
 	text       ={freie  Variable},
 	user1      ={freien Variable},
 	user2      ={frei},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoGeprueft%
+%%%		\SymbolAmRand{freieVariable}%
 		Eine \Variable\ heißt \GloFt{frei}, wenn sie nicht \gebundenV\ ist.
 	}
 }
@@ -2883,7 +3881,10 @@
 	text       ={gebundene  Variable},
 	user1      ={gebundenen Variable},
 	user2      ={gebunden},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoGeprueft%
+%%%		\SymbolAmRand{gebundeneVariable}%
 		Eine \Variable\ heißt durch einen bestimmten \Quantor\ \GloFt{gebunden}, wenn sie die zum \Quantor\ gehörige \Variable\ ist und im zugehörigen \Ausdruck\ auch \freiV\ vorkommt.
 	}
 }
@@ -2898,7 +3899,10 @@
 	sort       =          {Variable, logische},
 	text       ={logische  Variable},
 	user1      ={logische},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{logischeVariable}%
 		Die \GloFt{logischen} \Variablen\ entsprechen den \aussagenlogischenV.
 	}
 }
@@ -2912,7 +3916,10 @@
 	sort       =                {Variable, metasprachliche},
 	text       ={metasprachliche Variable},
 	user1      ={metasprachliche},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoErgaenzen%
+%%%		\SymbolAmRand{metasprachlicheVariable}%
 		Die \GloFt{metasprachlichen} \Variablen\ sind die \Elemente\ aus ...
 	}
 }
@@ -2921,8 +3928,11 @@
 \newglossaryentry{Vereinigung}{
 	name        ={Vereinigung \addIdx    {Vereinigung}},
 	text        ={Vereinigung},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoErgaenzen%
-		Eine \Bereichsoperation: \todo{Beschreibung fehlt noch}
+%%%		\SymbolAmRand{Vereinigung}%
+		Eine \Bereichsoperation:
 	}
 }
 
@@ -2932,10 +3942,12 @@
 \newglossaryentry{vergleichbar}{
 	name        ={vergleichbar \addIdx    {vergleichbar}},
 	text        ={vergleichbar},
-	description ={\todoPruefen%
-		Zwei \Objekte\ $A$ und $B$ sind \vergleichbar, wenn beide von derselben \Objektart\ sind, \textdh\ wenn beide \textzB\ jeweils Mengen, \Symbolfolgen, Zahlen, \textusw\ sind.
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoPruefen% ToDo=Wert und Ergebnis definieren
+%%%		\SymbolAmRand{vergleichbar}%
+		Zwei \Objekte\ $A$ und $B$ sind \vergleichbar, wenn beide von derselben \Objektart\ sind, \textdh\ wenn beide \textzB\ jeweils Mengen, \Symbolketten, Zahlen, \textusw\ sind.
 		Dabei muss bei \Formeln\ zwischen der \Formel\ an sich und ihrem \emph{Wert} oder \emph{Ergebnis} unterschieden werden.
-		%%%  Wert und Ergebnis definieren?
 	}
 }
 
@@ -2943,7 +3955,10 @@
 \newglossaryentry{Verkettung}{
 	name        ={Verkettung \addIdx    {Verkettung}},
 	text        ={Verkettung},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoBeschreiben%
+%%%		\SymbolAmRand{Verkettung}%
 	}
 }
 
@@ -2952,14 +3967,31 @@
 \newglossaryentry{Vertauschung}{
 	name        ={Vertauschung \addIdx     {Vertauschung}},
 	text        ={Vertauschung},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Vertauschung}%
 		Die \GloFt{Vertauschung} von zwei unabhängigen Teil-\Formeln\ ($\alpha$ und $\beta$) in einer anderen \Formel\ ($\gamma$)
 		\\--- Formal: $\gamma(\alpha \MtsSwap \beta)$.
 		Die \gloFt{Vertauschung} ist eine spezielle Form der \Ersetzung.
 	}
 }
 
-\newsynonym{\Voraussetzung}{Voraussetzung}{\Praemisse}
+\newVerweis[en]{\Voraussetzungen}{\glstext}{Voraussetzung}
+\newsynonym    {\Voraussetzung}            {Voraussetzung}{\Praemisse}
+
+\newVerweis     {\Vorgaenger}{\glstext}{Vorgaenger}
+\newglossaryentry{Vorgaenger}{
+	name        ={Vorgänger \addIdx    {Vorgaenger}},
+	text        ={Vorgänger},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={Anfangsglied,Endglied,Nachfolger,Zwischenglied},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Vorgaenger}%
+		Der \GloFt{Vorgänger} eines \Kettenglieds\ in einer \Kette\ ist das vorhergehende (links stehende) \Kettenglied\ in der \Kette.
+	}
+}
 
 %W === W === W === W === W === W === W === W === W === W === W === W === W === W
 
@@ -2969,8 +4001,11 @@
 \longnewglossaryentry{Wahrheitswert}{
 	name            ={Wahrheitswert \addIdx     {Wahrheitswert}},
 	text            ={Wahrheitswert},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 	see             ={atomar,Aussage,Element,Junktor,Logik,Satz,Teilaussage},
 }{\todoOk%
+%%%	\SymbolAmRand{Wahrheitswert}%
 	\wikicite{bib:Wahrheitswert}{
 		Ein \wikiBoldFt{Wahrheitswert} ist in \wikiLinkFt{Logik} und \wikiLinkFt{Mathematik} ein \wikiItalicFt{logischer Wert}, den eine Aussage in Bezug auf Wahrheit annehmen kann.
 
@@ -3020,7 +4055,10 @@
 		sort   =                  {Wahrheitswert, aussagenlogischer}]{aussagenlogischerWahrheitswert}},
 	sort       =                  {Wahrheitswert, aussagenlogischer},
 	text       ={aussagenlogischer Wahrheitswert},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoGeprueft%
+%%%		\SymbolAmRand{aussagenlogischerWahrheitswert}%
 		Es gib nur die beiden \GloFt{aussagenlogischen \Wahrheitswerte} \OjkTrue\ und \OjkFalse.
 	}
 }
@@ -3034,7 +4072,10 @@
 	sort       =                 {Wahrheitswert, metasprachlicher},
 	text       ={metasprachlicher Wahrheitswert},
 	user1      ={metasprachliche  Wahrheitswert},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoPruefen%
+%%%		\SymbolAmRand{metasprachlicherWahrheitswert}%
 		Es gib die beiden \GloFt{metasprachlichen \Wahrheitswerte} in Textform (\TxtTrue, \TxtFalse) und in der \formalenMetasprache\ (\MtsTrue, \MtsFalse).
 	}
 }
@@ -3044,11 +4085,14 @@
 \newglossaryentry{Wert}{
 	name        ={Wert \addIdx     {Wert}},
 	text        ={Wert},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoGeprueft%
+%%%		\SymbolAmRand{Wert}%
 		Der \GloFt{Wert} einer \Formel\ ergibt sich rekursiv aus der \Belegung\ der \Symbole, aus denen die \Formel\ besteht.
-		Beispielsweise hat die \Formel\ \seqqt{a+b=c} mit der \Belegung\ von \chrqt{$a$}, \chrqt{$b$}, \chrqt{$c$}, \chrqt{$+$} und \chrqt{$=$} durch die Zahlen Eins, Zwei und Drei, den Additionsoperator und die Gleichheit den \gloFt{Wert} "`\TxtTrue"'.%
-		\footnote{Genau genommen \MtsTrue, was wiederum standardmäßig die \Belegung\ \TxtTrue hat.}
-		Belegt man bei sonst gleicher Belegung \chrqt{$c$} mit Vier, so ist der \gloFt{Wert} hingegen "`\TxtFalse"'.
+		Beispielsweise hat die \Formel\ \seqqt{a+b=c} mit der \Belegung\ von \chrqt{$a$}, \chrqt{$b$}, \chrqt{$c$}, \chrqt{$+$} und \chrqt{$=$} durch die Zahlen Eins, Zwei und Drei, den Additionsoperator und die Gleichheit den \gloFt{Wert} \glqq\TxtTrue\grqq.%
+		\footnote{Genau genommen \MtsTrue, was wiederum standardmäßig die \Belegung\ \TxtTrue\ hat.}
+		Belegt man bei sonst gleicher Belegung \chrqt{$c$} mit Vier, so ist der \gloFt{Wert} hingegen \glqq\TxtFalse\grqq.
 	}
 }
 
@@ -3061,7 +4105,10 @@
 	sort       =          {Wert, logischer},
 	text       ={logischer Wert},
 	user1      ={logische  Wert},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
 	description={\todoGeprueft%
+%%%		\SymbolAmRand{logischerWert}%
 		Synonym zu \Wahrheitswert.
 	}
 }
@@ -3071,8 +4118,11 @@
 \newglossaryentry{Wertebereich}{
 	name        ={Wertebereich \addIdx    {Wertebereich}},
 	text        ={Wertebereich},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsWb,Zielbereich,Funktion},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Wertebereich}%
 		einer \Funktion.
 	}
 }
@@ -3081,7 +4131,10 @@
 \longnewglossaryentry{Wikipedia}{
 	name            ={Wikipedia \addIdx   {Wikipedia}},
 	text            ={Wikipedia},
+%%%	symbol          ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6           ={Textmode},
 }{\todoPruefen%
+%%%	\SymbolAmRand{Wikipedia}%
 	\wikicite{bib:Wikipedia}{
 		Wikipedia ist ein Projekt zum Aufbau einer [Internet-\nobreak]Enzyklopädie aus freien Inhalten.
 	}
@@ -3095,9 +4148,62 @@
 	text        ={Wort},
 	plural      ={Wörter},
 	see         ={Formelmenge},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Wort}%
 		Synonym: \Formel\ ---
 		Ein \Element\ aus einer \Sprache.
+	}
+}
+
+\newVerweis     {\deutschesWort}{\glstext}  {deutschesWort}
+\newglossaryentry{deutschesWort}{
+	name       =           {---, deutsches},% \addIdx[
+	name       =           {---, deutsches \addIdx[
+		name   =           {---, deutsches},
+		sort   =          {Wort, deutsches}]{deutschesWort}},
+	sort       =          {Wort, deutsches},
+	text       ={deutsches Wort},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={deutscherBuchstabe,griechischesWort,lateinischesWort,Textwort},
+	description={\todoOk%
+%%%		\SymbolAmRand{deutschesWort}%
+		Eine \Kette\ von \deutschenBuchstaben\ in derselben Schriftart.
+	}
+}
+
+\newVerweis     {\griechischesWort}{\glstext}     {griechischesWort}
+\newglossaryentry{griechischesWort}{
+	name       =              {---, griechisches},% \addIdx[
+	name       =              {---, griechisches \addIdx[
+		name   =              {---, griechisches},
+		sort   =             {Wort, griechisches}]{griechischesWort}},
+	sort       =             {Wort, griechisches},
+	text       ={griechisches Wort},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={griechischerBuchstabe,deutschesWort,lateinischesWort,Textwort},
+	description={\todoOk%
+%%%		\SymbolAmRand{griechischesWort}%
+		Eine \Kette\ von \griechischenBuchstaben\ in derselben Schriftart.
+	}
+}
+
+\newVerweis     {\lateinischesWort}{\glstext}     {lateinischesWort}
+\newglossaryentry{lateinischesWort}{
+	name       =              {---, lateinisches \addIdx[
+		name   =              {---, lateinisches},
+		sort   =             {Wort, lateinisches}]{lateinischesWort}},
+	sort       =             {Wort, lateinisches},
+	text       ={lateinisches Wort},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={lateinischerBuchstabe,deutschesWort,griechischesWort,Textwort},
+	description={\todoOk%
+%%%		\SymbolAmRand{lateinischesWort}%
+		Eine \Kette\ von \lateinischenBuchstaben\ in derselben Schriftart.
 	}
 }
 
@@ -3111,7 +4217,10 @@
 		name       =            {Zahl, natürliche}]{natuerlicheZahl}},
 	text           ={natürliche  Zahl},
 	user1          ={natürlichen Zahl},
+%%%	symbol         ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6          ={Textmode},
 }{\todoBeschreiben%
+%%%	\SymbolAmRand{natuerlicheZahl}%
 	Eine verbreitete Version für die Definition der \Menge\ \MtsINo\ der \GloFt{natürlichen Zahlen} ist folgende:
 	\begin{itemize}
 		\item [] $\emptyset \MtsIn \MtsINo$
@@ -3126,27 +4235,68 @@
 	\end{itemize}
 }
 
+\newVerweis     {\Zeichen}{\glstext}{Zeichen}
+\newglossaryentry{Zeichen}{
+	name        ={Zeichen \addIdx   {Zeichen}},
+	text        ={Zeichen},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Zeichen}%
+		Ein \typographischesZeichen\ oder ein Leerzeichen.
+	}
+}
+
+\newVerweis     {\typographischesZeichen}{\glstext}        {typographischesZeichen}
+\newVerweis      {\typographischeZeichen}{\glsuseri}       {typographischesZeichen}
+\newVerweis      {\TypographischeZeichen}{\Glsuseri}       {typographischesZeichen}
+\newVerweis     {\typographischenZeichen}{\glsuserii}      {typographischesZeichen}
+\newglossaryentry{typographischesZeichen}{
+	name       =                    {---, typographisches \addIdx[
+		name   =                    {---, typographisches},
+		sort   =                {Zeichen, typographisches}]{typographischesZeichen}},
+	sort       =                {Zeichen, typographisches},
+	text       ={typographisches Zeichen},
+	user1      ={typographische  Zeichen},
+	user2      ={typographischen Zeichen},
+%%%	symbol     ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6      ={Textmode},
+	see        ={typographischesSymbol},
+	description={\todoOk%
+%%%		\SymbolAmRand{typographischesZeichen}%
+		Ein \Textbuchstabe\ oder ein \typographischesSymbol.
+	}
+}
+
 \newVerweis     {\Zeichenkette} {\glstext}{Zeichenkette}
 \newVerweis[n]  {\Zeichenketten}{\glstext}{Zeichenkette}
 \newglossaryentry{Zeichenkette}{
 	name        ={Zeichenkette \addIdx    {Zeichenkette}},
 	text        ={Zeichenkette},
-	see         ={Symbolfolge},
-	description ={\todoPruefen%
-		Eine Folge von (typographischen) Zeichen, auch Leerstellen und sonstigem Zwischenraum.
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={Symbolkette},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Zeichenkette}%
+		Eine \Kette\ von \Zeichen.
+		Im Gegensatz zur \Symbolkette\ darf sie auch leer sein und die Leerzeichen gehören logisch dazu.
 	}
 }
 
 \newVerweis     {\zerlegbar}  {\glstext}{zerlegbar}
 \newVerweis[e]  {\zerlegbare} {\glstext}{zerlegbar}
 \newVerweis[e]  {\Zerlegbare} {\Glstext}{zerlegbar}
+\newVerweis[en] {\zerlegbaren}{\glstext}{zerlegbar}
 \newVerweis[es] {\zerlegbares}{\glstext}{zerlegbar}
 \newglossaryentry{zerlegbar}{
 	name        ={zerlegbar \addIdx     {zerlegbar}},
 	text        ={zerlegbar},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={atomar},
 	description ={\todoPruefen%
-		Eine \Aussage, \Formel, \Folge\ oder \Symbol, die eine \echteTeilaussage,  -\eTfolge, -\eTformel\ \textbzw. -\eTsymbol\ enthalten, heißt \GloFt{zerlegbar}.
+%%%		\SymbolAmRand{zerlegbar}%
+		Eine \Aussage, \Formel, \Folge, \Kette\ oder \Symbol, die eine \echteTeilaussage,  -\eTfolge, -\eTformel, -\eTkette\ \textbzw -\eTsymbol\ enthält, heißt \GloFt{zerlegbar}.
 	}
 }
 
@@ -3155,7 +4305,10 @@
 \newglossaryentry{Ziel}{
 	name        ={Ziel \addIdx    {Ziel}},
 	text        ={Ziel},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Ziel}%
 		Ein \GloFt{Ziel} ist \hier\ eine Anforderungen an \ASBA.
 	}
 }
@@ -3165,8 +4318,11 @@
 \newglossaryentry{Zielbereich}{
 	name        ={Zielbereich \addIdx    {Zielbereich}},
 	text        ={Zielbereich},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={MtsZb,Wertebereich,Funktion},
 	description ={\todoPruefen%
+%%%		\SymbolAmRand{Zielbereich}%
 		einer \Funktion.
 	}
 }
@@ -3177,10 +4333,42 @@
 \newVerweis[er] {\zulaessiger}{\glstext}{zulaessig}
 \newglossaryentry{zulaessig}{
 	name        ={zulässig \addIdx[
-		name    ={zulässig}]            {zulaessig}},
+		name    ={zulässig}]            {zulaessig}},% wegen des 'ä'
 	text        ={zulässig},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
 	see         ={Formel,Transformation,Ersetzung},
 	description ={\todoPruefen%
-		Eine Eigenschaft von \Formel, \Transformation\ und \Ersetzung.
+%%%		\SymbolAmRand{zulaessig}%
+		Eine Eigenschaft von \Formeln, \Transformationen\ und \Ersetzungen.
+	}
+}
+
+\newVerweis     {\zusammengesetzt}  {\glstext}{zusammengesetzt}
+\newVerweis[en] {\zusammengesetzten}{\glstext}{zusammengesetzt}
+\newglossaryentry{zusammengesetzt}{
+	name        ={zusammengesetzt \addIdx     {zusammengesetzt}},
+	text        ={zusammengesetzt},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={zerlegbar},
+	description ={\todoOk%
+%%%		\SymbolAmRand{zusammengesetzt}%
+		Eine Eigenschaft von \Symbolen.
+		Ein \Symbol\ kann \unzerlegbar, aber \gloFt{zusammengesetzt} sein.
+	}
+}
+
+\newVerweis     {\Zwischenglied}{\glstext}{Zwischenglied}
+\newVerweis[er] {\Zwischenglieder}{\glstext}{Zwischenglied}
+\newglossaryentry{Zwischenglied}{
+	name        ={Zwischenglied \addIdx   {Zwischenglied}},
+	text        ={Zwischenglied},
+%%%	symbol      ={\ensuremath{Mathmode}},% ToDo=Mathmode
+%%%	user6       ={Textmode},
+	see         ={Anfangsglied,Endglied,Nachfolger,Vorgaenger,Zwischenglied},
+	description ={\todoOk%
+%%%		\SymbolAmRand{Zwischenglied}%
+		Eine \GloFt{Zwischenglied} einer \Kette\ ist jedes ihrer \Kettenglieder, das weder \AnfangsG\ noch \Endglied\ \OptFt{der \Kette} ist.
 	}
 }

@@ -60,13 +60,15 @@
 
 # unbekannte Parameter
 \begin{otherlanguage}{Sprache}
+\begin{tablenotes}
+\end{tablenotes}
 \color{color}
 
 # Makros für Glossar-Einträge
 \addIdx{gloLabel%key}
 \addIdx[gloKeys%keys]{gloLabel%key}
 \baueBeschreibung{gloLabel%Key}{Symbolart%text}
-\baueBeschreibung}[Zwischentext%text]{gloLabel%Key}{Symbolart%text}
+\baueBeschreibung[Zwischentext%text]{gloLabel%Key}{Symbolart%text}
 \begin{offen}
 \defSymBin{gloCmd%cmd}
 \defSymUna{gloCmd%cmd}
@@ -90,7 +92,7 @@
 \newVerweis[ext]{cmd}{glscmd%cmd}{gloLabel%key}#d
 \nichtImGlossar{gloLabel%key}
 \nurImGlossar{gloLabel%key}
-\SymbolAmRand}{gloLabel%key}
+\SymbolAmRand{gloLabel%key}
 \SymbolDescription{gloLabel%key}{text}#n
 \SymbolDescription[Zwischentext]{gloLabel%key}{text}#n
 \wikibf{text}

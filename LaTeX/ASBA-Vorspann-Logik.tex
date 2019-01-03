@@ -168,31 +168,34 @@
 \newcommand*{\RawOjkEq}       {=}%          Gleichheit   in Formeln
 \newcommand*{\RawOjkEqN}      {\ne}%        Ungleichheit in Formeln
 % Quantoren --------------------------------------------------------------------
-\newcommand*{\RawMtsForall}   {\forall}%     für alle          <x>         gilt:
+\newcommand*{\RawMtsForAll}   {\forall}%     für alle          <x>         gilt:
 \newcommand*{\RawMtsExists}   {\exists}%     es gibt       ein <x> für das gilt:
-\newcommand*{\RawMtsExione}   {\exists!}%    es gibt genau ein <x> für das gilt:
-\newcommand*{\RawOjkForall}   {\bigwedge}%   für alle          <x>         gilt:
+\newcommand*{\RawMtsExiOne}   {\exists!}%    es gibt genau ein <x> für das gilt:
+\newcommand*{\RawOjkForAll}   {\bigwedge}%   für alle          <x>         gilt:
 \newcommand*{\RawOjkExists}   {\bigvee}%     es gibt       ein <x> für das gilt:
-\newcommand*{\RawOjkExione}   {\dot\bigvee}% es gibt genau ein <x> für das gilt:
+\newcommand*{\RawOjkExiOne}   {\dot\bigvee}% es gibt genau ein <x> für das gilt:
 
 % weitere Symbole --------------------------------------------------------------
 \newcommand*{\RawMtsFktSep}   {:}%                 f \MtsFktSep A \MtsFktArrow B
 \newcommand*{\RawMtsFktArrow} {\rightarrow}
 
 % Neue Metaoperationen ---------------------------------------------------------
-\DeclareMathOperator{\RawMtsValue}  {\StrMtsValue}% Wert  einer      Formel
-\DeclareMathOperator{\RawMtsGraph}  {\StrMtsGraph}% Graph einer      Funktion/Relation
-\DeclareMathOperator{\RawMtsTraeger}{\StrMtsTraeger}% Trägermenge einer       Relation
-\DeclareMathOperator{\RawMtsStel}   {\StrMtsStel}% Stelligkeit einer Funktion/Relation
-\DeclareMathOperator{\RawMtsStelF}  {\StrMtsStel_f}% Stelligkeit für [F]unktionen
-\DeclareMathOperator{\RawMtsStelR}  {\StrMtsStel_r}% Stelligkeit für [R]elationen
-\DeclareMathOperator{\RawMtsQb}     {\StrMtsQb}% Quellbereich einer partiellen Funktion
-\DeclareMathOperator{\RawMtsDb}     {\StrMtsDb}% Definitionsbereich einer      Funktion
-\DeclareMathOperator{\RawMtsZb}     {\StrMtsZb}% Zielbereich        einer      Funktion
-\DeclareMathOperator{\RawMtsWb}     {\StrMtsWb}% Wertebereich       einer      Funktion
-\DeclareMathOperator{\RawMtsLen}    {\StrMtsLen}% Länge            eines/r Tupels/Folge
-\DeclareMathOperator{\RawMtsSet}    {\StrMtsSet}% Komponentenmenge eines/r Tupels/Folge
+\DeclareMathOperator*{\RawMtsValue}  {\StrMtsValue}% Wert  einer      Formel
+\DeclareMathOperator*{\RawMtsGraph}  {\StrMtsGraph}% Graph einer      Funktion/Relation
+\DeclareMathOperator*{\RawMtsTraeger}{\StrMtsTraeger}% Trägermenge einer       Relation
+\DeclareMathOperator*{\RawMtsStel}   {\StrMtsStel}% Stelligkeit einer Funktion/Relation
+\DeclareMathOperator*{\RawMtsStelF}  {\StrMtsStel_f}% Stelligkeit für [F]unktionen
+\DeclareMathOperator*{\RawMtsStelR}  {\StrMtsStel_r}% Stelligkeit für [R]elationen
+\DeclareMathOperator*{\RawMtsQb}     {\StrMtsQb}% Quellbereich einer partiellen Funktion
+\DeclareMathOperator*{\RawMtsDb}     {\StrMtsDb}% Definitionsbereich einer      Funktion
+\DeclareMathOperator*{\RawMtsZb}     {\StrMtsZb}% Zielbereich        einer      Funktion
+\DeclareMathOperator*{\RawMtsWb}     {\StrMtsWb}% Wertebereich       einer      Funktion
+\DeclareMathOperator*{\RawMtsLen}    {\StrMtsLen}% Länge            eines/r Tupels/Folge
+\DeclareMathOperator*{\RawMtsSet}    {\StrMtsSet}% Komponentenmenge eines/r Tupels/Folge
 
+% Platzhalter zur Anzeige des Ortes von Indizes
+%%%\newcommand*{\Owner}{\square}
+\newcommand*{\Owner}{[]}
 % spezielle Indizes (rechts oben)
 \newcommand*{\LtrMtsIdxLogisch} {A}%    die Logik betreffend
 % spezielle Indizes für Teilmengen (rechts unten)
@@ -294,12 +297,32 @@
 \newcommand*{\RawOjkForp}{\Setft{\LtrOjkFor}^{\RawMtsIdxLogisch\RawMtsIdxPolnisch}}% ...in Polnischer Notation
 
 % Prädikate und praedikatähnliche Makros =======================================
+% Mathmode; ohne Link ins Glossar
+\newcommand*    {\RawMengeDef}[2]{\{ #1 \RawMtsSetSep #2 \}}
+\newcommand*     {\QuantorDef}[3]{ #1 #2 : #3 }
+\newcommand*     {\InfRuleDef}[2] {\frac{#1}{#2}}
+\newcommand*    {\dInfRuleDef}[2]{\dfrac{#1}{#2}}
+\newcommand*    {\tInfRuleDef}[2]{\tfrac{#1}{#2}}
+\newcommand*{\RawMtsForAllDef}[2]{\QuantorDef{\RawMtsForAll}{#1}{#2}}
+\newcommand*{\RawMtsExiOneDef}[2]{\QuantorDef{\RawMtsExiOne}{#1}{#2}}
+\newcommand*{\RawMtsExistsDef}[2]{\QuantorDef{\RawMtsExists}{#1}{#2}}
+\newcommand*{\RawOjkForAllDef}[2]{\QuantorDef{\RawOjkForAll}{#1}{#2}}
+\newcommand*{\RawOjkExiOneDef}[2]{\QuantorDef{\RawOjkExiOne}{#1}{#2}}
+\newcommand*{\RawOjkExistsDef}[2]{\QuantorDef{\RawOjkExists}{#1}{#2}}
+% Mathmode; mit  Link ins Glossar
+\newcommand*    {\FunktionDef}[3]   {\ensuremath{ #1 \MtsFktSep #2 \MtsFktArrow #3 }}% f:A->B
+\newcommand*       {\MengeDef}[2]   {\ensuremath{\{ #1 \MtsSetSep #2 \}}}% {x|A(x)}
+\newcommand*   {\MtsForAllDef}[2]   {\QuantorDef{\MtsForAll}{#1}{#2}}
+\newcommand*   {\MtsExiOneDef}[2]   {\QuantorDef{\MtsExiOne}{#1}{#2}}
+\newcommand*   {\MtsExistsDef}[2]   {\QuantorDef{\MtsExists}{#1}{#2}}
+\newcommand*   {\OjkForAllDef}[2]   {\QuantorDef{\OjkForAll}{#1}{#2}}
+\newcommand*   {\OjkExiOneDef}[2]   {\QuantorDef{\OjkExiOne}{#1}{#2}}
+\newcommand*   {\OjkExistsDef}[2]   {\QuantorDef{\OjkExists}{#1}{#2}}
 
-\newcommand*{\FunktionDef}[3]{\ensuremath{   #1    \MtsFktSep #2 \MtsFktArrow #3 }}
-\newcommand*   {\MengeDef}[2]{\ensuremath{\{ #1    \MtsSetSep #2               \}}}% mit  Link ins Glossar
-\newcommand*{\RawMengeDef}[2]{\ensuremath{\{ #1 \RawMtsSetSep #2               \}}}% ohne Link ins Glossar
 
 % sonstige Makro für den Mathematiksatz ########################################
+
+\newcommand*{\card}[1]{|#1|}% Die Mächtigkeit einer Menge
 
 \mathtoolsset{showonlyrefs,showmanualtags}% Nur mit \ref referenzierte Gleichungen, aber alle manuellen Tags
 

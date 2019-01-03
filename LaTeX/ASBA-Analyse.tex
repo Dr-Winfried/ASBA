@@ -609,7 +609,8 @@ In den \vrefinfig{fig:Umgebung} abgebildeten Datenflüssen (1) bis (6) und (a) b
 Die Datenflüsse (a) bis (e) erfolgen außerhalb von \ASBA\ und werden nicht weiter behandelt.
 
 Die Datenbank und die Datei enthalten im Prinzip die gleichen Daten, wobei sie in der Datei im Textformat in lesbarer Form und in der Datenbank in einem internen Format vorliegen.
-Zudem enthält die Datenbank \textiAlg\ sehr viel mehr Daten. Es handelt sich dabei jeweils um die folgenden Daten:
+Zudem enthält die Datenbank \textiAlg\ sehr viel mehr Daten.
+Es handelt sich dabei jeweils um die folgenden Daten:
 \begin{description}
 	\item[\defTxt{\Axiome}]         \label{Daten:Axiom}         \glsBeschreibung{Axiom}
 	\item[\defTxt{\Saetze}]         \label{Daten:Satz}          \glsBeschreibung{Satz}
@@ -632,12 +633,12 @@ Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehe
 
 \begin{description}
 	%
-	\item[Die \logischeDarstellung] von mathematischen \Aussagen, wozu auch \Axiome\ und \Saetze\ gehören, erfolgt, da es sich immer um \Formeln\ handelt, an besten mit \Symbolfolgen%
+	\item[Die \logischeDarstellung] von mathematischen \Aussagen, wozu auch \Axiome\ und \Saetze\ gehören, erfolgt, da es sich immer um \Formeln\ handelt, an besten mit \Symbolketten%
 	\footnote{%
-		Die \interneDarstellung\ der \Symbolfolgen\ kann zur Optimierung von \ASBA\ von der \logischenD\ abweichen.
+		Die \interneDarstellung\ der \Symbolketten\ kann zur Optimierung von \ASBA\ von der \logischenD\ abweichen.
 	},
 	\textdh\ Folgen von Zeichen und Symbolen, in denen Zwischenraum --- insbesondere Leerstellen --- nicht zählen.
-	Mehrdimensionale \Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Symbolfolgen dargestellt werden.%
+	Mehrdimensionale \Formeln, wie \textzB\ Matrizen, Baumstrukturen, Funktionsschemata und anderes, können auch als (eindimensionale) Symbolketten dargestellt werden.%
 	\footnote{%
 		\textZB\ könnte man eine 2$\times$2-Matrix
 		$\begin{bmatrix} a & b \\ c & d \end{bmatrix}$
@@ -645,13 +646,13 @@ Da ein Computerprogramm erstellt werden soll, muss die Grundstruktur des Vorgehe
 		In \ASBA\ wird die \LaTeX-Syntax verwendet.
 		\\Damit wird die soeben angegebene Matrix codiert durch \seqqt{\$\textbackslash begin\{bmatrix\}a\&b\textbackslash\textbackslash c\&d\textbackslash end\{bmatrix\}\$}.
 	}
-	\Beweise\ sind letztendlich nichts anderes, als erlaubte \Transformationen\ dieser \Symbolfolgen.
+	\Beweise\ sind letztendlich nichts anderes, als erlaubte \Transformationen\ dieser \Symbolketten.
 	%
-	\item[\Bausteine] sind Grundelemente, auch \DefFt{Zeichen} oder \DefFt{(Satz-)Buchstaben} genannt, aus denen die Symbolfolgen bestehen dürfen, und müssen definiert werden.
+	\item[\Bausteine] sind Grundelemente, auch \DefFt{Zeichen} oder \DefFt{(Satz-)Buchstaben} genannt, aus denen die Symbolketten bestehen dürfen, und müssen definiert werden.
 	%
 	\item[\Formationsregeln] dienen zur Festlegung, wie man aus den Bausteinen Ausdrücke erzeugen kann, und müssen ebenfalls definiert werden.
 	%
-	\item[\Saetze] lassen sich als eine \Menge\ von \Formeln, den \Praemissen, wozu auch \Axiome\ und andere \Saetze\ gehören können, einer weiteren \Menge\ von \Formeln\ (\Symbolfolgen), den \Konklusionen, und der Angabe eines \Beweises\ darstellen.
+	\item[\Saetze] lassen sich als eine \Menge\ von \Formeln, den \Praemissen, wozu auch \Axiome\ und andere \Saetze\ gehören können, einer weiteren \Menge\ von \Formeln\ (\Symbolketten), den \Konklusionen, und der Angabe eines \Beweises\ darstellen.
 	%
 	\item[\Beweise] zu gegebenen \Praemissen\ und \Konklusionen\ lassen sich als \Folge\ von \Transformationen, beginnend mit den \Praemissen\ und endend mit den \Konklusionen, darstellen.
 	%
